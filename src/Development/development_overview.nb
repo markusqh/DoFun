@@ -1,0 +1,127 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      3618,        119]
+NotebookOptionsPosition[      2647,         92]
+NotebookOutlinePosition[      2979,        107]
+CellTagsIndexPosition[      2936,        104]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["DoFun3 development overview", "Title",
+ CellChangeTimes->{{3.73631803437855*^9, 
+  3.736318043914339*^9}},ExpressionUUID->"9e6809a6-b9bb-4551-ad15-\
+e8a802ac7bbf"],
+
+Cell[TextData[{
+ "DoFun2 has three packages plus the init package:\n\tDoDSERGE\n\tDoFM\n\t\
+DoAE\n\t\n",
+ StyleBox["DoAE",
+  FontWeight->"Bold"],
+ " translates symbolic expressions to algebraic ones. This functionality is \
+well tested and will remain mostly unaltered.\n",
+ StyleBox["DoFM",
+  FontWeight->"Bold"],
+ " derives Feynman rules from a the action. The usability of this package \
+needs to be discussed.\n",
+ StyleBox["DoDSERGE",
+  FontWeight->"Bold"],
+ " derives the symbolic expressions. This is where most changes will be \
+necessary."
+}], "Text",
+ CellChangeTimes->{{3.7363180534023037`*^9, 3.736318168514297*^9}, {
+  3.73632016674052*^9, 
+  3.736320174124614*^9}},ExpressionUUID->"4c2ba7a6-c818-44f2-b516-\
+8b96aa05b150"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["DoDSERGE", "Title",
+ CellChangeTimes->{{3.7363201291642027`*^9, 
+  3.736320130404502*^9}},ExpressionUUID->"9e6efd20-2fdd-46c3-95cb-\
+409c96a6477e"],
+
+Cell["\<\
+Changes to DoFun2:
+* All field definitions must be done at the beginning. No intermediate \
+changes are allowed.\
+\>", "Text",
+ CellChangeTimes->{{3.7363255006234493`*^9, 
+  3.73632552943932*^9}},ExpressionUUID->"dc6334b3-3b69-42e4-b562-\
+9dfc36f98824"],
+
+Cell[CellGroupData[{
+
+Cell["Things to add", "Section",
+ CellChangeTimes->{{3.736318337912401*^9, 
+  3.7363183394324636`*^9}},ExpressionUUID->"dd654739-1718-4bf0-8523-\
+865aa3c1702a"],
+
+Cell[CellGroupData[{
+
+Cell["Low priority", "Subsection",
+ CellChangeTimes->{{3.73631834368863*^9, 
+  3.736318345409191*^9}},ExpressionUUID->"820864a1-5442-467c-a5c1-\
+0c1d9d296ecf"],
+
+Cell["\<\
+* Installation similar to FORMTracer.
+* Link to/Installation of FORMTracer.
+* OptionsPattern\
+\>", "Text",
+ CellChangeTimes->{{3.736318351848378*^9, 3.736318381608193*^9}, {
+  3.736318691900454*^9, 
+  3.736318699294239*^9}},ExpressionUUID->"b7aec1c3-b370-4c24-aac1-\
+42a20de87a63"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{958, 997},
+WindowMargins->{{2, Automatic}, {1, Automatic}},
+FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 169, 3, 98, "Title",ExpressionUUID->"9e6809a6-b9bb-4551-ad15-e8a802ac7bbf"],
+Cell[752, 27, 736, 19, 196, "Text",ExpressionUUID->"4c2ba7a6-c818-44f2-b516-8b96aa05b150"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1525, 51, 153, 3, 98, "Title",ExpressionUUID->"9e6efd20-2fdd-46c3-95cb-409c96a6477e"],
+Cell[1681, 56, 263, 7, 58, "Text",ExpressionUUID->"dc6334b3-3b69-42e4-b562-9dfc36f98824"],
+Cell[CellGroupData[{
+Cell[1969, 67, 160, 3, 68, "Section",ExpressionUUID->"dd654739-1718-4bf0-8523-865aa3c1702a"],
+Cell[CellGroupData[{
+Cell[2154, 74, 159, 3, 55, "Subsection",ExpressionUUID->"820864a1-5442-467c-a5c1-0c1d9d296ecf"],
+Cell[2316, 79, 291, 8, 81, "Text",ExpressionUUID->"b7aec1c3-b370-4c24-aac1-42a20de87a63"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
