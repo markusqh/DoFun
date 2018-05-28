@@ -73,6 +73,8 @@
 *)
 
 
+
+
 (* ::Section:: *)
 (* Usages *)
 
@@ -91,9 +93,11 @@ If[Not@FreeQ[Contexts[],"DoFun`"],DoFun`DoDSERGE`$doDSERGEStartMessage=False];
 If[DoFun`DoDSERGE`$doDSERGEStartMessage=!=False,
 	Print["Package DoDSERGE loaded.
 \nVersion "<> $doRGEVersion <>
-"\nJens Braun, Reinhard Alkofer, Markus Q. Huber, Kai Schwenzer, 2008-2017\n
+"\nJens Braun, Reinhard Alkofer, Markus Q. Huber, Kai Schwenzer, 2008-2018\n
 \nDetails in Comput.Phys.Commun. 183 (2012) 1290-1320 (http://inspirehep.net/record/890744)."];
 ];
+
+
 
 
 (* ::Section:: *)
@@ -111,11 +115,11 @@ Default value: \[Phi].";
 
 $dummyFieldF::usage="Superfield representing all possible fermionic fields.
 Default value: \[Phi].
-Note: Currently not employed by DoFun. The use of $dummyField suffices.";
+";
 
 $dummyFieldAF::usage="Superfield representing all possible anti-fermionic fields.
 Default value: \[Phi].
-Note: Currently not employed by DoFun. The use of $dummyField suffices.";
+";
 
 $dummyFieldB::usage="Superfield representing all possible bosonic fields.
 Default value: \[Phi].
@@ -130,20 +134,32 @@ Default value: R.";
 $vertexSymbol::usage="Symbol representing a vertex when using shortExpression.
 Default value: \[CapitalGamma].";
 
-
-
-antiFermion::usage="Represents an anti-commuting field. Specifically it is the second field of a pair of anti-commuting fields.\n
+antiComplex::usage="Represents a bosonic complex anti-field. Specifically, it is the second field of a pair of complex fields.\n
+Properties of fields need to be set by setFields.\n
 Example:
-The following action contains two Grassmann fields psi and psib, where psib is defined as antiFermion:
-generateAction[{{psi, psib}, {psib,psib,psi,psi}}];
-antiFermionQ@psib
+setFields[{A}, {{c,cb}}, {{phi,phib}}];
+antiFermionQ@phib
 ";
 
-boson::usage="Represents a bosonic field.\n
+antiFermion::usage="Represents an anti-commuting field. Specifically, it is the second field of a pair of anti-commuting fields.\n
+Properties of fields need to be set by setFields.\n
 Example:
-The following action contains a bosonic field phi:
-generateAction[{{phi,phi}, {phi,phi,phi,phi}}];
-bosonQ@phi
+setFields[{A}, {{c,cb}}, {{phi,phib}}];
+antiFermionQ@cb
+";
+
+boson::usage="Represents a bosonic field.
+Properties of fields need to be set by setFields.\n
+Example:
+setFields[{A}, {{c,cb}}, {{phi,phib}}];
+bosonQ@A
+";
+
+complex::usage="Represents a bosonic complex field. Specifically, it is the first field of a pair of complex fields.\n
+Properties of fields need to be set by setFields.\n
+Example:
+setFields[{A}, {{c,cb}}, {{phi,phib}}];
+antiFermionQ@phi
 ";
 
 dR::usage="Represents a regulator insertion, \[PartialD]_t R_k.
@@ -166,10 +182,23 @@ Example:
 insDummy[]
 ";
 
-fermion::usage="Represents an anti-commuting field. Specifically it is the first field of a pair of anti-commuting fields.\n
-The following action contains two Grassmann fields psi and psib, where psib is defined as fermion:
-generateAction[{{psi, psib}, {psib,psib,psi,psi}}];
-fermionQ@psi
+fermion::usage="Represents a commuting field. Specifically, it is the first field of a pair of anti-commuting fields.\n
+Properties of fields need to be set by setFields.\n
+Example:
+setFields[{A}, {{c,cb}}, {{phi,phib}}];
+antiFermionQ@c
+";
+
+field::usage="Fields are of type field, viz., the Head of any field f is field.\n
+Example:
+setFields[{A}, {{c,cb}}, {{phi,phib}}];
+Head/@{A,c,cb,phi,phib}
+";
+
+fieldType::usage="Specific field type of a field. Possible values: boson, fermion, antiFermion, complex, antiComplex.\n
+Example:
+setFields[{A}, {{c,cb}}, {{phi,phib}}];
+fieldType/@{A,c,cb,phi,phib}
 ";
 
 P::usage="Represents a dressed propagator.
@@ -228,8 +257,7 @@ antiComplexFieldQ::usage="Determines if an expression is defined as a bosonic co
 Syntax:
 antiComplexFieldQ[f] where f is a field.\n
 Example:
-The following action contains a pair of bosonic complex fields phi and phib, where phib is defined as \"anti-complex\" field:
-generateAction[{{phi,phib}, {phib,phib,phi,phi}}, specificFieldDefinitions -> {phi, phib}];
+setFields[{A}, {{c,cb}}, {{phi,phib}}];
 antiComplexFieldQ@phib
 ";
 
@@ -237,9 +265,8 @@ antiFermionQ::usage="Determines if an expression is defined as a Grassmannian fi
 Syntax:
 antiFermionQ[f] where f is a field.\n
 Example:
-The following action contains a pair of Grassmannian fields psi and psib, where psib is defined as antiFermion:
-generateAction[{{psi,psib}, {psib,psib,psi,psi}}];
-antiFermionQ@psib
+setFields[{A}, {{c,cb}}, {{phi,phib}}];
+antiFermionQ@cb
 ";
 
 antiField::usage="Gives the anti-field of a field.
@@ -247,9 +274,8 @@ Grassmann or bosonic complex fields are always defined in pairs. The two fields 
 Syntax:
 antiField[f] where f is a field.\n
 Example:
-The following action contains a pair of Grassmannian fields psi and psib:
-generateAction[{{psi,psib}, {psib,psib,psi,psi}}];
-antiField/@{psi,psib}
+setFields[{A}, {{c,cb}}, {{phi,phib}}];
+antiField/@{A, c, cb, psi, psib}
 ";
 
 broken::usage="Possible value for the option symmetry of doDSE and doRGE.
@@ -260,13 +286,16 @@ bosonQ::usage="Determines if an expression is defined as a bosonic field.\n
 Syntax:
 bosonQ[f] where f is a field.\n
 Example:
-The following action contains a bosonic field phi:
-generateAction[{{phi,phi}, {phi,phi,phi,phi}}];
-bosonQ@phi
+setFields[{A}, {{c,cb}}, {{phi,phib}}];
+bosonQ@A
+";
 
-The following action contains a pair of bosonic complex fields phi and phib:
-generateAction[{{phi,phib}, {phib,phib,phi,phi}}, specificFieldDefinitions->{phi,phib}];
-bosonQ/@{phi, phib}
+cFieldQ::usage="Determines if an expression is defined as a commuting field.\n
+Syntax:
+cFieldQ[f] where f is a field.\n
+Example:
+setFields[{A}, {{c,cb}}, {{phi,phib}}];
+cFieldQ/@{A,c,cb,phi,phib}
 ";
 
 checkAction::usage="Checks indices in the action, i.e., it looks for free indices which should be absent for a properly defined daction. Performs also checkSyntax and checkFields.\n
@@ -329,8 +358,7 @@ complexFieldQ::usage="Determines if an expression is defined as a bosonic comple
 Syntax:
 complexFieldQ[f] where f is a field.\n
 Example:
-The following action contains a pair of bosonic complex fields phi and phib, where phi is defined as complex field:
-generateAction[{{phi,phib}, {phib,phib,phi,phi}}, specificFieldDefinitions -> {phi, phib}];
+setFields[{A}, {{c,cb}}, {{phi,phib}}];
 complexFieldQ@phi
 ";
 
@@ -339,17 +367,6 @@ Syntax:
 countTerms[expr] with expr an expression containing op functions.\n
 Example:
 countTerms[op[S[{A, i}, {A, j}]] +  1/2 op[S[{A, i}, {A, r1}, {A, s1}], V[{A, t1}, {A, u1}, {A, j}], P[{A, t1}, {A, r1}], P[{A, u1}, {A, s1}]]]
-";
-
-defineFields::usage="Defines the fields of an action.\n
-Syntax:
-defineFields[bosonic, grassmannian, complex] where the arguments are lists containing bosons, pairs of Grassmannian fields and pairs of bosonic complex fields.
-Bosons are always single entries, while Grassmannian fields and bosonic complex fields come as pairs in lists.\n
-Example: Definition of a bosonic field A, a pair of anti-commuting fields c and cb and a pair of bosonic complex fields phi and phib
-defineFields[{A}, {{c, cb}}, {{phi, phib}}];
-bosonQ /@ {A, c, cb, phi, phib}
-fermionQ /@ {A, c, cb, phi, phib}
-antiComplexFieldQ /@ {A, c, cb, phi, phib}
 ";
 
 deriv::usage="Differentiate with respect to a field.
@@ -407,6 +424,7 @@ Three-gluon DSE of Landau gauge Yang-Mills theory with the dressed four-point ve
 dse = doDSE[{{A, A}, {c, cb}, {A, A, A}, {A, cb, c}, {A, A, A, A}}, {A, A, A}, {{A, A}, {c, cb}}, ansatz -> {{A, A, A}, {A, cb, c}}];
 DSEPlot[dse, {{A, Red}, {c, Green, Dashed}}]
 
+(* TODO Rewrite this example without specificFieldDefinitions *)
 Three-point DSE of a theory with bosonic fields A, phi, and phib which mix at the two-point level, i.e., additional propagators have to be given in an extra argument.
 dse = doDSE[{{A, A}, {phi, phib}, {A, phi}, {A, phib}, {A, phib, phi}}, {A, A}, {{phi, phi}, {phib, phib}}, specificFieldDefinitions -> {A, phi, phib}]
 DSEPlot[dse]
@@ -427,7 +445,6 @@ doRGE[ac, clis, propagators, vertexTest, opts] with
  -) vertexTestFunction a function for determining if a vertex respects the symmetries of the action,
  -) opts options of doRGE.
 Possible options are:
- -) specificFieldDefinitions: Defines bosons and Grassmann fields specifically. See ?specificFieldDefinitions for details.
  -) tDerivative: By default the derivative with respect to the scale k is performed, which creates the regulator insertion. If this should be suppressed, for example, in order to study only the structure of the equations, this is done with tDerivative -> False. 
  -) symmetry: By default the RGE is derived for the symmetric phase. Using symmetry broken the RGE is derived for a non-vanishing vacuum expectation value. The truncation in the broken phase is for RGEs based on the ansatz for the effective average action given by ac.
 Note that the allowed propagators will be taken from ac if the propagators argument is not given. It is required, e.g., for actions with fields mixing at the two-point level.\n
@@ -449,6 +466,7 @@ Three-point RGE of phi^3 theory with no regulator insertions
 rge = doRGE[{{phi, phi}, {phi,  phi, phi}}, {phi, phi, phi}, tDerivative -> False]
 RGEPlot[rge, {{phi, Black}}, output -> forceEquation]
 
+(* TODO: Rewrite this example without specificFieldDefinitions *)
 Three-point RGE of a theory with bosonic fields a, phi, and phib which mix at the two-point level, i.e., additional propagators have to be given in an extra argument. No regulator insertions performed.
 rge = doRGE[{{A, A}, {phi, phib}, {A, phi}, {A, phib}, {A, phib, phi}}, {A, A, A}, {{phi, phi}, {phib, phib}}, specificFieldDefinitions -> {A, phi, phib}, tDerivative -> False]
 RGEPlot[rge]
@@ -485,7 +503,7 @@ dse = doDSE[{{phi, 2}}, {phi, phi}];
 DSEPlot[dse,  {{phi, Black}}, output -> forceEquation]
 
 Plotting a user-created expression with one external field
-defineFields[{phi}, {}, {}];
+setFields[{phi}, {}, {}];
 DSEPlot[op[S[{phi, i}, {phi, j}, {phi, l}, {phi, m}], P[{phi, l}, {phi, m}], {phi, j}], {{phi, Black}}]
 ";
 
@@ -504,15 +522,15 @@ fermionQ::usage="Determines if an expression is defined as a Grassmannian field,
 Syntax:
 fermionQ[f] where f is a field.\n
 Example:
-The following action contains a pair of Grassmannian fields psi and psib, where psi is defined as fermion:
-generateAction[{{psi,psib}, {psib,psib,psi,psi}}];
+setFields[{A}, {{c,cb}}, {{phi,phib}}];
 fermionQ@psi
 ";
 
 fieldQ::usage="Determines if an expression is defined as a field.\n
+Note that the head of a field is field.
 Syntax: fieldQ[f]\n
 Example:
-defineFields[{phi},{{psi,psib}},{}];
+setFields[{phi},{{psi,psib}},{}];
 fieldQ/@{A,phi,psib}
 ";
 
@@ -561,9 +579,8 @@ grassmannQ::usage="Determines if an expression is defined as a Grassmannian fiel
 Syntax:
 grassmannQ[f] where f is a field.\n
 Example:
-The following action contains a pair of Grassmannian fields psi and psib:
-generateAction[{{psi,psib}, {psib,psib,psi,psi}}];
-grassmannQ/@{psi,psib}
+setFields[{A}, {{c,cb}}, {{phi,phib}}];
+grassmannQ/@{A,c,cb,phi,phib}
 ";
 
 identifyGraphs::usage="Adds up equivalent graphs in DSEs.
@@ -581,7 +598,7 @@ Note: identifyGraphsRGE works different than identifyGraphs.\n
 Syntax:
 identifyGraphsRGE[expr, extFields] with expr being an expression containing op functions and extFields the external legs of all graphs adds up identical graphs.\n
 Example:
-defineFields[{A}, {}, {}];
+setFields[{A}, {}, {}];
 identifyGraphsRGE[op[V[{A, i}, {A, r}, {A, s}, {A, j}], P[{A, r}, {A, s}]] + op[V[{A, i}, {A, j}, {A, s}, {A, t}], P[{A, s}, {A, t}]], {{A, i}, {A, j}}]
 ";
 
@@ -637,7 +654,7 @@ The canonical order is the following:
 Syntax:
 orderFermions[expr] with expr being an expression containing op functions.\n
 Example:
-defineFields[{A}, {{c, cb}}, {}];
+setFields[{A}, {{c, cb}}, {}];
 orderFermions[op[V[{c, i}, {cb, j}, {A, l}]]]
 ";
 
@@ -670,7 +687,7 @@ regulatorSymbol::usage="Option for RGEPlot. Defines the function for drawing the
 Possible values: regulatorBox, regulatorCross or a user-defined function which takes the coordinate of the regulator insertion as input.\n
 Default value: regulatorBox.\n
 Example:
-defineFields[{phi}, {}, {}];
+setFields[{phi}, {}, {}];
 RGEPlot[1/2 op[dR[{phi, r1}, {phi, s1}], P[{phi, t1}, {phi, r1}], P[{phi, s1}, {phi, v1}], V[{phi, i}, {phi, j}, {phi, v1}, {phi, t1}]], {{phi, Black}}, regulatorSymbol -> ({Text[\"Here comes the regulator.\", #]} &)]
 "
 
@@ -678,7 +695,7 @@ replaceFields::usage="Used in the derivation of DSEs to replace the fields by th
 Syntax:
 replaceFields[expr] with expr being an expression containing op functions.\n
 Example:
-defineFields[{}, {{c, cb}}, {}];
+setFields[{}, {{c, cb}}, {}];
 replaceFields[op[S[{A, i}, {A, r}, {A, s}], {A, r}, {A, s}]]
 ";
 
@@ -722,7 +739,7 @@ dse = doRGE[{{phi, 100, even}}, {phi, phi}];
 RGEPlot[dse,  {{phi, Black}}, output -> forceEquation]
 
 Plotting a user-created expression with one external field
-defineFields[{phi}, {}, {}];
+setFields[{phi}, {}, {}];
 RGEPlot[op[S[{phi, i}, {phi, j}, {phi, l}, {phi, m}], P[{phi, l}, {phi, m}], {phi, j}], {{phi, Black}}]
 ";
 
@@ -745,6 +762,23 @@ Clear@vTest; vTest[a_V] := Length@a < 4;
 setSourcesZero[op[S[{A, i}, {A, r}, {A, s}, {A, t}], P[{A, r}, {$dummyField, u}], P[{A, s}, {$dummyField, v}], P[{A, t}, {$dummyField, w}], V[{$dummyField, u}, {$dummyField, v}, {$dummyField, w}, {A, j}]], {{A, A}, {A, A, A}},{{A, A}}, vTest]
 ";
 
+setFields::usage = "Sets the properties of the fields of an action.\n
+Syntax:
+setFields[bosons, grassmann, complex] where the arguments are lists \
+containing bosons, pairs of Grassmannian fields and pairs of bosonic \
+complex fields.
+Bosons are always single entries, while Grassmannian fields and \
+bosonic complex fields come as pairs in lists. The components of \
+pairs are defined as mutual anti-fields.\n
+Example: Definition of a bosonic field A, a pair of anti-commuting \
+fields c and cb and a pair of bosonic complex fields phi and phib.
+setFields[{A}, {{c, cb}}, {{phi, phib}}];
+bosonQ /@ {A, c, cb, phi, phib}
+fermionQ /@ {A, c, cb, phi, phib}
+antiComplexFieldQ /@ {A, c, cb, phi, phib}
+antiField/@{A,c,cb,phi,phib}
+";
+  
 setSourcesZeroRGE::usage="Sets the external sources to zero, i.e., only physical propagators and vertices are left. This function is for RGEs only.
 Note that this is mainly intended as an internal function and should be used with care.\n
 Syntax:
@@ -783,12 +817,7 @@ Example:
 sortDummies[op[S[{phi, i100}, {phi, j1}, {phi, myInternalIndexWithALongName}, {phi, myExternalIndexWithALongNames}], P[{phi, i100}, {phi, j1}], {phi, myInternalIndexWithALongName}]]
 ";
 
-specificFieldDefinitions::usage="Option of doDSE and doRGE. Used to explicitly specify which fields are bosons or Grassmann fields.
-This option is only required if this is not clear from the action.\n
-Syntax:
-specificFieldDefinitions->{boson1, ..., {fermion1, antiFermion1}, ...} where the fields are given by their names. Grassmann fields are recognized by grouping them into pairs.\n
-See ?antiComplexFieldQ, ?bosonQ, ?complexFieldQ, ?doDSE and ?doRGE for examples.
-"
+specificFieldDefinitions::usage="Removed in DoFun3."
 
 symmetry::usage="Option of doDSE and doRGE.
 Possible values:
@@ -824,14 +853,15 @@ Options[RGEPlot]:=Options[DSEPlot];
 
 Options[setSourcesZero]={doGrassmannTest->True, propagatorCreationRules->DSERules};
 
-Options[doDSE]={sourcesZero:> True,identify:> True,compareFunction->compareGraphs,specificFieldDefinitions->{}, ansatz->{}};
+Options[doDSE]={sourcesZero:> True,identify:> True,compareFunction->compareGraphs, ansatz->{}};
 
-Options[doRGE]={sourcesZero:> True,identify:> True,compareFunction->compareGraphs,specificFieldDefinitions->{}, tDerivative -> True, 
+Options[doRGE]={sourcesZero:> True,identify:> True,compareFunction->compareGraphs, tDerivative -> True, 
 	symmetry->intact, userEvenFields->{}};
 
 Options[identifyGraphs]={compareFunction->compareGraphs};
 
 Options[shortExpression]={FontSize->16};
+
 
 
 
@@ -850,6 +880,17 @@ Protect/@$externalIndices;
 
 (* the standard superfield *)
 $dummyField=\[Phi];
+
+(* fermionic dummy fields *)
+$dummyFieldF /: Head[$dummyFieldF] := field;
+$dummyFieldAF /: Head[$dummyFieldAF] := field;
+$dummyFieldF /: fieldType[$dummyFieldF] := fermion;
+$dummyFieldAF /: fieldType[$dummyFieldAF] := antiFermion;
+antiField[$dummyFieldF] := $dummyFieldAF;
+antiField[$dummyFieldAF] := $dummyFieldF;
+
+(* automatic ordering of complex fields *)
+P[{phi_?fieldQ, i1_}, {phibar_?fieldQ, i2_}] /; (complexFieldQ[phibar] && antiField[phi]===phibar) := P[{phibar, i2}, {phi, i1}]
 
 (* the standard symbol for a propagator used in shortExpression *)
 $propagatorSymbol=\[CapitalDelta];
@@ -874,7 +915,6 @@ $signConvention=1;
 
 (* open indices that are closed by the trace *)
 traceIndices={traceIndex1,traceIndex2};
-
 
 
 
@@ -947,6 +987,8 @@ unused functions:
 *)
 
 
+
+
 (* ::Section:: *)
 (* Messages *)
 
@@ -963,7 +1005,7 @@ checkAll::errors="There were errors when checking the syntax or indices appearin
 
 checkFields::"ok"="All fields are defined correctly.";
 
-checkFields::"undefinedField"="The expression(s) in `1` is/are not defined as field(s). Use defineFields or generateAction to do so.";
+checkFields::"undefinedField"="The expression(s) in `1` is/are not defined as field(s). Use setFields or generateAction to do so.";
 
 
 checkIndices::"ok"="No indices appear more often than twice.";
@@ -997,8 +1039,8 @@ Make sure the input has the form of countTerms[expr_]. For more details use ?cou
 The expression causing the error is `1`.";
 
 
-defineFields::syntax="There was a syntax error in defineFields.\n
-Make sure the input has the form of defineFields[flis_List]. For more details use ?defineFields.\n
+setFields::syntax="There was a syntax error in setFields.\n
+Make sure the input has the form of setFields[bosons_List, [fermions_List, complexFields_List]]. For more details use ?setFields.\n
 The expression causing the error is `1`.";
 
 
@@ -1015,7 +1057,7 @@ Make sure the input has the form of DSEPlotList[expr_,flis_List[,plotRules_],opt
 The expression causing the error is `1`.";
 
 DSEPlot::fieldsUndefined="There appear to be undefined fields in the expression you want to plot.\n
-Define the fields with the function defineFields or rederive the expression with doRGE or doDSE, respectively.
+Define the fields with the function setFields or rederive the expression with doRGE or doDSE, respectively.
 The definition is then done automatically.\n
 The expression causing the error is `1`";
 
@@ -1037,6 +1079,10 @@ generateAction::syntax="There was a syntax error in generateAction.\n
 Make sure the input has the form of generateAction[interactions_List[,fields_List]]. For more details use ?generateAction.\n
 The expression causing the error is `1`.";
 
+generateAction::fieldsNotSet="There was a syntax error in generateAction.\n
+The argument of generateAction contains expressions which are not fields. Use setFields to define them as fields. For more details use ?generateAction.\n
+The expression causing the error is `1`.";
+
 getLoopNumber::syntax="There was a syntax error in getLoopNumber.\n
 Make sure the input has the form of getLoopNumber[expr_].\n
 The expression causing the error is `1`.";
@@ -1045,7 +1091,7 @@ getInteractionList::syntax="There was a syntax error in getInteractionList.\n
 Make sure the input has the form of getInteractionList[action_]. For more details use ?getInteractionList.\n
 The expression causing the error is `1`.";
 
-defineFields::noList="There is a syntax error in defineFields, because where a pair of Grassmann or complex bosonic fields was expected something else came up.\n
+setFields::noList="There is a syntax error in setFields, because where a pair of Grassmann or complex bosonic fields was expected, something else was encountered.\n
 Make sure to group fermions and bosonic complex fields in pairs, e.g., {{psi, psib}, {c,cb}}."
 
 doDSE::syntax="There was a syntax error in doDSE.\n
@@ -1090,10 +1136,11 @@ sE::syntax=shortExpression::syntax;
 
 
 
+
 (* ::Section:: *)
 (* General Functions *)
 
-
+(* op cleared for DoFun3 *)
 (* the op functions hold together vertices and propagators; it stands for summations/integration over indices *)
 op[a___,b_ ?NumericQ c_,d___]:=b op[a,c,d];
 
@@ -1105,13 +1152,15 @@ op[a___,0,b___]:=0;
 op[a___,op[b___], c___]:=op[a,b,c];
 
 
-
-(* dummies: where necessary  uses dummy indices; they are realized by the function dummy[x], where x is a running number
-when loading the package x is set to 0;
-it can be rest using resetDummy;
-dummies are inserted using insDummy;
-for nicer output sortdummies can replace dummies by other dummy variables;
-they are r1,r2,...,z1,z2,..., depending on how many are needed; the list is created with createDummyList;*)
+(* dummies cleared for DoFun3 *)
+(* Dummies: They are used to represent contracted indices.
+They are realized by the function dummy[x], where x is a running number.
+When the package is loaded, x is set to 0.
+It can be rest using resetDummy.
+Dummies are inserted using insDummy[].
+For nicer output, sortdummies[] can replace dummies by other dummy variables.
+The standard choice is r1, r2, ..., z1, z2, ..., depending on how many are needed.
+This list is created with createDummyList[]. *)
 
 
 dummyCounter=0;
@@ -1139,7 +1188,7 @@ sortDummies[a_List]:=sortDummies/@a;
 sortDummies[a_?NumericQ]:=a;
 
 sortDummies[a_op]:=Module[
-{inds,exprDummies,newDummies,newDummyRules,dummyList},
+{inds,exprDummies,newDummies,newDummyRules,dummyList,ind},
 
 (* get all indices from the epxression *)
 inds=Transpose[a[[Sequence@@#]]&/@Position[a,{_,ind_}]][[2]];
@@ -1163,15 +1212,15 @@ a/.newDummyRules
 (* create from a list of interactions from the action in the usual form;
 an interaction is given as a list of the involved fields *)
 
-(* in case the option specificFieldDefinitions is given *)
-generateAction[action_, specificFieldDefinitions->specificFieldDefs_List]:=generateAction[action,specificFieldDefs];
-
 (* in case a "true" action is given, strip it down to its parts relevant for doDSE/doRGE *)
 generateAction[action_,rest___]:=
 	generateAction[(Cases[Replace[#, op[b__] :> {op[b]}(*in case a=op[___]*)], op[___], \[Infinity]] /. op :> Sequence)[[All, 0]] & /@ List@@action,rest];
 
-generateAction[interactions_List,userFields_List:{}]:=Module[
-{interactions2, fields,autoList, userList,complexFields,bosons,fermions},
+(* properties of fields are not set yet *)
+generateAction[interactions_List]:=Message[generateAction::fieldsNotSet,interactions];
+
+generateAction[interactions_List]:=Module[
+{interactions2, fields,autoList, userList, factor},
 
 (* in case the fields are given by their order and symmetry *)
 interactions2=interactions/. {
@@ -1180,15 +1229,6 @@ interactions2=interactions/. {
 	{Q_,Qb_, order_Integer} :>Sequence@@NestList[Drop[Drop[#, 1], -1] &, Flatten@Transpose[Reverse /@ Table[{Q, Qb}, {order}]], Floor[order] - 1](*,
 	{Q_,even}:>Sequence@@NestList[Drop[#, 2] &, Table[Q, {100}], Floor[100/2] - 1]*)
 	};
-
-(* get list of fields from the propagators and set them to bosons and fermions;
-alternatively the user can give a list of fields; important for mixed propagators with bosons, because they would be defined as fermions otherwise;
-level 1 is required for the case of a theory with only one propagator, which is fermionic *)
-fields=Replace[ Cases[interactions2, {_, _}] , {a_,a_} :> a,1];
-bosons=Union[DeleteCases[userFields,_List],DeleteCases[fields,_List]];
-fermions=DeleteCases[Union[Cases[userFields,_List],Cases[fields,_List]],{a_,b_}/;MemberQ[bosons,a]||MemberQ[bosons,b]];
-complexFields=Cases[fields,{a_,b_}/;a=!=b&&MemberQ[bosons,a]&&MemberQ[bosons,a]&&Not[MemberQ[interactions2,{a,a}]]&&Not[MemberQ[interactions2,{b,b}]]];
-defineFields[bosons,fermions,complexFields];
 
 (* add the numerical factors and the dummy indices;
 the user may give his own prefactors, so split in two parts: user defined and no user factors *)
@@ -1223,7 +1263,6 @@ Cases[action, S[__], \[Infinity]] /. S[a__] :> First /@ {a}
 ]
 
 getInteractionList[a___]:=Message[getInteractionList::syntax,a];
-
 
 
 
@@ -1508,10 +1547,6 @@ ReleaseHold[Apply[Plus,(a/.#[[2,1]]:> #[[1]]Hold@insertRegulator[#[[2,1]]])&/@co
 
 
 
-
-
-
-
 (* ::Section:: *)
 (* Identification *)
 
@@ -1609,8 +1644,8 @@ identifyGraphsRGE[a_?NumericQ,opts___]:=a;
 (* more terms *)
 identifyGraphsRGE[exp_Plus,extFields_List]:=Module[{classes,ops,equalOps,orderedExp},
 
-(* order bosonic fields in propagators; needed, e.g., for complex scalar fields *)
-orderedExp=exp/.P[{Q1_?bosonQ,q1_},{Q2_?bosonQ,q2_}]:>Sort@P[{Q1,q1},{Q2,q2}];
+(* order bosonic fields in propagators; needed, e.g., for complex scalar fields; handled automatically in DoFun3 for complex fields, but still necessary for mixed fields *)
+orderedExp=exp/.P[{Q1_?cFieldQ,q1_},{Q2_?cFieldQ,q2_}]:>Sort@P[{Q1,q1},{Q2,q2}];
 
 (* split off the numerical factors; syntax: {{factor1,op1},{factor2, op2},{factor3,op3},...} *)
 ops=Replace[List@@Expand@orderedExp/.Times[b_?NumericQ,c_]:> {b,c},d_op:> {1,d},{1}];
@@ -1828,7 +1863,7 @@ allowedPropagators=Join[ownAllowedPropagators,Cases[interactions, b_List /; Leng
 
 (* if there are fields that have only even interactions there cannot be a vertex with an odd number of these fields;
 for fermions this check is done with grassmannTest *)
-bosons=Select[Union@Flatten@interactions, bosonQ];
+bosons=Select[Union@Flatten@interactions, cFieldQ];
 (* add the fields which can be specified by the user as even, when he uses doRGE and no truncations *)
 evenBosons=Union[userEvenFields/.Join[{opts},Options@doRGE],Function[boson, And @@ ((EvenQ@Count[#, boson] & /@ interactions)/.{}:>False)/. {True :> boson, False :> Sequence[]}] /@ bosons];
 evenComplexBosons=Function[complexBoson, And @@ ((Count[#, complexBoson[[1]]]==Count[#, complexBoson[[2]]] & /@ interactions)/.{}:>False)/. {True :> complexBoson, False :> Sequence[]}]/@({#,antiField[#]}&/@Select[bosons, complexFieldQ]);
@@ -1886,7 +1921,7 @@ replaceVertices[d_op,vertexTest_Symbol,extFields_List,opts___?OptionQ]:=Module[{
 	propagatorsB, propIndsF, propIndsB,c,vertsReplaced,extGrassmannSign,shouldBeSign,extGrassmann},
 
 (* reduce the list of the legs to the Grassmann fields *)
-extGrassmann=extFields/.{_?bosonQ,_}:>Sequence[];	
+extGrassmann=extFields/.{_?cFieldQ,_}:>Sequence[];	
 	
 (* indices of the propagators *)
 c=d/.traceIndex1:>traceIndex2 (* close the trace here so that all variants are taken into account *);
@@ -1975,7 +2010,7 @@ getExtGrassmannOrder[exp_Times,rest___]:=getExtGrassmannOrder[Cases[exp,_op,Infi
 (* apply for each element of a list *)
 getExtGrassmannOrder[exp_List,rest___]:=getExtGrassmannOrder[#,rest]&/@exp;
 (* no Grassman variabes *)
-getExtGrassmannOrder[exp_op,extInds_List]/;And@@(bosonQ/@extInds[[All,1]]):={{}}
+getExtGrassmannOrder[exp_op,extInds_List]/;And@@(cFieldQ/@extInds[[All,1]]):={{}}
 getExtGrassmannOrder[exp_op,extInds_List]:=Module[
 	{propRules,expWOProps,firstVertex,allInds,intInds,nIterations},
 	
@@ -1997,7 +2032,7 @@ getExtGrassmannOrder[exp_op,extInds_List]:=Module[
     nIterations=Count[exp,V[___]];
     
 	Flatten[Last@Reap[Nest[getExtGrassmannOrderIteration[#[[1]], #[[2]], #[[3]], extInds] &, 
-		{expWOProps, firstVertex, intInds},  nIterations], order], 2] /. {_?bosonQ, _} :> Sequence[]
+		{expWOProps, firstVertex, intInds},  nIterations], order], 2] /. {_?cFieldQ, _} :> Sequence[]
 		
 ];
 
@@ -2042,7 +2077,7 @@ orderFermions[a_op] := Module[{fermions, bosons, antiFermions,orderF, orderB, or
 (* get lists of fermions, antiFermions and bosons from INTERNAL fields *)
 fermions=Union@Cases[a,{f_?fermionQ,_}:>f,{2}];
 antiFermions=Union@Cases[a,{f_?antiFermionQ,_}:>f,{2}];
-bosons=Union@Cases[a,{f_?bosonQ,_}:>f,{2}];
+bosons=Union@Cases[a,{f_?cFieldQ,_}:>f,{2}];
 
 (* get external fields *)
 extFields = Union@Select[Union@Cases[a, {_?fieldQ, _}, Infinity], Count[a, #, Infinity] == 1 &];
@@ -2159,6 +2194,7 @@ getLoopNumber[a___]:=Message[getLoopNumber::syntax,a];
 
 
 
+
 (* ::Section:: *)
 (* Derivation of a complete DSE *)
 
@@ -2172,6 +2208,7 @@ doDSE[action_,derivs_List,rest___,opts___?OptionQ]/;Cases[action,op[a__?(fieldQ@
   	 2],derivs,rest,opts];
 
 (* if list of interactions given, create action first; using the option specificFieldDefinitions one can give a list of fields for defineFields *)
+(* TODO Remove specificFieldDefinitions *)
 doDSE[interactions_List,rest___,opts___?OptionQ]:=doDSE[generateAction[interactions,specificFieldDefinitions/.Join[{opts},Options@doDSE]],rest,opts];
 
 (* only list of fields without indices, but $externalIndices is too short *)
@@ -2232,7 +2269,6 @@ doDSE[a___]:=Message[doDSE::syntax,a];
 
 
 
-
 (* ::Section:: *)
 (* Derivation of a complete RGE *)
 (* approach using the logarithm *)
@@ -2249,6 +2285,7 @@ doRGE[interactions_List,derivs_List,rest___,opts___?OptionQ]:=Message[doRGE::noT
 
 (* if list of interactions given, create action first; using the option specificFieldDefinitions one can give a list of fields for defineFields;
 converting the list into an action is strictly speaking not required but 1) allows a more uniform approach and 2) allows to keep things parallel to DoDSE *)
+(* TODO Remove specificFieldDefinitions *)
 doRGE[interactions_List,derivs_List,rest___,opts___?OptionQ]:=Module[{evenFields},
  evenFields=Cases[interactions,{Q_,even}:>Q];
  (* replace even fields definition by field two-point function *)
@@ -2314,10 +2351,10 @@ complexFields={#,antiField@#}&/@Union@Cases[L, _?complexFieldQ,Infinity];
 (* order the external fields; required to avoid complicated algorithms for determining the correct sign for fermions;
    order anti-fermions due to the convention that fermion derivatives act from the right, i.e.,
        left before right fermions, and anti-fermions act from the left, i.e., right before left anti-fermions *)
-orderedDerivs=derivs//.{a___,{b_?fermionQ,c_},d___,{e_?antiFermionQ,f_},g___}:>{a,{e,f},d,{b,c},g}//.{a___,{b_?bosonQ,c_},d___,{e_?grassmannQ,f_},g___}:>{a,d,{e,f},{b,c},g};
+orderedDerivs=derivs//.{a___,{b_?fermionQ,c_},d___,{e_?antiFermionQ,f_},g___}:>{a,{e,f},d,{b,c},g}//.{a___,{b_?cFieldQ,c_},d___,{e_?grassmannQ,f_},g___}:>{a,d,{e,f},{b,c},g};
 orderedDerivs=derivs//.{{a___,b_?(fermionQ@Head@#&), c_?(antiFermionQ@Head@#&),d___}:>({a,c,b,d}),
-    	{a___,b_?(fermionQ@Head@#&), c_?(bosonQ@Head@#&),d___}:>{a,c,b,d},{a___,b_?(bosonQ@Head@#&), c_?(antiFermionQ@Head@#&),d___}:>{a,c,b,d}};
-    orderedDerivs=derivs//.{a___,{b_?fermionQ,c_},d___,{e_?antiFermionQ,f_},g___}:>{a,{e,f},d,{b,c},g}//.{a___,{b_?bosonQ,c_},{e_?grassmannQ,f_},g___}:>{a,{e,f},{b,c},g};
+    	{a___,b_?(fermionQ@Head@#&), c_?(cFieldQ@Head@#&),d___}:>{a,c,b,d},{a___,b_?(cFieldQ@Head@#&), c_?(antiFermionQ@Head@#&),d___}:>{a,c,b,d}};
+    orderedDerivs=derivs//.{a___,{b_?fermionQ,c_},d___,{e_?antiFermionQ,f_},g___}:>{a,{e,f},d,{b,c},g}//.{a___,{b_?cFieldQ,c_},{e_?grassmannQ,f_},g___}:>{a,{e,f},{b,c},g};
 orderedDerivs=Flatten[Replace[GatherBy[orderedDerivs,antiFermionQ@#[[1]]&],{a_List,b_List}:>{Reverse@a,b}],1];
 
 (* the external fields are given by the derivatives; extFields is just another name for it here *)
@@ -2355,7 +2392,6 @@ If[tDerivative/.Join[{opts},Options@doRGE],
 ];
 
 doRGE[a___]:=Message[doRGE::syntax,a];
-
 
 
 
@@ -2442,6 +2478,7 @@ checkFields[a_op]:=checkFields[{a}];
 checkFields[a_]/;(d=Union@Select[Cases[a,{b_,c_}:>b,\[Infinity]],Not@fieldQ[#]&])!={}:=Message[checkFields::undefinedField,d];
 
 checkFields[a_]:=Message[checkFields::ok];
+
 
 
 
@@ -2874,6 +2911,7 @@ regulatorCross[x_]:=Module[{rad=0.1},
 
 
 
+
 (* ::Section:: *)
 (* Tools *)
 
@@ -2923,40 +2961,50 @@ getDirectedFieldsList[exp_]:=Module[{fermions,antiFermions,complexFields},
 ];
 
 
+(* Fields: Properties of fields need to be defined.
+The following types of fields are defined:
+Real bosons, fermions (or Grassmannian fields in general), complex bosons.
+Fields must be defined before doing any calculations.
+No other function should interfer with the fields' definitions. *)
 
-defineFields[bosons_List,fermions_List,complexFields_List,opts___]/;Not[And@@Flatten[{Head@#===List&/@fermions,Head@#===List&/@complexFields}]]:=Message[defineFields::noList];
-defineFields[bosons_List,fermions_List,complexFields_List,opts___]:=Module[{},
+(* some defaults *)
+setFields[bosons_List] := setFields[bosons, {}, {}]
+setFields[bosons_List, fermions_List] := setFields[bosons, fermions, {}]
 
-(# /: Head[#] := boson) & /@ bosons;
-(# /: Head[#] := boson) & /@ Flatten@complexFields;
-(# /: Head[#] := fermion) & /@ Union[Flatten@fermions[[All,1]],{$dummyFieldF}];
-(# /: Head[#] := antiFermion) & /@ Union[Flatten@fermions[[All,2]],{$dummyFieldAF}];
+(* check syntax of fermionic and complex fields (need to be pairs) *)
+setFields[bosons_List, fermions_List, complexFields_List] /; 
+   Not[And @@ Flatten[{Head@# === List & /@ fermions, Head@# === List & /@ complexFields}]] := Message[setFields::noList];
+   
+setFields[bosons_List, fermions_List, complexFields_List] := Module[{},
+  
+  (* set the field types *)
+  (* difference to DoFun2: 
+  complex fields are their own types *)
+  (# /: fieldType[#] := 
+      boson) & /@ bosons;
+  (# /: fieldType[#] := fermion) & /@ fermions[[All, 1]];
+  (# /: fieldType[#] := antiFermion) & /@ fermions[[All, 2]];
+  (# /: fieldType[#] := complex) & /@ complexFields[[All, 1]];
+  (# /: fieldType[#] := antiComplex) & /@ complexFields[[All, 2]];
+  
+  (* set all fields to Head field *)
+  (# /: Head[#] = field) & /@ Flatten[{bosons, fermions, complexFields}];
+  
+  (* define the anti-fields *)
+  (antiField[#[[1]]] = #[[2]]) & /@ Transpose[{bosons, bosons}];
+  (antiField[#[[1]]] = #[[2]]) & /@ fermions;
+  (antiField[#[[2]]] = #[[1]]) & /@ fermions;
+  (antiField[#[[1]]] = #[[2]]) & /@ complexFields;
+  (antiField[#[[2]]] = #[[1]]) & /@ complexFields;
+  
+]
+(* default error handler *)
 
-(* define the corresponding anti-fields *)
-(antiField[#[[1]]]=#[[2]])&/@Transpose[{bosons,bosons}];
-(antiField[#[[1]]]=#[[2]])&/@fermions;
-(antiField[#[[2]]]=#[[1]])&/@fermions;
-(* complexFieldQ and antiComplexFieldQ are private functions, required in getDirectedFieldsList *)
-(complexFieldQ[#]=False)&/@bosons;
-(antiComplexFieldQ[#]=False)&/@bosons;
-(complexFieldQ[#[[1]]]=False)&/@fermions;
-(complexFieldQ[#[[2]]]=False)&/@fermions;
-(antiComplexFieldQ[#[[1]]]=False)&/@fermions;
-(antiComplexFieldQ[#[[2]]]=False)&/@fermions;
-(complexFieldQ[#[[1]]]=True)&/@complexFields;
-(complexFieldQ[#[[2]]]=False)&/@complexFields;
-(antiComplexFieldQ[#[[2]]]=True)&/@complexFields;
-(antiComplexFieldQ[#[[1]]]=False)&/@complexFields;
-(antiField[#[[1]]]=#[[2]])&/@complexFields;
-(antiField[#[[2]]]=#[[1]])&/@complexFields;
+setFields[a___] := Message[defineFields::syntax, a]
 
-{bosons,fermions,complexFields}
-];
 
-defineFields[a___]:=Message[defineFields::syntax,a];
-
+(* countTerms cleared for DoFun3 *)
 (* count the number of terms/graphs in an expression *)
-
 
 countTerms[a_op,opts___]:=1;
 
@@ -2970,16 +3018,24 @@ countTerms[a___]:=Message[countTerms::syntax,a];
 
 (* predicates for fields *)
 
-fieldQ[$dummyField]:=True;
-fieldQ[a_]:=fermionQ[a]||bosonQ[a]||antiFermionQ[a](*||a==$dummyField*);
+(* Kept for compatibility. It is better to use the fact that the head of any field is field. *)
+fieldQ[a_]:=Head@a===field;
 
-fermionQ[a_]:=Head@a===fermion;
+fermionQ[a_]:=fieldType@a===fermion;
 
-antiFermionQ[a_]:=Head@a===antiFermion;
+antiFermionQ[a_]:=fieldType@a===antiFermion;
 
-grassmannQ[a_]:=fermionQ@a||antiFermionQ@a;
+bosonQ[a_]:=fieldType@a===boson;
 
-bosonQ[a_]:=Head@a===boson;
+complexFieldQ[a_]:=fieldType@a===complex;
+
+antiComplexFieldQ[a_]:=fieldType@a===antiComplex;
+  
+(* set (anti-)commutating property *)
+(# /: grassmannQ[#] = False) & /@ Flatten[{bosons, complexFields}];
+(# /: grassmannQ[#] = True) & /@ Flatten[fermions];
+(# /: cFieldQ[#] = True) & /@ Flatten[{bosons, complexFields}];
+(# /: cFieldQ[#] = False) & /@ Flatten[fermions];
 
 
 
