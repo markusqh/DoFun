@@ -1,0 +1,443 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     17860,        433]
+NotebookOptionsPosition[     13705,        337]
+NotebookOutlinePosition[     16508,        406]
+CellTagsIndexPosition[     16429,        401]
+WindowTitle->Complex fields
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["DO FUN TUTORIAL", "PacletNameCell",ExpressionUUID->
+     "2a6b103f-96cc-4937-b7f0-0f38ad399463"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }],ExpressionUUID->"b7a296d8-153b-42ee-a3e2-fd96e080765e"],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"DoFun/tutorial/Exporting diagrams\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["DoFun/tutorial/Exporting diagrams"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/DoFun/tutorial/\
+Exporting diagrams.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$55647], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "DoFun/tutorial/Exporting diagrams", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
+     LineSpacing->{1.4, 0},ExpressionUUID->
+     "2fe45d8a-f9e0-4eca-a104-f299794392cd"]], "AnchorBar",ExpressionUUID->
+     "49779a8c-c4eb-4c49-90d7-4a3cd189b4a3"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1,ExpressionUUID->"9517e2f2-249e-4f81-9cfb-0ba59f1a03a0"],
+
+Cell[CellGroupData[{
+
+Cell["Complex fields", "Title",
+ CellID->509267359,ExpressionUUID->"3f392042-de59-40ba-83be-ae744957fcf6"],
+
+Cell["\<\
+In DoFun the statistics of fields is determined by the two-point part of the \
+action: If the two field labels are the same, the fields are taken as \
+commuting, while they are treated as Grassmann fields if the two labels \
+differ.\
+\>", "Text",
+ CellID->1676458223,ExpressionUUID->"8d9e7c22-2479-4e58-b256-eb4c0e8330b7"],
+
+Cell["\<\
+Since also complex fields have two different field labels additional input is \
+required to let DoFun know that the fields commute, but have two labels.\
+\>", "Text",
+ CellID->567950211,ExpressionUUID->"9802b94d-1a71-4d81-a688-753989182322"],
+
+Cell["\<\
+The additional input is provided with the option specificFieldDefinitions.\
+\>", "Text",
+ CellID->921065371,ExpressionUUID->"a5806d94-0506-4fd0-b16b-5a669ce8b991"],
+
+Cell[BoxData[GridBox[{
+   {
+    RowBox[{"doDSE", "[", 
+     RowBox[{"action", ",", " ", "legs", ",", " ", 
+      RowBox[{"specificFieldDefinitions", "\[Rule]", "fieldDefs"}]}], "]"}], 
+    Cell["\<\
+Derives the DSE corresponding to legs from action. fieldDefs contains \
+information about the fields being commuting or anti-commuting.\
+\>", "TableText",ExpressionUUID->"9152b643-6859-4d3a-8797-7b76881a0b50"]},
+   {
+    RowBox[{"doDSE", "[", 
+     RowBox[{"action", ",", " ", "legs", ",", " ", 
+      RowBox[{"specificFieldDefinitions", "\[Rule]", "fieldDefs"}]}], "]"}], 
+    Cell["\<\
+Derives the RGE corresponding to legs from action. fieldDefs contains \
+information about the fields being commuting or anti-commuting.\
+\>", "TableText",ExpressionUUID->"9ef76bb6-724c-4125-9256-a37ca676d9e0"]}
+  }]], "DefinitionBox",
+ CellID->2096742444,ExpressionUUID->"d75d43af-b6a0-4e0d-94ae-2943e604bde5"],
+
+Cell[TextData[{
+ "Derive the DSE of complex ",
+ Cell[BoxData[
+  SuperscriptBox[
+   RowBox[{"(", 
+    RowBox[{"\[CurlyPhi]", 
+     OverscriptBox["\[CurlyPhi]", "_"]}], ")"}], "2"]], "InlineFormula",
+  ExpressionUUID->"5fcc109a-91ff-45d6-98d7-2d7c782d0da8"],
+ " theory."
+}], "MathCaption",
+ CellID->836781195,ExpressionUUID->"97aca4fe-94ba-4e8a-9971-61f05171b52a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"twoPoint", "=", 
+  RowBox[{"doDSE", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"\[CurlyPhi]", ",", "\[CurlyPhi]b"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+       "\[CurlyPhi]b", ",", "\[CurlyPhi]b", ",", "\[CurlyPhi]", ",", 
+        "\[CurlyPhi]"}], "}"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\[CurlyPhi]", ",", "\[CurlyPhi]b"}], "}"}], ",", 
+    RowBox[{"specificFieldDefinitions", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"\[CurlyPhi]", ",", "\[CurlyPhi]b"}], "}"}]}]}], 
+   "]"}]}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->2058623809,ExpressionUUID->"5d95c55e-5982-4218-b40c-5a30cde46f24"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"op", "[", 
+   RowBox[{"S", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[CurlyPhi]", ",", "i1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\[CurlyPhi]b", ",", "i2"}], "}"}]}], "]"}], "]"}], "-", 
+  RowBox[{"op", "[", 
+   RowBox[{
+    RowBox[{"S", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"\[CurlyPhi]b", ",", "i2"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\[CurlyPhi]b", ",", "r1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\[CurlyPhi]", ",", "i1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\[CurlyPhi]", ",", "s1"}], "}"}]}], "]"}], ",", 
+    RowBox[{"P", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"\[CurlyPhi]b", ",", "r1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\[CurlyPhi]", ",", "s1"}], "}"}]}], "]"}]}], "]"}], "-", 
+  RowBox[{
+   FractionBox["1", "2"], " ", 
+   RowBox[{"op", "[", 
+    RowBox[{
+     RowBox[{"S", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"\[CurlyPhi]b", ",", "r1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\[CurlyPhi]b", ",", "r2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\[CurlyPhi]", ",", "i1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\[CurlyPhi]", ",", "s1"}], "}"}]}], "]"}], ",", 
+     RowBox[{"P", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"\[CurlyPhi]b", ",", "r1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\[CurlyPhi]", ",", "s2"}], "}"}]}], "]"}], ",", 
+     RowBox[{"P", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"\[CurlyPhi]b", ",", "r2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\[CurlyPhi]", ",", "t2"}], "}"}]}], "]"}], ",", 
+     RowBox[{"P", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"\[CurlyPhi]", ",", "s1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\[CurlyPhi]b", ",", "u2"}], "}"}]}], "]"}], ",", 
+     RowBox[{"V", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"\[CurlyPhi]", ",", "s2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\[CurlyPhi]", ",", "t2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\[CurlyPhi]b", ",", "i2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\[CurlyPhi]b", ",", "u2"}], "}"}]}], "]"}]}], 
+    "]"}]}]}]], "Output",
+ ImageSize->{511, 109},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->2087296576,ExpressionUUID->"a03577bf-455b-41a7-9216-5b5f085b83ee"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DSEPlot", "[", 
+  RowBox[{"twoPoint", ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"\[CurlyPhi]", ",", "Black"}], "}"}], "}"}]}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->855112902,ExpressionUUID->"0a197acb-b07a-4d38-a3ae-c5bfd8fdf050"],
+
+Cell[BoxData[
+ GraphicsBox[
+  TagBox[RasterBox[CompressedData["
+1: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
+/geCz70r
+    "], {{0, 44}, {580, 0}}, {0, 255},
+    ColorFunction->RGBColor],
+   BoxForm`ImageTag["Byte", ColorSpace -> "RGB", Interleaving -> True],
+   Selectable->False],
+  DefaultBaseStyle->"ImageGraphics",
+  ImageSize->Automatic,
+  ImageSizeRaw->{580, 44},
+  PlotRange->{{0, 580}, {0, 44}}]], "Output",
+ ImageSize->{584, 44},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"RasterizedOutput",
+ CellLabel->"Out[2]=",
+ CellID->915093967,ExpressionUUID->"0d99f917-2e2e-4690-9a9b-e12a9738b890"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell",ExpressionUUID->"cb4b7ee6-ea8a-42eb-b6b2-1c8f343b053d"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"Complex fields",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "TutorialColor", 
+  "LinkTrails" -> GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:DoFun/guide/DoFun", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "ExampleCounter" -> 1, "NeedPlatMsgIn" -> None, "RootCaptions" -> 
+  "", "Metadata" -> {
+   "built" -> "{2018, 4, 14, 14, 45, 50.860987}", 
+    "history" -> {"0.0", "", "", ""}, "context" -> "DoFun`", "keywords" -> {},
+     "specialkeywords" -> {}, "tutorialcollectionlinks" -> {}, "index" -> 
+    True, "label" -> "Do Fun Tutorial", "language" -> "en", "paclet" -> 
+    "DoFun", "status" -> "None", "summary" -> 
+    "In DoFun the statistics of fields is determined by the two-point part of \
+the action: If the two field labels are the same, the fields are taken as \
+commuting, while they are treated as Grassmann fields if the two labels \
+differ. Since also complex fields have two different field labels additional \
+input is required to let DoFun know that the fields commute, but have two \
+labels. The additional input is provided with the option \
+specificFieldDefinitions.", "synonyms" -> {}, "tabletags" -> 
+    DocumentationBuild`Make`Private`tabletaggingrules$55591, "title" -> 
+    "Complex fields", "titlemodifier" -> "", "windowtitle" -> 
+    "Complex fields", "type" -> "Tutorial", "uri" -> 
+    "DoFun/tutorial/Exporting diagrams", "WorkflowDockedCell" -> ""}, 
+  "SearchTextTranslated" -> ""},
+FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> Notebook], 
+   Cell[
+    StyleData["Output"], CellContext -> Notebook], 
+   Cell[
+    StyleData["TutorialMoreAboutSection"], 
+    CellGroupingRules -> {"SectionGrouping", 30}], 
+   Cell[
+    StyleData["RelatedTutorialsSection"], 
+    CellGroupingRules -> {"SectionGrouping", 30}], 
+   Cell[
+    StyleData["TutorialRelatedLinksSection"], 
+    CellGroupingRules -> {"SectionGrouping", 30}]}, Visible -> False, 
+  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "RasterizedOutput"->{
+  Cell[8859, 246, 4737, 85, 61, "Output",ExpressionUUID->"0d99f917-2e2e-4690-9a9b-e12a9738b890",
+   CellTags->"RasterizedOutput",
+   CellID->915093967]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"RasterizedOutput", 16252, 394}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[586, 21, 2613, 56, 56, "AnchorBarGrid",ExpressionUUID->"9517e2f2-249e-4f81-9cfb-0ba59f1a03a0",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[3224, 81, 106, 1, 65, "Title",ExpressionUUID->"3f392042-de59-40ba-83be-ae744957fcf6",
+ CellID->509267359],
+Cell[3333, 84, 332, 6, 84, "Text",ExpressionUUID->"8d9e7c22-2479-4e58-b256-eb4c0e8330b7",
+ CellID->1676458223],
+Cell[3668, 92, 251, 4, 60, "Text",ExpressionUUID->"9802b94d-1a71-4d81-a688-753989182322",
+ CellID->567950211],
+Cell[3922, 98, 173, 3, 36, "Text",ExpressionUUID->"a5806d94-0506-4fd0-b16b-5a669ce8b991",
+ CellID->921065371],
+Cell[4098, 103, 897, 18, 181, "DefinitionBox",ExpressionUUID->"d75d43af-b6a0-4e0d-94ae-2943e604bde5",
+ CellID->2096742444],
+Cell[4998, 123, 362, 10, 37, "MathCaption",ExpressionUUID->"97aca4fe-94ba-4e8a-9971-61f05171b52a",
+ CellID->836781195],
+Cell[CellGroupData[{
+Cell[5385, 137, 686, 19, 49, "Input",ExpressionUUID->"5d95c55e-5982-4218-b40c-5a30cde46f24",
+ CellID->2058623809],
+Cell[6074, 158, 2468, 74, 130, "Output",ExpressionUUID->"a03577bf-455b-41a7-9216-5b5f085b83ee",
+ CellID->2087296576]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8579, 237, 277, 7, 29, "Input",ExpressionUUID->"0a197acb-b07a-4d38-a3ae-c5bfd8fdf050",
+ CellID->855112902],
+Cell[8859, 246, 4737, 85, 61, "Output",ExpressionUUID->"0d99f917-2e2e-4690-9a9b-e12a9738b890",
+ CellTags->"RasterizedOutput",
+ CellID->915093967]
+}, Open  ]]
+}, Open  ]],
+Cell[13623, 335, 78, 0, 70, "FooterCell",ExpressionUUID->"cb4b7ee6-ea8a-42eb-b6b2-1c8f343b053d"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

@@ -1,0 +1,200 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7351,        191]
+NotebookOptionsPosition[      4301,        128]
+NotebookOutlinePosition[      7087,        189]
+CellTagsIndexPosition[      7044,        186]
+WindowTitle->op
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell"], Cell[TextData[Cell[
+    BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"DoFun/ref/op\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["DoFun/ref/op"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/DoFun/ref/op.html"], 
+               StandardForm]], "Input", TextClipboardType -> "PlainText"]}, 
+           Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$38651], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], "DoFun/ref/op", 
+            ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell[TextData[{
+ Cell["op", "ObjectName"],
+ Cell[BoxData[
+  TemplateBox[{8},
+   "Spacer1"]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[BoxData[GridBox[{
+   {"", Cell["\<\
+The function op is used for symbolic and algebraic expressions:
+
+
+Symbolic form:
+Operator comprising vertices, propagators, external fields and regulator \
+insertions.
+Summation and integration over mutliple indices is understood.
+op does some simplifications (see examples).
+op is used in this way in doDSE, doRGE, DSEPlot and RGEPlot.
+
+Syntax:
+op[args] where args can be fields (e.g., {phi,i}), propagators (denoted by \
+P), vertices (denoted by S or V) or regulator insertions (denoted by dR).
+
+Examples:
+op[S[{A,i},{A,r},{A,u}], P[{A,r},{A,s}], P[{A,u},{A,v}], V[{A,j}, {A,s}, \
+{A,v}]]
+op[0, V[{A, i}, {A, r}, {A, u}]]
+op[2 S[{A, i}, {A, r}, {A, u}]]
+
+
+Algebraic form:
+Operator comprising fields in the definition of physical actions.
+Summation and integration over mutliple indices is understood.
+op is used in this way in getFR and convertAction.
+
+Syntax:
+op[fields] where fields are fields whose arguments are momentum and indices, \
+e.g., phi[p1, i].
+
+Example: The two-point part of an O(N) symmetric scalar theory
+convertAction[1/2 p^2 op[phi[p, i], phi[-p,i]]] \
+\>"]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}}],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"op",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:DoFun/guide/DoFun", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2018, 4, 14, 14, 45, 18.834986}", 
+    "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
+    "status" -> "None", "summary" -> 
+    "The function op is used for symbolic and algebraic expressions: Symbolic \
+form: Operator comprising vertices, propagators, external fields and \
+regulator insertions. Summation and integration over mutliple indices is \
+understood. op does some simplifications (see examples). op is used in this \
+way in doDSE, doRGE, DSEPlot and RGEPlot. Syntax: op[args] where args can be \
+fields (e.g., {phi,i}), propagators (denoted by P), vertices (denoted by S or \
+V) or regulator insertions (denoted by dR). Examples: \
+op[S[{A,i},{A,r},{A,u}], P[{A,r},{A,s}], P[{A,u},{A,v}], V[{A,j}, {A,s}, \
+{A,v}]] op[0, V[{A, i}, {A, r}, {A, u}]] op[2 S[{A, i}, {A, r}, {A, u}]] \
+Algebraic form: Operator comprising fields in the definition of physical \
+actions. Summation and integration over mutliple indices is understood. op is \
+used in this way in getFR and convertAction. Syntax: op[fields] where fields \
+are fields whose arguments are momentum and indices, e.g., phi[p1, i]. \
+Example: The two-point part of an O(N) symmetric scalar theory \
+convertAction[1/2 p^2 op[phi[p, i], phi[-p,i]]] ", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "op", "titlemodifier" -> "", "windowtitle" -> 
+    "op", "type" -> "Symbol", "uri" -> "DoFun/ref/op"}},
+CellContext->"Global`",
+FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[574, 21, 2259, 54, 70, "AnchorBarGrid",ExpressionUUID->"ee2d4654-244f-4ef6-9c47-d37517bd8717",
+ CellID->1],
+Cell[2836, 77, 159, 6, 70, "ObjectNameGrid",ExpressionUUID->"99b20123-8502-4252-bea5-749696876e5d"],
+Cell[2998, 85, 1273, 39, 70, "Usage",ExpressionUUID->"35ee4f70-25a6-4611-b487-9f121824686a"],
+Cell[4274, 126, 23, 0, 70, "FooterCell",ExpressionUUID->"3bf591c6-5081-4f05-b549-3c16763541f1"]
+}
+]
+*)
+
+(* End of internal cache information *)

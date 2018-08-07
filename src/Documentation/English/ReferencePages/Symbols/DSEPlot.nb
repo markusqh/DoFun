@@ -1,0 +1,812 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     24803,        802]
+NotebookOptionsPosition[     20602,        660]
+NotebookOutlinePosition[     21218,        684]
+CellTagsIndexPosition[     21139,        679]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ "New in: ",
+ Cell["XX", "HistoryData",
+  CellTags->"New"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete"],
+ " | Excised in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Excised"]
+}], "History",
+ CellID->1247902091],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->1122911449],
+
+Cell["Symbol", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->686433507],
+
+Cell["DoFun Package", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->194669048],
+
+Cell["DoFun`DoDSERGE`", "Categorization",
+ CellLabel->"Context",
+ CellID->1322915719],
+
+Cell["DoFun/ref/DSEPlot", "Categorization",
+ CellLabel->"URI",
+ CellID->994736086]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->477174294],
+
+Cell["XXXX", "Keywords",
+ CellID->1164421360]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Syntax Templates", "TemplatesSection",
+ CellID->1872225408],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Additional Function Template",
+ CellID->1562036412],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Arguments Pattern",
+ CellID->158391909],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Local Variables",
+ CellID->1360575930],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Color Equal Signs",
+ CellID->793782254]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Details", "DetailsSection",
+ CellID->307771771],
+
+Cell["XXXX", "Details",
+ CellLabel->"Lead",
+ CellID->670882175],
+
+Cell["XXXX", "Details",
+ CellLabel->"Developers",
+ CellID->350963985],
+
+Cell["XXXX", "Details",
+ CellLabel->"Authors",
+ CellID->8391405],
+
+Cell["XXXX", "Details",
+ CellLabel->"Feature Name",
+ CellID->3610269],
+
+Cell["XXXX", "Details",
+ CellLabel->"QA",
+ CellID->401364205],
+
+Cell["XXXX", "Details",
+ CellLabel->"DA",
+ CellID->350204745],
+
+Cell["XXXX", "Details",
+ CellLabel->"Docs",
+ CellID->732958810],
+
+Cell["XXXX", "Details",
+ CellLabel->"Features Page Notes",
+ CellID->222905350],
+
+Cell["XXXX", "Details",
+ CellLabel->"Comments",
+ CellID->240026365]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["DSEPlot", "ObjectName",
+ CellID->1224892054],
+
+Cell[TextData[{
+ Cell["   ", "ModInfo"],
+ "Plots a DSE.\nBlobs denote dressed n-point functions and dots bare n-point \
+functions. External fields are indicated by a circle.\nStyles for each field \
+can be given.\nDSEPlot can also plot expressions created by the user as long \
+as the syntax of op functions is obeyed and the fields are defined.\n\n\
+Syntax:\nDSEPlot[expr] with expr a result of doDSE plots the corresponding \
+DSE. expr can also be a user-created expression containing op functions.\n\
+DSEPlot[expr, fieldStyles] plots a DSE with the styles of the fields given by \
+fieldStyles. The syntax is {{field1, style1}, {field2, style2}, ...}} where \
+stylei are style are graphics primitives like colors suitable for Line.\n\
+DSEPlot[expr, n] or DSEPlot[expr, fieldStyle, n] plots a DSE with n graphs \
+per row.\nDSEPlot accepts several options:\n -) output: Determines the output \
+form of the graphs. Possible values are List, forceEquation and complete \
+(default). The last one plots sums of graphs as complete equations and single \
+graphs as such.\n -) options of GraphPlot\n -) indexStyle: Style settings for \
+the indices, see ?indexStyle for details.\n -) factorStyle: Style settings \
+for the factors, see ?factorStyle for details.\n\nExamples:\nThe gluon \
+two-point DSE of Landau gauge Yang-Mills theory\ndse = doDSE[{{A, A}, {c, \
+cb}, {A, cb, c}, {A, A, A}, {A, A, A, A}}, {A, A}];\nDSEPlot[dse]\n\nThe \
+gluon two-point DSE of Landau gauge Yang-Mills theory with gluons in red and \
+ghosts dashed in green and four graphs per row\ndse = doDSE[{{A, A}, {c, cb}, \
+{A, cb, c}, {A, A, A}, {A, A, A, A}}, {A, A}];\nDSEPlot[dse,  {{A, Red}, {c, \
+Green, Dashed}}, 4]\n\nThe graphs of the gluon two-point DSE of Landau gauge \
+Yang-Mills theory in a list \ndse = doDSE[{{A, A}, {c, cb}, {A, cb, c}, {A, \
+A, A}, {A, A, A, A}}, {A, A}];\nDSEPlot[dse,  {{A, Red}, {c, Green}}, output \
+-> List]\n\nThe complete two-point DSE of a free theory\ndse = doDSE[{{phi, \
+2}}, {phi, phi}];\nDSEPlot[dse,  {{phi, Black}}, output -> forceEquation]\n\n\
+Plotting a user-created expression with one external field\n\
+defineFields[{phi}, {}, {}];\nDSEPlot[op[S[{phi, i}, {phi, j}, {phi, l}, \
+{phi, m}], P[{phi, l}, {phi, m}], {phi, j}], {{phi, Black}}]\n"
+}], "Usage"],
+
+Cell["The following options can be given: ", "Notes"],
+
+Cell[BoxData[GridBox[{
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["MultiedgeStyle",
+     BaseStyle->"Link"], "0.5", Cell["\<\
+MultiedgeStyle is an option for GraphPlot and related functions which \
+specifies how to draw multiple edges.\
+\>", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["factorStyle",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFun/ref/factorStyle"], 
+    RowBox[{"{", 
+     RowBox[{"FontSize", " ", ":>", " ", "16"}], "}"}], Cell[TextData[{
+     "Options for the style of all text in DSE and RGE plots except indices \
+and field labels.\nStandard value: {FontSize:>16}.\n\nExample:\nrge = ",
+     Cell[BoxData[
+      RowBox[{
+       StyleBox["doRGE", "TI"], "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"{", 
+          RowBox[{
+           StyleBox["phi", "TI"], ",", " ", "4"}], "}"}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            StyleBox["phi", "TI"], ",", " ", 
+            StyleBox["i", "TI"]}], "}"}], ",", " ", 
+          RowBox[{"{", " ", 
+           RowBox[{
+            StyleBox["phi", "TI"], ",", " ", 
+            StyleBox["j", "TI"]}], "}"}]}], "}"}]}], "]"}]], "InlineFormula"],
+     
+     ";\n",
+     Cell[BoxData[
+      RowBox[{
+       ButtonBox["RGEPlot",
+        BaseStyle->"Link",
+        ButtonData->"paclet:DoFun/ref/RGEPlot"], "[", 
+       RowBox[{
+        StyleBox["rge", "TI"], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"{", 
+          RowBox[{
+           StyleBox["phi", "TI"], ",", " ", 
+           ButtonBox["Black",
+            BaseStyle->"Link"]}], "}"}], "}"}], ",", " ", 
+        RowBox[{
+         StyleBox["factorStyle", "TI"], " ", "->", " ", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{
+            ButtonBox["FontSize",
+             BaseStyle->"Link"], " ", "->", " ", "20"}], ",", " ", 
+           ButtonBox["Red",
+            BaseStyle->"Link"], ",", " ", 
+           RowBox[{
+            ButtonBox["FontWeight",
+             BaseStyle->"Link"], " ", "->", " ", 
+            ButtonBox["Bold",
+             BaseStyle->"Link"]}]}], "}"}]}]}], "]"}]], "InlineFormula"],
+     "\n"
+    }], "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["indexStyle",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFun/ref/indexStyle"], 
+    RowBox[{"{", 
+     RowBox[{"FontSize", " ", ":>", " ", "14"}], "}"}], Cell[TextData[{
+     "Options for the style of the external indices in DSE and RGE plots.\n\
+Standard value: {FontSize:>14}.\n\nExample:\ndse = ",
+     Cell[BoxData[
+      RowBox[{
+       StyleBox["doDSE", "TI"], "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            StyleBox["phi", "TI"], ",", 
+            StyleBox["phi", "TI"]}], "}"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{
+            StyleBox["phi", "TI"], ",", 
+            StyleBox["phi", "TI"], ",", 
+            StyleBox["phi", "TI"], ",", 
+            StyleBox["phi", "TI"]}], "}"}]}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{
+          StyleBox["phi", "TI"], ",", " ", 
+          StyleBox["phi", "TI"]}], "}"}]}], "]"}]], "InlineFormula"],
+     ";\n",
+     Cell[BoxData[
+      RowBox[{"DSEPlot", "[", 
+       RowBox[{
+        StyleBox["dse", "TI"], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"{", 
+          RowBox[{
+           StyleBox["phi", "TI"], ",", " ", 
+           ButtonBox["Black",
+            BaseStyle->"Link"]}], "}"}], "}"}], ",", " ", 
+        RowBox[{
+         StyleBox["indexStyle", "TI"], " ", "->", " ", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{
+            ButtonBox["FontSize",
+             BaseStyle->"Link"], " ", "->", " ", "20"}], ",", " ", 
+           ButtonBox["Blue",
+            BaseStyle->"Link"], ",", " ", 
+           RowBox[{
+            ButtonBox["FontSlant",
+             BaseStyle->"Link"], " ", "->", " ", 
+            ButtonBox["Italic",
+             BaseStyle->"Link"]}]}], "}"}]}]}], "]"}]], "InlineFormula"],
+     "\n"
+    }], "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["output",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFun/ref/output"], 
+    ButtonBox["complete",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFun/ref/complete"], Cell[TextData[{
+     "Option of DSEPlot and RGEPlot. Determines how the form of the output of \
+DSEPlot and RGEPlot.\n\nPossible values are:\n -) List: Gives a list of all \
+graphs.\n -) forceEquation: Output in form of an equation, even if a single \
+graph is plotted.\n -) complete (default): Output for several graphs in form \
+of an equation and for a single graph as such.\n\nExamples:\nThe graphs of \
+the gluon two-point DSE of Landau gauge Yang-Mills theory in a list \ndse = ",
+     
+     Cell[BoxData[
+      RowBox[{
+       StyleBox["doDSE", "TI"], "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            ButtonBox["A",
+             BaseStyle->"Link"], ",", " ", 
+            ButtonBox["A",
+             BaseStyle->"Link"]}], "}"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{
+            StyleBox["c", "TI"], ",", " ", 
+            StyleBox["cb", "TI"]}], "}"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{
+            ButtonBox["A",
+             BaseStyle->"Link"], ",", " ", 
+            StyleBox["cb", "TI"], ",", " ", 
+            StyleBox["c", "TI"]}], "}"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{
+            ButtonBox["A",
+             BaseStyle->"Link"], ",", " ", 
+            ButtonBox["A",
+             BaseStyle->"Link"], ",", " ", 
+            ButtonBox["A",
+             BaseStyle->"Link"]}], "}"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{
+            ButtonBox["A",
+             BaseStyle->"Link"], ",", " ", 
+            ButtonBox["A",
+             BaseStyle->"Link"], ",", " ", 
+            ButtonBox["A",
+             BaseStyle->"Link"], ",", " ", 
+            ButtonBox["A",
+             BaseStyle->"Link"]}], "}"}]}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{
+          ButtonBox["A",
+           BaseStyle->"Link"], ",", " ", 
+          ButtonBox["A",
+           BaseStyle->"Link"]}], "}"}]}], "]"}]], "InlineFormula"],
+     ";\n",
+     Cell[BoxData[
+      RowBox[{"DSEPlot", "[", 
+       RowBox[{
+        StyleBox["dse", "TI"], ",", "  ", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            ButtonBox["A",
+             BaseStyle->"Link"], ",", " ", 
+            ButtonBox["Red",
+             BaseStyle->"Link"]}], "}"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{
+            StyleBox["c", "TI"], ",", " ", 
+            ButtonBox["Green",
+             BaseStyle->"Link"]}], "}"}]}], "}"}], ",", " ", 
+        RowBox[{
+         StyleBox["output", "TI"], " ", "->", " ", 
+         ButtonBox["List",
+          BaseStyle->"Link"]}]}], "]"}]], "InlineFormula"],
+     "\n\nThe complete two-point RGE of an O(N) symmetric scalar theory in \
+the symmetric phase\ndse = ",
+     Cell[BoxData[
+      RowBox[{
+       StyleBox["doRGE", "TI"], "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            StyleBox["phi", "TI"], ",", " ", 
+            StyleBox["phi", "TI"]}], "}"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{
+            StyleBox["phi", "TI"], ",", 
+            StyleBox["phi", "TI"], ",", 
+            StyleBox["phi", "TI"], ",", 
+            StyleBox["phi", "TI"]}], "}"}]}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{
+          StyleBox["phi", "TI"], ",", " ", 
+          StyleBox["phi", "TI"]}], "}"}]}], "]"}]], "InlineFormula"],
+     ";\n",
+     Cell[BoxData[
+      RowBox[{
+       ButtonBox["RGEPlot",
+        BaseStyle->"Link",
+        ButtonData->"paclet:DoFun/ref/RGEPlot"], "[", 
+       RowBox[{
+        StyleBox["dse", "TI"], ",", "  ", 
+        RowBox[{"{", 
+         RowBox[{"{", 
+          RowBox[{
+           StyleBox["phi", "TI"], ",", " ", 
+           ButtonBox["Black",
+            BaseStyle->"Link"]}], "}"}], "}"}], ",", " ", 
+        RowBox[{
+         StyleBox["output", "TI"], " ", "->", " ", 
+         StyleBox["forceEquation", "TI"]}]}], "]"}]], "InlineFormula"],
+     "\n"
+    }], "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["arrowHeadSize",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFunDoDSERGE/ref/arrowHeadSize"], "0.075", Cell[
+    "XXXX", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["regulatorSymbol",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFun/ref/regulatorSymbol"], 
+    ButtonBox["regulatorBox",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFun/ref/regulatorBox"], Cell[TextData[{
+     "Option for RGEPlot. Defines the function for drawing the regulator \
+insertion.\n\nPossible values: regulatorBox, regulatorCross or a user-defined \
+function which takes the coordinate of the regulator insertion as input.\n\n\
+Default value: regulatorBox.\n\nExample:\n",
+     Cell[BoxData[
+      RowBox[{
+       StyleBox["defineFields", "TI"], "[", 
+       RowBox[{
+        RowBox[{"{", 
+         StyleBox["phi", "TI"], "}"}], ",", " ", 
+        RowBox[{"{", "}"}], ",", " ", 
+        RowBox[{"{", "}"}]}], "]"}]], "InlineFormula"],
+     ";\n",
+     Cell[BoxData[
+      RowBox[{
+       ButtonBox["RGEPlot",
+        BaseStyle->"Link",
+        ButtonData->"paclet:DoFun/ref/RGEPlot"], "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"1", "/", "2"}], " ", 
+         RowBox[{
+          StyleBox["op", "TI"], "[", 
+          RowBox[{
+           RowBox[{
+            StyleBox["dR", "TI"], "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               StyleBox["phi", "TI"], ",", " ", 
+               StyleBox["r1", "TI"]}], "}"}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{
+               StyleBox["phi", "TI"], ",", " ", 
+               StyleBox["s1", "TI"]}], "}"}]}], "]"}], ",", " ", 
+           RowBox[{
+            ButtonBox["P",
+             BaseStyle->"Link",
+             ButtonData->"paclet:DoFun/ref/P"], "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               StyleBox["phi", "TI"], ",", " ", 
+               StyleBox["t1", "TI"]}], "}"}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{
+               StyleBox["phi", "TI"], ",", " ", 
+               StyleBox["r1", "TI"]}], "}"}]}], "]"}], ",", " ", 
+           RowBox[{
+            ButtonBox["P",
+             BaseStyle->"Link",
+             ButtonData->"paclet:DoFun/ref/P"], "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               StyleBox["phi", "TI"], ",", " ", 
+               StyleBox["s1", "TI"]}], "}"}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{
+               StyleBox["phi", "TI"], ",", " ", 
+               StyleBox["v1", "TI"]}], "}"}]}], "]"}], ",", " ", 
+           RowBox[{
+            ButtonBox["V",
+             BaseStyle->"Link",
+             ButtonData->"paclet:DoFun/ref/V"], "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               StyleBox["phi", "TI"], ",", " ", 
+               StyleBox["i", "TI"]}], "}"}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{
+               StyleBox["phi", "TI"], ",", " ", 
+               StyleBox["j", "TI"]}], "}"}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{
+               StyleBox["phi", "TI"], ",", " ", 
+               StyleBox["v1", "TI"]}], "}"}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{
+               StyleBox["phi", "TI"], ",", " ", 
+               StyleBox["t1", "TI"]}], "}"}]}], "]"}]}], "]"}]}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"{", 
+          RowBox[{
+           StyleBox["phi", "TI"], ",", " ", 
+           ButtonBox["Black",
+            BaseStyle->"Link"]}], "}"}], "}"}], ",", " ", 
+        RowBox[{
+         StyleBox["regulatorSymbol", "TI"], " ", "->", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             ButtonBox["Text",
+              BaseStyle->"Link"], "[", 
+             RowBox[{"\"\<Here comes the regulator.\>\"", ",", " ", "#"}], 
+             "]"}], "}"}], " ", "&"}], ")"}]}]}], "]"}]], "InlineFormula"],
+     "\n"
+    }], "TableText"]}
+  }]], "3ColumnTableMod",
+ CellChangeTimes->{{3.506418630601161*^9, 3.5064186328596888`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Tutorials", "TutorialsSection",
+ CellID->250839057],
+
+Cell["XXXX", "Tutorials",
+ CellID->341631938]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Demonstrations", "RelatedDemonstrationsSection",
+ CellID->1268215905],
+
+Cell["XXXX", "RelatedDemonstrations",
+ CellID->1129518860]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Links", "RelatedLinksSection",
+ CellID->1584193535],
+
+Cell["XXXX", "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",
+ CellID->1255426704],
+
+Cell["XXXX", "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More About", "MoreAboutSection",
+ CellID->38303248],
+
+Cell["XXXX", "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     StyleBox["Examples", "PrimaryExamplesSection"], 
+     ButtonBox[
+      RowBox[{
+       RowBox[{"More", " ", "Examples"}], " ", "\[RightTriangle]"}],
+      BaseStyle->"ExtendedExamplesLink",
+      ButtonData:>"ExtendedExamples"]}
+   }],
+  $Line = 0; Null]], "PrimaryExamplesSection",
+ CellID->880084151],
+
+Cell[CellGroupData[{
+
+Cell["More Examples", "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->1854448968],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Scope", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1293636265],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Generalizations & Extensions", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1020263627],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["Options", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["MultiedgeStyle", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["factorStyle", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["indexStyle", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["output", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["arrowHeadSize", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["regulatorSymbol", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"]
+}, Closed]],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Applications", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->258228157],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Properties & Relations", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2123667759],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Possible Issues", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1305812373],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Interactive Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1653164318],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Neat Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->589267740]
+}, Open  ]]
+},
+WindowSize->{700, 770},
+WindowMargins->{{4, Automatic}, {Automatic, 51}},
+CellContext->"Global`",
+FrontEndVersion->"7.0 for Linux x86 (64-bit) (February 25, 2009)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
+  CharacterEncoding -> "iso8859-1"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "ExtendedExamples"->{
+  Cell[18652, 589, 100, 2, 57, "ExtendedExamplesSection",
+   CellTags->"ExtendedExamples",
+   CellID->1854448968]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"ExtendedExamples", 21000, 672}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 324, 14, 26, "History",
+ CellID->1247902091],
+Cell[CellGroupData[{
+Cell[894, 38, 68, 1, 31, "CategorizationSection",
+ CellID->1122911449],
+Cell[965, 41, 79, 2, 36, "Categorization",
+ CellID->686433507],
+Cell[1047, 45, 86, 2, 36, "Categorization",
+ CellID->194669048],
+Cell[1136, 49, 85, 2, 36, "Categorization",
+ CellID->1322915719],
+Cell[1224, 53, 82, 2, 36, "Categorization",
+ CellID->994736086]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1343, 60, 55, 1, 21, "KeywordsSection",
+ CellID->477174294],
+Cell[1401, 63, 45, 1, 70, "Keywords",
+ CellID->1164421360]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1483, 69, 65, 1, 21, "TemplatesSection",
+ CellID->1872225408],
+Cell[1551, 72, 94, 2, 70, "Template",
+ CellID->1562036412],
+Cell[1648, 76, 82, 2, 70, "Template",
+ CellID->158391909],
+Cell[1733, 80, 81, 2, 70, "Template",
+ CellID->1360575930],
+Cell[1817, 84, 82, 2, 70, "Template",
+ CellID->793782254]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1936, 91, 53, 1, 21, "DetailsSection",
+ CellID->307771771],
+Cell[1992, 94, 63, 2, 70, "Details",
+ CellID->670882175],
+Cell[2058, 98, 69, 2, 70, "Details",
+ CellID->350963985],
+Cell[2130, 102, 64, 2, 70, "Details",
+ CellID->8391405],
+Cell[2197, 106, 69, 2, 70, "Details",
+ CellID->3610269],
+Cell[2269, 110, 61, 2, 70, "Details",
+ CellID->401364205],
+Cell[2333, 114, 61, 2, 70, "Details",
+ CellID->350204745],
+Cell[2397, 118, 63, 2, 70, "Details",
+ CellID->732958810],
+Cell[2463, 122, 78, 2, 70, "Details",
+ CellID->222905350],
+Cell[2544, 126, 67, 2, 70, "Details",
+ CellID->240026365]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2648, 133, 50, 1, 65, "ObjectName",
+ CellID->1224892054],
+Cell[2701, 136, 2274, 31, 1131, "Usage"],
+Cell[4978, 169, 53, 0, 27, "Notes"],
+Cell[5034, 171, 12464, 355, 1384, "3ColumnTableMod"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17535, 531, 57, 1, 44, "TutorialsSection",
+ CellID->250839057],
+Cell[17595, 534, 45, 1, 17, "Tutorials",
+ CellID->341631938]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17677, 540, 83, 1, 31, "RelatedDemonstrationsSection",
+ CellID->1268215905],
+Cell[17763, 543, 58, 1, 17, "RelatedDemonstrations",
+ CellID->1129518860]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17858, 549, 65, 1, 31, "RelatedLinksSection",
+ CellID->1584193535],
+Cell[17926, 552, 49, 1, 17, "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18012, 558, 55, 1, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[18070, 561, 43, 1, 17, "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18150, 567, 57, 1, 31, "MoreAboutSection",
+ CellID->38303248],
+Cell[18210, 570, 46, 1, 17, "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+Cell[18271, 574, 356, 11, 72, "PrimaryExamplesSection",
+ CellID->880084151],
+Cell[CellGroupData[{
+Cell[18652, 589, 100, 2, 57, "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->1854448968],
+Cell[18755, 593, 125, 3, 35, "ExampleSection",
+ CellID->1293636265],
+Cell[18883, 598, 148, 3, 23, "ExampleSection",
+ CellID->1020263627],
+Cell[CellGroupData[{
+Cell[19056, 605, 106, 2, 23, "ExampleSection"],
+Cell[19165, 609, 119, 2, 70, "ExampleSubsection"],
+Cell[19287, 613, 116, 2, 70, "ExampleSubsection"],
+Cell[19406, 617, 115, 2, 70, "ExampleSubsection"],
+Cell[19524, 621, 111, 2, 70, "ExampleSubsection"],
+Cell[19638, 625, 118, 2, 70, "ExampleSubsection"],
+Cell[19759, 629, 120, 2, 70, "ExampleSubsection"]
+}, Closed]],
+Cell[19894, 634, 131, 3, 23, "ExampleSection",
+ CellID->258228157],
+Cell[20028, 639, 142, 3, 23, "ExampleSection",
+ CellID->2123667759],
+Cell[20173, 644, 135, 3, 23, "ExampleSection",
+ CellID->1305812373],
+Cell[20311, 649, 140, 3, 23, "ExampleSection",
+ CellID->1653164318],
+Cell[20454, 654, 132, 3, 23, "ExampleSection",
+ CellID->589267740]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

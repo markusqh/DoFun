@@ -1,0 +1,233 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7950,        224]
+NotebookOptionsPosition[      5396,        166]
+NotebookOutlinePosition[      7314,        215]
+CellTagsIndexPosition[      7271,        212]
+WindowTitle->dim
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "Related Guides",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"Related Guides", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"Welcome to DoFun\"\>":>
+       Documentation`HelpLookup["paclet:DoFun/guide/Welcome to DoFun"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"MoreAbout"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"DoFun/ref/dim\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["DoFun/ref/dim"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/DoFun/ref/dim.html"], 
+                StandardForm]], "Input", TextClipboardType -> "PlainText"]}, 
+            Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$23839], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], "DoFun/ref/dim", 
+             ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell[TextData[{
+ Cell["dim", "ObjectName"],
+ Cell[BoxData[
+  TemplateBox[{8},
+   "Spacer1"]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"dim", "[", 
+       StyleBox["ind", "TI"], "]"}]], "InlineFormula"],
+     "\[LineSeparator]represents the dimension of the representation of the \
+index ind. Values can be assigned by the user. Syntax: ",
+     Cell[BoxData[
+      RowBox[{"dim", "[", 
+       StyleBox["ind_", "TI"], "]"}]], "InlineFormula"],
+     " Example: ",
+     Cell[BoxData[
+      RowBox[{"dim", "[", 
+       StyleBox["adjoint", "TI"], "]"}]], "InlineFormula"],
+     ":=Nc; ",
+     Cell[BoxData[
+      RowBox[{
+       StyleBox["integrateDeltas", "TI"], "[", 
+       RowBox[{
+        RowBox[{
+         StyleBox["delta", "TI"], "[", 
+         RowBox[{
+          StyleBox["adjoint", "TI"], ",", 
+          StyleBox["a", "TI"], ",", 
+          StyleBox["b", "TI"]}], "]"}], 
+        RowBox[{
+         StyleBox["delta", "TI"], "[", 
+         RowBox[{
+          StyleBox["adjoint", "TI"], ",", 
+          StyleBox["b", "TI"], ",", 
+          StyleBox["a", "TI"]}], "]"}]}], "]"}]], "InlineFormula"]
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]]],
+ "Related Guides"
+}], "MoreAboutSection",
+ WholeCellGroupOpener->True,
+ CellID->38303248],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["Welcome to DoFun"]],"paclet:DoFun/guide/Welcome to DoFun"},
+  "RefLink",
+  BaseStyle->"MoreAbout"]], "MoreAbout",
+ CellID->1]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"dim",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:DoFun/guide/DoFun", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2018, 4, 14, 14, 44, 0.215843}", 
+    "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoFR`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
+    "status" -> "None", "summary" -> 
+    "dim[ind] represents the dimension of the representation of the index \
+ind. Values can be assigned by the user. Syntax: dim[ind_] Example: \
+dim[adjoint]:=Nc; integrateDeltas[delta[adjoint, a, b] delta[adjoint, b, a]]",
+     "synonyms" -> {}, "tabletags" -> {}, "title" -> "dim", "titlemodifier" -> 
+    "", "windowtitle" -> "dim", "type" -> "Symbol", "uri" -> "DoFun/ref/dim"}},
+CellContext->"Global`",
+FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[575, 21, 3017, 74, 70, "AnchorBarGrid",ExpressionUUID->"71e6fa3a-1934-4398-974d-db231d2d5885",
+ CellID->1],
+Cell[3595, 97, 160, 6, 70, "ObjectNameGrid",ExpressionUUID->"2a5621ea-713d-42fa-a938-e39fcf4aa114"],
+Cell[3758, 105, 1205, 36, 70, "Usage",ExpressionUUID->"9db38475-c7a0-4498-9486-0b73c83efac1"],
+Cell[CellGroupData[{
+Cell[4988, 145, 156, 7, 70, "MoreAboutSection",ExpressionUUID->"0fd21db5-ab0d-4a7b-beed-a9ce4148bcbc",
+ CellID->38303248],
+Cell[5147, 154, 31, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"3a08ecb9-3b89-4d31-a045-0c4e312c0a55"],
+Cell[5181, 156, 173, 5, 70, "MoreAbout",ExpressionUUID->"91d59287-2be8-4c8d-85d7-9e886badf309",
+ CellID->1]
+}, Open  ]],
+Cell[5369, 164, 23, 0, 70, "FooterCell",ExpressionUUID->"011ef533-93d2-40da-bc7e-cbd49744ae15"]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,707 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     23822,        698]
+NotebookOptionsPosition[     21048,        597]
+NotebookOutlinePosition[     21461,        613]
+CellTagsIndexPosition[     21418,        610]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ "New in: ",
+ Cell["0.0", "HistoryData",
+  CellTags->"New"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete"],
+ " | Excised in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Excised"]
+}], "History",
+ CellID->1247902091],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->1122911449],
+
+Cell["Tutorial", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->686433507],
+
+Cell["DoFun", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->605800465],
+
+Cell["DoFun`", "Categorization",
+ CellLabel->"Context",
+ CellID->468444828],
+
+Cell["DoFun/tutorial/Exporting diagrams", "Categorization",
+ CellLabel->"URI",
+ CellID->1386873783]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->1427428552],
+
+Cell["XXXX", "Keywords",
+ CellID->1251852827]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Details", "DetailsSection",
+ CellID->307771771],
+
+Cell["XXXX", "Details",
+ CellLabel->"Lead",
+ CellID->218895918],
+
+Cell["XXXX", "Details",
+ CellLabel->"Developers",
+ CellID->350963985],
+
+Cell["XXXX", "Details",
+ CellLabel->"Authors",
+ CellID->795871300],
+
+Cell["XXXX", "Details",
+ CellLabel->"Feature Name",
+ CellID->199739161],
+
+Cell["XXXX", "Details",
+ CellLabel->"QA",
+ CellID->40625308],
+
+Cell["XXXX", "Details",
+ CellLabel->"DA",
+ CellID->357121918],
+
+Cell["XXXX", "Details",
+ CellLabel->"Docs",
+ CellID->35949532],
+
+Cell["XXXX", "Details",
+ CellLabel->"Features Page Notes",
+ CellID->929432370],
+
+Cell["XXXX", "Details",
+ CellLabel->"Comments",
+ CellID->240026365]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Complex fields", "Title",
+ CellID->509267359],
+
+Cell["\<\
+In DoFun the statistics of fields is determined by the two-point part of the \
+action: If the two field labels are the same, the fields are taken as \
+commuting, while they are treated as Grassmann fields if the two labels \
+differ.\
+\>", "Text",
+ CellChangeTimes->{{3.5057226676737623`*^9, 3.5057227441592083`*^9}},
+ CellID->1676458223],
+
+Cell["\<\
+Since also complex fields have two different field labels additional input is \
+required to let DoFun know that the fields commute, but have two labels.\
+\>", "Text",
+ CellChangeTimes->{{3.505722745638466*^9, 3.505722828879774*^9}},
+ CellID->567950211],
+
+Cell["\<\
+The additional input is provided with the option specificFieldDefinitions.\
+\>", "Text",
+ CellChangeTimes->{{3.505722829703083*^9, 3.5057228769753857`*^9}},
+ CellID->921065371],
+
+Cell[BoxData[GridBox[{
+   {
+    RowBox[{"doDSE", "[", 
+     RowBox[{"action", ",", " ", "legs", ",", " ", 
+      RowBox[{"specificFieldDefinitions", "\[Rule]", "fieldDefs"}]}], "]"}], 
+    Cell["\<\
+Derives the DSE corresponding to legs from action. fieldDefs contains \
+information about the fields being commuting or anti-commuting.\
+\>", "TableText"]},
+   {
+    RowBox[{"doDSE", "[", 
+     RowBox[{"action", ",", " ", "legs", ",", " ", 
+      RowBox[{"specificFieldDefinitions", "\[Rule]", "fieldDefs"}]}], "]"}], 
+    Cell["\<\
+Derives the RGE corresponding to legs from action. fieldDefs contains \
+information about the fields being commuting or anti-commuting.\
+\>", "TableText"]}
+  }]], "DefinitionBox",
+ CellChangeTimes->{{3.505722972670186*^9, 3.505723022875037*^9}, {
+  3.505723067767983*^9, 3.505723121963789*^9}, {3.505727811940155*^9, 
+  3.505727841469371*^9}},
+ CellID->2096742444],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Derive the DSE of complex ",
+ Cell[BoxData[
+  SuperscriptBox[
+   RowBox[{"(", 
+    RowBox[{"\[CurlyPhi]", 
+     OverscriptBox["\[CurlyPhi]", "_"]}], ")"}], "2"]], "InlineFormula"],
+ " theory."
+}], "MathCaption",
+ CellChangeTimes->{{3.505723148154564*^9, 3.505723223065103*^9}},
+ CellID->836781195],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"twoPoint", "=", 
+  RowBox[{"doDSE", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"\[CurlyPhi]", ",", "\[CurlyPhi]b"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+       "\[CurlyPhi]b", ",", "\[CurlyPhi]b", ",", "\[CurlyPhi]", ",", 
+        "\[CurlyPhi]"}], "}"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\[CurlyPhi]", ",", "\[CurlyPhi]b"}], "}"}], ",", 
+    RowBox[{"specificFieldDefinitions", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"\[CurlyPhi]", ",", "\[CurlyPhi]b"}], "}"}]}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.505723224937079*^9, 3.50572325053375*^9}, {
+  3.5057268034144363`*^9, 3.5057268047693453`*^9}},
+ CellID->2058623809],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"op", "[", 
+   RowBox[{"S", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[CurlyPhi]", ",", "i1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\[CurlyPhi]b", ",", "i2"}], "}"}]}], "]"}], "]"}], "-", 
+  RowBox[{"op", "[", 
+   RowBox[{
+    RowBox[{"S", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"\[CurlyPhi]b", ",", "i2"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\[CurlyPhi]b", ",", "r1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\[CurlyPhi]", ",", "i1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\[CurlyPhi]", ",", "s1"}], "}"}]}], "]"}], ",", 
+    RowBox[{"P", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"\[CurlyPhi]b", ",", "r1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\[CurlyPhi]", ",", "s1"}], "}"}]}], "]"}]}], "]"}], "-", 
+  RowBox[{
+   FractionBox["1", "2"], " ", 
+   RowBox[{"op", "[", 
+    RowBox[{
+     RowBox[{"S", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"\[CurlyPhi]b", ",", "r1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\[CurlyPhi]b", ",", "r2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\[CurlyPhi]", ",", "i1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\[CurlyPhi]", ",", "s1"}], "}"}]}], "]"}], ",", 
+     RowBox[{"P", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"\[CurlyPhi]b", ",", "r1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\[CurlyPhi]", ",", "s2"}], "}"}]}], "]"}], ",", 
+     RowBox[{"P", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"\[CurlyPhi]b", ",", "r2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\[CurlyPhi]", ",", "t2"}], "}"}]}], "]"}], ",", 
+     RowBox[{"P", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"\[CurlyPhi]", ",", "s1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\[CurlyPhi]b", ",", "u2"}], "}"}]}], "]"}], ",", 
+     RowBox[{"V", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"\[CurlyPhi]", ",", "s2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\[CurlyPhi]", ",", "t2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\[CurlyPhi]b", ",", "i2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\[CurlyPhi]b", ",", "u2"}], "}"}]}], "]"}]}], 
+    "]"}]}]}]], "Output",
+ CellChangeTimes->{
+  3.50572325117624*^9, {3.5057268052000647`*^9, 3.5057268251113853`*^9}},
+ CellID->2087296576]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DSEPlot", "[", 
+  RowBox[{"twoPoint", ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"\[CurlyPhi]", ",", "Black"}], "}"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.505726806116818*^9, 3.5057268152048893`*^9}},
+ CellID->855112902],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            Arrowheads[0.075], 
+            
+            ArrowBox[{{0., 2.6937955301856953`*^-10}, {1., 
+             1.7958636867904636`*^-10}}]}, {
+            GrayLevel[0], 
+            Arrowheads[0.075], 
+            ArrowBox[{{1., 1.7958636867904636`*^-10}, {2., 0.}}]}}, {{
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {0.,
+              0.30000000026937956`}], 
+            DiskBox[{0., 2.6937955301856953`*^-10}, 0.02]}, 
+           DiskBox[{1., 1.7958636867904636`*^-10}, 0.1], {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {2.,
+              0.3}], 
+            DiskBox[{2., 0.}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{0., 2.6937955301856953`*^-10}, {1., 
+           1.7958636867904636`*^-10}, {2., 0.}}]& ], AspectRatio -> Automatic,
+         FrameTicks -> None, PlotRange -> All, PlotRangePadding -> 
+        Scaled[0.1]],StyleBox[
+        TemplateBox[{
+          OverscriptBox[
+           StyleBox["\"\"", StripOnInput -> False, FontSize :> 50], 
+           StyleBox["\"-1\"", StripOnInput -> False, FontSize :> 16]], 
+          "\"=\""}, "Row", 
+         DisplayFunction -> (RowBox[{#, "\[InvisibleSpace]", #2}]& ), 
+         InterpretationFunction -> (RowBox[{"Row", "[", 
+            RowBox[{"{", 
+              RowBox[{#, ",", #2}], "}"}], "]"}]& )], StripOnInput -> False, 
+        ShowStringCharacters -> False, FontSize :> 16]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 1}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", #2, ",", "Right"}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            Arrowheads[0.075], 
+            
+            ArrowBox[{{0., 2.6937955301856953`*^-10}, {1., 
+             1.7958636867904636`*^-10}}]}, {
+            GrayLevel[0], 
+            Arrowheads[0.075], 
+            ArrowBox[{{1., 1.7958636867904636`*^-10}, {2., 0.}}]}}, {{
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {0.,
+              0.30000000026937956`}], 
+            DiskBox[{0., 2.6937955301856953`*^-10}, 0.02]}, 
+           DiskBox[{1., 1.7958636867904636`*^-10}, 0.02], {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {2.,
+              0.3}], 
+            DiskBox[{2., 0.}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{0., 2.6937955301856953`*^-10}, {1., 
+           1.7958636867904636`*^-10}, {2., 0.}}]& ], AspectRatio -> Automatic,
+         FrameTicks -> None, PlotRange -> All, PlotRangePadding -> 
+        Scaled[0.1]],StyleBox[
+        StyleBox[
+        "\"+\"", StripOnInput -> False, ShowStringCharacters -> False], 
+        StripOnInput -> False, FontSize :> 16],OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"-1\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            Arrowheads[0.075], 
+            ArrowBox[CompressedData["
+1:eJxTTMoPSmViYGCQBGIQDQEf7JOPHTFZtO6F7doTqwOZpr+1/7DryTk5/pn2
+7M8FBLtPvLZfo5AdE2y9yn7RnedqjI6v7EXOm88py9pur2Jwd5Kc1Et7iV9h
+68vsDtmnCyztdE5/Yb9eYe+dqXtO2i+c5dNlYPLCfofnFpsTNy7YX4t4uMGh
+5YW91EXtwuOnr9hnPW11Ngx6ae/+1P3QrZIb9msflOtXTXhlr9G19mL+tNv2
+G5mmLjXUemP/yfhL9O3fd+2dJxx+mM3yzj7dUEDjfM19+30LWMDuX7ROAkg/
+sM8IVuc/9feD/ZNZ3GD5G1p2us9ffbSXCnkN1p/L5fPi0PZP9vbfFoDNN1Fw
+iXse9tn+XoEF2P7i8KnL7+/9bK/dIAV2n+Kke7ueP/1s32q/COz+5QaG1nFn
+Ptuv/jET7L9E7inbPhR9tj/Faw72v9rh3pz6+5/sX8xnAoePZ31F+S7pT/Yu
+QrKQ8OvXul5n8tGeoaEbHL7o4Q8AdxTFPQ==
+             "]]}, {
+            GrayLevel[0], 
+            Arrowheads[0.075], 
+            
+            ArrowBox[{{1., 1.7958636867904636`*^-10}, {0., 
+             2.6937955301856953`*^-10}}]}, {
+            GrayLevel[0], 
+            Arrowheads[0.075], 
+            ArrowBox[{{2., 0.}, {1., 1.7958636867904636`*^-10}}]}}, {
+           DiskBox[{1., 1.7958636867904636`*^-10}, 0.02], {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {0.,
+              0.30000000026937956`}], 
+            DiskBox[{0., 2.6937955301856953`*^-10}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {2.,
+              0.3}], 
+            DiskBox[{2., 0.}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{1., 1.7958636867904636`*^-10}, {0., 
+           2.6937955301856953`*^-10}, {2., 0.}}]& ], AspectRatio -> Automatic,
+         FrameTicks -> None, PlotRange -> All, PlotRangePadding -> 
+        Scaled[0.1]],StyleBox[
+        StyleBox[
+        "\"-\"", StripOnInput -> False, ShowStringCharacters -> False], 
+        StripOnInput -> False, FontSize :> 16],OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            Arrowheads[0.075], 
+            
+            ArrowBox[{{2., 1.7958636867904636`*^-10}, {
+             1.8624695047400062`, -0.17191311886376126`}, {
+             1.8445477019709182`, -0.1915903112553245}, {
+             1.8242605693741543`, -0.20881863577949117`}, {
+             1.8019400787430642`, -0.2233161739462321}, {
+             1.7779514750558583`, -0.23484569293215957`}, {
+             1.75268729973001, -0.24321852757841167`}, {
+             1.7265609672069353`, -0.2482976676436603}, {
+             1.699999999977552, -0.24999999979347567`}, {
+             1.299999999977552, -0.2499999997575584}, {
+             1.273439032748474, -0.248297667602973}, {
+             1.2473127002263116`, -0.24321852753303244`}, {
+             1.2220485249019668`, -0.23484569288224322`}, {
+             1.1980599212168317`, -0.22331617389200775`}, {
+             1.1757394305883453`, -0.20881863572125836`}, {
+             1.1554522979946755`, -0.19159031119344838`}, {
+             1.1375304952291212`, -0.17191311879866664`}, {1., 
+             2.6937955301856953`*^-10}}]}, {
+            GrayLevel[0], 
+            Arrowheads[0.075], 
+            
+            ArrowBox[{{2., 1.7958636867904636`*^-10}, {1., 
+             2.6937955301856953`*^-10}}]}, {
+            GrayLevel[0], 
+            Arrowheads[0.075], 
+            
+            ArrowBox[{{1., 2.6937955301856953`*^-10}, {1.1375304952599943`, 
+             0.17191311931272718`}, {1.1554522980290822`, 
+             0.19159031170429042`}, {1.1757394306258462`, 
+             0.2088186362284571}, {1.1980599212569363`, 
+             0.22331617439519802`}, {1.2220485249441422`, 
+             0.2348456933811255}, {1.2473127002699904`, 0.2432185280273776}, {
+             1.2734390327930651`, 0.2482976680926262}, {1.3000000000224485`, 
+             0.2500000002424416}, {1.7000000000224484`, 
+             0.25000000020652435`}, {1.7265609672515265`, 
+             0.24829766805193892`}, {1.7526872997736889`, 
+             0.24321852798199836`}, {1.7779514750980336`, 
+             0.23484569333120914`}, {1.8019400787831688`, 
+             0.22331617434097367`}, {1.8242605694116552`, 
+             0.20881863617022428`}, {1.844547702005325, 0.1915903116424143}, {
+             1.8624695047708792`, 0.17191311924763256`}, {2., 
+             1.7958636867904636`*^-10}}]}, {
+            GrayLevel[0], 
+            Arrowheads[0.075], 
+            
+            ArrowBox[{{1., 2.6937955301856953`*^-10}, {0., 
+             3.591727373580927*^-10}}]}, {
+            GrayLevel[0], 
+            Arrowheads[0.075], 
+            ArrowBox[{{3., 0.}, {2., 1.7958636867904636`*^-10}}]}}, {
+           DiskBox[{2., 1.7958636867904636`*^-10}, 0.02], 
+           DiskBox[{1., 2.6937955301856953`*^-10}, 0.1], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {3.,
+              0.3}], 
+            DiskBox[{3., 0.}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {0.,
+              0.30000000035917274`}], 
+            DiskBox[{0., 3.591727373580927*^-10}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{2., 1.7958636867904636`*^-10}, {1., 
+           2.6937955301856953`*^-10}, {3., 0.}, {0., 
+           3.591727373580927*^-10}}]& ], AspectRatio -> Automatic, FrameTicks -> 
+        None, PlotRange -> All, PlotRangePadding -> Scaled[0.1]],StyleBox[
+        RowBox[{"-", 
+          FractionBox["1", "2"]}], StripOnInput -> False, FontSize :> 16],
+       OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     StyleBox["\<\"\"\>",
+      StripOnInput->False,
+      ShowStringCharacters->False]}
+   },
+   AutoDelete->False,
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{3.5057268155383053`*^9},
+ CellID->457716260]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More About", "TutorialMoreAboutSection",
+ CellID->23220180],
+
+Cell["XXXX", "TutorialMoreAbout",
+ CellID->1567025153]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Tutorials", "RelatedTutorialsSection",
+ CellID->415694126],
+
+Cell["XXXX", "RelatedTutorials",
+ CellID->806871991]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Wolfram Education Group Courses", "TutorialRelatedLinksSection",
+ CellID->415694148],
+
+Cell["XXXX", "TutorialRelatedLinks",
+ CellID->415694149]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{927, 864},
+WindowMargins->{{353, Automatic}, {Automatic, 23}},
+FrontEndVersion->"8.0 for Linux x86 (64-bit) (October 10, 2011)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "TutorialPageStyles.nb", 
+  CharacterEncoding -> "UTF-8"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 325, 14, 24, "History",
+ CellID->1247902091],
+Cell[CellGroupData[{
+Cell[895, 38, 68, 1, 29, "CategorizationSection",
+ CellID->1122911449],
+Cell[966, 41, 81, 2, 70, "Categorization",
+ CellID->686433507],
+Cell[1050, 45, 78, 2, 70, "Categorization",
+ CellID->605800465],
+Cell[1131, 49, 75, 2, 70, "Categorization",
+ CellID->468444828],
+Cell[1209, 53, 99, 2, 70, "Categorization",
+ CellID->1386873783]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1345, 60, 56, 1, 19, "KeywordsSection",
+ CellID->1427428552],
+Cell[1404, 63, 45, 1, 70, "Keywords",
+ CellID->1251852827]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1486, 69, 53, 1, 19, "DetailsSection",
+ CellID->307771771],
+Cell[1542, 72, 63, 2, 32, "Details",
+ CellID->218895918],
+Cell[1608, 76, 69, 2, 32, "Details",
+ CellID->350963985],
+Cell[1680, 80, 66, 2, 32, "Details",
+ CellID->795871300],
+Cell[1749, 84, 71, 2, 32, "Details",
+ CellID->199739161],
+Cell[1823, 88, 60, 2, 32, "Details",
+ CellID->40625308],
+Cell[1886, 92, 61, 2, 32, "Details",
+ CellID->357121918],
+Cell[1950, 96, 62, 2, 32, "Details",
+ CellID->35949532],
+Cell[2015, 100, 78, 2, 32, "Details",
+ CellID->929432370],
+Cell[2096, 104, 67, 2, 32, "Details",
+ CellID->240026365]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2200, 111, 51, 1, 106, "Title",
+ CellID->509267359],
+Cell[2254, 114, 347, 7, 57, "Text",
+ CellID->1676458223],
+Cell[2604, 123, 262, 5, 40, "Text",
+ CellID->567950211],
+Cell[2869, 130, 186, 4, 23, "Text",
+ CellID->921065371],
+Cell[3058, 136, 896, 21, 135, "DefinitionBox",
+ CellID->2096742444],
+Cell[CellGroupData[{
+Cell[3979, 161, 315, 10, 40, "MathCaption",
+ CellID->836781195],
+Cell[CellGroupData[{
+Cell[4319, 175, 726, 20, 46, "Input",
+ CellID->2058623809],
+Cell[5048, 197, 2395, 72, 119, "Output",
+ CellID->2087296576]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7480, 274, 267, 7, 26, "Input",
+ CellID->855112902],
+Cell[7750, 283, 12741, 282, 59, "Output",
+ CellID->457716260]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20540, 571, 65, 1, 72, "TutorialMoreAboutSection",
+ CellID->23220180],
+Cell[20608, 574, 54, 1, 22, "TutorialMoreAbout",
+ CellID->1567025153]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20699, 580, 72, 1, 72, "RelatedTutorialsSection",
+ CellID->415694126],
+Cell[20774, 583, 52, 1, 22, "RelatedTutorials",
+ CellID->806871991]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20863, 589, 98, 1, 72, "TutorialRelatedLinksSection",
+ CellID->415694148],
+Cell[20964, 592, 56, 1, 24, "TutorialRelatedLinks",
+ CellID->415694149]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

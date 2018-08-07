@@ -1,0 +1,955 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     33475,        946]
+NotebookOptionsPosition[     20171,        764]
+NotebookOutlinePosition[     22417,        823]
+CellTagsIndexPosition[     22374,        820]
+WindowTitle->DoFun Overview
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["DO FUN PACKAGE OVERVIEW", "PacletNameCell"], Cell[TextData[Cell[
+    BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"DoFun/tutorial/DoFunOverview\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["DoFun/tutorial/DoFunOverview"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/DoFun/tutorial/\
+DoFunOverview.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$55991], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "DoFun/tutorial/DoFunOverview", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell[CellGroupData[{
+
+Cell["DoFun Overview", "TOCDocumentTitle"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["Complex fields"]],
+   "paclet:DoFun/tutorial/Complex fields#509267359"},
+  "RefLink",
+  BaseStyle->"TOCChapter"]], "TOCChapter"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["Exporting diagrams"]],
+   "paclet:DoFun/tutorial/Exporting diagrams#509267359"},
+  "RefLink",
+  BaseStyle->"TOCChapter"]], "TOCChapter"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["Fields mixing at the two-point level"]],
+   "paclet:DoFun/tutorial/Fields mixing at the two-point level#509267359"},
+  "RefLink",
+  BaseStyle->"TOCChapter"]], "TOCChapter"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["Known issues"]],"paclet:DoFun/tutorial/Known issues#509267359"},
+  
+  "RefLink",
+  BaseStyle->"TOCChapter"]], "TOCChapter"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["DSEPlot"]],"paclet:DoFun/tutorial/Known issues#1536219457"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["Non-planar diagrams"]],
+   "paclet:DoFun/tutorial/Known issues#1975056533"},
+  "RefLink",
+  BaseStyle->"TOCSubsection"]], "TOCSubsection"]
+}, Open  ]],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["doDSE"]],"paclet:DoFun/tutorial/Known issues#1131011768"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["Scalar O(N) symmetric theory"]],
+   "paclet:DoFun/tutorial/Scalar O(N) symmetric theory#509267359"},
+  "RefLink",
+  BaseStyle->"TOCChapter"]], "TOCChapter"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["Symmetric phase"]],
+   "paclet:DoFun/tutorial/Scalar O(N) symmetric theory#352696352"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["Symbolic derivation"]],
+   "paclet:DoFun/tutorial/Scalar O(N) symmetric theory#447702864"},
+  "RefLink",
+  BaseStyle->"TOCSubsection"]], "TOCSubsection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["Algebraic expressions"]],
+   "paclet:DoFun/tutorial/Scalar O(N) symmetric theory#664575954"},
+  "RefLink",
+  BaseStyle->"TOCSubsection"]], "TOCSubsection"]
+}, Open  ]],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["Symmetry broken phase"]],
+   "paclet:DoFun/tutorial/Scalar O(N) symmetric theory#466097708"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["ReferencePages/Symbols"]],"paclet:DoFun/ref/$bareVertexSymbol"},
+  
+  "RefLink",
+  BaseStyle->"TOCChapter"]], "TOCChapter"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["$bareVertexSymbol"]],"paclet:DoFun/ref/$bareVertexSymbol"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["$dummyField"]],"paclet:DoFun/ref/$dummyField"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["$dummyFieldAF"]],"paclet:DoFun/ref/$dummyFieldAF"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["$dummyFieldB"]],"paclet:DoFun/ref/$dummyFieldB"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["$dummyFieldF"]],"paclet:DoFun/ref/$dummyFieldF"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["$loopMomenta"]],"paclet:DoFun/ref/$loopMomenta"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["$propagatorSymbol"]],"paclet:DoFun/ref/$propagatorSymbol"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["$regulatorInsertionSymbol"]],
+   "paclet:DoFun/ref/$regulatorInsertionSymbol"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["$vertexSymbol"]],"paclet:DoFun/ref/$vertexSymbol"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["DSEPlot"]],"paclet:DoFun/ref/DSEPlot"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["P"]],"paclet:DoFun/ref/P"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["RGEPlot"]],"paclet:DoFun/ref/RGEPlot"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["S"]],"paclet:DoFun/ref/S"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["U"]],"paclet:DoFun/ref/U"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["V"]],"paclet:DoFun/ref/V"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["addIndices"]],"paclet:DoFun/ref/addIndices"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["ansatz"]],"paclet:DoFun/ref/ansatz"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["antiComplexFieldQ"]],"paclet:DoFun/ref/antiComplexFieldQ"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["antiFermion"]],"paclet:DoFun/ref/antiFermion"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["antiFermionQ"]],"paclet:DoFun/ref/antiFermionQ"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["antiField"]],"paclet:DoFun/ref/antiField"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["boson"]],"paclet:DoFun/ref/boson"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["bosonQ"]],"paclet:DoFun/ref/bosonQ"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["broken"]],"paclet:DoFun/ref/broken"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["checkAction"]],"paclet:DoFun/ref/checkAction"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["checkAll"]],"paclet:DoFun/ref/checkAll"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["checkFields"]],"paclet:DoFun/ref/checkFields"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["checkIndices"]],"paclet:DoFun/ref/checkIndices"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["checkSyntax"]],"paclet:DoFun/ref/checkSyntax"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["compareGraphs"]],"paclet:DoFun/ref/compareGraphs"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["compareGraphs2"]],"paclet:DoFun/ref/compareGraphs2"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["complete"]],"paclet:DoFun/ref/complete"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["complexFieldQ"]],"paclet:DoFun/ref/complexFieldQ"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["convertAction"]],"paclet:DoFun/ref/convertAction"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["countTerms"]],"paclet:DoFun/ref/countTerms"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["createDummyListUnique"]],
+   "paclet:DoFun/ref/createDummyListUnique"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["dR"]],"paclet:DoFun/ref/dR"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["defineFields"]],"paclet:DoFun/ref/defineFields"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["defineFieldsSpecific"]],"paclet:DoFun/ref/defineFieldsSpecific"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["delta"]],"paclet:DoFun/ref/delta"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["deltam"]],"paclet:DoFun/ref/deltam"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["der"]],"paclet:DoFun/ref/der"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["deriv"]],"paclet:DoFun/ref/deriv"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["derivRGE"]],"paclet:DoFun/ref/derivRGE"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["dim"]],"paclet:DoFun/ref/dim"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["doDSE"]],"paclet:DoFun/ref/doDSE"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["doGrassmannTest"]],"paclet:DoFun/ref/doGrassmannTest"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["doRGE"]],"paclet:DoFun/ref/doRGE"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["dummy"]],"paclet:DoFun/ref/dummy"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["even"]],"paclet:DoFun/ref/even"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["explicit"]],"paclet:DoFun/ref/explicit"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["factorStyle"]],"paclet:DoFun/ref/factorStyle"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["fermion"]],"paclet:DoFun/ref/fermion"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["fermionQ"]],"paclet:DoFun/ref/fermionQ"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["fieldQ"]],"paclet:DoFun/ref/fieldQ"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["forceEquation"]],"paclet:DoFun/ref/forceEquation"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["generateAction"]],"paclet:DoFun/ref/generateAction"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["getAE"]],"paclet:DoFun/ref/getAE"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["getFR"]],"paclet:DoFun/ref/getFR"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["getInteractionList"]],"paclet:DoFun/ref/getInteractionList"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["getLoopNumber"]],"paclet:DoFun/ref/getLoopNumber"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["grassmannQ"]],"paclet:DoFun/ref/grassmannQ"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["identifyGraphs"]],"paclet:DoFun/ref/identifyGraphs"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["identifyGraphsRGE"]],"paclet:DoFun/ref/identifyGraphsRGE"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["indexStyle"]],"paclet:DoFun/ref/indexStyle"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["indices"]],"paclet:DoFun/ref/indices"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["insDummy"]],"paclet:DoFun/ref/insDummy"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["intact"]],"paclet:DoFun/ref/intact"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["integrateDeltas"]],"paclet:DoFun/ref/integrateDeltas"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["integrateMomenta"]],"paclet:DoFun/ref/integrateMomenta"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["loadFeynCalc"]],"paclet:DoFun/ref/loadFeynCalc"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["odd"]],"paclet:DoFun/ref/odd"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["op"]],"paclet:DoFun/ref/op"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["orderFermions"]],"paclet:DoFun/ref/orderFermions"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["output"]],"paclet:DoFun/ref/output"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["regulatorBox"]],"paclet:DoFun/ref/regulatorBox"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["regulatorCross"]],"paclet:DoFun/ref/regulatorCross"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["regulatorSymbol"]],"paclet:DoFun/ref/regulatorSymbol"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["removeIndices"]],"paclet:DoFun/ref/removeIndices"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["replaceFields"]],"paclet:DoFun/ref/replaceFields"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["replacedField"]],"paclet:DoFun/ref/replacedField"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["resetDummy"]],"paclet:DoFun/ref/resetDummy"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["resetIndices"]],"paclet:DoFun/ref/resetIndices"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["sE"]],"paclet:DoFun/ref/sE"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["setSourcesZero"]],"paclet:DoFun/ref/setSourcesZero"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["setSourcesZeroRGE"]],"paclet:DoFun/ref/setSourcesZeroRGE"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["shortExpression"]],"paclet:DoFun/ref/shortExpression"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["sortDummies"]],"paclet:DoFun/ref/sortDummies"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["specificFieldDefinitions"]],
+   "paclet:DoFun/ref/specificFieldDefinitions"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["symmetry"]],"paclet:DoFun/ref/symmetry"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["tDerivative"]],"paclet:DoFun/ref/tDerivative"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["traceIndex1"]],"paclet:DoFun/ref/traceIndex1"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["traceIndex2"]],"paclet:DoFun/ref/traceIndex2"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["Guides"]],"paclet:DoFun/guide/Test"},
+  "RefLink",
+  BaseStyle->"TOCChapter"]], "TOCChapter"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["WelcomeToDoFun"]],"paclet:DoFun/guide/WelcomeToDoFun"},
+  "RefLink",
+  BaseStyle->"TOCSection"]], "TOCSection"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"DoFun Overview",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "TutorialColor", 
+  "LinkTrails" -> GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:DoFun/guide/DoFun", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "ExampleCounter" -> 1, "NeedPlatMsgIn" -> None, "RootCaptions" -> 
+  "", "Metadata" -> {
+   "built" -> "{2018, 4, 14, 14, 45, 51.786098}", 
+    "history" -> {"XX", "", "", ""}, "context" -> "DoFun`", "keywords" -> {}, 
+    "specialkeywords" -> {}, "tutorialcollectionlinks" -> {}, "index" -> True,
+     "label" -> "Do Fun Package Overview", "language" -> "en", "paclet" -> 
+    "DoFun Package", "status" -> "None", "summary" -> 
+    "Complex fields Exporting diagrams Fields mixing at the two-point level", 
+    "synonyms" -> {}, "tabletags" -> 
+    DocumentationBuild`Make`Private`tabletaggingrules$55850, "title" -> 
+    "DoFun Overview", "titlemodifier" -> "", "windowtitle" -> 
+    "DoFun Overview", "type" -> "Overview", "uri" -> 
+    "DoFun/tutorial/DoFunOverview"}},
+FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> Notebook], 
+   Cell[
+    StyleData["Output"], CellContext -> Notebook], 
+   Cell[
+    StyleData["TOCSubsubsection"], 
+    CellGroupingRules -> {"SectionGrouping", 69}], 
+   Cell[
+    StyleData["TutorialMoreAboutSection"], 
+    CellGroupingRules -> {"SectionGrouping", 30}], 
+   Cell[
+    StyleData["RelatedTutorialsSection"], 
+    CellGroupingRules -> {"SectionGrouping", 30}], 
+   Cell[
+    StyleData["TutorialRelatedLinksSection"], 
+    CellGroupingRules -> {"SectionGrouping", 30}]}, Visible -> False, 
+  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[586, 21, 2313, 54, 70, "AnchorBarGrid",ExpressionUUID->"2422a560-6a4d-451f-b307-a6de81fbdc43",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[2924, 79, 42, 0, 70, "TOCDocumentTitle",ExpressionUUID->"0e05b1ba-3634-478a-8518-7546f321df1a"],
+Cell[2969, 81, 176, 5, 70, "TOCChapter",ExpressionUUID->"64dc0f5f-1149-4082-809c-c50f61f7bbf5"],
+Cell[3148, 88, 184, 5, 70, "TOCChapter",ExpressionUUID->"78f30404-9a71-4b74-a98c-913faa8668e8"],
+Cell[3335, 95, 220, 5, 70, "TOCChapter",ExpressionUUID->"538fac3f-ef6b-485d-876a-ea1906df9faf"],
+Cell[CellGroupData[{
+Cell[3580, 104, 171, 5, 70, "TOCChapter",ExpressionUUID->"a8f9f1f6-10c3-4b1d-9358-acc9d0ac103d"],
+Cell[CellGroupData[{
+Cell[3776, 113, 164, 4, 70, "TOCSection",ExpressionUUID->"d1574d9b-2ff7-47dd-a6c5-57f07cbf0223"],
+Cell[3943, 119, 186, 5, 70, "TOCSubsection",ExpressionUUID->"43b70334-6731-4677-bcba-1c2aaf82724c"]
+}, Open  ]],
+Cell[4144, 127, 162, 4, 70, "TOCSection",ExpressionUUID->"b4c8c577-b6d0-46ca-84b2-782eff44c610"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4343, 136, 204, 5, 70, "TOCChapter",ExpressionUUID->"13511632-e2f8-4793-95cd-995eb924e6e4"],
+Cell[CellGroupData[{
+Cell[4572, 145, 191, 5, 70, "TOCSection",ExpressionUUID->"84c96060-4481-4f0c-8422-04e4970c67f0"],
+Cell[4766, 152, 201, 5, 70, "TOCSubsection",ExpressionUUID->"660823b1-5d4d-47fb-aadc-716476dffb21"],
+Cell[4970, 159, 203, 5, 70, "TOCSubsection",ExpressionUUID->"2dbdd534-a769-452b-8607-f516b2b4f1f0"]
+}, Open  ]],
+Cell[5188, 167, 197, 5, 70, "TOCSection",ExpressionUUID->"2d4135d9-9c22-40e2-aa37-124040a2926c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5422, 177, 171, 5, 70, "TOCChapter",ExpressionUUID->"89ea69c5-8ef6-4266-b2fb-ff0c08ff2f0c"],
+Cell[5596, 184, 163, 4, 70, "TOCSection",ExpressionUUID->"6b81b8d6-5ee9-4365-b8e7-6427b81f6ab6"],
+Cell[5762, 190, 151, 4, 70, "TOCSection",ExpressionUUID->"d5bf89a2-3637-4cb5-bd05-309221c1c88e"],
+Cell[5916, 196, 155, 4, 70, "TOCSection",ExpressionUUID->"f0b0cb9e-fd11-471f-9128-9bf6ba13b8d2"],
+Cell[6074, 202, 153, 4, 70, "TOCSection",ExpressionUUID->"e3e80394-4219-46f9-bdcb-5dd41f34e006"],
+Cell[6230, 208, 153, 4, 70, "TOCSection",ExpressionUUID->"844f9218-e245-4721-b7bb-2d6e8df20e87"],
+Cell[6386, 214, 153, 4, 70, "TOCSection",ExpressionUUID->"cbfc3938-9d63-45c6-b032-a20fbdddb381"],
+Cell[6542, 220, 163, 4, 70, "TOCSection",ExpressionUUID->"b80812ab-4062-46c7-bcf8-10ca79d0389c"],
+Cell[6708, 226, 183, 5, 70, "TOCSection",ExpressionUUID->"1015333e-fa75-4a88-94a2-703effedf963"],
+Cell[6894, 233, 155, 4, 70, "TOCSection",ExpressionUUID->"bd13051f-c9b5-41d6-88b1-704a8ab44cec"],
+Cell[7052, 239, 143, 4, 70, "TOCSection",ExpressionUUID->"88d9ed6f-5592-4581-9560-f321854c9db4"],
+Cell[7198, 245, 131, 4, 70, "TOCSection",ExpressionUUID->"6b4c20d3-5c0d-40d1-bbab-ff4e1b87f550"],
+Cell[7332, 251, 143, 4, 70, "TOCSection",ExpressionUUID->"df554a8f-faeb-4b81-b22b-b825eca62237"],
+Cell[7478, 257, 131, 4, 70, "TOCSection",ExpressionUUID->"b5c0331d-2663-4c8b-8525-59b34465d88a"],
+Cell[7612, 263, 131, 4, 70, "TOCSection",ExpressionUUID->"76250f27-b651-41d3-8511-d720fc88b4a9"],
+Cell[7746, 269, 131, 4, 70, "TOCSection",ExpressionUUID->"2543f715-1af1-43cb-bfeb-93399a1e6b60"],
+Cell[7880, 275, 149, 4, 70, "TOCSection",ExpressionUUID->"5f8afea7-499e-48bf-9f4d-386b4da6587f"],
+Cell[8032, 281, 141, 4, 70, "TOCSection",ExpressionUUID->"96a9564a-3250-4695-a6c5-c1cbe1b7112b"],
+Cell[8176, 287, 163, 4, 70, "TOCSection",ExpressionUUID->"06277947-0336-4fe6-ab18-727b094aebb2"],
+Cell[8342, 293, 151, 4, 70, "TOCSection",ExpressionUUID->"5b997ed7-8565-425d-942b-7bb68ea327f6"],
+Cell[8496, 299, 153, 4, 70, "TOCSection",ExpressionUUID->"611607a5-302d-4246-8085-e9f993b3368a"],
+Cell[8652, 305, 147, 4, 70, "TOCSection",ExpressionUUID->"019399e0-a85b-40c6-84cf-5c139cb619b2"],
+Cell[8802, 311, 139, 4, 70, "TOCSection",ExpressionUUID->"71fd7c88-371a-42a8-bb20-374883f36d61"],
+Cell[8944, 317, 141, 4, 70, "TOCSection",ExpressionUUID->"b9bbc205-9cd5-4065-ad6b-714e78e03e04"],
+Cell[9088, 323, 141, 4, 70, "TOCSection",ExpressionUUID->"b1148b4f-ecdb-48c3-8f2a-0ac05d860135"],
+Cell[9232, 329, 151, 4, 70, "TOCSection",ExpressionUUID->"a8c11b6a-5fd7-4255-a485-a68b64914380"],
+Cell[9386, 335, 145, 4, 70, "TOCSection",ExpressionUUID->"04e37ab7-b873-4897-a055-b4f15b250b0f"],
+Cell[9534, 341, 151, 4, 70, "TOCSection",ExpressionUUID->"d7b789c1-0797-4009-af4f-553dc77ebeae"],
+Cell[9688, 347, 153, 4, 70, "TOCSection",ExpressionUUID->"d234c3a6-569a-4235-9d60-da1f01728f41"],
+Cell[9844, 353, 151, 4, 70, "TOCSection",ExpressionUUID->"64e2fd9b-02d2-4622-bbe4-3585a3d81a5e"],
+Cell[9998, 359, 155, 4, 70, "TOCSection",ExpressionUUID->"2534ed49-5e05-4ecb-8043-87d1c9159bac"],
+Cell[10156, 365, 157, 4, 70, "TOCSection",ExpressionUUID->"55f75045-2515-472b-8ac9-f0a1e326031f"],
+Cell[10316, 371, 145, 4, 70, "TOCSection",ExpressionUUID->"4339ec3d-38c4-40fd-97cb-506625dbdb19"],
+Cell[10464, 377, 155, 4, 70, "TOCSection",ExpressionUUID->"f815d3bb-d0a6-4ecd-b316-b539cc530dfe"],
+Cell[10622, 383, 155, 4, 70, "TOCSection",ExpressionUUID->"9fdd6dc3-e3c4-43f0-bba7-f86d1399a1cc"],
+Cell[10780, 389, 149, 4, 70, "TOCSection",ExpressionUUID->"2144bfd2-61b1-4bcd-a543-b34b2d51958c"],
+Cell[10932, 395, 175, 5, 70, "TOCSection",ExpressionUUID->"5fb8b063-7df8-4129-96e9-97ad5a9d26a9"],
+Cell[11110, 402, 133, 4, 70, "TOCSection",ExpressionUUID->"b89601c1-6b5c-417a-84cb-935d97de3d6c"],
+Cell[11246, 408, 153, 4, 70, "TOCSection",ExpressionUUID->"bcc4d70d-b2f7-46d7-ac48-65b207b05c01"],
+Cell[11402, 414, 169, 4, 70, "TOCSection",ExpressionUUID->"45941464-b571-4b78-a660-ddc310972fae"],
+Cell[11574, 420, 139, 4, 70, "TOCSection",ExpressionUUID->"c044bf16-2d6c-442a-88b0-08390e09d149"],
+Cell[11716, 426, 141, 4, 70, "TOCSection",ExpressionUUID->"d01ecc47-0cf2-493f-9399-5e2271cfae35"],
+Cell[11860, 432, 135, 4, 70, "TOCSection",ExpressionUUID->"821ba317-be26-4bbe-b44d-17bc874ea5a2"],
+Cell[11998, 438, 139, 4, 70, "TOCSection",ExpressionUUID->"870ce92b-2298-483c-adc0-dfb76cf26484"],
+Cell[12140, 444, 145, 4, 70, "TOCSection",ExpressionUUID->"31fda4ff-6f18-4de8-8738-735589b400c7"],
+Cell[12288, 450, 135, 4, 70, "TOCSection",ExpressionUUID->"d0ef9252-34dc-44b5-ae75-9ee638c03f22"],
+Cell[12426, 456, 139, 4, 70, "TOCSection",ExpressionUUID->"d267a598-16fb-4182-a2e9-212124cd98ed"],
+Cell[12568, 462, 159, 4, 70, "TOCSection",ExpressionUUID->"3643758a-2665-4626-bf1e-6b26ce279c19"],
+Cell[12730, 468, 139, 4, 70, "TOCSection",ExpressionUUID->"a1d9b280-e7d2-49ab-bee2-49c9c0aa4964"],
+Cell[12872, 474, 139, 4, 70, "TOCSection",ExpressionUUID->"b46a47c9-f6af-44f6-88a7-e6fb7520143a"],
+Cell[13014, 480, 137, 4, 70, "TOCSection",ExpressionUUID->"d7cf98d3-bc52-4871-9e23-b112810897c3"],
+Cell[13154, 486, 145, 4, 70, "TOCSection",ExpressionUUID->"f9653acd-2850-491c-885d-f7cc4205b87b"],
+Cell[13302, 492, 151, 4, 70, "TOCSection",ExpressionUUID->"aff665e6-751d-43a0-87fd-a6aa3cf3ae0d"],
+Cell[13456, 498, 143, 4, 70, "TOCSection",ExpressionUUID->"a1412f2a-e5d4-4b78-b088-6b0ac2e8eb86"],
+Cell[13602, 504, 145, 4, 70, "TOCSection",ExpressionUUID->"4fe2a6e0-ea9a-43ba-9bb2-7b8686a36820"],
+Cell[13750, 510, 141, 4, 70, "TOCSection",ExpressionUUID->"b33a329e-a897-4758-85d7-303ee31a364b"],
+Cell[13894, 516, 155, 4, 70, "TOCSection",ExpressionUUID->"e5725132-29ae-4fae-b5a7-921de96eea0f"],
+Cell[14052, 522, 157, 4, 70, "TOCSection",ExpressionUUID->"a1d7ae64-5130-4841-a1e2-90b047b9b103"],
+Cell[14212, 528, 139, 4, 70, "TOCSection",ExpressionUUID->"0d7e2823-82c8-4baa-a05c-6f55678098ae"],
+Cell[14354, 534, 139, 4, 70, "TOCSection",ExpressionUUID->"4c597c2b-d6ea-4fc8-b3ec-1b04a444334a"],
+Cell[14496, 540, 165, 4, 70, "TOCSection",ExpressionUUID->"23b5aee6-b90c-444f-943a-67d294719eb4"],
+Cell[14664, 546, 155, 4, 70, "TOCSection",ExpressionUUID->"639f3f9b-1db1-4a13-88fd-6d304db8ef60"],
+Cell[14822, 552, 149, 4, 70, "TOCSection",ExpressionUUID->"6af5d855-a94a-497e-95bc-a2488c192ade"],
+Cell[14974, 558, 157, 4, 70, "TOCSection",ExpressionUUID->"f34b2682-c183-410b-9a42-7a0405216b84"],
+Cell[15134, 564, 163, 4, 70, "TOCSection",ExpressionUUID->"bc03b19c-947b-460d-a41b-74134a375e85"],
+Cell[15300, 570, 149, 4, 70, "TOCSection",ExpressionUUID->"51283ca3-32d4-4fe3-910f-977ccaaffb3e"],
+Cell[15452, 576, 143, 4, 70, "TOCSection",ExpressionUUID->"c9c0fd66-ca86-46ac-bf85-7ea1e0df2589"],
+Cell[15598, 582, 145, 4, 70, "TOCSection",ExpressionUUID->"983d5f0c-0103-4505-94d8-18a575348ad6"],
+Cell[15746, 588, 141, 4, 70, "TOCSection",ExpressionUUID->"f1567d9d-131d-4774-85ef-2a2938516a8c"],
+Cell[15890, 594, 159, 4, 70, "TOCSection",ExpressionUUID->"ff691681-065a-4db8-873c-7e019146e5f5"],
+Cell[16052, 600, 161, 4, 70, "TOCSection",ExpressionUUID->"6f681d89-c981-44a7-8201-b55501c71e3c"],
+Cell[16216, 606, 153, 4, 70, "TOCSection",ExpressionUUID->"f97f69fc-9d74-4ad0-aec2-ea6074511656"],
+Cell[16372, 612, 135, 4, 70, "TOCSection",ExpressionUUID->"adedafe7-c006-4e01-ab6e-1185bab00f6b"],
+Cell[16510, 618, 133, 4, 70, "TOCSection",ExpressionUUID->"8840d400-c0dd-4e2a-a097-018372684277"],
+Cell[16646, 624, 155, 4, 70, "TOCSection",ExpressionUUID->"4e39174b-90db-4cfe-ad95-0fc78e543192"],
+Cell[16804, 630, 141, 4, 70, "TOCSection",ExpressionUUID->"d6e298f9-5257-49ee-9cfd-addfd2fece9d"],
+Cell[16948, 636, 153, 4, 70, "TOCSection",ExpressionUUID->"6f62f16e-00d9-4493-a578-dd8b4b76f003"],
+Cell[17104, 642, 157, 4, 70, "TOCSection",ExpressionUUID->"fa7251e1-414b-4952-a613-89c03036218a"],
+Cell[17264, 648, 159, 4, 70, "TOCSection",ExpressionUUID->"d3b78d52-461f-4708-9c65-4004c4ef67f5"],
+Cell[17426, 654, 155, 4, 70, "TOCSection",ExpressionUUID->"9136b425-e47d-4860-9d29-de5e160d5103"],
+Cell[17584, 660, 155, 4, 70, "TOCSection",ExpressionUUID->"7c16b362-3840-4162-b462-71f3e8e6dc0e"],
+Cell[17742, 666, 155, 4, 70, "TOCSection",ExpressionUUID->"0745116c-4f92-4736-b061-75119b10ee9f"],
+Cell[17900, 672, 149, 4, 70, "TOCSection",ExpressionUUID->"3723b120-a94f-4f6b-b793-180aa96a406a"],
+Cell[18052, 678, 153, 4, 70, "TOCSection",ExpressionUUID->"ef760c64-1422-4e58-b7ea-c8a71d31a5a2"],
+Cell[18208, 684, 133, 4, 70, "TOCSection",ExpressionUUID->"dfa353af-6a33-4382-a714-f6ad729bd200"],
+Cell[18344, 690, 157, 4, 70, "TOCSection",ExpressionUUID->"9808d278-90f4-47d0-9ffe-29c381ab6fbb"],
+Cell[18504, 696, 163, 4, 70, "TOCSection",ExpressionUUID->"47d1a231-95cb-4289-8d6a-ffc0b1890ccf"],
+Cell[18670, 702, 159, 4, 70, "TOCSection",ExpressionUUID->"5c0507fe-cc40-4fe4-b590-9fec84ea4f82"],
+Cell[18832, 708, 151, 4, 70, "TOCSection",ExpressionUUID->"0c396d97-a020-4347-b60c-3211cd1419f8"],
+Cell[18986, 714, 181, 5, 70, "TOCSection",ExpressionUUID->"ea78a9a6-7d2f-4ffc-8128-a7ce0c644f9e"],
+Cell[19170, 721, 145, 4, 70, "TOCSection",ExpressionUUID->"61b8c7f3-37ab-4800-8edf-794eaee3e113"],
+Cell[19318, 727, 151, 4, 70, "TOCSection",ExpressionUUID->"7afe8bf3-6fab-411e-840e-797814ba34c9"],
+Cell[19472, 733, 151, 4, 70, "TOCSection",ExpressionUUID->"296f7cba-a733-4549-b27e-fb1f5e023d86"],
+Cell[19626, 739, 151, 4, 70, "TOCSection",ExpressionUUID->"c3d5980e-2cb8-4c89-8cce-31cdc2e96010"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19814, 748, 141, 4, 70, "TOCChapter",ExpressionUUID->"d1a943c8-6a5f-462d-a55c-d29cd6f5de3a"],
+Cell[19958, 754, 159, 4, 70, "TOCSection",ExpressionUUID->"c20cc7f9-9158-4578-a03c-63280d594738"]
+}, Open  ]]
+}, Open  ]],
+Cell[20144, 762, 23, 0, 70, "FooterCell",ExpressionUUID->"f24995ec-2ab4-4fe7-a5e5-d00a2c5c7047"]
+}
+]
+*)
+
+(* End of internal cache information *)

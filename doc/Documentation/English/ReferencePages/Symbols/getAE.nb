@@ -1,0 +1,307 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     12205,        298]
+NotebookOptionsPosition[      7264,        206]
+NotebookOutlinePosition[     11074,        281]
+CellTagsIndexPosition[     11031,        278]
+WindowTitle->getAE
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "Related Guides",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"Related Guides", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"Welcome to DoFun\"\>":>
+       Documentation`HelpLookup["paclet:DoFun/guide/Welcome to DoFun"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"MoreAbout"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"DoFun/ref/getAE\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["DoFun/ref/getAE"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/DoFun/ref/getAE.html"],
+                 StandardForm]], "Input", TextClipboardType -> "PlainText"]}, 
+            Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$31440], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], "DoFun/ref/getAE", 
+             ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell[TextData[{
+ Cell["getAE", "ObjectName"],
+ Cell[BoxData[
+  TemplateBox[{8},
+   "Spacer1"]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[BoxData[GridBox[{
+   {"", Cell["\<\
+Transforms a DSE or RGE in symbolic form into an algebraic expression.
+
+Syntax:
+getAE[exp, legs, opts] where exp is a DSE or RGE in symbolic form and legs is \
+a list of the following form:
+{{field1, symInd1, mom1, inds1}, {field2, symInd2, mom2, inds2}, ...}.
+Each individual list correponds to one external leg of the diagram, where \
+fieldi indicates the field name, symbIndi the index in the symbolic form and \
+momi and indsi the momentum and the indices for the algebraic form .
+
+Options:
+A useful option is explicit -> False. If it is given, the propagators and \
+vertices are not replaced by their algebraic form but with the generic \
+expressions, which, however, already contain all indices.
+Another option is save. If set to true, it saves the results which can speed \
+up repeated calculations. Should be used with care.
+
+Example:
+This example takes the so-called sunset diagram from the DSE of a field A. It \
+has only one index adj. For illustration purposes the propagator and the \
+vertices are taken as simple expressions.
+
+Here we show the generic structure in terms of propagators and vertices:
+defineFieldsSpecific[{A[momentum, adj]}];
+getAE[op[S[{A, i1}, {A, r1}, {A, r2}, {A, s1}], P[{A, r1}, {A, s2}], P[{A, \
+r2}, {A, t2}], P[{A, s1}, {A, u2}], V[{A, i2}, {A, s2}, {A, t2}, {A, u2}]], \
+{{A, i1, p1, a}, {A, i2, p2, b}}, explicit -> False]
+
+And here we replace the generic propagators and vertices by algebraic \
+expressions and simplify the result with integrateDeltas:
+defineFieldsSpecific[{A[momentum, adj]}];
+P[A[p1_, i1_], A[p2_, i2_], explicit -> True] := delta[adj, i1, i2]/p^2;
+S[A[p1_, i1_], A[p2_, i2_], A[p3_, i3_], A[p4_, i4_], explicit -> True] := g \
+delta[adj, i1, i2] delta[adj, i3, i4];
+V[A[p1_, i1_], A[p2_, i2_], A[p3_, i3_], A[p4_, i4_], explicit -> True] :=  \
+S[A[p1, i1], A[p2, i2], A[p3, i3], A[p4, i4], explicit -> True];
+getAE[op[S[{A, i1}, {A, r1}, {A, r2}, {A, s1}], P[{A, r1}, {A, s2}], P[{A, \
+r2}, {A, t2}], P[{A, s1}, {A, u2}], V[{A, i2}, {A, s2}, {A, t2}, {A, u2}]], \
+{{A, i1, p1, a}, {A, i2, p2, b}}] // integrateDeltas\
+\>"]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    TemplateBox[{6},
+     "Spacer1"]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None, "Normal", Automatic},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell["The following options can be given: ", "Notes"],
+
+Cell["", "SectionFooterSpacer"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]]],
+ "Related Guides"
+}], "MoreAboutSection",
+ WholeCellGroupOpener->True,
+ CellID->38303248],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["Welcome to DoFun"]],"paclet:DoFun/guide/Welcome to DoFun"},
+  "RefLink",
+  BaseStyle->"MoreAbout"]], "MoreAbout",
+ CellID->1]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"getAE",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:DoFun/guide/DoFun", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2018, 4, 14, 14, 45, 1.029765}", 
+    "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoAE`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
+    "status" -> "None", "summary" -> 
+    "Transforms a DSE or RGE in symbolic form into an algebraic expression. \
+Syntax: getAE[exp, legs, opts] where exp is a DSE or RGE in symbolic form and \
+legs is a list of the following form: {{field1, symInd1, mom1, inds1}, \
+{field2, symInd2, mom2, inds2}, ...}. Each individual list correponds to one \
+external leg of the diagram, where fieldi indicates the field name, symbIndi \
+the index in the symbolic form and momi and indsi the momentum and the \
+indices for the algebraic form . Options: A useful option is explicit -> \
+False. If it is given, the propagators and vertices are not replaced by their \
+algebraic form but with the generic expressions, which, however, already \
+contain all indices. Another option is save. If set to true, it saves the \
+results which can speed up repeated calculations. Should be used with care. \
+Example: This example takes the so-called sunset diagram from the DSE of a \
+field A. It has only one index adj. For illustration purposes the propagator \
+and the vertices are taken as simple expressions. Here we show the generic \
+structure in terms of propagators and vertices: \
+defineFieldsSpecific[{A[momentum, adj]}]; getAE[op[S[{A, i1}, {A, r1}, {A, \
+r2}, {A, s1}], P[{A, r1}, {A, s2}], P[{A, r2}, {A, t2}], P[{A, s1}, {A, u2}], \
+V[{A, i2}, {A, s2}, {A, t2}, {A, u2}]], {{A, i1, p1, a}, {A, i2, p2, b}}, \
+explicit -> False] And here we replace the generic propagators and vertices \
+by algebraic expressions and simplify the result with integrateDeltas: \
+defineFieldsSpecific[{A[momentum, adj]}]; P[A[p1_, i1_], A[p2_, i2_], \
+explicit -> True] := delta[adj, i1, i2]/p^2; S[A[p1_, i1_], A[p2_, i2_], \
+A[p3_, i3_], A[p4_, i4_], explicit -> True] := g delta[adj, i1, i2] \
+delta[adj, i3, i4]; V[A[p1_, i1_], A[p2_, i2_], A[p3_, i3_], A[p4_, i4_], \
+explicit -> True] := S[A[p1, i1], A[p2, i2], A[p3, i3], A[p4, i4], explicit \
+-> True]; getAE[op[S[{A, i1}, {A, r1}, {A, r2}, {A, s1}], P[{A, r1}, {A, \
+s2}], P[{A, r2}, {A, t2}], P[{A, s1}, {A, u2}], V[{A, i2}, {A, s2}, {A, t2}, \
+{A, u2}]], {{A, i1, p1, a}, {A, i2, p2, b}}] // integrateDeltas", 
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "getAE", "titlemodifier" -> 
+    "", "windowtitle" -> "getAE", "type" -> "Symbol", "uri" -> 
+    "DoFun/ref/getAE"}},
+CellContext->"Global`",
+FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[577, 21, 3025, 74, 70, "AnchorBarGrid",ExpressionUUID->"aba122f5-2bc5-48d8-8609-04838f3c6395",
+ CellID->1],
+Cell[3605, 97, 162, 6, 70, "ObjectNameGrid",ExpressionUUID->"e856ae67-76c9-4810-b90d-51e62707faf9"],
+Cell[3770, 105, 2279, 46, 70, "Usage",ExpressionUUID->"a62a77e1-f4b7-42cb-92c4-e288f696f6b4"],
+Cell[CellGroupData[{
+Cell[6074, 155, 621, 19, 70, "NotesSection",ExpressionUUID->"2ea82bc0-2db8-4e74-88a4-f4f232d0de0e",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1],
+Cell[6698, 176, 31, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"5c114fa4-0def-4c4a-bbbd-dd2173f27935"],
+Cell[6732, 178, 53, 0, 70, "Notes",ExpressionUUID->"bccb8156-6536-495d-bb87-2f543d3d015f"],
+Cell[6788, 180, 31, 0, 70, "SectionFooterSpacer",ExpressionUUID->"c5880050-f0a5-421d-9797-e2e782153834"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[6856, 185, 156, 7, 70, "MoreAboutSection",ExpressionUUID->"18b6317e-37ff-4321-9b24-59ce2031ddb5",
+ CellID->38303248],
+Cell[7015, 194, 31, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"560249e1-fcb7-4637-a3a8-64f637058093"],
+Cell[7049, 196, 173, 5, 70, "MoreAbout",ExpressionUUID->"321b5c8a-70b8-494e-88ec-83ee766578a2",
+ CellID->1]
+}, Open  ]],
+Cell[7237, 204, 23, 0, 70, "FooterCell",ExpressionUUID->"8717ffcd-2ebf-4136-aff4-85a977970f75"]
+}
+]
+*)
+
+(* End of internal cache information *)

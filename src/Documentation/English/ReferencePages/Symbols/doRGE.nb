@@ -1,0 +1,3022 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[    116863,       3013]
+NotebookOptionsPosition[    111104,       2816]
+NotebookOutlinePosition[    111747,       2841]
+CellTagsIndexPosition[    111666,       2836]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ "New in: ",
+ Cell["XX", "HistoryData",
+  CellTags->"New"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete"],
+ " | Excised in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Excised"]
+}], "History",
+ CellID->1247902091],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->1122911449],
+
+Cell["Symbol", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->686433507],
+
+Cell["DoFun Package", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->878629210],
+
+Cell["DoFun`DoDSERGE`", "Categorization",
+ CellLabel->"Context",
+ CellID->338689171],
+
+Cell["DoFun/ref/doRGE", "Categorization",
+ CellLabel->"URI",
+ CellID->793544392]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->477174294],
+
+Cell["XXXX", "Keywords",
+ CellID->1164421360]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Syntax Templates", "TemplatesSection",
+ CellID->1872225408],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Additional Function Template",
+ CellID->1562036412],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Arguments Pattern",
+ CellID->158391909],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Local Variables",
+ CellID->1360575930],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Color Equal Signs",
+ CellID->793782254]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Details", "DetailsSection",
+ CellID->307771771],
+
+Cell["XXXX", "Details",
+ CellLabel->"Lead",
+ CellID->670882175],
+
+Cell["XXXX", "Details",
+ CellLabel->"Developers",
+ CellID->350963985],
+
+Cell["XXXX", "Details",
+ CellLabel->"Authors",
+ CellID->8391405],
+
+Cell["XXXX", "Details",
+ CellLabel->"Feature Name",
+ CellID->3610269],
+
+Cell["XXXX", "Details",
+ CellLabel->"QA",
+ CellID->401364205],
+
+Cell["XXXX", "Details",
+ CellLabel->"DA",
+ CellID->350204745],
+
+Cell["XXXX", "Details",
+ CellLabel->"Docs",
+ CellID->732958810],
+
+Cell["XXXX", "Details",
+ CellLabel->"Features Page Notes",
+ CellID->222905350],
+
+Cell["XXXX", "Details",
+ CellLabel->"Comments",
+ CellID->240026365]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["doRGE", "ObjectName",
+ CellID->1224892054],
+
+Cell[TextData[{
+ Cell[BoxData[
+  RowBox[{"doRGE", "[", 
+   RowBox[{
+    StyleBox["ac", "TI"], ",", " ", 
+    StyleBox["clis", "TI"]}], "]"}]], "InlineFormula"],
+ " with\n -) ",
+ StyleBox["ac",
+  FontSlant->"Italic"],
+ " an action,\n -) ",
+ StyleBox["clis",
+  FontSlant->"Italic"],
+ " a list of fields, which tell what DSE should be derived\n derives an RGE."
+}], "Usage",
+ CellChangeTimes->{{3.506753154406445*^9, 3.506753154623124*^9}, {
+   3.50702717655855*^9, 3.507027222873405*^9}, 3.507027257777748*^9}],
+
+Cell[TextData[{
+ Cell[BoxData[
+  RowBox[{"doRGE", "[", 
+   RowBox[{
+    StyleBox["ac", "TI"], ",", " ", 
+    StyleBox["clis", "TI"], ",", " ", 
+    StyleBox["propagators", "TI"], ",", " ", 
+    StyleBox["vertexTest", "TI"], ",", " ", 
+    StyleBox["opts", "TI"]}], "]"}]], "InlineFormula"],
+ " with \n -) ",
+ StyleBox["propagators",
+  FontSlant->"Italic"],
+ " a list of allowed propagators given in the form {{field1a, field1b}, \
+{field2a, field2b}, ...},\n -) ",
+ StyleBox["vertexTestFunction",
+  FontSlant->"Italic"],
+ " a function for determining if a vertex respects the symmetries of the \
+action,\n -) ",
+ StyleBox["opts",
+  FontSlant->"Italic"],
+ " options of doRGE\n derives an RGE.\n Note that the allowed propagators \
+will be taken from ac if the propagators argument is not given. It is \
+required, e.g., for actions with fields mixing at the two-point level."
+}], "Usage",
+ CellChangeTimes->{{3.506753154406445*^9, 3.506753154623124*^9}, {
+  3.50702717655855*^9, 3.5070272799564753`*^9}},
+ CellID->1966083699],
+
+Cell["The following options can be given: ", "Notes"],
+
+Cell[BoxData[GridBox[{
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["compareFunction",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFunDoDSERGE/ref/compareFunction"], 
+    ButtonBox["compareGraphs",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFun/ref/compareGraphs"], Cell["XXXX", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["identify",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFunDoDSERGE/ref/identify"], 
+    ButtonBox["True",
+     BaseStyle->"Link"], Cell["XXXX", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["sourcesZero",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFunDoDSERGE/ref/sourcesZero"], 
+    ButtonBox["True",
+     BaseStyle->"Link"], Cell["XXXX", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["specificFieldDefinitions",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFun/ref/specificFieldDefinitions"], 
+    RowBox[{"{", "}"}], Cell[TextData[{
+     "Defines bosons and Grassmann fields specifically.See  ",
+     Cell[BoxData[
+      ButtonBox["specificFieldDefinitions",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/specificFieldDefinitions"]], 
+      "InlineFormula"],
+     " for details.\n"
+    }], "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["symmetry",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFun/ref/symmetry"], 
+    ButtonBox["intact",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFun/ref/intact"], Cell["\<\
+By default the RGE is derived for the symmetric phase. Using symmetry broken \
+the RGE is derived for a non - vanishing vacuum expectation value. The \
+truncation in the broken phase is for RGEs based on the ansatz for the \
+effective average action given by ac.
+\
+\>", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["tDerivative",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFun/ref/tDerivative"], 
+    ButtonBox["True",
+     BaseStyle->"Link"], Cell["\<\
+By default the derivative with respect to the scale k is performed, which \
+creates the regulator insertion. If this should be suppressed, for example, \
+in order to study only the structure of the equations, this is done with \
+tDerivative -> False.
+\
+\>", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["userEvenFields",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFunDoDSERGE/ref/userEvenFields"], 
+    RowBox[{"{", "}"}], Cell["XXXX", "TableText"]}
+  }]], "3ColumnTableMod",
+ TaggingRules->{"Alphabetized" -> True},
+ CellChangeTimes->{{3.507027457060691*^9, 3.507027480686167*^9}},
+ CellID->263347130]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Tutorials", "TutorialsSection",
+ CellID->250839057],
+
+Cell["XXXX", "Tutorials",
+ CellID->341631938]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Demonstrations", "RelatedDemonstrationsSection",
+ CellID->1268215905],
+
+Cell["XXXX", "RelatedDemonstrations",
+ CellID->1129518860]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Links", "RelatedLinksSection",
+ CellID->1584193535],
+
+Cell["XXXX", "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",
+ CellID->1255426704],
+
+Cell["XXXX", "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More About", "MoreAboutSection",
+ CellID->38303248],
+
+Cell["XXXX", "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     StyleBox["Examples", "PrimaryExamplesSection"], 
+     ButtonBox[
+      RowBox[{
+       RowBox[{"More", " ", "Examples"}], " ", "\[RightTriangle]"}],
+      BaseStyle->"ExtendedExamplesLink",
+      ButtonData:>"ExtendedExamples"]}
+   }],
+  $Line = 0; Null]], "PrimaryExamplesSection",
+ CellID->880084151],
+
+Cell["\<\
+Two - point RGE of an O (N) symmetric scalar theory in the symmetric phase\
+\>", "Notes",
+ CellChangeTimes->{3.50702738733936*^9},
+ CellID->1507990930],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"rge", "=", 
+  RowBox[{"doRGE", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"phi", ",", " ", "phi"}], "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"phi", ",", " ", "phi", ",", " ", "phi", ",", " ", "phi"}], 
+       "}"}]}], "}"}], ",", " ", 
+    RowBox[{"{", 
+     RowBox[{"phi", ",", " ", "phi"}], "}"}]}], "]"}]}], "\n", 
+ RowBox[{"RGEPlot", "[", 
+  RowBox[{"rge", ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"phi", ",", "Black"}], "}"}], "}"}], ",", " ", 
+   RowBox[{"output", "->", "forceEquation"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.507027385382979*^9, 3.507027389354562*^9}},
+ CellLabel->"In[13]:=",
+ CellID->77520286],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox["1", "2"], " ", 
+  RowBox[{"op", "[", 
+   RowBox[{
+    RowBox[{"dR", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "r1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "s1"}], "}"}]}], "]"}], ",", 
+    RowBox[{"P", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "t1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "r1"}], "}"}]}], "]"}], ",", 
+    RowBox[{"P", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "s1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "v1"}], "}"}]}], "]"}], ",", 
+    RowBox[{"V", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "i1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "i2"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "v1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "t1"}], "}"}]}], "]"}]}], "]"}]}]], "Output",
+ CellChangeTimes->{3.5070273901613197`*^9},
+ CellLabel->"Out[13]=",
+ CellID->1724129706],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            
+            LineBox[{{1., 1.7958636867904636`*^-10}, {0., 
+             2.6937955301856953`*^-10}}]}, {
+            GrayLevel[0], 
+            LineBox[{{1., 1.7958636867904636`*^-10}, {2., 0.}}]}}, {
+           DiskBox[{1., 1.7958636867904636`*^-10}, 0.1], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {0.,
+              0.30000000026937956`}], 
+            DiskBox[{0., 2.6937955301856953`*^-10}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {2.,
+              0.3}], 
+            DiskBox[{2., 0.}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{1., 1.7958636867904636`*^-10}, {0., 
+           2.6937955301856953`*^-10}, {2., 0.}}]& ], AspectRatio -> Automatic,
+         FrameTicks -> None, PlotRange -> All, PlotRangePadding -> 
+        Scaled[0.1]],StyleBox[
+        TagBox[
+         SubscriptBox["\[PartialD]", "t"], DisplayForm], StripOnInput -> 
+        False, ShowStringCharacters -> False, FontSize :> 16],StyleBox[
+        TemplateBox[{
+          OverscriptBox[
+           StyleBox["\"\"", StripOnInput -> False, FontSize :> 50], 
+           StyleBox["\"-1\"", StripOnInput -> False, FontSize :> 16]], 
+          "\"=\""}, "Row", 
+         DisplayFunction -> (RowBox[{#, "\[InvisibleSpace]", #2}]& ), 
+         InterpretationFunction -> (RowBox[{"Row", "[", 
+            RowBox[{"{", 
+              RowBox[{#, ",", #2}], "}"}], "]"}]& )], StripOnInput -> False, 
+        ShowStringCharacters -> False, FontSize :> 16]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            
+            LineBox[{{0., 1.5000000000648026`}, {0.2050614622106851, 
+             1.580115880773232}, {0.23042079488599027`, 
+             1.5881959278753153`}, {0.25660412934674304`, 
+             1.5929725282798959`}, {0.2831830103415491, 
+             1.5943675193094806`}, {0.30972251002898016`, 
+             1.5923580738015033`}, {0.3357883449900354, 
+             1.5869770736443098`}, {0.3609539826954916, 
+             1.5783125717090338`}, {0.3848076211403082, 
+             1.5665063509821182`}, {0.7312177826391181, 1.366506350956197}, {
+             0.7533690889315137, 1.3517516044504396`}, {0.773455586568717, 
+             1.3342897738597108`}, {0.7911485868801664, 
+             1.3144065986885332`}, {0.8061585675780217, 
+             1.2924274405072311`}, {0.8182399104022036, 
+             1.2687119588449653`}, {0.8271949203347351, 
+             1.2436482258425383`}, {0.8328770606143175, 
+             1.2176463759708114`}, {0.8660254037470249, 1.}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.8660254037470249, 1.}, {0.6609639415363399, 
+             0.9198841192915708}, {0.6356046088610346, 0.9118040721894877}, {
+             0.6094212744002819, 0.907027471784907}, {0.5828423934054758, 
+             0.9056324807553222}, {0.5563028937180448, 0.9076419262632995}, {
+             0.5302370587569896, 0.913022926420493}, {0.5050714210515334, 
+             0.921687428355769}, {0.48121778260671677`, 0.9334936490826846}, {
+             0.13480762110790684`, 1.1334936491086058`}, {
+             0.11265631481551129`, 1.1482483956143632`}, {0.09256981717830794,
+              1.165710226205092}, {0.07487681686685851, 
+             1.1855934013762697`}, {0.05986683616900321, 
+             1.2075725595575717`}, {0.047785493344821295`, 
+             1.2312880412198375`}, {0.038830483412289785`, 
+             1.2563517742222645`}, {0.03314834313270734, 
+             1.2823536240939915`}, {0., 1.5000000000648026`}}]}, {
+            GrayLevel[0], 
+            LineBox[{{0.8660254037470249, 1.}, {0.866025403612335, 0.}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.8660254037470249, 1.}, {1.7320508076287395`, 
+             1.499999999831513}}]}}, {{
+            GrayLevel[0.4], 
+            
+            RectangleBox[{-0.1, 1.4000000000648025`}, {0.1, 
+             1.6000000000648027`}]}, 
+           DiskBox[{0.8660254037470249, 1.}, 0.1], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {
+             0.866025403612335, 0.3}], 
+            DiskBox[{0.866025403612335, 0.}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {
+             1.7320508076287395`, 1.799999999831513}], 
+            DiskBox[{1.7320508076287395`, 1.499999999831513}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{0., 1.5000000000648026`}, {
+           0.8660254037470249, 1.}, {0.866025403612335, 0.}, {
+           1.7320508076287395`, 1.499999999831513}}]& ], AspectRatio -> 
+        Automatic, FrameTicks -> None, PlotRange -> All, PlotRangePadding -> 
+        Scaled[0.1]],StyleBox[
+        TagBox[
+         RowBox[{
+           StyleBox[
+           "\"+\"", StripOnInput -> False, ShowStringCharacters -> False], 
+           FractionBox["1", "2"]}], DisplayForm], StripOnInput -> False, 
+        FontSize :> 16],OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     StyleBox["\<\"\"\>",
+      StripOnInput->False,
+      ShowStringCharacters->False], 
+     StyleBox["\<\"\"\>",
+      StripOnInput->False,
+      ShowStringCharacters->False], 
+     StyleBox["\<\"\"\>",
+      StripOnInput->False,
+      ShowStringCharacters->False]}
+   },
+   AutoDelete->False,
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{3.507027390196451*^9},
+ CellLabel->"Out[14]=",
+ CellID->150414479]
+}, Open  ]],
+
+Cell["\<\
+Two - point RGE of an O (N) symmetric scalar theory in the phase with broken \
+symmetry\
+\>", "Notes",
+ CellChangeTimes->{3.507027399187233*^9},
+ CellID->63166803],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"rge", "=", 
+  RowBox[{"doRGE", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"phi", ",", " ", "phi"}], "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"phi", ",", " ", "phi", ",", " ", "phi", ",", " ", "phi"}], 
+       "}"}]}], "}"}], ",", " ", 
+    RowBox[{"{", 
+     RowBox[{"phi", ",", " ", "phi"}], "}"}], ",", " ", 
+    RowBox[{"symmetry", "->", "broken"}]}], "]"}]}], "\n", 
+ RowBox[{"RGEPlot", "[", 
+  RowBox[{"rge", ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"phi", ",", "Black"}], "}"}], "}"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.507027385382979*^9, 3.5070274017625*^9}},
+ CellLabel->"In[15]:=",
+ CellID->113539093],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   FractionBox["1", "2"], " ", 
+   RowBox[{"op", "[", 
+    RowBox[{
+     RowBox[{"dR", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "r1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "s1"}], "}"}]}], "]"}], ",", 
+     RowBox[{"P", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "t1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "r1"}], "}"}]}], "]"}], ",", 
+     RowBox[{"P", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "s1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "v1"}], "}"}]}], "]"}], ",", 
+     RowBox[{"V", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "i1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "i2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "v1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "t1"}], "}"}]}], "]"}]}], "]"}]}], "+", 
+  RowBox[{"op", "[", 
+   RowBox[{
+    RowBox[{"V", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "i1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "r1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "r2"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "s1"}], "}"}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"phi", ",", "s1"}], "}"}], ",", 
+    RowBox[{"P", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "r2"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "t2"}], "}"}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"phi", ",", "u1"}], "}"}], ",", 
+    RowBox[{"V", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "i2"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "t2"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "v1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "u1"}], "}"}]}], "]"}], ",", 
+    RowBox[{"dR", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "w1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "w2"}], "}"}]}], "]"}], ",", 
+    RowBox[{"P", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "r1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "w1"}], "}"}]}], "]"}], ",", 
+    RowBox[{"P", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "w2"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "v1"}], "}"}]}], "]"}]}], "]"}]}]], "Output",
+ CellChangeTimes->{3.507027403636273*^9},
+ CellLabel->"Out[15]=",
+ CellID->527841755],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            
+            LineBox[{{1., 1.7958636867904636`*^-10}, {0., 
+             2.6937955301856953`*^-10}}]}, {
+            GrayLevel[0], 
+            LineBox[{{1., 1.7958636867904636`*^-10}, {2., 0.}}]}}, {
+           DiskBox[{1., 1.7958636867904636`*^-10}, 0.1], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {0.,
+              0.30000000026937956`}], 
+            DiskBox[{0., 2.6937955301856953`*^-10}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {2.,
+              0.3}], 
+            DiskBox[{2., 0.}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{1., 1.7958636867904636`*^-10}, {0., 
+           2.6937955301856953`*^-10}, {2., 0.}}]& ], AspectRatio -> Automatic,
+         FrameTicks -> None, PlotRange -> All, PlotRangePadding -> 
+        Scaled[0.1]],StyleBox[
+        TagBox[
+         SubscriptBox["\[PartialD]", "t"], DisplayForm], StripOnInput -> 
+        False, ShowStringCharacters -> False, FontSize :> 16],StyleBox[
+        TemplateBox[{
+          OverscriptBox[
+           StyleBox["\"\"", StripOnInput -> False, FontSize :> 50], 
+           StyleBox["\"-1\"", StripOnInput -> False, FontSize :> 16]], 
+          "\"=\""}, "Row", 
+         DisplayFunction -> (RowBox[{#, "\[InvisibleSpace]", #2}]& ), 
+         InterpretationFunction -> (RowBox[{"Row", "[", 
+            RowBox[{"{", 
+              RowBox[{#, ",", #2}], "}"}], "]"}]& )], StripOnInput -> False, 
+        ShowStringCharacters -> False, FontSize :> 16]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            
+            LineBox[{{0., 1.5000000000648026`}, {0.2050614622106851, 
+             1.580115880773232}, {0.23042079488599027`, 
+             1.5881959278753153`}, {0.25660412934674304`, 
+             1.5929725282798959`}, {0.2831830103415491, 
+             1.5943675193094806`}, {0.30972251002898016`, 
+             1.5923580738015033`}, {0.3357883449900354, 
+             1.5869770736443098`}, {0.3609539826954916, 
+             1.5783125717090338`}, {0.3848076211403082, 
+             1.5665063509821182`}, {0.7312177826391181, 1.366506350956197}, {
+             0.7533690889315137, 1.3517516044504396`}, {0.773455586568717, 
+             1.3342897738597108`}, {0.7911485868801664, 
+             1.3144065986885332`}, {0.8061585675780217, 
+             1.2924274405072311`}, {0.8182399104022036, 
+             1.2687119588449653`}, {0.8271949203347351, 
+             1.2436482258425383`}, {0.8328770606143175, 
+             1.2176463759708114`}, {0.8660254037470249, 1.}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.8660254037470249, 1.}, {0.6609639415363399, 
+             0.9198841192915708}, {0.6356046088610346, 0.9118040721894877}, {
+             0.6094212744002819, 0.907027471784907}, {0.5828423934054758, 
+             0.9056324807553222}, {0.5563028937180448, 0.9076419262632995}, {
+             0.5302370587569896, 0.913022926420493}, {0.5050714210515334, 
+             0.921687428355769}, {0.48121778260671677`, 0.9334936490826846}, {
+             0.13480762110790684`, 1.1334936491086058`}, {
+             0.11265631481551129`, 1.1482483956143632`}, {0.09256981717830794,
+              1.165710226205092}, {0.07487681686685851, 
+             1.1855934013762697`}, {0.05986683616900321, 
+             1.2075725595575717`}, {0.047785493344821295`, 
+             1.2312880412198375`}, {0.038830483412289785`, 
+             1.2563517742222645`}, {0.03314834313270734, 
+             1.2823536240939915`}, {0., 1.5000000000648026`}}]}, {
+            GrayLevel[0], 
+            LineBox[{{0.8660254037470249, 1.}, {0.866025403612335, 0.}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.8660254037470249, 1.}, {1.7320508076287395`, 
+             1.499999999831513}}]}}, {{
+            GrayLevel[0.4], 
+            
+            RectangleBox[{-0.1, 1.4000000000648025`}, {0.1, 
+             1.6000000000648027`}]}, 
+           DiskBox[{0.8660254037470249, 1.}, 0.1], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {
+             0.866025403612335, 0.3}], 
+            DiskBox[{0.866025403612335, 0.}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {
+             1.7320508076287395`, 1.799999999831513}], 
+            DiskBox[{1.7320508076287395`, 1.499999999831513}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{0., 1.5000000000648026`}, {
+           0.8660254037470249, 1.}, {0.866025403612335, 0.}, {
+           1.7320508076287395`, 1.499999999831513}}]& ], AspectRatio -> 
+        Automatic, FrameTicks -> None, PlotRange -> All, PlotRangePadding -> 
+        Scaled[0.1]],StyleBox[
+        TagBox[
+         RowBox[{
+           StyleBox[
+           "\"+\"", StripOnInput -> False, ShowStringCharacters -> False], 
+           FractionBox["1", "2"]}], DisplayForm], StripOnInput -> False, 
+        FontSize :> 16],OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            
+            LineBox[{{2.142664797798811, 0.7367834664178995}, {
+             0.9018661135681147, 0.736548550904383}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.142664797798811, 0.7367834664178995}, {
+             1.5220550421482644`, 1.2390961867917565`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.142664797798811, 0.7367834664178995}, {
+             3.044512104948347, 1.2319565357158562`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.142664797798811, 0.7367834664178995}, {
+             2.8445507691616543`, 0.00188997661124235}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.9018661135681147, 0.736548550904383}, {
+             0.20054780773297254`, 0.}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.9018661135681147, 0.736548550904383}, {0., 
+             1.2333429609276871`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.5220550421482644`, 1.2390961867917565`}, {
+             0.9018661135681147, 0.736548550904383}}]}}, {
+           DiskBox[{2.142664797798811, 0.7367834664178995}, 0.1], 
+           DiskBox[{0.9018661135681147, 0.736548550904383}, 0.1], {
+            GrayLevel[0.4], 
+            RectangleBox[{1.4220550421482643`, 1.1390961867917564`}, {
+             1.6220550421482645`, 1.3390961867917566`}]}, {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {
+             0.20054780773297254`, 0.3}], 
+            DiskBox[{0.20054780773297254`, 0.}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {
+             3.044512104948347, 1.5319565357158562`}], 
+            DiskBox[{3.044512104948347, 1.2319565357158562`}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  s1\"", StripOnInput -> False, FontSize :> 14], {0.,
+              1.5333429609276872`}], 
+            CircleBox[{0., 1.2333429609276871`}, 0.1]}, {
+            InsetBox[
+             StyleBox["\"  u1\"", StripOnInput -> False, FontSize :> 14], {
+             2.8445507691616543`, 0.30188997661124234`}], 
+            CircleBox[{2.8445507691616543`, 0.00188997661124235}, 0.1]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{2.142664797798811, 0.7367834664178995}, {
+           0.9018661135681147, 0.736548550904383}, {1.5220550421482644`, 
+           1.2390961867917565`}, {0.20054780773297254`, 0.}, {
+           3.044512104948347, 1.2319565357158562`}, {0., 
+           1.2333429609276871`}, {2.8445507691616543`, 
+           0.00188997661124235}}]& ], AspectRatio -> Automatic, FrameTicks -> 
+        None, PlotRange -> All, PlotRangePadding -> Scaled[0.1]],StyleBox[
+        StyleBox[
+        "\"+\"", StripOnInput -> False, ShowStringCharacters -> False], 
+        StripOnInput -> False, FontSize :> 16],OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     StyleBox["\<\"\"\>",
+      StripOnInput->False,
+      ShowStringCharacters->False], 
+     StyleBox["\<\"\"\>",
+      StripOnInput->False,
+      ShowStringCharacters->False]}
+   },
+   AutoDelete->False,
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{3.507027403693706*^9},
+ CellLabel->"Out[16]=",
+ CellID->1089275715]
+}, Open  ]],
+
+Cell["\<\
+Three - gluon RGE of Landau gauge Yang - Mills theory with the four - point \
+vertices discarded\
+\>", "Notes",
+ CellChangeTimes->{{3.507027385382979*^9, 3.507027414426709*^9}},
+ CellID->1178081677],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "@", "vTest"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{" ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"vTest", "[", "a_V", "]"}], " ", ":=", " ", 
+    RowBox[{
+     RowBox[{"Length", "@", "a"}], " ", "<", " ", "4"}]}], ";"}]}], "\n", 
+ RowBox[{
+  RowBox[{"rge", " ", "=", " ", 
+   RowBox[{"doRGE", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"A", ",", " ", "A"}], "}"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"c", ",", " ", "cb"}], "}"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"A", ",", " ", "A", ",", " ", "A"}], "}"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"A", ",", " ", "cb", ",", " ", "c"}], "}"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"A", ",", " ", "A", ",", " ", "A", ",", " ", "A"}], "}"}]}], 
+      "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"A", ",", " ", "A", ",", " ", "A"}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"A", ",", " ", "A"}], "}"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"c", ",", " ", "cb"}], "}"}]}], "}"}], ",", " ", "vTest"}], 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{"RGEPlot", "[", 
+  RowBox[{"rge", ",", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"A", ",", " ", "Red"}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"c", ",", " ", "Green", ",", " ", "Dashed"}], "}"}]}], "}"}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.507027385382979*^9, 3.507027419384354*^9}},
+ CellLabel->"In[17]:=",
+ CellID->1274467884],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            RGBColor[1, 0, 0], 
+            
+            LineBox[{{0.866025403747025, 1.0000000000000002`}, {0., 
+             1.5000000000648028`}}]}, {
+            RGBColor[1, 0, 0], 
+            
+            LineBox[{{0.866025403747025, 1.0000000000000002`}, {
+             0.8660254036123352, 0.}}]}, {
+            RGBColor[1, 0, 0], 
+            
+            LineBox[{{0.866025403747025, 1.0000000000000002`}, {
+             1.7320508076287395`, 1.4999999998315134`}}]}}, {
+           DiskBox[{0.866025403747025, 1.0000000000000002`}, 0.1], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {0.,
+              1.8000000000648029`}], 
+            DiskBox[{0., 1.5000000000648028`}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {
+             0.8660254036123352, 0.3}], 
+            DiskBox[{0.8660254036123352, 0.}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i3\"", StripOnInput -> False, FontSize :> 14], {
+             1.7320508076287395`, 1.7999999998315135`}], 
+            DiskBox[{1.7320508076287395`, 1.4999999998315134`}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{0.866025403747025, 
+           1.0000000000000002`}, {0., 1.5000000000648028`}, {
+           0.8660254036123352, 0.}, {1.7320508076287395`, 
+           1.4999999998315134`}}]& ], AspectRatio -> Automatic, FrameTicks -> 
+        None, PlotRange -> All, PlotRangePadding -> Scaled[0.1]],StyleBox[
+        TagBox[
+         SubscriptBox["\[PartialD]", "t"], DisplayForm], StripOnInput -> 
+        False, ShowStringCharacters -> False, FontSize :> 16],StyleBox[
+        TemplateBox[{
+          OverscriptBox[
+           StyleBox["\"\"", StripOnInput -> False, FontSize :> 50], 
+           StyleBox["\"\"", StripOnInput -> False, FontSize :> 16]], "\"=\""},
+          "Row", DisplayFunction -> (RowBox[{#, "\[InvisibleSpace]", #2}]& ), 
+         InterpretationFunction -> (RowBox[{"Row", "[", 
+            RowBox[{"{", 
+              RowBox[{#, ",", #2}], "}"}], "]"}]& )], StripOnInput -> False, 
+        ShowStringCharacters -> False, FontSize :> 16]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            RGBColor[1, 0, 0], 
+            
+            LineBox[{{1.7711861955126975`, 0.}, {0.9677641743426474, 
+             0.4566034213656828}}]}, {
+            RGBColor[1, 0, 0], 
+            
+            LineBox[{{0.9677641743426474, 0.4566034213656828}, {0., 
+             0.2111871093968275}}]}, {
+            RGBColor[1, 0, 0], 
+            
+            LineBox[{{2.5738218108812205`, 0.4570607020856339}, {
+             1.7711861955126975`, 0.}}]}, {
+            RGBColor[1, 0, 0], 
+            
+            LineBox[{{2.5738218108812205`, 0.4570607020856339}, {
+             3.540876528839112, 0.21012783706394372`}}]}, {
+            RGBColor[1, 0, 0], 
+            
+            LineBox[{{1.7708308144807992`, 1.1677521539125293`}, {
+             2.5738218108812205`, 0.4570607020856339}}]}, {
+            RGBColor[1, 0, 0], 
+            
+            LineBox[{{1.7708308144807992`, 1.1677521539125293`}, {
+             0.9677641743426474, 0.4566034213656828}}]}, {
+            RGBColor[1, 0, 0], 
+            
+            LineBox[{{1.7708308144807992`, 1.1677521539125293`}, {
+             1.7717446060843418`, 2.167454290077298}}]}}, {{
+            GrayLevel[0.4], 
+            
+            RectangleBox[{1.6711861955126974`, -0.1}, {1.8711861955126976`, 
+             0.1}]}, 
+           DiskBox[{0.9677641743426474, 0.4566034213656828}, 0.1], 
+           DiskBox[{2.5738218108812205`, 0.4570607020856339}, 0.1], 
+           DiskBox[{1.7708308144807992`, 1.1677521539125293`}, 0.1], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {0.,
+              0.5111871093968274}], 
+            DiskBox[{0., 0.2111871093968275}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {
+             3.540876528839112, 0.5101278370639437}], 
+            DiskBox[{3.540876528839112, 0.21012783706394372`}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i3\"", StripOnInput -> False, FontSize :> 14], {
+             1.7717446060843418`, 2.4674542900772978`}], 
+            DiskBox[{1.7717446060843418`, 2.167454290077298}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{1.7711861955126975`, 0.}, {
+           0.9677641743426474, 0.4566034213656828}, {2.5738218108812205`, 
+           0.4570607020856339}, {1.7708308144807992`, 1.1677521539125293`}, {
+           0., 0.2111871093968275}, {3.540876528839112, 
+           0.21012783706394372`}, {1.7717446060843418`, 
+           2.167454290077298}}]& ], AspectRatio -> Automatic, FrameTicks -> 
+        None, PlotRange -> All, PlotRangePadding -> Scaled[0.1]],StyleBox[
+        StyleBox[
+        "\"-\"", StripOnInput -> False, ShowStringCharacters -> False], 
+        StripOnInput -> False, FontSize :> 16],OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            RGBColor[1, 0, 0], 
+            
+            LineBox[{{2.573170745535207, 0.45651236374686477`}, {
+             1.7718366032274422`, 1.1679313866865042`}}]}, {
+            RGBColor[1, 0, 0], 
+            
+            LineBox[{{2.573170745535207, 0.45651236374686477`}, {
+             3.5411842790001318`, 0.20972367875561082`}}]}, {
+            RGBColor[1, 0, 0], 
+            
+            LineBox[{{1.7718366032274422`, 1.1679313866865042`}, {
+             1.773994896370992, 2.167881883491486}}]}, {
+            RGBColor[1, 0, 0], 
+            
+            LineBox[{{1.7697280092690966`, 0.}, {2.573170745535207, 
+             0.45651236374686477`}}]}, {
+            RGBColor[1, 0, 0], 
+            
+            LineBox[{{0.9680533195562812, 0.45847386022467623`}, {
+             1.7697280092690966`, 0.}}]}, {
+            RGBColor[1, 0, 0], 
+            
+            LineBox[{{0.9680533195562812, 0.45847386022467623`}, {
+             1.7718366032274422`, 1.1679313866865042`}}]}, {
+            RGBColor[1, 0, 0], 
+            
+            LineBox[{{0.9680533195562812, 0.45847386022467623`}, {0., 
+             0.21239070343360422`}}]}}, {
+           DiskBox[{2.573170745535207, 0.45651236374686477`}, 0.1], 
+           DiskBox[{1.7718366032274422`, 1.1679313866865042`}, 0.1], {
+            GrayLevel[0.4], 
+            
+            RectangleBox[{1.6697280092690965`, -0.1}, {1.8697280092690967`, 
+             0.1}]}, 
+           DiskBox[{0.9680533195562812, 0.45847386022467623`}, 0.1], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {
+             1.773994896370992, 2.467881883491486}], 
+            DiskBox[{1.773994896370992, 2.167881883491486}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {
+             3.5411842790001318`, 0.5097236787556108}], 
+            DiskBox[{3.5411842790001318`, 0.20972367875561082`}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i3\"", StripOnInput -> False, FontSize :> 14], {0.,
+              0.5123907034336042}], 
+            DiskBox[{0., 0.21239070343360422`}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{2.573170745535207, 
+           0.45651236374686477`}, {1.7718366032274422`, 
+           1.1679313866865042`}, {1.7697280092690966`, 0.}, {
+           0.9680533195562812, 0.45847386022467623`}, {1.773994896370992, 
+           2.167881883491486}, {3.5411842790001318`, 0.20972367875561082`}, {
+           0., 0.21239070343360422`}}]& ], AspectRatio -> Automatic, 
+        FrameTicks -> None, PlotRange -> All, PlotRangePadding -> 
+        Scaled[0.1]],StyleBox[
+        StyleBox[
+        "\"-\"", StripOnInput -> False, ShowStringCharacters -> False], 
+        StripOnInput -> False, FontSize :> 16],OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            RGBColor[1, 0, 0], 
+            
+            LineBox[{{1.7662465349958205`, 0.9995211461642308}, {
+             2.573309847234204, 1.7061014887070174`}}]}, {
+            RGBColor[1, 0, 0], 
+            
+            LineBox[{{1.7662465349958205`, 0.9995211461642308}, {
+             1.7558212290984656`, 0.}}]}, {
+            RGBColor[1, 0, 0], 
+            
+            LineBox[{{2.573309847234204, 1.7061014887070174`}, {
+             3.541963443955982, 1.9499238454345473`}}]}, {
+            RGBColor[1, 0, 0], 
+            
+            LineBox[{{0.9670120060961336, 1.7127585571683877`}, {
+             1.7662465349958205`, 0.9995211461642308}}]}, {
+            RGBColor[1, 0, 0], 
+            
+            LineBox[{{0.9670120060961336, 1.7127585571683877`}, {
+             1.7727744576734783`, 2.1665259556265943`}}]}, {
+            RGBColor[1, 0, 0], 
+            
+            LineBox[{{0.9670120060961336, 1.7127585571683877`}, {0., 
+             1.9615585819431969`}}]}, {
+            RGBColor[1, 0, 0], 
+            
+            LineBox[{{1.7727744576734783`, 2.1665259556265943`}, {
+             2.573309847234204, 1.7061014887070174`}}]}}, {
+           DiskBox[{1.7662465349958205`, 0.9995211461642308}, 0.1], 
+           DiskBox[{2.573309847234204, 1.7061014887070174`}, 0.1], 
+           DiskBox[{0.9670120060961336, 1.7127585571683877`}, 0.1], {
+            GrayLevel[0.4], 
+            RectangleBox[{1.6727744576734782`, 2.0665259556265942`}, {
+             1.8727744576734784`, 2.2665259556265944`}]}, {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {
+             3.541963443955982, 2.249923845434547}], 
+            DiskBox[{3.541963443955982, 1.9499238454345473`}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {
+             1.7558212290984656`, 0.3}], 
+            DiskBox[{1.7558212290984656`, 0.}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i3\"", StripOnInput -> False, FontSize :> 14], {0.,
+              2.2615585819431967`}], 
+            DiskBox[{0., 1.9615585819431969`}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{1.7662465349958205`, 
+           0.9995211461642308}, {2.573309847234204, 1.7061014887070174`}, {
+           0.9670120060961336, 1.7127585571683877`}, {1.7727744576734783`, 
+           2.1665259556265943`}, {3.541963443955982, 1.9499238454345473`}, {
+           1.7558212290984656`, 0.}, {0., 1.9615585819431969`}}]& ], 
+        AspectRatio -> Automatic, FrameTicks -> None, PlotRange -> All, 
+        PlotRangePadding -> Scaled[0.1]],StyleBox[
+        StyleBox[
+        "\"-\"", StripOnInput -> False, ShowStringCharacters -> False], 
+        StripOnInput -> False, FontSize :> 16],OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            RGBColor[0, 1, 0], 
+            Dashing[{Small, Small}], 
+            Arrowheads[0.075], 
+            
+            ArrowBox[{{1.7711861955126975`, 0.}, {0.9677641743426474, 
+             0.4566034213656828}}]}, {
+            RGBColor[0, 1, 0], 
+            Dashing[{Small, Small}], 
+            Arrowheads[0.075], 
+            
+            ArrowBox[{{0.9677641743426474, 0.4566034213656828}, {
+             1.7708308144807992`, 1.1677521539125293`}}]}, {
+            RGBColor[1, 0, 0], 
+            
+            LineBox[{{0.9677641743426474, 0.4566034213656828}, {0., 
+             0.2111871093968275}}]}, {
+            RGBColor[0, 1, 0], 
+            Dashing[{Small, Small}], 
+            Arrowheads[0.075], 
+            
+            ArrowBox[{{2.5738218108812205`, 0.4570607020856339}, {
+             1.7711861955126975`, 0.}}]}, {
+            RGBColor[1, 0, 0], 
+            
+            LineBox[{{2.5738218108812205`, 0.4570607020856339}, {
+             3.540876528839112, 0.21012783706394372`}}]}, {
+            RGBColor[0, 1, 0], 
+            Dashing[{Small, Small}], 
+            Arrowheads[0.075], 
+            
+            ArrowBox[{{1.7708308144807992`, 1.1677521539125293`}, {
+             2.5738218108812205`, 0.4570607020856339}}]}, {
+            RGBColor[1, 0, 0], 
+            
+            LineBox[{{1.7708308144807992`, 1.1677521539125293`}, {
+             1.7717446060843418`, 2.167454290077298}}]}}, {{
+            GrayLevel[0.4], 
+            
+            RectangleBox[{1.6711861955126974`, -0.1}, {1.8711861955126976`, 
+             0.1}]}, 
+           DiskBox[{0.9677641743426474, 0.4566034213656828}, 0.1], 
+           DiskBox[{2.5738218108812205`, 0.4570607020856339}, 0.1], 
+           DiskBox[{1.7708308144807992`, 1.1677521539125293`}, 0.1], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {0.,
+              0.5111871093968274}], 
+            DiskBox[{0., 0.2111871093968275}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {
+             3.540876528839112, 0.5101278370639437}], 
+            DiskBox[{3.540876528839112, 0.21012783706394372`}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i3\"", StripOnInput -> False, FontSize :> 14], {
+             1.7717446060843418`, 2.4674542900772978`}], 
+            DiskBox[{1.7717446060843418`, 2.167454290077298}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{1.7711861955126975`, 0.}, {
+           0.9677641743426474, 0.4566034213656828}, {2.5738218108812205`, 
+           0.4570607020856339}, {1.7708308144807992`, 1.1677521539125293`}, {
+           0., 0.2111871093968275}, {3.540876528839112, 
+           0.21012783706394372`}, {1.7717446060843418`, 
+           2.167454290077298}}]& ], AspectRatio -> Automatic, FrameTicks -> 
+        None, PlotRange -> All, PlotRangePadding -> Scaled[0.1]],StyleBox[
+        TagBox[
+         RowBox[{
+           StyleBox[
+           "\"+\"", StripOnInput -> False, ShowStringCharacters -> False], 
+           "2"}], DisplayForm], StripOnInput -> False, FontSize :> 16],
+       OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )]},
+    {
+     StyleBox["\<\"\"\>",
+      StripOnInput->False,
+      ShowStringCharacters->False], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            RGBColor[0, 1, 0], 
+            Dashing[{Small, Small}], 
+            Arrowheads[0.075], 
+            
+            ArrowBox[{{2.573170745535207, 0.45651236374686477`}, {
+             1.7718366032274422`, 1.1679313866865042`}}]}, {
+            RGBColor[1, 0, 0], 
+            
+            LineBox[{{2.573170745535207, 0.45651236374686477`}, {
+             3.5411842790001318`, 0.20972367875561082`}}]}, {
+            RGBColor[0, 1, 0], 
+            Dashing[{Small, Small}], 
+            Arrowheads[0.075], 
+            
+            ArrowBox[{{1.7718366032274422`, 1.1679313866865042`}, {
+             0.9680533195562812, 0.45847386022467623`}}]}, {
+            RGBColor[1, 0, 0], 
+            
+            LineBox[{{1.7718366032274422`, 1.1679313866865042`}, {
+             1.773994896370992, 2.167881883491486}}]}, {
+            RGBColor[0, 1, 0], 
+            Dashing[{Small, Small}], 
+            Arrowheads[0.075], 
+            
+            ArrowBox[{{1.7697280092690966`, 0.}, {2.573170745535207, 
+             0.45651236374686477`}}]}, {
+            RGBColor[0, 1, 0], 
+            Dashing[{Small, Small}], 
+            Arrowheads[0.075], 
+            
+            ArrowBox[{{0.9680533195562812, 0.45847386022467623`}, {
+             1.7697280092690966`, 0.}}]}, {
+            RGBColor[1, 0, 0], 
+            
+            LineBox[{{0.9680533195562812, 0.45847386022467623`}, {0., 
+             0.21239070343360422`}}]}}, {
+           DiskBox[{2.573170745535207, 0.45651236374686477`}, 0.1], 
+           DiskBox[{1.7718366032274422`, 1.1679313866865042`}, 0.1], {
+            GrayLevel[0.4], 
+            
+            RectangleBox[{1.6697280092690965`, -0.1}, {1.8697280092690967`, 
+             0.1}]}, 
+           DiskBox[{0.9680533195562812, 0.45847386022467623`}, 0.1], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {
+             1.773994896370992, 2.467881883491486}], 
+            DiskBox[{1.773994896370992, 2.167881883491486}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {
+             3.5411842790001318`, 0.5097236787556108}], 
+            DiskBox[{3.5411842790001318`, 0.20972367875561082`}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i3\"", StripOnInput -> False, FontSize :> 14], {0.,
+              0.5123907034336042}], 
+            DiskBox[{0., 0.21239070343360422`}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{2.573170745535207, 
+           0.45651236374686477`}, {1.7718366032274422`, 
+           1.1679313866865042`}, {1.7697280092690966`, 0.}, {
+           0.9680533195562812, 0.45847386022467623`}, {1.773994896370992, 
+           2.167881883491486}, {3.5411842790001318`, 0.20972367875561082`}, {
+           0., 0.21239070343360422`}}]& ], AspectRatio -> Automatic, 
+        FrameTicks -> None, PlotRange -> All, PlotRangePadding -> 
+        Scaled[0.1]],StyleBox[
+        TagBox[
+         RowBox[{
+           StyleBox[
+           "\"+\"", StripOnInput -> False, ShowStringCharacters -> False], 
+           "2"}], DisplayForm], StripOnInput -> False, FontSize :> 16],
+       OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            RGBColor[0, 1, 0], 
+            Dashing[{Small, Small}], 
+            Arrowheads[0.075], 
+            
+            ArrowBox[{{1.7662465349958205`, 0.9995211461642308}, {
+             2.573309847234204, 1.7061014887070174`}}]}, {
+            RGBColor[1, 0, 0], 
+            
+            LineBox[{{1.7662465349958205`, 0.9995211461642308}, {
+             1.7558212290984656`, 0.}}]}, {
+            RGBColor[0, 1, 0], 
+            Dashing[{Small, Small}], 
+            Arrowheads[0.075], 
+            
+            ArrowBox[{{2.573309847234204, 1.7061014887070174`}, {
+             1.7727744576734783`, 2.1665259556265943`}}]}, {
+            RGBColor[1, 0, 0], 
+            
+            LineBox[{{2.573309847234204, 1.7061014887070174`}, {
+             3.541963443955982, 1.9499238454345473`}}]}, {
+            RGBColor[0, 1, 0], 
+            Dashing[{Small, Small}], 
+            Arrowheads[0.075], 
+            
+            ArrowBox[{{0.9670120060961336, 1.7127585571683877`}, {
+             1.7662465349958205`, 0.9995211461642308}}]}, {
+            RGBColor[1, 0, 0], 
+            
+            LineBox[{{0.9670120060961336, 1.7127585571683877`}, {0., 
+             1.9615585819431969`}}]}, {
+            RGBColor[0, 1, 0], 
+            Dashing[{Small, Small}], 
+            Arrowheads[0.075], 
+            
+            ArrowBox[{{1.7727744576734783`, 2.1665259556265943`}, {
+             0.9670120060961336, 1.7127585571683877`}}]}}, {
+           DiskBox[{1.7662465349958205`, 0.9995211461642308}, 0.1], 
+           DiskBox[{2.573309847234204, 1.7061014887070174`}, 0.1], 
+           DiskBox[{0.9670120060961336, 1.7127585571683877`}, 0.1], {
+            GrayLevel[0.4], 
+            
+            RectangleBox[{1.6727744576734782`, 2.0665259556265942`}, {
+             1.8727744576734784`, 2.2665259556265944`}]}, {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {
+             3.541963443955982, 2.249923845434547}], 
+            DiskBox[{3.541963443955982, 1.9499238454345473`}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {
+             1.7558212290984656`, 0.3}], 
+            DiskBox[{1.7558212290984656`, 0.}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i3\"", StripOnInput -> False, FontSize :> 14], {0.,
+              2.2615585819431967`}], 
+            DiskBox[{0., 1.9615585819431969`}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{1.7662465349958205`, 
+           0.9995211461642308}, {2.573309847234204, 1.7061014887070174`}, {
+           0.9670120060961336, 1.7127585571683877`}, {1.7727744576734783`, 
+           2.1665259556265943`}, {3.541963443955982, 1.9499238454345473`}, {
+           1.7558212290984656`, 0.}, {0., 1.9615585819431969`}}]& ], 
+        AspectRatio -> Automatic, FrameTicks -> None, PlotRange -> All, 
+        PlotRangePadding -> Scaled[0.1]],StyleBox[
+        TagBox[
+         RowBox[{
+           StyleBox[
+           "\"+\"", StripOnInput -> False, ShowStringCharacters -> False], 
+           "2"}], DisplayForm], StripOnInput -> False, FontSize :> 16],
+       OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     StyleBox["\<\"\"\>",
+      StripOnInput->False,
+      ShowStringCharacters->False], 
+     StyleBox["\<\"\"\>",
+      StripOnInput->False,
+      ShowStringCharacters->False]}
+   },
+   AutoDelete->False,
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{3.507027420007565*^9},
+ CellLabel->"Out[20]=",
+ CellID->2114370338]
+}, Open  ]],
+
+Cell["\<\
+Three - point RGE of phi^3 theory with no regulator insertions\
+\>", "Notes",
+ CellID->779757474],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"rge", " ", "=", " ", 
+  RowBox[{"doRGE", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"phi", ",", " ", "phi"}], "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "  ", "phi", ",", " ", "phi"}], "}"}]}], "}"}], 
+    ",", " ", 
+    RowBox[{"{", 
+     RowBox[{"phi", ",", " ", "phi", ",", " ", "phi"}], "}"}], ",", " ", 
+    RowBox[{"tDerivative", " ", "->", " ", "False"}]}], "]"}]}], "\n", 
+ RowBox[{"RGEPlot", "[", 
+  RowBox[{"rge", ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"phi", ",", " ", "Black"}], "}"}], "}"}], ",", " ", 
+   RowBox[{"output", " ", "->", " ", "forceEquation"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.5070273678080482`*^9, 3.507027368579344*^9}},
+ CellLabel->"In[11]:=",
+ CellID->797878136],
+
+Cell[BoxData[
+ RowBox[{"op", "[", 
+  RowBox[{
+   RowBox[{"V", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"phi", ",", "i1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"phi", ",", "r1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"phi", ",", "r2"}], "}"}]}], "]"}], ",", 
+   RowBox[{"P", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"phi", ",", "r2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"phi", ",", "s2"}], "}"}]}], "]"}], ",", 
+   RowBox[{"V", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"phi", ",", "i2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"phi", ",", "s2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"phi", ",", "t2"}], "}"}]}], "]"}], ",", 
+   RowBox[{"P", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"phi", ",", "t2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"phi", ",", "u2"}], "}"}]}], "]"}], ",", 
+   RowBox[{"V", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"phi", ",", "i3"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"phi", ",", "u2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"phi", ",", "v2"}], "}"}]}], "]"}], ",", 
+   RowBox[{"P", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"phi", ",", "r1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"phi", ",", "v2"}], "}"}]}], "]"}]}], "]"}]], "Output",
+ CellChangeTimes->{3.507027368916664*^9},
+ CellLabel->"Out[11]=",
+ CellID->1692674071],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            
+            LineBox[{{0.866025403747025, 1.0000000000000002`}, {0., 
+             1.5000000000648028`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.866025403747025, 1.0000000000000002`}, {
+             0.8660254036123352, 0.}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.866025403747025, 1.0000000000000002`}, {
+             1.7320508076287395`, 1.4999999998315134`}}]}}, {
+           DiskBox[{0.866025403747025, 1.0000000000000002`}, 0.1], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {0.,
+              1.8000000000648029`}], 
+            DiskBox[{0., 1.5000000000648028`}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {
+             0.8660254036123352, 0.3}], 
+            DiskBox[{0.8660254036123352, 0.}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i3\"", StripOnInput -> False, FontSize :> 14], {
+             1.7320508076287395`, 1.7999999998315135`}], 
+            DiskBox[{1.7320508076287395`, 1.4999999998315134`}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{0.866025403747025, 
+           1.0000000000000002`}, {0., 1.5000000000648028`}, {
+           0.8660254036123352, 0.}, {1.7320508076287395`, 
+           1.4999999998315134`}}]& ], AspectRatio -> Automatic, FrameTicks -> 
+        None, PlotRange -> All, PlotRangePadding -> Scaled[0.1]],StyleBox[
+        TagBox[
+         SubscriptBox["\[PartialD]", "t"], DisplayForm], StripOnInput -> 
+        False, ShowStringCharacters -> False, FontSize :> 16],StyleBox[
+        TemplateBox[{
+          OverscriptBox[
+           StyleBox["\"\"", StripOnInput -> False, FontSize :> 50], 
+           StyleBox["\"\"", StripOnInput -> False, FontSize :> 16]], "\"=\""},
+          "Row", DisplayFunction -> (RowBox[{#, "\[InvisibleSpace]", #2}]& ), 
+         InterpretationFunction -> (RowBox[{"Row", "[", 
+            RowBox[{"{", 
+              RowBox[{#, ",", #2}], "}"}], "]"}]& )], StripOnInput -> False, 
+        ShowStringCharacters -> False, FontSize :> 16]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            
+            LineBox[{{0.8868709623267607, 1.8660328530075407`}, {
+             1.8651069091358625`, 1.8686084473841065`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.8868709623267607, 1.8660328530075407`}, {0., 
+             2.3740667359000183`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.8651069091358625`, 1.8686084473841065`}, {
+             2.7504037053724524`, 2.3809616905033386`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.3783489113746588`, 1.0219701096862137`}, {
+             0.8868709623267607, 1.8660328530075407`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.3783489113746588`, 1.0219701096862137`}, {
+             1.8651069091358625`, 1.8686084473841065`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.3783489113746588`, 1.0219701096862137`}, {
+             1.3811396348447698`, 0.}}]}}, {
+           DiskBox[{0.8868709623267607, 1.8660328530075407`}, 0.1], 
+           DiskBox[{1.8651069091358625`, 1.8686084473841065`}, 0.1], 
+           DiskBox[{1.3783489113746588`, 1.0219701096862137`}, 0.1], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {
+             2.7504037053724524`, 2.6809616905033384`}], 
+            DiskBox[{2.7504037053724524`, 2.3809616905033386`}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {0.,
+              2.674066735900018}], 
+            DiskBox[{0., 2.3740667359000183`}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i3\"", StripOnInput -> False, FontSize :> 14], {
+             1.3811396348447698`, 0.3}], 
+            DiskBox[{1.3811396348447698`, 0.}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{0.8868709623267607, 
+           1.8660328530075407`}, {1.8651069091358625`, 1.8686084473841065`}, {
+           1.3783489113746588`, 1.0219701096862137`}, {2.7504037053724524`, 
+           2.3809616905033386`}, {0., 2.3740667359000183`}, {
+           1.3811396348447698`, 0.}}]& ], AspectRatio -> Automatic, 
+        FrameTicks -> None, PlotRange -> All, PlotRangePadding -> 
+        Scaled[0.1]],StyleBox[
+        StyleBox[
+        "\"+\"", StripOnInput -> False, ShowStringCharacters -> False], 
+        StripOnInput -> False, FontSize :> 16],OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     StyleBox["\<\"\"\>",
+      StripOnInput->False,
+      ShowStringCharacters->False], 
+     StyleBox["\<\"\"\>",
+      StripOnInput->False,
+      ShowStringCharacters->False], 
+     StyleBox["\<\"\"\>",
+      StripOnInput->False,
+      ShowStringCharacters->False]}
+   },
+   AutoDelete->False,
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{3.507027368955558*^9},
+ CellLabel->"Out[12]=",
+ CellID->1648670774]
+}, Open  ]],
+
+Cell["\<\
+Three - point RGE of a theory with bosonic fields a, phi, and phib which mix \
+at the two - point level, i.e., additional propagators have to be given in an \
+extra argument. No regulator insertions performed.\
+\>", "Notes",
+ CellChangeTimes->{3.50702731746614*^9},
+ CellID->701646512],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"rge", " ", "=", " ", 
+  RowBox[{"doRGE", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"A", ",", " ", "A"}], "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"phi", ",", " ", "phib"}], "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"A", ",", " ", "phi"}], "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"A", ",", " ", "phib"}], "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"A", ",", " ", "phib", ",", " ", "phi"}], "}"}]}], "}"}], ",", 
+    " ", 
+    RowBox[{"{", 
+     RowBox[{"A", ",", " ", "A", ",", " ", "A"}], "}"}], ",", " ", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"phi", ",", " ", "phi"}], "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"phib", ",", " ", "phib"}], "}"}]}], "}"}], ",", " ", 
+    RowBox[{"specificFieldDefinitions", " ", "->", " ", 
+     RowBox[{"{", 
+      RowBox[{"A", ",", " ", "phi", ",", " ", "phib"}], "}"}]}], ",", " ", 
+    RowBox[{"tDerivative", " ", "->", " ", "False"}]}], "]"}]}], "\n", 
+ RowBox[{"RGEPlot", "[", "rge", "]"}]}], "Input",
+ CellChangeTimes->{3.50702731746614*^9},
+ CellLabel->"In[9]:=",
+ CellID->1414449076],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"2", " ", 
+   RowBox[{"op", "[", 
+    RowBox[{
+     RowBox[{"V", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"A", ",", "i1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "r1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phib", ",", "r2"}], "}"}]}], "]"}], ",", 
+     RowBox[{"P", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "r1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "s1"}], "}"}]}], "]"}], ",", 
+     RowBox[{"V", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"A", ",", "i2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "s1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phib", ",", "t1"}], "}"}]}], "]"}], ",", 
+     RowBox[{"P", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "t2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phib", ",", "t1"}], "}"}]}], "]"}], ",", 
+     RowBox[{"V", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"A", ",", "i3"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "t2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phib", ",", "v1"}], "}"}]}], "]"}], ",", 
+     RowBox[{"P", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"phib", ",", "r2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phib", ",", "v1"}], "}"}]}], "]"}]}], "]"}]}], "+", 
+  RowBox[{"2", " ", 
+   RowBox[{"op", "[", 
+    RowBox[{
+     RowBox[{"V", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"A", ",", "i1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "r1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phib", ",", "r2"}], "}"}]}], "]"}], ",", 
+     RowBox[{"P", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "r1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phib", ",", "s1"}], "}"}]}], "]"}], ",", 
+     RowBox[{"V", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"A", ",", "i2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "s2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phib", ",", "s1"}], "}"}]}], "]"}], ",", 
+     RowBox[{"P", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "s2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "u1"}], "}"}]}], "]"}], ",", 
+     RowBox[{"V", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"A", ",", "i3"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "u1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phib", ",", "v1"}], "}"}]}], "]"}], ",", 
+     RowBox[{"P", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"phib", ",", "r2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phib", ",", "v1"}], "}"}]}], "]"}]}], "]"}]}], "+", 
+  RowBox[{"2", " ", 
+   RowBox[{"op", "[", 
+    RowBox[{
+     RowBox[{"V", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"A", ",", "i1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "r1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phib", ",", "r2"}], "}"}]}], "]"}], ",", 
+     RowBox[{"P", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "r1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phib", ",", "s1"}], "}"}]}], "]"}], ",", 
+     RowBox[{"V", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"A", ",", "i2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "s2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phib", ",", "s1"}], "}"}]}], "]"}], ",", 
+     RowBox[{"P", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "s2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phib", ",", "u1"}], "}"}]}], "]"}], ",", 
+     RowBox[{"V", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"A", ",", "i3"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "u2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phib", ",", "u1"}], "}"}]}], "]"}], ",", 
+     RowBox[{"P", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "u2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phib", ",", "r2"}], "}"}]}], "]"}]}], "]"}]}], "+", 
+  RowBox[{"2", " ", 
+   RowBox[{"op", "[", 
+    RowBox[{
+     RowBox[{"V", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"A", ",", "i1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "r1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phib", ",", "r2"}], "}"}]}], "]"}], ",", 
+     RowBox[{"P", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "s1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phib", ",", "r2"}], "}"}]}], "]"}], ",", 
+     RowBox[{"V", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"A", ",", "i2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "s1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phib", ",", "t2"}], "}"}]}], "]"}], ",", 
+     RowBox[{"P", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"phib", ",", "t2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phib", ",", "u2"}], "}"}]}], "]"}], ",", 
+     RowBox[{"V", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"A", ",", "i3"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "v1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phib", ",", "u2"}], "}"}]}], "]"}], ",", 
+     RowBox[{"P", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "r1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "v1"}], "}"}]}], "]"}]}], "]"}]}]}]], "Output",
+ CellChangeTimes->{3.507027356830441*^9},
+ CellLabel->"Out[9]=",
+ CellID->1949397872],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     TemplateBox[{GraphicsBox[
+        TagBox[
+         GraphicsGroupBox[{
+           
+           GraphicsComplexBox[{{0.866025403747025, 1.0000000000000002`}, {0., 
+            1.5000000000648028`}, {0.8660254036123352, 0.}, {
+            1.7320508076287395`, 1.4999999998315134`}}, {
+             RGBColor[0.5, 0., 0.], {
+              Arrowheads[{{0.5, 0.5, 
+                 GraphicsBox[{
+                   GrayLevel[0], 
+                   InsetBox[
+                    BoxData[
+                    FormBox[
+                    StyleBox["\"A A leg i1\"", StripOnInput -> False], 
+                    TraditionalForm]], {0, 0}, 
+                    ImageScaled[{0.5, 0.5}], Automatic, None, Background -> 
+                    GrayLevel[1]]}]}, {0, 0}}], 
+              ArrowBox[{1, 2}]}, {
+              Arrowheads[{{0.5, 0.5, 
+                 GraphicsBox[{
+                   GrayLevel[0], 
+                   InsetBox[
+                    BoxData[
+                    FormBox[
+                    StyleBox["\"A A leg i2\"", StripOnInput -> False], 
+                    TraditionalForm]], {0, 0}, 
+                    ImageScaled[{0.5, 0.5}], Automatic, None, Background -> 
+                    GrayLevel[1]]}]}, {0, 0}}], 
+              ArrowBox[{1, 3}]}, {
+              Arrowheads[{{0.5, 0.5, 
+                 GraphicsBox[{
+                   GrayLevel[0], 
+                   InsetBox[
+                    BoxData[
+                    FormBox[
+                    StyleBox["\"A A leg i3\"", StripOnInput -> False], 
+                    TraditionalForm]], {0, 0}, 
+                    ImageScaled[{0.5, 0.5}], Automatic, None, Background -> 
+                    GrayLevel[1]]}]}, {0, 0}}], 
+              ArrowBox[{1, 4}]}}], {
+            DiskBox[{0.866025403747025, 1.0000000000000002`}, 0.1], {
+             InsetBox[
+              StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {
+              0., 1.8000000000648029`}], 
+             DiskBox[{0., 1.5000000000648028`}, 0.02]}, {
+             InsetBox[
+              StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {
+              0.8660254036123352, 0.3}], 
+             DiskBox[{0.8660254036123352, 0.}, 0.02]}, {
+             InsetBox[
+              StyleBox["\"  i3\"", StripOnInput -> False, FontSize :> 14], {
+              1.7320508076287395`, 1.7999999998315135`}], 
+             DiskBox[{1.7320508076287395`, 1.4999999998315134`}, 0.02]}}}], 
+         Annotation[#, 
+          VertexCoordinateRules -> {{0.866025403747025, 
+           1.0000000000000002`}, {0., 1.5000000000648028`}, {
+           0.8660254036123352, 0.}, {1.7320508076287395`, 
+           1.4999999998315134`}}]& ], AspectRatio -> Automatic, FrameTicks -> 
+        None, PlotRange -> All, PlotRangePadding -> Scaled[0.1]],StyleBox[
+        TagBox[
+         SubscriptBox["\[PartialD]", "t"], DisplayForm], StripOnInput -> 
+        False, ShowStringCharacters -> False, FontSize :> 16],StyleBox[
+        TemplateBox[{
+          OverscriptBox[
+           StyleBox["\"\"", StripOnInput -> False, FontSize :> 50], 
+           StyleBox["\"\"", StripOnInput -> False, FontSize :> 16]], "\"=\""},
+          "Row", DisplayFunction -> (RowBox[{#, "\[InvisibleSpace]", #2}]& ), 
+         InterpretationFunction -> (RowBox[{"Row", "[", 
+            RowBox[{"{", 
+              RowBox[{#, ",", #2}], "}"}], "]"}]& )], StripOnInput -> False, 
+        ShowStringCharacters -> False, FontSize :> 16]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[
+         GraphicsGroupBox[{
+           
+           GraphicsComplexBox[{{0.8868709623267607, 1.8660328530075407`}, {
+            1.8651069091358625`, 1.8686084473841065`}, {1.3783489113746588`, 
+            1.0219701096862137`}, {2.7504037053724524`, 
+            2.3809616905033386`}, {0., 2.3740667359000183`}, {
+            1.3811396348447698`, 0.}}, {
+             RGBColor[0.5, 0., 0.], {
+              Arrowheads[{{0.5, 0.5, 
+                 GraphicsBox[{
+                   GrayLevel[0], 
+                   InsetBox[
+                    BoxData[
+                    FormBox[
+                    StyleBox["\"phi phi\"", StripOnInput -> False], 
+                    TraditionalForm]], {0, 0}, 
+                    ImageScaled[{0.5, 0.5}], Automatic, None, Background -> 
+                    GrayLevel[1]]}]}, {0, 0}}], 
+              ArrowBox[{1, 2}]}, {
+              Arrowheads[{{0.5, 0.5, 
+                 GraphicsBox[{
+                   GrayLevel[0], 
+                   InsetBox[
+                    BoxData[
+                    FormBox[
+                    StyleBox["\"phib phi\"", StripOnInput -> False], 
+                    TraditionalForm]], {0, 0}, 
+                    ImageScaled[{0.5, 0.5}], Automatic, None, Background -> 
+                    GrayLevel[1]]}]}, {0, 0}}], 
+              ArrowBox[{1, 3}]}, {
+              Arrowheads[{{0.5, 0.5, 
+                 GraphicsBox[{
+                   GrayLevel[0], 
+                   InsetBox[
+                    BoxData[
+                    FormBox[
+                    StyleBox["\"A A leg i2\"", StripOnInput -> False], 
+                    TraditionalForm]], {0, 0}, 
+                    ImageScaled[{0.5, 0.5}], Automatic, None, Background -> 
+                    GrayLevel[1]]}]}, {0, 0}}], 
+              ArrowBox[{1, 5}]}, {
+              Arrowheads[{{0.5, 0.5, 
+                 GraphicsBox[{
+                   GrayLevel[0], 
+                   InsetBox[
+                    BoxData[
+                    FormBox[
+                    StyleBox["\"A A leg i1\"", StripOnInput -> False], 
+                    TraditionalForm]], {0, 0}, 
+                    ImageScaled[{0.5, 0.5}], Automatic, None, Background -> 
+                    GrayLevel[1]]}]}, {0, 0}}], 
+              ArrowBox[{2, 4}]}, {
+              Arrowheads[{{0.5, 0.5, 
+                 GraphicsBox[{
+                   GrayLevel[0], 
+                   InsetBox[
+                    BoxData[
+                    FormBox[
+                    StyleBox["\"phib phib\"", StripOnInput -> False], 
+                    TraditionalForm]], {0, 0}, 
+                    ImageScaled[{0.5, 0.5}], Automatic, None, Background -> 
+                    GrayLevel[1]]}]}, {0, 0}}], 
+              ArrowBox[{3, 2}]}, {
+              Arrowheads[{{0.5, 0.5, 
+                 GraphicsBox[{
+                   GrayLevel[0], 
+                   InsetBox[
+                    BoxData[
+                    FormBox[
+                    StyleBox["\"A A leg i3\"", StripOnInput -> False], 
+                    TraditionalForm]], {0, 0}, 
+                    ImageScaled[{0.5, 0.5}], Automatic, None, Background -> 
+                    GrayLevel[1]]}]}, {0, 0}}], 
+              ArrowBox[{3, 6}]}}], {
+            DiskBox[{0.8868709623267607, 1.8660328530075407`}, 0.1], 
+            DiskBox[{1.8651069091358625`, 1.8686084473841065`}, 0.1], 
+            DiskBox[{1.3783489113746588`, 1.0219701096862137`}, 0.1], {
+             InsetBox[
+              StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {
+              2.7504037053724524`, 2.6809616905033384`}], 
+             DiskBox[{2.7504037053724524`, 2.3809616905033386`}, 0.02]}, {
+             InsetBox[
+              StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {
+              0., 2.674066735900018}], 
+             DiskBox[{0., 2.3740667359000183`}, 0.02]}, {
+             InsetBox[
+              StyleBox["\"  i3\"", StripOnInput -> False, FontSize :> 14], {
+              1.3811396348447698`, 0.3}], 
+             DiskBox[{1.3811396348447698`, 0.}, 0.02]}}}], 
+         Annotation[#, 
+          VertexCoordinateRules -> {{0.8868709623267607, 
+           1.8660328530075407`}, {1.8651069091358625`, 1.8686084473841065`}, {
+           1.3783489113746588`, 1.0219701096862137`}, {2.7504037053724524`, 
+           2.3809616905033386`}, {0., 2.3740667359000183`}, {
+           1.3811396348447698`, 0.}}]& ], AspectRatio -> Automatic, 
+        FrameTicks -> None, PlotRange -> All, PlotRangePadding -> 
+        Scaled[0.1]],StyleBox[
+        TagBox[
+         RowBox[{
+           StyleBox[
+           "\"+\"", StripOnInput -> False, ShowStringCharacters -> False], 
+           "2"}], DisplayForm], StripOnInput -> False, FontSize :> 16],
+       OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[
+         GraphicsGroupBox[{
+           
+           GraphicsComplexBox[{{0.8868709623267607, 1.8660328530075407`}, {
+            1.8651069091358625`, 1.8686084473841065`}, {1.3783489113746588`, 
+            1.0219701096862137`}, {2.7504037053724524`, 
+            2.3809616905033386`}, {0., 2.3740667359000183`}, {
+            1.3811396348447698`, 0.}}, {
+             RGBColor[0.5, 0., 0.], {
+              Arrowheads[{{0.5, 0.5, 
+                 GraphicsBox[{
+                   GrayLevel[0], 
+                   InsetBox[
+                    BoxData[
+                    FormBox[
+                    StyleBox["\"phib phi\"", StripOnInput -> False], 
+                    TraditionalForm]], {0, 0}, 
+                    ImageScaled[{0.5, 0.5}], Automatic, None, Background -> 
+                    GrayLevel[1]]}]}, {0, 0}}], 
+              ArrowBox[{1, 2}]}, {
+              Arrowheads[{{0.5, 0.5, 
+                 GraphicsBox[{
+                   GrayLevel[0], 
+                   InsetBox[
+                    BoxData[
+                    FormBox[
+                    StyleBox["\"A A leg i2\"", StripOnInput -> False], 
+                    TraditionalForm]], {0, 0}, 
+                    ImageScaled[{0.5, 0.5}], Automatic, None, Background -> 
+                    GrayLevel[1]]}]}, {0, 0}}], 
+              ArrowBox[{1, 5}]}, {
+              Arrowheads[{{0.5, 0.5, 
+                 GraphicsBox[{
+                   GrayLevel[0], 
+                   InsetBox[
+                    BoxData[
+                    FormBox[
+                    StyleBox["\"A A leg i1\"", StripOnInput -> False], 
+                    TraditionalForm]], {0, 0}, 
+                    ImageScaled[{0.5, 0.5}], Automatic, None, Background -> 
+                    GrayLevel[1]]}]}, {0, 0}}], 
+              ArrowBox[{2, 4}]}, {
+              Arrowheads[{{0.5, 0.5, 
+                 GraphicsBox[{
+                   GrayLevel[0], 
+                   InsetBox[
+                    BoxData[
+                    FormBox[
+                    StyleBox["\"phi phi\"", StripOnInput -> False], 
+                    TraditionalForm]], {0, 0}, 
+                    ImageScaled[{0.5, 0.5}], Automatic, None, Background -> 
+                    GrayLevel[1]]}]}, {0, 0}}], 
+              ArrowBox[{3, 1}]}, {
+              Arrowheads[{{0.5, 0.5, 
+                 GraphicsBox[{
+                   GrayLevel[0], 
+                   InsetBox[
+                    BoxData[
+                    FormBox[
+                    StyleBox["\"phib phib\"", StripOnInput -> False], 
+                    TraditionalForm]], {0, 0}, 
+                    ImageScaled[{0.5, 0.5}], Automatic, None, Background -> 
+                    GrayLevel[1]]}]}, {0, 0}}], 
+              ArrowBox[{3, 2}]}, {
+              Arrowheads[{{0.5, 0.5, 
+                 GraphicsBox[{
+                   GrayLevel[0], 
+                   InsetBox[
+                    BoxData[
+                    FormBox[
+                    StyleBox["\"A A leg i3\"", StripOnInput -> False], 
+                    TraditionalForm]], {0, 0}, 
+                    ImageScaled[{0.5, 0.5}], Automatic, None, Background -> 
+                    GrayLevel[1]]}]}, {0, 0}}], 
+              ArrowBox[{3, 6}]}}], {
+            DiskBox[{0.8868709623267607, 1.8660328530075407`}, 0.1], 
+            DiskBox[{1.8651069091358625`, 1.8686084473841065`}, 0.1], 
+            DiskBox[{1.3783489113746588`, 1.0219701096862137`}, 0.1], {
+             InsetBox[
+              StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {
+              2.7504037053724524`, 2.6809616905033384`}], 
+             DiskBox[{2.7504037053724524`, 2.3809616905033386`}, 0.02]}, {
+             InsetBox[
+              StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {
+              0., 2.674066735900018}], 
+             DiskBox[{0., 2.3740667359000183`}, 0.02]}, {
+             InsetBox[
+              StyleBox["\"  i3\"", StripOnInput -> False, FontSize :> 14], {
+              1.3811396348447698`, 0.3}], 
+             DiskBox[{1.3811396348447698`, 0.}, 0.02]}}}], 
+         Annotation[#, 
+          VertexCoordinateRules -> {{0.8868709623267607, 
+           1.8660328530075407`}, {1.8651069091358625`, 1.8686084473841065`}, {
+           1.3783489113746588`, 1.0219701096862137`}, {2.7504037053724524`, 
+           2.3809616905033386`}, {0., 2.3740667359000183`}, {
+           1.3811396348447698`, 0.}}]& ], AspectRatio -> Automatic, 
+        FrameTicks -> None, PlotRange -> All, PlotRangePadding -> 
+        Scaled[0.1]],StyleBox[
+        TagBox[
+         RowBox[{
+           StyleBox[
+           "\"+\"", StripOnInput -> False, ShowStringCharacters -> False], 
+           "2"}], DisplayForm], StripOnInput -> False, FontSize :> 16],
+       OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[
+         GraphicsGroupBox[{
+           
+           GraphicsComplexBox[{{0.8868709623267607, 1.8660328530075407`}, {
+            1.8651069091358625`, 1.8686084473841065`}, {1.3783489113746588`, 
+            1.0219701096862137`}, {2.7504037053724524`, 
+            2.3809616905033386`}, {0., 2.3740667359000183`}, {
+            1.3811396348447698`, 0.}}, {
+             RGBColor[0.5, 0., 0.], {
+              Arrowheads[{{0.5, 0.5, 
+                 GraphicsBox[{
+                   GrayLevel[0], 
+                   InsetBox[
+                    BoxData[
+                    FormBox[
+                    StyleBox["\"phib phi\"", StripOnInput -> False], 
+                    TraditionalForm]], {0, 0}, 
+                    ImageScaled[{0.5, 0.5}], Automatic, None, Background -> 
+                    GrayLevel[1]]}]}, {0, 0}}], 
+              ArrowBox[{1, 2}]}, {
+              Arrowheads[{{0.5, 0.5, 
+                 GraphicsBox[{
+                   GrayLevel[0], 
+                   InsetBox[
+                    BoxData[
+                    FormBox[
+                    StyleBox["\"A A leg i2\"", StripOnInput -> False], 
+                    TraditionalForm]], {0, 0}, 
+                    ImageScaled[{0.5, 0.5}], Automatic, None, Background -> 
+                    GrayLevel[1]]}]}, {0, 0}}], 
+              ArrowBox[{1, 5}]}, {
+              Arrowheads[{{0.5, 0.5, 
+                 GraphicsBox[{
+                   GrayLevel[0], 
+                   InsetBox[
+                    BoxData[
+                    FormBox[
+                    StyleBox["\"phib phi\"", StripOnInput -> False], 
+                    TraditionalForm]], {0, 0}, 
+                    ImageScaled[{0.5, 0.5}], Automatic, None, Background -> 
+                    GrayLevel[1]]}]}, {0, 0}}], 
+              ArrowBox[{2, 3}]}, {
+              Arrowheads[{{0.5, 0.5, 
+                 GraphicsBox[{
+                   GrayLevel[0], 
+                   InsetBox[
+                    BoxData[
+                    FormBox[
+                    StyleBox["\"A A leg i1\"", StripOnInput -> False], 
+                    TraditionalForm]], {0, 0}, 
+                    ImageScaled[{0.5, 0.5}], Automatic, None, Background -> 
+                    GrayLevel[1]]}]}, {0, 0}}], 
+              ArrowBox[{2, 4}]}, {
+              Arrowheads[{{0.5, 0.5, 
+                 GraphicsBox[{
+                   GrayLevel[0], 
+                   InsetBox[
+                    BoxData[
+                    FormBox[
+                    StyleBox["\"phib phi\"", StripOnInput -> False], 
+                    TraditionalForm]], {0, 0}, 
+                    ImageScaled[{0.5, 0.5}], Automatic, None, Background -> 
+                    GrayLevel[1]]}]}, {0, 0}}], 
+              ArrowBox[{3, 1}]}, {
+              Arrowheads[{{0.5, 0.5, 
+                 GraphicsBox[{
+                   GrayLevel[0], 
+                   InsetBox[
+                    BoxData[
+                    FormBox[
+                    StyleBox["\"A A leg i3\"", StripOnInput -> False], 
+                    TraditionalForm]], {0, 0}, 
+                    ImageScaled[{0.5, 0.5}], Automatic, None, Background -> 
+                    GrayLevel[1]]}]}, {0, 0}}], 
+              ArrowBox[{3, 6}]}}], {
+            DiskBox[{0.8868709623267607, 1.8660328530075407`}, 0.1], 
+            DiskBox[{1.8651069091358625`, 1.8686084473841065`}, 0.1], 
+            DiskBox[{1.3783489113746588`, 1.0219701096862137`}, 0.1], {
+             InsetBox[
+              StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {
+              2.7504037053724524`, 2.6809616905033384`}], 
+             DiskBox[{2.7504037053724524`, 2.3809616905033386`}, 0.02]}, {
+             InsetBox[
+              StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {
+              0., 2.674066735900018}], 
+             DiskBox[{0., 2.3740667359000183`}, 0.02]}, {
+             InsetBox[
+              StyleBox["\"  i3\"", StripOnInput -> False, FontSize :> 14], {
+              1.3811396348447698`, 0.3}], 
+             DiskBox[{1.3811396348447698`, 0.}, 0.02]}}}], 
+         Annotation[#, 
+          VertexCoordinateRules -> {{0.8868709623267607, 
+           1.8660328530075407`}, {1.8651069091358625`, 1.8686084473841065`}, {
+           1.3783489113746588`, 1.0219701096862137`}, {2.7504037053724524`, 
+           2.3809616905033386`}, {0., 2.3740667359000183`}, {
+           1.3811396348447698`, 0.}}]& ], AspectRatio -> Automatic, 
+        FrameTicks -> None, PlotRange -> All, PlotRangePadding -> 
+        Scaled[0.1]],StyleBox[
+        TagBox[
+         RowBox[{
+           StyleBox[
+           "\"+\"", StripOnInput -> False, ShowStringCharacters -> False], 
+           "2"}], DisplayForm], StripOnInput -> False, FontSize :> 16],
+       OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[
+         GraphicsGroupBox[{
+           
+           GraphicsComplexBox[{{0.8793282438400627, 1.8749553089008177`}, {
+            1.8564611547790681`, 1.8635350956262988`}, {1.3580418524221414`, 
+            1.0224504449298122`}, {0., 2.3951941927337566`}, {
+            2.7470696868196534`, 2.3642108557786323`}, {1.3448867316637005`, 
+            0.}}, {
+             RGBColor[0.5, 0., 0.], {
+              Arrowheads[{{0.5, 0.5, 
+                 GraphicsBox[{
+                   GrayLevel[0], 
+                   InsetBox[
+                    BoxData[
+                    FormBox[
+                    StyleBox["\"phib phi\"", StripOnInput -> False], 
+                    TraditionalForm]], {0, 0}, 
+                    ImageScaled[{0.5, 0.5}], Automatic, None, Background -> 
+                    GrayLevel[1]]}]}, {0, 0}}], 
+              ArrowBox[{1, 2}]}, {
+              Arrowheads[{{0.5, 0.5, 
+                 GraphicsBox[{
+                   GrayLevel[0], 
+                   InsetBox[
+                    BoxData[
+                    FormBox[
+                    StyleBox["\"A A leg i1\"", StripOnInput -> False], 
+                    TraditionalForm]], {0, 0}, 
+                    ImageScaled[{0.5, 0.5}], Automatic, None, Background -> 
+                    GrayLevel[1]]}]}, {0, 0}}], 
+              ArrowBox[{1, 4}]}, {
+              Arrowheads[{{0.5, 0.5, 
+                 GraphicsBox[{
+                   GrayLevel[0], 
+                   InsetBox[
+                    BoxData[
+                    FormBox[
+                    StyleBox["\"A A leg i2\"", StripOnInput -> False], 
+                    TraditionalForm]], {0, 0}, 
+                    ImageScaled[{0.5, 0.5}], Automatic, None, Background -> 
+                    GrayLevel[1]]}]}, {0, 0}}], 
+              ArrowBox[{2, 5}]}, {
+              Arrowheads[{{0.5, 0.5, 
+                 GraphicsBox[{
+                   GrayLevel[0], 
+                   InsetBox[
+                    BoxData[
+                    FormBox[
+                    StyleBox["\"phib phib\"", StripOnInput -> False], 
+                    TraditionalForm]], {0, 0}, 
+                    ImageScaled[{0.5, 0.5}], Automatic, None, Background -> 
+                    GrayLevel[1]]}]}, {0, 0}}], 
+              ArrowBox[{3, 2}]}, {
+              Arrowheads[{{0.5, 0.5, 
+                 GraphicsBox[{
+                   GrayLevel[0], 
+                   InsetBox[
+                    BoxData[
+                    FormBox[
+                    StyleBox["\"phi phi\"", StripOnInput -> False], 
+                    TraditionalForm]], {0, 0}, 
+                    ImageScaled[{0.5, 0.5}], Automatic, None, Background -> 
+                    GrayLevel[1]]}]}, {0, 0}}], 
+              ArrowBox[{3, 1}]}, {
+              Arrowheads[{{0.5, 0.5, 
+                 GraphicsBox[{
+                   GrayLevel[0], 
+                   InsetBox[
+                    BoxData[
+                    FormBox[
+                    StyleBox["\"A A leg i3\"", StripOnInput -> False], 
+                    TraditionalForm]], {0, 0}, 
+                    ImageScaled[{0.5, 0.5}], Automatic, None, Background -> 
+                    GrayLevel[1]]}]}, {0, 0}}], 
+              ArrowBox[{3, 6}]}}], {
+            DiskBox[{0.8793282438400627, 1.8749553089008177`}, 0.1], 
+            DiskBox[{1.8564611547790681`, 1.8635350956262988`}, 0.1], 
+            DiskBox[{1.3580418524221414`, 1.0224504449298122`}, 0.1], {
+             InsetBox[
+              StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {
+              0., 2.6951941927337564`}], 
+             DiskBox[{0., 2.3951941927337566`}, 0.02]}, {
+             InsetBox[
+              StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {
+              2.7470696868196534`, 2.664210855778632}], 
+             DiskBox[{2.7470696868196534`, 2.3642108557786323`}, 0.02]}, {
+             InsetBox[
+              StyleBox["\"  i3\"", StripOnInput -> False, FontSize :> 14], {
+              1.3448867316637005`, 0.3}], 
+             DiskBox[{1.3448867316637005`, 0.}, 0.02]}}}], 
+         Annotation[#, 
+          VertexCoordinateRules -> {{0.8793282438400627, 
+           1.8749553089008177`}, {1.8564611547790681`, 1.8635350956262988`}, {
+           1.3580418524221414`, 1.0224504449298122`}, {0., 
+           2.3951941927337566`}, {2.7470696868196534`, 2.3642108557786323`}, {
+           1.3448867316637005`, 0.}}]& ], AspectRatio -> Automatic, 
+        FrameTicks -> None, PlotRange -> All, PlotRangePadding -> 
+        Scaled[0.1]],StyleBox[
+        TagBox[
+         RowBox[{
+           StyleBox[
+           "\"+\"", StripOnInput -> False, ShowStringCharacters -> False], 
+           "2"}], DisplayForm], StripOnInput -> False, FontSize :> 16],
+       OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )]}
+   },
+   AutoDelete->False,
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{3.507027357145701*^9},
+ CellLabel->"Out[10]=",
+ CellID->449148586]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More Examples", "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->1854448968],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Scope", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1293636265],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Generalizations & Extensions", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1020263627],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["Options", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["sourcesZero", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["identify", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["compareFunction", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["specificFieldDefinitions", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["tDerivative", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["symmetry", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["userEvenFields", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"]
+}, Closed]],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Applications", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->258228157],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Properties & Relations", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2123667759],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Possible Issues", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1305812373],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Interactive Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1653164318],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Neat Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->589267740]
+}, Open  ]]
+},
+WindowSize->{700, 770},
+WindowMargins->{{227, Automatic}, {Automatic, 84}},
+ShowSelection->True,
+CellContext->"Global`",
+FrontEndVersion->"7.0 for Linux x86 (64-bit) (February 25, 2009)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
+  CharacterEncoding -> "iso8859-1"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "ExtendedExamples"->{
+  Cell[109024, 2741, 100, 2, 57, "ExtendedExamplesSection",
+   CellTags->"ExtendedExamples",
+   CellID->1854448968]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"ExtendedExamples", 111525, 2829}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 324, 14, 26, "History",
+ CellID->1247902091],
+Cell[CellGroupData[{
+Cell[894, 38, 68, 1, 31, "CategorizationSection",
+ CellID->1122911449],
+Cell[965, 41, 79, 2, 36, "Categorization",
+ CellID->686433507],
+Cell[1047, 45, 86, 2, 36, "Categorization",
+ CellID->878629210],
+Cell[1136, 49, 84, 2, 36, "Categorization",
+ CellID->338689171],
+Cell[1223, 53, 80, 2, 36, "Categorization",
+ CellID->793544392]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1340, 60, 55, 1, 21, "KeywordsSection",
+ CellID->477174294],
+Cell[1398, 63, 45, 1, 70, "Keywords",
+ CellID->1164421360]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1480, 69, 65, 1, 21, "TemplatesSection",
+ CellID->1872225408],
+Cell[1548, 72, 94, 2, 70, "Template",
+ CellID->1562036412],
+Cell[1645, 76, 82, 2, 70, "Template",
+ CellID->158391909],
+Cell[1730, 80, 81, 2, 70, "Template",
+ CellID->1360575930],
+Cell[1814, 84, 82, 2, 70, "Template",
+ CellID->793782254]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1933, 91, 53, 1, 21, "DetailsSection",
+ CellID->307771771],
+Cell[1989, 94, 63, 2, 70, "Details",
+ CellID->670882175],
+Cell[2055, 98, 69, 2, 70, "Details",
+ CellID->350963985],
+Cell[2127, 102, 64, 2, 70, "Details",
+ CellID->8391405],
+Cell[2194, 106, 69, 2, 70, "Details",
+ CellID->3610269],
+Cell[2266, 110, 61, 2, 70, "Details",
+ CellID->401364205],
+Cell[2330, 114, 61, 2, 70, "Details",
+ CellID->350204745],
+Cell[2394, 118, 63, 2, 70, "Details",
+ CellID->732958810],
+Cell[2460, 122, 78, 2, 70, "Details",
+ CellID->222905350],
+Cell[2541, 126, 67, 2, 70, "Details",
+ CellID->240026365]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2645, 133, 48, 1, 65, "ObjectName",
+ CellID->1224892054],
+Cell[2696, 136, 508, 15, 140, "Usage"],
+Cell[3207, 153, 1023, 26, 229, "Usage",
+ CellID->1966083699],
+Cell[4233, 181, 53, 0, 27, "Notes"],
+Cell[4289, 183, 2549, 66, 352, "3ColumnTableMod",
+ CellID->263347130]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6875, 254, 57, 1, 44, "TutorialsSection",
+ CellID->250839057],
+Cell[6935, 257, 45, 1, 17, "Tutorials",
+ CellID->341631938]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7017, 263, 83, 1, 31, "RelatedDemonstrationsSection",
+ CellID->1268215905],
+Cell[7103, 266, 58, 1, 17, "RelatedDemonstrations",
+ CellID->1129518860]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7198, 272, 65, 1, 31, "RelatedLinksSection",
+ CellID->1584193535],
+Cell[7266, 275, 49, 1, 17, "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7352, 281, 55, 1, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[7410, 284, 43, 1, 17, "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7490, 290, 57, 1, 31, "MoreAboutSection",
+ CellID->38303248],
+Cell[7550, 293, 46, 1, 17, "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7633, 299, 356, 11, 72, "PrimaryExamplesSection",
+ CellID->880084151],
+Cell[7992, 312, 161, 4, 27, "Notes",
+ CellID->1507990930],
+Cell[CellGroupData[{
+Cell[8178, 320, 716, 21, 51, "Input",
+ CellID->77520286],
+Cell[8897, 343, 1058, 35, 83, "Output",
+ CellID->1724129706],
+Cell[9958, 380, 7741, 168, 189, "Output",
+ CellID->150414479]
+}, Open  ]],
+Cell[17714, 551, 173, 5, 27, "Notes",
+ CellID->63166803],
+Cell[CellGroupData[{
+Cell[17912, 560, 711, 21, 73, "Input",
+ CellID->113539093],
+Cell[18626, 583, 2635, 86, 183, "Output",
+ CellID->527841755],
+Cell[21264, 671, 11777, 254, 189, "Output",
+ CellID->1089275715]
+}, Open  ]],
+Cell[33056, 928, 208, 5, 27, "Notes",
+ CellID->1178081677],
+Cell[CellGroupData[{
+Cell[33289, 937, 1564, 46, 117, "Input",
+ CellID->1274467884],
+Cell[34856, 985, 28819, 641, 331, "Output",
+ CellID->2114370338]
+}, Open  ]],
+Cell[63690, 1629, 107, 3, 27, "Notes",
+ CellID->779757474],
+Cell[CellGroupData[{
+Cell[63822, 1636, 812, 22, 73, "Input",
+ CellID->797878136],
+Cell[64637, 1660, 1400, 47, 67, "Output",
+ CellID->1692674071],
+Cell[66040, 1709, 7267, 163, 197, "Output",
+ CellID->1648670774]
+}, Open  ]],
+Cell[73322, 1875, 295, 6, 63, "Notes",
+ CellID->701646512],
+Cell[CellGroupData[{
+Cell[73642, 1885, 1180, 32, 117, "Input",
+ CellID->1414449076],
+Cell[74825, 1919, 5740, 184, 247, "Output",
+ CellID->1949397872],
+Cell[80568, 2105, 28407, 630, 197, "Output",
+ CellID->449148586]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[109024, 2741, 100, 2, 57, "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->1854448968],
+Cell[109127, 2745, 125, 3, 35, "ExampleSection",
+ CellID->1293636265],
+Cell[109255, 2750, 148, 3, 23, "ExampleSection",
+ CellID->1020263627],
+Cell[CellGroupData[{
+Cell[109428, 2757, 106, 2, 23, "ExampleSection"],
+Cell[109537, 2761, 116, 2, 70, "ExampleSubsection"],
+Cell[109656, 2765, 113, 2, 70, "ExampleSubsection"],
+Cell[109772, 2769, 120, 2, 70, "ExampleSubsection"],
+Cell[109895, 2773, 129, 2, 70, "ExampleSubsection"],
+Cell[110027, 2777, 116, 2, 70, "ExampleSubsection"],
+Cell[110146, 2781, 113, 2, 70, "ExampleSubsection"],
+Cell[110262, 2785, 119, 2, 70, "ExampleSubsection"]
+}, Closed]],
+Cell[110396, 2790, 131, 3, 23, "ExampleSection",
+ CellID->258228157],
+Cell[110530, 2795, 142, 3, 23, "ExampleSection",
+ CellID->2123667759],
+Cell[110675, 2800, 135, 3, 23, "ExampleSection",
+ CellID->1305812373],
+Cell[110813, 2805, 140, 3, 23, "ExampleSection",
+ CellID->1653164318],
+Cell[110956, 2810, 132, 3, 23, "ExampleSection",
+ CellID->589267740]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

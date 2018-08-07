@@ -1,0 +1,215 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7865,        206]
+NotebookOptionsPosition[      4746,        140]
+NotebookOutlinePosition[      7213,        197]
+CellTagsIndexPosition[      7170,        194]
+WindowTitle->identifyGraphs
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell"], Cell[TextData[Cell[
+    BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"DoFun/ref/identifyGraphs\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["DoFun/ref/identifyGraphs"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/DoFun/ref/\
+identifyGraphs.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$33843], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "DoFun/ref/identifyGraphs", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell[TextData[{
+ Cell["identifyGraphs", "ObjectName"],
+ Cell[BoxData[
+  TemplateBox[{8},
+   "Spacer1"]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[BoxData[GridBox[{
+   {"", Cell["\<\
+Adds up equivalent graphs in DSEs.
+Note: identifyGraphs works different than identifyGraphsRGE.
+
+Syntax:
+identifyGraphs[expr] with expr being an expression containing op functions \
+adds up identical graphs.
+identifyGraphs[expr, compareFunction->cfunc] with expr being an expression \
+containing op functions adds up identical graphs using the function cfunc for \
+identifying graphs.
+cfunc can be compareGraphs (default) or compareGraphs2, the latter being \
+necessary for mixed propagators but taking longer. User-defined functions are \
+possible.
+
+Example:
+identifyGraphs[op[S[{A, i}, {A, r}, {A, s}, {A, t}], P[{A, r}, {A, s}], {A, \
+t}] + op[S[{A, i}, {A, r}, {A, s}, {A, t}], P[{A, r}, {A, t}], {A, s}]]\
+\>"]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    TemplateBox[{6},
+     "Spacer1"]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None, "Normal", Automatic},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell["The following options can be given: ", "Notes"]
+}, Closed]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"identifyGraphs",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:DoFun/guide/DoFun", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2018, 4, 14, 14, 45, 6.793491}", 
+    "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
+    "status" -> "None", "summary" -> 
+    "Adds up equivalent graphs in DSEs. Note: identifyGraphs works different \
+than identifyGraphsRGE. Syntax: identifyGraphs[expr] with expr being an \
+expression containing op functions adds up identical graphs. \
+identifyGraphs[expr, compareFunction->cfunc] with expr being an expression \
+containing op functions adds up identical graphs using the function cfunc for \
+identifying graphs. cfunc can be compareGraphs (default) or compareGraphs2, \
+the latter being necessary for mixed propagators but taking longer. \
+User-defined functions are possible. Example: identifyGraphs[op[S[{A, i}, {A, \
+r}, {A, s}, {A, t}], P[{A, r}, {A, s}], {A, t}] + op[S[{A, i}, {A, r}, {A, \
+s}, {A, t}], P[{A, r}, {A, t}], {A, s}]]", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "identifyGraphs", "titlemodifier" -> "", 
+    "windowtitle" -> "identifyGraphs", "type" -> "Symbol", "uri" -> 
+    "DoFun/ref/identifyGraphs"}},
+CellContext->"Global`",
+FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[586, 21, 2295, 54, 70, "AnchorBarGrid",ExpressionUUID->"491e7009-621f-4f23-ae58-435eae6d5864",
+ CellID->1],
+Cell[2884, 77, 171, 6, 70, "ObjectNameGrid",ExpressionUUID->"70387ef2-58f4-4870-a6ca-24fde7262a7d"],
+Cell[3058, 85, 910, 23, 70, "Usage",ExpressionUUID->"9797ee41-0760-4977-84da-5463235a7263"],
+Cell[CellGroupData[{
+Cell[3993, 112, 621, 19, 70, "NotesSection",ExpressionUUID->"562cc9fe-a9f2-4eb7-8bff-8442ec3545cf",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1],
+Cell[4617, 133, 31, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"8fdde7b2-8cc3-46ed-b97d-dfb75eedd539"],
+Cell[4651, 135, 53, 0, 70, "Notes",ExpressionUUID->"64336a98-3317-48a8-8ef1-02c85cae1cd9"]
+}, Closed]],
+Cell[4719, 138, 23, 0, 70, "FooterCell",ExpressionUUID->"7149fc07-e84c-49b2-aecd-b05cf0a05feb"]
+}
+]
+*)
+
+(* End of internal cache information *)

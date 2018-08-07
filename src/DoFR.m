@@ -5,26 +5,26 @@
 (* (c) and written by Markus Q. Huber *)
 
 (* version history *)
-(*  0.1 (Nov. 9, 2010): copying code from development notebook
-    0.2: basic structure finished
-    0.3 (Dec. 10, 2010): improved delta integrationd performance
-    0.4 (Jan. 9, 2011)  (never released): consistent version for intensive field tests
-    2.0.0 (25.2.2011): First public release of DoFun via http://www.tpi.uni-jena.de/qfphysics/homepage/mhub/DoFun/.
-    2.0.1 (22.1.2013, never released): 
-  		-) Added SyntaxInformation for fields in defineFieldsSpecific.
-    2.0.2 (22.1.2015):
-		-) Bugfix in integrateMomenta when momenta were only one character long.
-		-) Bugfix in integrateMomenta when momentum is negative.
-    2.0.3 (19.1.2017): no changes
-    2.0.4 (5.12.2017): no changes
-    3.0.0 (devel):
+(* 0.1 (Nov. 9, 2010): copying code from development notebook
+   0.2: basic structure finished
+   0.3 (Dec. 10, 2010): improved delta integrationd performance
+   0.4 (Jan. 9, 2011)  (never released): consistent version for intensive field tests
+   2.0.0 (25.2.2011): First public release of DoFun via http://www.tpi.uni-jena.de/qfphysics/homepage/mhub/DoFun/.
+   2.0.1 (22.1.2013, never released): 
+	-) Added SyntaxInformation for fields in defineFieldsSpecific.
+   2.0.2 (22.1.2015):
+	-) Bugfix in integrateMomenta when momenta were only one character long.
+	-) Bugfix in integrateMomenta when momentum is negative.
+   2.0.3 (19.1.2017): no changes
+   2.0.4 (5.12.2017): no changes
+
 *)
 
 
 BeginPackage["DoFun`DoFR`", { "DoFun`DoDSERGE`", "DoFun`DoAE`"}]
 
 
-$DoFRVersion="3.0.0";
+$DoFRVersion="2.0.4";
 
 
 (*If[DoDSERGE`$startMessage=!=False,

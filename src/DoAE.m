@@ -5,25 +5,25 @@
 (* (c) and written by Markus Q. Huber *)
 
 (* version history *)
-(*  0.1 (autumn of 2008): first running version
-    0.2 (never released):
-    	-) introduced DoDSE`$startMessage to allow suppression of the message when loading the package
-   		-) inclusion of RGEs
-    2.0.0 (25.2.2011): First public release of DoFun via http://www.tpi.uni-jena.de/qfphysics/homepage/mhub/DoFun/.
-    2.0.1 (22.1.2013, never released):
-   		-) bugfix in errorhandler getAE::incorrectFormat: correction of first condition that all fields have to be defined as such
-   		-) bugfix in getAEDo: fields with two indices of the same type are handled correctly now instead of using the same index names (new function removeDoubleIndices)
-		-) bugfix in insertMomenta: ops with only P or V work now (analogously to S)
-    2.0.2 (22.1.2015): no changes
-    2.0.3 (19.1.2017): no changes
-    2.0.4 (5.12.2017): no changes
+(* 0.1 (autumn of 2008): first running version
+   0.2 (never released):	-) introduced DoDSE`$startMessage to allow suppression of the message when loading the package
+   				-) inclusion of RGEs
+   2.0.0 (25.2.2011): First public release of DoFun via http://www.tpi.uni-jena.de/qfphysics/homepage/mhub/DoFun/.
+   2.0.1 (22.1.2013, never released):
+   	-) bugfix in errorhandler getAE::incorrectFormat: correction of first condition that all fields have to be defined as such
+   	-) bugfix in getAEDo: fields with two indices of the same type are handled correctly now instead of using the same index names (new function removeDoubleIndices)
+	-) bugfix in insertMomenta: ops with only P or V work now (analogously to S)
+   2.0.2 (22.1.2015): no changes
+   2.0.3 (19.1.2017): no changes
+   2.0.4 (5.12.2017): no changes
+
 *)
 
 
 BeginPackage["DoFun`DoAE`", { "DoFun`DoDSERGE`", "DoFun`DoFR`"}]
 
 (* variable that gives the version of DoDSE *)
-$DoAEVersion="3.0.0";
+$DoAEVersion="2.0.4";
 (*If[DoDSERGE`$startMessage=!=False,
 	Print["Package DoDSERGE loaded.
 \n\nVersion "<> $doDSEVersion <>

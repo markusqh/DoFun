@@ -1,0 +1,585 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     19835,        576]
+NotebookOptionsPosition[     13687,        456]
+NotebookOutlinePosition[     15343,        496]
+CellTagsIndexPosition[     15300,        493]
+WindowTitle->Welcome to DoFun
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["DO FUN GUIDE", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "Functions",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"Functions", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"defineFields\"\>":>
+       Documentation`HelpLookup[
+       "paclet:DoFun/ref/defineFields"], "\<\"delta\"\>":>
+       Documentation`HelpLookup["paclet:DoFun/ref/delta"], "\<\"deltam\"\>":>
+       Documentation`HelpLookup["paclet:DoFun/ref/deltam"], "\<\"dim\"\>":>
+       Documentation`HelpLookup["paclet:DoFun/ref/dim"], "\<\"doDSE\"\>":>
+       Documentation`HelpLookup["paclet:DoFun/ref/doDSE"], "\<\"doRGE\"\>":>
+       Documentation`HelpLookup["paclet:DoFun/ref/doRGE"], "\<\"DSEPlot\"\>":>
+       Documentation`HelpLookup[
+       "paclet:DoFun/ref/DSEPlot"], "\<\"factorStyle\"\>":>
+       Documentation`HelpLookup[
+       "paclet:DoFun/ref/factorStyle"], "\<\"getAE\"\>":>
+       Documentation`HelpLookup["paclet:DoFun/ref/getAE"], "\<\"getFR\"\>":>
+       Documentation`HelpLookup[
+       "paclet:DoFun/ref/getFR"], "\<\"indexStyle\"\>":>
+       Documentation`HelpLookup[
+       "paclet:DoFun/ref/indexStyle"], "\<\"integrateDeltas\"\>":>
+       Documentation`HelpLookup[
+       "paclet:DoFun/ref/integrateDeltas"], "\<\"integrateMomenta\"\>":>
+       Documentation`HelpLookup[
+       "paclet:DoFun/ref/integrateMomenta"], "\<\"loadFeynCalc\"\>":>
+       Documentation`HelpLookup[
+       "paclet:DoFun/ref/loadFeynCalc"], "\<\"Overview\"\>":>
+       Documentation`HelpLookup[
+       "paclet:DoFun/tutorial/DoFunOverview"], "\<\"RGEPlot\"\>":>
+       Documentation`HelpLookup[
+       "paclet:DoFun/ref/RGEPlot"], "\<\"shortExpression\"\>":>
+       Documentation`HelpLookup["paclet:DoFun/ref/shortExpression"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"GuideFunction"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "Tutorials",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"Tutorials", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"Complex fields\"\>":>
+       Documentation`HelpLookup[
+       "paclet:DoFun/tutorial/Complex fields"], "\<\"Fields mixing at the \
+two-point level\"\>":>Documentation`HelpLookup[
+       "paclet:DoFun/tutorial/Fields mixing at the two-point level"], \
+"\<\"Exporting diagrams\"\>":>Documentation`HelpLookup[
+       "paclet:DoFun/tutorial/Exporting diagrams"], "\<\"Known issues\"\>":>
+       Documentation`HelpLookup[
+       "paclet:DoFun/tutorial/Known issues"], "\<\"Scalar O(N) symmetric \
+theory\"\>":>Documentation`HelpLookup[
+       "paclet:DoFun/tutorial/Scalar O(N) symmetric theory"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"GuideTutorial"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"DoFun\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["DoFun"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink["http://reference.wolfram.com/language/DoFun.html"],
+                 StandardForm]], "Input", TextClipboardType -> "PlainText"]}, 
+            Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$9171], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], "DoFun", ".html"]], 
+           None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ CellID->1],
+
+Cell[CellGroupData[{
+
+Cell["Welcome to DoFun", "GuideTitle",
+ CellID->942062912],
+
+Cell[TextData[{
+ "DoFun (Derivation of Functional Equations) is a ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " application for deriving Dyson-Schwinger (DSEs) and functional \
+renormalization group equations (RGEs)."
+}], "GuideAbstract",
+ CellID->2001916300],
+
+Cell[TextData[{
+ "More information can be found at the ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["DoFun homepage"]],
+    "http://theorie.ikp.physik.tu-darmstadt.de/~mqh/DoFun/"},
+   "WebLink",
+   BaseStyle->{"GuideAbstract"}]]],
+ " and the following articles:\nMarkus Q. Huber, Jens Braun, ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData[
+     "Algorithmic derivation of functional renormalization group equations \
+and Dyson-Schwinger equations"]],"http://inspirehep.net/record/890744"},
+   "WebLink",
+   BaseStyle->{"GuideAbstract"}]]],
+ ", Comput.Phys.Commun. 183 (2012) 1290-1320\nReinhard Alkofer, Markus Q. \
+Huber, Kai Schwenzer,",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData[" Algorithmic derivation of Dyson-Schwinger Equations"]],
+    "http://inspirehep.net/record/793572"},
+   "WebLink",
+   BaseStyle->{"GuideAbstract"}]]],
+ ", Comput.Phys.Commun. 180 (2009) 965-976"
+}], "GuideAbstract",
+ CellID->1361643585],
+
+Cell["Load DoFun with", "Text",
+ CellID->2009870778],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<DoFun`\>\"", "]"}]], "Input",
+ CellID->1414887963]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]]],
+ "Main functions"
+}], "GuideFunctionsSection",
+ CellID->1866139230],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["defineFields"]],"paclet:DoFun/ref/defineFields"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " Defines fields appropriately."
+}], "GuideText",
+ CellID->818281677],
+
+Cell[CellGroupData[{
+
+Cell["DSEs", "GuideFunctionsSubsection",
+ CellID->173109221],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["doDSE"]],"paclet:DoFun/ref/doDSE"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " Derives a DSE."
+}], "GuideText",
+ CellID->203374175],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["DSEPlot"]],"paclet:DoFun/ref/DSEPlot"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " plots a DSE."
+}], "GuideText",
+ CellID->1463276848]
+}, Open  ]],
+
+Cell["\t", "GuideDelimiterSubsection",
+ CellID->195981991],
+
+Cell[CellGroupData[{
+
+Cell["RGEs", "GuideFunctionsSubsection",
+ CellID->137740830],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["doRGE"]],"paclet:DoFun/ref/doRGE"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " Derives an RGE."
+}], "GuideText",
+ CellID->532010816],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["RGEPlot"]],"paclet:DoFun/ref/RGEPlot"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " Plots an RGE."
+}], "GuideText",
+ CellID->1384564685]
+}, Open  ]],
+
+Cell["\t", "GuideDelimiterSubsection",
+ CellID->195090415],
+
+Cell[CellGroupData[{
+
+Cell["Representation of functional equations", "GuideFunctionsSubsection",
+ CellID->1471764858],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["shortExpression"]],"paclet:DoFun/ref/shortExpression"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " Displays functional equations in symbolic form."
+}], "GuideText",
+ CellID->963596871],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["factorStyle"]],"paclet:DoFun/ref/factorStyle"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[FilledVerySmallSquare]", "InlineSeparator"],
+ " ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["indexStyle"]],"paclet:DoFun/ref/indexStyle"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"]
+}], "InlineGuideFunctionListing",
+ CellID->1971291398]
+}, Open  ]],
+
+Cell["\t", "GuideDelimiterSubsection",
+ CellID->1398384814],
+
+Cell[CellGroupData[{
+
+Cell["Algebraic expressions", "GuideFunctionsSubsection",
+ CellID->497624915],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["getAE"]],"paclet:DoFun/ref/getAE"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " Derives the algebraic expression from a symbolic DSE or RGE."
+}], "GuideText",
+ CellID->944737639]
+}, Open  ]],
+
+Cell["\t", "GuideDelimiterSubsection",
+ CellID->2026612859],
+
+Cell[CellGroupData[{
+
+Cell["Feynman rules", "GuideFunctionsSubsection",
+ CellID->1050075324],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["getFR"]],"paclet:DoFun/ref/getFR"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " Derives the Feynman rules from a given action."
+}], "GuideText",
+ CellID->1806659248],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["delta"]],"paclet:DoFun/ref/delta"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " Represents a Kronecker delta."
+}], "GuideText",
+ CellID->113427678],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["integrateDeltas"]],"paclet:DoFun/ref/integrateDeltas"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " Contracts indices of the functions delta."
+}], "GuideText",
+ CellID->497638155],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["deltam"]],"paclet:DoFun/ref/deltam"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[FilledVerySmallSquare]", "InlineSeparator"],
+ " ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["dim"]],"paclet:DoFun/ref/dim"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[FilledVerySmallSquare]", "InlineSeparator"],
+ " ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["integrateMomenta"]],"paclet:DoFun/ref/integrateMomenta"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"]
+}], "InlineGuideFunctionListing",
+ CellID->1220319662]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SectionFooterSpacer"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]]],
+ "Related Guides"
+}], "GuideMoreAboutSection",
+ WholeCellGroupOpener->True,
+ CellID->23220180],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["Overview",
+  BaseStyle->"Link",
+  ButtonData->"paclet:DoFun/tutorial/DoFunOverview"],
+  FontWeight->"Bold"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " Overview over all functions."
+}], "GuideText",
+ CellID->197447342],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["loadFeynCalc"]],"paclet:DoFun/ref/loadFeynCalc"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " Function to load FeynCalc (if installed)."
+}], "GuideText",
+ CellID->851102666]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"Welcome to DoFun",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "GuideColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Wolfram Language", ButtonData -> "paclet:guide/WolframRoot", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "ExampleCounter" -> 1, "NeedPlatMsgIn" -> None, "RootCaptions" -> 
+  "", "Metadata" -> {
+   "built" -> "{2018, 4, 14, 14, 43, 32.332393}", 
+    "history" -> {"1", "", "", ""}, "context" -> "DoFun`", 
+    "keywords" -> {"functional equations DSEs RGEs flow equations"}, 
+    "specialkeywords" -> {}, "tutorialcollectionlinks" -> {}, "index" -> True,
+     "label" -> "Do Fun Guide", "language" -> "en", "paclet" -> "DoFun", 
+    "status" -> "None", "summary" -> 
+    "DoFun (Derivation of Functional Equations) is a Mathematica application \
+for deriving Dyson-Schwinger (DSEs) and functional renormalization group \
+equations (RGEs).", "synonyms" -> {}, "tabletags" -> 
+    DocumentationBuild`Make`Private`tabletaggingrules$9062, "title" -> 
+    "Welcome to DoFun", "titlemodifier" -> "", "windowtitle" -> 
+    "Welcome to DoFun", "type" -> "Guide", "uri" -> "DoFun"}},
+FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "Reference.nb", 
+  CharacterEncoding -> "UTF-8"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[588, 21, 5400, 123, 70, "AnchorBarGrid",ExpressionUUID->"0559b0a6-107c-433c-b23f-d945b3175ff6",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[6013, 148, 58, 1, 70, "GuideTitle",ExpressionUUID->"b9b35a3e-e491-49b1-9116-143bd1be10b5",
+ CellID->942062912],
+Cell[6074, 151, 268, 7, 70, "GuideAbstract",ExpressionUUID->"dc9e62d7-42cf-47d8-aa84-e8ec2464ed83",
+ CellID->2001916300],
+Cell[6345, 160, 942, 26, 70, "GuideAbstract",ExpressionUUID->"d74f23a5-371a-4a1e-ab79-5188688b15b6",
+ CellID->1361643585],
+Cell[7290, 188, 52, 1, 70, "Text",ExpressionUUID->"00c21b37-3bb4-4769-ac2a-c89f3ec5a3ba",
+ CellID->2009870778],
+Cell[7345, 191, 92, 2, 70, "Input",ExpressionUUID->"744d0436-5a1f-4127-bfcd-fd0206010cd7",
+ CellID->1414887963]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7474, 198, 134, 6, 70, "GuideFunctionsSection",ExpressionUUID->"7c9ae763-9521-40f9-ae21-e7475b2bc552",
+ CellID->1866139230],
+Cell[7611, 206, 31, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"6158041a-9d1b-4091-88cc-8d2e84587761"],
+Cell[7645, 208, 309, 10, 70, "GuideText",ExpressionUUID->"e95e324b-666d-4f64-95c7-b25904e1245d",
+ CellID->818281677],
+Cell[CellGroupData[{
+Cell[7979, 222, 60, 1, 70, "GuideFunctionsSubsection",ExpressionUUID->"52af43e6-3b91-42bb-b84a-b135253439c4",
+ CellID->173109221],
+Cell[8042, 225, 280, 10, 70, "GuideText",ExpressionUUID->"30ecfcf0-dc80-4ce9-bf54-7b9de5e380d5",
+ CellID->203374175],
+Cell[8325, 237, 283, 10, 70, "GuideText",ExpressionUUID->"82fb1771-af61-44e7-8ed6-523766e946b5",
+ CellID->1463276848]
+}, Open  ]],
+Cell[8623, 250, 58, 1, 70, "GuideDelimiterSubsection",ExpressionUUID->"254a8f74-5326-486b-ae27-c41d44cc89c4",
+ CellID->195981991],
+Cell[CellGroupData[{
+Cell[8706, 255, 60, 1, 70, "GuideFunctionsSubsection",ExpressionUUID->"cb4f994e-e877-41d1-a249-4fe895589737",
+ CellID->137740830],
+Cell[8769, 258, 281, 10, 70, "GuideText",ExpressionUUID->"9f0f3196-b23f-420c-ac1e-0d2a181fce88",
+ CellID->532010816],
+Cell[9053, 270, 284, 10, 70, "GuideText",ExpressionUUID->"4f1b48b5-a42b-4347-bfe5-a721ea6d4be9",
+ CellID->1384564685]
+}, Open  ]],
+Cell[9352, 283, 58, 1, 70, "GuideDelimiterSubsection",ExpressionUUID->"4fb589d4-4f0a-47bc-84e1-bd4796ea3035",
+ CellID->195090415],
+Cell[CellGroupData[{
+Cell[9435, 288, 95, 1, 70, "GuideFunctionsSubsection",ExpressionUUID->"aa08d486-6696-466b-a914-42d7cd113d60",
+ CellID->1471764858],
+Cell[9533, 291, 333, 10, 70, "GuideText",ExpressionUUID->"49be026a-3561-4f69-b67f-17a55a72d6bc",
+ CellID->963596871],
+Cell[9869, 303, 503, 15, 70, "InlineGuideFunctionListing",ExpressionUUID->"a0fa37b6-5a2c-46e4-b948-305e0f9b2e19",
+ CellID->1971291398]
+}, Open  ]],
+Cell[10387, 321, 59, 1, 70, "GuideDelimiterSubsection",ExpressionUUID->"807820ea-c152-4936-8f6f-118a3e314cbf",
+ CellID->1398384814],
+Cell[CellGroupData[{
+Cell[10471, 326, 77, 1, 70, "GuideFunctionsSubsection",ExpressionUUID->"0ad520a8-94ef-44aa-b02f-853a077cad15",
+ CellID->497624915],
+Cell[10551, 329, 326, 10, 70, "GuideText",ExpressionUUID->"592c379c-ef76-4d8d-9c6f-04a3a7feb659",
+ CellID->944737639]
+}, Open  ]],
+Cell[10892, 342, 59, 1, 70, "GuideDelimiterSubsection",ExpressionUUID->"5d07b425-5fdf-46ab-9932-c8696141c9fa",
+ CellID->2026612859],
+Cell[CellGroupData[{
+Cell[10976, 347, 70, 1, 70, "GuideFunctionsSubsection",ExpressionUUID->"898c78f6-3872-4363-a7fb-5e5549486f8e",
+ CellID->1050075324],
+Cell[11049, 350, 313, 10, 70, "GuideText",ExpressionUUID->"937fd069-fe26-42e2-b5a0-c2a851e06289",
+ CellID->1806659248],
+Cell[11365, 362, 295, 10, 70, "GuideText",ExpressionUUID->"3f045a9e-703d-4c58-b488-546f20a207bf",
+ CellID->113427678],
+Cell[11663, 374, 327, 10, 70, "GuideText",ExpressionUUID->"eced66c4-9d26-40d8-924c-2c10c690b3d8",
+ CellID->497638155],
+Cell[11993, 386, 751, 23, 70, "InlineGuideFunctionListing",ExpressionUUID->"7627e5f5-20d8-434d-9bc5-0dc570171f75",
+ CellID->1220319662]
+}, Open  ]],
+Cell[12759, 412, 31, 0, 70, "SectionFooterSpacer",ExpressionUUID->"721937ab-582e-4880-8580-fb2450cd3104"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12827, 417, 31, 0, 70, "SectionFooterSpacer",ExpressionUUID->"ca2a0ca5-feaa-4b40-9b8f-bb307e21df49"],
+Cell[12861, 419, 161, 7, 70, "GuideMoreAboutSection",ExpressionUUID->"e1fe571b-95dc-4ab2-916c-e5cd8e8179cb",
+ CellID->23220180],
+Cell[13025, 428, 31, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"cc3a724a-533e-4e33-b119-4fa4a1e3adf2"],
+Cell[13059, 430, 262, 9, 70, "GuideText",ExpressionUUID->"62125ee6-5394-4ec3-999f-0477fb20b868",
+ CellID->197447342],
+Cell[13324, 441, 321, 10, 70, "GuideText",ExpressionUUID->"384571f4-79ec-401b-b7cb-95e22310a51f",
+ CellID->851102666]
+}, Open  ]],
+Cell[13660, 454, 23, 0, 70, "FooterCell",ExpressionUUID->"04de86f4-b16a-49cf-994f-d64a6f6a67a4"]
+}
+]
+*)
+
+(* End of internal cache information *)

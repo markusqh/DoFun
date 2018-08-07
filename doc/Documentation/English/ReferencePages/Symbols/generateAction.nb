@@ -1,0 +1,206 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8298,        197]
+NotebookOptionsPosition[      4781,        128]
+NotebookOutlinePosition[      8034,        195]
+CellTagsIndexPosition[      7991,        192]
+WindowTitle->generateAction
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell"], Cell[TextData[Cell[
+    BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"DoFun/ref/generateAction\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["DoFun/ref/generateAction"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/DoFun/ref/\
+generateAction.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$30951], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "DoFun/ref/generateAction", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell[TextData[{
+ Cell["generateAction", "ObjectName"],
+ Cell[BoxData[
+  TemplateBox[{8},
+   "Spacer1"]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[BoxData[GridBox[{
+   {"", Cell["\<\
+Generates the action from a list of interactions. Interactions are given as \
+lists of the involved fields, e.g. {A,A,A}.
+Symmetry factors are created automatically or can be given explicitly, e.g. \
+{{A,A,A},6}.
+Note that vertices are defined as the negative differentiations of the action.
+
+Syntax:
+generateAction[interacs, fields] where interacs is a list of interactions \
+characterizing an action.
+The optional argument fields allows to specify the bosonic or fermionic \
+character of fields explicitly, e.g., {A, {c, cb}} specifies A as a boson and \
+c and cb as fermion and respective antiFermion.
+
+The list of interactions can have the following elements:
+ -) n-point functions as list of fields, e.g., {phi, phi} or {cb, c, A}
+ -) a bosonic field and its maximal multiplicity, e.g., {phi, 4} will give \
+two-, three- and four-point interactions
+ -) a bosonic field, its maximal multiplicity and the argument even to \
+indicate that only interactions with an even number of fields involved should \
+be taken into account, e.g., {phi, 4, even} will give two- and four-point \
+interactions
+ -) a pair of bosonic complex fields or a pair of Grassmann fields and the \
+maximal multiplicity of the pairs, e.g., {psi, psib, 2} will give the two- \
+and the four-point functions
+
+Examples:
+generateAction[{{A,A},{A,A,A}}]
+generateAction[{{phi, 4}}]
+generateAction[{{phi, 4, even}}]
+generateAction[{{psi, psib, 2}}]
+generateAction[{{phi, phib}, {phib, phib, phi, phi}}, {phi, phib}]
+bosonQ@phi\
+\>"]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}}],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"generateAction",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:DoFun/guide/DoFun", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2018, 4, 14, 14, 44, 59.971293}", 
+    "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
+    "status" -> "None", "summary" -> 
+    "Generates the action from a list of interactions. Interactions are given \
+as lists of the involved fields, e.g. {A,A,A}. Symmetry factors are created \
+automatically or can be given explicitly, e.g. {{A,A,A},6}. Note that \
+vertices are defined as the negative differentiations of the action. Syntax: \
+generateAction[interacs, fields] where interacs is a list of interactions \
+characterizing an action. The optional argument fields allows to specify the \
+bosonic or fermionic character of fields explicitly, e.g., {A, {c, cb}} \
+specifies A as a boson and c and cb as fermion and respective antiFermion. \
+The list of interactions can have the following elements: -) n-point \
+functions as list of fields, e.g., {phi, phi} or {cb, c, A} -) a bosonic \
+field and its maximal multiplicity, e.g., {phi, 4} will give two-, three- and \
+four-point interactions -) a bosonic field, its maximal multiplicity and the \
+argument even to indicate that only interactions with an even number of \
+fields involved should be taken into account, e.g., {phi, 4, even} will give \
+two- and four-point interactions -) a pair of bosonic complex fields or a \
+pair of Grassmann fields and the maximal multiplicity of the pairs, e.g., \
+{psi, psib, 2} will give the two- and the four-point functions Examples: \
+generateAction[{{A,A},{A,A,A}}] generateAction[{{phi, 4}}] \
+generateAction[{{phi, 4, even}}] generateAction[{{psi, psib, 2}}] \
+generateAction[{{phi, phib}, {phib, phib, phi, phi}}, {phi, phib}] \
+bosonQ@phi", "synonyms" -> {}, "tabletags" -> {}, "title" -> "generateAction",
+     "titlemodifier" -> "", "windowtitle" -> "generateAction", "type" -> 
+    "Symbol", "uri" -> "DoFun/ref/generateAction"}},
+CellContext->"Global`",
+FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[586, 21, 2295, 54, 70, "AnchorBarGrid",ExpressionUUID->"f13a429d-6243-4f02-9ebe-719e1c7031f0",
+ CellID->1],
+Cell[2884, 77, 171, 6, 70, "ObjectNameGrid",ExpressionUUID->"441dc355-a6fb-4e6c-8cc3-8180f944d2ee"],
+Cell[3058, 85, 1693, 39, 70, "Usage",ExpressionUUID->"1236f02b-f34f-4652-b057-a0dfada8d5c2"],
+Cell[4754, 126, 23, 0, 70, "FooterCell",ExpressionUUID->"aa0163f7-7896-4395-9779-1c445ce3f245"]
+}
+]
+*)
+
+(* End of internal cache information *)

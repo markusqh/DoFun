@@ -1,0 +1,275 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9751,        266]
+NotebookOptionsPosition[      6269,        194]
+NotebookOutlinePosition[      8517,        248]
+CellTagsIndexPosition[      8474,        245]
+WindowTitle->shortExpression
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "Related Guides",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"Related Guides", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"Welcome to DoFun\"\>":>
+       Documentation`HelpLookup["paclet:DoFun/guide/Welcome to DoFun"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"MoreAbout"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"DoFun/ref/shortExpression\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["DoFun/ref/shortExpression"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/DoFun/ref/\
+shortExpression.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$46561], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "DoFun/ref/shortExpression", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell[TextData[{
+ Cell["shortExpression", "ObjectName"],
+ Cell[BoxData[
+  TemplateBox[{8},
+   "Spacer1"]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[BoxData[GridBox[{
+   {"", Cell["\<\
+Rewrites a symbolic DSE or RGE into a shorter form using $bareVertexSymbol, \
+$vertexSymbol, $regulatorInsertionSymbol and $propagatorSymbol for \
+representation.
+The function sE is identical to shortExpression.
+
+Syntax:
+shortExpression[expr, opts] with expr an expression containing op functions \
+and opts options appropriate for Style.
+
+Example:
+shortExpression[1/2 op[S[{A, i}, {A, r}, {A, s}], V[{A, t}, {A, u}, {A, j}], \
+P[{A, t}, {A, r}], P[{A, u}, {A, s}]], Red, FontSize -> 20]\
+\>"]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    TemplateBox[{6},
+     "Spacer1"]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None, "Normal", Automatic},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell["The following options can be given: ", "Notes"],
+
+Cell[BoxData[GridBox[{
+   {Cell["      ", "TableRowIcon"], 
+    ButtonBox["FontSize",
+     BaseStyle->"Link",
+     ButtonData->"paclet:ref/FontSize"], "16", Cell["\<\
+FontSize is an option for Style and Cell which specifies the default size in \
+printer\[CloseCurlyQuote]s points of the font in which to render text. \
+\>", "TableText"]}
+  }]], "3ColumnTableMod",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}},
+ GridBoxDividers->{"Rows" -> {{True, True}}}}],
+
+Cell["", "SectionFooterSpacer"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]]],
+ "Related Guides"
+}], "MoreAboutSection",
+ WholeCellGroupOpener->True,
+ CellID->38303248],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["Welcome to DoFun"]],"paclet:DoFun/guide/Welcome to DoFun"},
+  "RefLink",
+  BaseStyle->"MoreAbout"]], "MoreAbout",
+ CellID->1]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"shortExpression",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:DoFun/guide/DoFun", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2018, 4, 14, 14, 45, 34.366160}", 
+    "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
+    "status" -> "None", "summary" -> 
+    "Rewrites a symbolic DSE or RGE into a shorter form using \
+$bareVertexSymbol, $vertexSymbol, $regulatorInsertionSymbol and \
+$propagatorSymbol for representation. The function sE is identical to \
+shortExpression. Syntax: shortExpression[expr, opts] with expr an expression \
+containing op functions and opts options appropriate for Style. Example: \
+shortExpression[1/2 op[S[{A, i}, {A, r}, {A, s}], V[{A, t}, {A, u}, {A, j}], \
+P[{A, t}, {A, r}], P[{A, u}, {A, s}]], Red, FontSize -> 20]", 
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "shortExpression", 
+    "titlemodifier" -> "", "windowtitle" -> "shortExpression", "type" -> 
+    "Symbol", "uri" -> "DoFun/ref/shortExpression"}},
+CellContext->"Global`",
+FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[587, 21, 3052, 74, 70, "AnchorBarGrid",ExpressionUUID->"2c722d73-8069-443b-a7d2-757c85f80089",
+ CellID->1],
+Cell[3642, 97, 172, 6, 70, "ObjectNameGrid",ExpressionUUID->"d97bac03-e858-4262-9276-cae40269ce9a"],
+Cell[3817, 105, 688, 19, 70, "Usage",ExpressionUUID->"9cf25761-74e9-4856-9b1d-46f96e6a2d56"],
+Cell[CellGroupData[{
+Cell[4530, 128, 621, 19, 70, "NotesSection",ExpressionUUID->"07422a15-0d60-45e8-a090-3bdbe0a40815",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1],
+Cell[5154, 149, 31, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"6763129f-301a-47c7-b24a-2c03caa147fa"],
+Cell[5188, 151, 53, 0, 70, "Notes",ExpressionUUID->"8afae68f-dbc3-4702-abb5-902d7ef79758"],
+Cell[5244, 153, 546, 13, 70, "3ColumnTableMod",ExpressionUUID->"8a07f146-efe3-4e1d-b760-4883763d8d88"],
+Cell[5793, 168, 31, 0, 70, "SectionFooterSpacer",ExpressionUUID->"e0cfa7f1-0e8e-42eb-b2ee-9ec88eb7f8bf"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[5861, 173, 156, 7, 70, "MoreAboutSection",ExpressionUUID->"1e845b31-def7-46dc-aac4-273c2eaa586b",
+ CellID->38303248],
+Cell[6020, 182, 31, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"cd118c15-c49a-4bbd-9b98-5c3cd85fd0cb"],
+Cell[6054, 184, 173, 5, 70, "MoreAbout",ExpressionUUID->"86464e3e-a776-4c66-93d6-922ab98740aa",
+ CellID->1]
+}, Open  ]],
+Cell[6242, 192, 23, 0, 70, "FooterCell",ExpressionUUID->"fa927012-0373-4c7b-8d24-c76c9c1bbb95"]
+}
+]
+*)
+
+(* End of internal cache information *)
