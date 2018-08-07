@@ -1124,6 +1124,14 @@ The expression causing the error is `1`.";
 
 RGEPlot::fieldsUndefined=DSEPlot::fieldsUndefined;
 
+setFields::noPair = 
+  "The fermions and/or complex fields are not given as pairs. The \
+input was `1` and `2`. Each should be of the form {{field1, \
+anti-field1},...}.";
+
+setFields::syntax = 
+  "There was a problem with the syntax of setFields.";
+  
 setSourcesZero::syntax="There was a syntax error in setSourcesZero.\n
 Make sure the input has the form of setSourcesZero[expr_ [,propagators_List], vertexTest_Symbol]. Fore more details use ?setSourcesZero.\n
 The expression causing the error is `1`.";
@@ -1217,7 +1225,7 @@ generateAction[action_,rest___]:=
 	generateAction[(Cases[Replace[#, op[b__] :> {op[b]}(*in case a=op[___]*)], op[___], \[Infinity]] /. op :> Sequence)[[All, 0]] & /@ List@@action,rest];
 
 (* properties of fields are not set yet *)
-generateAction[interactions_List]:=Message[generateAction::fieldsNotSet,interactions];
+(*generateAction[interactions_List]:=Message[generateAction::fieldsNotSet,interactions];*)
 
 generateAction[interactions_List]:=Module[
 {interactions2, fields,autoList, userList, factor},
@@ -2209,7 +2217,7 @@ doDSE[action_,derivs_List,rest___,opts___?OptionQ]/;Cases[action,op[a__?(fieldQ@
 
 (* if list of interactions given, create action first; using the option specificFieldDefinitions one can give a list of fields for defineFields *)
 (* TODO Remove specificFieldDefinitions *)
-doDSE[interactions_List,rest___,opts___?OptionQ]:=doDSE[generateAction[interactions,specificFieldDefinitions/.Join[{opts},Options@doDSE]],rest,opts];
+doDSE[interactions_List,rest___,opts___?OptionQ]:=doDSE[generateAction[interactions],rest,opts];
 
 (* only list of fields without indices, but $externalIndices is too short *)
 doDSE[L_Times|L_Plus,derivs_List,b___]/;Depth@derivs==2&&Length@derivs>Length@$externalIndices:=Message[doDSE::tooFewExternalIndices,$externalIndices];
@@ -2289,7 +2297,7 @@ converting the list into an action is strictly speaking not required but 1) allo
 doRGE[interactions_List,derivs_List,rest___,opts___?OptionQ]:=Module[{evenFields},
  evenFields=Cases[interactions,{Q_,even}:>Q];
  (* replace even fields definition by field two-point function *)
- doRGE[generateAction[interactions/.{Q_,even}:>{Q,Q},specificFieldDefinitions/.Join[{opts},Options@doRGE]],derivs,rest,userEvenFields->evenFields,opts]
+ doRGE[generateAction[interactions/.{Q_,even}:>{Q,Q}],derivs,rest,userEvenFields->evenFields,opts]
 ];
 
 (* no derivatives, i.e., "zero-point function" *)
@@ -2521,15 +2529,15 @@ shortExpression[a___]:=Message[shortExpression::syntax,a];
 (* vertexDummies: auxiliary functions for DSEPlotList and RGEPlotList, determines unique dummies for the vertices
 so that they can be used in DSEPlotList/RGEPlotList as points *)
 
-vertexDummies[a_?NumericQ b_,(*fermions_List,*)opts___?OptionQ] := {vertexDummies[b,(*fermions,*)opts], a};
+vertexDummies[a_?NumericQ b_,opts___?OptionQ] := {vertexDummies[b,opts], a};
 
-vertexDummies[a_Plus,(*fermions_List,*)opts___?OptionQ] := vertexDummies[#,(*fermions,*)opts] & /@ List @@ a;
+vertexDummies[a_Plus,opts___?OptionQ] := vertexDummies[#,opts] & /@ List @@ a;
 
 (* the function sort allows to give a function applied on the list of vertices;
 up to now only necessary when invoked from DSEPlotCompare because a unique vertex representative is needed;
 otherwise use an "empty" function *)
 (*vertexDummies[a_op,fields_List,sort_:(#&),opts___?OptionQ]*)
-vertexDummies[a_op,(*fields_List,*)sort_:(#&),opts___?OptionQ] /;Not@OptionQ@sort:=(*vertexDummies[a,opts]=*) Module[
+vertexDummies[a_op,sort_:(#&),opts___?OptionQ] /;Not@OptionQ@sort:=(*vertexDummies[a,opts]=*) Module[
   {allIndices, indices, vertices,bareVertexRepres,bareVertexRule,
   	externalFields, externalPropagators, propagators, legs,regulators,regulatorsRepres,regulatorRule,
   	verticesRepres, verticesRepresList, identificationList,sameVertTest, extText,dirFieldsOrdered,allDirFields},
@@ -2622,10 +2630,10 @@ the user invokes DSEPlot and gets a complete DSE, but with the option output -> 
 
 
 (* with edges rendered specially *)
-DSEPlotList[a_,(*fields_List,*)plotRules_List,opts___?OptionQ]/;FreeQ[a,Rule,Infinity]:=
-	DSEPlotList[vertexDummies[a,(*Cases[fields,{_,_}],*)opts],(*fields,*)plotRules,opts];
+DSEPlotList[a_,plotRules_List,opts___?OptionQ]/;FreeQ[a,Rule,Infinity]:=
+	DSEPlotList[vertexDummies[a,opts],plotRules,opts];
 
-DSEPlotList[{a_List,b_?NumericQ},(*fields_List,*)plotRules_List,opts___?OptionQ]:=Module[{allDirFields, exponent,regulatorSymbolFunction,sls,dirFieldsOrdered,plotRulesAll},
+DSEPlotList[{a_List,b_?NumericQ},plotRules_List,opts___?OptionQ]:=Module[{allDirFields, exponent,regulatorSymbolFunction,sls,dirFieldsOrdered,plotRulesAll},
 
 (* extend plot Rules also to antifields *)
 plotRulesAll=Union@Replace[plotRules, {c_?fieldQ, d__} :> Sequence[{c, d}, {antiField@c, d}], 1];
@@ -2685,15 +2693,15 @@ GraphPlot[a, EdgeRenderingFunction->((Which@@Join[
  ]
 ];
 
-DSEPlotList[a_,(*fields_List,*)plotRules_List,opts___?OptionQ]/;FreeQ[a,Rule[_,_],2]:=DSEPlotList[#,(*fields,*)plotRules,opts]&/@a;
+DSEPlotList[a_,plotRules_List,opts___?OptionQ]/;FreeQ[a,Rule[_,_],2]:=DSEPlotList[#,plotRules,opts]&/@a;
 
-DSEPlotList[a_List,(*fields_List,*)plotRules_List,opts___?OptionQ]:=DSEPlotList[{a,1},(*fields,*)plotRules,opts];
+DSEPlotList[a_List,plotRules_List,opts___?OptionQ]:=DSEPlotList[{a,1},plotRules,opts];
 
 (* without edge rendering *)
 
-DSEPlotList[a_,(*fields_List,*)opts___?OptionQ]/;FreeQ[a,Rule,Infinity]:=DSEPlotList[vertexDummies[a,(*Cases[fields,{_,_}],*)opts],(*fields,*)opts];
+DSEPlotList[a_,opts___?OptionQ]/;FreeQ[a,Rule,Infinity]:=DSEPlotList[vertexDummies[a,opts],opts];
 
-DSEPlotList[{a_List,b_?NumericQ},(*fields_List,*)opts___?OptionQ]:=Module[{exponent,regulatorSymbolFunction,sls},
+DSEPlotList[{a_List,b_?NumericQ},opts___?OptionQ]:=Module[{exponent,regulatorSymbolFunction,sls},
 
 (* determine the function for drawing the regulator insertion *)
 regulatorSymbolFunction=regulatorSymbol/.Join[{opts},Options@RGEPlot];
@@ -2739,18 +2747,18 @@ GraphPlot[a,
 ]
 ];
 
-DSEPlotList[a_,(*fields_List,*)opts___?OptionQ]/;FreeQ[a,Rule[_,_],2]:=DSEPlotList[#,(*fields,*)opts]&/@a;
+DSEPlotList[a_,opts___?OptionQ]/;FreeQ[a,Rule[_,_],2]:=DSEPlotList[#,opts]&/@a;
 
-DSEPlotList[a_List,(*fields_List,*)opts___?OptionQ]:=DSEPlotList[{a,1},(*fields,*)opts];
+DSEPlotList[a_List,opts___?OptionQ]:=DSEPlotList[{a,1},opts];
 
-DSEPlotList[a___]:=Message[DSEPlot::syntax,a];
+DSEPlotList[a___]:=Print[a];Message[DSEPlot::syntax,a];
 
 
 
 (* plot the complete equation including the left-hand side; employ a grid;
 if no PlotRules are given, call DSEPlotList accordingly without it *)
 
-(* is there is only a number *)
+(* if there is only a number *)
 DSEPlot[a_?NumericQ,___]:=a;
 
 (* fields not defined *)
@@ -2760,17 +2768,17 @@ DSEPlot[a_,rest___]/;Not[And@@(fieldQ/@Union[Cases[a,{b_,_}:>b,{2,Infinity}]])]:
 DSEPlot[a_,{f_?fieldQ,styleDefs___},rest___]:=RGEPlot[a,{{f,styleDefs}},rest];
 
 (* if plotRules are not properly defined *)
-DSEPlot[a_,(*IA_List,*)plotRules_List,___]/;Not@MatchQ[plotRules, {{__},___}]:=Message[DSEPlot::plotRules,plotRules];
+DSEPlot[a_,plotRules_List,___]/;Not@MatchQ[plotRules, {{__},___}]:=Message[DSEPlot::plotRules,plotRules];
 
-DSEPlot[a_,(*IA_List,*)plotRules_List:{},len_Integer:5,opts___?OptionQ]/;(output/.Join[{opts},Options@DSEPlot])===List:=
-	DSEPlotList[a,(*IA,*)plotRules/.{}:>Sequence[],opts];
+DSEPlot[a_,plotRules_List:{},len_Integer:5,opts___?OptionQ]/;(output/.Join[{opts},Options@DSEPlot])===List:=
+	DSEPlotList[a,plotRules/.{}:>Sequence[],opts];
 
 (* plot lists of diagrams as such *)
-DSEPlot[a_List,(*IA_List,*)plotRules_List:{},len_Integer:5,opts___?OptionQ]:=DSEPlot[#,(*IA,*)plotRules,len,opts]&/@a;
+DSEPlot[a_List,plotRules_List:{},len_Integer:5,opts___?OptionQ]:=DSEPlot[#,plotRules,len,opts]&/@a;
 
 (* plot sum of op operators; normally a single graph is plotted alone, except the option output is set to forceEquation *)
-DSEPlot[a_,(*IA_List,*)plotRules_List:{},len_Integer:5,opts___?OptionQ]/;And@@(Not@FreeQ[#, op[__]] & /@ List@@Expand[a])||(output/.Join[{opts},Options@DSEPlot])===forceEquation:=Module[
-	{expandeda, rhs, lhs, inds, lhsFields, exponent},
+DSEPlot[a_,plotRules_List:{},len_Integer:5,opts___?OptionQ]/;And@@(Not@FreeQ[#, op[__]] & /@ List@@Expand[a])||(output/.Join[{opts},Options@DSEPlot])===forceEquation:=Module[
+	{expandeda, rhs, lhs, inds, lhsFields, exponent, Q,q},
 	
 	(* expand a or otherwise there may be problems with parentheses *)
 	expandeda=Expand@a;
@@ -2794,7 +2802,7 @@ DSEPlot[a_,(*IA_List,*)plotRules_List:{},len_Integer:5,opts___?OptionQ]/;And@@(N
 ];
 
 (* plot single diagrams as such *)	
-DSEPlot[a_,(*IA_List,*)plotRules_List:{},len_Integer:5,opts___?OptionQ]/;Count[a, op[___], \[Infinity]]==1||Head@a==op:=DSEPlotList[a,(*IA,*)plotRules/.{}:>Sequence[],opts];
+DSEPlot[a_,plotRules_List:{},len_Integer:5,opts___?OptionQ]/;Count[a, op[___], \[Infinity]]==1||Head@a==op:=DSEPlotList[a,	plotRules/.{}:>Sequence[],opts];
 
 DSEPlot[a___]:=Message[DSEPlot::syntax,a];
 
@@ -2969,12 +2977,14 @@ No other function should interfer with the fields' definitions. *)
 
 (* some defaults *)
 setFields[bosons_List] := setFields[bosons, {}, {}]
-setFields[bosons_List, fermions_List] := setFields[bosons, fermions, {}]
-
+setFields[bosons_List, fermions_List] := 
+ setFields[bosons, fermions, {}]
 (* check syntax of fermionic and complex fields (need to be pairs) *)
+
 setFields[bosons_List, fermions_List, complexFields_List] /; 
-   Not[And @@ Flatten[{Head@# === List & /@ fermions, Head@# === List & /@ complexFields}]] := Message[setFields::noList];
-   
+   Not[And @@ 
+     Flatten[MatchQ[#, {_, _}] & /@ Join[fermions, complexFields]]] :=
+   Message[setFields::noPair, fermions, complexFields];
 setFields[bosons_List, fermions_List, complexFields_List] := Module[{},
   
   (* set the field types *)
@@ -2986,21 +2996,37 @@ setFields[bosons_List, fermions_List, complexFields_List] := Module[{},
   (# /: fieldType[#] := antiFermion) & /@ fermions[[All, 2]];
   (# /: fieldType[#] := complex) & /@ complexFields[[All, 1]];
   (# /: fieldType[#] := antiComplex) & /@ complexFields[[All, 2]];
+  (* internally used dummy fields *)
+  $dummyFieldF /: 
+   fieldType[$dummyFieldF] := fermion;
+  $dummyFieldAF /: fieldType[$dummyFieldAF] := antiFermion;
   
-  (* set all fields to Head field *)
-  (# /: Head[#] = field) & /@ Flatten[{bosons, fermions, complexFields}];
+  (* set all fields to Head field: Not done, 
+  since this does not fully work as expected *)
+  (*(#/:Head[#]=
+  field)&/@Flatten[{bosons,fermions,complexFields}];*)
   
-  (* define the anti-fields *)
-  (antiField[#[[1]]] = #[[2]]) & /@ Transpose[{bosons, bosons}];
-  (antiField[#[[1]]] = #[[2]]) & /@ fermions;
-  (antiField[#[[2]]] = #[[1]]) & /@ fermions;
-  (antiField[#[[1]]] = #[[2]]) & /@ complexFields;
-  (antiField[#[[2]]] = #[[1]]) & /@ complexFields;
+  (* set (anti-)commutating property *)
+  (* TODO: 
+  put this in the init *)
+  (# /: grassmannQ[#] = False) & /@ 
+   Flatten[{bosons, complexFields}];
+  (# /: grassmannQ[#] = True) & /@ 
+   Flatten[{fermions, $dummyFieldF, $dummyFieldAF}];
   
-]
+  (* define the anti-
+  fields *)
+  (antiField[#[[1]]] = #[[2]]) & /@ 
+   Transpose[{bosons, bosons}];
+  (antiField[#[[1]]] = #[[2]]) & /@ 
+   fermions; (antiField[#[[2]]] = #[[1]]) & /@ 
+   fermions; (antiField[#[[1]]] = #[[2]]) & /@ 
+   complexFields; (antiField[#[[2]]] = #[[1]]) & /@ complexFields;
+  
+  ]
 (* default error handler *)
 
-setFields[a___] := Message[defineFields::syntax, a]
+setFields[a___] := Message[setFields::syntax, a];
 
 
 (* countTerms cleared for DoFun3 *)
