@@ -1,0 +1,3229 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[    148312,       3220]
+NotebookOptionsPosition[    144920,       3096]
+NotebookOutlinePosition[    145328,       3112]
+CellTagsIndexPosition[    145285,       3109]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ "New in: ",
+ Cell["0.0", "HistoryData",
+  CellTags->"New"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete"],
+ " | Excised in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Excised"]
+}], "History",
+ CellID->1247902091],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->1122911449],
+
+Cell["Tutorial", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->686433507],
+
+Cell["DoFun", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->605800465],
+
+Cell["DoFun`", "Categorization",
+ CellLabel->"Context",
+ CellID->468444828],
+
+Cell["DoFun/tutorial/Known issues", "Categorization",
+ CellLabel->"URI"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->1427428552],
+
+Cell["XXXX", "Keywords",
+ CellID->1251852827]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Details", "DetailsSection",
+ CellID->307771771],
+
+Cell["XXXX", "Details",
+ CellLabel->"Lead",
+ CellID->218895918],
+
+Cell["XXXX", "Details",
+ CellLabel->"Developers",
+ CellID->350963985],
+
+Cell["XXXX", "Details",
+ CellLabel->"Authors",
+ CellID->795871300],
+
+Cell["XXXX", "Details",
+ CellLabel->"Feature Name",
+ CellID->199739161],
+
+Cell["XXXX", "Details",
+ CellLabel->"QA",
+ CellID->40625308],
+
+Cell["XXXX", "Details",
+ CellLabel->"DA",
+ CellID->357121918],
+
+Cell["XXXX", "Details",
+ CellLabel->"Docs",
+ CellID->35949532],
+
+Cell["XXXX", "Details",
+ CellLabel->"Features Page Notes",
+ CellID->929432370],
+
+Cell["XXXX", "Details",
+ CellLabel->"Comments",
+ CellID->240026365]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Known issues", "Title",
+ CellID->509267359],
+
+Cell["This notebook describes known issues of DoFun.", "Text",
+ CellChangeTimes->{3.506672732485487*^9},
+ CellID->1534169418],
+
+Cell[BoxData[GridBox[{
+   {"XXXX", Cell["XXXX", "TableText"]},
+   {"XXXX", Cell["XXXX", "TableText"]},
+   {"XXXX", Cell["XXXX", "TableText"]}
+  }]], "DefinitionBox",
+ CellID->2096742444],
+
+Cell[CellGroupData[{
+
+Cell["DSEPlot", "Section",
+ CellChangeTimes->{3.5066727417885523`*^9},
+ CellID->1536219457],
+
+Cell[CellGroupData[{
+
+Cell["Non-planar diagrams", "Subsection",
+ CellChangeTimes->{3.506672753308671*^9},
+ CellID->1975056533],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Non-planar diagrams pose a problem for the used plot program GraphPlot as the \
+following example illustrates:\
+\>", "Text",
+ CellChangeTimes->{{3.506672772598155*^9, 3.506672802860256*^9}},
+ CellID->836781195],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<DoFun`\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.506672806642006*^9, 3.5066728104403687`*^9}},
+ CellLabel->"In[7]:=",
+ CellID->1403200543],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"dse", "=", 
+   RowBox[{"doDSE", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "4"}], "}"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"phi", ",", "phi", ",", "phi", ",", "phi"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"dse", "=", 
+   RowBox[{"Select", "[", 
+    RowBox[{"dse", ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Count", "[", 
+        RowBox[{"#", ",", 
+         RowBox[{"P", "[", "__", "]"}], ",", "\[Infinity]"}], "]"}], 
+       "\[Equal]", "6"}], "&"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"DSEPlot", "[", 
+  RowBox[{"dse", ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"phi", ",", "Black"}], "}"}], "}"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.506672776469256*^9, 3.5066727820388823`*^9}, {
+  3.506672813487011*^9, 3.506672938384761*^9}},
+ CellLabel->"In[21]:=",
+ CellID->2058623809],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            
+            LineBox[{{0.7071067812659142, 0.7071067812976606}, {
+             1.269867544451131*^-10, 1.4142135625318282`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.7071067812659142, 0.7071067812976606}, {0., 
+             1.9047974308961102`*^-10}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.7071067812659142, 0.7071067812976606}, {
+             1.4142135623413488`, 0.}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.7071067812659142, 0.7071067812976606}, {
+             1.414213562595322, 1.4142135623413479`}}]}}, {
+           DiskBox[{0.7071067812659142, 0.7071067812976606}, 0.1], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {
+             1.269867544451131*^-10, 1.7142135625318282`}], 
+            DiskBox[{1.269867544451131*^-10, 1.4142135625318282`}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {0.,
+              0.30000000019047973`}], 
+            DiskBox[{0., 1.9047974308961102`*^-10}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i3\"", StripOnInput -> False, FontSize :> 14], {
+             1.4142135623413488`, 0.3}], 
+            DiskBox[{1.4142135623413488`, 0.}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i4\"", StripOnInput -> False, FontSize :> 14], {
+             1.414213562595322, 1.714213562341348}], 
+            DiskBox[{1.414213562595322, 1.4142135623413479`}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{0.7071067812659142, 
+           0.7071067812976606}, {1.269867544451131*^-10, 
+           1.4142135625318282`}, {0., 1.9047974308961102`*^-10}, {
+           1.4142135623413488`, 0.}, {1.414213562595322, 
+           1.4142135623413479`}}]& ], AspectRatio -> Automatic, FrameTicks -> 
+        None, PlotRange -> All, PlotRangePadding -> Scaled[0.1]],StyleBox[
+        TemplateBox[{
+          OverscriptBox[
+           StyleBox["\"\"", StripOnInput -> False, FontSize :> 50], 
+           StyleBox["\"\"", StripOnInput -> False, FontSize :> 16]], "\"=\""},
+          "Row", DisplayFunction -> (RowBox[{#, "\[InvisibleSpace]", #2}]& ), 
+         InterpretationFunction -> (RowBox[{"Row", "[", 
+            RowBox[{"{", 
+              RowBox[{#, ",", #2}], "}"}], "]"}]& )], StripOnInput -> False, 
+        ShowStringCharacters -> False, FontSize :> 16]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 1}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", #2, ",", "Right"}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            
+            LineBox[{{1.9245004137491908`, 2.2684344766578732`}, {
+             1.9280211482303427`, 1.0395343617613462`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.9245004137491908`, 2.2684344766578732`}, {
+             1.9273918333447877`, 1.593297483602082}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.9245004137491908`, 2.2684344766578732`}, {
+             1.9209284403145772`, 3.2835468610690257`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.9280211482303427`, 1.0395343617613462`}, {
+             1.9303402610453297`, 0.}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.859958481616874, 1.1689366820636202`}, {
+             1.9280211482303427`, 1.0395343617613462`}}]}, {
+            GrayLevel[0], 
+            LineBox[{{2.859958481616874, 1.1689366820636202`}, {
+             1.9273918333447877`, 1.593297483602082}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.859958481616874, 1.1689366820636202`}, {
+             3.856859503916578, 0.9892695809559734}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.9957321768028281, 1.1651466445361098`}, {
+             1.9280211482303427`, 1.0395343617613462`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.9957321768028281, 1.1651466445361098`}, {
+             1.9273918333447877`, 1.593297483602082}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.9957321768028281, 1.1651466445361098`}, {0., 
+             0.9806540871625894}}]}}, {
+           DiskBox[{1.9245004137491908`, 2.2684344766578732`}, 0.1], 
+           DiskBox[{1.9280211482303427`, 1.0395343617613462`}, 0.02], 
+           DiskBox[{1.9273918333447877`, 1.593297483602082}, 0.1], 
+           DiskBox[{2.859958481616874, 1.1689366820636202`}, 0.1], 
+           DiskBox[{0.9957321768028281, 1.1651466445361098`}, 0.1], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {
+             1.9303402610453297`, 0.3}], 
+            DiskBox[{1.9303402610453297`, 0.}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {
+             1.9209284403145772`, 3.5835468610690255`}], 
+            DiskBox[{1.9209284403145772`, 3.2835468610690257`}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i3\"", StripOnInput -> False, FontSize :> 14], {
+             3.856859503916578, 1.2892695809559733`}], 
+            DiskBox[{3.856859503916578, 0.9892695809559734}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i4\"", StripOnInput -> False, FontSize :> 14], {0.,
+              1.2806540871625893`}], 
+            DiskBox[{0., 0.9806540871625894}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{1.9245004137491908`, 
+           2.2684344766578732`}, {1.9280211482303427`, 1.0395343617613462`}, {
+           1.9273918333447877`, 1.593297483602082}, {2.859958481616874, 
+           1.1689366820636202`}, {0.9957321768028281, 1.1651466445361098`}, {
+           1.9303402610453297`, 0.}, {1.9209284403145772`, 
+           3.2835468610690257`}, {3.856859503916578, 0.9892695809559734}, {0.,
+            0.9806540871625894}}]& ], AspectRatio -> Automatic, FrameTicks -> 
+        None, PlotRange -> All, PlotRangePadding -> Scaled[0.1]],StyleBox[
+        StyleBox[
+        "\"+\"", StripOnInput -> False, ShowStringCharacters -> False], 
+        StripOnInput -> False, FontSize :> 16],OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            
+            LineBox[{{0.9260572320310279, 0.9787871863355774}, {
+             1.67132800249273, 1.6802022500619533`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.9260572320310279, 0.9787871863355774}, {
+             1.8534968375859915`, 0.8674885675861754}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.9260572320310279, 0.9787871863355774}, {0., 
+             0.6229264759286238}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.67132800249273, 1.6802022500619533`}, {
+             1.2000364587620926`, 2.5656116627004515`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.8534968375859915`, 0.8674885675861754}, {
+             1.67132800249273, 1.6802022500619533`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.813851214559954, 1.7020714277945843`}, {
+             1.67132800249273, 1.6802022500619533`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.813851214559954, 1.7020714277945843`}, {
+             3.5817980646293677`, 2.3362846029330173`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.8928010787087084`, 0.7025311107446106}, {
+             1.8534968375859915`, 0.8674885675861754}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.8928010787087084`, 0.7025311107446106}, {
+             2.813851214559954, 1.7020714277945843`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.8928010787087084`, 0.7025311107446106}, {
+             3.594263091743831, 0.}}]}}, {
+           DiskBox[{0.9260572320310279, 0.9787871863355774}, 0.1], 
+           DiskBox[{1.67132800249273, 1.6802022500619533`}, 0.02], 
+           DiskBox[{1.8534968375859915`, 0.8674885675861754}, 0.1], 
+           DiskBox[{2.813851214559954, 1.7020714277945843`}, 0.1], 
+           DiskBox[{2.8928010787087084`, 0.7025311107446106}, 0.1], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {
+             1.2000364587620926`, 2.8656116627004513`}], 
+            DiskBox[{1.2000364587620926`, 2.5656116627004515`}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {0.,
+              0.9229264759286238}], 
+            DiskBox[{0., 0.6229264759286238}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i3\"", StripOnInput -> False, FontSize :> 14], {
+             3.5817980646293677`, 2.636284602933017}], 
+            DiskBox[{3.5817980646293677`, 2.3362846029330173`}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i4\"", StripOnInput -> False, FontSize :> 14], {
+             3.594263091743831, 0.3}], 
+            DiskBox[{3.594263091743831, 0.}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{0.9260572320310279, 
+           0.9787871863355774}, {1.67132800249273, 1.6802022500619533`}, {
+           1.8534968375859915`, 0.8674885675861754}, {2.813851214559954, 
+           1.7020714277945843`}, {2.8928010787087084`, 0.7025311107446106}, {
+           1.2000364587620926`, 2.5656116627004515`}, {0., 
+           0.6229264759286238}, {3.5817980646293677`, 2.3362846029330173`}, {
+           3.594263091743831, 0.}}]& ], AspectRatio -> Automatic, FrameTicks -> 
+        None, PlotRange -> All, PlotRangePadding -> Scaled[0.1]],StyleBox[
+        StyleBox[
+        "\"+\"", StripOnInput -> False, ShowStringCharacters -> False], 
+        StripOnInput -> False, FontSize :> 16],OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            
+            LineBox[{{0.9261189404077013, 0.9797387280069921}, {
+             1.6713118951047712`, 1.6811019988713451`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.9261189404077013, 0.9797387280069921}, {
+             1.8526769498729068`, 0.8685926620723253}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.9261189404077013, 0.9797387280069921}, {0., 
+             0.6236286134053761}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.6713118951047712`, 1.6811019988713451`}, {
+             1.2013690950600957`, 2.568694761080157}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.8526769498729068`, 0.8685926620723253}, {
+             1.6713118951047712`, 1.6811019988713451`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.8143743186465118`, 1.7016770207597376`}, {
+             1.6713118951047712`, 1.6811019988713451`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.8143743186465118`, 1.7016770207597376`}, {
+             2.8913058651207164`, 0.7027767711451175}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.8143743186465118`, 1.7016770207597376`}, {
+             3.5852475782198434`, 2.3337901914038275`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.8913058651207164`, 0.7027767711451175}, {
+             1.8526769498729068`, 0.8685926620723253}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.8913058651207164`, 0.7027767711451175}, {
+             3.592007869208925, 0.}}]}}, {
+           DiskBox[{0.9261189404077013, 0.9797387280069921}, 0.1], 
+           DiskBox[{1.6713118951047712`, 1.6811019988713451`}, 0.02], 
+           DiskBox[{1.8526769498729068`, 0.8685926620723253}, 0.1], 
+           DiskBox[{2.8143743186465118`, 1.7016770207597376`}, 0.1], 
+           DiskBox[{2.8913058651207164`, 0.7027767711451175}, 0.1], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {
+             1.2013690950600957`, 2.8686947610801568`}], 
+            DiskBox[{1.2013690950600957`, 2.568694761080157}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {0.,
+              0.9236286134053762}], 
+            DiskBox[{0., 0.6236286134053761}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i3\"", StripOnInput -> False, FontSize :> 14], {
+             3.592007869208925, 0.3}], 
+            DiskBox[{3.592007869208925, 0.}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i4\"", StripOnInput -> False, FontSize :> 14], {
+             3.5852475782198434`, 2.6337901914038273`}], 
+            DiskBox[{3.5852475782198434`, 2.3337901914038275`}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{0.9261189404077013, 
+           0.9797387280069921}, {1.6713118951047712`, 1.6811019988713451`}, {
+           1.8526769498729068`, 0.8685926620723253}, {2.8143743186465118`, 
+           1.7016770207597376`}, {2.8913058651207164`, 0.7027767711451175}, {
+           1.2013690950600957`, 2.568694761080157}, {0., 
+           0.6236286134053761}, {3.592007869208925, 0.}, {3.5852475782198434`,
+            2.3337901914038275`}}]& ], AspectRatio -> Automatic, FrameTicks -> 
+        None, PlotRange -> All, PlotRangePadding -> Scaled[0.1]],StyleBox[
+        StyleBox[
+        "\"+\"", StripOnInput -> False, ShowStringCharacters -> False], 
+        StripOnInput -> False, FontSize :> 16],OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            
+            LineBox[{{0.7787712072433342, 1.7034729091141865`}, {
+             1.9212944517121224`, 1.6821469921142347`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.7787712072433342, 1.7034729091141865`}, {
+             0.00890501321013315, 2.3365243708127346`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.9212944517121224`, 1.6821469921142347`}, {
+             2.3929359419344065`, 2.569049553047881}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.7014218819668535, 0.7037730624809255}, {
+             1.7394617380680026`, 0.8694757971757818}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.7014218819668535, 0.7037730624809255}, {
+             0.7787712072433342, 1.7034729091141865`}}]}, {
+            GrayLevel[0], 
+            LineBox[{{0.7014218819668535, 0.7037730624809255}, {0., 0.}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.7394617380680026`, 0.8694757971757818}, {
+             1.9212944517121224`, 1.6821469921142347`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.6654949595774546`, 0.9803641519878432}, {
+             1.9212944517121224`, 1.6821469921142347`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.6654949595774546`, 0.9803641519878432}, {
+             1.7394617380680026`, 0.8694757971757818}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.6654949595774546`, 0.9803641519878432}, {
+             3.59101324305771, 0.6228856803436164}}]}}, {
+           DiskBox[{0.7787712072433342, 1.7034729091141865`}, 0.1], 
+           DiskBox[{1.9212944517121224`, 1.6821469921142347`}, 0.02], 
+           DiskBox[{0.7014218819668535, 0.7037730624809255}, 0.1], 
+           DiskBox[{1.7394617380680026`, 0.8694757971757818}, 0.1], 
+           DiskBox[{2.6654949595774546`, 0.9803641519878432}, 0.1], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {
+             2.3929359419344065`, 2.869049553047881}], 
+            DiskBox[{2.3929359419344065`, 2.569049553047881}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {
+             0.00890501321013315, 2.6365243708127344`}], 
+            DiskBox[{0.00890501321013315, 2.3365243708127346`}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i3\"", StripOnInput -> False, FontSize :> 14], {0.,
+              0.3}], 
+            DiskBox[{0., 0.}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i4\"", StripOnInput -> False, FontSize :> 14], {
+             3.59101324305771, 0.9228856803436163}], 
+            DiskBox[{3.59101324305771, 0.6228856803436164}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{0.7787712072433342, 
+           1.7034729091141865`}, {1.9212944517121224`, 1.6821469921142347`}, {
+           0.7014218819668535, 0.7037730624809255}, {1.7394617380680026`, 
+           0.8694757971757818}, {2.6654949595774546`, 0.9803641519878432}, {
+           2.3929359419344065`, 2.569049553047881}, {0.00890501321013315, 
+           2.3365243708127346`}, {0., 0.}, {3.59101324305771, 
+           0.6228856803436164}}]& ], AspectRatio -> Automatic, FrameTicks -> 
+        None, PlotRange -> All, PlotRangePadding -> Scaled[0.1]],StyleBox[
+        StyleBox[
+        "\"+\"", StripOnInput -> False, ShowStringCharacters -> False], 
+        StripOnInput -> False, FontSize :> 16],OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )]},
+    {
+     StyleBox["\<\"\"\>",
+      StripOnInput->False,
+      ShowStringCharacters->False], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            
+            LineBox[{{1.1720630319965815`, 1.4916085134333104`}, {
+             0.814520729551275, 0.49256709637579044`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.1720630319965815`, 1.4916085134333104`}, {
+             0.5717847968747951, 2.2279650686875994`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.814520729551275, 0.49256709637579044`}, {0., 
+             0.00023284152919567092`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.6407481793018768`, 0.4935199725344847}, {
+             1.728509478675604, 0.15477575744056016`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.6407481793018768`, 0.4935199725344847}, {
+             3.455100378876348, 0.}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.728509478675604, 0.15477575744056016`}, {
+             1.544737390694226, 0.04410571092986636}, {1.5217102794358934`, 
+             0.03217480822105839}, {1.4973484896826275`, 
+             0.023281131120537174`}, {1.472050669542781, 
+             0.017570212759830978`}, {1.4462307840101558`, 
+             0.015135504680247325`}, {1.4203113409805057`, 
+             0.016016847623379876`}, {1.3947164774748788`, 
+             0.020199819590654228`}, {1.3698650192044979`, 
+             0.027615971840047104`}, {1.0042695195547664`, 
+             0.1627325074141392}, {0.9805681273983938, 0.1732604845322996}, {
+             0.9584046429409117, 0.18672801025359004`}, {0.9381417419644761, 
+             0.20291470653077504`}, {0.9201109997443772, 
+             0.22155569972703493`}, {0.9046074652631008, 
+             0.24234595491879599`}, {0.8918848331283233, 
+             0.2649452673843069}, {0.8821512921999424, 0.2889838295989279}, {
+             0.814520729551275, 0.49256709637579044`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.728509478675604, 0.15477575744056016`}, {
+             1.660878916026937, 0.3583590242174229}, {1.651145375098556, 
+             0.38239758643204386`}, {1.6384227429637788`, 
+             0.40499689889755486`}, {1.6229192084825024`, 
+             0.42578715408931583`}, {1.6048884662624032`, 
+             0.4444281472855758}, {1.5846255652859675`, 0.4606148435627607}, {
+             1.5624620808284855`, 0.4740823692840512}, {1.538760688672113, 
+             0.48461034640221157`}, {1.1731651890223815`, 
+             0.6197268819763035}, {1.1483137307520002`, 0.6271430342256965}, {
+             1.1227188672463735`, 0.6313260061929709}, {1.0967994242167236`, 
+             0.6322073491361033}, {1.0709795386840983`, 0.6297726410565196}, {
+             1.0456817185442517`, 0.6240617226958135}, {1.021319928790986, 
+             0.6151680455952923}, {0.9982928175326533, 0.6032371428864843}, {
+             0.814520729551275, 0.49256709637579044`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.2825967949347605`, 1.4923130104887625`}, {
+             1.1720630319965815`, 1.4916085134333104`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.2825967949347605`, 1.4923130104887625`}, {
+             2.6407481793018768`, 0.4935199725344847}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.2825967949347605`, 1.4923130104887625`}, {
+             2.8808172102786136`, 2.2309180794540833`}}]}}, {
+           DiskBox[{1.1720630319965815`, 1.4916085134333104`}, 0.1], 
+           DiskBox[{0.814520729551275, 0.49256709637579044`}, 0.02], 
+           DiskBox[{2.6407481793018768`, 0.4935199725344847}, 0.1], 
+           DiskBox[{1.728509478675604, 0.15477575744056016`}, 0.1], 
+           DiskBox[{2.2825967949347605`, 1.4923130104887625`}, 0.1], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {0.,
+              0.30023284152919566`}], 
+            DiskBox[{0., 0.00023284152919567092`}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {
+             0.5717847968747951, 2.527965068687599}], 
+            DiskBox[{0.5717847968747951, 2.2279650686875994`}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i3\"", StripOnInput -> False, FontSize :> 14], {
+             3.455100378876348, 0.3}], 
+            DiskBox[{3.455100378876348, 0.}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i4\"", StripOnInput -> False, FontSize :> 14], {
+             2.8808172102786136`, 2.530918079454083}], 
+            DiskBox[{2.8808172102786136`, 2.2309180794540833`}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{1.1720630319965815`, 
+           1.4916085134333104`}, {0.814520729551275, 0.49256709637579044`}, {
+           2.6407481793018768`, 0.4935199725344847}, {1.728509478675604, 
+           0.15477575744056016`}, {2.2825967949347605`, 
+           1.4923130104887625`}, {0., 0.00023284152919567092`}, {
+           0.5717847968747951, 2.2279650686875994`}, {3.455100378876348, 
+           0.}, {2.8808172102786136`, 2.2309180794540833`}}]& ], AspectRatio -> 
+        Automatic, FrameTicks -> None, PlotRange -> All, PlotRangePadding -> 
+        Scaled[0.1]],StyleBox[
+        TagBox[
+         RowBox[{
+           StyleBox[
+           "\"+\"", StripOnInput -> False, ShowStringCharacters -> False], 
+           FractionBox["1", "2"]}], DisplayForm], StripOnInput -> False, 
+        FontSize :> 16],OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            
+            LineBox[{{1.173931340228235, 1.4916053256470776`}, {
+             0.8150241797502306, 0.4929032579472082}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.173931340228235, 1.4916053256470776`}, {
+             0.574983798942319, 2.2300219284093563`}}]}, {
+            GrayLevel[0], 
+            LineBox[{{0.8150241797502306, 0.4929032579472082}, {0., 0.}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.6417114981858862`, 0.49242558629770017`}, {
+             1.727560153612422, 0.1542123313052901}}]}, {
+            GrayLevel[0], 
+            LineBox[{{2.6417114981858862`, 0.49242558629770017`}, {
+             2.283296703390839, 1.4912179719652285`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.6417114981858862`, 0.49242558629770017`}, {
+             3.4561986948480854`, 0.000047837451857324353`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.727560153612422, 0.1542123313052901}, {
+             1.5438332156038042`, 0.04391575666401398}, {1.5208144393368057`, 
+             0.03202956272699428}, {1.4964666238389632`, 
+             0.023179164565239108`}, {1.4711881885486289`, 
+             0.01750938710832417}, {1.4453927812524663`, 
+             0.01511300868168744}, {1.419502509292627, 
+             0.016029242813413364`}, {1.393941032344614, 
+             0.020243096557289036`}, {1.3691266297932851`, 
+             0.02768561583231771}, {1.0041122402484084`, 
+             0.16316198648908486`}, {0.9804509666052417, 
+             0.17371138442080375`}, {0.9583300069693043, 
+             0.18719503422060924`}, {0.9381113412609191, 0.203392293992285}, {
+             0.9201258209043743, 0.2220381172415514}, {0.9046677548868375, 
+             0.24282739000747672`}, {0.8919900937853846, 
+             0.2654199236443948}, {0.8823002905690959, 
+             0.28944602155412985`}, {0.8150241797502306, 
+             0.4929032579472082}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.727560153612422, 0.1542123313052901}, {
+             1.6602840427935568`, 0.35766956769836855`}, {1.6505942395772681`,
+              0.3816956656081036}, {1.6379165784758152`, 
+             0.40428819924502174`}, {1.6224585124582784`, 
+             0.42507747201094703`}, {1.6044729921017336`, 
+             0.4437232952602135}, {1.5842543263933486`, 0.4599205550318891}, {
+             1.5621333667574109`, 0.47340420483169465`}, {1.5384720931142444`,
+              0.48395360276341354`}, {1.1734577035693676`, 
+             0.6194299734201807}, {1.1486433010180386`, 0.6268724926952094}, {
+             1.1230818240700258`, 0.631086346439085}, {1.0971915521101865`, 
+             0.6320025805708109}, {1.071396144814024, 0.6296062021441742}, {
+             1.0461177095236893`, 0.6239364246872592}, {1.021769894025847, 
+             0.615086026525504}, {0.9987511177588487, 0.6031998325884844}, {
+             0.8150241797502306, 0.4929032579472082}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.283296703390839, 1.4912179719652285`}, {
+             1.173931340228235, 1.4916053256470776`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.283296703390839, 1.4912179719652285`}, {
+             2.882631294105366, 2.2283095387696505`}}]}}, {
+           DiskBox[{1.173931340228235, 1.4916053256470776`}, 0.1], 
+           DiskBox[{0.8150241797502306, 0.4929032579472082}, 0.02], 
+           DiskBox[{2.6417114981858862`, 0.49242558629770017`}, 0.1], 
+           DiskBox[{1.727560153612422, 0.1542123313052901}, 0.1], 
+           DiskBox[{2.283296703390839, 1.4912179719652285`}, 0.1], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {0.,
+              0.3}], 
+            DiskBox[{0., 0.}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {
+             0.574983798942319, 2.530021928409356}], 
+            DiskBox[{0.574983798942319, 2.2300219284093563`}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i3\"", StripOnInput -> False, FontSize :> 14], {
+             2.882631294105366, 2.5283095387696504`}], 
+            DiskBox[{2.882631294105366, 2.2283095387696505`}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i4\"", StripOnInput -> False, FontSize :> 14], {
+             3.4561986948480854`, 0.3000478374518573}], 
+            DiskBox[{3.4561986948480854`, 0.000047837451857324353`}, 0.02]}}},
+          Annotation[#, 
+          VertexCoordinateRules -> {{1.173931340228235, 
+           1.4916053256470776`}, {0.8150241797502306, 0.4929032579472082}, {
+           2.6417114981858862`, 0.49242558629770017`}, {1.727560153612422, 
+           0.1542123313052901}, {2.283296703390839, 1.4912179719652285`}, {0.,
+            0.}, {0.574983798942319, 2.2300219284093563`}, {2.882631294105366,
+            2.2283095387696505`}, {3.4561986948480854`, 
+           0.000047837451857324353`}}]& ], AspectRatio -> Automatic, 
+        FrameTicks -> None, PlotRange -> All, PlotRangePadding -> 
+        Scaled[0.1]],StyleBox[
+        TagBox[
+         RowBox[{
+           StyleBox[
+           "\"+\"", StripOnInput -> False, ShowStringCharacters -> False], 
+           FractionBox["1", "2"]}], DisplayForm], StripOnInput -> False, 
+        FontSize :> 16],OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            
+            LineBox[{{0.7787712072433342, 1.7034729091141865`}, {
+             1.9212944517121224`, 1.6821469921142347`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.7787712072433342, 1.7034729091141865`}, {
+             0.00890501321013315, 2.3365243708127346`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.9212944517121224`, 1.6821469921142347`}, {
+             2.3929359419344065`, 2.569049553047881}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.7014218819668535, 0.7037730624809255}, {
+             1.7394617380680026`, 0.8694757971757818}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.7014218819668535, 0.7037730624809255}, {
+             0.7787712072433342, 1.7034729091141865`}}]}, {
+            GrayLevel[0], 
+            LineBox[{{0.7014218819668535, 0.7037730624809255}, {0., 0.}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.7394617380680026`, 0.8694757971757818}, {
+             1.9212944517121224`, 1.6821469921142347`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.6654949595774546`, 0.9803641519878432}, {
+             1.9212944517121224`, 1.6821469921142347`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.6654949595774546`, 0.9803641519878432}, {
+             1.7394617380680026`, 0.8694757971757818}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.6654949595774546`, 0.9803641519878432}, {
+             3.59101324305771, 0.6228856803436164}}]}}, {
+           DiskBox[{0.7787712072433342, 1.7034729091141865`}, 0.1], 
+           DiskBox[{1.9212944517121224`, 1.6821469921142347`}, 0.02], 
+           DiskBox[{0.7014218819668535, 0.7037730624809255}, 0.1], 
+           DiskBox[{1.7394617380680026`, 0.8694757971757818}, 0.1], 
+           DiskBox[{2.6654949595774546`, 0.9803641519878432}, 0.1], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {
+             2.3929359419344065`, 2.869049553047881}], 
+            DiskBox[{2.3929359419344065`, 2.569049553047881}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {
+             0.00890501321013315, 2.6365243708127344`}], 
+            DiskBox[{0.00890501321013315, 2.3365243708127346`}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i4\"", StripOnInput -> False, FontSize :> 14], {0.,
+              0.3}], 
+            DiskBox[{0., 0.}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i3\"", StripOnInput -> False, FontSize :> 14], {
+             3.59101324305771, 0.9228856803436163}], 
+            DiskBox[{3.59101324305771, 0.6228856803436164}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{0.7787712072433342, 
+           1.7034729091141865`}, {1.9212944517121224`, 1.6821469921142347`}, {
+           0.7014218819668535, 0.7037730624809255}, {1.7394617380680026`, 
+           0.8694757971757818}, {2.6654949595774546`, 0.9803641519878432}, {
+           2.3929359419344065`, 2.569049553047881}, {0.00890501321013315, 
+           2.3365243708127346`}, {0., 0.}, {3.59101324305771, 
+           0.6228856803436164}}]& ], AspectRatio -> Automatic, FrameTicks -> 
+        None, PlotRange -> All, PlotRangePadding -> Scaled[0.1]],StyleBox[
+        StyleBox[
+        "\"+\"", StripOnInput -> False, ShowStringCharacters -> False], 
+        StripOnInput -> False, FontSize :> 16],OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            
+            LineBox[{{1.4412192848845993`, 0.8933354116401118}, {
+             2.4824867730505806`, 1.6337374048269095`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.4412192848845993`, 0.8933354116401118}, {
+             0.9291046199159088, 1.576782370223528}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.4412192848845993`, 0.8933354116401118}, {
+             0.9301070568242762, 0.}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.4824867730505806`, 1.6337374048269095`}, {
+             2.984335528948374, 2.5469557810872514`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.9291046199159088, 1.576782370223528}, {
+             2.0277286542240227`, 1.3921201631117541`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.9291046199159088, 1.576782370223528}, {0., 
+             1.9860483912992404`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.0277286542240227`, 1.3921201631117541`}, {
+             2.4824867730505806`, 1.6337374048269095`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{3.11366287366994, 1.114463093645281}, {
+             2.4824867730505806`, 1.6337374048269095`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{3.11366287366994, 1.114463093645281}, {
+             2.0277286542240227`, 1.3921201631117541`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{3.11366287366994, 1.114463093645281}, {
+             4.061633812679104, 0.7496555822400849}}]}}, {
+           DiskBox[{1.4412192848845993`, 0.8933354116401118}, 0.1], 
+           DiskBox[{2.4824867730505806`, 1.6337374048269095`}, 0.02], 
+           DiskBox[{0.9291046199159088, 1.576782370223528}, 0.1], 
+           DiskBox[{2.0277286542240227`, 1.3921201631117541`}, 0.1], 
+           DiskBox[{3.11366287366994, 1.114463093645281}, 0.1], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {
+             2.984335528948374, 2.8469557810872512`}], 
+            DiskBox[{2.984335528948374, 2.5469557810872514`}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {0.,
+              2.28604839129924}], 
+            DiskBox[{0., 1.9860483912992404`}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i3\"", StripOnInput -> False, FontSize :> 14], {
+             0.9301070568242762, 0.3}], 
+            DiskBox[{0.9301070568242762, 0.}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i4\"", StripOnInput -> False, FontSize :> 14], {
+             4.061633812679104, 1.0496555822400848`}], 
+            DiskBox[{4.061633812679104, 0.7496555822400849}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{1.4412192848845993`, 
+           0.8933354116401118}, {2.4824867730505806`, 1.6337374048269095`}, {
+           0.9291046199159088, 1.576782370223528}, {2.0277286542240227`, 
+           1.3921201631117541`}, {3.11366287366994, 1.114463093645281}, {
+           2.984335528948374, 2.5469557810872514`}, {0., 
+           1.9860483912992404`}, {0.9301070568242762, 0.}, {4.061633812679104,
+            0.7496555822400849}}]& ], AspectRatio -> Automatic, FrameTicks -> 
+        None, PlotRange -> All, PlotRangePadding -> Scaled[0.1]],StyleBox[
+        StyleBox[
+        "\"+\"", StripOnInput -> False, ShowStringCharacters -> False], 
+        StripOnInput -> False, FontSize :> 16],OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )]},
+    {
+     StyleBox["\<\"\"\>",
+      StripOnInput->False,
+      ShowStringCharacters->False], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            
+            LineBox[{{1.1719287633040978`, 1.49101961031637}, {
+             0.8144007895197609, 0.4920021748302791}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.1719287633040978`, 1.49101961031637}, {
+             2.2823066625629487`, 1.4919470495606553`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.1719287633040978`, 1.49101961031637}, {
+             0.5727149779509808, 2.22771944340135}}]}, {
+            GrayLevel[0], 
+            LineBox[{{0.8144007895197609, 0.4920021748302791}, {0., 0.}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.2823066625629487`, 1.4919470495606553`}, {
+             2.880448252942608, 2.2303804754992207`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.641685273498643, 0.4933595148990146}, {
+             1.7288356412572332`, 0.1544636433133567}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.641685273498643, 0.4933595148990146}, {
+             2.2823066625629487`, 1.4919470495606553`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.641685273498643, 0.4933595148990146}, {
+             3.456173720249684, 0.00035607325795317113`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.7288356412572332`, 0.1544636433133567}, {
+             1.5450456614743413`, 0.04368213718157715}, {1.5220155297931706`, 
+             0.031737925661134175`}, {1.497649045345286, 
+             0.022831434222405605`}, {1.472344933061439, 
+             0.017108405686426714`}, {1.4465172608979533`, 
+             0.014662489761327474`}, {1.4205886641683834`, 
+             0.015533710590104277`}, {1.3949834296818342`, 
+             0.01970781180904707}, {1.370120552856761, 0.02711648983406542}, {
+             1.0043466121617721`, 0.1621319024408343}, {0.9806329407263144, 
+             0.17265392416426326`}, {0.9584565171993343, 
+             0.18611711077253545`}, {0.9381802290935559, 
+             0.20230115522219697`}, {0.9201358707467371, 
+             0.22094122727003904`}, {0.904618713951068, 
+             0.24173230706584978`}, {0.8918826762251814, 
+             0.2643341763943356}, {0.8821361657935454, 
+             0.28837698589121347`}, {0.8144007895197609, 
+             0.4920021748302791}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.7288356412572332`, 0.1544636433133567}, {
+             1.661100264983449, 0.35808883225242244`}, {1.651353754551813, 
+             0.38213164174930037`}, {1.6386177168259264`, 
+             0.4047335110777861}, {1.623100560030257, 0.42552459087359684`}, {
+             1.6050562016834384`, 0.44416466292143897`}, {1.58477991357766, 
+             0.46034870737110045`}, {1.56260349005068, 0.4738118939793727}, {
+             1.5388898186152222`, 0.4843339157028016}, {1.1731158779202333`, 
+             0.6193493283095705}, {1.1482530010951602`, 0.6267580063345888}, {
+             1.1226477666086108`, 0.6309321075535316}, {1.096719169879041, 
+             0.6318033283823083}, {1.070891497715555, 0.6293574124572091}, {
+             1.0455873854317084`, 0.6236343839212302}, {1.0212209009838238`, 
+             0.6147278924825017}, {0.9981907693026528, 0.6027836809620587}, {
+             0.8144007895197609, 0.4920021748302791}}]}}, {
+           DiskBox[{1.1719287633040978`, 1.49101961031637}, 0.1], 
+           DiskBox[{0.8144007895197609, 0.4920021748302791}, 0.02], 
+           DiskBox[{2.2823066625629487`, 1.4919470495606553`}, 0.1], 
+           DiskBox[{2.641685273498643, 0.4933595148990146}, 0.1], 
+           DiskBox[{1.7288356412572332`, 0.1544636433133567}, 0.1], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {0.,
+              0.3}], 
+            DiskBox[{0., 0.}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {
+             2.880448252942608, 2.5303804754992205`}], 
+            DiskBox[{2.880448252942608, 2.2303804754992207`}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i3\"", StripOnInput -> False, FontSize :> 14], {
+             0.5727149779509808, 2.5277194434013497`}], 
+            DiskBox[{0.5727149779509808, 2.22771944340135}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i4\"", StripOnInput -> False, FontSize :> 14], {
+             3.456173720249684, 0.30035607325795316`}], 
+            DiskBox[{3.456173720249684, 0.00035607325795317113`}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{1.1719287633040978`, 1.49101961031637}, {
+           0.8144007895197609, 0.4920021748302791}, {2.2823066625629487`, 
+           1.4919470495606553`}, {2.641685273498643, 0.4933595148990146}, {
+           1.7288356412572332`, 0.1544636433133567}, {0., 0.}, {
+           2.880448252942608, 2.2303804754992207`}, {0.5727149779509808, 
+           2.22771944340135}, {3.456173720249684, 
+           0.00035607325795317113`}}]& ], AspectRatio -> Automatic, 
+        FrameTicks -> None, PlotRange -> All, PlotRangePadding -> 
+        Scaled[0.1]],StyleBox[
+        TagBox[
+         RowBox[{
+           StyleBox[
+           "\"+\"", StripOnInput -> False, ShowStringCharacters -> False], 
+           FractionBox["1", "2"]}], DisplayForm], StripOnInput -> False, 
+        FontSize :> 16],OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            
+            LineBox[{{2.287724162549656, 1.493336567144533}, {
+             2.6427226448981074`, 0.49404677498017624`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.287724162549656, 1.493336567144533}, {
+             2.8886523208636508`, 2.229342142531937}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.6427226448981074`, 0.49404677498017624`}, {
+             3.4562134240220734`, 0.}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.1771925999006778`, 1.4947595893190628`}, {
+             0.815862814131456, 0.49697317185419976`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.1771925999006778`, 1.4947595893190628`}, {
+             2.287724162549656, 1.493336567144533}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.1771925999006778`, 1.4947595893190628`}, {
+             0.580307698193504, 2.234386560838449}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.815862814131456, 0.49697317185419976`}, {
+             1.7280856576329222`, 0.15734899644251987`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.815862814131456, 0.49697317185419976`}, {0., 
+             0.006121608215874819}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.7280856576329222`, 0.15734899644251987`}, {
+             1.7959933701729605`, 0.36089330595700986`}, {1.8057600468957846`,
+              0.3849250251044857}, {1.818514670137097, 0.4075133204222709}, {
+             1.834048527545326, 0.42828856466661425`}, {1.8521074283186487`, 
+             0.44691079874984374`}, {1.8723958626975143`, 
+             0.46307529471618203`}, {1.89458183758665, 
+             0.47651754220720643`}, {1.9183023091780638`, 
+             0.48701757682011315`}, {2.2841571040841377`, 
+             0.6216966882351757}, {2.30902391858351, 0.6290826909460558}, {
+             2.334630163827927, 0.6332337996984351}, {2.360556827859232, 
+             0.6340820871491885}, {2.386379655494345, 0.6316136722086667}, {
+             2.4116760906939363`, 0.6258689471861638}, {2.436032191126901, 
+             0.6169419168237954}, {2.459049401783004, 0.6049786600346138}, {
+             2.6427226448981074`, 0.49404677498017624`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.7280856576329222`, 0.15734899644251987`}, {
+             1.9117589007480262`, 0.04641711138808241}, {1.9347761114041286`, 
+             0.03445385459890071}, {1.9591322118370935`, 
+             0.02552682423653227}, {1.9844286470366852`, 
+             0.019782099214029403`}, {2.010251474671797, 
+             0.017313684273507685`}, {2.0361781387031033`, 
+             0.018161971724261095`}, {2.0617843839475203`, 
+             0.022313080476640268`}, {2.086651198446892, 
+             0.029699083187520542`}, {2.452505993352966, 
+             0.1643781946025831}, {2.47622646494438, 0.17487822921548984`}, {
+             2.4984124398335155`, 0.18832047670651422`}, {2.518700874212381, 
+             0.20448497267285262`}, {2.536759774985704, 
+             0.22310720675608206`}, {2.552293632393933, 
+             0.24388245100042538`}, {2.5650482556352454`, 
+             0.26647074631821066`}, {2.5748149323580694`, 
+             0.29050246546568637`}, {2.6427226448981074`, 
+             0.49404677498017624`}}]}}, {
+           DiskBox[{2.287724162549656, 1.493336567144533}, 0.1], 
+           DiskBox[{2.6427226448981074`, 0.49404677498017624`}, 0.02], 
+           DiskBox[{1.1771925999006778`, 1.4947595893190628`}, 0.1], 
+           DiskBox[{0.815862814131456, 0.49697317185419976`}, 0.1], 
+           DiskBox[{1.7280856576329222`, 0.15734899644251987`}, 0.1], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {
+             3.4562134240220734`, 0.3}], 
+            DiskBox[{3.4562134240220734`, 0.}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {0.,
+              0.3061216082158748}], 
+            DiskBox[{0., 0.006121608215874819}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i3\"", StripOnInput -> False, FontSize :> 14], {
+             2.8886523208636508`, 2.5293421425319367`}], 
+            DiskBox[{2.8886523208636508`, 2.229342142531937}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i4\"", StripOnInput -> False, FontSize :> 14], {
+             0.580307698193504, 2.534386560838449}], 
+            DiskBox[{0.580307698193504, 2.234386560838449}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{2.287724162549656, 1.493336567144533}, {
+           2.6427226448981074`, 0.49404677498017624`}, {1.1771925999006778`, 
+           1.4947595893190628`}, {0.815862814131456, 0.49697317185419976`}, {
+           1.7280856576329222`, 0.15734899644251987`}, {3.4562134240220734`, 
+           0.}, {0., 0.006121608215874819}, {2.8886523208636508`, 
+           2.229342142531937}, {0.580307698193504, 2.234386560838449}}]& ], 
+        AspectRatio -> Automatic, FrameTicks -> None, PlotRange -> All, 
+        PlotRangePadding -> Scaled[0.1]],StyleBox[
+        TagBox[
+         RowBox[{
+           StyleBox[
+           "\"+\"", StripOnInput -> False, ShowStringCharacters -> False], 
+           FractionBox["1", "2"]}], DisplayForm], StripOnInput -> False, 
+        FontSize :> 16],OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            
+            LineBox[{{1.1736996900178065`, 1.4920454007027903`}, {
+             0.8148213650728504, 0.49359434803972846`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.1736996900178065`, 1.4920454007027903`}, {
+             2.2841672352283284`, 1.491846605997391}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.1736996900178065`, 1.4920454007027903`}, {
+             0.5772199281649604, 2.2318294204447064`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.8148213650728504, 0.49359434803972846`}, {0., 
+             0.0020543789009912494`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.2841672352283284`, 1.491846605997391}, {
+             2.641735730296165, 0.49301500938307186`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.2841672352283284`, 1.491846605997391}, {
+             2.883992894928485, 2.2293739052199384`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.641735730296165, 0.49301500938307186`}, {
+             1.7287947304127718`, 0.15505023322594025`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.641735730296165, 0.49301500938307186`}, {
+             3.4557307667322634`, 0.}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.7287947304127718`, 0.15505023322594025`}, {
+             1.5448953461216492`, 0.04448636102899303}, {1.5218536980526753`, 
+             0.03256925213069409}, {1.4974792513251522`, 
+             0.02369111173106589}, {1.4721708611618898`, 
+             0.017997218724305014`}, {1.446342665520986, 
+             0.015580746054571049`}, {1.4204173082820042`, 
+             0.016481236065363086`}, {1.3948190232441176`, 
+             0.020683953441951425`}, {1.3699666921073486`, 
+             0.028120126335096446`}, {1.0043773459713798`, 
+             0.16353777226061175`}, {0.9806776438977821, 
+             0.17408571764590267`}, {0.9585183848162936, 
+             0.18757283250371556`}, {0.938262175366443, 
+             0.20377841823679382`}, {0.920240481325637, 
+             0.22243729210763455`}, {0.9047482036150082, 
+             0.24324412659933758`}, {0.892038852640236, 
+             0.26585844569208117`}, {0.8823203999327964, 
+             0.2899101962978401}, {0.8148213650728504, 
+             0.49359434803972846`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.7287947304127718`, 0.15505023322594025`}, {
+             1.6612956955528262`, 0.3587343849678288}, {1.6515772428453865`, 
+             0.38278613557358776`}, {1.6388678918706143`, 
+             0.4054004546663313}, {1.6233756141599855`, 0.4262072891580344}, {
+             1.6053539201191795`, 0.44486616302887505`}, {1.5850977106693287`,
+              0.46107174876195334`}, {1.5629384515878402`, 
+             0.47455886361976624`}, {1.5392387495142428`, 
+             0.4851068090050571}, {1.173649403378274, 0.6205244549305724}, {
+             1.1487970722415048`, 0.6279606278237174}, {1.1231987872036182`, 
+             0.6321633452003057}, {1.0972734299646363`, 0.6330638352110978}, {
+             1.0714452343237326`, 0.6306473625413638}, {1.0461368441604701`, 
+             0.6249534695346028}, {1.021762397432947, 0.6160753291349746}, {
+             0.9987207493639731, 0.6041582202366758}, {0.8148213650728504, 
+             0.49359434803972846`}}]}}, {
+           DiskBox[{1.1736996900178065`, 1.4920454007027903`}, 0.1], 
+           DiskBox[{0.8148213650728504, 0.49359434803972846`}, 0.02], 
+           DiskBox[{2.2841672352283284`, 1.491846605997391}, 0.1], 
+           DiskBox[{2.641735730296165, 0.49301500938307186`}, 0.1], 
+           DiskBox[{1.7287947304127718`, 0.15505023322594025`}, 0.1], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {0.,
+              0.30205437890099124`}], 
+            DiskBox[{0., 0.0020543789009912494`}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {
+             3.4557307667322634`, 0.3}], 
+            DiskBox[{3.4557307667322634`, 0.}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i3\"", StripOnInput -> False, FontSize :> 14], {
+             2.883992894928485, 2.529373905219938}], 
+            DiskBox[{2.883992894928485, 2.2293739052199384`}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i4\"", StripOnInput -> False, FontSize :> 14], {
+             0.5772199281649604, 2.5318294204447063`}], 
+            DiskBox[{0.5772199281649604, 2.2318294204447064`}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{1.1736996900178065`, 
+           1.4920454007027903`}, {0.8148213650728504, 0.49359434803972846`}, {
+           2.2841672352283284`, 1.491846605997391}, {2.641735730296165, 
+           0.49301500938307186`}, {1.7287947304127718`, 
+           0.15505023322594025`}, {0., 0.0020543789009912494`}, {
+           3.4557307667322634`, 0.}, {2.883992894928485, 
+           2.2293739052199384`}, {0.5772199281649604, 
+           2.2318294204447064`}}]& ], AspectRatio -> Automatic, FrameTicks -> 
+        None, PlotRange -> All, PlotRangePadding -> Scaled[0.1]],StyleBox[
+        TagBox[
+         RowBox[{
+           StyleBox[
+           "\"+\"", StripOnInput -> False, ShowStringCharacters -> False], 
+           FractionBox["1", "2"]}], DisplayForm], StripOnInput -> False, 
+        FontSize :> 16],OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            
+            LineBox[{{1.4412192848845993`, 0.8933354116401118}, {
+             2.4824867730505806`, 1.6337374048269095`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.4412192848845993`, 0.8933354116401118}, {
+             0.9291046199159088, 1.576782370223528}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.4412192848845993`, 0.8933354116401118}, {
+             0.9301070568242762, 0.}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.4824867730505806`, 1.6337374048269095`}, {
+             2.984335528948374, 2.5469557810872514`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.9291046199159088, 1.576782370223528}, {
+             2.0277286542240227`, 1.3921201631117541`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.9291046199159088, 1.576782370223528}, {0., 
+             1.9860483912992404`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.0277286542240227`, 1.3921201631117541`}, {
+             2.4824867730505806`, 1.6337374048269095`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{3.11366287366994, 1.114463093645281}, {
+             2.4824867730505806`, 1.6337374048269095`}}]}, {
+            GrayLevel[0], 
+            LineBox[{{3.11366287366994, 1.114463093645281}, {
+             2.0277286542240227`, 1.3921201631117541`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{3.11366287366994, 1.114463093645281}, {
+             4.061633812679104, 0.7496555822400849}}]}}, {
+           DiskBox[{1.4412192848845993`, 0.8933354116401118}, 0.1], 
+           DiskBox[{2.4824867730505806`, 1.6337374048269095`}, 0.02], 
+           DiskBox[{0.9291046199159088, 1.576782370223528}, 0.1], 
+           DiskBox[{2.0277286542240227`, 1.3921201631117541`}, 0.1], 
+           DiskBox[{3.11366287366994, 1.114463093645281}, 0.1], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {
+             2.984335528948374, 2.8469557810872512`}], 
+            DiskBox[{2.984335528948374, 2.5469557810872514`}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {0.,
+              2.28604839129924}], 
+            DiskBox[{0., 1.9860483912992404`}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i4\"", StripOnInput -> False, FontSize :> 14], {
+             0.9301070568242762, 0.3}], 
+            DiskBox[{0.9301070568242762, 0.}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i3\"", StripOnInput -> False, FontSize :> 14], {
+             4.061633812679104, 1.0496555822400848`}], 
+            DiskBox[{4.061633812679104, 0.7496555822400849}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{1.4412192848845993`, 
+           0.8933354116401118}, {2.4824867730505806`, 1.6337374048269095`}, {
+           0.9291046199159088, 1.576782370223528}, {2.0277286542240227`, 
+           1.3921201631117541`}, {3.11366287366994, 1.114463093645281}, {
+           2.984335528948374, 2.5469557810872514`}, {0., 
+           1.9860483912992404`}, {0.9301070568242762, 0.}, {4.061633812679104,
+            0.7496555822400849}}]& ], AspectRatio -> Automatic, FrameTicks -> 
+        None, PlotRange -> All, PlotRangePadding -> Scaled[0.1]],StyleBox[
+        StyleBox[
+        "\"+\"", StripOnInput -> False, ShowStringCharacters -> False], 
+        StripOnInput -> False, FontSize :> 16],OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )]},
+    {
+     StyleBox["\<\"\"\>",
+      StripOnInput->False,
+      ShowStringCharacters->False], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            
+            LineBox[{{1.1719287633040978`, 1.49101961031637}, {
+             0.8144007895197609, 0.4920021748302791}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.1719287633040978`, 1.49101961031637}, {
+             2.2823066625629487`, 1.4919470495606553`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.1719287633040978`, 1.49101961031637}, {
+             0.5727149779509808, 2.22771944340135}}]}, {
+            GrayLevel[0], 
+            LineBox[{{0.8144007895197609, 0.4920021748302791}, {0., 0.}}]}, {
+            GrayLevel[0], 
+            LineBox[{{2.2823066625629487`, 1.4919470495606553`}, {
+             2.880448252942608, 2.2303804754992207`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.641685273498643, 0.4933595148990146}, {
+             1.7288356412572332`, 0.1544636433133567}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.641685273498643, 0.4933595148990146}, {
+             2.2823066625629487`, 1.4919470495606553`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.641685273498643, 0.4933595148990146}, {
+             3.456173720249684, 0.00035607325795317113`}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.7288356412572332`, 0.1544636433133567}, {
+             1.5450456614743413`, 0.04368213718157715}, {1.5220155297931706`, 
+             0.031737925661134175`}, {1.497649045345286, 
+             0.022831434222405605`}, {1.472344933061439, 
+             0.017108405686426714`}, {1.4465172608979533`, 
+             0.014662489761327474`}, {1.4205886641683834`, 
+             0.015533710590104277`}, {1.3949834296818342`, 
+             0.01970781180904707}, {1.370120552856761, 0.02711648983406542}, {
+             1.0043466121617721`, 0.1621319024408343}, {0.9806329407263144, 
+             0.17265392416426326`}, {0.9584565171993343, 
+             0.18611711077253545`}, {0.9381802290935559, 
+             0.20230115522219697`}, {0.9201358707467371, 
+             0.22094122727003904`}, {0.904618713951068, 
+             0.24173230706584978`}, {0.8918826762251814, 
+             0.2643341763943356}, {0.8821361657935454, 
+             0.28837698589121347`}, {0.8144007895197609, 
+             0.4920021748302791}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.7288356412572332`, 0.1544636433133567}, {
+             1.661100264983449, 0.35808883225242244`}, {1.651353754551813, 
+             0.38213164174930037`}, {1.6386177168259264`, 
+             0.4047335110777861}, {1.623100560030257, 0.42552459087359684`}, {
+             1.6050562016834384`, 0.44416466292143897`}, {1.58477991357766, 
+             0.46034870737110045`}, {1.56260349005068, 0.4738118939793727}, {
+             1.5388898186152222`, 0.4843339157028016}, {1.1731158779202333`, 
+             0.6193493283095705}, {1.1482530010951602`, 0.6267580063345888}, {
+             1.1226477666086108`, 0.6309321075535316}, {1.096719169879041, 
+             0.6318033283823083}, {1.070891497715555, 0.6293574124572091}, {
+             1.0455873854317084`, 0.6236343839212302}, {1.0212209009838238`, 
+             0.6147278924825017}, {0.9981907693026528, 0.6027836809620587}, {
+             0.8144007895197609, 0.4920021748302791}}]}}, {
+           DiskBox[{1.1719287633040978`, 1.49101961031637}, 0.1], 
+           DiskBox[{0.8144007895197609, 0.4920021748302791}, 0.02], 
+           DiskBox[{2.2823066625629487`, 1.4919470495606553`}, 0.1], 
+           DiskBox[{2.641685273498643, 0.4933595148990146}, 0.1], 
+           DiskBox[{1.7288356412572332`, 0.1544636433133567}, 0.1], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {0.,
+              0.3}], 
+            DiskBox[{0., 0.}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {
+             2.880448252942608, 2.5303804754992205`}], 
+            DiskBox[{2.880448252942608, 2.2303804754992207`}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i4\"", StripOnInput -> False, FontSize :> 14], {
+             0.5727149779509808, 2.5277194434013497`}], 
+            DiskBox[{0.5727149779509808, 2.22771944340135}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i3\"", StripOnInput -> False, FontSize :> 14], {
+             3.456173720249684, 0.30035607325795316`}], 
+            DiskBox[{3.456173720249684, 0.00035607325795317113`}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{1.1719287633040978`, 1.49101961031637}, {
+           0.8144007895197609, 0.4920021748302791}, {2.2823066625629487`, 
+           1.4919470495606553`}, {2.641685273498643, 0.4933595148990146}, {
+           1.7288356412572332`, 0.1544636433133567}, {0., 0.}, {
+           2.880448252942608, 2.2303804754992207`}, {0.5727149779509808, 
+           2.22771944340135}, {3.456173720249684, 
+           0.00035607325795317113`}}]& ], AspectRatio -> Automatic, 
+        FrameTicks -> None, PlotRange -> All, PlotRangePadding -> 
+        Scaled[0.1]],StyleBox[
+        TagBox[
+         RowBox[{
+           StyleBox[
+           "\"+\"", StripOnInput -> False, ShowStringCharacters -> False], 
+           FractionBox["1", "2"]}], DisplayForm], StripOnInput -> False, 
+        FontSize :> 16],OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     StyleBox["\<\"\"\>",
+      StripOnInput->False,
+      ShowStringCharacters->False], 
+     StyleBox["\<\"\"\>",
+      StripOnInput->False,
+      ShowStringCharacters->False], 
+     StyleBox["\<\"\"\>",
+      StripOnInput->False,
+      ShowStringCharacters->False]}
+   },
+   AutoDelete->False,
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{{3.5066729013917303`*^9, 3.506672939364809*^9}},
+ CellLabel->"Out[23]=",
+ CellID->1125460756]
+}, Open  ]]
+}, Open  ]],
+
+Cell["\<\
+Clearly the first diagram is drawn in a disadvantageous way, but the output \
+of doDSE is correct.\
+\>", "Text",
+ CellChangeTimes->{{3.506672977733356*^9, 3.506672987373313*^9}, {
+  3.5066730249737864`*^9, 3.506673047181666*^9}, {3.506676628738806*^9, 
+  3.506676628740656*^9}},
+ CellID->1365391372],
+
+Cell["Similar problems might occur for other graphs.", "Text",
+ CellChangeTimes->{{3.506676629723238*^9, 3.506676640699074*^9}},
+ CellID->1676382636]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["doDSE", "Section",
+ CellChangeTimes->{{3.506673186480522*^9, 3.506673188526435*^9}},
+ CellID->1131011768],
+
+Cell["\<\
+Actions with n-point functions higher than four-point functions have some \
+diagrams appear several times. However, the coefficients are correct and \
+adding them up yields the expected results. The reason for this problem is \
+that the identification of diagrams no longer works properly in this case.\
+\>", "Text",
+ CellChangeTimes->{{3.506673192171896*^9, 3.5066732484948053`*^9}, {
+  3.506673278775455*^9, 3.506673350529063*^9}},
+ CellID->1916076956],
+
+Cell[CellGroupData[{
+
+Cell["Here is simple an example:", "MathCaption",
+ CellChangeTimes->{{3.506673350823516*^9, 3.5066733601754627`*^9}},
+ CellID->1807876819],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"dse", "=", 
+   RowBox[{"doDSE", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "6", ",", "even"}], "}"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"phi", ",", "phi"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"DSEPlot", "[", 
+  RowBox[{"dse", ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"phi", ",", "Black"}], "}"}], "}"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.50667306060677*^9, 3.506673118218087*^9}, {
+  3.506673150166045*^9, 3.506673163711824*^9}},
+ CellLabel->"In[34]:=",
+ CellID->732663801],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            
+            LineBox[{{1., 1.7958636867904636`*^-10}, {0., 
+             2.6937955301856953`*^-10}}]}, {
+            GrayLevel[0], 
+            LineBox[{{1., 1.7958636867904636`*^-10}, {2., 0.}}]}}, {
+           DiskBox[{1., 1.7958636867904636`*^-10}, 0.1], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {0.,
+              0.30000000026937956`}], 
+            DiskBox[{0., 2.6937955301856953`*^-10}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {2.,
+              0.3}], 
+            DiskBox[{2., 0.}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{1., 1.7958636867904636`*^-10}, {0., 
+           2.6937955301856953`*^-10}, {2., 0.}}]& ], AspectRatio -> Automatic,
+         FrameTicks -> None, PlotRange -> All, PlotRangePadding -> 
+        Scaled[0.1]],StyleBox[
+        TemplateBox[{
+          OverscriptBox[
+           StyleBox["\"\"", StripOnInput -> False, FontSize :> 50], 
+           StyleBox["\"-1\"", StripOnInput -> False, FontSize :> 16]], 
+          "\"=\""}, "Row", 
+         DisplayFunction -> (RowBox[{#, "\[InvisibleSpace]", #2}]& ), 
+         InterpretationFunction -> (RowBox[{"Row", "[", 
+            RowBox[{"{", 
+              RowBox[{#, ",", #2}], "}"}], "]"}]& )], StripOnInput -> False, 
+        ShowStringCharacters -> False, FontSize :> 16]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 1}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", #2, ",", "Right"}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            
+            LineBox[{{1., 1.7958636867904636`*^-10}, {0., 
+             2.6937955301856953`*^-10}}]}, {
+            GrayLevel[0], 
+            LineBox[{{1., 1.7958636867904636`*^-10}, {2., 0.}}]}}, {
+           DiskBox[{1., 1.7958636867904636`*^-10}, 0.02], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {0.,
+              0.30000000026937956`}], 
+            DiskBox[{0., 2.6937955301856953`*^-10}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {2.,
+              0.3}], 
+            DiskBox[{2., 0.}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{1., 1.7958636867904636`*^-10}, {0., 
+           2.6937955301856953`*^-10}, {2., 0.}}]& ], AspectRatio -> Automatic,
+         FrameTicks -> None, PlotRange -> All, PlotRangePadding -> 
+        Scaled[0.1]],StyleBox[
+        StyleBox[
+        "\"+\"", StripOnInput -> False, ShowStringCharacters -> False], 
+        StripOnInput -> False, FontSize :> 16],OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"-1\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQBGIQDQEf7JOPHTFZtO6F7doTqwOZpr+1/7DryTk5/pn2
+7M8FBLtPvLZfo5AdE2y9yn7RnedqjI6v7EXOm88py9pur2Jwd5Kc1Et7iV9h
+68vsDtmnCyztdE5/Yb9eYe+dqXtO2i+c5dNlYPLCfofnFpsTNy7YX4t4uMGh
+5YW91EXtwuOnr9hnPW11Ngx6ae/+1P3QrZIb9msflOtXTXhlr9G19mL+tNv2
+G5mmLjXUemP/yfhL9O3fd+2dJxx+mM3yzj7dUEDjfM19+30LWMDuX7ROAkg/
+sM8IVuc/9feD/ZNZ3GD5G1p2us9ffbSXCnkN1p/L5fPi0PZP9vbfFoDNN1Fw
+iXse9tn+XoEF2P7i8KnL7+/9bK/dIAV2n+Kke7ueP/1s32q/COz+5QaG1nFn
+Ptuv/jET7L9E7inbPhR9tj/Faw72v9rh3pz6+5/sX8xnAoePZ31F+S7pT/Yu
+QrKQ8OvXul5n8tGeoaEbHL7o4Q8AdxTFPQ==
+             "]]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1., 1.7958636867904636`*^-10}, {0., 
+             2.6937955301856953`*^-10}}]}, {
+            GrayLevel[0], 
+            LineBox[{{1., 1.7958636867904636`*^-10}, {2., 0.}}]}}, {
+           DiskBox[{1., 1.7958636867904636`*^-10}, 0.02], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {0.,
+              0.30000000026937956`}], 
+            DiskBox[{0., 2.6937955301856953`*^-10}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {2.,
+              0.3}], 
+            DiskBox[{2., 0.}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{1., 1.7958636867904636`*^-10}, {0., 
+           2.6937955301856953`*^-10}, {2., 0.}}]& ], AspectRatio -> Automatic,
+         FrameTicks -> None, PlotRange -> All, PlotRangePadding -> 
+        Scaled[0.1]],StyleBox[
+        RowBox[{"-", 
+          FractionBox["1", "2"]}], StripOnInput -> False, FontSize :> 16],
+       OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{{
+             GrayLevel[0], 
+             LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQBGIQDQEf7JOPHTFZtO6F7e1yqdVrPz23jwkT9dycvsT+
+d9vf6j9nn9k/Wf9IbZXZSvs1R9azpu97ah+QsJx1wvEN9nk1/y7uO/fE/tya
+wq9/erfZKzuzXevneGLPt2i97/bNe+1TnJLE9xc/tn80PeHf2++H7K9+CdOy
+Ents/40/OM6i/Li95oWve3d9fmSfcsrN6p7mGfuLtVvmLeB9bO8Yumbp7/wL
+9o47Hmx6nPTYvuj2d949Wy7Zz190s17uw2P7Y59V/vKeuWIfeu3omQ3rn9i3
+Ne5Om7fgmv3LqxMZf858aq+vOonhsPwNe/tXGj8XLn1mf+Zr4ywLq5v2Xf/9
+dJlOPLffa3Xj0L4nN+07J0wu7Pj6wn5BQHBLl8Qt+8exE14YKr2ybz3ct7r7
+8k37fQt7GlicXtun/i292Chx0/6Xc55Yp+cb+8P/tUMevLtu3+tcmuig99Ze
+44plTFPSNXu+Zbn/eZ+/tfe5f/WLYfMVe4fEzbFTc97Zm0dacrCnXLJfJtN/
+umXnO3vpx/9WLpG6YI8e/gCLHtR9
+              "]]}, {
+             GrayLevel[0], 
+             LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQBGIQDQEf7JOPHTFZtO6FrbyU7SzbxR/sl73/vXKJ1AV7
+lYXagVtPfrDfvdmUgz3lkv1NaX+GSp6P9jdYLn4xbL5iv+e69/n7GR/thfyM
+Y5qSrtlrnzpfYn37o31RhnLIg3fX7RM+Htj/N+6TfQBL9sVGiZv26Z77uZ+/
++2SfZ9C4uvvyTXv2I7bHrVs/219idW7pkrhl3/s3/uU/6S/2lmZHD+17ctP+
+wbUiZv21X+zjAnNmWVjdtA/nt6tnNv5qnyFaxXBY/oa9/4LFM9VXfLVfFLww
+bd6Ca/aLjCQPfGD/Zj+Li/Mv75kr9n94pqr1+X2zL1t9i3fPlkv2lk2rNuhX
+frP/F9+39Hf+BfsFWpwLldq+2bNkcFnd0zxjH/Pq+qtHJd/sbXzF4yzKj9uL
+zA0sUXD7Zv+mVe3f2++H7J1Z/ovs+P3VfvJ9B9/tm/fa+yczTV8w46v9KhGu
+r396t9m7h2jWnlH4ap9Q5ME64fgG+0eqTIcYZ36xrym3UFtlttL+Q0Ox1kq2
+L/YKHg0em9OX2KOHPwBnFcE3
+              "]]}}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1., 1.7958636867904636`*^-10}, {0., 
+             2.6937955301856953`*^-10}}]}, {
+            GrayLevel[0], 
+            LineBox[{{1., 1.7958636867904636`*^-10}, {2., 0.}}]}}, {
+           DiskBox[{1., 1.7958636867904636`*^-10}, 0.02], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {0.,
+              0.30000000026937956`}], 
+            DiskBox[{0., 2.6937955301856953`*^-10}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {2.,
+              0.3}], 
+            DiskBox[{2., 0.}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{1., 1.7958636867904636`*^-10}, {0., 
+           2.6937955301856953`*^-10}, {2., 0.}}]& ], AspectRatio -> Automatic,
+         FrameTicks -> None, PlotRange -> All, PlotRangePadding -> 
+        Scaled[0.1]],StyleBox[
+        RowBox[{"-", 
+          FractionBox["1", "8"]}], StripOnInput -> False, FontSize :> 16],
+       OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            
+            LineBox[{{1., 2.6937955301856953`*^-10}, {1.1375304952599943`, 
+             0.17191311931272718`}, {1.1554522980290822`, 
+             0.19159031170429042`}, {1.1757394306258462`, 
+             0.2088186362284571}, {1.1980599212569363`, 
+             0.22331617439519802`}, {1.2220485249441422`, 
+             0.2348456933811255}, {1.2473127002699904`, 0.2432185280273776}, {
+             1.2734390327930651`, 0.2482976680926262}, {1.3000000000224485`, 
+             0.2500000002424416}, {1.7000000000224484`, 
+             0.25000000020652435`}, {1.7265609672515265`, 
+             0.24829766805193892`}, {1.7526872997736889`, 
+             0.24321852798199836`}, {1.7779514750980336`, 
+             0.23484569333120914`}, {1.8019400787831688`, 
+             0.22331617434097367`}, {1.8242605694116552`, 
+             0.20881863617022428`}, {1.844547702005325, 0.1915903116424143}, {
+             1.8624695047708792`, 0.17191311924763256`}, {2., 
+             1.7958636867904636`*^-10}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1., 2.6937955301856953`*^-10}, {2., 
+             1.7958636867904636`*^-10}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1., 2.6937955301856953`*^-10}, {
+             1.1375304952291212`, -0.17191311879866666`}, {
+             1.1554522979946755`, -0.19159031119344844`}, {
+             1.1757394305883455`, -0.20881863572125842`}, {
+             1.198059921216832, -0.2233161738920078}, {
+             1.222048524901967, -0.23484569288224327`}, {
+             1.2473127002263116`, -0.24321852753303247`}, {
+             1.2734390327484741`, -0.24829766760297306`}, {
+             1.299999999977552, -0.2499999997575584}, {
+             1.699999999977552, -0.24999999979347567`}, {
+             1.7265609672069355`, -0.2482976676436603}, {
+             1.75268729973001, -0.24321852757841164`}, {
+             1.7779514750558585`, -0.2348456929321595}, {
+             1.8019400787430644`, -0.22331617394623204`}, {
+             1.8242605693741545`, -0.2088186357794911}, {
+             1.8445477019709182`, -0.19159031125532444`}, {
+             1.8624695047400062`, -0.17191311886376123`}, {2., 
+             1.7958636867904636`*^-10}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1., 2.6937955301856953`*^-10}, {0., 
+             3.591727373580927*^-10}}]}, {
+            GrayLevel[0], 
+            LineBox[{{2., 1.7958636867904636`*^-10}, {3., 0.}}]}}, {
+           DiskBox[{1., 2.6937955301856953`*^-10}, 0.1], 
+           DiskBox[{2., 1.7958636867904636`*^-10}, 0.02], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {3.,
+              0.3}], 
+            DiskBox[{3., 0.}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {0.,
+              0.30000000035917274`}], 
+            DiskBox[{0., 3.591727373580927*^-10}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{1., 2.6937955301856953`*^-10}, {2., 
+           1.7958636867904636`*^-10}, {3., 0.}, {0., 
+           3.591727373580927*^-10}}]& ], AspectRatio -> Automatic, FrameTicks -> 
+        None, PlotRange -> All, PlotRangePadding -> Scaled[0.1]],StyleBox[
+        RowBox[{"-", 
+          FractionBox["1", "6"]}], StripOnInput -> False, FontSize :> 16],
+       OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )]},
+    {
+     StyleBox["\<\"\"\>",
+      StripOnInput->False,
+      ShowStringCharacters->False], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            
+            LineBox[{{0., 1.5000000000648026`}, {0.2050614622106851, 
+             1.580115880773232}, {0.23042079488599027`, 
+             1.5881959278753153`}, {0.25660412934674304`, 
+             1.5929725282798959`}, {0.2831830103415491, 
+             1.5943675193094806`}, {0.30972251002898016`, 
+             1.5923580738015033`}, {0.3357883449900354, 
+             1.5869770736443098`}, {0.3609539826954916, 
+             1.5783125717090338`}, {0.3848076211403082, 
+             1.5665063509821182`}, {0.7312177826391181, 1.366506350956197}, {
+             0.7533690889315137, 1.3517516044504396`}, {0.773455586568717, 
+             1.3342897738597108`}, {0.7911485868801664, 
+             1.3144065986885332`}, {0.8061585675780217, 
+             1.2924274405072311`}, {0.8182399104022036, 
+             1.2687119588449653`}, {0.8271949203347351, 
+             1.2436482258425383`}, {0.8328770606143175, 
+             1.2176463759708114`}, {0.8660254037470249, 1.}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0., 1.5000000000648026`}, {0.11570017168848484`, 
+             1.48501396048237}, {0.14354898537667743`, 1.4806052145458306`}, {
+             0.17110500393345096`, 1.4746336732145353`}, {0.1982805999401564, 
+             1.4671183258338116`}, {0.22498935571190887`, 
+             1.4580830710118657`}, {0.2511463381035668, 
+             1.4475566406228348`}, {0.27666836859491295`, 
+             1.4355725084401771`}, {0.3014742877961743, 
+             1.4221687836909473`}, {0.6478844492949843, 
+             1.2221687836650261`}, {0.67189537503157, 1.207388089843531}, {
+             0.6950349531873243, 1.1912774291697303`}, {0.7172296005086202, 
+             1.173888033123406}, {0.7384087385971819, 1.1552751995293975`}, {
+             0.7585050183475466, 1.135498116711962}, {0.7774545341154591, 
+             1.1146196752774526`}, {0.7951970269361506, 
+             1.0927062681238324`}, {0.8660254037470249, 1.}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0., 1.5000000000648026`}, {0.07082837681087434, 
+             1.4072937319409704`}, {0.08857086963156577, 
+             1.3853803247873502`}, {0.10752038539947847`, 
+             1.3645018833528406`}, {0.12761666514984307`, 
+             1.3447248005354053`}, {0.14879580323840472`, 
+             1.3261119669413965`}, {0.17099045055970052`, 
+             1.3087225708950725`}, {0.19413002871545484`, 
+             1.2926119102212716`}, {0.21814095445204057`, 
+             1.2778312163997765`}, {0.5645511159508505, 
+             1.0778312163738553`}, {0.5893570351521119, 
+             1.0644274916246257`}, {0.6148790656434581, 1.052443359441968}, {
+             0.641036048035116, 1.041916929052937}, {0.6677448038068684, 
+             1.0328816742309912`}, {0.6949203998135738, 
+             1.0253663268502673`}, {0.7224764183703475, 1.019394785518972}, {
+             0.7503252320585401, 1.0149860395824326`}, {0.8660254037470249, 
+             1.}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0., 1.5000000000648026`}, {0.033148343132707356`, 
+             1.2823536240939915`}, {0.03883048341228976, 
+             1.2563517742222643`}, {0.04778549334482132, 
+             1.2312880412198375`}, {0.05986683616900329, 
+             1.2075725595575715`}, {0.07487681686685857, 
+             1.1855934013762697`}, {0.092569817178308, 1.1657102262050918`}, {
+             0.11265631481551139`, 1.1482483956143632`}, {
+             0.13480762110790692`, 1.1334936491086058`}, {0.4812177826067169, 
+             0.9334936490826846}, {0.5050714210515335, 0.921687428355769}, {
+             0.5302370587569897, 0.9130229264204928}, {0.556302893718045, 
+             0.9076419262632995}, {0.582842393405476, 0.905632480755322}, {
+             0.609421274400282, 0.907027471784907}, {0.6356046088610348, 
+             0.9118040721894877}, {0.6609639415363399, 0.9198841192915708}, {
+             0.8660254037470249, 1.}}]}, {
+            GrayLevel[0], 
+            LineBox[{{0.8660254037470249, 1.}, {0.866025403612335, 0.}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{0.8660254037470249, 1.}, {1.7320508076287395`, 
+             1.499999999831513}}]}}, {
+           DiskBox[{0., 1.5000000000648026`}, 0.1], 
+           DiskBox[{0.8660254037470249, 1.}, 0.02], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {
+             0.866025403612335, 0.3}], 
+            DiskBox[{0.866025403612335, 0.}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {
+             1.7320508076287395`, 1.799999999831513}], 
+            DiskBox[{1.7320508076287395`, 1.499999999831513}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{0., 1.5000000000648026`}, {
+           0.8660254037470249, 1.}, {0.866025403612335, 0.}, {
+           1.7320508076287395`, 1.499999999831513}}]& ], AspectRatio -> 
+        Automatic, FrameTicks -> None, PlotRange -> All, PlotRangePadding -> 
+        Scaled[0.1]],StyleBox[
+        RowBox[{"-", 
+          FractionBox["1", "24"]}], StripOnInput -> False, FontSize :> 16],
+       OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQBGIQDQUOyceOmCxa98I29MlVjcbT/+w/7HpyTo5/pn1T
+cUeH65O/9msUsmOCrVfZB7wrntyg8Nde5Lz5nLKs7faCM/I8+Xv/2Ev8Cltf
+ZnfI3qjj0pGFxn/s1yvsvTN1z0n7AF81VwmpP/Y7PLfYnLhxwT5rTUGEgtMf
+e6mL2oXHT1+x3/Lp0EKJlX/s3Z+6H7pVcsM+9MNucVuPv/YaXWsv5k+7bR/R
+eOqShOg/+0/GX6Jv/75rr3Di4QdTpv/26YYCGudr7tvHBYB94bBonQSQemC/
+eeVk9qd1DA5PZnGD5XNE508r/srgIBXyGqzfjFWt5GE0o4P9twVg86UElNYX
+r2Z0uFdgAbZ/5+pTl9/fY3TQbpACu0/AM//u50+MDq32i8DuD54xQ1b/GaPD
+6h8zwf7bwOoVXbGT0eEUrznY/5Mfum3bn8/o8GI+Ezh8ltjvsb7Ly+jgIiQL
+Dr+L7lOz7WcxODA0dIPDFz38AY5huS8=
+             "]]}, {
+            GrayLevel[0], 
+            LineBox[{{2., 1.7958636867904636`*^-10}, {3., 0.}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1., 2.6937955301856953`*^-10}, {1.1375304952599943`, 
+             0.17191311931272718`}, {1.1554522980290822`, 
+             0.19159031170429042`}, {1.1757394306258462`, 
+             0.2088186362284571}, {1.1980599212569363`, 
+             0.22331617439519802`}, {1.2220485249441422`, 
+             0.2348456933811255}, {1.2473127002699904`, 0.2432185280273776}, {
+             1.2734390327930651`, 0.2482976680926262}, {1.3000000000224485`, 
+             0.2500000002424416}, {1.7000000000224484`, 
+             0.25000000020652435`}, {1.7265609672515265`, 
+             0.24829766805193892`}, {1.7526872997736889`, 
+             0.24321852798199836`}, {1.7779514750980336`, 
+             0.23484569333120914`}, {1.8019400787831688`, 
+             0.22331617434097367`}, {1.8242605694116552`, 
+             0.20881863617022428`}, {1.844547702005325, 0.1915903116424143}, {
+             1.8624695047708792`, 0.17191311924763256`}, {2., 
+             1.7958636867904636`*^-10}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1., 2.6937955301856953`*^-10}, {2., 
+             1.7958636867904636`*^-10}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1., 2.6937955301856953`*^-10}, {
+             1.1375304952291212`, -0.17191311879866666`}, {
+             1.1554522979946755`, -0.19159031119344844`}, {
+             1.1757394305883455`, -0.20881863572125842`}, {
+             1.198059921216832, -0.2233161738920078}, {
+             1.222048524901967, -0.23484569288224327`}, {
+             1.2473127002263116`, -0.24321852753303247`}, {
+             1.2734390327484741`, -0.24829766760297306`}, {
+             1.299999999977552, -0.2499999997575584}, {
+             1.699999999977552, -0.24999999979347567`}, {
+             1.7265609672069355`, -0.2482976676436603}, {
+             1.75268729973001, -0.24321852757841164`}, {
+             1.7779514750558585`, -0.2348456929321595}, {
+             1.8019400787430644`, -0.22331617394623204`}, {
+             1.8242605693741545`, -0.2088186357794911}, {
+             1.8445477019709182`, -0.19159031125532444`}, {
+             1.8624695047400062`, -0.17191311886376123`}, {2., 
+             1.7958636867904636`*^-10}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1., 2.6937955301856953`*^-10}, {0., 
+             3.591727373580927*^-10}}]}}, {
+           DiskBox[{2., 1.7958636867904636`*^-10}, 0.02], 
+           DiskBox[{1., 2.6937955301856953`*^-10}, 0.1], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {3.,
+              0.3}], 
+            DiskBox[{3., 0.}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {0.,
+              0.30000000035917274`}], 
+            DiskBox[{0., 3.591727373580927*^-10}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{2., 1.7958636867904636`*^-10}, {1., 
+           2.6937955301856953`*^-10}, {3., 0.}, {0., 
+           3.591727373580927*^-10}}]& ], AspectRatio -> Automatic, FrameTicks -> 
+        None, PlotRange -> All, PlotRangePadding -> Scaled[0.1]],StyleBox[
+        RowBox[{"-", 
+          FractionBox["1", "30"]}], StripOnInput -> False, FontSize :> 16],
+       OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            
+            LineBox[{{1., 2.6937955301856953`*^-10}, {1.1375304952599943`, 
+             0.17191311931272718`}, {1.1554522980290822`, 
+             0.19159031170429042`}, {1.1757394306258462`, 
+             0.2088186362284571}, {1.1980599212569363`, 
+             0.22331617439519802`}, {1.2220485249441422`, 
+             0.2348456933811255}, {1.2473127002699904`, 0.2432185280273776}, {
+             1.2734390327930651`, 0.2482976680926262}, {1.3000000000224485`, 
+             0.2500000002424416}, {1.7000000000224484`, 
+             0.25000000020652435`}, {1.7265609672515265`, 
+             0.24829766805193892`}, {1.7526872997736889`, 
+             0.24321852798199836`}, {1.7779514750980336`, 
+             0.23484569333120914`}, {1.8019400787831688`, 
+             0.22331617434097367`}, {1.8242605694116552`, 
+             0.20881863617022428`}, {1.844547702005325, 0.1915903116424143}, {
+             1.8624695047708792`, 0.17191311924763256`}, {2., 
+             1.7958636867904636`*^-10}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1., 2.6937955301856953`*^-10}, {2., 
+             1.7958636867904636`*^-10}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1., 2.6937955301856953`*^-10}, {
+             1.1375304952291212`, -0.17191311879866666`}, {
+             1.1554522979946755`, -0.19159031119344844`}, {
+             1.1757394305883455`, -0.20881863572125842`}, {
+             1.198059921216832, -0.2233161738920078}, {
+             1.222048524901967, -0.23484569288224327`}, {
+             1.2473127002263116`, -0.24321852753303247`}, {
+             1.2734390327484741`, -0.24829766760297306`}, {
+             1.299999999977552, -0.2499999997575584}, {
+             1.699999999977552, -0.24999999979347567`}, {
+             1.7265609672069355`, -0.2482976676436603}, {
+             1.75268729973001, -0.24321852757841164`}, {
+             1.7779514750558585`, -0.2348456929321595}, {
+             1.8019400787430644`, -0.22331617394623204`}, {
+             1.8242605693741545`, -0.2088186357794911}, {
+             1.8445477019709182`, -0.19159031125532444`}, {
+             1.8624695047400062`, -0.17191311886376123`}, {2., 
+             1.7958636867904636`*^-10}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1., 2.6937955301856953`*^-10}, {0., 
+             3.591727373580927*^-10}}]}, {
+            GrayLevel[0], 
+            LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQBGIQDQUOyceOmCxa98I29MlVjcbT/+w/7HpyTo5/pn1T
+cUeH65O/9msUsmOCrVfZB7wrntyg8Nde5Lz5nLKs7faCM/I8+Xv/2Ev8Cltf
+ZnfI3qjj0pGFxn/s1yvsvTN1z0n7AF81VwmpP/Y7PLfYnLhxwT5rTUGEgtMf
+e6mL2oXHT1+x3/Lp0EKJlX/s3Z+6H7pVcsM+9MNucVuPv/YaXWsv5k+7bR/R
+eOqShOg/+0/GX6Jv/75rr3Di4QdTpv/26YYCGudr7tvHBYB94bBonQSQemC/
+eeVk9qd1DA5PZnGD5XNE508r/srgIBXyGqzfjFWt5GE0o4P9twVg86UElNYX
+r2Z0uFdgAbZ/5+pTl9/fY3TQbpACu0/AM//u50+MDq32i8DuD54xQ1b/GaPD
+6h8zwf7bwOoVXbGT0eEUrznY/5Mfum3bn8/o8GI+Ezh8ltjvsb7Ly+jgIiQL
+Dr+L7lOz7WcxODA0dIPDFz38AY5huS8=
+             "]]}, {
+            GrayLevel[0], 
+            LineBox[{{2., 1.7958636867904636`*^-10}, {3., 0.}}]}}, {
+           DiskBox[{1., 2.6937955301856953`*^-10}, 0.1], 
+           DiskBox[{2., 1.7958636867904636`*^-10}, 0.02], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {3.,
+              0.3}], 
+            DiskBox[{3., 0.}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {0.,
+              0.30000000035917274`}], 
+            DiskBox[{0., 3.591727373580927*^-10}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{1., 2.6937955301856953`*^-10}, {2., 
+           1.7958636867904636`*^-10}, {3., 0.}, {0., 
+           3.591727373580927*^-10}}]& ], AspectRatio -> Automatic, FrameTicks -> 
+        None, PlotRange -> All, PlotRangePadding -> Scaled[0.1]],StyleBox[
+        RowBox[{"-", 
+          FractionBox["1", "20"]}], StripOnInput -> False, FontSize :> 16],
+       OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            
+            LineBox[{{1., 2.6937955301856953`*^-10}, {1.1375304952599943`, 
+             0.17191311931272718`}, {1.1554522980290822`, 
+             0.19159031170429042`}, {1.1757394306258462`, 
+             0.2088186362284571}, {1.1980599212569363`, 
+             0.22331617439519802`}, {1.2220485249441422`, 
+             0.2348456933811255}, {1.2473127002699904`, 0.2432185280273776}, {
+             1.2734390327930651`, 0.2482976680926262}, {1.3000000000224485`, 
+             0.2500000002424416}, {1.7000000000224484`, 
+             0.25000000020652435`}, {1.7265609672515265`, 
+             0.24829766805193892`}, {1.7526872997736889`, 
+             0.24321852798199836`}, {1.7779514750980336`, 
+             0.23484569333120914`}, {1.8019400787831688`, 
+             0.22331617434097367`}, {1.8242605694116552`, 
+             0.20881863617022428`}, {1.844547702005325, 0.1915903116424143}, {
+             1.8624695047708792`, 0.17191311924763256`}, {2., 
+             1.7958636867904636`*^-10}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1., 2.6937955301856953`*^-10}, {1.1152001696059568`, 
+             0.07200010625871733}, {1.139358441254606, 0.08579051970788701}, {
+             1.164539139524637, 0.09761126531815378}, {1.190581998190668, 
+             0.10738710823066544`}, {1.2173212636817785`, 
+             0.11505582866792785`}, {1.2445867500442758`, 
+             0.12056861794065041`}, {1.2722049221150111`, 
+             0.12389038909776495`}, {1.3000000000112246`, 
+             0.1250000002424416}, {1.7000000000112243`, 
+             0.12500000020652433`}, {1.7277950779072389`, 
+             0.12389038905685607`}, {1.7554132499773774`, 
+             0.12056861789478165`}, {1.7826787363388847`, 
+             0.11505582861716257`}, {1.8094180018286181`, 
+             0.10738710817509811`}, {1.8354608604928937`, 
+             0.09761126525790953}, {1.8606415587608014`, 
+             0.0857905196431206}, {1.8847998304069744`, 
+             0.07200010618961245}, {2., 1.7958636867904636`*^-10}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1., 2.6937955301856953`*^-10}, {2., 
+             1.7958636867904636`*^-10}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1., 2.6937955301856953`*^-10}, {
+             1.1152001695930263`, -0.07200010574064664}, {
+             1.1393584412391993`, -0.08579051919415479}, {
+             1.164539139507107, -0.09761126480894367}, {
+             1.1905819981713825`, -0.10738710772613225`}, {
+             1.217321263661116, -0.1150558281681967}, {
+             1.2445867500226233`, -0.12056861744581573`}, {
+             1.2722049220927618`, -0.12389038860789015`}, {
+             1.2999999999887764`, -0.1249999997575584}, {
+             1.699999999988776, -0.12499999979347567`}, {
+             1.7277950778849895`, -0.12389038864879903`}, {
+             1.755413249955725, -0.12056861749168449`}, {
+             1.7826787363182222`, -0.11505582821896188`}, {
+             1.8094180018093327`, -0.10738710778169946`}, {
+             1.8354608604753637`, -0.09761126486918781}, {
+             1.8606415587453946`, -0.08579051925892098}, {
+             1.8847998303940439`, -0.0720001058097513}, {2., 
+             1.7958636867904636`*^-10}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1., 2.6937955301856953`*^-10}, {
+             1.1375304952291212`, -0.17191311879866666`}, {
+             1.1554522979946755`, -0.19159031119344844`}, {
+             1.1757394305883455`, -0.20881863572125842`}, {
+             1.198059921216832, -0.2233161738920078}, {
+             1.222048524901967, -0.23484569288224327`}, {
+             1.2473127002263116`, -0.24321852753303247`}, {
+             1.2734390327484741`, -0.24829766760297306`}, {
+             1.299999999977552, -0.2499999997575584}, {
+             1.699999999977552, -0.24999999979347567`}, {
+             1.7265609672069355`, -0.2482976676436603}, {
+             1.75268729973001, -0.24321852757841164`}, {
+             1.7779514750558585`, -0.2348456929321595}, {
+             1.8019400787430644`, -0.22331617394623204`}, {
+             1.8242605693741545`, -0.2088186357794911}, {
+             1.8445477019709182`, -0.19159031125532444`}, {
+             1.8624695047400062`, -0.17191311886376123`}, {2., 
+             1.7958636867904636`*^-10}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1., 2.6937955301856953`*^-10}, {0., 
+             3.591727373580927*^-10}}]}, {
+            GrayLevel[0], 
+            LineBox[{{2., 1.7958636867904636`*^-10}, {3., 0.}}]}}, {
+           DiskBox[{1., 2.6937955301856953`*^-10}, 0.1], 
+           DiskBox[{2., 1.7958636867904636`*^-10}, 0.02], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {3.,
+              0.3}], 
+            DiskBox[{3., 0.}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {0.,
+              0.30000000035917274`}], 
+            DiskBox[{0., 3.591727373580927*^-10}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{1., 2.6937955301856953`*^-10}, {2., 
+           1.7958636867904636`*^-10}, {3., 0.}, {0., 
+           3.591727373580927*^-10}}]& ], AspectRatio -> Automatic, FrameTicks -> 
+        None, PlotRange -> All, PlotRangePadding -> Scaled[0.1]],StyleBox[
+        RowBox[{"-", 
+          FractionBox["1", "120"]}], StripOnInput -> False, FontSize :> 16],
+       OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )]},
+    {
+     StyleBox["\<\"\"\>",
+      StripOnInput->False,
+      ShowStringCharacters->False], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            
+            LineBox[{{1.5781040906572874`, 0.}, {1.5364597930323565`, 
+             0.18759442368276294`}, {1.5328861268668514`, 
+             0.21054895094167764`}, {1.5322720428376702`, 
+             0.23377187737974392`}, {1.534627589608687, 0.2568831908636696}, {
+             1.5399142218072541`, 0.2795047056568882}, {1.5480454307676763`, 
+             0.3012662509233597}, {1.5588881601298277`, 0.3218117280782439}, {
+             1.572264983128542, 0.34080493786500193`}, {1.791148923345268, 
+             0.612808238171066}, {1.8068409461620605`, 0.6299383821126678}, {
+             1.8245913898297248`, 0.6449251483130133}, {1.8441097920767193`, 
+             0.6575232983862281}, {1.8650767603537846`, 0.6675266804548725}, {
+             1.8871491982658601`, 0.6747716025497116}, {1.909965919885743, 
+             0.679139511209874}, {1.9331535600787395`, 0.6805589314516877}, {
+             2.1253139411991024`, 0.6800082507651602}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.5781040906572874`, 0.}, {2.1253139411991024`, 
+             0.6800082507651602}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.5781040906572874`, 0.}, {
+             1.7702644717776512`, -0.0005506806865273883}, {
+             1.7934521119706475`, 0.0008687395552863658}, {1.81626883359053, 
+             0.005236648215448739}, {1.8383412715026057`, 
+             0.012481570310287848`}, {1.859308239779671, 
+             0.022484952378932263`}, {1.8788266420266657`, 
+             0.03508310245214716}, {1.89657708569433, 0.05006986865249256}, {
+             1.9122691085111223`, 0.06720001259409442}, {2.1311530487278483`, 
+             0.3392033129001585}, {2.144529871726563, 0.3581965226869165}, {
+             2.155372601088714, 0.37874199984180074`}, {2.1635038100491357`, 
+             0.4005035451082722}, {2.168790442247703, 0.42312505990149074`}, {
+             2.17114598901872, 0.44623637338541655`}, {2.170531904989539, 
+             0.4694592998234828}, {2.166958238824034, 0.4924138270823974}, {
+             2.1253139411991024`, 0.6800082507651602}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.5781040906572874`, 0.}, {1.0249655057761484`, 
+             0.6789831028154496}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.1253139411991024`, 0.6800082507651602}, {
+             3.1490738544008696`, 0.9644498332887769}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.0249655057761484`, 0.6789831028154496}, {
+             1.1761207346599132`, 0.8682884235022883}, {1.195820790261456, 
+             0.8899585638649943}, {1.218126043290256, 0.9089365211145098}, {
+             1.2426714981110867`, 0.9249117463611788}, {1.2690555011823939`, 
+             0.9376228264087788}, {1.296846313579342, 0.9468617614318693}, {
+             1.3255891758239184`, 0.9524773686147601}, {1.3548137494156074`, 
+             0.9543777560561013}, {1.7949531235847889`, 0.9547878152359857}, {
+             1.824181187461109, 0.9529418856368391}, {1.8529344634457388`, 
+             0.9473798451663864}, {1.880742442631233, 0.9381927091783672}, {
+             1.9071500846280438`, 0.9255308128665378}, {1.9317252636919335`, 
+             0.9096013512302802}, {1.954065839883863, 0.8906649886055354}, {
+             1.9738062395522815`, 0.8690315932415538}, {2.1253139411991024`, 
+             0.6800082507651602}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.0249655057761484`, 0.6789831028154496}, {
+             1.1764732074229698`, 0.4899597603390562}, {1.1962136070913882`, 
+             0.4683263649750744}, {1.218554183283318, 0.4493900023503298}, {
+             1.2431293623472075`, 0.43346054071407203`}, {1.2695370043440184`,
+              0.4207986444022428}, {1.2973449835295128`, 
+             0.41161150841422356`}, {1.3260982595141426`, 
+             0.4060494679437708}, {1.3553263233904627`, 0.4042035383446243}, {
+             1.7954656975596441`, 0.40461359752450865`}, {1.824690271151333, 
+             0.40651398496585}, {1.8534331333959095`, 0.41212959214874073`}, {
+             1.8812239457928575`, 0.42136852717183115`}, {1.9076079488641646`,
+              0.4340796072194313}, {1.9321534036849954`, 
+             0.4500548324661001}, {1.9544586567137954`, 0.4690327897156158}, {
+             1.9741587123153381`, 0.49070293007832166`}, {2.1253139411991024`,
+              0.6800082507651602}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.0249655057761484`, 0.6789831028154496}, {0., 
+             0.9633357330541366}}]}}, {
+           DiskBox[{1.5781040906572874`, 0.}, 0.1], 
+           DiskBox[{2.1253139411991024`, 0.6800082507651602}, 0.02], 
+           DiskBox[{1.0249655057761484`, 0.6789831028154496}, 0.1], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {
+             3.1490738544008696`, 1.2644498332887768`}], 
+            DiskBox[{3.1490738544008696`, 0.9644498332887769}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {0.,
+              1.2633357330541366`}], 
+            DiskBox[{0., 0.9633357330541366}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{1.5781040906572874`, 0.}, {
+           2.1253139411991024`, 0.6800082507651602}, {1.0249655057761484`, 
+           0.6789831028154496}, {3.1490738544008696`, 0.9644498332887769}, {
+           0., 0.9633357330541366}}]& ], AspectRatio -> Automatic, FrameTicks -> 
+        None, PlotRange -> All, PlotRangePadding -> Scaled[0.1]],StyleBox[
+        RowBox[{"-", 
+          FractionBox["1", "40"]}], StripOnInput -> False, FontSize :> 16],
+       OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            
+            LineBox[{{1.5781040906572874`, 0.}, {1.5364597930323565`, 
+             0.18759442368276294`}, {1.5328861268668514`, 
+             0.21054895094167764`}, {1.5322720428376702`, 
+             0.23377187737974392`}, {1.534627589608687, 0.2568831908636696}, {
+             1.5399142218072541`, 0.2795047056568882}, {1.5480454307676763`, 
+             0.3012662509233597}, {1.5588881601298277`, 0.3218117280782439}, {
+             1.572264983128542, 0.34080493786500193`}, {1.791148923345268, 
+             0.612808238171066}, {1.8068409461620605`, 0.6299383821126678}, {
+             1.8245913898297248`, 0.6449251483130133}, {1.8441097920767193`, 
+             0.6575232983862281}, {1.8650767603537846`, 0.6675266804548725}, {
+             1.8871491982658601`, 0.6747716025497116}, {1.909965919885743, 
+             0.679139511209874}, {1.9331535600787395`, 0.6805589314516877}, {
+             2.1253139411991024`, 0.6800082507651602}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.5781040906572874`, 0.}, {2.1253139411991024`, 
+             0.6800082507651602}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.5781040906572874`, 0.}, {
+             1.7702644717776512`, -0.0005506806865273883}, {
+             1.7934521119706475`, 0.0008687395552863658}, {1.81626883359053, 
+             0.005236648215448739}, {1.8383412715026057`, 
+             0.012481570310287848`}, {1.859308239779671, 
+             0.022484952378932263`}, {1.8788266420266657`, 
+             0.03508310245214716}, {1.89657708569433, 0.05006986865249256}, {
+             1.9122691085111223`, 0.06720001259409442}, {2.1311530487278483`, 
+             0.3392033129001585}, {2.144529871726563, 0.3581965226869165}, {
+             2.155372601088714, 0.37874199984180074`}, {2.1635038100491357`, 
+             0.4005035451082722}, {2.168790442247703, 0.42312505990149074`}, {
+             2.17114598901872, 0.44623637338541655`}, {2.170531904989539, 
+             0.4694592998234828}, {2.166958238824034, 0.4924138270823974}, {
+             2.1253139411991024`, 0.6800082507651602}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.1253139411991024`, 0.6800082507651602}, {
+             3.1490738544008696`, 0.9644498332887769}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.0249655057761484`, 0.6789831028154496}, {
+             1.1761207346599132`, 0.8682884235022883}, {1.195820790261456, 
+             0.8899585638649943}, {1.218126043290256, 0.9089365211145098}, {
+             1.2426714981110867`, 0.9249117463611788}, {1.2690555011823939`, 
+             0.9376228264087788}, {1.296846313579342, 0.9468617614318693}, {
+             1.3255891758239184`, 0.9524773686147601}, {1.3548137494156074`, 
+             0.9543777560561013}, {1.7949531235847889`, 0.9547878152359857}, {
+             1.824181187461109, 0.9529418856368391}, {1.8529344634457388`, 
+             0.9473798451663864}, {1.880742442631233, 0.9381927091783672}, {
+             1.9071500846280438`, 0.9255308128665378}, {1.9317252636919335`, 
+             0.9096013512302802}, {1.954065839883863, 0.8906649886055354}, {
+             1.9738062395522815`, 0.8690315932415538}, {2.1253139411991024`, 
+             0.6800082507651602}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.0249655057761484`, 0.6789831028154496}, {
+             1.1764732074229698`, 0.4899597603390562}, {1.1962136070913882`, 
+             0.4683263649750744}, {1.218554183283318, 0.4493900023503298}, {
+             1.2431293623472075`, 0.43346054071407203`}, {1.2695370043440184`,
+              0.4207986444022428}, {1.2973449835295128`, 
+             0.41161150841422356`}, {1.3260982595141426`, 
+             0.4060494679437708}, {1.3553263233904627`, 0.4042035383446243}, {
+             1.7954656975596441`, 0.40461359752450865`}, {1.824690271151333, 
+             0.40651398496585}, {1.8534331333959095`, 0.41212959214874073`}, {
+             1.8812239457928575`, 0.42136852717183115`}, {1.9076079488641646`,
+              0.4340796072194313}, {1.9321534036849954`, 
+             0.4500548324661001}, {1.9544586567137954`, 0.4690327897156158}, {
+             1.9741587123153381`, 0.49070293007832166`}, {2.1253139411991024`,
+              0.6800082507651602}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.0249655057761484`, 0.6789831028154496}, {
+             1.5781040906572874`, 0.}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.0249655057761484`, 0.6789831028154496}, {0., 
+             0.9633357330541366}}]}}, {
+           DiskBox[{1.5781040906572874`, 0.}, 0.1], 
+           DiskBox[{2.1253139411991024`, 0.6800082507651602}, 0.02], 
+           DiskBox[{1.0249655057761484`, 0.6789831028154496}, 0.1], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {
+             3.1490738544008696`, 1.2644498332887768`}], 
+            DiskBox[{3.1490738544008696`, 0.9644498332887769}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {0.,
+              1.2633357330541366`}], 
+            DiskBox[{0., 0.9633357330541366}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{1.5781040906572874`, 0.}, {
+           2.1253139411991024`, 0.6800082507651602}, {1.0249655057761484`, 
+           0.6789831028154496}, {3.1490738544008696`, 0.9644498332887769}, {
+           0., 0.9633357330541366}}]& ], AspectRatio -> Automatic, FrameTicks -> 
+        None, PlotRange -> All, PlotRangePadding -> Scaled[0.1]],StyleBox[
+        RowBox[{"-", 
+          FractionBox["1", "40"]}], StripOnInput -> False, FontSize :> 16],
+       OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        TagBox[{{{
+            GrayLevel[0], 
+            
+            LineBox[{{2.1241683040695922`, 0.28397293744465096`}, {
+             1.9727788935035844`, 0.09502011900999621}, {1.9530533105002832`, 
+             0.0733943174178962}, {1.9307283991563655`, 
+             0.05446359495922523}, {1.906169476789095, 0.03853772758945842}, {
+             1.8797784173184122`, 0.025877320829172795`}, {
+             1.8519870751376912`, 0.01668954530323144}, {1.8232502183941472`, 
+             0.011124746670573255`}, {1.7940380873163038`, 
+             0.009273985418573938}, {1.3541330301818626`, 
+             0.009596263662505766}, {1.324923642227102, 
+             0.01148982502388396}, {1.2961949699652664`, 
+             0.01709672339937096}, {1.2684171196967817`, 
+             0.026325209395603177`}, {1.242044638791763, 
+             0.03902427118124058}, {1.2175090776302049`, 
+             0.05498610559362668}, {1.1952119278571578`, 
+             0.07394951855963366}, {1.1755180525089062`, 
+             0.09560419918735336}, {1.0244056612334886`, 
+             0.2847786330544805}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.1241683040695922`, 0.28397293744465096`}, {
+             1.973055912794175, 0.4731473713117782}, {1.9533620374459233`, 
+             0.4948020519394979}, {1.9310648876728762`, 0.5137654649055049}, {
+             1.906529326511318, 0.529727299317891}, {1.8801568456062991`, 
+             0.5424263611035284}, {1.8523789953378145`, 0.5516548470997605}, {
+             1.8236503230759789`, 0.5572617454752475}, {1.7944409351212183`, 
+             0.5591553068366257}, {1.354535877986777, 0.5594775850805576}, {
+             1.3253237469089336`, 0.5576268238285582}, {1.2965868901653896`, 
+             0.5520620251959001}, {1.2687955479846686`, 0.5428742496699586}, {
+             1.2424044885139858`, 0.530213842909673}, {1.2178455661467156`, 
+             0.5142879755399061}, {1.195520654802798, 0.49535725308123524`}, {
+             1.1757950717994967`, 0.47373145148913526`}, {1.0244056612334886`,
+              0.2847786330544805}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.1241683040695922`, 0.28397293744465096`}, {
+             1.5751829109754985`, 0.9641822726079663}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{2.1241683040695922`, 0.28397293744465096`}, {
+             3.149039822316522, 0.}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.0244056612334886`, 0.2847786330544805}, {0., 
+             2.093204531150583*^-6}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.5751829109754985`, 0.9641822726079663}, {
+             1.6162326418224768`, 0.7760577186811534}, {1.6197304767119884`, 
+             0.7530438307447196}, {1.6202617720024086`, 0.7297717098233385}, {
+             1.6178178337568525`, 0.7066221730522296}, {1.612438653756236, 
+             0.6839740316409355}, {1.604212255087264, 0.6621978921344907}, {
+             1.5932732517623367`, 0.6416500919329547}, {1.5798006459412672`, 
+             0.6226668683064182}, {1.359489746044463, 0.3509054124850238}, {
+             1.343703998903526, 0.33379740050035994`}, {1.3258634230831472`, 
+             0.3188445498937924}, {1.306259955747006, 0.3062915440678613}, {
+             1.2852143814207824`, 0.2963437961747747}, {1.2630710827824045`, 
+             0.28916408780488845`}, {1.2401924053000943`, 
+             0.28486990528368056`}, {1.216952727933375, 0.2835315171651588}, {
+             1.0244056612334886`, 0.2847786330544805}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.5751829109754985`, 0.9641822726079663}, {
+             1.0244056612334886`, 0.2847786330544805}}]}, {
+            GrayLevel[0], 
+            
+            LineBox[{{1.5751829109754985`, 0.9641822726079663}, {
+             1.3826358442756124`, 0.9654293884972881}, {1.359396166908893, 
+             0.9640910003787664}, {1.3365174894265828`, 0.9597968178575584}, {
+             1.3143741907882047`, 0.9526171094876722}, {1.293328616461981, 
+             0.9426693615945856}, {1.2737251491258401`, 0.9301163557686545}, {
+             1.2558845733054613`, 0.9151635051620869}, {1.240098826164524, 
+             0.8980554931774231}, {1.0197879262677203`, 0.6262940373560287}, {
+             1.0063153204466506`, 0.6073108137294921}, {0.9953763171217234, 
+             0.5867630135279562}, {0.9871499184527511, 0.5649868740215115}, {
+             0.9817707384521346, 0.5423387326102173}, {0.9793268002065788, 
+             0.5191891958391085}, {0.9798580954969989, 0.4959170749177273}, {
+             0.9833559303865105, 0.47290318698129363`}, {1.0244056612334886`, 
+             0.2847786330544805}}]}}, {
+           DiskBox[{2.1241683040695922`, 0.28397293744465096`}, 0.1], 
+           DiskBox[{1.0244056612334886`, 0.2847786330544805}, 0.02], 
+           DiskBox[{1.5751829109754985`, 0.9641822726079663}, 0.1], {
+            InsetBox[
+             StyleBox["\"  i1\"", StripOnInput -> False, FontSize :> 14], {0.,
+              0.30000209320453114`}], 
+            DiskBox[{0., 2.093204531150583*^-6}, 0.02]}, {
+            InsetBox[
+             StyleBox["\"  i2\"", StripOnInput -> False, FontSize :> 14], {
+             3.149039822316522, 0.3}], 
+            DiskBox[{3.149039822316522, 0.}, 0.02]}}}, 
+         Annotation[#, 
+          VertexCoordinateRules -> {{2.1241683040695922`, 
+           0.28397293744465096`}, {1.0244056612334886`, 0.2847786330544805}, {
+           1.5751829109754985`, 0.9641822726079663}, {0., 
+           2.093204531150583*^-6}, {3.149039822316522, 0.}}]& ], AspectRatio -> 
+        Automatic, FrameTicks -> None, PlotRange -> All, PlotRangePadding -> 
+        Scaled[0.1]],StyleBox[
+        RowBox[{"-", 
+          FractionBox["1", "30"]}], StripOnInput -> False, FontSize :> 16],
+       OverscriptBox[
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 50], 
+        StyleBox[
+        "\"\"", StripOnInput -> False, ShowStringCharacters -> False, 
+         FontSize :> 16]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     StyleBox["\<\"\"\>",
+      StripOnInput->False,
+      ShowStringCharacters->False]}
+   },
+   AutoDelete->False,
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{3.506673361596162*^9},
+ CellLabel->"Out[35]=",
+ CellID->802214198]
+}, Open  ]]
+}, Open  ]],
+
+Cell["\<\
+Adding up the 6th and 7th diagrams yields the coefficient 1/12 which is \
+exactly the one expected by the symmetry of the diagram: 3! 2.\
+\>", "Text",
+ CellChangeTimes->{{3.506673375952104*^9, 3.5066734292410173`*^9}},
+ CellID->1093030907],
+
+Cell["\<\
+The same is true for the 9th, 10th and 11th diagrams: 12=3! 2.\
+\>", "Text",
+ CellChangeTimes->{{3.506673429791815*^9, 3.506673484592239*^9}},
+ CellID->1148472092],
+
+Cell[CellGroupData[{
+
+Cell["More About", "TutorialMoreAboutSection",
+ CellID->23220180],
+
+Cell["XXXX", "TutorialMoreAbout",
+ CellID->1567025153]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Tutorials", "RelatedTutorialsSection",
+ CellID->415694126],
+
+Cell["XXXX", "RelatedTutorials",
+ CellID->806871991]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Wolfram Education Group Courses", "TutorialRelatedLinksSection",
+ CellID->415694148],
+
+Cell["XXXX", "TutorialRelatedLinks",
+ CellID->415694149]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{700, 770},
+WindowMargins->{{444, Automatic}, {118, 139}},
+FrontEndVersion->"8.0 for Linux x86 (64-bit) (October 10, 2011)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "TutorialPageStyles.nb", 
+  CharacterEncoding -> "UTF-8"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 325, 14, 24, "History",
+ CellID->1247902091],
+Cell[CellGroupData[{
+Cell[895, 38, 68, 1, 29, "CategorizationSection",
+ CellID->1122911449],
+Cell[966, 41, 81, 2, 70, "Categorization",
+ CellID->686433507],
+Cell[1050, 45, 78, 2, 70, "Categorization",
+ CellID->605800465],
+Cell[1131, 49, 75, 2, 70, "Categorization",
+ CellID->468444828],
+Cell[1209, 53, 72, 1, 70, "Categorization"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1318, 59, 56, 1, 19, "KeywordsSection",
+ CellID->1427428552],
+Cell[1377, 62, 45, 1, 70, "Keywords",
+ CellID->1251852827]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1459, 68, 53, 1, 19, "DetailsSection",
+ CellID->307771771],
+Cell[1515, 71, 63, 2, 70, "Details",
+ CellID->218895918],
+Cell[1581, 75, 69, 2, 70, "Details",
+ CellID->350963985],
+Cell[1653, 79, 66, 2, 70, "Details",
+ CellID->795871300],
+Cell[1722, 83, 71, 2, 70, "Details",
+ CellID->199739161],
+Cell[1796, 87, 60, 2, 70, "Details",
+ CellID->40625308],
+Cell[1859, 91, 61, 2, 70, "Details",
+ CellID->357121918],
+Cell[1923, 95, 62, 2, 70, "Details",
+ CellID->35949532],
+Cell[1988, 99, 78, 2, 70, "Details",
+ CellID->929432370],
+Cell[2069, 103, 67, 2, 70, "Details",
+ CellID->240026365]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2173, 110, 49, 1, 106, "Title",
+ CellID->509267359],
+Cell[2225, 113, 125, 2, 23, "Text",
+ CellID->1534169418],
+Cell[2353, 117, 186, 5, 79, "DefinitionBox",
+ CellID->2096742444],
+Cell[CellGroupData[{
+Cell[2564, 126, 91, 2, 43, "Section",
+ CellID->1536219457],
+Cell[CellGroupData[{
+Cell[2680, 132, 104, 2, 38, "Subsection",
+ CellID->1975056533],
+Cell[CellGroupData[{
+Cell[2809, 138, 220, 5, 40, "Text",
+ CellID->836781195],
+Cell[3032, 145, 183, 4, 26, "Input",
+ CellID->1403200543],
+Cell[CellGroupData[{
+Cell[3240, 153, 941, 29, 65, "Input",
+ CellID->2058623809],
+Cell[4184, 184, 77063, 1592, 648, "Output",
+ CellID->1125460756]
+}, Open  ]]
+}, Open  ]],
+Cell[81274, 1780, 309, 7, 25, "Text",
+ CellID->1365391372],
+Cell[81586, 1789, 149, 2, 25, "Text",
+ CellID->1676382636]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[81784, 1797, 111, 2, 45, "Section",
+ CellID->1131011768],
+Cell[81898, 1801, 464, 8, 82, "Text",
+ CellID->1916076956],
+Cell[CellGroupData[{
+Cell[82387, 1813, 138, 2, 41, "MathCaption",
+ CellID->1807876819],
+Cell[CellGroupData[{
+Cell[82550, 1819, 610, 19, 51, "Input",
+ CellID->732663801],
+Cell[83163, 1840, 60760, 1210, 325, "Output",
+ CellID->802214198]
+}, Open  ]]
+}, Open  ]],
+Cell[143950, 3054, 249, 5, 44, "Text",
+ CellID->1093030907],
+Cell[144202, 3061, 173, 4, 25, "Text",
+ CellID->1148472092],
+Cell[CellGroupData[{
+Cell[144400, 3069, 65, 1, 68, "TutorialMoreAboutSection",
+ CellID->23220180],
+Cell[144468, 3072, 54, 1, 24, "TutorialMoreAbout",
+ CellID->1567025153]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[144559, 3078, 72, 1, 74, "RelatedTutorialsSection",
+ CellID->415694126],
+Cell[144634, 3081, 52, 1, 24, "RelatedTutorials",
+ CellID->806871991]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[144723, 3087, 98, 1, 74, "TutorialRelatedLinksSection",
+ CellID->415694148],
+Cell[144824, 3090, 56, 1, 24, "TutorialRelatedLinks",
+ CellID->415694149]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

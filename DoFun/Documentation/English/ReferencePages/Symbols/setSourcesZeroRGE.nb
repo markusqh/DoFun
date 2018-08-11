@@ -1,0 +1,218 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9054,        209]
+NotebookOptionsPosition[      5177,        135]
+NotebookOutlinePosition[      8790,        207]
+CellTagsIndexPosition[      8747,        204]
+WindowTitle->setSourcesZeroRGE
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell"], Cell[TextData[Cell[
+    BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"DoFun/ref/setSourcesZeroRGE\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["DoFun/ref/setSourcesZeroRGE"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/DoFun/ref/\
+setSourcesZeroRGE.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$46061], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "DoFun/ref/setSourcesZeroRGE", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell[TextData[{
+ Cell["setSourcesZeroRGE", "ObjectName"],
+ Cell[BoxData[
+  TemplateBox[{8},
+   "Spacer1"]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[BoxData[GridBox[{
+   {"", Cell["\<\
+Sets the external sources to zero, i.e., only physical propagators and \
+vertices are left. This function is for RGEs only.
+Note that this is mainly intended as an internal function and should be used \
+with care.
+
+Syntax:
+setSourcesZeroRGE[expr, ac, extLegs] sets the sources to zero. expr is an \
+expression containing op functions, ac the action and extLegs the list of \
+external legs.
+setSourcesZeroRGE[expr, ac, extLegs, ownAllowedPropagators] sets the sources \
+to zero with ownAllowedPropagators a list of propagators allowed additionally \
+to the ones appearing in ac. Given in the form {{field1a, field1b}, {field2a, \
+field2b}, ...}.
+setSourcesZeroRGE[expr, ac, legs, ownAllowedPropagators, vertexTest, opts] \
+sets the sources to zero with vertexTest a function to determine if a vertex \
+should be kept and opts options of setSourcesZero.
+Possible options are:
+ -) doGrassmannTest: Determines if the Grassmann number of each vertex has to \
+be zero. Checks for each Grassmann field type separately.
+ 
+Examples:
+One external field
+setSourcesZeroRGE[op[V[{A, i}, {A, j}, {A, r}], {A, r}], {{A, A}, {A, A, A, \
+A}}, {{A, A}}]
+
+Replace dummy fields by physical fields
+setSourcesZeroRGE[op[V[{A, i}, {A, r}, {A, s}, {A, t}], P[{A, r}, \
+{$dummyField, u}], P[{A, s}, {$dummyField, v}], P[{A, t}, {$dummyField, \
+traceIndex2}], V[{$dummyField, u}, {$dummyField, v}, {$dummyField, \
+traceIndex2}, {A, j}]], {{A, A}, {A, A, A, A}},{{A, A}}]
+
+Replace dummy fields by real fields and apply a test for the resulting vertices
+Clear@vTest; vTest[a_V] := Length@a < 4;\
+\>"]},
+   {"", Cell["\<\
+setSourcesZeroRGE[op[V[{A, i}, {A, r}, {A, s}, {A, t}], P[{A, r}, \
+{$dummyField, u}], P[{A, s}, {$dummyField, v}], P[{A, t}, {$dummyField, \
+traceIndex2}], V[{$dummyField, u}, {$dummyField, v}, {$dummyField, \
+traceIndex2}, {A, j}]], {{A, A}, {A, A, A}},{{A, A}}, vTest]\
+\>"]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {None, {None}}, 
+   "RowsIndexed" -> {}}}],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"setSourcesZeroRGE",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:DoFun/guide/DoFun", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2018, 4, 14, 14, 45, 33.377452}", 
+    "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
+    "status" -> "None", "summary" -> 
+    "Sets the external sources to zero, i.e., only physical propagators and \
+vertices are left. This function is for RGEs only. Note that this is mainly \
+intended as an internal function and should be used with care. Syntax: \
+setSourcesZeroRGE[expr, ac, extLegs] sets the sources to zero. expr is an \
+expression containing op functions, ac the action and extLegs the list of \
+external legs. setSourcesZeroRGE[expr, ac, extLegs, ownAllowedPropagators] \
+sets the sources to zero with ownAllowedPropagators a list of propagators \
+allowed additionally to the ones appearing in ac. Given in the form \
+{{field1a, field1b}, {field2a, field2b}, ...}. setSourcesZeroRGE[expr, ac, \
+legs, ownAllowedPropagators, vertexTest, opts] sets the sources to zero with \
+vertexTest a function to determine if a vertex should be kept and opts \
+options of setSourcesZero. Possible options are: -) doGrassmannTest: \
+Determines if the Grassmann number of each vertex has to be zero. Checks for \
+each Grassmann field type separately. Examples: One external field \
+setSourcesZeroRGE[op[V[{A, i}, {A, j}, {A, r}], {A, r}], {{A, A}, {A, A, A, \
+A}}, {{A, A}}] Replace dummy fields by physical fields \
+setSourcesZeroRGE[op[V[{A, i}, {A, r}, {A, s}, {A, t}], P[{A, r}, \
+{$dummyField, u}], P[{A, s}, {$dummyField, v}], P[{A, t}, {$dummyField, \
+traceIndex2}], V[{$dummyField, u}, {$dummyField, v}, {$dummyField, \
+traceIndex2}, {A, j}]], {{A, A}, {A, A, A, A}},{{A, A}}] Replace dummy fields \
+by real fields and apply a test for the resulting vertices Clear@vTest; \
+vTest[a_V] := Length@a < 4; setSourcesZeroRGE[op[V[{A, i}, {A, r}, {A, s}, \
+{A, t}], P[{A, r}, {$dummyField, u}], P[{A, s}, {$dummyField, v}], P[{A, t}, \
+{$dummyField, traceIndex2}], V[{$dummyField, u}, {$dummyField, v}, \
+{$dummyField, traceIndex2}, {A, j}]], {{A, A}, {A, A, A}},{{A, A}}, vTest]", 
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "setSourcesZeroRGE", 
+    "titlemodifier" -> "", "windowtitle" -> "setSourcesZeroRGE", "type" -> 
+    "Symbol", "uri" -> "DoFun/ref/setSourcesZeroRGE"}},
+CellContext->"Global`",
+FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[589, 21, 2307, 54, 70, "AnchorBarGrid",ExpressionUUID->"129fd84d-f853-4aab-9bad-442d061f2884",
+ CellID->1],
+Cell[2899, 77, 174, 6, 70, "ObjectNameGrid",ExpressionUUID->"636a7284-89be-480a-b5b4-f2c857ad3af9"],
+Cell[3076, 85, 2071, 46, 70, "Usage",ExpressionUUID->"8d6ea5ed-22e4-4530-a296-d392f807fcfb"],
+Cell[5150, 133, 23, 0, 70, "FooterCell",ExpressionUUID->"6d527701-43dd-47c2-a8a3-d970d5749469"]
+}
+]
+*)
+
+(* End of internal cache information *)

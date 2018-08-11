@@ -1,0 +1,212 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7154,        203]
+NotebookOptionsPosition[      4606,        145]
+NotebookOutlinePosition[      6519,        194]
+CellTagsIndexPosition[      6476,        191]
+WindowTitle->delta
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "Related Guides",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"Related Guides", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"Welcome to DoFun\"\>":>
+       Documentation`HelpLookup["paclet:DoFun/guide/Welcome to DoFun"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"MoreAbout"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"DoFun/ref/delta\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["DoFun/ref/delta"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/DoFun/ref/delta.html"],
+                 StandardForm]], "Input", TextClipboardType -> "PlainText"]}, 
+            Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$21921], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], "DoFun/ref/delta", 
+             ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell[TextData[{
+ Cell["delta", "ObjectName"],
+ Cell[BoxData[
+  TemplateBox[{8},
+   "Spacer1"]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[BoxData[GridBox[{
+   {"", Cell["\<\
+Represents a Kronecker delta.
+
+delta[a,b] corresponds to an arbitrary Kronecker delta.
+
+delta[ind,a,b] corresponds to a Kronecker delta for the index ind.
+
+Examples:
+{delta[1,1], delta[lorentz, mu, nu]}\
+\>"]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]]],
+ "Related Guides"
+}], "MoreAboutSection",
+ WholeCellGroupOpener->True,
+ CellID->38303248],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["Welcome to DoFun"]],"paclet:DoFun/guide/Welcome to DoFun"},
+  "RefLink",
+  BaseStyle->"MoreAbout"]], "MoreAbout",
+ CellID->1]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"delta",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:DoFun/guide/DoFun", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2018, 4, 14, 14, 43, 56.402983}", 
+    "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoFR`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
+    "status" -> "None", "summary" -> 
+    "Represents a Kronecker delta. delta[a,b] corresponds to an arbitrary \
+Kronecker delta. delta[ind,a,b] corresponds to a Kronecker delta for the \
+index ind. Examples: {delta[1,1], delta[lorentz, mu, nu]}", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "delta", "titlemodifier" -> "", 
+    "windowtitle" -> "delta", "type" -> "Symbol", "uri" -> "DoFun/ref/delta"}},
+CellContext->"Global`",
+FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[577, 21, 3025, 74, 70, "AnchorBarGrid",ExpressionUUID->"f4fa7601-7678-4269-883d-2e0bea4fc5e4",
+ CellID->1],
+Cell[3605, 97, 162, 6, 70, "ObjectNameGrid",ExpressionUUID->"42d4e302-5911-4f0a-919b-2678fcbb9f0c"],
+Cell[3770, 105, 403, 15, 70, "Usage",ExpressionUUID->"7406e87a-1a8c-423a-9a23-fa28a591056c"],
+Cell[CellGroupData[{
+Cell[4198, 124, 156, 7, 70, "MoreAboutSection",ExpressionUUID->"8dfbd25d-cf3f-4bf5-a66e-6152fa48f593",
+ CellID->38303248],
+Cell[4357, 133, 31, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"c24f3a12-4461-4053-be8c-86fe8a0d5d1c"],
+Cell[4391, 135, 173, 5, 70, "MoreAbout",ExpressionUUID->"287f376c-15e1-4a51-9ac0-224a9ecae35f",
+ CellID->1]
+}, Open  ]],
+Cell[4579, 143, 23, 0, 70, "FooterCell",ExpressionUUID->"153e1490-990d-4688-b2da-327ab7dce9e0"]
+}
+]
+*)
+
+(* End of internal cache information *)

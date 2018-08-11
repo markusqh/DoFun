@@ -1,0 +1,176 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6455,        167]
+NotebookOptionsPosition[      3855,        110]
+NotebookOutlinePosition[      6192,        165]
+CellTagsIndexPosition[      6149,        162]
+WindowTitle->dR
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell"], Cell[TextData[Cell[
+    BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"DoFun/ref/dR\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["DoFun/ref/dR"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/DoFun/ref/dR.html"], 
+               StandardForm]], "Input", TextClipboardType -> "PlainText"]}, 
+           Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$25981], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], "DoFun/ref/dR", 
+            ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell[TextData[{
+ Cell["dR", "ObjectName"],
+ Cell[BoxData[
+  TemplateBox[{8},
+   "Spacer1"]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[BoxData[GridBox[{
+   {"", Cell["\<\
+Represents a regulator insertion, \[PartialD]_t R_k.
+
+Syntax (symbolic, i.e., as a result of doDSE or doRGE):
+dR[{field1, ind1}, {field2, ind2}] where fieldi are fields and indi generic \
+indices.
+Example: Symbolic representation of a regulator insertion for gluons
+dR[{A,i},{A,j}]
+
+Syntax (algebraic, i.e., as required for getAE):
+dR[field1[mom1, inds1], field2[mom2, inds2], explicit -> True] where fieldi \
+are fields, momi their momenta and indsi their full indices.
+Example: Definition of regulator insertion for a scalar field with an O(N) \
+index
+dR[phi[p1,i], phi[p2,j], explicit -> True]:=delta[i,j] p1^2 dr[p1^2/k^2]\
+\>"]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}}],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"dR",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:DoFun/guide/DoFun", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2018, 4, 14, 14, 44, 49.213620}", 
+    "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
+    "status" -> "None", "summary" -> 
+    "Represents a regulator insertion, \\[PartialD]_t R_k. Syntax (symbolic, \
+i.e., as a result of doDSE or doRGE): dR[{field1, ind1}, {field2, ind2}] \
+where fieldi are fields and indi generic indices. Example: Symbolic \
+representation of a regulator insertion for gluons dR[{A,i},{A,j}] Syntax \
+(algebraic, i.e., as required for getAE): dR[field1[mom1, inds1], \
+field2[mom2, inds2], explicit -> True] where fieldi are fields, momi their \
+momenta and indsi their full indices. Example: Definition of regulator \
+insertion for a scalar field with an O(N) index dR[phi[p1,i], phi[p2,j], \
+explicit -> True]:=delta[i,j] p1^2 dr[p1^2/k^2]", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "dR", "titlemodifier" -> "", "windowtitle" -> 
+    "dR", "type" -> "Symbol", "uri" -> "DoFun/ref/dR"}},
+CellContext->"Global`",
+FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[574, 21, 2259, 54, 70, "AnchorBarGrid",ExpressionUUID->"b29dce06-9817-4510-bdf1-447749cfedac",
+ CellID->1],
+Cell[2836, 77, 159, 6, 70, "ObjectNameGrid",ExpressionUUID->"349631a5-55c8-4553-aded-66ff5a89f52d"],
+Cell[2998, 85, 827, 21, 70, "Usage",ExpressionUUID->"e89e823d-a32b-4e7e-9eec-cc2d622701a6"],
+Cell[3828, 108, 23, 0, 70, "FooterCell",ExpressionUUID->"40250909-4d45-4f44-a69a-3abba7f6bc5b"]
+}
+]
+*)
+
+(* End of internal cache information *)

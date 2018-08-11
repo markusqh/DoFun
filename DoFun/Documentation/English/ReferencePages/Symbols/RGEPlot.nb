@@ -1,0 +1,766 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     28977,        757]
+NotebookOptionsPosition[     23493,        659]
+NotebookOutlinePosition[     27734,        739]
+CellTagsIndexPosition[     27691,        736]
+WindowTitle->RGEPlot
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "Related Guides",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"Related Guides", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"Welcome to DoFun\"\>":>
+       Documentation`HelpLookup["paclet:DoFun/guide/Welcome to DoFun"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"MoreAbout"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"DoFun/ref/RGEPlot\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["DoFun/ref/RGEPlot"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/DoFun/ref/RGEPlot.\
+html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$44526], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], "DoFun/ref/RGEPlot", 
+             ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell[TextData[{
+ Cell["RGEPlot", "ObjectName"],
+ Cell[BoxData[
+  TemplateBox[{8},
+   "Spacer1"]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[BoxData[GridBox[{
+   {"", Cell["\<\
+Plots an RGE.
+Blobs denote dressed n-point functions and dots bare n-point functions. \
+External fields are indicated by a circle and regulator insertions by boxes \
+(default).
+Styles for each field can be given.
+RGEPlot can also plot expressions created by the user as long as the syntax \
+of op functions is obeyed and the fields are defined.
+Note: Since RGEPlot relies on DSEPlot the options are the same; changing the \
+options of the former may be ignored by some functions, since they take the \
+options of DSEPlot. This can be circumvented by changing the options of \
+DSEPlot globally.
+
+Syntax:
+RGEPlot[expr] with expr a result of doDSE plots the corresponding DSE. expr \
+can also be a user-created expression containing op functions.
+RGEPlot[expr, fieldStyles] plots a DSE with the styles of the fields given by \
+fieldStyles. The syntax is {{field1, style1}, {field2, style2}, ...}} where \
+stylei are style are graphics primitives like colors suitable for Line.
+RGEPlot[expr, n] or DSEPlot[expr, fieldStyle, n] plots a DSE with n graphs \
+per row.
+RGEPlot accepts several options:
+ -) output: Determines the output form of the graphs. Possible values are \
+List, forceEquation and complete (default). The last one plots sums of graphs \
+as complete equations and single graphs as such.
+ -) options of GraphPlot
+ -) indexStyle: Style settings for the indices, see ?indexStyle for details.
+ -) factorStyle: Style settings for the factors, see ?factorStyle for details.
+
+Examples:
+The gluon two-point RGE of Landau gauge Yang-Mills theory
+dse = doRGE[{{A, A}, {c, cb}, {A, cb, c}, {A, A, A}, {A, A, A, A}}, {A, A}];
+RGEPlot[dse]
+
+The gluon three-point RGE of Landau gauge Yang-Mills theory with gluons in \
+red and ghosts dashed in green and four graphs per row
+dse = doRGE[{{A, A}, {c, cb}, {A, cb, c}, {A, A, A}, {A, A, A, A}}, {A, A}];
+RGEPlot[dse,  {{A, Red}, {c, Green, Dashed}}, 4]
+
+The graphs of the gluon two-point RGE of Landau gauge Yang-Mills theory in a \
+list 
+dse = doRGE[{{A, A}, {c, cb}, {A, cb, c}, {A, A, A}, {A, A, A, A}}, {A, A}];
+RGEPlot[dse,  {{A, Red}, {c, Green}}, output -> List]
+
+The complete two-point RGE of an O(N) symmetric scalar theory in the \
+symmetric phase\
+\>"]},
+   {"", Cell["\<\
+dse = doRGE[{{phi, 100, even}}, {phi, phi}];
+RGEPlot[dse,  {{phi, Black}}, output -> forceEquation]
+
+Plotting a user-created expression with one external field
+defineFields[{phi}, {}, {}];
+RGEPlot[op[S[{phi, i}, {phi, j}, {phi, l}, {phi, m}], P[{phi, l}, {phi, m}], \
+{phi, j}], {{phi, Black}}]\
+\>"]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {None, {None}}, 
+   "RowsIndexed" -> {}}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    TemplateBox[{6},
+     "Spacer1"]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None, "Normal", Automatic},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell["The following options can be given: ", "Notes"],
+
+Cell[BoxData[GridBox[{
+   {Cell["      ", "TableRowIcon"], 
+    ButtonBox["MultiedgeStyle",
+     BaseStyle->"Link",
+     ButtonData->"paclet:ref/MultiedgeStyle"], "0.5", Cell["\<\
+MultiedgeStyle is an option for GraphPlot and related functions which \
+specifies how to draw multiple edges.\
+\>", "TableText"]},
+   {Cell["      ", "TableRowIcon"], 
+    ButtonBox["factorStyle",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFun/ref/factorStyle"], 
+    RowBox[{"{", 
+     RowBox[{"FontSize", " ", ":>", " ", "16"}], "}"}], Cell[TextData[{
+     "Options for the style of all text in DSE and RGE plots except indices \
+and field labels.\nStandard value: {FontSize:>16}.\n\nExample:\nrge = ",
+     Cell[BoxData[
+      RowBox[{
+       StyleBox["doRGE", "TI"], "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"{", 
+          RowBox[{
+           StyleBox["phi", "TI"], ",", " ", "4"}], "}"}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            StyleBox["phi", "TI"], ",", " ", 
+            StyleBox["i", "TI"]}], "}"}], ",", " ", 
+          RowBox[{"{", " ", 
+           RowBox[{
+            StyleBox["phi", "TI"], ",", " ", 
+            StyleBox["j", "TI"]}], "}"}]}], "}"}]}], "]"}]], "InlineFormula"],
+     
+     ";\n",
+     Cell[BoxData[
+      RowBox[{"RGEPlot", "[", 
+       RowBox[{
+        StyleBox["rge", "TI"], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"{", 
+          RowBox[{
+           StyleBox["phi", "TI"], ",", " ", 
+           TemplateBox[{Cell[
+              TextData["Black"]],"paclet:ref/Black"},
+            "RefLink",
+            BaseStyle->{"InlineFormula"}]}], "}"}], "}"}], ",", " ", 
+        RowBox[{
+         StyleBox["factorStyle", "TI"], " ", "->", " ", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{
+            TemplateBox[{Cell[
+               TextData["FontSize"]],"paclet:ref/FontSize"},
+             "RefLink",
+             BaseStyle->{"InlineFormula"}], " ", "->", " ", "20"}], ",", " ", 
+           
+           TemplateBox[{Cell[
+              TextData["Red"]],"paclet:ref/Red"},
+            "RefLink",
+            BaseStyle->{"InlineFormula"}], ",", " ", 
+           RowBox[{
+            TemplateBox[{Cell[
+               TextData["FontWeight"]],"paclet:ref/FontWeight"},
+             "RefLink",
+             BaseStyle->{"InlineFormula"}], " ", "->", " ", 
+            TemplateBox[{Cell[
+               TextData["Bold"]],"paclet:ref/Bold"},
+             "RefLink",
+             BaseStyle->{"InlineFormula"}]}]}], "}"}]}]}], "]"}]], 
+      "InlineFormula"],
+     "\n"
+    }], "TableText"]},
+   {Cell["      ", "TableRowIcon"], 
+    ButtonBox["indexStyle",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFun/ref/indexStyle"], 
+    RowBox[{"{", 
+     RowBox[{"FontSize", " ", ":>", " ", "14"}], "}"}], Cell[TextData[{
+     "Options for the style of the external indices in DSE and RGE plots.\n\
+Standard value: {FontSize:>14}.\n\nExample:\ndse = ",
+     Cell[BoxData[
+      RowBox[{
+       StyleBox["doDSE", "TI"], "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            StyleBox["phi", "TI"], ",", 
+            StyleBox["phi", "TI"]}], "}"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{
+            StyleBox["phi", "TI"], ",", 
+            StyleBox["phi", "TI"], ",", 
+            StyleBox["phi", "TI"], ",", 
+            StyleBox["phi", "TI"]}], "}"}]}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{
+          StyleBox["phi", "TI"], ",", " ", 
+          StyleBox["phi", "TI"]}], "}"}]}], "]"}]], "InlineFormula"],
+     ";\n",
+     Cell[BoxData[
+      RowBox[{
+       TemplateBox[{Cell[
+          TextData["DSEPlot"]],"paclet:DoFun/ref/DSEPlot"},
+        "RefLink",
+        BaseStyle->{"InlineFormula"}], "[", 
+       RowBox[{
+        StyleBox["dse", "TI"], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"{", 
+          RowBox[{
+           StyleBox["phi", "TI"], ",", " ", 
+           TemplateBox[{Cell[
+              TextData["Black"]],"paclet:ref/Black"},
+            "RefLink",
+            BaseStyle->{"InlineFormula"}]}], "}"}], "}"}], ",", " ", 
+        RowBox[{
+         StyleBox["indexStyle", "TI"], " ", "->", " ", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{
+            TemplateBox[{Cell[
+               TextData["FontSize"]],"paclet:ref/FontSize"},
+             "RefLink",
+             BaseStyle->{"InlineFormula"}], " ", "->", " ", "20"}], ",", " ", 
+           
+           TemplateBox[{Cell[
+              TextData["Blue"]],"paclet:ref/Blue"},
+            "RefLink",
+            BaseStyle->{"InlineFormula"}], ",", " ", 
+           RowBox[{
+            TemplateBox[{Cell[
+               TextData["FontSlant"]],"paclet:ref/FontSlant"},
+             "RefLink",
+             BaseStyle->{"InlineFormula"}], " ", "->", " ", 
+            TemplateBox[{Cell[
+               TextData["Italic"]],"paclet:ref/Italic"},
+             "RefLink",
+             BaseStyle->{"InlineFormula"}]}]}], "}"}]}]}], "]"}]], 
+      "InlineFormula"],
+     "\n"
+    }], "TableText"]},
+   {Cell["      ", "TableRowIcon"], 
+    ButtonBox["output",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFun/ref/output"], 
+    ButtonBox["complete",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFun/ref/complete"], Cell[TextData[{
+     "Option of DSEPlot and RGEPlot. Determines how the form of the output of \
+DSEPlot and RGEPlot.\n\nPossible values are:\n -) List: Gives a list of all \
+graphs.\n -) forceEquation: Output in form of an equation, even if a single \
+graph is plotted.\n -) complete (default): Output for several graphs in form \
+of an equation and for a single graph as such.\n\nExamples:\nThe graphs of \
+the gluon two-point DSE of Landau gauge Yang-Mills theory in a list \ndse = ",
+     
+     Cell[BoxData[
+      RowBox[{
+       StyleBox["doDSE", "TI"], "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            TemplateBox[{Cell[
+               TextData["A"]],"paclet:ref/A"},
+             "RefLink",
+             BaseStyle->{"InlineFormula"}], ",", " ", 
+            TemplateBox[{Cell[
+               TextData["A"]],"paclet:ref/A"},
+             "RefLink",
+             BaseStyle->{"InlineFormula"}]}], "}"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{
+            StyleBox["c", "TI"], ",", " ", 
+            StyleBox["cb", "TI"]}], "}"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{
+            TemplateBox[{Cell[
+               TextData["A"]],"paclet:ref/A"},
+             "RefLink",
+             BaseStyle->{"InlineFormula"}], ",", " ", 
+            StyleBox["cb", "TI"], ",", " ", 
+            StyleBox["c", "TI"]}], "}"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{
+            TemplateBox[{Cell[
+               TextData["A"]],"paclet:ref/A"},
+             "RefLink",
+             BaseStyle->{"InlineFormula"}], ",", " ", 
+            TemplateBox[{Cell[
+               TextData["A"]],"paclet:ref/A"},
+             "RefLink",
+             BaseStyle->{"InlineFormula"}], ",", " ", 
+            TemplateBox[{Cell[
+               TextData["A"]],"paclet:ref/A"},
+             "RefLink",
+             BaseStyle->{"InlineFormula"}]}], "}"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{
+            TemplateBox[{Cell[
+               TextData["A"]],"paclet:ref/A"},
+             "RefLink",
+             BaseStyle->{"InlineFormula"}], ",", " ", 
+            TemplateBox[{Cell[
+               TextData["A"]],"paclet:ref/A"},
+             "RefLink",
+             BaseStyle->{"InlineFormula"}], ",", " ", 
+            TemplateBox[{Cell[
+               TextData["A"]],"paclet:ref/A"},
+             "RefLink",
+             BaseStyle->{"InlineFormula"}], ",", " ", 
+            TemplateBox[{Cell[
+               TextData["A"]],"paclet:ref/A"},
+             "RefLink",
+             BaseStyle->{"InlineFormula"}]}], "}"}]}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{
+          TemplateBox[{Cell[
+             TextData["A"]],"paclet:ref/A"},
+           "RefLink",
+           BaseStyle->{"InlineFormula"}], ",", " ", 
+          TemplateBox[{Cell[
+             TextData["A"]],"paclet:ref/A"},
+           "RefLink",
+           BaseStyle->{"InlineFormula"}]}], "}"}]}], "]"}]], "InlineFormula"],
+     
+     ";\n",
+     Cell[BoxData[
+      RowBox[{
+       TemplateBox[{Cell[
+          TextData["DSEPlot"]],"paclet:DoFun/ref/DSEPlot"},
+        "RefLink",
+        BaseStyle->{"InlineFormula"}], "[", 
+       RowBox[{
+        StyleBox["dse", "TI"], ",", "  ", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            TemplateBox[{Cell[
+               TextData["A"]],"paclet:ref/A"},
+             "RefLink",
+             BaseStyle->{"InlineFormula"}], ",", " ", 
+            TemplateBox[{Cell[
+               TextData["Red"]],"paclet:ref/Red"},
+             "RefLink",
+             BaseStyle->{"InlineFormula"}]}], "}"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{
+            StyleBox["c", "TI"], ",", " ", 
+            TemplateBox[{Cell[
+               TextData["Green"]],"paclet:ref/Green"},
+             "RefLink",
+             BaseStyle->{"InlineFormula"}]}], "}"}]}], "}"}], ",", " ", 
+        RowBox[{
+         StyleBox["output", "TI"], " ", "->", " ", 
+         TemplateBox[{Cell[
+            TextData["List"]],"paclet:ref/List"},
+          "RefLink",
+          BaseStyle->{"InlineFormula"}]}]}], "]"}]], "InlineFormula"],
+     "\n\nThe complete two-point RGE of an O(N) symmetric scalar theory in \
+the symmetric phase\ndse = ",
+     Cell[BoxData[
+      RowBox[{
+       StyleBox["doRGE", "TI"], "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            StyleBox["phi", "TI"], ",", " ", 
+            StyleBox["phi", "TI"]}], "}"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{
+            StyleBox["phi", "TI"], ",", 
+            StyleBox["phi", "TI"], ",", 
+            StyleBox["phi", "TI"], ",", 
+            StyleBox["phi", "TI"]}], "}"}]}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{
+          StyleBox["phi", "TI"], ",", " ", 
+          StyleBox["phi", "TI"]}], "}"}]}], "]"}]], "InlineFormula"],
+     ";\n",
+     Cell[BoxData[
+      RowBox[{"RGEPlot", "[", 
+       RowBox[{
+        StyleBox["dse", "TI"], ",", "  ", 
+        RowBox[{"{", 
+         RowBox[{"{", 
+          RowBox[{
+           StyleBox["phi", "TI"], ",", " ", 
+           TemplateBox[{Cell[
+              TextData["Black"]],"paclet:ref/Black"},
+            "RefLink",
+            BaseStyle->{"InlineFormula"}]}], "}"}], "}"}], ",", " ", 
+        RowBox[{
+         StyleBox["output", "TI"], " ", "->", " ", 
+         StyleBox["forceEquation", "TI"]}]}], "]"}]], "InlineFormula"],
+     "\n"
+    }], "TableText"]},
+   {Cell["      ", "TableRowIcon"], 
+    ButtonBox["regulatorSymbol",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFun/ref/regulatorSymbol"], 
+    ButtonBox["regulatorBox",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFun/ref/regulatorBox"], Cell[TextData[{
+     "Option for RGEPlot. Defines the function for drawing the regulator \
+insertion.\n\nPossible values: regulatorBox, regulatorCross or a user-defined \
+function which takes the coordinate of the regulator insertion as input.\n\n\
+Default value: regulatorBox.\n\nExample:\n",
+     Cell[BoxData[
+      RowBox[{
+       StyleBox["defineFields", "TI"], "[", 
+       RowBox[{
+        RowBox[{"{", 
+         StyleBox["phi", "TI"], "}"}], ",", " ", 
+        RowBox[{"{", "}"}], ",", " ", 
+        RowBox[{"{", "}"}]}], "]"}]], "InlineFormula"],
+     ";\n",
+     Cell[BoxData[
+      RowBox[{"RGEPlot", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"1", "/", "2"}], " ", 
+         RowBox[{
+          StyleBox["op", "TI"], "[", 
+          RowBox[{
+           RowBox[{
+            StyleBox["dR", "TI"], "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               StyleBox["phi", "TI"], ",", " ", 
+               SubscriptBox[
+                StyleBox["r", "TI"], 
+                StyleBox["1", "TR"]]}], "}"}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{
+               StyleBox["phi", "TI"], ",", " ", 
+               SubscriptBox[
+                StyleBox["s", "TI"], 
+                StyleBox["1", "TR"]]}], "}"}]}], "]"}], ",", " ", 
+           RowBox[{
+            TemplateBox[{Cell[
+               TextData["P"]],"paclet:DoFun/ref/P"},
+             "RefLink",
+             BaseStyle->{"InlineFormula"}], "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               StyleBox["phi", "TI"], ",", " ", 
+               SubscriptBox[
+                StyleBox["t", "TI"], 
+                StyleBox["1", "TR"]]}], "}"}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{
+               StyleBox["phi", "TI"], ",", " ", 
+               SubscriptBox[
+                StyleBox["r", "TI"], 
+                StyleBox["1", "TR"]]}], "}"}]}], "]"}], ",", " ", 
+           RowBox[{
+            TemplateBox[{Cell[
+               TextData["P"]],"paclet:DoFun/ref/P"},
+             "RefLink",
+             BaseStyle->{"InlineFormula"}], "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               StyleBox["phi", "TI"], ",", " ", 
+               SubscriptBox[
+                StyleBox["s", "TI"], 
+                StyleBox["1", "TR"]]}], "}"}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{
+               StyleBox["phi", "TI"], ",", " ", 
+               SubscriptBox[
+                StyleBox["v", "TI"], 
+                StyleBox["1", "TR"]]}], "}"}]}], "]"}], ",", " ", 
+           RowBox[{
+            TemplateBox[{Cell[
+               TextData["V"]],"paclet:DoFun/ref/V"},
+             "RefLink",
+             BaseStyle->{"InlineFormula"}], "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               StyleBox["phi", "TI"], ",", " ", 
+               StyleBox["i", "TI"]}], "}"}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{
+               StyleBox["phi", "TI"], ",", " ", 
+               StyleBox["j", "TI"]}], "}"}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{
+               StyleBox["phi", "TI"], ",", " ", 
+               SubscriptBox[
+                StyleBox["v", "TI"], 
+                StyleBox["1", "TR"]]}], "}"}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{
+               StyleBox["phi", "TI"], ",", " ", 
+               SubscriptBox[
+                StyleBox["t", "TI"], 
+                StyleBox["1", "TR"]]}], "}"}]}], "]"}]}], "]"}]}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"{", 
+          RowBox[{
+           StyleBox["phi", "TI"], ",", " ", 
+           TemplateBox[{Cell[
+              TextData["Black"]],"paclet:ref/Black"},
+            "RefLink",
+            BaseStyle->{"InlineFormula"}]}], "}"}], "}"}], ",", " ", 
+        RowBox[{
+         StyleBox["regulatorSymbol", "TI"], " ", "->", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             TemplateBox[{Cell[
+                TextData["Text"]],"paclet:ref/Text"},
+              "RefLink",
+              BaseStyle->{"InlineFormula"}], "[", 
+             RowBox[{"\"\<Here comes the regulator.\>\"", ",", " ", "#"}], 
+             "]"}], "}"}], " ", "&"}], ")"}]}]}], "]"}]], "InlineFormula"],
+     "\n"
+    }], "TableText"]}
+  }]], "3ColumnTableMod",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, 
+   "Rows" -> {None, None, None, None, {None}}, "RowsIndexed" -> {}},
+ GridBoxDividers->{"Rows" -> {{True, True, True, True, True, True}}}}],
+
+Cell["", "SectionFooterSpacer"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]]],
+ "Related Guides"
+}], "MoreAboutSection",
+ WholeCellGroupOpener->True,
+ CellID->38303248],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["Welcome to DoFun"]],"paclet:DoFun/guide/Welcome to DoFun"},
+  "RefLink",
+  BaseStyle->"MoreAbout"]], "MoreAbout",
+ CellID->1]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"RGEPlot",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:DoFun/guide/DoFun", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2018, 4, 14, 14, 45, 30.282159}", 
+    "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
+    "status" -> "None", "summary" -> 
+    "Plots an RGE. Blobs denote dressed n-point functions and dots bare \
+n-point functions. External fields are indicated by a circle and regulator \
+insertions by boxes (default). Styles for each field can be given. RGEPlot \
+can also plot expressions created by the user as long as the syntax of op \
+functions is obeyed and the fields are defined. Note: Since RGEPlot relies on \
+DSEPlot the options are the same; changing the options of the former may be \
+ignored by some functions, since they take the options of DSEPlot. This can \
+be circumvented by changing the options of DSEPlot globally. Syntax: \
+RGEPlot[expr] with expr a result of doDSE plots the corresponding DSE. expr \
+can also be a user-created expression containing op functions. RGEPlot[expr, \
+fieldStyles] plots a DSE with the styles of the fields given by fieldStyles. \
+The syntax is {{field1, style1}, {field2, style2}, ...}} where stylei are \
+style are graphics primitives like colors suitable for Line. RGEPlot[expr, n] \
+or DSEPlot[expr, fieldStyle, n] plots a DSE with n graphs per row. RGEPlot \
+accepts several options: -) output: Determines the output form of the graphs. \
+Possible values are List, forceEquation and complete (default). The last one \
+plots sums of graphs as complete equations and single graphs as such. -) \
+options of GraphPlot -) indexStyle: Style settings for the indices, see \
+?indexStyle for details. -) factorStyle: Style settings for the factors, see \
+?factorStyle for details. Examples: The gluon two-point RGE of Landau gauge \
+Yang-Mills theory dse = doRGE[{{A, A}, {c, cb}, {A, cb, c}, {A, A, A}, {A, A, \
+A, A}}, {A, A}]; RGEPlot[dse] The gluon three-point RGE of Landau gauge \
+Yang-Mills theory with gluons in red and ghosts dashed in green and four \
+graphs per row dse = doRGE[{{A, A}, {c, cb}, {A, cb, c}, {A, A, A}, {A, A, A, \
+A}}, {A, A}]; RGEPlot[dse, {{A, Red}, {c, Green, Dashed}}, 4] The graphs of \
+the gluon two-point RGE of Landau gauge Yang-Mills theory in a list dse = \
+doRGE[{{A, A}, {c, cb}, {A, cb, c}, {A, A, A}, {A, A, A, A}}, {A, A}]; \
+RGEPlot[dse, {{A, Red}, {c, Green}}, output -> List] The complete two-point \
+RGE of an O(N) symmetric scalar theory in the symmetric phase dse = \
+doRGE[{{phi, 100, even}}, {phi, phi}]; RGEPlot[dse, {{phi, Black}}, output -> \
+forceEquation] Plotting a user-created expression with one external field \
+defineFields[{phi}, {}, {}]; RGEPlot[op[S[{phi, i}, {phi, j}, {phi, l}, {phi, \
+m}], P[{phi, l}, {phi, m}], {phi, j}], {{phi, Black}}]", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "RGEPlot", "titlemodifier" -> "", 
+    "windowtitle" -> "RGEPlot", "type" -> "Symbol", "uri" -> 
+    "DoFun/ref/RGEPlot"}},
+CellContext->"Global`",
+FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[579, 21, 3019, 74, 70, "AnchorBarGrid",ExpressionUUID->"45ed5ea1-15ae-430f-b9bc-8bfc498f3c67",
+ CellID->1],
+Cell[3601, 97, 164, 6, 70, "ObjectNameGrid",ExpressionUUID->"30e35a65-fe72-4f18-8a8c-91155cf6c81f"],
+Cell[3768, 105, 2729, 61, 70, "Usage",ExpressionUUID->"0d86e3f8-7e16-4ed3-a84c-1c7294666a9e"],
+Cell[CellGroupData[{
+Cell[6522, 170, 621, 19, 70, "NotesSection",ExpressionUUID->"938f6bef-5274-42d8-bcd5-3b8873606eb0",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1],
+Cell[7146, 191, 31, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"c12d2063-a1a0-4877-b03a-a0698535f72e"],
+Cell[7180, 193, 53, 0, 70, "Notes",ExpressionUUID->"2c14e25a-829a-4a42-850b-aafbb22a7d8a"],
+Cell[7236, 195, 15778, 436, 70, "3ColumnTableMod",ExpressionUUID->"8f817e52-a9e3-423d-a5ab-ed4c61dd1d82"],
+Cell[23017, 633, 31, 0, 70, "SectionFooterSpacer",ExpressionUUID->"22ac83bc-480c-4529-b17c-6dc1b03111b6"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[23085, 638, 156, 7, 70, "MoreAboutSection",ExpressionUUID->"6ffa7731-2693-421f-8a61-3e321f87d843",
+ CellID->38303248],
+Cell[23244, 647, 31, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"13e24222-b21f-4b00-91f6-9908674ccaae"],
+Cell[23278, 649, 173, 5, 70, "MoreAbout",ExpressionUUID->"bc83d069-680b-4862-bcd5-9d78a2f7e0bb",
+ CellID->1]
+}, Open  ]],
+Cell[23466, 657, 23, 0, 70, "FooterCell",ExpressionUUID->"4bc8e6a4-55d1-4af6-9472-48258c41fe84"]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,227 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8195,        218]
+NotebookOptionsPosition[      5126,        152]
+NotebookOutlinePosition[      7560,        209]
+CellTagsIndexPosition[      7517,        206]
+WindowTitle->integrateMomenta
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "Related Guides",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"Related Guides", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"Welcome to DoFun\"\>":>
+       Documentation`HelpLookup["paclet:DoFun/guide/Welcome to DoFun"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"MoreAbout"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"DoFun/ref/integrateMomenta\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["DoFun/ref/integrateMomenta"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/DoFun/ref/\
+integrateMomenta.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$37205], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "DoFun/ref/integrateMomenta", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell[TextData[{
+ Cell["integrateMomenta", "ObjectName"],
+ Cell[BoxData[
+  TemplateBox[{8},
+   "Spacer1"]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[BoxData[GridBox[{
+   {"", Cell["\<\
+Automatically integrates out internal momenta, denoted by q$i, where i is a \
+running number, in delta distributions.
+Alternatively it integrates out explicitly given momenta in delta \
+distributions.
+
+Syntax:
+integrateMomenta[exp_] integrates out internal momenta q$i, where exp is an \
+expression containing momentum delta distributions denoted by deltam.
+integrateMomenta[exp_,mom_] integrates out the momenta given in mom, which \
+can be a single momentum or a list of momenta. exp is an expression \
+containing momentum delta distributions denoted by deltam.
+
+Examples:
+integrateMomenta[deltam[p1+q$1]deltam[q$1-p3]]
+integrateMomenta[deltam[r1+p2]deltam[p2-r3],p2]\
+\>"]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]]],
+ "Related Guides"
+}], "MoreAboutSection",
+ WholeCellGroupOpener->True,
+ CellID->38303248],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["Welcome to DoFun"]],"paclet:DoFun/guide/Welcome to DoFun"},
+  "RefLink",
+  BaseStyle->"MoreAbout"]], "MoreAbout",
+ CellID->1]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"integrateMomenta",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:DoFun/guide/DoFun", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2018, 4, 14, 14, 45, 13.984465}", 
+    "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoFR`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
+    "status" -> "None", "summary" -> 
+    "Automatically integrates out internal momenta, denoted by q$i, where i \
+is a running number, in delta distributions. Alternatively it integrates out \
+explicitly given momenta in delta distributions. Syntax: \
+integrateMomenta[exp_] integrates out internal momenta q$i, where exp is an \
+expression containing momentum delta distributions denoted by deltam. \
+integrateMomenta[exp_,mom_] integrates out the momenta given in mom, which \
+can be a single momentum or a list of momenta. exp is an expression \
+containing momentum delta distributions denoted by deltam. Examples: \
+integrateMomenta[deltam[p1+q$1]deltam[q$1-p3]] \
+integrateMomenta[deltam[r1+p2]deltam[p2-r3],p2]", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "integrateMomenta", "titlemodifier" -> "", 
+    "windowtitle" -> "integrateMomenta", "type" -> "Symbol", "uri" -> 
+    "DoFun/ref/integrateMomenta"}},
+CellContext->"Global`",
+FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[588, 21, 3056, 74, 70, "AnchorBarGrid",ExpressionUUID->"1bc8277f-1642-4d75-be1f-9d4916e3c541",
+ CellID->1],
+Cell[3647, 97, 173, 6, 70, "ObjectNameGrid",ExpressionUUID->"07c05893-b6b5-4ddb-b133-ded6e72eac59"],
+Cell[3823, 105, 870, 22, 70, "Usage",ExpressionUUID->"e37cd37a-e279-481c-b38c-260b70a3f6b3"],
+Cell[CellGroupData[{
+Cell[4718, 131, 156, 7, 70, "MoreAboutSection",ExpressionUUID->"443e78c2-6248-4489-be92-e207d9295305",
+ CellID->38303248],
+Cell[4877, 140, 31, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"595420cc-1fe7-4a1e-8512-bb363ed73840"],
+Cell[4911, 142, 173, 5, 70, "MoreAbout",ExpressionUUID->"b8be9dac-2c10-4503-b9f9-0ae43c5b9d58",
+ CellID->1]
+}, Open  ]],
+Cell[5099, 150, 23, 0, 70, "FooterCell",ExpressionUUID->"dce49f5d-db7b-45bc-9496-bda758d013c9"]
+}
+]
+*)
+
+(* End of internal cache information *)

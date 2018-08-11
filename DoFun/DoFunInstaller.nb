@@ -1,0 +1,329 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     14047,        321]
+NotebookOptionsPosition[     13208,        297]
+NotebookOutlinePosition[     13575,        313]
+CellTagsIndexPosition[     13532,        310]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["DoFun Installer", "Title",
+ CellChangeTimes->{{3.6788616483003273`*^9, 3.67886165240134*^9}, {
+  3.742983507487029*^9, 
+  3.742983508469596*^9}},ExpressionUUID->"4227e8fb-66b1-4c2d-8f38-\
+b29c7b0496f7"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"doFunInstaller", "::", "allowinternetuse"}], "=", 
+   "\"\<You have forbidden Mathematica to access the internet. Either allow \
+Mathematica to access the internet or download DoFun from \
+https://github.com/markusqh/DoFun/releases manually.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"Not", "[", 
+      RowBox[{"\"\<AllowInternetUse\>\"", " ", "/.", " ", 
+       RowBox[{"SystemInformation", "[", "\"\<Network\>\"", "]"}]}], "]"}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Message", "[", 
+       RowBox[{"doFunInstaller", "::", "allowinternetuse"}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Abort", "[", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+   ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"just", " ", "for", " ", "backwards", " ", "compatibility"}], " ", 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"ToString", "[", 
+      RowBox[{"Context", "[", "URLDownload", "]"}], "]"}], "=!=", 
+     "\"\<System`\>\""}], ",", 
+    RowBox[{"URLDownload", "=", "URLSave"}]}], "]"}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.6857862308070498`*^9, 3.685786249072494*^9}, {
+   3.6857863230690413`*^9, 3.685786486171*^9}, {3.686028571598321*^9, 
+   3.6860285870993147`*^9}, {3.7429835700214453`*^9, 3.742983597453232*^9}, 
+   3.742984736949098*^9, {3.742985732679809*^9, 3.742985735039343*^9}},
+ CellLabel->"In[22]:=",ExpressionUUID->"e92dc240-e106-4763-bf2a-e341d0b643e8"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"releaseInfo", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "\"\<https://api.github.com/repos/markusqh/DoFun/releases/latest\>\"", 
+     ",", "\"\<JSON\>\""}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"doFunZipLocation", "=", 
+   RowBox[{"First", "[", 
+    RowBox[{"\"\<browser_download_url\>\"", "/.", 
+     RowBox[{"(", 
+      RowBox[{"\"\<assets\>\"", "/.", "releaseInfo"}], ")"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"doFunInstallDir", "=", 
+   RowBox[{"FileNameJoin", "[", 
+    RowBox[{"{", 
+     RowBox[{"$UserBaseDirectory", ",", "\"\<Applications\>\""}], "}"}], 
+    "]"}]}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.67886181121563*^9, 3.678861811438501*^9}, {
+   3.6788619832011633`*^9, 3.678861983831929*^9}, {3.67886290624669*^9, 
+   3.678862908240137*^9}, {3.678864005758239*^9, 3.678864008668912*^9}, {
+   3.6788647926021013`*^9, 3.678864792817832*^9}, {3.678865052532317*^9, 
+   3.6788650680727587`*^9}, {3.678866254978908*^9, 3.678866255245467*^9}, {
+   3.678866320419773*^9, 3.678866320600637*^9}, {3.678866385382807*^9, 
+   3.678866432121202*^9}, {3.678891338232027*^9, 3.678891353457758*^9}, 
+   3.678891882736649*^9, {3.681118524165884*^9, 3.681118535054017*^9}, 
+   3.68112064794024*^9, {3.68112103642728*^9, 3.681121038476582*^9}, {
+   3.681121069878681*^9, 3.68112109295817*^9}, {3.682160074367277*^9, 
+   3.682160091730196*^9}, {3.742983574522821*^9, 3.742983576318315*^9}, {
+   3.74298477895405*^9, 3.742984886918561*^9}},
+ CellLabel->"In[4]:=",ExpressionUUID->"4749b18c-a017-418a-842a-fb0a174cf9aa"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"doFunInstaller", "::", "zipdownloadfailed"}], "=", 
+   RowBox[{
+   "\"\<Download from \>\"", "<>", "doFunZipLocation", "<>", 
+    "\"\< failed.\>\""}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"doFunInstaller", "::", "installationfailed"}], "=", 
+    "\"\<\\nInstallation failed. Please read the error messages for more \
+information!\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", "\"\<Downloading DoFun ...\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"doFunArchive", "=", 
+   RowBox[{"FileNameJoin", "[", 
+    RowBox[{"{", 
+     RowBox[{"$TemporaryDirectory", ",", "\"\<DoFun.zip\>\""}], "}"}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"URLDownload", "[", 
+    RowBox[{"doFunZipLocation", ",", "doFunArchive"}], "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tmpDoFunImport", "=", 
+   RowBox[{"Import", "[", "doFunArchive", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+      "tmpDoFunImport", "===", "\"\<{\\\"error\\\":\\\"Not Found\\\"}\>\""}], 
+      "||", 
+      RowBox[{"tmpDoFunImport", "===", "\"\<404: Not Found\>\""}]}], ",", 
+     RowBox[{
+      RowBox[{"Message", "[", 
+       RowBox[{"doFunInstaller", "::", "zipdownloadfailed"}], "]"}], ";", 
+      RowBox[{"Abort", "[", "]"}], ";"}]}], "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"doFunFiles", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"FileNameJoin", "[", 
+      RowBox[{"{", 
+       RowBox[{"doFunInstallDir", ",", "#"}], "}"}], "]"}], "&"}], "/@", 
+    RowBox[{"Import", "[", "doFunArchive", "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"doFunFilesExist", "=", 
+   RowBox[{"FileExistsQ", "/@", "doFunFiles"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"doFunExistingInstallation", "=", 
+   RowBox[{"Or", "@@", "doFunFilesExist"}]}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.678862980474058*^9, 3.678863029028764*^9}, {
+   3.678863892038443*^9, 3.67886391012508*^9}, {3.6788648632531757`*^9, 
+   3.6788649602546997`*^9}, {3.678865012054377*^9, 3.678865037246643*^9}, {
+   3.6788651438373947`*^9, 3.678865151389922*^9}, 3.681118782910424*^9, {
+   3.681118820305333*^9, 3.68111882770621*^9}, {3.681119180876588*^9, 
+   3.681119183725478*^9}, {3.6811193021695137`*^9, 3.681119326632484*^9}, {
+   3.681119694994898*^9, 3.6811197757672586`*^9}, {3.6811198365769453`*^9, 
+   3.681119875572956*^9}, {3.681119931262557*^9, 3.681119931458658*^9}, {
+   3.681120064050139*^9, 3.681120064207323*^9}, 3.681120132326236*^9, {
+   3.681120357922078*^9, 3.6811203595563707`*^9}, 3.681120631992466*^9, {
+   3.682160194834564*^9, 3.682160279615014*^9}, 3.6836255711137342`*^9, {
+   3.6838858314927807`*^9, 3.68388584819982*^9}, {3.6857702258009872`*^9, 
+   3.6857702293907547`*^9}, 3.6857720800768347`*^9, {3.6857723390178013`*^9, 
+   3.6857723546720047`*^9}, {3.6860279027822313`*^9, 3.686027953991603*^9}, {
+   3.6860280184356728`*^9, 3.686028025909357*^9}, {3.686028100070198*^9, 
+   3.686028100342278*^9}, {3.686028151820121*^9, 3.686028152063704*^9}, {
+   3.686028329586063*^9, 3.686028386758148*^9}, 3.686028541021409*^9, {
+   3.6860285819434223`*^9, 3.6860286102229156`*^9}, {3.686028727356236*^9, 
+   3.686028730099649*^9}, {3.689949553892756*^9, 3.6899495542156477`*^9}, {
+   3.701664780634798*^9, 3.701664782330064*^9}, {3.742983576949368*^9, 
+   3.742983583776634*^9}, {3.742984925173575*^9, 3.742984968787921*^9}, {
+   3.742985564714624*^9, 3.742985572962432*^9}, {3.7429856070259247`*^9, 
+   3.742985615056782*^9}, {3.742985745057152*^9, 3.7429857594727907`*^9}, 
+   3.742985832435091*^9},
+ CellLabel->"In[7]:=",ExpressionUUID->"e7c8f62f-0033-496b-b4e3-88632233860b"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"deleteExisting", "=", "False"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"deleteExisting", "=", 
+    RowBox[{"If", "[", 
+     RowBox[{"doFunExistingInstallation", ",", "\[IndentingNewLine]", 
+      RowBox[{"ChoiceDialog", "[", 
+       RowBox[{
+       "\"\<The installer has found an existing DoFun installation.\nDo you \
+want to overwrite the existing installation version?\nOtherwise the \
+installation will be aborted.\>\"", ",", "\[IndentingNewLine]", 
+        RowBox[{"WindowTitle", "\[Rule]", "\"\<DoFun Installation\>\""}], ",", 
+        RowBox[{"WindowSize", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"Medium", ",", "All"}], "}"}]}]}], "]"}], ",", "False"}], 
+     "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"If", "[", 
+    RowBox[{"deleteExisting", ",", 
+     RowBox[{"DeleteFile", "[", 
+      RowBox[{"Pick", "[", 
+       RowBox[{"doFunFiles", ",", "doFunFilesExist"}], "]"}], "]"}]}], "]"}], 
+   ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"doFunExistingInstallation", "&&", 
+      RowBox[{"deleteExisting", "===", "False"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{"abort", " ", "installation"}], "*)"}], "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Print", "[", "\"\<DoFun installation aborted.\>\"", "]"}], 
+      ";"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{"install", " ", "DoFun"}], "*)"}], "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"installationSuccess", "=", 
+       RowBox[{"Check", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"ExtractArchive", "[", 
+           RowBox[{"doFunArchive", ",", "doFunInstallDir"}], "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"<<", "\"\<DoFun`\>\""}], ";"}], "\[IndentingNewLine]", ",",
+          "$Failed"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"installationSuccess", "===", "$Failed"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"(*", 
+         RowBox[{"installation", " ", "failed"}], "*)"}], 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Message", "[", 
+          RowBox[{"doFunInstaller", "::", "installationfailed"}], "]"}], 
+         ";"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"(*", 
+         RowBox[{"installation", " ", "successful"}], "*)"}], 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"RebuildPacletData", "[", "]"}], ";", "\[IndentingNewLine]", 
+         
+         RowBox[{
+         "Print", "[", 
+          "\"\<\\nInstallation was successful. Happy computing!\\nSearch for \
+DoFun in the documentation center to get started!\\n\>\"", "]"}], ";"}]}], 
+       "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+   ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Quiet", "[", 
+   RowBox[{"DeleteFile", "[", "doFunArchive", "]"}], "]"}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.678863202996467*^9, 3.678863211820141*^9}, {
+   3.678863244712619*^9, 3.678863334920802*^9}, {3.678863393836873*^9, 
+   3.67886342714554*^9}, {3.67886346013559*^9, 3.678863563867498*^9}, 
+   3.678863931173709*^9, {3.67886402169884*^9, 3.678864029897161*^9}, {
+   3.678864063016089*^9, 3.678864078073002*^9}, {3.6788641147162123`*^9, 
+   3.6788641266129227`*^9}, {3.678864165753457*^9, 3.6788641659723673`*^9}, {
+   3.678864255757669*^9, 3.678864360248529*^9}, {3.678864390676456*^9, 
+   3.678864441063339*^9}, {3.678864515944942*^9, 3.6788647542209167`*^9}, {
+   3.678864998970468*^9, 3.678865000097994*^9}, {3.678865041837072*^9, 
+   3.6788650428973923`*^9}, {3.6788651800048*^9, 3.67886525593686*^9}, {
+   3.678865302350998*^9, 3.678865328092073*^9}, 3.678865376589304*^9, {
+   3.67886576632985*^9, 3.678865826875999*^9}, {3.6788659934606733`*^9, 
+   3.67886599805851*^9}, {3.6788660936580276`*^9, 3.678866125260832*^9}, {
+   3.678891521982626*^9, 3.678891528541296*^9}, {3.6811200143890963`*^9, 
+   3.681120049075094*^9}, {3.681120093286084*^9, 3.6811201623382893`*^9}, {
+   3.682160277049014*^9, 3.682160289497614*^9}, {3.683627451806954*^9, 
+   3.68362746212396*^9}, {3.6836286461920967`*^9, 3.683628718871019*^9}, {
+   3.68362880770674*^9, 3.6836288760554123`*^9}, {3.683628933885972*^9, 
+   3.683628970659234*^9}, {3.6838814145690117`*^9, 3.683881432781478*^9}, {
+   3.683888721122006*^9, 3.683888735833242*^9}, 3.6838887721621532`*^9, {
+   3.683889020401266*^9, 3.683889024602931*^9}, {3.686035472080258*^9, 
+   3.686035532045334*^9}, {3.6919690330695047`*^9, 3.691969034694683*^9}, {
+   3.691969076402094*^9, 3.691969079029949*^9}, {3.701664853488426*^9, 
+   3.7016648664985123`*^9}, {3.742983583993527*^9, 3.742983585942493*^9}, {
+   3.7429855826998463`*^9, 3.742985584011703*^9}, {3.742985618923685*^9, 
+   3.742985707518914*^9}, {3.742985769936759*^9, 3.742985770911666*^9}},
+ CellLabel->"In[17]:=",ExpressionUUID->"31be6e4e-0402-433b-a0c3-6c00f6da389f"]
+}, Open  ]]
+},
+AutoGeneratedPackage->Automatic,
+WindowSize->{1920, 1029},
+WindowMargins->{{0, Automatic}, {0, Automatic}},
+FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 208, 4, 98, "Title",ExpressionUUID->"4227e8fb-66b1-4c2d-8f38-b29c7b0496f7"],
+Cell[791, 28, 1657, 38, 232, "Input",ExpressionUUID->"e92dc240-e106-4763-bf2a-e341d0b643e8",
+ InitializationCell->True],
+Cell[2451, 68, 1638, 33, 94, "Input",ExpressionUUID->"4749b18c-a017-418a-842a-fb0a174cf9aa",
+ InitializationCell->True],
+Cell[4092, 103, 3952, 86, 324, "Input",ExpressionUUID->"e7c8f62f-0033-496b-b4e3-88632233860b",
+ InitializationCell->True],
+Cell[8047, 191, 5145, 103, 646, "Input",ExpressionUUID->"31be6e4e-0402-433b-a0c3-6c00f6da389f",
+ InitializationCell->True]
+}, Open  ]]
+}
+]
+*)
+

@@ -1,0 +1,451 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     11825,        441]
+NotebookOptionsPosition[      7856,        303]
+NotebookOutlinePosition[      8470,        327]
+CellTagsIndexPosition[      8392,        322]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ "New in: ",
+ Cell["XX", "HistoryData",
+  CellTags->"New"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete"],
+ " | Excised in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Excised"]
+}], "History",
+ CellID->1247902091],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->1122911449],
+
+Cell["Symbol", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->686433507],
+
+Cell["DoFun Package", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->1760563544],
+
+Cell["DoFun`DoDSERGE`", "Categorization",
+ CellLabel->"Context",
+ CellID->451756398],
+
+Cell["DoFun/ref/setSourcesZero", "Categorization",
+ CellLabel->"URI",
+ CellID->1160851472]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->477174294],
+
+Cell["XXXX", "Keywords",
+ CellID->1164421360]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Syntax Templates", "TemplatesSection",
+ CellID->1872225408],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Additional Function Template",
+ CellID->1562036412],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Arguments Pattern",
+ CellID->158391909],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Local Variables",
+ CellID->1360575930],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Color Equal Signs",
+ CellID->793782254]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Details", "DetailsSection",
+ CellID->307771771],
+
+Cell["XXXX", "Details",
+ CellLabel->"Lead",
+ CellID->670882175],
+
+Cell["XXXX", "Details",
+ CellLabel->"Developers",
+ CellID->350963985],
+
+Cell["XXXX", "Details",
+ CellLabel->"Authors",
+ CellID->8391405],
+
+Cell["XXXX", "Details",
+ CellLabel->"Feature Name",
+ CellID->3610269],
+
+Cell["XXXX", "Details",
+ CellLabel->"QA",
+ CellID->401364205],
+
+Cell["XXXX", "Details",
+ CellLabel->"DA",
+ CellID->350204745],
+
+Cell["XXXX", "Details",
+ CellLabel->"Docs",
+ CellID->732958810],
+
+Cell["XXXX", "Details",
+ CellLabel->"Features Page Notes",
+ CellID->222905350],
+
+Cell["XXXX", "Details",
+ CellLabel->"Comments",
+ CellID->240026365]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["setSourcesZero", "ObjectName",
+ CellID->1224892054],
+
+Cell[TextData[{
+ Cell["   ", "ModInfo"],
+ "Sets the external sources to zero, i.e., only physical propagators and \
+vertices are left. This function is for DSEs only.\n\nSyntax:\n\
+setSourcesZero[expr, ac, extLegs] sets the sources to zero. expr is an \
+expression containing op functions, ac the action and extLegs the list of \
+external legs.\nsetSourcesZero[expr, ac, extLegs, ownAllowedPropagators] sets \
+the sources to zero with ownAllowedPropagators a list of propagators allowed \
+additionally to the ones appearing in ac. Given in the form {{field1a, \
+field1b}, {field2a, field2b}, ...}.\nsetSourcesZero[expr, ac, legs, \
+ownAllowedPropagators, vertexTest, opts] sets the sources to zero with \
+vertexTest a function to determine if a vertex should be kept and opts \
+options of setSourcesZero.\nPossible options are:\n -) doGrassmannTest: \
+Determines if the Grassmann number of each vertex has to be zero. Checks for \
+each Grassmann field type separately.\n \nExamples:\nOne external field\n\
+setSourcesZero[op[S[{A, i}, {A, j}, {A, r}], {A, r}], {{A, A}, {A, A, A}}, \
+{{A, A}}]\n\nReplace dummy fields by physical fields\nsetSourcesZero[op[S[{A, \
+i}, {A, r}, {A, s}, {A, t}], P[{A, r}, {$dummyField, u}], P[{A, s}, \
+{$dummyField, v}], P[{A, t}, {$dummyField, w}], V[{$dummyField, u}, \
+{$dummyField, v}, {$dummyField, w}, {A, j}]], {{A, A}, {A, A, A}},{{A, A}}]\n\
+\nReplace dummy fields by real fields and apply a test for the resulting \
+vertices\nClear@vTest; vTest[a_V] := Length@a < 4;\nsetSourcesZero[op[S[{A, \
+i}, {A, r}, {A, s}, {A, t}], P[{A, r}, {$dummyField, u}], P[{A, s}, \
+{$dummyField, v}], P[{A, t}, {$dummyField, w}], V[{$dummyField, u}, \
+{$dummyField, v}, {$dummyField, w}, {A, j}]], {{A, A}, {A, A, A}},{{A, A}}, \
+vTest]\n"
+}], "Usage"],
+
+Cell["The following options can be given: ", "Notes"],
+
+Cell[BoxData[GridBox[{
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["doGrassmannTest",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFun/ref/doGrassmannTest"], 
+    ButtonBox["True",
+     BaseStyle->"Link"], Cell["\<\
+Option of doDSE, doRGE, setSourcesZero and setSourcesZeroRGE.
+See ?setSourcesZero for details.
+\
+\>", "TableText"]},
+   {Cell["   ", "ModInfo"], 
+    ButtonBox["propagatorCreationRules",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFunDoDSERGE/ref/propagatorCreationRules"], 
+    ButtonBox["DSERules",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFunDoDSERGE/ref/DSERules"], Cell[
+    "XXXX", "TableText"]}
+  }]], "3ColumnTableMod"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Tutorials", "TutorialsSection",
+ CellID->250839057],
+
+Cell["XXXX", "Tutorials",
+ CellID->341631938]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Demonstrations", "RelatedDemonstrationsSection",
+ CellID->1268215905],
+
+Cell["XXXX", "RelatedDemonstrations",
+ CellID->1129518860]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Links", "RelatedLinksSection",
+ CellID->1584193535],
+
+Cell["XXXX", "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",
+ CellID->1255426704],
+
+Cell["XXXX", "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More About", "MoreAboutSection",
+ CellID->38303248],
+
+Cell["XXXX", "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     StyleBox["Examples", "PrimaryExamplesSection"], 
+     ButtonBox[
+      RowBox[{
+       RowBox[{"More", " ", "Examples"}], " ", "\[RightTriangle]"}],
+      BaseStyle->"ExtendedExamplesLink",
+      ButtonData:>"ExtendedExamples"]}
+   }],
+  $Line = 0; Null]], "PrimaryExamplesSection",
+ CellID->880084151],
+
+Cell[CellGroupData[{
+
+Cell["More Examples", "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->1854448968],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Scope", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1293636265],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Generalizations & Extensions", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1020263627],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["Options", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["doGrassmannTest", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[BoxData[
+ InterpretationBox[Cell["propagatorCreationRules", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"]
+}, Closed]],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Applications", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->258228157],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Properties & Relations", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2123667759],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Possible Issues", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1305812373],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Interactive Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1653164318],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Neat Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->589267740]
+}, Open  ]]
+},
+WindowSize->{700, 770},
+WindowMargins->{{4, Automatic}, {Automatic, 51}},
+CellContext->"Global`",
+FrontEndVersion->"7.0 for Linux x86 (64-bit) (February 25, 2009)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
+  CharacterEncoding -> "iso8859-1"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "ExtendedExamples"->{
+  Cell[6369, 248, 100, 2, 57, "ExtendedExamplesSection",
+   CellTags->"ExtendedExamples",
+   CellID->1854448968]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"ExtendedExamples", 8254, 315}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 324, 14, 26, "History",
+ CellID->1247902091],
+Cell[CellGroupData[{
+Cell[894, 38, 68, 1, 31, "CategorizationSection",
+ CellID->1122911449],
+Cell[965, 41, 79, 2, 36, "Categorization",
+ CellID->686433507],
+Cell[1047, 45, 87, 2, 36, "Categorization",
+ CellID->1760563544],
+Cell[1137, 49, 84, 2, 36, "Categorization",
+ CellID->451756398],
+Cell[1224, 53, 90, 2, 36, "Categorization",
+ CellID->1160851472]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1351, 60, 55, 1, 21, "KeywordsSection",
+ CellID->477174294],
+Cell[1409, 63, 45, 1, 70, "Keywords",
+ CellID->1164421360]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1491, 69, 65, 1, 21, "TemplatesSection",
+ CellID->1872225408],
+Cell[1559, 72, 94, 2, 70, "Template",
+ CellID->1562036412],
+Cell[1656, 76, 82, 2, 70, "Template",
+ CellID->158391909],
+Cell[1741, 80, 81, 2, 70, "Template",
+ CellID->1360575930],
+Cell[1825, 84, 82, 2, 70, "Template",
+ CellID->793782254]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1944, 91, 53, 1, 21, "DetailsSection",
+ CellID->307771771],
+Cell[2000, 94, 63, 2, 70, "Details",
+ CellID->670882175],
+Cell[2066, 98, 69, 2, 70, "Details",
+ CellID->350963985],
+Cell[2138, 102, 64, 2, 70, "Details",
+ CellID->8391405],
+Cell[2205, 106, 69, 2, 70, "Details",
+ CellID->3610269],
+Cell[2277, 110, 61, 2, 70, "Details",
+ CellID->401364205],
+Cell[2341, 114, 61, 2, 70, "Details",
+ CellID->350204745],
+Cell[2405, 118, 63, 2, 70, "Details",
+ CellID->732958810],
+Cell[2471, 122, 78, 2, 70, "Details",
+ CellID->222905350],
+Cell[2552, 126, 67, 2, 70, "Details",
+ CellID->240026365]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2656, 133, 57, 1, 65, "ObjectName",
+ CellID->1224892054],
+Cell[2716, 136, 1775, 26, 761, "Usage"],
+Cell[4494, 164, 53, 0, 27, "Notes"],
+Cell[4550, 166, 665, 19, 112, "3ColumnTableMod"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5252, 190, 57, 1, 44, "TutorialsSection",
+ CellID->250839057],
+Cell[5312, 193, 45, 1, 17, "Tutorials",
+ CellID->341631938]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5394, 199, 83, 1, 31, "RelatedDemonstrationsSection",
+ CellID->1268215905],
+Cell[5480, 202, 58, 1, 17, "RelatedDemonstrations",
+ CellID->1129518860]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5575, 208, 65, 1, 31, "RelatedLinksSection",
+ CellID->1584193535],
+Cell[5643, 211, 49, 1, 17, "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5729, 217, 55, 1, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[5787, 220, 43, 1, 17, "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5867, 226, 57, 1, 31, "MoreAboutSection",
+ CellID->38303248],
+Cell[5927, 229, 46, 1, 17, "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+Cell[5988, 233, 356, 11, 72, "PrimaryExamplesSection",
+ CellID->880084151],
+Cell[CellGroupData[{
+Cell[6369, 248, 100, 2, 57, "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->1854448968],
+Cell[6472, 252, 125, 3, 35, "ExampleSection",
+ CellID->1293636265],
+Cell[6600, 257, 148, 3, 23, "ExampleSection",
+ CellID->1020263627],
+Cell[CellGroupData[{
+Cell[6773, 264, 106, 2, 23, "ExampleSection"],
+Cell[6882, 268, 120, 2, 70, "ExampleSubsection"],
+Cell[7005, 272, 128, 2, 70, "ExampleSubsection"]
+}, Closed]],
+Cell[7148, 277, 131, 3, 23, "ExampleSection",
+ CellID->258228157],
+Cell[7282, 282, 142, 3, 23, "ExampleSection",
+ CellID->2123667759],
+Cell[7427, 287, 135, 3, 23, "ExampleSection",
+ CellID->1305812373],
+Cell[7565, 292, 140, 3, 23, "ExampleSection",
+ CellID->1653164318],
+Cell[7708, 297, 132, 3, 23, "ExampleSection",
+ CellID->589267740]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

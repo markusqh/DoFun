@@ -1,0 +1,184 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6787,        175]
+NotebookOptionsPosition[      4029,        116]
+NotebookOutlinePosition[      6524,        173]
+CellTagsIndexPosition[      6481,        170]
+WindowTitle->output
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell"], Cell[TextData[Cell[
+    BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"DoFun/ref/output\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["DoFun/ref/output"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/DoFun/ref/output.html"],
+                StandardForm]], "Input", TextClipboardType -> "PlainText"]}, 
+           Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$39607], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], "DoFun/ref/output", 
+            ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell[TextData[{
+ Cell["output", "ObjectName"],
+ Cell[BoxData[
+  TemplateBox[{8},
+   "Spacer1"]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[BoxData[GridBox[{
+   {"", Cell["\<\
+Option of DSEPlot and RGEPlot. Determines how the form of the output of \
+DSEPlot and RGEPlot.
+
+Possible values are:
+ -) List: Gives a list of all graphs.
+ -) forceEquation: Output in form of an equation, even if a single graph is \
+plotted.
+ -) complete (default): Output for several graphs in form of an equation and \
+for a single graph as such.
+
+Examples:
+The graphs of the gluon two-point DSE of Landau gauge Yang-Mills theory in a \
+list 
+dse = doDSE[{{A, A}, {c, cb}, {A, cb, c}, {A, A, A}, {A, A, A, A}}, {A, A}];
+DSEPlot[dse,  {{A, Red}, {c, Green}}, output -> List]
+
+The complete two-point RGE of an O(N) symmetric scalar theory in the \
+symmetric phase
+dse = doRGE[{{phi, phi}, {phi,phi,phi,phi}}, {phi, phi}];
+RGEPlot[dse,  {{phi, Black}}, output -> forceEquation]\
+\>"]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}}],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"output",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:DoFun/guide/DoFun", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2018, 4, 14, 14, 45, 20.814033}", 
+    "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
+    "status" -> "None", "summary" -> 
+    "Option of DSEPlot and RGEPlot. Determines how the form of the output of \
+DSEPlot and RGEPlot. Possible values are: -) List: Gives a list of all \
+graphs. -) forceEquation: Output in form of an equation, even if a single \
+graph is plotted. -) complete (default): Output for several graphs in form of \
+an equation and for a single graph as such. Examples: The graphs of the gluon \
+two-point DSE of Landau gauge Yang-Mills theory in a list dse = doDSE[{{A, \
+A}, {c, cb}, {A, cb, c}, {A, A, A}, {A, A, A, A}}, {A, A}]; DSEPlot[dse, {{A, \
+Red}, {c, Green}}, output -> List] The complete two-point RGE of an O(N) \
+symmetric scalar theory in the symmetric phase dse = doRGE[{{phi, phi}, \
+{phi,phi,phi,phi}}, {phi, phi}]; RGEPlot[dse, {{phi, Black}}, output -> \
+forceEquation]", "synonyms" -> {}, "tabletags" -> {}, "title" -> "output", 
+    "titlemodifier" -> "", "windowtitle" -> "output", "type" -> "Symbol", 
+    "uri" -> "DoFun/ref/output"}},
+CellContext->"Global`",
+FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[578, 21, 2275, 54, 70, "AnchorBarGrid",ExpressionUUID->"ef71122e-674d-4cb7-b17f-228ef699df3c",
+ CellID->1],
+Cell[2856, 77, 163, 6, 70, "ObjectNameGrid",ExpressionUUID->"b006fad0-14eb-42c9-a428-5666ec2b9cfc"],
+Cell[3022, 85, 977, 27, 70, "Usage",ExpressionUUID->"f66e1b9b-74b1-4038-a886-8ca1dd2fd56f"],
+Cell[4002, 114, 23, 0, 70, "FooterCell",ExpressionUUID->"3f569414-3e03-45e8-9e93-ea38868179a8"]
+}
+]
+*)
+
+(* End of internal cache information *)
