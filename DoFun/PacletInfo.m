@@ -1,6 +1,6 @@
 (* Paclet Info File *)
 
-(* created 2017/12/05*)
+(* created 2019/01/15*)
 
 Paclet[
     Name -> "DoFun",

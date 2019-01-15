@@ -1,0 +1,641 @@
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[         0,          0]
+NotebookDataLength[     29385,        640]
+NotebookOptionsPosition[     27578,        604]
+NotebookOutlinePosition[     27910,        619]
+CellTagsIndexPosition[     27867,        616]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+File to fix path issues of html documentation. Adjust $htmlDirectory if \
+necessary and run the file or copy to build/DoFun-HTML and run.\
+\>", "Text",
+ CellChangeTimes->{{3.732702367603429*^9, 3.732702396834964*^9}, {
+  3.7565298549134493`*^9, 
+  3.756529870304397*^9}},ExpressionUUID->"a8faf1c6-3cc8-4347-9597-\
+137d79ce877f"],
+
+Cell[TextData[{
+ "Based on ",
+ ButtonBox["https://mathematica.stackexchange.com/questions/134069/workbench-\
+eclipse-version-html-documentation-build-html-issues/134133",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["https://mathematica.stackexchange.com/questions/134069/workbench-\
+eclipse-version-html-documentation-build-html-issues/134133"], None},
+  ButtonNote->
+   "https://mathematica.stackexchange.com/questions/134069/workbench-eclipse-\
+version-html-documentation-build-html-issues/134133"],
+ ".\nModified for current version of DocumentationTools."
+}], "Text",
+ CellChangeTimes->{{3.732701433313369*^9, 3.732701446721672*^9}, {
+  3.756529825948097*^9, 
+  3.7565298259488087`*^9}},ExpressionUUID->"69122e06-fa25-4e88-a6a9-\
+c1aac6a1a82e"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"Directory", " ", "containing", " ", "html", " ", "folder"}], ",",
+     " ", 
+    RowBox[{"e", ".", "g", ".", " ", 
+     RowBox[{"C", ":", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"/", "project"}], "/", "build"}], "/", "projectname"}], "-", 
+       
+       RowBox[{"HTML", "/", "html"}]}]}]}]}], " ", "*)"}], "\n", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"$htmlDirectory", " ", "=", " ", 
+     RowBox[{"FileNameJoin", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"NotebookDirectory", "[", "]"}], ",", "\"\</html/\>\""}], 
+       "}"}], "]"}]}], ";"}], "\n", "\n", 
+   RowBox[{"(*", 
+    RowBox[{
+    "1.1", " ", "Copy", " ", "Dependencies", " ", "to", " ", "Main", " ", 
+     "Folder"}], "*)"}], "\n", 
+   RowBox[{"localFiles", " ", "=", " ", 
+    RowBox[{"FileNameJoin", "[", 
+     RowBox[{"{", 
+      RowBox[{"$htmlDirectory", ",", "\"\<standard\>\""}], "}"}], "]"}]}], 
+   "\n", 
+   RowBox[{"folders", " ", "=", " ", 
+    RowBox[{"FileNames", "[", 
+     RowBox[{"\"\<*\>\"", ",", "localFiles"}], "]"}]}], " ", "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"CopyDirectory", "[", 
+       RowBox[{"#", ",", "\n", "   ", 
+        RowBox[{"FileNameJoin", "[", 
+         RowBox[{"{", 
+          RowBox[{"$htmlDirectory", ",", 
+           RowBox[{"Last", "[", 
+            RowBox[{"FileNameSplit", "[", "#", "]"}], "]"}]}], "}"}], "]"}]}],
+        "]"}], "&"}], "/@", "folders"}], ";"}], "\n", "\n", 
+   RowBox[{"(*", 
+    RowBox[{
+    "1.2", " ", "Fix", " ", "HTML", " ", "Links", " ", "and", " ", 
+     "Scripts"}], "*)"}], "\n", 
+   RowBox[{"htmlFiles", " ", "=", 
+    RowBox[{"Join", "[", 
+     RowBox[{
+      RowBox[{"FileNames", "[", 
+       RowBox[{"\"\<*.html\>\"", ",", 
+        RowBox[{"FileNameJoin", "[", 
+         RowBox[{"{", 
+          RowBox[{"$htmlDirectory", ",", "\"\<ref\>\""}], "}"}], "]"}]}], 
+       "]"}], ",", "\n", 
+      RowBox[{"FileNames", "[", 
+       RowBox[{"\"\<*.html\>\"", ",", 
+        RowBox[{"FileNameJoin", "[", 
+         RowBox[{"{", 
+          RowBox[{"$htmlDirectory", ",", "\"\<guide\>\""}], "}"}], "]"}]}], 
+       "]"}], ",", "\n", 
+      RowBox[{"FileNames", "[", 
+       RowBox[{"\"\<*.html\>\"", ",", 
+        RowBox[{"FileNameJoin", "[", 
+         RowBox[{"{", 
+          RowBox[{"$htmlDirectory", ",", "\"\<tutorial\>\""}], "}"}], "]"}]}],
+        "]"}]}], "]"}]}], "\n", "\n", 
+   RowBox[{"Do", "[", "\n", "  ", 
+    RowBox[{
+     RowBox[{"Block", "[", 
+      RowBox[{
+       RowBox[{"{", "source", "}"}], ",", "\n", "    ", 
+       RowBox[{
+        RowBox[{"source", " ", "=", " ", 
+         RowBox[{"Import", "[", 
+          RowBox[{"file", ",", "\"\<Source\>\""}], "]"}]}], ";", "\n", "\n", 
+        "    ", 
+        RowBox[{"(*", " ", 
+         RowBox[{"Insert", " ", "jQuery"}], " ", "*)"}], "\n", "    ", 
+        RowBox[{"source", " ", "=", " ", 
+         RowBox[{"StringReplace", "[", 
+          RowBox[{"source", ",", "\n", "        ", 
+           RowBox[{
+           "\"\<<script \
+src=\\\"/webMathematica/Resources/Documentation/English/javascript/reference.\
+js\\\"></script>\>\"", "->", "\n", "        ", 
+            "\"\<\n            <link rel=\\\"stylesheet\\\" \
+href=\\\"../css/clipboard.css\\\" />\n            <script \
+src=\\\"../javascript/jquery/core/1.7.2/jquery.min.js\\\"></script>\n         \
+   <script src=\\\"../javascrlanaipt/reference.js\\\"></script>\n        \
+\>\""}]}], "\n", "    ", "]"}]}], ";", "\n", "\n", "    ", 
+        RowBox[{"(*", " ", 
+         RowBox[{"fix", " ", "relative", " ", "paths"}], " ", "*)"}], "\n", 
+        "    ", 
+        RowBox[{"source", " ", "=", " ", 
+         RowBox[{"StringReplace", "[", 
+          RowBox[{"source", ",", " ", 
+           RowBox[{"{", "\n", "        ", 
+            RowBox[{
+             RowBox[{
+             "\"\</webMathematica/Resources/Documentation/English/\>\"", 
+              "->", "\"\<../\>\""}], ",", "\n", "        ", 
+             RowBox[{
+             "\"\</2013/javascript/\>\"", "->", "\"\<../javascript/\>\""}], 
+             ",", "\n", "        ", 
+             RowBox[{"\"\<\\\"ref/\>\"", "->", "\"\<\\\"../ref/\>\""}], ",", 
+             "\n", "        ", 
+             RowBox[{
+             "\"\<\\\"guide/\>\"", "\[Rule]", "\"\<\\\"../guide/\>\""}], ",", 
+             "\n", "        ", 
+             RowBox[{
+             "\"\<\\\"tutorial/\>\"", "\[Rule]", "\"\<\\\"../tutorial/\>\""}],
+              ",", "\n", "        ", 
+             RowBox[{
+             "\"\<http://reference.wolfram.com/language/DoFun/\>\"", 
+              "\[Rule]", "\"\<../\>\""}]}], "\n", "    ", "}"}]}], "]"}]}], 
+        ";", "\n", "\n", "    ", 
+        RowBox[{"(*", " ", 
+         RowBox[{"fix", " ", 
+          RowBox[{"bullet", ".", "gif"}]}], " ", "*)"}], "\n", "    ", 
+        RowBox[{"source", " ", "=", " ", 
+         RowBox[{"StringReplace", "[", 
+          RowBox[{"source", ",", 
+           RowBox[{
+           "\"\<../images/mathematicaImages/bullet.gif\>\"", "->", 
+            "\"\<../images/bullet-greysq.gif\>\""}]}], "]"}]}], ";", "\n", 
+        "\n", "    ", 
+        RowBox[{"(*", " ", "save", " ", "*)"}], "\n", "    ", 
+        RowBox[{"Export", "[", 
+         RowBox[{"file", ",", "source", ",", "\"\<Text\>\""}], "]"}], ";"}]}],
+       "\n", "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"file", ",", "htmlFiles"}], "}"}]}], "]"}], "\n", "\n", 
+   RowBox[{"(*", 
+    RowBox[{"2.2", " ", "Adjust", " ", "the", " ", "CSS"}], "*)"}], "\n", 
+   RowBox[{"cssFontFile", " ", "=", " ", 
+    RowBox[{"FileNameJoin", "[", 
+     RowBox[{"{", 
+      RowBox[{
+      "$htmlDirectory", ",", "\"\<css\>\"", ",", "\"\<fonts.css\>\""}], "}"}],
+      "]"}]}], "\n", 
+   RowBox[{
+    RowBox[{"css", " ", "=", " ", 
+     RowBox[{"Import", "[", 
+      RowBox[{"cssFontFile", ",", "\"\<Text\>\""}], "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"css", " ", "=", " ", 
+     RowBox[{"StringReplace", "[", 
+      RowBox[{"css", ",", 
+       RowBox[{
+       "\"\</fonts/sourcesanspro/v8/fonts/\>\"", "->", 
+        "\"\</fonts/sourcesanspro/v8/\>\""}]}], "]"}]}], ";"}], "\n", "\n", 
+   "\n", 
+   RowBox[{"Export", "[", 
+    RowBox[{"cssFontFile", ",", "css", ",", "\"\<Text\>\""}], "]"}], "\n", 
+   "\n", 
+   RowBox[{"(*", 
+    RowBox[{
+    "3.", " ", "Fix", " ", "Missing", " ", "Content", " ", "in", " ", 
+     "Collapsed", " ", "Containers"}], "*)"}], "\n", "\n", "\n", 
+   RowBox[{"fasterPageLoadFile", " ", "=", " ", 
+    RowBox[{"FileNameJoin", "[", 
+     RowBox[{"{", 
+      RowBox[{
+      "$htmlDirectory", ",", "\"\<javascript\>\"", ",", 
+       "\"\<faster-page-load.js\>\""}], "}"}], "]"}]}], "\n", 
+   RowBox[{
+    RowBox[{"js", " ", "=", " ", 
+     RowBox[{"Import", "[", 
+      RowBox[{"fasterPageLoadFile", ",", "\"\<Text\>\""}], "]"}]}], ";"}], 
+   "\n", 
+   RowBox[{
+    RowBox[{"js", " ", "=", " ", 
+     RowBox[{"StringReplace", "[", 
+      RowBox[{"js", ",", 
+       RowBox[{"\"\<baselang.slice(0,-3)\>\"", "->", "\"\<baselang\>\""}]}], 
+      "]"}]}], ";"}], "\n", "\n", "\n", 
+   RowBox[{"Export", "[", 
+    RowBox[{"fasterPageLoadFile", ",", "js", ",", "\"\<Text\>\""}], "]"}], 
+   "\n", "\n", 
+   RowBox[{"(*", 
+    RowBox[{
+    "4.", " ", "Fix", " ", "Click", " ", "to", " ", "Copy", " ", "Cells"}], 
+    "*)"}], "\n", 
+   RowBox[{
+    RowBox[{"subpagesFile", " ", "=", " ", 
+     RowBox[{"FileNameJoin", "[", 
+      RowBox[{"{", 
+       RowBox[{
+       "$htmlDirectory", ",", "\"\<javascript\>\"", ",", 
+        "\"\<sub-pages.js\>\""}], "}"}], "]"}]}], ";"}], "\n", 
+   RowBox[{"subpagesFile", "//", "FileExistsQ"}], "\n", 
+   RowBox[{"DeleteFile", "[", "subpagesFile", "]"}], "\n", "\n", "\n", 
+   RowBox[{"Export", "[", 
+    RowBox[{"subpagesFile", ",", " ", 
+     RowBox[{
+     "Uncompress", "[", 
+      "\"\<1:eJzdVstu2zAQzLWH/\
+gNrGCCFtopdtDn0cUp7yClAc0yDghZXJlFaEkTKThH437uUrFgPylCawC1CWJBN7c5yZ4YyXy3S71c\
+vXp6cTJlIo2IFiQ3CHLj4zUhcJJFVacICcvdjNn9HcEwZDS+\
+Sc9CaqNWSBiHwSDJfpBsqZlNmpTJBqAyj14Jb/\
+tbk0Q0NOpFVNMHwjUpEugnCjRJWIuBncjabeaLdWPOcIBz5Quoy3Nqc0boODT4NpW0GklZca2zLZFp\
+ZRgkNrmc3gyByNMjcD+JaxnWG2DPcXsaM/nw/+\
+0Bd00MtVyJUJbM8zRh1fb5xNKBumeYRoERZssS5Eq38HviJ6IOVrGPqZmyCBLWUFjOkP2PbndwS0Aa\
+OpedCLR+rZg9iQMsBVfxLfhDr4xlvsX3/Y1sF4jU/PSWmWLhPPTNlkxBuM56Iq/\
+LBRZJATvhubhKEkVbRr/\
+0Wh50xXa67AJcFa3xvfIWYF9qyfbEKfrd2nmOM6RS7LCzkroZUWmAAWrd6DIK699AqXcO55gZfHlIJ\
+6OjfxmYtmCjVmmcGHgDDhegH1X3kYIs8ITFH894/\
+aBA7RGO9jn9KpLezMSxWGEfisGPQAx49tk2ftVOPb9Zn4tcGkyCIPPsYq9zYSRO0nKE9h/\
+Msg0QQJQyx6c7vBGH21icGSuIbW4D2NzxpktY+iangzidI9b+\
+mhDsdIMq324yS10QdVs9TmXagTDXbxyqPgJSHKXZcpkluWox3jNWsPyRiO/\
+YAL0NWGgEwYlfWCFuvNajX8o9UzPyNYIOa/TeiPYVuTyId3v4ABBnUIw==\>\"", "]"}], ",", 
+     "\"\<Text\>\""}], "]"}], "\n", "\n", 
+   RowBox[{"(*", 
+    RowBox[{
+    "5.", " ", "Fix", " ", "Code", " ", "Copying", " ", "from", " ", "Web", 
+     " ", "Page"}], "*)"}], "\n", 
+   RowBox[{
+    RowBox[{"clipboardJs", " ", "=", " ", 
+     RowBox[{"FileNameJoin", "[", 
+      RowBox[{"{", 
+       RowBox[{
+       "$htmlDirectory", ",", "\"\<javascript\>\"", ",", 
+        "\"\<clipboard.en.js\>\""}], "}"}], "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"clipboardJsNew", " ", "=", " ", 
+     RowBox[{"FileNameJoin", "[", 
+      RowBox[{"{", 
+       RowBox[{
+       "$htmlDirectory", ",", "\"\<javascript\>\"", ",", 
+        "\"\<clipboard.js\>\""}], "}"}], "]"}]}], ";"}], "\n", 
+   RowBox[{"RenameFile", "[", 
+    RowBox[{"clipboardJs", ",", "clipboardJsNew"}], "]"}], "\n", "\n", 
+   RowBox[{"clipboardCss", " ", "=", " ", 
+    RowBox[{"FileNameJoin", "[", 
+     RowBox[{"{", 
+      RowBox[{
+      "$htmlDirectory", ",", "\"\<css\>\"", ",", "\"\<clipboard.css\>\""}], 
+      "}"}], "]"}]}], "\n", 
+   RowBox[{
+    RowBox[{"css", " ", "=", " ", 
+     RowBox[{"Import", "[", 
+      RowBox[{"clipboardCss", ",", "\"\<Text\>\""}], "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"css", " ", "=", " ", 
+     RowBox[{"StringReplace", "[", 
+      RowBox[{"css", ",", 
+       RowBox[{
+       "\"\</webMathematica/Resources/Documentation/English/images/\>\"", 
+        "->", "\"\<../images/\>\""}]}], "]"}]}], ";"}], "\n", 
+   RowBox[{"Export", "[", 
+    RowBox[{"clipboardCss", ",", "css", ",", "\"\<Text\>\""}], 
+    "]"}]}]}]], "Code",
+ CellChangeTimes->{{3.732699818708832*^9, 3.732699818709257*^9}, {
+   3.732699904594571*^9, 3.732699917281891*^9}, {3.732700067732257*^9, 
+   3.732700082872954*^9}, {3.73270079695427*^9, 3.732700796964409*^9}, {
+   3.732700950674879*^9, 3.732700967571398*^9}, 3.7327010177969313`*^9, {
+   3.7327011089478607`*^9, 3.732701133122891*^9}, {3.7327011957155733`*^9, 
+   3.732701208861042*^9}, {3.732701241080347*^9, 3.732701270539384*^9}, {
+   3.7327013508114347`*^9, 3.732701373011964*^9}, {3.73270151384383*^9, 
+   3.732701548896064*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"9b9b9caa-09e4-4f0e-b94e-4d9cffd58939"],
+
+Cell[BoxData["\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/standard\"\>\
+"], "Output",
+ CellChangeTimes->{
+  3.732699923349723*^9, 3.7327000833325253`*^9, 3.7327001676767807`*^9, 
+   3.7327003395769243`*^9, 3.732700975117961*^9, 3.732701025865909*^9, 
+   3.7327011358204613`*^9, 3.732701256041894*^9, 3.732701373531505*^9, {
+   3.73270152083644*^9, 3.7327015493170424`*^9}, 3.7565297932569942`*^9},
+ CellLabel->"Out[2]=",ExpressionUUID->"e53c2dfa-a51a-4e26-adcc-fd0b22a224a4"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/standard/css\"\
+\>", ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/standard/fonts\
+\"\>", ",", \
+"\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/standard/images\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/standard/\
+includes\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/standard/\
+javascript\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.732699923349723*^9, 3.7327000833325253`*^9, 3.7327001676767807`*^9, 
+   3.7327003395769243`*^9, 3.732700975117961*^9, 3.732701025865909*^9, 
+   3.7327011358204613`*^9, 3.732701256041894*^9, 3.732701373531505*^9, {
+   3.73270152083644*^9, 3.7327015493170424`*^9}, 3.756529793257839*^9},
+ CellLabel->"Out[3]=",ExpressionUUID->"62d04b46-b4d8-43cf-be36-69a484f599fd"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/addIndices.\
+html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/ansatz.html\"\
+\>", ",", \
+"\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/antiComplexFieldQ.\
+html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/antiFermion.\
+html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/antiFermionQ.\
+html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/antiField.\
+html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/boson.html\"\
+\>", ",", \
+"\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/bosonQ.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/broken.html\"\
+\>", ",", \
+"\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/checkAction.html\"\>\
+", ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/checkAll.\
+html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/checkFields.\
+html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/checkIndices.\
+html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/checkSyntax.\
+html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/\
+compareGraphs2.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/\
+compareGraphs.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/complete.\
+html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/\
+complexFieldQ.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/\
+convertAction.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/countTerms.\
+html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/\
+createDummyListUnique.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/defineFields.\
+html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/\
+defineFieldsSpecific.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/delta.html\"\
+\>", ",", \
+"\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/deltam.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/der.html\"\>\
+", ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/deriv.html\"\
+\>", ",", \
+"\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/derivRGE.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/dim.html\"\>\
+", ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/doDSE.html\"\
+\>", ",", \
+"\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/doGrassmannTest.html\
+\"\>", ",", \
+"\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/doRGE.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/dR.html\"\>",
+    ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/DSEPlot.\
+html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/dummy.html\"\
+\>", ",", \
+"\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/even.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/explicit.\
+html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/factorStyle.\
+html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/fermion.html\
+\"\>", ",", \
+"\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/fermionQ.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/fieldQ.html\"\
+\>", ",", \
+"\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/forceEquation.html\"\
+\>", ",", \
+"\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/generateAction.html\"\
+\>", ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/getAE.html\
+\"\>", ",", \
+"\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/getFR.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/\
+getInteractionList.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/\
+getLoopNumber.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/grassmannQ.\
+html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/\
+identifyGraphs.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/\
+identifyGraphsRGE.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/indexStyle.\
+html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/indices.html\
+\"\>", ",", \
+"\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/insDummy.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/intact.html\"\
+\>", ",", \
+"\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/integrateDeltas.html\
+\"\>", ",", \
+"\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/integrateMomenta.\
+html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/loadFeynCalc.\
+html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/odd.html\"\>\
+", ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/op.html\"\>",
+    ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/\
+orderFermions.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/output.html\"\
+\>", ",", \
+"\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/P.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/regulatorBox.\
+html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/\
+regulatorCross.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/\
+regulatorSymbol.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/\
+removeIndices.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/\
+replacedField.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/\
+replaceFields.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/resetDummy.\
+html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/resetIndices.\
+html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/RGEPlot.html\
+\"\>", ",", \
+"\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/sE.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/\
+setSourcesZero.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/\
+setSourcesZeroRGE.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/\
+shortExpression.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/S.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/sortDummies.\
+html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/\
+specificFieldDefinitions.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/symmetry.\
+html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/tDerivative.\
+html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/traceIndex1.\
+html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/traceIndex2.\
+html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/U.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/V.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/$\
+bareVertexSymbol.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/$\
+dummyFieldAF.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/$dummyFieldB.\
+html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/$dummyFieldF.\
+html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/$dummyField.\
+html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/$loopMomenta.\
+html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/$\
+propagatorSymbol.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/$\
+regulatorInsertionSymbol.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/ref/$\
+vertexSymbol.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/guide/Welcome to \
+DoFun.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/tutorial/Complex \
+fields.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/tutorial/\
+DoFunOverview.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/tutorial/\
+Exporting diagrams.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/tutorial/Fields \
+mixing at the two-point level.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/tutorial/Known \
+issues.html\"\>", 
+   ",", "\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/tutorial/Scalar \
+O(N) symmetric theory.html\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.732699923349723*^9, 3.7327000833325253`*^9, 3.7327001676767807`*^9, 
+   3.7327003395769243`*^9, 3.732700975117961*^9, 3.732701025865909*^9, 
+   3.7327011358204613`*^9, 3.732701256041894*^9, 3.732701373531505*^9, {
+   3.73270152083644*^9, 3.7327015493170424`*^9}, 3.756529793304913*^9},
+ CellLabel->"Out[5]=",ExpressionUUID->"cd904585-15e8-4325-ac38-3de37f62a886"],
+
+Cell[BoxData["\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/css/fonts.\
+css\"\>"], "Output",
+ CellChangeTimes->{
+  3.732699923349723*^9, 3.7327000833325253`*^9, 3.7327001676767807`*^9, 
+   3.7327003395769243`*^9, 3.732700975117961*^9, 3.732701025865909*^9, 
+   3.7327011358204613`*^9, 3.732701256041894*^9, 3.732701373531505*^9, {
+   3.73270152083644*^9, 3.7327015493170424`*^9}, 3.756529794114971*^9},
+ CellLabel->"Out[7]=",ExpressionUUID->"53411ee0-5a93-450e-9e72-80dd1c9405dd"],
+
+Cell[BoxData["\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/css/fonts.\
+css\"\>"], "Output",
+ CellChangeTimes->{
+  3.732699923349723*^9, 3.7327000833325253`*^9, 3.7327001676767807`*^9, 
+   3.7327003395769243`*^9, 3.732700975117961*^9, 3.732701025865909*^9, 
+   3.7327011358204613`*^9, 3.732701256041894*^9, 3.732701373531505*^9, {
+   3.73270152083644*^9, 3.7327015493170424`*^9}, 3.7565297941237183`*^9},
+ CellLabel->"Out[10]=",ExpressionUUID->"11c4ba3c-7306-489c-90e1-28dda61b985d"],
+
+Cell[BoxData["\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/javascript/\
+faster-page-load.js\"\>"], "Output",
+ CellChangeTimes->{
+  3.732699923349723*^9, 3.7327000833325253`*^9, 3.7327001676767807`*^9, 
+   3.7327003395769243`*^9, 3.732700975117961*^9, 3.732701025865909*^9, 
+   3.7327011358204613`*^9, 3.732701256041894*^9, 3.732701373531505*^9, {
+   3.73270152083644*^9, 3.7327015493170424`*^9}, 3.756529794124857*^9},
+ CellLabel->"Out[11]=",ExpressionUUID->"fd984985-4cff-49a6-9d4c-ab2bb2682d86"],
+
+Cell[BoxData["\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/javascript/\
+faster-page-load.js\"\>"], "Output",
+ CellChangeTimes->{
+  3.732699923349723*^9, 3.7327000833325253`*^9, 3.7327001676767807`*^9, 
+   3.7327003395769243`*^9, 3.732700975117961*^9, 3.732701025865909*^9, 
+   3.7327011358204613`*^9, 3.732701256041894*^9, 3.732701373531505*^9, {
+   3.73270152083644*^9, 3.7327015493170424`*^9}, 3.756529794125852*^9},
+ CellLabel->"Out[14]=",ExpressionUUID->"9d22e0d3-0856-4c26-96ab-6021da468d37"],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{
+  3.732699923349723*^9, 3.7327000833325253`*^9, 3.7327001676767807`*^9, 
+   3.7327003395769243`*^9, 3.732700975117961*^9, 3.732701025865909*^9, 
+   3.7327011358204613`*^9, 3.732701256041894*^9, 3.732701373531505*^9, {
+   3.73270152083644*^9, 3.7327015493170424`*^9}, 3.756529794126972*^9},
+ CellLabel->"Out[16]=",ExpressionUUID->"1fe61a59-c8a8-468e-a85f-d3443c05cf88"],
+
+Cell[BoxData["\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/javascript/\
+sub-pages.js\"\>"], "Output",
+ CellChangeTimes->{
+  3.732699923349723*^9, 3.7327000833325253`*^9, 3.7327001676767807`*^9, 
+   3.7327003395769243`*^9, 3.732700975117961*^9, 3.732701025865909*^9, 
+   3.7327011358204613`*^9, 3.732701256041894*^9, 3.732701373531505*^9, {
+   3.73270152083644*^9, 3.7327015493170424`*^9}, 3.756529794128067*^9},
+ CellLabel->"Out[18]=",ExpressionUUID->"7b7d0065-2dc9-49c6-9628-9bebedd696f2"],
+
+Cell[BoxData["\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/javascript/\
+clipboard.js\"\>"], "Output",
+ CellChangeTimes->{
+  3.732699923349723*^9, 3.7327000833325253`*^9, 3.7327001676767807`*^9, 
+   3.7327003395769243`*^9, 3.732700975117961*^9, 3.732701025865909*^9, 
+   3.7327011358204613`*^9, 3.732701256041894*^9, 3.732701373531505*^9, {
+   3.73270152083644*^9, 3.7327015493170424`*^9}, 3.756529794129071*^9},
+ CellLabel->"Out[21]=",ExpressionUUID->"4b0e5046-3f28-4487-ade0-91f3a07ef2cf"],
+
+Cell[BoxData["\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/css/\
+clipboard.css\"\>"], "Output",
+ CellChangeTimes->{
+  3.732699923349723*^9, 3.7327000833325253`*^9, 3.7327001676767807`*^9, 
+   3.7327003395769243`*^9, 3.732700975117961*^9, 3.732701025865909*^9, 
+   3.7327011358204613`*^9, 3.732701256041894*^9, 3.732701373531505*^9, {
+   3.73270152083644*^9, 3.7327015493170424`*^9}, 3.756529794129991*^9},
+ CellLabel->"Out[22]=",ExpressionUUID->"4645a98d-3441-4c04-986a-a12e704aa30d"],
+
+Cell[BoxData["\<\"/home/mqh/git_repos/DoFun/build/DoFun-HTML/html/css/\
+clipboard.css\"\>"], "Output",
+ CellChangeTimes->{
+  3.732699923349723*^9, 3.7327000833325253`*^9, 3.7327001676767807`*^9, 
+   3.7327003395769243`*^9, 3.732700975117961*^9, 3.732701025865909*^9, 
+   3.7327011358204613`*^9, 3.732701256041894*^9, 3.732701373531505*^9, {
+   3.73270152083644*^9, 3.7327015493170424`*^9}, 3.756529794130892*^9},
+ CellLabel->"Out[25]=",ExpressionUUID->"8f831c4c-aff0-4a11-bb63-caa2fd991016"]
+}, Open  ]]
+},
+WindowSize->{958, 997},
+WindowMargins->{{Automatic, 1}, {0, Automatic}},
+FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[400, 13, 338, 7, 58, "Text",ExpressionUUID->"a8faf1c6-3cc8-4347-9597-137d79ce877f"],
+Cell[741, 22, 754, 16, 81, "Text",ExpressionUUID->"69122e06-fa25-4e88-a6a9-c1aac6a1a82e"],
+Cell[CellGroupData[{
+Cell[1520, 42, 10813, 264, 1792, "Code",ExpressionUUID->"9b9b9caa-09e4-4f0e-b94e-4d9cffd58939"],
+Cell[12336, 308, 483, 7, 35, "Output",ExpressionUUID->"e53c2dfa-a51a-4e26-adcc-fd0b22a224a4"],
+Cell[12822, 317, 861, 15, 128, "Output",ExpressionUUID->"62d04b46-b4d8-43cf-be36-69a484f599fd"],
+Cell[13686, 334, 9470, 187, 2313, "Output",ExpressionUUID->"cd904585-15e8-4325-ac38-3de37f62a886"],
+Cell[23159, 523, 486, 7, 35, "Output",ExpressionUUID->"53411ee0-5a93-450e-9e72-80dd1c9405dd"],
+Cell[23648, 532, 489, 7, 35, "Output",ExpressionUUID->"11c4ba3c-7306-489c-90e1-28dda61b985d"],
+Cell[24140, 541, 504, 7, 35, "Output",ExpressionUUID->"fd984985-4cff-49a6-9d4c-ab2bb2682d86"],
+Cell[24647, 550, 504, 7, 35, "Output",ExpressionUUID->"9d22e0d3-0856-4c26-96ab-6021da468d37"],
+Cell[25154, 559, 420, 6, 35, "Output",ExpressionUUID->"1fe61a59-c8a8-468e-a85f-d3443c05cf88"],
+Cell[25577, 567, 497, 7, 35, "Output",ExpressionUUID->"7b7d0065-2dc9-49c6-9628-9bebedd696f2"],
+Cell[26077, 576, 497, 7, 35, "Output",ExpressionUUID->"4b0e5046-3f28-4487-ade0-91f3a07ef2cf"],
+Cell[26577, 585, 491, 7, 35, "Output",ExpressionUUID->"4645a98d-3441-4c04-986a-a12e704aa30d"],
+Cell[27071, 594, 491, 7, 35, "Output",ExpressionUUID->"8f831c4c-aff0-4a11-bb63-caa2fd991016"]
+}, Open  ]]
+}
+]
+*)
+

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7754,        215]
-NotebookOptionsPosition[      6057,        177]
-NotebookOutlinePosition[      6389,        192]
-CellTagsIndexPosition[      6346,        189]
+NotebookDataLength[     12368,        310]
+NotebookOptionsPosition[     10077,        264]
+NotebookOutlinePosition[     10409,        279]
+CellTagsIndexPosition[     10366,        276]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -45,6 +45,89 @@ necessary."
   3.73632016674052*^9, 
   3.736320174124614*^9}},ExpressionUUID->"4c2ba7a6-c818-44f2-b516-\
 8b96aa05b150"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Instructions", "Title",
+ CellChangeTimes->{{3.756528854745089*^9, 
+  3.756528855977174*^9}},ExpressionUUID->"0af4a1c6-5804-4341-b3c0-\
+2ed4dea9b8fa"],
+
+Cell[TextData[{
+ StyleBox["Documentation:\n",
+  FontWeight->"Bold"],
+ "The documentation source is in \[OpenCurlyQuote]doc-src\[CloseCurlyQuote]. \
+This location is set in Project Properties -> Wolfram -> Paclet Settings -> \
+Documentation Location.\nThe build directory is (as by default) \
+\[OpenCurlyQuote]build\[CloseCurlyQuote]. When documentation is created, it \
+has to be moved to DoFun/Documentation.\n\nRelevant files/properties for the \
+creation of documentation:\n* docbuild.xml: Created automatically when the \
+first build is run (if it does not exit yet), thus it is necessary to set \
+Documentation Location in Project Properties -> Wolfram -> Paclet Settings \
+before that. Otherwise the paths in docbuild.xml are wrong.\n* PacletInfo.m\n\
+* Project properties: Wolfram -> Paclet settings"
+}], "Text",
+ CellChangeTimes->{{3.756477627091341*^9, 3.756477648964694*^9}, {
+  3.756478370598115*^9, 3.756478377053822*^9}, {3.7565269938967752`*^9, 
+  3.75652717499347*^9}, {3.75652724436899*^9, 3.7565273327864733`*^9}, {
+  3.756528411124586*^9, 3.756528477054967*^9}, {3.756528874117465*^9, 
+  3.7565289079088917`*^9}, {3.7565289408507967`*^9, 3.756528956261196*^9}, {
+  3.7565291761043997`*^9, 
+  3.756529177718203*^9}},ExpressionUUID->"6947f346-4001-46cd-85f3-\
+847bc99366b8"],
+
+Cell[TextData[{
+ StyleBox["Creation of documentation:",
+  FontWeight->"Bold"],
+ "\nGo to Paclet.m -> Documentation to manage the files and automatically \
+create Overview and Symbol pages."
+}], "Text",
+ CellChangeTimes->{{3.756477627091341*^9, 3.756477648964694*^9}, {
+  3.756478370598115*^9, 3.756478377053822*^9}, {3.7565269938967752`*^9, 
+  3.75652717499347*^9}, {3.75652724436899*^9, 3.7565273327864733`*^9}, {
+  3.756528411124586*^9, 3.756528477054967*^9}, {3.756528874117465*^9, 
+  3.7565289079088917`*^9}, {3.7565289408507967`*^9, 3.756528962699341*^9}, {
+  3.7565295676576366`*^9, 
+  3.756529581505526*^9}},ExpressionUUID->"d9794093-d248-47f1-b1bf-\
+72b154093a93"],
+
+Cell[TextData[{
+ StyleBox["Building of documentation:",
+  FontWeight->"Bold"],
+ "\nIn Paclet.m -> Overview open the Application Tools. The Build button \
+builds the documentation and saves it to \[OpenCurlyQuote]build\
+\[CloseCurlyQuote]. Copy the documentation to DoFun to have a complete \
+working copy in DoFun."
+}], "Text",
+ CellChangeTimes->{{3.756477627091341*^9, 3.756477648964694*^9}, {
+  3.756478370598115*^9, 3.756478377053822*^9}, {3.7565269938967752`*^9, 
+  3.75652717499347*^9}, {3.75652724436899*^9, 3.7565273327864733`*^9}, {
+  3.756528411124586*^9, 3.756528477054967*^9}, {3.756528874117465*^9, 
+  3.7565289079088917`*^9}, {3.7565289408507967`*^9, 3.75652898159238*^9}, {
+  3.756529039575707*^9, 3.7565290479915752`*^9}, {3.7565294610759287`*^9, 
+  3.756529477940339*^9}},ExpressionUUID->"83a2ddc3-ebbe-4417-9695-\
+6ce3e23fcc3e"],
+
+Cell[TextData[{
+ StyleBox["Deploying the application:\n",
+  FontWeight->"Bold"],
+ "Normally, DoFun is installed from the git repository directly. This is why \
+the folder DoFun contains a complete working copy.\n\nThe Workbench way of \
+deploying DoFun is as follows:",
+ StyleBox["\n",
+  FontWeight->"Bold"],
+ "In Application Tools with the Deploy button. It will ask for the files to \
+include. Choose the packages incl.  DoFunInstaller.m. Do not choose \
+PacletInfo.m, as it will be included automatically. In the second step choose \
+the Documentation to be included. Note that deploying might not work if a \
+subfolder contains a deployed version."
+}], "Text",
+ CellChangeTimes->{{3.756528987111858*^9, 3.756528990431897*^9}, {
+  3.756529049671591*^9, 3.756529116991249*^9}, {3.756529151638905*^9, 
+  3.756529185214786*^9}, {3.7565293231903467`*^9, 
+  3.756529500741503*^9}},ExpressionUUID->"bba1dd76-0524-4c6b-895f-\
+c97f2ddfe515"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -114,13 +197,20 @@ Cell["Current task", "Section",
   3.736413989627226*^9}},ExpressionUUID->"d6423871-782f-4c3f-bed0-\
 61c34f034bc2"],
 
+Cell["Create documentation.", "Text",
+ CellChangeTimes->{{3.756474493936775*^9, 
+  3.7564744964813347`*^9}},ExpressionUUID->"7bfc42ed-46b7-4849-971d-\
+ee42edc5c83b"],
+
 Cell["\<\
 Remove all definitions of fields and put them at the beginning. Create a way \
-to define properties of fields. Adopt predicates of fields.\
+to define properties of fields. Adopt predicates of fields.
+DSEPlotList calls vertexDummies which is not defined for the case of {{A,A}}. \
+Is DSEPlotList called correctly?\
 \>", "Text",
  CellChangeTimes->{{3.7364139946189537`*^9, 3.736414015867042*^9}, {
-  3.736497206089889*^9, 
-  3.736497210409691*^9}},ExpressionUUID->"83f5a31d-7084-45ab-b51e-\
+   3.736497206089889*^9, 3.736497210409691*^9}, 
+   3.756473476156234*^9},ExpressionUUID->"83f5a31d-7084-45ab-b51e-\
 7cda902dade8"]
 }, Open  ]],
 
@@ -154,23 +244,20 @@ Cell["Low priority", "Subsection",
 0c1d9d296ecf"],
 
 Cell["\<\
-* Installation similar to FORMTracer: Anton is working on it until end of \
-August. Idea is to install directly releases from github.
+* Installation similar to FORMTracer.
 * Link to/Installation of FORMTracer.
 * OptionsPattern
 * Import of online version should stop if the server is not reachable (caused \
 long delay when physik was not reachable).
-* Documentation of 2.0.4 uses getFM instead of getFR in \
-ReferencePages/Symbols/ReferencePagesReport/ReferencePagesReport.nb
-ReferencePages/Symbols/OriginalReferencePages/getFM.nb
-Tutorials/Scalar O(N) symmetric theory.nb\
+* Can one use the version number from PacletInfo.m instead of defining it \
+directly?\
 \>", "Text",
  CellChangeTimes->{{3.736318351848378*^9, 3.736318381608193*^9}, {
   3.736318691900454*^9, 3.736318699294239*^9}, {3.740134532572054*^9, 
-  3.740134570380205*^9}, {3.742627883964233*^9, 3.742627905500031*^9}, {
-  3.742640577359202*^9, 
-  3.742640596880261*^9}},ExpressionUUID->"b7aec1c3-b370-4c24-aac1-\
-42a20de87a63"]
+  3.740134570380205*^9}, {3.7564736134652653`*^9, 3.756473619708352*^9}, {
+  3.756530027696156*^9, 
+  3.75653004702323*^9}},ExpressionUUID->"2cb3baa8-ee89-497d-83be-\
+67cfedd84ae3"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
@@ -196,24 +283,32 @@ Cell[580, 22, 169, 3, 98, "Title",ExpressionUUID->"9e6809a6-b9bb-4551-ad15-e8a80
 Cell[752, 27, 736, 19, 196, "Text",ExpressionUUID->"4c2ba7a6-c818-44f2-b516-8b96aa05b150"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1525, 51, 153, 3, 98, "Title",ExpressionUUID->"9e6efd20-2fdd-46c3-95cb-409c96a6477e"],
-Cell[1681, 56, 807, 16, 127, "Text",ExpressionUUID->"dc6334b3-3b69-42e4-b562-9dfc36f98824"],
-Cell[2491, 74, 307, 8, 81, "Text",ExpressionUUID->"4e45ca6e-9991-46e2-8193-daf9e93df7ac"],
-Cell[2801, 84, 418, 9, 104, "Text",ExpressionUUID->"babb10fa-22c0-4ced-afa5-19144e5c8fae"],
-Cell[3222, 95, 576, 12, 173, "Text",ExpressionUUID->"4c991307-549a-403c-8423-6d29405f163b"],
-Cell[CellGroupData[{
-Cell[3823, 111, 159, 3, 68, "Section",ExpressionUUID->"d6423871-782f-4c3f-bed0-61c34f034bc2"],
-Cell[3985, 116, 339, 7, 58, "Text",ExpressionUUID->"83f5a31d-7084-45ab-b51e-7cda902dade8"]
+Cell[1525, 51, 155, 3, 98, "Title",ExpressionUUID->"0af4a1c6-5804-4341-b3c0-2ed4dea9b8fa"],
+Cell[1683, 56, 1290, 21, 265, "Text",ExpressionUUID->"6947f346-4001-46cd-85f3-847bc99366b8"],
+Cell[2976, 79, 672, 13, 58, "Text",ExpressionUUID->"d9794093-d248-47f1-b1bf-72b154093a93"],
+Cell[3651, 94, 845, 15, 81, "Text",ExpressionUUID->"83a2ddc3-ebbe-4417-9695-6ce3e23fcc3e"],
+Cell[4499, 111, 936, 18, 173, "Text",ExpressionUUID->"bba1dd76-0524-4c6b-895f-c97f2ddfe515"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4361, 128, 160, 3, 68, "Section",ExpressionUUID->"dd654739-1718-4bf0-8523-865aa3c1702a"],
+Cell[5472, 134, 153, 3, 98, "Title",ExpressionUUID->"9e6efd20-2fdd-46c3-95cb-409c96a6477e"],
+Cell[5628, 139, 807, 16, 127, "Text",ExpressionUUID->"dc6334b3-3b69-42e4-b562-9dfc36f98824"],
+Cell[6438, 157, 307, 8, 81, "Text",ExpressionUUID->"4e45ca6e-9991-46e2-8193-daf9e93df7ac"],
+Cell[6748, 167, 418, 9, 104, "Text",ExpressionUUID->"babb10fa-22c0-4ced-afa5-19144e5c8fae"],
+Cell[7169, 178, 576, 12, 173, "Text",ExpressionUUID->"4c991307-549a-403c-8423-6d29405f163b"],
 Cell[CellGroupData[{
-Cell[4546, 135, 162, 3, 55, "Subsection",ExpressionUUID->"9381da49-ebaf-4449-a330-2f5da810dfe8"],
-Cell[4711, 140, 230, 5, 35, "Text",ExpressionUUID->"9ece2174-0de3-4ef5-a782-6c5573fd1256"]
+Cell[7770, 194, 159, 3, 68, "Section",ExpressionUUID->"d6423871-782f-4c3f-bed0-61c34f034bc2"],
+Cell[7932, 199, 165, 3, 35, "Text",ExpressionUUID->"7bfc42ed-46b7-4849-971d-ee42edc5c83b"],
+Cell[8100, 204, 476, 9, 81, "Text",ExpressionUUID->"83f5a31d-7084-45ab-b51e-7cda902dade8"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4978, 150, 159, 3, 55, "Subsection",ExpressionUUID->"820864a1-5442-467c-a5c1-0c1d9d296ecf"],
-Cell[5140, 155, 877, 17, 219, "Text",ExpressionUUID->"b7aec1c3-b370-4c24-aac1-42a20de87a63"]
+Cell[8613, 218, 160, 3, 68, "Section",ExpressionUUID->"dd654739-1718-4bf0-8523-865aa3c1702a"],
+Cell[CellGroupData[{
+Cell[8798, 225, 162, 3, 55, "Subsection",ExpressionUUID->"9381da49-ebaf-4449-a330-2f5da810dfe8"],
+Cell[8963, 230, 230, 5, 35, "Text",ExpressionUUID->"9ece2174-0de3-4ef5-a782-6c5573fd1256"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9230, 240, 159, 3, 55, "Subsection",ExpressionUUID->"820864a1-5442-467c-a5c1-0c1d9d296ecf"],
+Cell[9392, 245, 645, 14, 127, "Text",ExpressionUUID->"2cb3baa8-ee89-497d-83be-67cfedd84ae3"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
