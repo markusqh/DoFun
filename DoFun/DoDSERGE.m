@@ -134,6 +134,11 @@ Default value: R.";
 $vertexSymbol::usage="Symbol representing a vertex when using shortExpression.
 Default value: \[CapitalGamma].";
 
+$fieldTypes::usage="List of all existing field types.\n
+Example:
+$fieldTypes
+";
+
 antiComplex::usage="Represents a bosonic complex anti-field. Specifically, it is the second field of a pair of complex fields.\n
 Properties of fields need to be set by setFields.\n
 Example:
@@ -160,6 +165,11 @@ Properties of fields need to be set by setFields.\n
 Example:
 setFields[{A}, {{c,cb}}, {{phi,phib}}];
 antiFermionQ@phi
+";
+
+superField::usage="Represents a superfield which can contain bosonic and fermionic components.\n
+Example:
+fieldType[$dummyField]
 ";
 
 dR::usage="Represents a regulator insertion, \[PartialD]_t R_k.
@@ -878,19 +888,29 @@ $bareVertexSymbol=S;
 $externalIndices={Global`i1,Global`i2,Global`i3,Global`i4,Global`i5,Global`i6,Global`i7,Global`i8,Global`i9,Global`i10};
 Protect/@$externalIndices;
 
+(* list of all field types *)
+$fieldTypes={boson, fermion, antiFermion, complex, antiComplex, superField};
+
 (* the standard superfield *)
-$dummyField=\[Phi];
+(*TODO: Remove Clear. Careful: All definitions refer to Phi and not to $dummyField. *)
+Clear@$dummyField;
+$dummyField = \[Phi]; 
+Evaluate@$dummyField /: fieldType[$dummyField] := superField;
+Evaluate@$dummyField /: grassmannQ[$dummyField] = False;
+
 
 (* fermionic dummy fields *)
-$dummyFieldF /: Head[$dummyFieldF] := field;
-$dummyFieldAF /: Head[$dummyFieldAF] := field;
-$dummyFieldF /: fieldType[$dummyFieldF] := fermion;
-$dummyFieldAF /: fieldType[$dummyFieldAF] := antiFermion;
-antiField[$dummyFieldF] := $dummyFieldAF;
-antiField[$dummyFieldAF] := $dummyFieldF;
+(*TODO: Remove Head[...]*)
+(*$dummyFieldF /: Head[$dummyFieldF] := field;
+$dummyFieldAF /: Head[$dummyFieldAF] := field;*)
+$dummyFieldF /: fieldType[$dummyFieldF] = fermion;
+$dummyFieldAF /: fieldType[$dummyFieldAF] = antiFermion;
+antiField[$dummyFieldF] = $dummyFieldAF;
+antiField[$dummyFieldAF] = $dummyFieldF;
+(# /: grassmannQ[#] = True) & /@ {$dummyFieldF, $dummyFieldAF};
 
 (* automatic ordering of complex fields *)
-P[{phi_?fieldQ, i1_}, {phibar_?fieldQ, i2_}] /; (complexFieldQ[phibar] && antiField[phi]===phibar) := P[{phibar, i2}, {phi, i1}]
+P[{phi_?fieldQ, ii1_}, {phibar_?fieldQ, ii2_}] /; (complexFieldQ[phibar] && antiField[phi]===phibar) := P[{phibar, ii2}, {phi, ii1}]
 
 (* the standard symbol for a propagator used in shortExpression *)
 $propagatorSymbol=\[CapitalDelta];
@@ -2630,6 +2650,10 @@ the user invokes DSEPlot and gets a complete DSE, but with the option output -> 
 
 
 (* with edges rendered specially *)
+(* if action is given as list, it has to be transformed first *)
+DSEPlotList[a_List,plotRules_List,opts___?OptionQ]/;And @@ (fieldQ /@ Flatten[a]):=
+	DSEPlotList[generateAction[a],plotRules,opts];
+
 DSEPlotList[a_,plotRules_List,opts___?OptionQ]/;FreeQ[a,Rule,Infinity]:=
 	DSEPlotList[vertexDummies[a,opts],plotRules,opts];
 
@@ -2698,6 +2722,9 @@ DSEPlotList[a_,plotRules_List,opts___?OptionQ]/;FreeQ[a,Rule[_,_],2]:=DSEPlotLis
 DSEPlotList[a_List,plotRules_List,opts___?OptionQ]:=DSEPlotList[{a,1},plotRules,opts];
 
 (* without edge rendering *)
+(* if action is given as list, it has to be transformed first *)
+DSEPlotList[a_List,opts___?OptionQ]/;And @@ (fieldQ /@ Flatten[a]):=
+	DSEPlotList[generateAction[a],opts];
 
 DSEPlotList[a_,opts___?OptionQ]/;FreeQ[a,Rule,Infinity]:=DSEPlotList[vertexDummies[a,opts],opts];
 
@@ -2751,7 +2778,7 @@ DSEPlotList[a_,opts___?OptionQ]/;FreeQ[a,Rule[_,_],2]:=DSEPlotList[#,opts]&/@a;
 
 DSEPlotList[a_List,opts___?OptionQ]:=DSEPlotList[{a,1},opts];
 
-DSEPlotList[a___]:=Print[a];Message[DSEPlot::syntax,a];
+DSEPlotList[a___]:=Message[DSEPlot::syntax,a];
 
 
 
@@ -3008,7 +3035,7 @@ setFields[bosons_List, fermions_List, complexFields_List] := Module[{},
   
   (* set (anti-)commutating property *)
   (* TODO: 
-  put this in the init *)
+  put this in the init; now I actually do not know why anymore... *)
   (# /: grassmannQ[#] = False) & /@ 
    Flatten[{bosons, complexFields}];
   (# /: grassmannQ[#] = True) & /@ 
@@ -3044,8 +3071,8 @@ countTerms[a___]:=Message[countTerms::syntax,a];
 
 (* predicates for fields *)
 
-(* Kept for compatibility. It is better to use the fact that the head of any field is field. *)
-fieldQ[a_]:=Head@a===field;
+(* Note: Setting the Head of a field to 'field' does not work with pattern matching, thus fieldQ has to be used. *)
+fieldQ[a_]:=Or@@(fieldType@a===# &/@$fieldTypes);
 
 fermionQ[a_]:=fieldType@a===fermion;
 
@@ -3057,12 +3084,11 @@ complexFieldQ[a_]:=fieldType@a===complex;
 
 antiComplexFieldQ[a_]:=fieldType@a===antiComplex;
   
-(* set (anti-)commutating property *)
-(# /: grassmannQ[#] = False) & /@ Flatten[{bosons, complexFields}];
+(* set (anti-)commutating property; TODO: Remove this. It is done in setFields. *)
+(*(# /: grassmannQ[#] = False) & /@ Flatten[{bosons, complexFields}];
 (# /: grassmannQ[#] = True) & /@ Flatten[fermions];
 (# /: cFieldQ[#] = True) & /@ Flatten[{bosons, complexFields}];
-(# /: cFieldQ[#] = False) & /@ Flatten[fermions];
-
+(# /: cFieldQ[#] = False) & /@ Flatten[fermions];*)
 
 
 

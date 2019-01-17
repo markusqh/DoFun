@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12368,        310]
-NotebookOptionsPosition[     10077,        264]
-NotebookOutlinePosition[     10409,        279]
-CellTagsIndexPosition[     10366,        276]
+NotebookDataLength[     14551,        362]
+NotebookOptionsPosition[     11810,        308]
+NotebookOutlinePosition[     12142,        323]
+CellTagsIndexPosition[     12099,        320]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -66,15 +66,20 @@ creation of documentation:\n* docbuild.xml: Created automatically when the \
 first build is run (if it does not exit yet), thus it is necessary to set \
 Documentation Location in Project Properties -> Wolfram -> Paclet Settings \
 before that. Otherwise the paths in docbuild.xml are wrong.\n* PacletInfo.m\n\
-* Project properties: Wolfram -> Paclet settings"
+* Project properties: Wolfram -> Paclet settings\n* ",
+ ButtonBox["https://reference.wolfram.com/workbench",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["https://reference.wolfram.com/workbench"], None},
+  ButtonNote->"https://reference.wolfram.com/workbench"]
 }], "Text",
  CellChangeTimes->{{3.756477627091341*^9, 3.756477648964694*^9}, {
   3.756478370598115*^9, 3.756478377053822*^9}, {3.7565269938967752`*^9, 
   3.75652717499347*^9}, {3.75652724436899*^9, 3.7565273327864733`*^9}, {
   3.756528411124586*^9, 3.756528477054967*^9}, {3.756528874117465*^9, 
   3.7565289079088917`*^9}, {3.7565289408507967`*^9, 3.756528956261196*^9}, {
-  3.7565291761043997`*^9, 
-  3.756529177718203*^9}},ExpressionUUID->"6947f346-4001-46cd-85f3-\
+  3.7565291761043997`*^9, 3.756529177718203*^9}, {3.756532410187356*^9, 
+  3.756532418884626*^9}},ExpressionUUID->"6947f346-4001-46cd-85f3-\
 847bc99366b8"],
 
 Cell[TextData[{
@@ -197,11 +202,6 @@ Cell["Current task", "Section",
   3.736413989627226*^9}},ExpressionUUID->"d6423871-782f-4c3f-bed0-\
 61c34f034bc2"],
 
-Cell["Create documentation.", "Text",
- CellChangeTimes->{{3.756474493936775*^9, 
-  3.7564744964813347`*^9}},ExpressionUUID->"7bfc42ed-46b7-4849-971d-\
-ee42edc5c83b"],
-
 Cell["\<\
 Remove all definitions of fields and put them at the beginning. Create a way \
 to define properties of fields. Adopt predicates of fields.
@@ -223,16 +223,59 @@ Cell["Things to add", "Section",
 
 Cell[CellGroupData[{
 
+Cell["RGE", "Subsection",
+ CellChangeTimes->{{3.75670455835198*^9, 
+  3.756704558648038*^9}},ExpressionUUID->"1f5c6955-4e9c-4487-97b8-\
+968fc9228ac7"],
+
+Cell["\<\
+* $dummyFieldF and $dummyFieldAF appear for RGEs only. Make their usage \
+similar to $dummyField.\
+\>", "Text",
+ CellChangeTimes->{{3.7567045640166273`*^9, 3.756704587408093*^9}, {
+   3.756704740414813*^9, 3.756704742894568*^9}, 
+   3.756704986212647*^9},ExpressionUUID->"e7d4cf0a-96d6-44b5-9243-\
+15eb35671f22"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Top priority", "Subsection",
+ CellChangeTimes->{{3.7567037759349546`*^9, 
+  3.756703778142911*^9}},ExpressionUUID->"1065e21f-b2f9-40b3-a9dc-\
+d6fc5d821354"],
+
+Cell["* Test fieldType[$dummyField]", "Text",
+ CellChangeTimes->{{3.756704623855298*^9, 
+  3.756704626003584*^9}},ExpressionUUID->"2bca3471-bb28-4201-b265-\
+ff3348ba759f"],
+
+Cell["\<\
+* Add a function that creates the appropriate action and which is always \
+called by the function expecting an action, e.g., DSEPlot (DSEPlotList is an \
+internal functions, thus DSEPlot should handle that?), doDSE, doRGE, ...\
+\>", "Text",
+ CellChangeTimes->{{3.75670377962271*^9, 
+  3.756703852134795*^9}},ExpressionUUID->"fd749ff3-b9e2-4223-b959-\
+67f241f17b6b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
 Cell["Mid priority", "Subsection",
  CellChangeTimes->{{3.7364968378311033`*^9, 
   3.736496839868196*^9}},ExpressionUUID->"9381da49-ebaf-4449-a330-\
 2f5da810dfe8"],
 
 Cell["\<\
-* Automatic guessing of fields. Right now the user has to define the fields.\
+* Automatic guessing of fields. Right now the user has to define the fields.
+* Update error and usage messages for changed functions, e.g., DSEPlot no \
+longer has the argument fields_List.
+* Remove all references to field as a Head.\
 \>", "Text",
- CellChangeTimes->{{3.7364968418920193`*^9, 
-  3.7364968600041447`*^9}},ExpressionUUID->"9ece2174-0de3-4ef5-a782-\
+ CellChangeTimes->{{3.7364968418920193`*^9, 3.7364968600041447`*^9}, {
+  3.75664564205364*^9, 3.756645673980197*^9}, {3.756704319770443*^9, 
+  3.756704332114352*^9}},ExpressionUUID->"9ece2174-0de3-4ef5-a782-\
 6c5573fd1256"]
 }, Open  ]],
 
@@ -247,6 +290,7 @@ Cell["\<\
 * Installation similar to FORMTracer.
 * Link to/Installation of FORMTracer.
 * OptionsPattern
+* html-doc: Links in top right corner to tutorials and functions do not work.
 * Import of online version should stop if the server is not reachable (caused \
 long delay when physik was not reachable).
 * Can one use the version number from PacletInfo.m instead of defining it \
@@ -255,8 +299,8 @@ directly?\
  CellChangeTimes->{{3.736318351848378*^9, 3.736318381608193*^9}, {
   3.736318691900454*^9, 3.736318699294239*^9}, {3.740134532572054*^9, 
   3.740134570380205*^9}, {3.7564736134652653`*^9, 3.756473619708352*^9}, {
-  3.756530027696156*^9, 
-  3.75653004702323*^9}},ExpressionUUID->"2cb3baa8-ee89-497d-83be-\
+  3.756530027696156*^9, 3.75653004702323*^9}, {3.756532294802836*^9, 
+  3.756532318868043*^9}},ExpressionUUID->"2cb3baa8-ee89-497d-83be-\
 67cfedd84ae3"]
 }, Open  ]]
 }, Open  ]]
@@ -284,31 +328,39 @@ Cell[752, 27, 736, 19, 196, "Text",ExpressionUUID->"4c2ba7a6-c818-44f2-b516-8b96
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[1525, 51, 155, 3, 98, "Title",ExpressionUUID->"0af4a1c6-5804-4341-b3c0-2ed4dea9b8fa"],
-Cell[1683, 56, 1290, 21, 265, "Text",ExpressionUUID->"6947f346-4001-46cd-85f3-847bc99366b8"],
-Cell[2976, 79, 672, 13, 58, "Text",ExpressionUUID->"d9794093-d248-47f1-b1bf-72b154093a93"],
-Cell[3651, 94, 845, 15, 81, "Text",ExpressionUUID->"83a2ddc3-ebbe-4417-9695-6ce3e23fcc3e"],
-Cell[4499, 111, 936, 18, 173, "Text",ExpressionUUID->"bba1dd76-0524-4c6b-895f-c97f2ddfe515"]
+Cell[1683, 56, 1553, 26, 288, "Text",ExpressionUUID->"6947f346-4001-46cd-85f3-847bc99366b8"],
+Cell[3239, 84, 672, 13, 58, "Text",ExpressionUUID->"d9794093-d248-47f1-b1bf-72b154093a93"],
+Cell[3914, 99, 845, 15, 81, "Text",ExpressionUUID->"83a2ddc3-ebbe-4417-9695-6ce3e23fcc3e"],
+Cell[4762, 116, 936, 18, 173, "Text",ExpressionUUID->"bba1dd76-0524-4c6b-895f-c97f2ddfe515"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5472, 134, 153, 3, 98, "Title",ExpressionUUID->"9e6efd20-2fdd-46c3-95cb-409c96a6477e"],
-Cell[5628, 139, 807, 16, 127, "Text",ExpressionUUID->"dc6334b3-3b69-42e4-b562-9dfc36f98824"],
-Cell[6438, 157, 307, 8, 81, "Text",ExpressionUUID->"4e45ca6e-9991-46e2-8193-daf9e93df7ac"],
-Cell[6748, 167, 418, 9, 104, "Text",ExpressionUUID->"babb10fa-22c0-4ced-afa5-19144e5c8fae"],
-Cell[7169, 178, 576, 12, 173, "Text",ExpressionUUID->"4c991307-549a-403c-8423-6d29405f163b"],
+Cell[5735, 139, 153, 3, 98, "Title",ExpressionUUID->"9e6efd20-2fdd-46c3-95cb-409c96a6477e"],
+Cell[5891, 144, 807, 16, 127, "Text",ExpressionUUID->"dc6334b3-3b69-42e4-b562-9dfc36f98824"],
+Cell[6701, 162, 307, 8, 81, "Text",ExpressionUUID->"4e45ca6e-9991-46e2-8193-daf9e93df7ac"],
+Cell[7011, 172, 418, 9, 104, "Text",ExpressionUUID->"babb10fa-22c0-4ced-afa5-19144e5c8fae"],
+Cell[7432, 183, 576, 12, 173, "Text",ExpressionUUID->"4c991307-549a-403c-8423-6d29405f163b"],
 Cell[CellGroupData[{
-Cell[7770, 194, 159, 3, 68, "Section",ExpressionUUID->"d6423871-782f-4c3f-bed0-61c34f034bc2"],
-Cell[7932, 199, 165, 3, 35, "Text",ExpressionUUID->"7bfc42ed-46b7-4849-971d-ee42edc5c83b"],
-Cell[8100, 204, 476, 9, 81, "Text",ExpressionUUID->"83f5a31d-7084-45ab-b51e-7cda902dade8"]
+Cell[8033, 199, 159, 3, 68, "Section",ExpressionUUID->"d6423871-782f-4c3f-bed0-61c34f034bc2"],
+Cell[8195, 204, 476, 9, 81, "Text",ExpressionUUID->"83f5a31d-7084-45ab-b51e-7cda902dade8"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8613, 218, 160, 3, 68, "Section",ExpressionUUID->"dd654739-1718-4bf0-8523-865aa3c1702a"],
+Cell[8708, 218, 160, 3, 68, "Section",ExpressionUUID->"dd654739-1718-4bf0-8523-865aa3c1702a"],
 Cell[CellGroupData[{
-Cell[8798, 225, 162, 3, 55, "Subsection",ExpressionUUID->"9381da49-ebaf-4449-a330-2f5da810dfe8"],
-Cell[8963, 230, 230, 5, 35, "Text",ExpressionUUID->"9ece2174-0de3-4ef5-a782-6c5573fd1256"]
+Cell[8893, 225, 150, 3, 55, "Subsection",ExpressionUUID->"1f5c6955-4e9c-4487-97b8-968fc9228ac7"],
+Cell[9046, 230, 322, 7, 35, "Text",ExpressionUUID->"e7d4cf0a-96d6-44b5-9243-15eb35671f22"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9230, 240, 159, 3, 55, "Subsection",ExpressionUUID->"820864a1-5442-467c-a5c1-0c1d9d296ecf"],
-Cell[9392, 245, 645, 14, 127, "Text",ExpressionUUID->"2cb3baa8-ee89-497d-83be-67cfedd84ae3"]
+Cell[9405, 242, 162, 3, 55, "Subsection",ExpressionUUID->"1065e21f-b2f9-40b3-a9dc-d6fc5d821354"],
+Cell[9570, 247, 171, 3, 35, "Text",ExpressionUUID->"2bca3471-bb28-4201-b265-ff3348ba759f"],
+Cell[9744, 252, 375, 7, 58, "Text",ExpressionUUID->"fd749ff3-b9e2-4223-b959-67f241f17b6b"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10156, 264, 162, 3, 55, "Subsection",ExpressionUUID->"9381da49-ebaf-4449-a330-2f5da810dfe8"],
+Cell[10321, 269, 481, 9, 81, "Text",ExpressionUUID->"9ece2174-0de3-4ef5-a782-6c5573fd1256"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10839, 283, 159, 3, 55, "Subsection",ExpressionUUID->"820864a1-5442-467c-a5c1-0c1d9d296ecf"],
+Cell[11001, 288, 769, 15, 150, "Text",ExpressionUUID->"2cb3baa8-ee89-497d-83be-67cfedd84ae3"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
