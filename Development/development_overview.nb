@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14551,        362]
-NotebookOptionsPosition[     11810,        308]
-NotebookOutlinePosition[     12142,        323]
-CellTagsIndexPosition[     12099,        320]
+NotebookDataLength[     16611,        405]
+NotebookOptionsPosition[     13637,        347]
+NotebookOutlinePosition[     13969,        362]
+CellTagsIndexPosition[     13926,        359]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -203,14 +203,27 @@ Cell["Current task", "Section",
 61c34f034bc2"],
 
 Cell["\<\
+Signs for Acbc not correct yet. What is still missing are the signs from \
+applying derivatives 
+Add derivField in derivAll.
+Find out if I really need the signs for the individual expressions. They \
+should cancel at the end, shouldn\[CloseCurlyQuote]t they?
 Remove all definitions of fields and put them at the beginning. Create a way \
 to define properties of fields. Adopt predicates of fields.
+Potential sign problem for terms like Acbc. See notes where cbar is replaced \
+by cbar + D d/dc after first derivative.
 DSEPlotList calls vertexDummies which is not defined for the case of {{A,A}}. \
 Is DSEPlotList called correctly?\
 \>", "Text",
  CellChangeTimes->{{3.7364139946189537`*^9, 3.736414015867042*^9}, {
-   3.736497206089889*^9, 3.736497210409691*^9}, 
-   3.756473476156234*^9},ExpressionUUID->"83f5a31d-7084-45ab-b51e-\
+   3.736497206089889*^9, 3.736497210409691*^9}, 3.756473476156234*^9, {
+   3.760091857283441*^9, 3.760091860531354*^9}, {3.760091980756208*^9, 
+   3.760091987524372*^9}, {3.765776544420946*^9, 3.765776563622756*^9}, {
+   3.76577670690384*^9, 3.7657767072083807`*^9}, {3.765792397986733*^9, 
+   3.765792423875112*^9}, {3.7657947706161337`*^9, 3.765794774328485*^9}, {
+   3.765799452978587*^9, 3.765799476338401*^9}, 3.765872874341422*^9, {
+   3.765885321632824*^9, 
+   3.765885359715032*^9}},ExpressionUUID->"83f5a31d-7084-45ab-b51e-\
 7cda902dade8"]
 }, Open  ]],
 
@@ -220,6 +233,19 @@ Cell["Things to add", "Section",
  CellChangeTimes->{{3.736318337912401*^9, 
   3.7363183394324636`*^9}},ExpressionUUID->"dd654739-1718-4bf0-8523-\
 865aa3c1702a"],
+
+Cell[CellGroupData[{
+
+Cell["Not working", "Subsection",
+ CellChangeTimes->{{3.7661270423340683`*^9, 
+  3.766127043416971*^9}},ExpressionUUID->"030a68c4-1d8e-41c0-b85e-\
+a89561e80ffb"],
+
+Cell["* RGE broken phase", "Text",
+ CellChangeTimes->{{3.766127044947033*^9, 
+  3.766127049068472*^9}},ExpressionUUID->"33ba5fff-7e2c-435c-ba94-\
+c4a94a332e91"]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -271,11 +297,20 @@ Cell["\<\
 * Automatic guessing of fields. Right now the user has to define the fields.
 * Update error and usage messages for changed functions, e.g., DSEPlot no \
 longer has the argument fields_List.
-* Remove all references to field as a Head.\
+* Remove all references to field as a Head.
+* Sign convention: In doRGE the first derivative has a minus sign without \
+$signConvention. Is this inconsistent?
+* Identification of fermion loops running in different directions?
+* Check sE.
+* Check plugInFieldsV: Only required for broken phase. Has to be updated to \
+left derivatives.\
 \>", "Text",
  CellChangeTimes->{{3.7364968418920193`*^9, 3.7364968600041447`*^9}, {
   3.75664564205364*^9, 3.756645673980197*^9}, {3.756704319770443*^9, 
-  3.756704332114352*^9}},ExpressionUUID->"9ece2174-0de3-4ef5-a782-\
+  3.756704332114352*^9}, {3.757061599194165*^9, 3.7570616264094057`*^9}, {
+  3.759473671438899*^9, 3.759473683359365*^9}, {3.759493403993402*^9, 
+  3.75949340784801*^9}, {3.7661266306513968`*^9, 
+  3.766126651358989*^9}},ExpressionUUID->"9ece2174-0de3-4ef5-a782-\
 6c5573fd1256"]
 }, Open  ]],
 
@@ -294,13 +329,17 @@ Cell["\<\
 * Import of online version should stop if the server is not reachable (caused \
 long delay when physik was not reachable).
 * Can one use the version number from PacletInfo.m instead of defining it \
-directly?\
+directly?
+* dummyFieldF and AF still needed?
+* Update documentiation: Add setFields to examples.\
 \>", "Text",
  CellChangeTimes->{{3.736318351848378*^9, 3.736318381608193*^9}, {
   3.736318691900454*^9, 3.736318699294239*^9}, {3.740134532572054*^9, 
   3.740134570380205*^9}, {3.7564736134652653`*^9, 3.756473619708352*^9}, {
   3.756530027696156*^9, 3.75653004702323*^9}, {3.756532294802836*^9, 
-  3.756532318868043*^9}},ExpressionUUID->"2cb3baa8-ee89-497d-83be-\
+  3.756532318868043*^9}, {3.765787880010935*^9, 3.765787889434971*^9}, {
+  3.76612714427011*^9, 
+  3.766127162381712*^9}},ExpressionUUID->"2cb3baa8-ee89-497d-83be-\
 67cfedd84ae3"]
 }, Open  ]]
 }, Open  ]]
@@ -341,26 +380,30 @@ Cell[7011, 172, 418, 9, 104, "Text",ExpressionUUID->"babb10fa-22c0-4ced-afa5-191
 Cell[7432, 183, 576, 12, 173, "Text",ExpressionUUID->"4c991307-549a-403c-8423-6d29405f163b"],
 Cell[CellGroupData[{
 Cell[8033, 199, 159, 3, 68, "Section",ExpressionUUID->"d6423871-782f-4c3f-bed0-61c34f034bc2"],
-Cell[8195, 204, 476, 9, 81, "Text",ExpressionUUID->"83f5a31d-7084-45ab-b51e-7cda902dade8"]
+Cell[8195, 204, 1272, 22, 173, "Text",ExpressionUUID->"83f5a31d-7084-45ab-b51e-7cda902dade8"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8708, 218, 160, 3, 68, "Section",ExpressionUUID->"dd654739-1718-4bf0-8523-865aa3c1702a"],
+Cell[9504, 231, 160, 3, 68, "Section",ExpressionUUID->"dd654739-1718-4bf0-8523-865aa3c1702a"],
 Cell[CellGroupData[{
-Cell[8893, 225, 150, 3, 55, "Subsection",ExpressionUUID->"1f5c6955-4e9c-4487-97b8-968fc9228ac7"],
-Cell[9046, 230, 322, 7, 35, "Text",ExpressionUUID->"e7d4cf0a-96d6-44b5-9243-15eb35671f22"]
+Cell[9689, 238, 161, 3, 55, "Subsection",ExpressionUUID->"030a68c4-1d8e-41c0-b85e-a89561e80ffb"],
+Cell[9853, 243, 160, 3, 35, "Text",ExpressionUUID->"33ba5fff-7e2c-435c-ba94-c4a94a332e91"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9405, 242, 162, 3, 55, "Subsection",ExpressionUUID->"1065e21f-b2f9-40b3-a9dc-d6fc5d821354"],
-Cell[9570, 247, 171, 3, 35, "Text",ExpressionUUID->"2bca3471-bb28-4201-b265-ff3348ba759f"],
-Cell[9744, 252, 375, 7, 58, "Text",ExpressionUUID->"fd749ff3-b9e2-4223-b959-67f241f17b6b"]
+Cell[10050, 251, 150, 3, 55, "Subsection",ExpressionUUID->"1f5c6955-4e9c-4487-97b8-968fc9228ac7"],
+Cell[10203, 256, 322, 7, 35, "Text",ExpressionUUID->"e7d4cf0a-96d6-44b5-9243-15eb35671f22"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10156, 264, 162, 3, 55, "Subsection",ExpressionUUID->"9381da49-ebaf-4449-a330-2f5da810dfe8"],
-Cell[10321, 269, 481, 9, 81, "Text",ExpressionUUID->"9ece2174-0de3-4ef5-a782-6c5573fd1256"]
+Cell[10562, 268, 162, 3, 55, "Subsection",ExpressionUUID->"1065e21f-b2f9-40b3-a9dc-d6fc5d821354"],
+Cell[10727, 273, 171, 3, 35, "Text",ExpressionUUID->"2bca3471-bb28-4201-b265-ff3348ba759f"],
+Cell[10901, 278, 375, 7, 58, "Text",ExpressionUUID->"fd749ff3-b9e2-4223-b959-67f241f17b6b"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10839, 283, 159, 3, 55, "Subsection",ExpressionUUID->"820864a1-5442-467c-a5c1-0c1d9d296ecf"],
-Cell[11001, 288, 769, 15, 150, "Text",ExpressionUUID->"2cb3baa8-ee89-497d-83be-67cfedd84ae3"]
+Cell[11313, 290, 162, 3, 55, "Subsection",ExpressionUUID->"9381da49-ebaf-4449-a330-2f5da810dfe8"],
+Cell[11478, 295, 967, 18, 173, "Text",ExpressionUUID->"9ece2174-0de3-4ef5-a782-6c5573fd1256"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12482, 318, 159, 3, 55, "Subsection",ExpressionUUID->"820864a1-5442-467c-a5c1-0c1d9d296ecf"],
+Cell[12644, 323, 953, 19, 196, "Text",ExpressionUUID->"2cb3baa8-ee89-497d-83be-67cfedd84ae3"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]

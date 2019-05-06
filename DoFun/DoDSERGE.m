@@ -809,6 +809,12 @@ Clear@vTest; vTest[a_V] := Length@a < 4;
 setSourcesZeroRGE[op[V[{A, i}, {A, r}, {A, s}, {A, t}], P[{A, r}, {$dummyField, u}], P[{A, s}, {$dummyField, v}], P[{A, t}, {$dummyField, traceIndex2}], V[{$dummyField, u}, {$dummyField, v}, {$dummyField, traceIndex2}, {A, j}]], {{A, A}, {A, A, A}},{{A, A}}, vTest]
 ";
 
+(* TODO*)
+sf::usage="Temporary function to determine the signs from fermions."
+
+(* TODO*)
+getSigns::usage="Make signs from the sf temporary functions explicit."
+
 shortExpression::usage="Rewrites a symbolic DSE or RGE into a shorter form using $bareVertexSymbol, $vertexSymbol, $regulatorInsertionSymbol and $propagatorSymbol for representation.
 The function sE is identical to shortExpression.\n
 Syntax:
@@ -1174,7 +1180,7 @@ op[a___,b_ ?NumericQ c_,d___]:=b op[a,c,d];
 
 op[a___,Plus[b_, c_],d___]:=op[a,b,d]+op[a,c,d];
 
-op[a___,0,b___]:=0;
+op[a___,b_?NumericQ,c___]:=b op[a,c];
 
 (* property similar to Flat, but without side effects on pattern matching *)
 op[a___,op[b___], c___]:=op[a,b,c];
@@ -1216,14 +1222,19 @@ sortDummies[a_List]:=sortDummies/@a;
 sortDummies[a_?NumericQ]:=a;
 
 sortDummies[a_op]:=Module[
-{inds,exprDummies,newDummies,newDummyRules,dummyList,ind},
+{b,inds,exprDummies,newDummies,newDummyRules,dummyList},
+
+(* discard sf terms, since their indices are not to be contracted *)
+b = a/.sf[_,_]:>1;
 
 (* get all indices from the epxression *)
-inds=Transpose[a[[Sequence@@#]]&/@Position[a,{_,ind_}]][[2]];
+(*inds=Transpose[b[[Sequence@@#]]&/@Position[b,{_,ind_}]][[2]];*)
+inds = Cases[b, {c_?fieldQ, ind_} :> ind, Infinity];
 
-(* determine the dummy indices; only take the first appearance, don't  change order, i.e. don't use Union *)
-exprDummies=
-Cases[{#,Count[inds,#]}&/@inds,{b_,2}:> b]/.{f___,b_,c___,b_,e___}:> {f,b,c,e};
+(* determine the dummy indices; only take the first appearance, don't change order, i.e. don't use Union *)
+(*exprDummies=
+Cases[{#,Count[inds,#]}&/@inds,{g_,2}:> g]/.{f___,g_,c___,g_,e___}:> {f,g,c,e};*)
+exprDummies = Cases[Tally[inds],{c_,2}:>c];
 
 (* create the dummy list *)
 dummyList=createDummyList[Length@exprDummies,dummyNames];
@@ -1294,6 +1305,36 @@ getInteractionList[a___]:=Message[getInteractionList::syntax,a];
 
 
 
+(* function to determine signs from fermions *)
+(* Signs are represented by sf[a,b] where a is a single field and b a list of fields.
+If a is a Grassmann field, a minus sign appears for each Grassmann field in b.
+sf basically represent the sign introduced by moving the field a beyond the fields b.
+*)
+
+(* no fields left *)
+sf[a_, {}] := 1
+
+(* delete double fields *)
+sf[a_, b___List] /; Sort@b =!= Union[b] := 
+ sf[a, b /. {m1___, n_, m2___, n_, m3___} :> {m1, m2, m3}]
+ 
+(* delete non-Grassmann fields *)
+sf[a_, b___List] /; 
+  Not[FreeQ[
+    b[[All, 1]], _?bosonQ | _?complexFieldQ | _?antiComplexFieldQ]] :=
+  sf[a, DeleteCases[b, _?bosonQ | _?complexFieldQ | _?antiComplexFieldQ]]
+   
+(* if the first field is not Grassmann, then no sf is needed *)
+sf[a_, b___List] /; 
+  bosonQ[a] || complexFieldQ[a] || antiComplexFieldQ[a] := 1
+
+
+(* make signs explicit *)
+getSigns[exp_] := 
+ exp /. sf[f_?grassmannQ, l__] :> (-1)^Count[l, _?grassmannQ]
+
+
+
 
 (* ::Section:: *)
 (* Differentiation *)
@@ -1340,22 +1381,24 @@ replacementCalcStep[op[S_,a___,replacedField[{Q_,q_}],c__/;FreeQ[{c},replacedFie
 replacementCalc[a_]:=FixedPoint[replacementCalcStep,a,50];
 
 
-
 (* auxiliary function for plugging in the fermions/anti-fermions at the right place, i.e. the latter left and the former right *)
 (* called with no fields to plugin *)
+(* TODO Discard all plugFields* functions *)
 plugInFieldsV[{},b_V]:=b;
+plugInFieldsV[{Q_?fieldQ,q_},b_V]:=Prepend[b,{Q,q}];
 (* called with a vertex and one field to plugin *)
-plugInFieldsV[{Q_?fieldQ,q_},b_V]/;(fermionQ[Q]):=Append[b,{Q,q}];
+(*plugInFieldsV[{Q_?fieldQ,q_},b_V]/;(fermionQ[Q]):=Append[b,{Q,q}];
 plugInFieldsV[{Q_?fieldQ,q_},b_V]:=Prepend[b,{Q,q}];
 (* called with several fields *)
 plugInFieldsV[newFields_List,b_V]:=Fold[plugInFieldsV[#2,#1]&,b,newFields];
 (* called with the argument of a vertex *)
 plugInFieldsV[newField_List,b__]/;(fermionQ[newField[[1]]]):=Sequence[b,newField];
+*)
 plugInFieldsV[newField_List,b__]:=Sequence[newField,b];
  
 (* propagators are defined reversely in DoDSE! *)
 
-plugInFieldsP[a_List,b__]/;(antiFermionQ[a[[1]]]):=Sequence[b,a];
+(*plugInFieldsP[a_List,b__]/;(antiFermionQ[a[[1]]]):=Sequence[b,a];*)
 plugInFieldsP[a_List,b__]:=Sequence[a,b];
 
 
@@ -1370,18 +1413,27 @@ the latter gets the correct factors if there are more of the same propagators us
 
 derivAll[a_,{Q_,q_}]/;Not@FreeQ[a,{Q,q},Infinity]:=Message[derivAll::index,{Q,q}];
 
-(* ToDo: This line makes some graphs disappear in the Acc vertex; DoDSE still has it so it cannot be loaded *)
+(* TODO: This line makes some graphs disappear in the Acc vertex; DoDSE still has it so it cannot be loaded *)
 (*derivAll[op[S_,fvp___],{Q_,q_}]:=derivField[op[S,fvp],{Q,q}]+
 	Plus@@(op[S,Sequence@@DeleteCases[{fvp},#],$signConvention derivVertex[#,{Q,q}]]&/@{fvp})+
 	derivPropagators[op[S,fvp],{Q,q}]/.op[___,0,___]:> 0;*)
 	
 (* CHECK this version does not refer to bare vertices; should work for DoDSE too? *)
 (* no bare vertices in the RGE *)
+(*derivAll[op[fvp___],{Q_,q_}]:=(derivField[op[fvp],{Q,q}]+
+	Plus@@(op[Sequence@@DeleteCases[{fvp},#],$signConvention derivVertex[#,{Q,q}]]&/@{fvp})+
+	derivPropagators[op[fvp],{Q,q}]);*)
 derivAll[op[fvp___],{Q_,q_}]:=(derivField[op[fvp],{Q,q}]+
 	Plus@@(op[Sequence@@DeleteCases[{fvp},#],$signConvention derivVertex[#,{Q,q}]]&/@{fvp})+
-	derivPropagators[op[fvp],{Q,q}]/.op[___,0,___]:> 0);
-	
-	
+	derivPropagators[op[fvp],{Q,q}]);
+(*derivAll[op[fvp___],{Q_,q_}]:=derivField[op[fvp],{Q,q}]
+	+Plus@@(
+			(*derivField[,{Q,q}*)
+			derivVertex[#,{Q,q}]
+			+derivPropagator[#,{Q,q}],
+			b]&/@{fvp})/.Cases[___]:>{}(*delete instances where a==Sequence[]*)
+	)*)
+
 
 
 (* if called with no derivatives given *)
@@ -1399,7 +1451,7 @@ deriv[a___]:=Message[deriv::syntax,a];
 derivRGE[a_,(*extFields_List,*)firstInd_,otherInds__]:=derivRGE[derivRGE[a,(*extFields,*)firstInd],(*extFields,*)otherInds];
 
 (* for an anti-fermion do the differentiation from the left for all possible shifts *)
-derivRGE[a_,(*extFields_List,*){Q_?antiFermionQ,q_}]:=(*sortDummies[*)
+(*derivRGE[a_,(*extFields_List,*){Q_?antiFermionQ,q_}]:=(*sortDummies[*)
 	(*Expand[a/.op[b__]:> derivAllRGEAF[op[b],extFields,{Q,q}]]*)
 	Expand[a/.op[b__]:> derivAllRGEAF[op[b],(*extFields,*){Q,q}]];
 (*]*)
@@ -1410,9 +1462,12 @@ derivRGE[a_,(*extFields_List,*){Q_?fermionQ,q_}]:=(*sortDummies[*)
 	Expand[a/.op[b__]:> derivAllRGEF[op[b],(*extFields,*){Q,q}]];
 (*]*)
 
+
 (* for bosons no reordering is required so take any of the fermionic derivatives *)
 derivRGE[a_,(*extFields_List,*){Q_,q_}]:=(*sortDummies@*)Expand[a/.op[b__]:> derivAllRGEAF[op[b],(*extFields,*){Q,q}]];
+*)
 
+derivRGE[a_,{Q_,q_}]:=Expand[a/.op[b__]:> derivAllRGEAF[op[b],{Q,q}]];
 
 
 (*derivRGE[a___]:=Message[derivRGE::syntax,a];*)
@@ -1431,15 +1486,16 @@ derivAllRGEAF[op[fvp___],(*extFields_List,*){Q_,q_}]:=Module[{allShifts},
 		(* derivative of a propagator; do all explicitly to get the correct factors *)
 		op[derivPropagatorRGE[arg[[1]],{Q,q}],Rest@arg]
 		]/@allShifts;*)
-	Plus@@Function[arg,
+	(*Plus@@Function[arg,
 		(* derivative of a vertex *)
 		op[derivVertex[arg[[1]],{Q,q}],Rest@arg]+
 		(* derivative of a propagator; do all explicitly to get the correct factors *)
 		op[derivPropagatorRGE[arg[[1]],{Q,q}],Rest@arg]
-		]/@allShifts;
+		]/@allShifts;*)
 	(Plus@@(op[Sequence@@DeleteCases[{fvp},#],$signConvention derivVertex[#,{Q,q}]]&/@{fvp})+
 	Plus@@(op[Sequence@@DeleteCases[{fvp},#], derivPropagatorRGE[#,{Q,q}]]&/@{fvp}))
 ];
+
 
 (* this should be the right one *)
 derivAllRGEF[op[fvp___],(*extFields_List,*){Q_,q_}]:=Module[{allShifts},
@@ -1482,7 +1538,8 @@ derivField[op[S_],{Q_,q_}]:=0;
 
 
 
-derivVertex[V[fields__],{Q_,q_}]:=V[plugInFieldsV[{Q,q},fields]];
+(*derivVertex[V[fields__],{Q_,q_}]:=V[plugInFieldsV[{Q,q},fields]];*)
+derivVertex[V[fields__],{Q_,q_}]:=V[{Q,q},fields];
 
 derivVertex[S[fields__],{Q_,q_}]:=0;
 
@@ -1491,21 +1548,33 @@ derivVertex[P[a__],{Q_,q_}]:=0;
 derivVertex[a_List,{Q_,q_}]:=0;
 
 derivVertex[a_dR,{Q_,q_}]:=0;
+
+derivVertex[a_sf,{Q_,q_}]:=0;
  
 
 derivPropagator[V[a__],{Q_,q_}]:=0;
 
 derivPropagator[a_List,{Q_,q_}]:=0;
 
-derivPropagator[P[field1_List,field2_List],{Q_,q_}]:=ReleaseHold@Module[{dummy1,dummy2},
-	Hold@Sequence[V[plugInFieldsV[{Q,q},{$dummyField,dummy1=insDummy[]},{$dummyField,dummy2=insDummy[]}]],
+derivPropagator[S[_,_],{Q_,q_}]:=0;
+
+derivPropagator[sf[_,_],{Q_,q_}]:=0;
+
+(*derivPropagator[P[field1_List,field2_List],{Q_,q_}]:=ReleaseHold@Module[{dummy1,dummy2},
+	Hold@Sequence[sf[{Q,q},{field1,{$dummyField,dummy1}}],V[plugInFieldsV[{Q,q},{$dummyField,dummy1=insDummy[]},{$dummyField,dummy2=insDummy[]}]],
 		P[plugInFieldsP[field1,{$dummyField,dummy1}]],P[plugInFieldsP[field2,{$dummyField,dummy2}]]]
+];*)
+derivPropagator[P[field1_List,field2_List],{Q_,q_}]:=ReleaseHold@Module[{dummy1,dummy2},
+	Hold@Sequence[sf[{Q,q},{field1,{$dummyField,dummy1=insDummy[]}}],P[field1,{$dummyField,dummy1}],V[{Q,q},{$dummyField,dummy1},{$dummyField,dummy2=insDummy[]}],
+		P[{$dummyField,dummy2},field2]]
 ];
 
 (* unfortunately different conventions for DSEs and RGEs have to be used; for RGEs no plugInFieldsP is used and the order in the second propagator is different *)
 derivPropagatorRGE[V[a__],{Q_,q_}]:=0;
 
 derivPropagatorRGE[a_List,{Q_,q_}]:=0;
+
+derivPropagatorRGE[sf[_,_],{Q_,q_}]:=0;
 
 derivPropagatorRGE[P[field1_List,field2_List],{Q_,q_}]:=ReleaseHold@Module[{dummy1,dummy2},
 	Hold@Sequence[P[field1,{$dummyField,dummy1}],V[plugInFieldsV[{Q,q},{$dummyField,dummy1=insDummy[]},{$dummyField,dummy2=insDummy[]}]],
@@ -1527,6 +1596,9 @@ props=Cases[a,_P];
 propConnections=Function[{prop},
 posInd=Position[a,Alternatives@@prop];
 {prop,DeleteCases[a[[Sequence@@#[[1]]]]&/@posInd,_P]}]/@props;
+
+(* delete appearances of sf function *)
+propConnections = propConnections/.sf[_,_]:>Sequence[];
 
 (* create a list of the factor, 1 representative and the connected vertices *)
 represConnections=Union[propConnections,SameTest->propagatorId];
@@ -1584,17 +1656,17 @@ compareGraphs: compares to graphs and gives True or False of they are the same;
 uses graphical representation for comparison;
 it is used by identifyGraphs which adds graphs if they are the same
 compareGraphs2 uses an old algorithm with permutation of the indices, can be very slow (hours for 4-point functions *)
-
+Clear@compareGraphs;
 compareGraphs[a_op,b_op]/;Not[And@@((Head@First@#===S)&/@{a,b})]:=Message[compareGraphs::syntax,a,b];
 
 compareGraphs[a_op,b_op]:=compareGraphs[a,b]=Module[{sorteda,sortedb},
 
-(* two graphs are euqal, if there graphical representation is the same *)
+(* two graphs are euqal, if their graphical representation is the same *)
 
 sorteda=DSEPlotCompare[a];
 sortedb=DSEPlotCompare[b];
 
-sorteda===sortedb
+sorteda===sortedb 
 
 ];
 
@@ -1976,6 +2048,9 @@ If[RGERules==propagatorCreationRules/.Join[{opts},Options@setSourcesZero],
 	extGrassmannSign=1;shouldBeSign=1;,
 	extGrassmannSign=1;shouldBeSign=1];
 
+(* override previous Grassmann signs *)
+extGrassmannSign=1;
+shouldBeSign=1;
 extGrassmannSign shouldBeSign vertsReplaced
 ];
 
@@ -2174,8 +2249,8 @@ innerFermionsCanonicalQ[exp_op, v_V] := Module[
   
   extFields2ZeroRules = # :> Sequence[] & /@ extFields;
     
-  (* expression with identifications *)
-  expId = exp /. P[___] :> Sequence[] /. idRules;
+  (* expression with identifications, removed sf functions *)
+  expId = exp /. P[___] :> Sequence[] /. idRules/. sf[_,_]:>Sequence[];
   
   (* get all internal fields of the vertex = connectors*)  
   vConnectors = List @@ (v /. extFields2ZeroRules /. idRules);
@@ -2283,10 +2358,16 @@ onePoint=identifyGraphs[replaceFields[firstDer],compareFunction->compareGraphsFu
 multiPoint=deriv[onePoint,Sequence@@Rest@derivs];
 
 (* get the correct sign due to fermions by ordering them; also order directed (complex) fields for identification*)
-finalExp=sign identifyGraphs[orderFermions@If[sourcesZero/.Join[{opts},Options@doDSE],sortDummies@setSourcesZero[multiPoint,(*zeroSources,*)L,(*dirFields,*)derivs,allowedPropagators,vertexTest,opts],
+(*finalExp=sign identifyGraphs[orderFermions@If[sourcesZero/.Join[{opts},Options@doDSE],sortDummies@setSourcesZero[multiPoint,(*zeroSources,*)L,(*dirFields,*)derivs,allowedPropagators,vertexTest,opts],
 multiPoint,multiPoint]/.(Function[dField, 
    P[{dField[[2]], c_}, {dField[[1]], b_}] :> 
-    P[{dField[[1]], b}, {dField[[2]], c}]] /@ Cases[complexFields,{_?(Head@#===boson&),_?(Head@#===boson&)}])];
+    P[{dField[[1]], b}, {dField[[2]], c}]] /@ Cases[complexFields,{_?(Head@#===boson&),_?(Head@#===boson&)}])];*)
+    (* TODO Check if ordering for complex fields is not obsolete by definition of P *)
+finalExp=orderFermions@If[sourcesZero/.Join[{opts},Options@doDSE],sortDummies@setSourcesZero[multiPoint,(*zeroSources,*)L,(*dirFields,*)derivs,allowedPropagators,vertexTest,opts],
+multiPoint,multiPoint]/.(Function[dField, 
+   P[{dField[[2]], c_}, {dField[[1]], b_}] :> 
+    P[{dField[[1]], b}, {dField[[2]], c}]] /@ Cases[complexFields,{_?(Head@#===boson&),_?(Head@#===boson&)}]);
+finalExp=sign identifyGraphs[getSigns[finalExp]];
 
 finalExp
 
@@ -2394,11 +2475,12 @@ sign= Which[Length@orderedDerivs>2,$signConvention (-1),True,(+1)];
 (* first derivative;
 the minus sign in front of the vertex appears because V is the vertex and not the three-fold derivative of Gamma as should appear here;
 if the first derivative is w.r.t. an anti-fermion, the order has to be changed, however, due to the ordering this will no longer happen *)
-onePoint=Which[fermionQ[orderedDerivs[[1,1]]],
+(*onePoint=Which[fermionQ[orderedDerivs[[1,1]]],
 	1/2 op[P[{$dummyField,traceIndex1},{$dummyField,ind}],-V[plugInFieldsV[First@orderedDerivs,{$dummyField,ind},{$dummyField,traceIndex2}]]],
 	True,
 	1/2 op[-V[plugInFieldsV[First@orderedDerivs,{$dummyField,traceIndex1},{$dummyField,ind}]],P[{$dummyField,ind},{$dummyField,traceIndex2}]]
-];
+];*)
+onePoint=1/2 op[sf[First@orderedDerivs,{{$dummyField,traceIndex1},{$dummyField,ind}}],P[{$dummyField,traceIndex1},{$dummyField,ind}],-V[First@orderedDerivs,{$dummyField,ind},{$dummyField,traceIndex2}]];
 
 (* perform additional differentiations and set sources to zero *)
 multiDer=derivRGE[onePoint,Sequence@@Rest@orderedDerivs];
@@ -2411,10 +2493,11 @@ multiPoint=orderFermions[(multiPointSources0)
     P[{dField[[1]], b}, {dField[[2]], c}]] /@ Cases[complexFields,{_?(Head@#===boson&),_?(Head@#===boson&)}])];
 
 (* the first dummy sorting is required for for the identification to work; the second one treats the dummies introduced by derivPropagatorsdt *)
-If[tDerivative/.Join[{opts},Options@doRGE],
+getSigns[If[tDerivative/.Join[{opts},Options@doRGE],
 	sortDummies[identifyGraphsRGE[sortDummies@multiPoint,extFields]/.a_op:>derivPropagatorsdt@a],
 	identifyGraphsRGE[sortDummies@multiPoint,extFields],
 	sortDummies[identifyGraphsRGE[sortDummies@multiPoint,extFields]/.a_op:>derivPropagatorsdt@a]
+	]
 ]
 
 ];
@@ -2616,8 +2699,10 @@ vertexDummies[a_op,sort_:(#&),opts___?OptionQ] /;Not@OptionQ@sort:=(*vertexDummi
   identificationList = Thread[Rule[#[[1]], #[[2]]], 1] & /@ verticesRepresList;
 
   (* use propagators for the rules of the GraphPlot *)
-  propagators /. identificationList /.bareVertexRule/.regulatorRule/. P[{B_, b_, bl_: ""}, {C_, c_, cl_: ""},d_] :> {Rule[{B, b, bl}, {C, c, cl}],d}
-  
+  propagators=propagators /. identificationList /.bareVertexRule/.regulatorRule/. P[{B_, b_, bl_: ""}, {C_, c_, cl_: ""},d_] :> {Rule[{B, b, bl}, {C, c, cl}],d};
+  propagators=propagators+1;
+  propagators-1 
+   
   ];
   
 
@@ -2632,7 +2717,7 @@ arrowLine[coords_List,label_String,fermions_List,opts___?OptionQ]:=Module[{arrow
 
 
 (* auxiliary function for comparison of graphs; derived from DSEPlotList *)
-
+Clear@DSEPlotCompare;
 DSEPlotCompare[a_op]:=DSEPlotCompare[a]=GraphPlot[vertexDummies[a,Sort]];
 
 
@@ -2953,12 +3038,15 @@ regulatorCross[x_]:=Module[{rad=0.1},
 
 (* create the propagator rules for the dummy field according to the allowed propagators given in propagatorList
 in the form {{A,A},{c,cb}} *)
+Clear[createPropagatorRules];
 createPropagatorRules[propagatorList_List, fields_List,opts___?OptionQ]:=createPropagatorRules[propagatorList, fields]=Module[{ffields,propagators,propsClasses,
 	propagatorsF, propagatorsB, propsClassesF, propsClassesB, propPlugInFunction},
 
 (* this function decides if plugInFieldsP is used or not;
 RGEs do not require it, but DSEs do; decided by using setSourcesZeroRGE instead of setSourcesZero *) 
 propPlugInFunction=If[RGERules==propagatorCreationRules/.Join[{opts},Options@setSourcesZero],(##)&,plugInFieldsP,plugInFieldsP];
+(* TODO overrule usage of plugInFields *)
+propPlugInFunction = (##)&; 
 
 ffields=Flatten@fields;
 
@@ -3040,6 +3128,8 @@ setFields[bosons_List, fermions_List, complexFields_List] := Module[{},
    Flatten[{bosons, complexFields}];
   (# /: grassmannQ[#] = True) & /@ 
    Flatten[{fermions, $dummyFieldF, $dummyFieldAF}];
+  (# /: cFieldQ[#] = True) & /@ Flatten[{bosons, complexFields}];
+  (# /: cFieldQ[#] = False) & /@ Flatten[fermions];
   
   (* define the anti-
   fields *)
@@ -3074,21 +3164,30 @@ countTerms[a___]:=Message[countTerms::syntax,a];
 (* Note: Setting the Head of a field to 'field' does not work with pattern matching, thus fieldQ has to be used. *)
 fieldQ[a_]:=Or@@(fieldType@a===# &/@$fieldTypes);
 
+fermionQ[a_List]:=fermionQ[a[[1]]];(* field given together with index*)
+
 fermionQ[a_]:=fieldType@a===fermion;
+
+antiFermionQ[a_List]:=antiFermionQ[a[[1]]];(* field given together with index*)
 
 antiFermionQ[a_]:=fieldType@a===antiFermion;
 
+bosonQ[a_List]:=bosonQ[a[[1]]];(* field given together with index*)
+
 bosonQ[a_]:=fieldType@a===boson;
+
+complexFieldQ[a_List]:=complexFieldQ[a[[1]]];(* field given together with index*)
 
 complexFieldQ[a_]:=fieldType@a===complex;
 
+antiComplexFieldQ[a_List]:=antiComplexFieldQ[a[[1]]];(* field given together with index*)
+
 antiComplexFieldQ[a_]:=fieldType@a===antiComplex;
   
-(* set (anti-)commutating property; TODO: Remove this. It is done in setFields. *)
-(*(# /: grassmannQ[#] = False) & /@ Flatten[{bosons, complexFields}];
-(# /: grassmannQ[#] = True) & /@ Flatten[fermions];
-(# /: cFieldQ[#] = True) & /@ Flatten[{bosons, complexFields}];
-(# /: cFieldQ[#] = False) & /@ Flatten[fermions];*)
+(* set (anti-)commutating property: Done in setFields. *)
+
+grassmannQ[a_List] := grassmannQ[a[[1]]](* field given together with index*)
+
 
 
 
