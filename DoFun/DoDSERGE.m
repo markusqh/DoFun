@@ -1313,6 +1313,10 @@ sf basically represent the sign introduced by moving the field a beyond the fiel
 
 (* no fields left *)
 sf[a_, {}] := 1
+   
+(* if the first field is not Grassmann, then no sf is needed *)
+sf[a_, b___List] /; 
+  bosonQ[a] || complexFieldQ[a] || antiComplexFieldQ[a] := 1
 
 (* delete double fields *)
 sf[a_, b___List] /; Sort@b =!= Union[b] := 
@@ -1323,11 +1327,6 @@ sf[a_, b___List] /;
   Not[FreeQ[
     b[[All, 1]], _?bosonQ | _?complexFieldQ | _?antiComplexFieldQ]] :=
   sf[a, DeleteCases[b, _?bosonQ | _?complexFieldQ | _?antiComplexFieldQ]]
-   
-(* if the first field is not Grassmann, then no sf is needed *)
-sf[a_, b___List] /; 
-  bosonQ[a] || complexFieldQ[a] || antiComplexFieldQ[a] := 1
-
 
 (* make signs explicit *)
 getSigns[exp_] := 
@@ -1492,8 +1491,11 @@ derivAllRGEAF[op[fvp___],(*extFields_List,*){Q_,q_}]:=Module[{allShifts},
 		(* derivative of a propagator; do all explicitly to get the correct factors *)
 		op[derivPropagatorRGE[arg[[1]],{Q,q}],Rest@arg]
 		]/@allShifts;*)
+		(*TODO: Using derivPropagator instead of derivPropagatorRGE now *)
+	(*(Plus@@(op[Sequence@@DeleteCases[{fvp},#],$signConvention derivVertex[#,{Q,q}]]&/@{fvp})+
+	Plus@@(op[Sequence@@DeleteCases[{fvp},#], derivPropagatorRGE[#,{Q,q}]]&/@{fvp}))*)
 	(Plus@@(op[Sequence@@DeleteCases[{fvp},#],$signConvention derivVertex[#,{Q,q}]]&/@{fvp})+
-	Plus@@(op[Sequence@@DeleteCases[{fvp},#], derivPropagatorRGE[#,{Q,q}]]&/@{fvp}))
+	Plus@@(op[Sequence@@DeleteCases[{fvp},#], derivPropagator[#,{Q,q}]]&/@{fvp}))
 ];
 
 
@@ -1519,19 +1521,25 @@ derivAllRGEF[op[fvp___],(*extFields_List,*){Q_,q_}]:=Module[{allShifts},
  
 
  
-
-derivField[op[S_,fields__],{A_,i_}]:=Module[{
-(* get the positions of the corresponding fields *)
-pos=Position[{fields},{A,_},1],
+derivField[op[fvp___],{A_,i_}]:=Module[{
+fields,
+rest,
+pos,
 posToReplace},
-
-(* factor for multiple fields; replace the first/last (anti-fermions/fermions) field by the one w.r.t. which we differentiate and delete the same in the external fields; *)
-If[pos!= {} (* check if there are fields *),
-(posToReplace:=pos[[1]];
-posToReplace:=Last[pos]/;fermionQ[A];
-Length@pos op[S/.{fields}[[posToReplace[[1]]]]:> {A,i},Sequence@@Delete[{fields},posToReplace]]),
-0 (* no fields *)
-]
+	
+	(* split into fields and the rest *)
+	fields = Cases[{fvp},{_?fieldQ,_}];
+	rest = Complement[{fvp},fields];
+	(* get the positions of the corresponding fields *)
+	pos=Position[fields,{A,_},1];
+	(* factor for multiple fields; replace the first/last (anti-fermions/fermions) field by the one w.r.t. which we differentiate and delete the same in the external fields; *)
+	If[pos!= {} (* check if there are fields *),
+		(posToReplace:=pos[[1]];
+		(*posToReplace:=Last[pos]/;fermionQ[A];*)(*TODO removed because of left derivatives *)
+		(* add sf for anticommutations with fermions *)
+		Length@pos op[sf[{A,i},Take[fields,posToReplace[[1]]-1]], Sequence@@(rest/.fields[[posToReplace[[1]]]]:> {A,i}),Sequence@@Delete[fields,posToReplace]]),
+		0 (* no fields *)
+		]
 ];
 
 derivField[op[S_],{Q_,q_}]:=0;
@@ -1744,7 +1752,7 @@ identifyGraphsRGE[a_?NumericQ,opts___]:=a;
 (* more terms *)
 identifyGraphsRGE[exp_Plus,extFields_List]:=Module[{classes,ops,equalOps,orderedExp},
 
-(* order bosonic fields in propagators; needed, e.g., for complex scalar fields; handled automatically in DoFun3 for complex fields, but still necessary for mixed fields *)
+(* TODO order bosonic fields in propagators; needed, e.g., for complex scalar fields; handled automatically in DoFun3 for complex fields, but still necessary for mixed fields *)
 orderedExp=exp/.P[{Q1_?cFieldQ,q1_},{Q2_?cFieldQ,q2_}]:>Sort@P[{Q1,q1},{Q2,q2}];
 
 (* split off the numerical factors; syntax: {{factor1,op1},{factor2, op2},{factor3,op3},...} *)
@@ -1758,7 +1766,7 @@ classes=Flatten[GatherBy[ops, {
   Sort@Cases[#1, P[q1_, q2_] :> {q1[[1]], q2[[1]]}, 2]&,
   Sort[(Cases[#, V[__], 2]/. {Q_?fieldQ, q_Symbol} :> {Q} /; 
       Not@MemberQ[extFields[[All, 2]], q])/.V[a__]:> Sort[V[a]]
-      ] &}],1];
+      ] &}],1]; 
       
 (* add up equivalent graphs *)
 equalOps=Flatten[#//.{b___,c_List,d___,e_List,f___}:> {b,{c[[1]]+e[[1]],c[[2]]},d,f}
@@ -2450,21 +2458,24 @@ doRGE[L_Times|L_Plus,derivs_List,vertexTest___Symbol,opts___?OptionQ]:=doRGE[L,d
 
 (* main code *)
 doRGE[L_Times|L_Plus,derivs_List,allowedPropagators_List,vertexTest___Symbol,opts___?OptionQ]:=Module[{
-	onePoint,orderedDerivs,multiPoint,multiDer,sign,multiPointSources0,ind=insDummy[], extFields, complexFields},
+	onePoint,orderedDerivs,multiPoint,multiDer,sign,multiPointSources0,ind=insDummy[], ind2=insDummy[], extFields, complexFields},
 
 (* get fields that are not necessarily fermions but directed, e.g., scalar complex fields;
 this does not work if allowedPropagators is used (i.e. not {}) because then we cannot say what the
 complex anti-field is  *)
-complexFields={#,antiField@#}&/@Union@Cases[L, _?complexFieldQ,Infinity];
+(*complexFields={#,antiField@#}&/@Union@Cases[L, _?complexFieldQ,Infinity];*)
 
 (* order the external fields; required to avoid complicated algorithms for determining the correct sign for fermions;
    order anti-fermions due to the convention that fermion derivatives act from the right, i.e.,
        left before right fermions, and anti-fermions act from the left, i.e., right before left anti-fermions *)
-orderedDerivs=derivs//.{a___,{b_?fermionQ,c_},d___,{e_?antiFermionQ,f_},g___}:>{a,{e,f},d,{b,c},g}//.{a___,{b_?cFieldQ,c_},d___,{e_?grassmannQ,f_},g___}:>{a,d,{e,f},{b,c},g};
-orderedDerivs=derivs//.{{a___,b_?(fermionQ@Head@#&), c_?(antiFermionQ@Head@#&),d___}:>({a,c,b,d}),
+(*orderedDerivs=derivs//.{a___,{b_?fermionQ,c_},d___,{e_?antiFermionQ,f_},g___}:>{a,{e,f},d,{b,c},g}//.{a___,{b_?cFieldQ,c_},d___,{e_?grassmannQ,f_},g___}:>{a,d,{e,f},{b,c},g};*)
+(*orderedDerivs=derivs//.{{a___,b_?(fermionQ@Head@#&), c_?(antiFermionQ@Head@#&),d___}:>({a,c,b,d}),
     	{a___,b_?(fermionQ@Head@#&), c_?(cFieldQ@Head@#&),d___}:>{a,c,b,d},{a___,b_?(cFieldQ@Head@#&), c_?(antiFermionQ@Head@#&),d___}:>{a,c,b,d}};
     orderedDerivs=derivs//.{a___,{b_?fermionQ,c_},d___,{e_?antiFermionQ,f_},g___}:>{a,{e,f},d,{b,c},g}//.{a___,{b_?cFieldQ,c_},{e_?grassmannQ,f_},g___}:>{a,{e,f},{b,c},g};
-orderedDerivs=Flatten[Replace[GatherBy[orderedDerivs,antiFermionQ@#[[1]]&],{a_List,b_List}:>{Reverse@a,b}],1];
+orderedDerivs=Flatten[Replace[GatherBy[orderedDerivs,antiFermionQ@#[[1]]&],{a_List,b_List}:>{Reverse@a,b}],1];*)
+
+(* TODO: Rewritten to left-derivatives only *)
+orderedDerivs=derivs;
 
 (* the external fields are given by the derivatives; extFields is just another name for it here *)
 extFields=orderedDerivs;
@@ -2481,18 +2492,28 @@ if the first derivative is w.r.t. an anti-fermion, the order has to be changed, 
 	1/2 op[-V[plugInFieldsV[First@orderedDerivs,{$dummyField,traceIndex1},{$dummyField,ind}]],P[{$dummyField,ind},{$dummyField,traceIndex2}]]
 ];*)
 onePoint=1/2 op[sf[First@orderedDerivs,{{$dummyField,traceIndex1},{$dummyField,ind}}],P[{$dummyField,traceIndex1},{$dummyField,ind}],-V[First@orderedDerivs,{$dummyField,ind},{$dummyField,traceIndex2}]];
+(* TODO Test adding a second propagator *)
+(*onePoint=1/2 op[sf[First@orderedDerivs,{{$dummyField,traceIndex1},{$dummyField,ind}}],P[{$dummyField,traceIndex1},{$dummyField,ind}],
+	-V[First@orderedDerivs,{$dummyField,ind},{$dummyField,ind2}],P[{$dummyField,ind2},{$dummyField,traceIndex2}]];*)
 
 (* perform additional differentiations and set sources to zero *)
 multiDer=derivRGE[onePoint,Sequence@@Rest@orderedDerivs];
 
-multiPointSources0= sign setSourcesZeroRGE[multiDer,(*zeroSources,*)L,(*dirFields,*)extFields,allowedPropagators,vertexTest,opts];
+multiPointSources0= sign setSourcesZeroRGE[multiDer,L,extFields,allowedPropagators,vertexTest,opts];
 
-multiPoint=orderFermions[(multiPointSources0)
+(*multiPoint=orderFermions[(multiPointSources0)
 	/. P[Q1_, Q2_] :> -P[Q1, Q2] /; (Not@FreeQ[{Q1,Q2}, traceIndex1|traceIndex2,2] && (grassmannQ@Q1[[1]]||grassmannQ@Q2[[1]]))/.(Function[dField, 
    P[{dField[[2]], c_}, {dField[[1]], b_}] :> 
-    P[{dField[[1]], b}, {dField[[2]], c}]] /@ Cases[complexFields,{_?(Head@#===boson&),_?(Head@#===boson&)}])];
+    P[{dField[[1]], b}, {dField[[2]], c}]] /@ Cases[complexFields,{_?(Head@#===boson&),_?(Head@#===boson&)}])];*)
+multiPoint=orderFermions[(multiPointSources0)
+	/. P[Q1_, Q2_] :> -P[Q1, Q2] /; (Not@FreeQ[{Q1,Q2}, traceIndex1|traceIndex2,2] && (grassmannQ@Q1[[1]]||grassmannQ@Q2[[1]]))/.(Function[dField, 
+   P[{dField[[2]], c_}, {dField[[1]], b_}] :> P[{dField[[1]], b}, {dField[[2]], c}]] /@ Cases[complexFields,{_?(Head@#===boson&),_?(Head@#===boson&)}])];
+   
+(* closing the trace adds a minus sign if fields are fermionic; get other signs from fermions *)
+multiPoint=getSigns@orderFermions[(multiPointSources0)/. P[Q1_, Q2_] :> -P[Q1, Q2] /; (Not@FreeQ[{Q1,Q2}, traceIndex1|traceIndex2,2] && (grassmannQ@Q1[[1]]||grassmannQ@Q2[[1]]))];
 
-(* the first dummy sorting is required for for the identification to work; the second one treats the dummies introduced by derivPropagatorsdt *)
+Global`X=multiPointSources0;
+(* the first dummy sorting is required for the identification to work; the second one treats the dummies introduced by derivPropagatorsdt *)
 getSigns[If[tDerivative/.Join[{opts},Options@doRGE],
 	sortDummies[identifyGraphsRGE[sortDummies@multiPoint,extFields]/.a_op:>derivPropagatorsdt@a],
 	identifyGraphsRGE[sortDummies@multiPoint,extFields],
