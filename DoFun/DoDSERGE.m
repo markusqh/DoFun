@@ -1472,7 +1472,7 @@ derivRGE[a_,{Q_,q_}]:=Expand[a/.op[b__]:> derivAllRGEAF[op[b],{Q,q}]];
 (*derivRGE[a___]:=Message[derivRGE::syntax,a];*)
 
 
-derivAllRGEAF[op[fvp___],(*extFields_List,*){Q_,q_}]:=Module[{allShifts},
+derivAllRGEAF[op[fvp___],(*extFields_List,*){Q_,q_}]:=Module[{allShifts,i, permSign},
 	
 	(* this is a list of all possible shifts sorted such that the quantity containing traceIndex1 is at the utmost left *)
 	(*allShifts=Sort[#, Not@FreeQ[#1, traceIndex1] &]&/@NestList[changeOrder[#,extFields]&,op[fvp],Length@op[fvp]-1];*)
@@ -1494,8 +1494,14 @@ derivAllRGEAF[op[fvp___],(*extFields_List,*){Q_,q_}]:=Module[{allShifts},
 		(*TODO: Using derivPropagator instead of derivPropagatorRGE now *)
 	(*(Plus@@(op[Sequence@@DeleteCases[{fvp},#],$signConvention derivVertex[#,{Q,q}]]&/@{fvp})+
 	Plus@@(op[Sequence@@DeleteCases[{fvp},#], derivPropagatorRGE[#,{Q,q}]]&/@{fvp}))*)
-	(Plus@@(op[Sequence@@DeleteCases[{fvp},#],$signConvention derivVertex[#,{Q,q}]]&/@{fvp})+
-	Plus@@(op[Sequence@@DeleteCases[{fvp},#], derivPropagator[#,{Q,q}]]&/@{fvp}))
+	(*(Plus@@(op[Sequence@@DeleteCases[{fvp},#],$signConvention derivVertex[#,{Q,q}]]&/@{fvp})+
+	Plus@@(op[Sequence@@DeleteCases[{fvp},#], derivPropagator[#,{Q,q}]]&/@{fvp}))*)
+	(* TODO: Add deriv of fields *)
+	(* include signs from permuting the derivative through all expressions left of the target *)
+	permSign[leftFvp_,{R_,r_}]:=sf[{R,r}, Sequence@@@Cases[leftFvp, P[__] | V[__] | {_?fieldQ,_}]];
+	
+	Plus @@ Table[ReplacePart[op[fvp], i -> Sequence[permSign[Take[{fvp}, i-1], {Q,q}], derivPropagator[{fvp}[[i]], {Q, q}]]], {i, 1, Length[{fvp}]}]
+   + Plus @@ Table[ReplacePart[op[fvp], i -> Sequence[permSign[Take[{fvp}, i-1], {Q,q}], $signConvention derivVertex[{fvp}[[i]], {Q, q}]]], {i, 1, Length[{fvp}]}]
 ];
 
 
