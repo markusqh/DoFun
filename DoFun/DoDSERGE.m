@@ -1853,7 +1853,7 @@ getGraphCharacteristic[graph_op, extFields_List] /;
       Not@MemberQ[extFields[[All, 2]], q] /. V[a__] :> Sort[V[a]];
 
 getGraphCharacteristic[graph_op, extLegs_List] := 
- Module[{props, verts, id,firstNeighbours, allFieldsInV, extFields},
+ Module[{props, verts, id,firstNeighbours, allFieldsInV, extFields, extFieldsRotated},
 
   props = Cases[graph, P[__]];
   verts = Cases[graph, V[__]];
@@ -1866,18 +1866,21 @@ getGraphCharacteristic[graph_op, extLegs_List] :=
   (* at this point we can determine all legs connected to an external field or a derivative; before this was not possible, because the external fields appeared twice (in V and op) *)
   allFieldsInV=Cases[id,{_?fieldQ,_},\[Infinity]];
   extFields=Select[allFieldsInV,Count[allFieldsInV,#]==1&];
-
-  firstNeighbours = getNeighbours[id, extFields];
+  (* rotate extFields until the first derivative is on position 1; this is necessary so that equal graphs with opposite directions of the fields can be identified  *)
+  extFieldsRotated=FixedPoint[RotateLeft[#]&, extFields, Length@extFields, SameTest->(Not[FreeQ[#2[[1]], extLegs[[1]]]] &)];
+  
+  (* find neighbours from there *)
+  firstNeighbours = getNeighbours[id, extFieldsRotated];
  
   (* repeat the process until the loop is closed *)
-  Nest[(# /. {a_, b_V} :> {a, getNeighbours[id, a, b, extFields]} )&,
+  Nest[(# /. {a_, b_V} :> {a, getNeighbours[id, a, b, extFieldsRotated]} )&,
      firstNeighbours,
      Max[0, Floor[(Length@props-2)/2]]]
     /. {Q_?fieldQ, q_Symbol} :> {Q} /; 
-      Not@MemberQ[extFields[[All, 2]], q] /. V[a__] :> Sort[V[a]]
-    /. {a_, {b_List, c_List}} :> {a, Sort[{b, c}]} (* sorting the first neighbours;\
+      Not@MemberQ[extFieldsRotated[[All, 2]], q] /. V[a__] :> Sort[V[a]]
+    /. {a_, {b_List, c_List}} :> {a, Sort[{b, c}]} (* sorting the first neighbours;
     	this identifies graphs with the opposite ordering direction of the external legs *)
-  ]
+]
 
 
 
@@ -2518,7 +2521,6 @@ multiPoint=orderFermions[(multiPointSources0)
 (* closing the trace adds a minus sign if fields are fermionic; get other signs from fermions *)
 multiPoint=getSigns@orderFermions[(multiPointSources0)/. P[Q1_, Q2_] :> -P[Q1, Q2] /; (Not@FreeQ[{Q1,Q2}, traceIndex1|traceIndex2,2] && (grassmannQ@Q1[[1]]||grassmannQ@Q2[[1]]))];
 
-Global`X=multiPointSources0;
 (* the first dummy sorting is required for the identification to work; the second one treats the dummies introduced by derivPropagatorsdt *)
 getSigns[If[tDerivative/.Join[{opts},Options@doRGE],
 	sortDummies[identifyGraphsRGE[sortDummies@multiPoint,extFields]/.a_op:>derivPropagatorsdt@a],
