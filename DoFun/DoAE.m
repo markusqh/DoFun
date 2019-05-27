@@ -631,7 +631,7 @@ getAEDo[a_, momenta_List, rest___]/;Depth[momenta]==2&&momenta=!={}:=
 getAEDo[a_, extMomentaIndices_List, contractFunctions_List, opts___?OptionQ]:=
 	(*getAE[a,indicesList,  momenta, contractFunctions, opts]=*)Module[{fields,uniqueExt,legRules,indicesList,
 	momentumRules,indsTypes,momentaInserted,indsPutIn,doubleIndsReplaced,indsReplaced,fullExpression, explicitTF,uniqueExtOrdered},
-fields=Union@Cases[a,_?fermionQ|_?bosonQ,\[Infinity]];
+fields=Union@Cases[a,_?fieldQ,\[Infinity]];
 
 (* get the fields and their indices *)
 (*indicesList=fields2/. {Q1_?fermionQ, Q2_?antiFermionQ} :> Q1 /. Q3_?fieldQ :> {Q3, Sequence @@ indices@Q3};*)

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     17500,        420]
-NotebookOptionsPosition[     14431,        361]
-NotebookOutlinePosition[     14763,        376]
-CellTagsIndexPosition[     14720,        373]
+NotebookDataLength[     18023,        428]
+NotebookOptionsPosition[     14951,        369]
+NotebookOutlinePosition[     15283,        384]
+CellTagsIndexPosition[     15240,        381]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -153,11 +153,15 @@ This property is taken over by fieldType. The head is now field. Note:",
  "Even if the head is field, no pattern matching is possible. I assume this \
 is because only for atomic expression the head is equal to the \
 \[OpenCurlyQuote]type\[CloseCurlyQuote], while for others the head is on top \
-of something."
+of something.\n* Fermions: Left-hand derivatives are used exclusively now. \
+This also means that the order of derivatives in the derivation functions \
+doRGE and doDSE can lead to different overall signs because they derive \
+\[OpenCurlyDoubleQuote]another\[CloseCurlyDoubleQuote] vertex."
 }], "Text",
  CellChangeTimes->{{3.7363255006234493`*^9, 3.73632552943932*^9}, {
   3.736495700564124*^9, 3.736495731019904*^9}, {3.7365174834010363`*^9, 
-  3.736517590289031*^9}},ExpressionUUID->"dc6334b3-3b69-42e4-b562-\
+  3.736517590289031*^9}, {3.7678769427122717`*^9, 
+  3.767877017671858*^9}},ExpressionUUID->"dc6334b3-3b69-42e4-b562-\
 9dfc36f98824"],
 
 Cell[TextData[{
@@ -315,7 +319,8 @@ $signConvention. Is this inconsistent?
 * Check sE.
 * Check plugInFieldsV: Only required for broken phase. Has to be updated to \
 left derivatives.
-* Comfort functions: Extract diagram types, e.g., boxes etc.\
+* Comfort functions: Extract diagram types, e.g., boxes etc.
+* Join order Fermions and order Canonical?\
 \>", "Text",
  CellChangeTimes->{{3.7364968418920193`*^9, 3.7364968600041447`*^9}, {
   3.75664564205364*^9, 3.756645673980197*^9}, {3.756704319770443*^9, 
@@ -323,7 +328,8 @@ left derivatives.
   3.759473671438899*^9, 3.759473683359365*^9}, {3.759493403993402*^9, 
   3.75949340784801*^9}, {3.7661266306513968`*^9, 3.766126651358989*^9}, {
   3.766653189923918*^9, 3.766653191147925*^9}, {3.766653224779327*^9, 
-  3.766653241235689*^9}},ExpressionUUID->"9ece2174-0de3-4ef5-a782-\
+  3.766653241235689*^9}, {3.767865188221409*^9, 
+  3.767865197284945*^9}},ExpressionUUID->"9ece2174-0de3-4ef5-a782-\
 6c5573fd1256"]
 }, Open  ]],
 
@@ -345,7 +351,8 @@ long delay when physik was not reachable).
 directly?
 * dummyFieldF and AF still needed?
 * Update documentiation: Add setFields to examples.
-* RGEPlot of one-point function contains an exponent -1.\
+* RGEPlot of one-point function contains an exponent -1.
+* Message[identifyGraphs::syntax,a] does not exist.\
 \>", "Text",
  CellChangeTimes->{{3.736318351848378*^9, 3.736318381608193*^9}, {
   3.736318691900454*^9, 3.736318699294239*^9}, {3.740134532572054*^9, 
@@ -353,7 +360,8 @@ directly?
   3.756530027696156*^9, 3.75653004702323*^9}, {3.756532294802836*^9, 
   3.756532318868043*^9}, {3.765787880010935*^9, 3.765787889434971*^9}, {
   3.76612714427011*^9, 3.766127162381712*^9}, {3.7666579195746737`*^9, 
-  3.766657930530573*^9}},ExpressionUUID->"2cb3baa8-ee89-497d-83be-\
+  3.766657930530573*^9}, {3.767429890469883*^9, 
+  3.767429895494532*^9}},ExpressionUUID->"2cb3baa8-ee89-497d-83be-\
 67cfedd84ae3"]
 }, Open  ]]
 }, Open  ]]
@@ -388,37 +396,37 @@ Cell[4762, 116, 936, 18, 173, "Text",ExpressionUUID->"bba1dd76-0524-4c6b-895f-c9
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[5735, 139, 153, 3, 98, "Title",ExpressionUUID->"9e6efd20-2fdd-46c3-95cb-409c96a6477e"],
-Cell[5891, 144, 807, 16, 127, "Text",ExpressionUUID->"dc6334b3-3b69-42e4-b562-9dfc36f98824"],
-Cell[6701, 162, 307, 8, 81, "Text",ExpressionUUID->"4e45ca6e-9991-46e2-8193-daf9e93df7ac"],
-Cell[7011, 172, 418, 9, 104, "Text",ExpressionUUID->"babb10fa-22c0-4ced-afa5-19144e5c8fae"],
-Cell[7432, 183, 576, 12, 173, "Text",ExpressionUUID->"4c991307-549a-403c-8423-6d29405f163b"],
+Cell[5891, 144, 1134, 20, 173, "Text",ExpressionUUID->"dc6334b3-3b69-42e4-b562-9dfc36f98824"],
+Cell[7028, 166, 307, 8, 81, "Text",ExpressionUUID->"4e45ca6e-9991-46e2-8193-daf9e93df7ac"],
+Cell[7338, 176, 418, 9, 104, "Text",ExpressionUUID->"babb10fa-22c0-4ced-afa5-19144e5c8fae"],
+Cell[7759, 187, 576, 12, 173, "Text",ExpressionUUID->"4c991307-549a-403c-8423-6d29405f163b"],
 Cell[CellGroupData[{
-Cell[8033, 199, 159, 3, 68, "Section",ExpressionUUID->"d6423871-782f-4c3f-bed0-61c34f034bc2"],
-Cell[8195, 204, 1272, 22, 173, "Text",ExpressionUUID->"83f5a31d-7084-45ab-b51e-7cda902dade8"]
+Cell[8360, 203, 159, 3, 68, "Section",ExpressionUUID->"d6423871-782f-4c3f-bed0-61c34f034bc2"],
+Cell[8522, 208, 1272, 22, 173, "Text",ExpressionUUID->"83f5a31d-7084-45ab-b51e-7cda902dade8"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9504, 231, 160, 3, 68, "Section",ExpressionUUID->"dd654739-1718-4bf0-8523-865aa3c1702a"],
+Cell[9831, 235, 160, 3, 68, "Section",ExpressionUUID->"dd654739-1718-4bf0-8523-865aa3c1702a"],
 Cell[CellGroupData[{
-Cell[9689, 238, 161, 3, 55, "Subsection",ExpressionUUID->"030a68c4-1d8e-41c0-b85e-a89561e80ffb"],
-Cell[9853, 243, 160, 3, 35, "Text",ExpressionUUID->"33ba5fff-7e2c-435c-ba94-c4a94a332e91"]
+Cell[10016, 242, 161, 3, 55, "Subsection",ExpressionUUID->"030a68c4-1d8e-41c0-b85e-a89561e80ffb"],
+Cell[10180, 247, 160, 3, 35, "Text",ExpressionUUID->"33ba5fff-7e2c-435c-ba94-c4a94a332e91"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10050, 251, 150, 3, 55, "Subsection",ExpressionUUID->"1f5c6955-4e9c-4487-97b8-968fc9228ac7"],
-Cell[10203, 256, 322, 7, 35, "Text",ExpressionUUID->"e7d4cf0a-96d6-44b5-9243-15eb35671f22"],
-Cell[10528, 265, 530, 9, 58, "Text",ExpressionUUID->"fb9913ea-29cb-471f-b294-c2e53fa2ef2b"]
+Cell[10377, 255, 150, 3, 55, "Subsection",ExpressionUUID->"1f5c6955-4e9c-4487-97b8-968fc9228ac7"],
+Cell[10530, 260, 322, 7, 35, "Text",ExpressionUUID->"e7d4cf0a-96d6-44b5-9243-15eb35671f22"],
+Cell[10855, 269, 530, 9, 58, "Text",ExpressionUUID->"fb9913ea-29cb-471f-b294-c2e53fa2ef2b"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11095, 279, 162, 3, 55, "Subsection",ExpressionUUID->"1065e21f-b2f9-40b3-a9dc-d6fc5d821354"],
-Cell[11260, 284, 171, 3, 35, "Text",ExpressionUUID->"2bca3471-bb28-4201-b265-ff3348ba759f"],
-Cell[11434, 289, 375, 7, 58, "Text",ExpressionUUID->"fd749ff3-b9e2-4223-b959-67f241f17b6b"]
+Cell[11422, 283, 162, 3, 55, "Subsection",ExpressionUUID->"1065e21f-b2f9-40b3-a9dc-d6fc5d821354"],
+Cell[11587, 288, 171, 3, 35, "Text",ExpressionUUID->"2bca3471-bb28-4201-b265-ff3348ba759f"],
+Cell[11761, 293, 375, 7, 58, "Text",ExpressionUUID->"fd749ff3-b9e2-4223-b959-67f241f17b6b"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11846, 301, 162, 3, 55, "Subsection",ExpressionUUID->"9381da49-ebaf-4449-a330-2f5da810dfe8"],
-Cell[12011, 306, 1123, 20, 196, "Text",ExpressionUUID->"9ece2174-0de3-4ef5-a782-6c5573fd1256"]
+Cell[12173, 305, 162, 3, 55, "Subsection",ExpressionUUID->"9381da49-ebaf-4449-a330-2f5da810dfe8"],
+Cell[12338, 310, 1215, 22, 219, "Text",ExpressionUUID->"9ece2174-0de3-4ef5-a782-6c5573fd1256"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13171, 331, 159, 3, 55, "Subsection",ExpressionUUID->"820864a1-5442-467c-a5c1-0c1d9d296ecf"],
-Cell[13333, 336, 1058, 20, 219, "Text",ExpressionUUID->"2cb3baa8-ee89-497d-83be-67cfedd84ae3"]
+Cell[13590, 337, 159, 3, 55, "Subsection",ExpressionUUID->"820864a1-5442-467c-a5c1-0c1d9d296ecf"],
+Cell[13752, 342, 1159, 22, 242, "Text",ExpressionUUID->"2cb3baa8-ee89-497d-83be-67cfedd84ae3"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]

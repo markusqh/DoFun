@@ -251,7 +251,9 @@ Example: Definition of a dressed four-point vertex for an O(N) symmetric scalar 
 V[phi[p1,i], phi[p2,j], phi[p3,l], phi[p4,m], explicit -> True]:=Z[k,p1,p2,p3,p4] (delta[i,j]delta[l,m]+delta[i,l]delta[j,m]+delta[i,m]delta[j,l])
 ";
 
-
+(* TODO: Remove *)
+getGraphCharacteristic;
+getNeighbours;
 
 (* functions *)
 (* the user should be able to trace every step, so all single steps inside of doDSE should be possible to do *)
@@ -657,6 +659,13 @@ Example: The two-point part of an O(N) symmetric scalar theory
 convertAction[1/2 p^2 op[phi[p, i], phi[-p,i]]] 
 ";
 
+sortCanonical::usage="Orders the fields in vertices in a canonical way:
+-) anti-fermions left of fermions
+-) external fields fields ordered by list of derivatives
+-) internal fields ordered by connection to external fields.
+TODO: Example, Syntax
+";
+
 orderFermions::usage="Orders derivatives with respect to Grassmann fields such that fields defined as antiFermions are left of the fields defined as fermions thereby possibly giving a minus sign.
 The canonical order is the following:
  -) vertices (V,S), regulator insertions (dR): antiFermions left of fermions
@@ -974,6 +983,7 @@ private functions (alphabetic)
 	getExtGrassmannOrder
 	getGraphCharacteristic
 	getInteractionList
+	getSignature
 	grassmannTest
 	getNeighbours
 	indicesTest
@@ -1770,7 +1780,7 @@ classes are identified by
 -) types of vertices and their external legs *)
 classes=Flatten[GatherBy[ops, {
   Sort@Cases[#1, P[q1_, q2_] :> {q1[[1]], q2[[1]]}, 2]&,
-  Sort[(Cases[#, V[__], 2]/. {Q_?fieldQ, q_Symbol} :> {Q} /; 
+  Sort[(Cases[#, V[__], 2]/. {Q_?fieldQ, q_} :> {Q} /; 
       Not@MemberQ[extFields[[All, 2]], q])/.V[a__]:> Sort[V[a]]
       ] &}],1]; 
       
@@ -1798,7 +1808,7 @@ All equal graphs have then the same characteristic. *)
 (* auxiliary function to determine the neighbours *)
 (* first instance: start at the vertex with the first external index *)
 getNeighbours[exp_, allExtFields_List] := 
-  Module[{mainVertex, extFieldsOfMainVertex, connectingFields, allExtFields2},
+  Module[{mainVertex, extFieldsOfMainVertex, connectingFields, allExtFields2, fieldValues, i, sortByExtField},
   	
   (* add the real external fields to the external legs (given by allExtFields); in this way the connecting fields are determined correctly *)
    allExtFields2=Cases[exp,{Q_,q_}/;Count[exp,{Q,q},\[Infinity]]==1,{2}];
@@ -1814,15 +1824,26 @@ getNeighbours[exp_, allExtFields_List] :=
    connectingFields = 
     List @@ Complement[mainVertex, 
       Sequence @@ (V[#] & /@ extFieldsOfMainVertex)];
-   
+   connectingFields = List@@mainVertex /. {f_?fieldQ, i_}:>Sequence[]/;MemberQ[allExtFields, {f,i}];
    (* result: {starting vertex, {{field which connects to neighbour 1, neighbour 1},{field which connects to neighbour 2, neighbour 2}}} *)
-   {mainVertex, 
-    Function[
+   
+   fieldValues = Association @@ Table[allExtFields[[i, 2]] -> i, {i, 1, Length[allExtFields]}];
+   
+   (* sort the connections by the external fields *)
+   sortByExtField[a_]:=SortBy[
+      a, Function[b,Select[b, Not@FreeQ[#, Alternatives @@(allExtFields[[All,2]])]&]]];
+   
+   (*{mainVertex, 
+    Sort[Function[
       cF, {cF, 
        Select[exp, 
          Not@FreeQ[#, cF] && FreeQ[#, allExtFields[[1]]] &][[1]]}] /@ 
-     connectingFields}
-  
+     connectingFields]}
+  *)
+  {mainVertex, 
+    sortByExtField[
+      Function[cF,
+      	{cF, Select[exp, Not@FreeQ[#, cF] && FreeQ[#, allExtFields[[1]]] &][[1]]}] /@ connectingFields]}
    ];
    
 
@@ -1868,18 +1889,87 @@ getGraphCharacteristic[graph_op, extLegs_List] :=
   extFields=Select[allFieldsInV,Count[allFieldsInV,#]==1&];
   (* rotate extFields until the first derivative is on position 1; this is necessary so that equal graphs with opposite directions of the fields can be identified  *)
   extFieldsRotated=FixedPoint[RotateLeft[#]&, extFields, Length@extFields, SameTest->(Not[FreeQ[#2[[1]], extLegs[[1]]]] &)];
-  
+  extFieldsRotated=extLegs;
   (* find neighbours from there *)
   firstNeighbours = getNeighbours[id, extFieldsRotated];
  
   (* repeat the process until the loop is closed *)
+  (*Print[Nest[(# /. {a_, b_V} :> {a, getNeighbours[id, a, b, extFieldsRotated]} )&,
+     firstNeighbours,
+     Max[0, Floor[(Length@props-2)/2]]]
+    /. {Q_?fieldQ, q_} :> {Q} /; 
+      Not@MemberQ[extFieldsRotated[[All, 2]], q] /. V[a__] :> Sort[V[a]]]*);
   Nest[(# /. {a_, b_V} :> {a, getNeighbours[id, a, b, extFieldsRotated]} )&,
      firstNeighbours,
      Max[0, Floor[(Length@props-2)/2]]]
-    /. {Q_?fieldQ, q_Symbol} :> {Q} /; 
+    /. {Q_?fieldQ, q_} :> {Q} /; 
       Not@MemberQ[extFieldsRotated[[All, 2]], q] /. V[a__] :> Sort[V[a]]
-    /. {a_, {b_List, c_List}} :> {a, Sort[{b, c}]} (* sorting the first neighbours;
+    (*/. {a_, {b_List, c_List}} :> {a, Sort[{b, c}]}*) (* sorting the first neighbours;
     	this identifies graphs with the opposite ordering direction of the external legs *)
+]
+
+
+sortCanonical[b_op, derivatives_List] := 
+ Module[{grassmanns, ordered, fieldValues, i, intIndices, props, const, connectedLeg, intIndexAss, orderV},
+  
+  (* extract all Grassmann fields *)
+  (*grassmanns = Union@Cases[b, {f_?grassmannQ, _} :> f, {2}];*)
+  
+  (* constant to distinguish internal from external indices *)
+  const = 10^10;
+  
+  (* extract propagators *)
+  props =  Cases[b, P[___]];
+  
+  (* assign each index a number for sorting: 
+  external ones by position in derivatives, 
+  internal ones by their connection to external ones*)
+  
+  (* get internal indices *)
+  intIndices = Complement[Union@Cases[b, {a_?fieldQ, j_} :> j, Infinity], derivatives[[All, 2]]];
+  
+  (* set up association for external indices *)
+  fieldValues = Association @@ Table[derivatives[[i, 2]] -> i, {i, 1, Length[derivatives]}];
+  
+  (* determine index that connects the index fieldInd with a vertex *)
+  connectedLeg[fieldInd_] := DeleteCases[Select[List @@@ props, Not@FreeQ[#, fieldInd] &][[1]], {_, fieldInd}][[1, 2]];
+  
+  (* set up association for internal indices: 
+  extract vertices that internal indices connect to, 
+  then determine their association values by the smallest value of an external field there and add a constant *)
+  
+  intIndexAss = {#, Cases[b, V[a__] /; Not@FreeQ[{a}, connectedLeg@#]][[1]]} & /@  intIndices;
+  intIndexAss = intIndexAss /. V[a___] :> const + Sort[(fieldValues[#[[2]]] & /@ Select[{a}, MemberQ[derivatives, #] &])][[1]];
+    
+  (* combine associations *)
+  fieldValues = Join[fieldValues, Association @@ Rule @@@ intIndexAss];
+  
+  (* order fields of a vertex as bosons, antiFermions, 
+  fermions and internally by fieldValues *)
+  
+  orderV[V[a__]] := V[Sequence @@ Join[
+  	SortBy[Select[{a}, bosonQ[#[[1]]] &], fieldValues[#[[2]]] &],
+  	SortBy[Select[{a}, antiFermionQ[#[[1]]] &], fieldValues[#[[2]]] &], 
+    SortBy[Select[{a}, fermionQ[#[[1]]] &], (fieldValues[#[[2]]]) &]]];
+    
+  ordered = b /. V[a__] :> orderV[V[a]];
+  
+  (* get signature sign of original and ordered expression for the relative sign *)
+  getSignature@b getSignature@ordered ordered
+]
+
+
+(* apply to a complete expression *)
+sortCanonical[b_, derivatives_List] := b/. op[a___]:> sortCanonical[op[a], derivatives]
+
+
+(* Auxiliary function to get a sign for an expression. Used to compare with reordered expression to get the relative sign. The obtained sign itself has no meaning. *)
+getSignature[a_op] := Module[{verts},
+  (* get vertices and keep only Grassmann fields *)
+  verts = DeleteCases[
+    Cases[a, V[___]], {_?bosonQ, _} | {_?complexFieldQ, _} | {_?antiComplexFieldQ, _}, {2}];
+  (* return sign *)
+  Times @@ (Signature /@ verts)
 ]
 
 
@@ -2514,19 +2604,19 @@ multiPointSources0= sign setSourcesZeroRGE[multiDer,L,extFields,allowedPropagato
 	/. P[Q1_, Q2_] :> -P[Q1, Q2] /; (Not@FreeQ[{Q1,Q2}, traceIndex1|traceIndex2,2] && (grassmannQ@Q1[[1]]||grassmannQ@Q2[[1]]))/.(Function[dField, 
    P[{dField[[2]], c_}, {dField[[1]], b_}] :> 
     P[{dField[[1]], b}, {dField[[2]], c}]] /@ Cases[complexFields,{_?(Head@#===boson&),_?(Head@#===boson&)}])];*)
-multiPoint=orderFermions[(multiPointSources0)
+multiPoint=(multiPointSources0)
 	/. P[Q1_, Q2_] :> -P[Q1, Q2] /; (Not@FreeQ[{Q1,Q2}, traceIndex1|traceIndex2,2] && (grassmannQ@Q1[[1]]||grassmannQ@Q2[[1]]))/.(Function[dField, 
-   P[{dField[[2]], c_}, {dField[[1]], b_}] :> P[{dField[[1]], b}, {dField[[2]], c}]] /@ Cases[complexFields,{_?(Head@#===boson&),_?(Head@#===boson&)}])];
+   P[{dField[[2]], c_}, {dField[[1]], b_}] :> P[{dField[[1]], b}, {dField[[2]], c}]] /@ Cases[complexFields,{_?(Head@#===boson&),_?(Head@#===boson&)}]);
    
 (* closing the trace adds a minus sign if fields are fermionic; get other signs from fermions *)
-multiPoint=getSigns@orderFermions[(multiPointSources0)/. P[Q1_, Q2_] :> -P[Q1, Q2] /; (Not@FreeQ[{Q1,Q2}, traceIndex1|traceIndex2,2] && (grassmannQ@Q1[[1]]||grassmannQ@Q2[[1]]))];
+multiPoint=orderFermions@getSigns[(multiPointSources0)/. P[Q1_, Q2_] :> -P[Q1, Q2] /; (Not@FreeQ[{Q1,Q2}, traceIndex1|traceIndex2,2] && (grassmannQ@Q1[[1]]||grassmannQ@Q2[[1]]))];
+multiPoint=sortCanonical[multiPoint, orderedDerivs];
 
 (* the first dummy sorting is required for the identification to work; the second one treats the dummies introduced by derivPropagatorsdt *)
-getSigns[If[tDerivative/.Join[{opts},Options@doRGE],
-	sortDummies[identifyGraphsRGE[sortDummies@multiPoint,extFields]/.a_op:>derivPropagatorsdt@a],
-	identifyGraphsRGE[sortDummies@multiPoint,extFields],
-	sortDummies[identifyGraphsRGE[sortDummies@multiPoint,extFields]/.a_op:>derivPropagatorsdt@a]
-	]
+If[tDerivative/.Join[{opts},Options@doRGE],
+	sortDummies[identifyGraphsRGE[multiPoint,extFields]/.a_op:>derivPropagatorsdt@a],
+	sortDummies[identifyGraphsRGE[multiPoint,extFields]],
+	sortDummies[identifyGraphsRGE[multiPoint,extFields]/.a_op:>derivPropagatorsdt@a]
 ]
 
 ];
