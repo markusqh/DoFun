@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     18023,        428]
-NotebookOptionsPosition[     14951,        369]
-NotebookOutlinePosition[     15283,        384]
-CellTagsIndexPosition[     15240,        381]
+NotebookDataLength[     17777,        423]
+NotebookOptionsPosition[     14708,        364]
+NotebookOutlinePosition[     15040,        379]
+CellTagsIndexPosition[     14997,        376]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -207,15 +207,9 @@ Cell["Current task", "Section",
 61c34f034bc2"],
 
 Cell["\<\
-Signs for Acbc not correct yet. What is still missing are the signs from \
-applying derivatives 
 Add derivField in derivAll.
-Find out if I really need the signs for the individual expressions. They \
-should cancel at the end, shouldn\[CloseCurlyQuote]t they?
 Remove all definitions of fields and put them at the beginning. Create a way \
 to define properties of fields. Adopt predicates of fields.
-Potential sign problem for terms like Acbc. See notes where cbar is replaced \
-by cbar + D d/dc after first derivative.
 DSEPlotList calls vertexDummies which is not defined for the case of {{A,A}}. \
 Is DSEPlotList called correctly?\
 \>", "Text",
@@ -226,8 +220,8 @@ Is DSEPlotList called correctly?\
    3.76577670690384*^9, 3.7657767072083807`*^9}, {3.765792397986733*^9, 
    3.765792423875112*^9}, {3.7657947706161337`*^9, 3.765794774328485*^9}, {
    3.765799452978587*^9, 3.765799476338401*^9}, 3.765872874341422*^9, {
-   3.765885321632824*^9, 
-   3.765885359715032*^9}},ExpressionUUID->"83f5a31d-7084-45ab-b51e-\
+   3.765885321632824*^9, 3.765885359715032*^9}, {3.767930424939518*^9, 
+   3.7679304395711203`*^9}},ExpressionUUID->"83f5a31d-7084-45ab-b51e-\
 7cda902dade8"]
 }, Open  ]],
 
@@ -341,7 +335,6 @@ Cell["Low priority", "Subsection",
 0c1d9d296ecf"],
 
 Cell["\<\
-* Installation similar to FORMTracer.
 * Link to/Installation of FORMTracer.
 * OptionsPattern
 * html-doc: Links in top right corner to tutorials and functions do not work.
@@ -352,7 +345,8 @@ directly?
 * dummyFieldF and AF still needed?
 * Update documentiation: Add setFields to examples.
 * RGEPlot of one-point function contains an exponent -1.
-* Message[identifyGraphs::syntax,a] does not exist.\
+* Message[identifyGraphs::syntax,a] does not exist.
+* $dummyFieldAF and $dummyFieldF still required?\
 \>", "Text",
  CellChangeTimes->{{3.736318351848378*^9, 3.736318381608193*^9}, {
   3.736318691900454*^9, 3.736318699294239*^9}, {3.740134532572054*^9, 
@@ -360,8 +354,9 @@ directly?
   3.756530027696156*^9, 3.75653004702323*^9}, {3.756532294802836*^9, 
   3.756532318868043*^9}, {3.765787880010935*^9, 3.765787889434971*^9}, {
   3.76612714427011*^9, 3.766127162381712*^9}, {3.7666579195746737`*^9, 
-  3.766657930530573*^9}, {3.767429890469883*^9, 
-  3.767429895494532*^9}},ExpressionUUID->"2cb3baa8-ee89-497d-83be-\
+  3.766657930530573*^9}, {3.767429890469883*^9, 3.767429895494532*^9}, {
+  3.767934104926161*^9, 
+  3.767934115558075*^9}},ExpressionUUID->"2cb3baa8-ee89-497d-83be-\
 67cfedd84ae3"]
 }, Open  ]]
 }, Open  ]]
@@ -402,31 +397,31 @@ Cell[7338, 176, 418, 9, 104, "Text",ExpressionUUID->"babb10fa-22c0-4ced-afa5-191
 Cell[7759, 187, 576, 12, 173, "Text",ExpressionUUID->"4c991307-549a-403c-8423-6d29405f163b"],
 Cell[CellGroupData[{
 Cell[8360, 203, 159, 3, 68, "Section",ExpressionUUID->"d6423871-782f-4c3f-bed0-61c34f034bc2"],
-Cell[8522, 208, 1272, 22, 173, "Text",ExpressionUUID->"83f5a31d-7084-45ab-b51e-7cda902dade8"]
+Cell[8522, 208, 969, 16, 104, "Text",ExpressionUUID->"83f5a31d-7084-45ab-b51e-7cda902dade8"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9831, 235, 160, 3, 68, "Section",ExpressionUUID->"dd654739-1718-4bf0-8523-865aa3c1702a"],
+Cell[9528, 229, 160, 3, 68, "Section",ExpressionUUID->"dd654739-1718-4bf0-8523-865aa3c1702a"],
 Cell[CellGroupData[{
-Cell[10016, 242, 161, 3, 55, "Subsection",ExpressionUUID->"030a68c4-1d8e-41c0-b85e-a89561e80ffb"],
-Cell[10180, 247, 160, 3, 35, "Text",ExpressionUUID->"33ba5fff-7e2c-435c-ba94-c4a94a332e91"]
+Cell[9713, 236, 161, 3, 55, "Subsection",ExpressionUUID->"030a68c4-1d8e-41c0-b85e-a89561e80ffb"],
+Cell[9877, 241, 160, 3, 35, "Text",ExpressionUUID->"33ba5fff-7e2c-435c-ba94-c4a94a332e91"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10377, 255, 150, 3, 55, "Subsection",ExpressionUUID->"1f5c6955-4e9c-4487-97b8-968fc9228ac7"],
-Cell[10530, 260, 322, 7, 35, "Text",ExpressionUUID->"e7d4cf0a-96d6-44b5-9243-15eb35671f22"],
-Cell[10855, 269, 530, 9, 58, "Text",ExpressionUUID->"fb9913ea-29cb-471f-b294-c2e53fa2ef2b"]
+Cell[10074, 249, 150, 3, 55, "Subsection",ExpressionUUID->"1f5c6955-4e9c-4487-97b8-968fc9228ac7"],
+Cell[10227, 254, 322, 7, 35, "Text",ExpressionUUID->"e7d4cf0a-96d6-44b5-9243-15eb35671f22"],
+Cell[10552, 263, 530, 9, 58, "Text",ExpressionUUID->"fb9913ea-29cb-471f-b294-c2e53fa2ef2b"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11422, 283, 162, 3, 55, "Subsection",ExpressionUUID->"1065e21f-b2f9-40b3-a9dc-d6fc5d821354"],
-Cell[11587, 288, 171, 3, 35, "Text",ExpressionUUID->"2bca3471-bb28-4201-b265-ff3348ba759f"],
-Cell[11761, 293, 375, 7, 58, "Text",ExpressionUUID->"fd749ff3-b9e2-4223-b959-67f241f17b6b"]
+Cell[11119, 277, 162, 3, 55, "Subsection",ExpressionUUID->"1065e21f-b2f9-40b3-a9dc-d6fc5d821354"],
+Cell[11284, 282, 171, 3, 35, "Text",ExpressionUUID->"2bca3471-bb28-4201-b265-ff3348ba759f"],
+Cell[11458, 287, 375, 7, 58, "Text",ExpressionUUID->"fd749ff3-b9e2-4223-b959-67f241f17b6b"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12173, 305, 162, 3, 55, "Subsection",ExpressionUUID->"9381da49-ebaf-4449-a330-2f5da810dfe8"],
-Cell[12338, 310, 1215, 22, 219, "Text",ExpressionUUID->"9ece2174-0de3-4ef5-a782-6c5573fd1256"]
+Cell[11870, 299, 162, 3, 55, "Subsection",ExpressionUUID->"9381da49-ebaf-4449-a330-2f5da810dfe8"],
+Cell[12035, 304, 1215, 22, 219, "Text",ExpressionUUID->"9ece2174-0de3-4ef5-a782-6c5573fd1256"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13590, 337, 159, 3, 55, "Subsection",ExpressionUUID->"820864a1-5442-467c-a5c1-0c1d9d296ecf"],
-Cell[13752, 342, 1159, 22, 242, "Text",ExpressionUUID->"2cb3baa8-ee89-497d-83be-67cfedd84ae3"]
+Cell[13287, 331, 159, 3, 55, "Subsection",ExpressionUUID->"820864a1-5442-467c-a5c1-0c1d9d296ecf"],
+Cell[13449, 336, 1219, 23, 242, "Text",ExpressionUUID->"2cb3baa8-ee89-497d-83be-67cfedd84ae3"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]

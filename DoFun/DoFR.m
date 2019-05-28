@@ -203,18 +203,21 @@ der[der[exp_,field1_],field2_]:=der[exp,Flatten@{field1,field2}]
 (* defining the fields *)
 defineFieldsSpecific[fields_List, opts___?OptionQ] := 
   Module[{bosons, allFermions,fermions, antiFermions},
-   Clear/@Flatten[fields][[All,0]];
-   allFermions=Cases[fields,{_,_}];
+  	(* TODO Remove stuff.*)
+  
+   (*Clear/@Flatten[fields][[All,0]];*)
+   (*allFermions=Cases[fields,{_,_}];
    bosons = Replace[fields, _List :> Sequence[], 1];
    fermions = allFermions[[All, 1]];
-   antiFermions = allFermions[[All, 2]];
-   
-   (Evaluate[#[[0]]] /: Head[Evaluate[#[[0]]]] := boson) & /@ bosons;
+   antiFermions = allFermions[[All, 2]];*)
+      
+   (*(Evaluate[#[[0]]] /: Head[Evaluate[#[[0]]]] := boson) & /@ bosons;
    (Evaluate[#[[0]]] /: Head[Evaluate[#[[0]]]] := fermion) & /@ fermions;
    (Evaluate[#[[0]]] /: Head[Evaluate[#[[0]]]] := antiFermion) & /@ antiFermions;
    (antiField[Evaluate[#[[1,0]]]] = #[[2,0]]) & /@allFermions;
    (antiField[Evaluate[#[[2,0]]]]= #[[1,0]]) & /@allFermions;
    (antiField[Evaluate[#[[0]]]]= #[[0]]) & /@bosons;
+   *)
    
    (Evaluate[#[[0]]] /: indices[Evaluate[#[[0]]]] := 
        List @@ Rest@#) & /@ Flatten@fields;

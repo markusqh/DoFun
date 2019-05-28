@@ -106,6 +106,13 @@ If[DoFun`DoDSERGE`$doDSERGEStartMessage=!=False,
 
 (* symbols *)
 
+(* new functions, TODO: write usage *)
+
+getVertexNumbers::usage="";
+getDiagramType::usage="";
+extractDiagramType::usage="";
+groupDiagrams::usage="";
+
  	
 $bareVertexSymbol::usage="Symbol representing a bare vertex when using shortExpression.
 Default value: S.";
@@ -251,9 +258,6 @@ Example: Definition of a dressed four-point vertex for an O(N) symmetric scalar 
 V[phi[p1,i], phi[p2,j], phi[p3,l], phi[p4,m], explicit -> True]:=Z[k,p1,p2,p3,p4] (delta[i,j]delta[l,m]+delta[i,l]delta[j,m]+delta[i,m]delta[j,l])
 ";
 
-(* TODO: Remove *)
-getGraphCharacteristic;
-getNeighbours;
 
 (* functions *)
 (* the user should be able to trace every step, so all single steps inside of doDSE should be possible to do *)
@@ -936,6 +940,28 @@ $vertexSymbol=\[CapitalGamma];
 (* the standard symbol for a regulator insertion used in shortExpression *)
 $regulatorInsertionSymbol=R;
 
+(* Define various diagram types. 
+The first entry specifies the number of loops, the second gives an ordered list of vertex multiplicities.
+For example, {1, {3, 4}} represents a one-loop diagram with two three-point functions. *)
+diagramTypes = <|(* two-point *)
+   {1, {3, 3}} -> "oneLoop",
+   {1, {4}} -> "tadpole",
+   {2, {4, 3, 3}} -> "sunset",
+   {2, {4, 4}} -> "squint",
+   (* three-point *)
+   {1, {3, 3, 3}} -> "triangle",
+   {1, {3, 3, 3}} -> "triangle3",
+   {1, {3, 4}} -> "swordfish",
+   {1, {3, 4}} -> "swordfish3",
+   (* four-point *)
+   {1, {3, 3, 3, 3}} -> "box",
+   {1, {3, 3, 4}} -> "triangle4",
+   {1, {4, 4}} -> "swordfish4",
+   {1, {3, 5}} -> "fivePoint4"|>;
+   
+(* Known classes of diagrams *)
+$diagramTypes = Values@diagramTypes;
+
 (* abbreviationa for some functions *)
 sE=shortExpression;
 
@@ -945,7 +971,7 @@ when $signConvention=1, the DSE are derived with the convention that 1PI vertex 
 are the negative derivative of the effective action;
 if it is -1, then the "mathematical" definition applies that the 1PI vertex functions
 are the positive derivatives *)
-$signConvention=1;
+$signConvention=-1;
 
 
 (* open indices that are closed by the trace *)
@@ -2189,7 +2215,7 @@ newVertexSum[exp_, allNewFields_List] :=
 (exp /. {V[a___] :> newVertex[V[a], #]} & /@ allNewFields);
   
 
-(* insert the new vertices; this complicated way is necessary because every new vertex requires his own dummy indices *)
+(* insert the new vertices; this complicated way is necessary because every new vertex requires its own dummy indices *)
 (* in case the external fields are zero *)
 replaceVerticesBrokenPhase[exp_,interactions_,0,interactions_List]:=(exp);
 
@@ -2748,6 +2774,30 @@ shortExpression[op[a__],opts___]:=shortExpressionStyle[Times@@(shortExpressionSi
 shortExpression[a___]:=Message[shortExpression::syntax,a];
 
 
+(* identification of diagrams via their names type *)
+(* Extract number and multiplicities of vertices. *)
+getVertexNumbers[n_?NumericQ a_] := getVertexNumbers[a]
+
+getVertexNumbers[a_op] := Sort@Cases[a, V[v__]|S[v__] :> Length@{v}, Infinity]
+
+
+(* Functions to determine the diagram type. *)
+
+getDiagramType[n_?NumericQ a_] := getDiagramType[a]
+
+getDiagramType[a_op] := diagramTypes[{getLoopNumber[a], getVertexNumbers[a]}]
+
+
+(* Extract a certain diagram type. *)
+
+extractDiagramType[diags_, type_String] := Select[diags, getDiagramType[#] == type &]
+
+
+(* Group diagrams by classes. *)
+
+groupDiagrams[exp_] := (Function[class, {class, extractDiagramType[exp, class]}] /@ Values@diagramTypes) /. {_, 0} :> Sequence[]
+
+
 (* vertexDummies: auxiliary functions for DSEPlotList and RGEPlotList, determines unique dummies for the vertices
 so that they can be used in DSEPlotList/RGEPlotList as points *)
 
@@ -3282,6 +3332,8 @@ countTerms[a___]:=Message[countTerms::syntax,a];
 
 (* Note: Setting the Head of a field to 'field' does not work with pattern matching, thus fieldQ has to be used. *)
 fieldQ[a_]:=Or@@(fieldType@a===# &/@$fieldTypes);
+
+fermionQ[{}] := False (* no field *)
 
 fermionQ[a_List]:=fermionQ[a[[1]]];(* field given together with index*)
 
