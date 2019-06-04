@@ -69,7 +69,14 @@
     2.0.4 (5.12.2017):
     	-) fixed bug in doRGE: Bugfix from 2.0.3 extended such that external fields are not affected thereby fixing a similar bug where a diagram was lost by identification due to sign problems.
     	-) Introduced a canonical ordering within fermion and antifermion fields.
-    3.0.0 (devel): 
+    3.0.0 (devel):
+        -) new functions:
+        	* getSigns
+        	* extractDiagramType
+        	* getVertexNumbers
+        	* getVertexNumbers
+        	* groupDiagrams
+        	* cFieldQ
 *)
 
 
@@ -207,6 +214,7 @@ antiFermionQ@c
 ";
 
 field::usage="Fields are of type field, viz., the Head of any field f is field.\n
+TODO: Incorrect now.
 Example:
 setFields[{A}, {{c,cb}}, {{phi,phib}}];
 Head/@{A,c,cb,phi,phib}
@@ -1386,9 +1394,9 @@ firstDerivReplacement[a_Times|a_Plus]:=firstDerivReplacement[#]&/@a;
 
 firstDerivReplacement[a_?NumericQ]:=a;
 
-firstDerivReplacement[op[S_,c_List]]:=op[S,c];
+firstDerivReplacement[op[s___sf,S_,c_List]]:=op[s,S,c];
 
-firstDerivReplacement[op[S_,b__List,c_List]]:=op[S,Sequence@@(replacedField/@{b}),c];
+firstDerivReplacement[op[s___sf,S_,b__List,c_List]]:=op[s,S,Sequence@@(replacedField/@{b}),c];
 
 
 
@@ -1458,9 +1466,10 @@ derivAll[a_,{Q_,q_}]/;Not@FreeQ[a,{Q,q},Infinity]:=Message[derivAll::index,{Q,q}
 (*derivAll[op[fvp___],{Q_,q_}]:=(derivField[op[fvp],{Q,q}]+
 	Plus@@(op[Sequence@@DeleteCases[{fvp},#],$signConvention derivVertex[#,{Q,q}]]&/@{fvp})+
 	derivPropagators[op[fvp],{Q,q}]);*)
-derivAll[op[fvp___],{Q_,q_}]:=(derivField[op[fvp],{Q,q}]+
+(*derivAll[op[fvp___],{Q_,q_}]:=(derivField[op[fvp],{Q,q}]+
 	Plus@@(op[Sequence@@DeleteCases[{fvp},#],$signConvention derivVertex[#,{Q,q}]]&/@{fvp})+
-	derivPropagators[op[fvp],{Q,q}]);
+	derivPropagators[op[fvp],{Q,q}]);*)
+	
 (*derivAll[op[fvp___],{Q_,q_}]:=derivField[op[fvp],{Q,q}]
 	+Plus@@(
 			(*derivField[,{Q,q}*)
@@ -1468,9 +1477,27 @@ derivAll[op[fvp___],{Q_,q_}]:=(derivField[op[fvp],{Q,q}]+
 			+derivPropagator[#,{Q,q}],
 			b]&/@{fvp})/.Cases[___]:>{}(*delete instances where a==Sequence[]*)
 	)*)
+derivAll[op[fvp___],{Q_,q_}]:=Module[{allShifts,i, permSign},
+	
+	
+	allShifts=op[fvp];
+	
+	(* TODO: deriv of fields, signs necessary? *)
+	(* include signs from permuting the derivative through all expressions left of the target *)
+	permSign[leftFvp_,{R_,r_}]:=sf[{R,r}, Cases[leftFvp, S[___] | P[__] | V[__] | {_?fieldQ,_}]/.{S:>Sequence, P:>Sequence, V:>Sequence}];
+	
+	derivField[op[fvp],{Q,q}]+
+   + Plus @@ Table[ReplacePart[op[fvp], i -> Sequence[permSign[Take[{fvp}, i-1], {Q,q}], derivPropagator[{fvp}[[i]], {Q, q}]]], {i, 1, Length[{fvp}]}]
+   + Plus @@ Table[ReplacePart[op[fvp], i -> Sequence[permSign[Take[{fvp}, i-1], {Q,q}], $signConvention derivVertex[{fvp}[[i]], {Q, q}]]], {i, 1, Length[{fvp}]}]
 
-
-
+	
+	(*(derivField[op[fvp],{Q,q}]+
+	Plus@@(op[Sequence@@DeleteCases[{fvp},#],$signConvention derivVertex[#,{Q,q}]]&/@{fvp})+
+	derivPropagators[op[fvp],{Q,q}])*)
+	
+]	
+	
+	
 (* if called with no derivatives given *)
 deriv[a_]:=a;
 
@@ -1606,7 +1633,7 @@ derivPropagator[V[a__],{Q_,q_}]:=0;
 
 derivPropagator[a_List,{Q_,q_}]:=0;
 
-derivPropagator[S[_,_],{Q_,q_}]:=0;
+derivPropagator[S[__],{Q_,q_}]:=0;
 
 derivPropagator[sf[_,_],{Q_,q_}]:=0;
 
@@ -1795,7 +1822,7 @@ identifyGraphsRGE[a_?NumericQ,opts___]:=a;
 identifyGraphsRGE[exp_Plus,extFields_List]:=Module[{classes,ops,equalOps,orderedExp},
 
 (* TODO order bosonic fields in propagators; needed, e.g., for complex scalar fields; handled automatically in DoFun3 for complex fields, but still necessary for mixed fields *)
-orderedExp=exp/.P[{Q1_?cFieldQ,q1_},{Q2_?cFieldQ,q2_}]:>Sort@P[{Q1,q1},{Q2,q2}];
+orderedExp=exp/.P[{Q1_?cFieldQ,q1_},{Q2_?cFieldQ,q2_}]:>Sort@P[{Q1,q1},{Q2,q2}]/.S:>V;(* replace S by V for common treatment of vertices *)
 
 (* split off the numerical factors; syntax: {{factor1,op1},{factor2, op2},{factor3,op3},...} *)
 ops=Replace[List@@Expand@orderedExp/.Times[b_?NumericQ,c_]:> {b,c},d_op:> {1,d},{1}];
@@ -1841,6 +1868,8 @@ getNeighbours[exp_, allExtFields_List] :=
 
    (* determine the first vertex *)
    mainVertex = Select[exp, Not@FreeQ[#, allExtFields[[1]]] &][[1]];
+   (*TODO: RESET FOR RGE *)
+   (*mainVertex = Cases[exp,S[___]][[1]];*)
    
    (* the external fields in the starting vertex; could be others too besides the first external field *)
    extFieldsOfMainVertex = 
@@ -1856,8 +1885,10 @@ getNeighbours[exp_, allExtFields_List] :=
    fieldValues = Association @@ Table[allExtFields[[i, 2]] -> i, {i, 1, Length[allExtFields]}];
    
    (* sort the connections by the external fields *)
-   sortByExtField[a_]:=SortBy[
-      a, Function[b,Select[b, Not@FreeQ[#, Alternatives @@(allExtFields[[All,2]])]&]]];
+	   sortByExtField[a_]:=SortBy[
+	      a, Function[b,Select[b, Not@FreeQ[#, Alternatives @@(allExtFields[[All,2]])]&]]];
+   (*sortByExtField[a_]:=a;(* use sortCanonical before, so the vertex arguments should already be sorted *)*)
+      
    
    (*{mainVertex, 
     Sort[Function[
@@ -1903,7 +1934,7 @@ getGraphCharacteristic[graph_op, extLegs_List] :=
  Module[{props, verts, id,firstNeighbours, allFieldsInV, extFields, extFieldsRotated},
 
   props = Cases[graph, P[__]];
-  verts = Cases[graph, V[__]];
+  verts = Cases[graph, V[__]|S[___]]/.S[a___]:>V[a];(* rewrite to vertices V for getNeighbours *)
   
   (* transform into vertices only; these rules produce apparently non-
   existent vertices, but the connections can still be identified, 
@@ -1936,11 +1967,8 @@ getGraphCharacteristic[graph_op, extLegs_List] :=
 
 
 sortCanonical[b_op, derivatives_List] := 
- Module[{grassmanns, ordered, fieldValues, i, intIndices, props, const, connectedLeg, intIndexAss, orderV},
-  
-  (* extract all Grassmann fields *)
-  (*grassmanns = Union@Cases[b, {f_?grassmannQ, _} :> f, {2}];*)
-  
+ Module[{ordered, fieldValues, i, intIndices, props, const, connectedLeg, intIndexAss, orderV},
+
   (* constant to distinguish internal from external indices *)
   const = 10^10;
   
@@ -1964,8 +1992,8 @@ sortCanonical[b_op, derivatives_List] :=
   extract vertices that internal indices connect to, 
   then determine their association values by the smallest value of an external field there and add a constant *)
   
-  intIndexAss = {#, Cases[b, V[a__] /; Not@FreeQ[{a}, connectedLeg@#]][[1]]} & /@  intIndices;
-  intIndexAss = intIndexAss /. V[a___] :> const + Sort[(fieldValues[#[[2]]] & /@ Select[{a}, MemberQ[derivatives, #] &])][[1]];
+  intIndexAss = {#, Cases[b, V[a__]|S[a__] /; Not@FreeQ[{a}, connectedLeg@#]][[1]]} & /@  intIndices;
+  intIndexAss = intIndexAss /. V[a___]|S[a___] :> const + Sort[(fieldValues[#[[2]]] & /@ Select[{a}, MemberQ[derivatives, #] &])][[1]];
     
   (* combine associations *)
   fieldValues = Join[fieldValues, Association @@ Rule @@@ intIndexAss];
@@ -1977,8 +2005,9 @@ sortCanonical[b_op, derivatives_List] :=
   	SortBy[Select[{a}, bosonQ[#[[1]]] &], fieldValues[#[[2]]] &],
   	SortBy[Select[{a}, antiFermionQ[#[[1]]] &], fieldValues[#[[2]]] &], 
     SortBy[Select[{a}, fermionQ[#[[1]]] &], (fieldValues[#[[2]]]) &]]];
+  orderV[S[a__]] := orderV[V[a]]/.V:>S;
     
-  ordered = b /. V[a__] :> orderV[V[a]];
+  ordered = b /. V[a__] :> orderV[V[a]] /. S[a__] :> orderV[S[a]];
   
   (* get signature sign of original and ordered expression for the relative sign *)
   getSignature@b getSignature@ordered ordered

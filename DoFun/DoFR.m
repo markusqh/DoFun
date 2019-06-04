@@ -534,8 +534,9 @@ getFR[action_,fields_List,opts___?OptionQ]:=Module[
     	{a___,b_?(fermionQ@Head@#&), c_?(bosonQ@Head@#&),d___}:>{a,c,b,d},{a___,b_?(bosonQ@Head@#&), c_?(antiFermionQ@Head@#&),d___}:>{a,c,b,d}};
     
     (* reverse order of anti-fermions due to conventions in the definition of the vertex V;
-       this will yield the n-point function with the order of fields as in the argument fields in V or S *)
-    orderedFields=Flatten@Replace[GatherBy[orderedFields,antiFermionQ@#[[0]]&],{a_List,b_List}:>{Reverse@a,b}];
+       this will yield the n-point function with the order of fields as in the argument fields in V or S
+       TODO: Modified in 3.0 *)
+    orderedFields=orderedFields;(*Flatten@Replace[GatherBy[orderedFields,antiFermionQ@#[[0]]&],{a_List,b_List}:>{Reverse@a,b}];*)
 
 	nPoint=diffFields[filtered, orderedFields];
 
