@@ -81,7 +81,6 @@
 
 
 
-
 (* ::Section:: *)
 (* Usages *)
 
@@ -106,6 +105,8 @@ If[DoFun`DoDSERGE`$doDSERGEStartMessage=!=False,
 
 
 
+(* TODO Remove *)
+getGraphCharacteristic;
 
 (* ::Section:: *)
 (* Usages *)
@@ -1885,9 +1886,9 @@ getNeighbours[exp_, allExtFields_List] :=
    fieldValues = Association @@ Table[allExtFields[[i, 2]] -> i, {i, 1, Length[allExtFields]}];
    
    (* sort the connections by the external fields *)
-	   sortByExtField[a_]:=SortBy[
-	      a, Function[b,Select[b, Not@FreeQ[#, Alternatives @@(allExtFields[[All,2]])]&]]];
-   (*sortByExtField[a_]:=a;(* use sortCanonical before, so the vertex arguments should already be sorted *)*)
+	   (*sortByExtField[a_]:=SortBy[
+	      a, Function[b,Select[b, Not@FreeQ[#, Alternatives @@(allExtFields[[All,2]])]&]]];*)
+   sortByExtField[a_]:=a;(* use sortCanonical before, so the vertex arguments should already be sorted *)
       
    
    (*{mainVertex, 
@@ -1897,10 +1898,13 @@ getNeighbours[exp_, allExtFields_List] :=
          Not@FreeQ[#, cF] && FreeQ[#, allExtFields[[1]]] &][[1]]}] /@ 
      connectingFields]}
   *)
-  {mainVertex, 
+  (*{mainVertex, 
     sortByExtField[
       Function[cF,
-      	{cF, Select[exp, Not@FreeQ[#, cF] && FreeQ[#, allExtFields[[1]]] &][[1]]}] /@ connectingFields]}
+      	{cF, Select[exp, Not@FreeQ[#, cF] && FreeQ[#, allExtFields[[1]]] &][[1]]}] /@ connectingFields]}*)
+    {mainVertex, 
+     Function[cF,
+      	{cF, Select[exp, Not@FreeQ[#, cF] && FreeQ[#, allExtFields[[1]]] &][[1]]}] /@ connectingFields}
    ];
    
 
@@ -1967,7 +1971,7 @@ getGraphCharacteristic[graph_op, extLegs_List] :=
 
 
 sortCanonical[b_op, derivatives_List] := 
- Module[{ordered, fieldValues, i, intIndices, props, const, connectedLeg, intIndexAss, orderV},
+ Module[{ordered, fieldValues, i, intIndices, props, const, connectedLeg, intIndexAss, orderV, intVerts},
 
   (* constant to distinguish internal from external indices *)
   const = 10^10;
@@ -1991,6 +1995,9 @@ sortCanonical[b_op, derivatives_List] :=
   (* set up association for internal indices: 
   extract vertices that internal indices connect to, 
   then determine their association values by the smallest value of an external field there and add a constant *)
+  
+  (* extract purely internal vertices and assign a value *)
+  intVerts = Cases[b, V[a__]/;FreeQ[{a}, Alternatives@@derivatives[[All,2]]]];
   
   intIndexAss = {#, Cases[b, V[a__]|S[a__] /; Not@FreeQ[{a}, connectedLeg@#]][[1]]} & /@  intIndices;
   intIndexAss = intIndexAss /. V[a___]|S[a___] :> const + Sort[(fieldValues[#[[2]]] & /@ Select[{a}, MemberQ[derivatives, #] &])][[1]];
@@ -2612,7 +2619,7 @@ doRGE[L_Times|L_Plus,derivs_List,vertexTest___Symbol,opts___?OptionQ]:=doRGE[L,d
 
 (* main code *)
 doRGE[L_Times|L_Plus,derivs_List,allowedPropagators_List,vertexTest___Symbol,opts___?OptionQ]:=Module[{
-	onePoint,orderedDerivs,multiPoint,multiDer,sign,multiPointSources0,ind=insDummy[], ind2=insDummy[], extFields, complexFields},
+	onePoint,orderedDerivs,multiPoint,multiDer,sign,multiPointSources0,ind=insDummy[], extFields, complexFields},
 
 (* get fields that are not necessarily fermions but directed, e.g., scalar complex fields;
 this does not work if allowedPropagators is used (i.e. not {}) because then we cannot say what the
@@ -3303,15 +3310,13 @@ setFields[bosons_List, fermions_List, complexFields_List] := Module[{},
   (* set the field types *)
   (* difference to DoFun2: 
   complex fields are their own types *)
-  (# /: fieldType[#] := 
-      boson) & /@ bosons;
+  (# /: fieldType[#] := boson) & /@ bosons;
   (# /: fieldType[#] := fermion) & /@ fermions[[All, 1]];
   (# /: fieldType[#] := antiFermion) & /@ fermions[[All, 2]];
   (# /: fieldType[#] := complex) & /@ complexFields[[All, 1]];
   (# /: fieldType[#] := antiComplex) & /@ complexFields[[All, 2]];
   (* internally used dummy fields *)
-  $dummyFieldF /: 
-   fieldType[$dummyFieldF] := fermion;
+  $dummyFieldF /: fieldType[$dummyFieldF] := fermion;
   $dummyFieldAF /: fieldType[$dummyFieldAF] := antiFermion;
   
   (* set all fields to Head field: Not done, 
@@ -3320,23 +3325,18 @@ setFields[bosons_List, fermions_List, complexFields_List] := Module[{},
   field)&/@Flatten[{bosons,fermions,complexFields}];*)
   
   (* set (anti-)commutating property *)
-  (* TODO: 
-  put this in the init; now I actually do not know why anymore... *)
-  (# /: grassmannQ[#] = False) & /@ 
-   Flatten[{bosons, complexFields}];
+  (# /: grassmannQ[#] = False) & /@ Flatten[{bosons, complexFields}];
   (# /: grassmannQ[#] = True) & /@ 
    Flatten[{fermions, $dummyFieldF, $dummyFieldAF}];
   (# /: cFieldQ[#] = True) & /@ Flatten[{bosons, complexFields}];
   (# /: cFieldQ[#] = False) & /@ Flatten[fermions];
   
-  (* define the anti-
-  fields *)
-  (antiField[#[[1]]] = #[[2]]) & /@ 
-   Transpose[{bosons, bosons}];
-  (antiField[#[[1]]] = #[[2]]) & /@ 
-   fermions; (antiField[#[[2]]] = #[[1]]) & /@ 
-   fermions; (antiField[#[[1]]] = #[[2]]) & /@ 
-   complexFields; (antiField[#[[2]]] = #[[1]]) & /@ complexFields;
+  (* define the anti-  fields *)
+  (antiField[#[[1]]] = #[[2]]) & /@ Transpose[{bosons, bosons}];
+  (antiField[#[[1]]] = #[[2]]) & /@ fermions;
+  (antiField[#[[2]]] = #[[1]]) & /@ fermions;
+  (antiField[#[[1]]] = #[[2]]) & /@ complexFields;
+  (antiField[#[[2]]] = #[[1]]) & /@ complexFields;
   
   ]
 (* default error handler *)

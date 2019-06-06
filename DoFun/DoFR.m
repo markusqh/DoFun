@@ -18,6 +18,8 @@
     2.0.3 (19.1.2017): no changes
     2.0.4 (5.12.2017): no changes
     3.0.0 (devel):
+    	-) modified defineFieldsSpecific
+    	-) modified derivF and getFR to left-derivatives
 *)
 
 
@@ -48,19 +50,11 @@ If[DoFun`DoFR`$doFRStartMessage=!=False,
 (* ::Section::Closed:: *)
 (* usages *)
 
-
-antiField::usage="Gives the anti-field of a field.\n
-Syntax:
-antiField[f_] where f is a field.\n
-Example:
-defineFieldsSpecific[{phi[momentum], {psi[momentum, dirac, flavor],psib[momentum, dirac, flavor]}}];
-antiField/@{phi,psi,psib}
-";
-
 convertAction::usage="Converts a given action into a form suitable for computation, i.e., with proper dummy indices and momenta.\n
 Syntax:
 convertAction[act_] where act is a physical action.\n
 Example:
+setFields[{\[CurlyPhi}];
 defineFieldsSpecific[{\[CurlyPhi][momentum, type]}];
 convertAction[ 1/2 (p^2 Z[p^2] + R[k]) op[\[CurlyPhi][p, i], \[CurlyPhi][-p,i]] + 
  \[Lambda]2/8 op[\[CurlyPhi][p, i], \[CurlyPhi][q, i], \[CurlyPhi][r, j], \[CurlyPhi][-p - q - r, j]]]
@@ -68,14 +62,13 @@ convertAction[ 1/2 (p^2 Z[p^2] + R[k]) op[\[CurlyPhi][p, i], \[CurlyPhi][-p,i]] 
 
 (*diffFields::usage="Differentiate with respect to fields."*)
 
-defineFieldsSpecific::usage="Defines fields explicitly with bosonic/fermionic statistics and types of indices.\n
+defineFieldsSpecific::usage="Defines indices of fields. Also see setFields.\n
 Syntax:
-defineFieldsSpecific[fields_List] where fields is a list of bosonic and fermionic fields. 
- The former are given as boson[momentum,indices], 
- the latter as {fermion[momentum,indices], anti-fermion[momentum,indices]}.
+defineFieldsSpecific[fields_List] where fields is a list of fields. 
 The indices of a field can be obtained with indices[field].\n
 Example:
-defineFieldsSpecific[{A[momentum,adjoint,lorentz], {c[momentum,adjoint], cb[momentum,adjoint]}}]
+setFields[{A,{c,cb}}];
+defineFieldsSpecific[{A[momentum,adjoint,lorentz], c[momentum,adjoint], cb[momentum,adjoint]}]
 indices/@{A,c,cb}
 "
 
@@ -107,13 +100,13 @@ Example:
 dim[adjoint]:=Nc;
 integrateDeltas[delta[adjoint,a,b]delta[adjoint,b,a]]
 "
-(*derivF::usage="Differentiates with respect to a field."*) 
 
 getFR::usage="Derives the Feynman rule for the specified n-point function.\n
 Syntax:
 getFR[action, fields_List] where action is a physical action and fields a list of fields corresponding
 to the legs of the vertex function.\n
 Example:
+setFields[{\[CurlyPhi]}]
 defineFieldsSpecific[{\[CurlyPhi][mom, type]}];
 getFR[convertAction[1/2 p2 op[\[CurlyPhi][q1, j], \[CurlyPhi][-q1, j]] + 
  1/8 \[Lambda] op[\[CurlyPhi][q1, j], \[CurlyPhi][q2, j], \[CurlyPhi][q3, l], \[CurlyPhi][-q1 - q2 - q3, l]]], 
@@ -123,6 +116,7 @@ getFR[convertAction[1/2 p2 op[\[CurlyPhi][q1, j], \[CurlyPhi][-q1, j]] +
 indices::usage="Gives the types of indices of a field.\n
 Syntax: indices[f_] where f is a field.\n
 Example:
+setFields[{phi}];
 defineFieldsSpecific[{phi[momentum,indexOfPhi]}];
 indices[phi]
 "
@@ -148,7 +142,7 @@ integrateMomenta[deltam[r1+p2]deltam[p2-r3],p2]
 
 U::usage="Represents a potential.\n
 Syntax:
-U[fields__] where fields denotes the quantities on which U depensd.\n
+U[fields__] where fields denotes the quantities on which U depends.\n
 Example:
 U[phi]
 "
@@ -189,6 +183,8 @@ integrateDeltas::tooManyIndicesInDeltas="There is at least one index that appear
 integrateDeltas::sameIndexForDifferentTypes="There is at least once the same index for two different types of indices, e.g., delta[ind1,a,b]delta[ind2,b,c]. This is not supported by DoFR.
 \nThe error is in expression `1`."
 
+defineFieldsSpecific::fieldsNotSet="Not all fields in `1` are defined. Do so with setFields."
+
 
 
 
@@ -201,24 +197,14 @@ der[der[exp_,field1_],field2_]:=der[exp,Flatten@{field1,field2}]
 
 
 (* defining the fields *)
+
+(* check if fields are defined *)
+defineFieldsSpecific[fields_List, opts___?OptionQ] /; Not[And@@(fieldQ/@Flatten[fields][[All,0]])] := Message[defineFieldsSpecific::fieldsNotSet, fields];
+
 defineFieldsSpecific[fields_List, opts___?OptionQ] := 
-  Module[{bosons, allFermions,fermions, antiFermions},
-  	(* TODO Remove stuff.*)
+  Module[{},
   
-   (*Clear/@Flatten[fields][[All,0]];*)
-   (*allFermions=Cases[fields,{_,_}];
-   bosons = Replace[fields, _List :> Sequence[], 1];
-   fermions = allFermions[[All, 1]];
-   antiFermions = allFermions[[All, 2]];*)
-      
-   (*(Evaluate[#[[0]]] /: Head[Evaluate[#[[0]]]] := boson) & /@ bosons;
-   (Evaluate[#[[0]]] /: Head[Evaluate[#[[0]]]] := fermion) & /@ fermions;
-   (Evaluate[#[[0]]] /: Head[Evaluate[#[[0]]]] := antiFermion) & /@ antiFermions;
-   (antiField[Evaluate[#[[1,0]]]] = #[[2,0]]) & /@allFermions;
-   (antiField[Evaluate[#[[2,0]]]]= #[[1,0]]) & /@allFermions;
-   (antiField[Evaluate[#[[0]]]]= #[[0]]) & /@bosons;
-   *)
-   
+   (* set upvalues: indices of fields *)   
    (Evaluate[#[[0]]] /: indices[Evaluate[#[[0]]]] := 
        List @@ Rest@#) & /@ Flatten@fields;
        
@@ -226,7 +212,8 @@ defineFieldsSpecific[fields_List, opts___?OptionQ] :=
    (SyntaxInformation[#[[0]]] = {"ArgumentsPattern" -> 
       Table[_, {Length@#}]}) & /@ Flatten@fields;
    
-   fields];
+   fields
+];
    
 
 (* convert the "naive" user action into an expression with real dummy variables *)
@@ -265,19 +252,17 @@ derivF[lag_Plus, field_] := (derivF[#, field] & /@ lag)
 derivF[lag_Times, field_] := (lag/# derivF[#, field]) & /@ Plus@@lag
 
 derivF[exp_op, field_]/;FreeQ[exp,Evaluate[field[[0]]]]:=0
-derivF[exp_op, field_] := Module[{rightFieldsInExp,orderedExps,moveField},
+derivF[exp_op, field_] := Module[{fieldsInExp,orderedExps,moveField},
 
-	(* moveField moves fermions/antifermions acted upon by a derivative to the utmost right/left;
-	it is always assumed that derivatives with respect to fermions/antifermions act from the right/left! *)	
-	moveField[lExp_,lField_]/;fermionQ@Head@lField:={lExp//.{op[a___,lField,b_?(fermionQ@Head@#||antiFermionQ@Head@# &),c___]:>-op[a,b,lField,c],
-		op[a___,lField,b_?(bosonQ@Head@# &),c___]:>op[a,b,lField,c]},lField};
-	moveField[lExp_,lField_]/;antiFermionQ@Head@lField:={lExp//.{op[a___,b_?(fermionQ@Head@#||antiFermionQ@Head@# &),lField,c___]:>-op[a,lField,b,c],
-		op[a___,b_?(bosonQ@Head@# &),lField,c___]:>op[a,lField,b,c]},lField};
+	(* moveField moves Grassmann fields acted upon by a derivative to the utmost left;
+	it is always assumed that derivatives with respect to Grassmann fields act from the left *)	
+	moveField[lExp_,lField_]/;grassmannQ@Head@lField:={lExp//.{op[a___,lField,b_?(grassmannQ@Head@# &),c___]:>-op[a,b,lField,c],
+		op[a___,lField,b_?(cFieldQ@Head@# &),c___]:>op[a,b,lField,c]},lField};
 	moveField[lExp_,lField_]:={lExp,lField};		
 	
-  rightFieldsInExp = List @@ Select[exp, Head@# == field[[0]] &];
+  fieldsInExp = List @@ Select[exp, Head@# == field[[0]] &];
   
-  orderedExps=moveField[exp,#]&/@rightFieldsInExp;
+  orderedExps=moveField[exp,#]&/@fieldsInExp;
 
   Plus@@Function[single,(deltam[single[[2,1]], field[[1]]] Times@@Thread[delta[indices[single[[2,0]]],List@@Rest@single[[2]], List@@Rest@field]] single[[1]]  /. single[[2]] :> Sequence[] )]/@orderedExps
 
@@ -311,7 +296,7 @@ integrateMomenta[exp_]:=exp
 
 (* if no momenta are given explicitly, the internal momenta q$i are integrated out *)
 integrateMomentum[exp_Times]/;Count[exp,deltam[___],\[Infinity]]>=1(*||(Count[exp,deltam[___],\[Infinity]]==1&&Count[exp,op[___],\[Infinity]]==1)*):=Module[
-	{intMomenta,allDeltas,s},
+	{intMomenta,allDeltas},
 	allDeltas=Cases[exp,deltam[___],\[Infinity]];
 	intMomenta=Union[ToExpression/@Select[SymbolName /@ Cases[allDeltas, s_Symbol|-s_Symbol:>s, {3}]/.a_String:>Sequence[]/;StringLength@a==1(*drop too short expressions*), StringTake[#, 2] == "q$" &]];
 
