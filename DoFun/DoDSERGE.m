@@ -77,6 +77,7 @@
         	* getVertexNumbers
         	* groupDiagrams
         	* cFieldQ
+        -) modifications in plotting: standalone propagators can be plotted now
 *)
 
 
@@ -120,6 +121,14 @@ getVertexNumbers::usage="";
 getDiagramType::usage="";
 extractDiagramType::usage="";
 groupDiagrams::usage="";
+CO::usage="";
+
+(* temporary *)
+	replaceFieldsCO;
+	firstDerivReplacementCO;
+	replacementCalcStepCO;
+	replacementCalcCO;
+
 
  	
 $bareVertexSymbol::usage="Symbol representing a bare vertex when using shortExpression.
@@ -1376,6 +1385,49 @@ sf[a_, b___List] /;
 (* make signs explicit *)
 getSigns[exp_] := 
  exp /. sf[f_?grassmannQ, l__] :> (-1)^Count[l, _?grassmannQ]
+
+
+
+
+(* ::Section:: *)
+(* Composite operators *)
+
+
+replaceFieldsCO[a__]:=replacementCalcCO@firstDerivReplacementCO[a]//Expand;
+
+
+firstDerivReplacementCO[a_Times|a_Plus]:=firstDerivReplacementCO[#]&/@a;
+
+firstDerivReplacementCO[a_?NumericQ]:=a;
+
+firstDerivReplacementCO[op[S_,c_List]]:=op[S,c];
+
+firstDerivReplacementCO[op[S_,b__List,c_List]]:=op[S,Sequence@@(replacedFieldCO/@{b}),c];
+
+
+
+replacementCalcStepCO[a_Times|a_Plus]:=replacementCalcStepCO/@a;
+
+replacementCalcStepCO[a_?NumericQ]:=a;
+
+replacementCalcStepCO[a_op]/;FreeQ[a,replacedFieldCO]:=a;
+
+(* the utmost right two terms, quite simple *)
+replacementCalcStepCO[op[S_,a___,replacedFieldCO[{Q_,q_}],c_List]]:=(op[S,a,{Q,q},c]+
+	op[S,a,P[{Q,q},c/.{d_,e_}:>{d,e}]]);
+
+(* all higher terms *)
+replacementCalcStepCO[op[S_,a___,replacedFieldCO[{Q_,q_}],c__/;FreeQ[{c},replacedFieldCO]]]:=Module[{ind1,ind2},
+	op[S,a,{Q,q},c]+
+(* propagator and derivative w.r.t. field *)Plus@@((op[S,a, P[{Q,q},#],Sequence@@DeleteCases[{c},#1]])&)/@Cases[{c},{_,_}]+
+(* propagator and derivative w.r.t. vertex *)Plus@@(op[S,a,P[{Q,q},{$dummyField,ind1=insDummy[]}],Sequence@@DeleteCases[{c},#1],derivVertex[#1,{$dummyField,ind1}]]&)/@{c}+
+(* propagator and derivative w.r.t. propagator *)Plus@@(op[S,a, P[{Q,q},{$dummyField,ind2=insDummy[]}],
+	Sequence@@DeleteCases[{c},#1],derivPropagator[#1,{$dummyField,ind2}]]&)/@{c}
+];
+
+
+
+replacementCalcCO[a_]:=FixedPoint[replacementCalcStepCO,a,50];
 
 
 
@@ -2846,47 +2898,69 @@ up to now only necessary when invoked from DSEPlotCompare because a unique verte
 otherwise use an "empty" function *)
 (*vertexDummies[a_op,fields_List,sort_:(#&),opts___?OptionQ]*)
 vertexDummies[a_op,sort_:(#&),opts___?OptionQ] /;Not@OptionQ@sort:=(*vertexDummies[a,opts]=*) Module[
-  {allIndices, indices, vertices,bareVertexRepres,bareVertexRule,
-  	externalFields, externalPropagators, propagators, legs,regulators,regulatorsRepres,regulatorRule,
-  	verticesRepres, verticesRepresList, identificationList,sameVertTest, extText,dirFieldsOrdered,allDirFields},
+  {allIndices, indices, vertices, bareVertexRepres, pureProps, purePropRepres, bareVertexRule, purePropRule,
+  	externalFields, externalFieldsSingle, externalPropagators, externalPropagatorsSingleFields, propagators, legs,regulators,regulatorsRepres,regulatorRule,
+  	verticesRepres, verticesRepresList, identificationList,sameVertTest, extText, extFieldText, allDirFields},
   
-  (* bring directed fields into canonical order; make sure only bosons are changed as no sign changes are taken into account *)
-  dirFieldsOrdered=a;
+  (* bring directed fields into canonical order; make sure only bosons are changed as no sign changes are taken into account TODO REMOVE *)
+  (*dirFieldsOrdered=a;*)
   
   allDirFields=getDirectedFieldsList[a];
 
   (* don't plot the index when called from DSEPlotCompare because then graphs won't be identified *)
   extText[q_]:=" ext "<>ToString@q;
   extText[q_]/;sort===Sort:=" ext ";
+  extFieldText[q_]:=" exField "<>ToString@q;
+  extFieldText[q_]/;sort===Sort:=" extField ";
 
-  (* get all vertices from the epxression *)
-  vertices = Cases[dirFieldsOrdered, _V | _S | _dR | _List];
+  (* get all vertices from the epxression and standalone propagators *)
+  vertices = Cases[a, _V | _S | _dR | _List];
 
-  bareVertexRepres=Cases[dirFieldsOrdered,_S][[All,1]];
-
+  bareVertexRepres=Cases[a,_S][[All,1]];
+  
   (* get all indices and identify those at the same vertex *)
-  allIndices = Cases[dirFieldsOrdered, {_, _}, Infinity];
+  allIndices = Cases[a, {_, _}, Infinity];
   sameVertTest[c_,d_]:=(Or @@ Function[{vert}, Not@FreeQ[vert, c] && Not@FreeQ[vert, d]] /@ vertices );
   indices = Union[allIndices, SameTest -> sameVertTest ];
   
   (* get legs *)
-  legs = Select[allIndices, Count[dirFieldsOrdered, #, Infinity] == 1 &];
+  legs = Select[allIndices, Count[a, #, Infinity] == 1 &];
 
   (* regulator insertions *)
-  regulators=Cases[dirFieldsOrdered, _dR ];
-  regulatorsRepres=Cases[dirFieldsOrdered,_dR][[All,1]];
+  regulators=Cases[a, _dR ];
+  regulatorsRepres=Cases[a,_dR][[All,1]];
   regulatorRule=#->(#/.{Q_,q_}:> {Q,q,"dt R"})&/@regulatorsRepres;
 
   (* external fields *)
-  externalFields = Cases[dirFieldsOrdered, {_, _}];
+  externalFields = Cases[a, {_, _}];
+  
+  (* external fields not coupled to anything *)
+  externalFieldsSingle = Intersection[externalFields, legs];
+  externalFields = Complement[externalFields, externalFieldsSingle];
+  
+  (* delete exernal fields from legs *) 
+  legs = Complement[legs, externalFieldsSingle];
   
   (* get all internal propagators; sort according to order of directed fields *)
-  propagators =Sort[#,MemberQ[allDirFields,{#1,#2}]&]&/@ Cases[dirFieldsOrdered, _P];
+  propagators =Sort[#,MemberQ[allDirFields,{#1,#2}]&]&/@ Cases[a, _P];
+    
+  (* pure propagators *)
+  pureProps = Cases[propagators, P[{f1_,i1_},{f2_,i2_}]/;Not@FreeQ[legs,i1]&&Not@FreeQ[legs,i2]];
+  
+  (* add pure propagators to vertices *)
+  vertices = Join[vertices, pureProps];
+  purePropRepres = pureProps[[All,1]];
+  
+  (* drop standalone propagators *)
+  propagators = Complement[propagators, pureProps];
 
   (* add the propagators to external points *)
   externalPropagators = Join[legs /. {Q_, q_?(Not@ListQ@# &)} :> P[{Q, q}, {antiField@Q, q, " leg "<>ToString@q}], externalFields /. {Q_, q_?(Not@ListQ@# &)} :> P[{Q, q}, {antiField@Q, q,extText[q]}]];
+  
+  (* for single external fields create a propagator which will be plotted transparent *)
+  externalPropagatorsSingleFields = externalFieldsSingle /. {Q_, q_?(Not@ListQ@# &)} :> P[{Q, q}, {antiField@Q, q,extFieldText[q]}];
 
-  propagators =Sort[#,(* this is indeed the correct direction for directed fields *)Not@MemberQ[allDirFields,{#1[[1]],#2[[1]]}]&]&/@ Join[propagators, externalPropagators];
+  propagators =Sort[#,(* this is indeed the correct direction for directed fields *)Not@MemberQ[allDirFields,{#1[[1]],#2[[1]]}]&]&/@ Join[propagators, externalPropagators, externalPropagatorsSingleFields];
 
   (* give all propagators a "name" *)
   propagators=propagators/.P[{B_, b_,bl___}, {C_, c_,cl___}]:>P[{B, b,bl}, {C, c,cl},StringJoin[ToString@B,bl," ",ToString@C,cl]];
@@ -2894,8 +2968,9 @@ vertexDummies[a_op,sort_:(#&),opts___?OptionQ] /;Not@OptionQ@sort:=(*vertexDummi
   (* get indices of all vertices and choose one representative;
      sort to have uniquely defined representatives when plotting with DSEPlotCompare, but not otherwise since then the bare vertex can "disappear" *)
   verticesRepres = {First@#, List @@ #} & /@ sort/@ vertices;
-  (* determine how to add an "S" to the bare vertex representative; this is used in the VertexRenderingFunction to plot S and V differently; only add an S if  *)
+  (* determine how to add an "S" or "P" to the bare vertex representative; this is used in the VertexRenderingFunction to plot S, P and V differently *)
   bareVertexRule=#->(#/.{Q_,q_}:> {Q,q,"S"})&/@bareVertexRepres;
+  purePropRule = #->(#/.{Q_,q_}:> {Q,q,"P"})&/@purePropRepres;
 
   (* prepare a list for the identification of every index with the representative; Hold necessary for the use of Riffle *)
   verticesRepresList = Flatten[Partition[Riffle[verticesRepres[[#, 2]], Hold@verticesRepres[[#, 1]], {2, -1, 2}], 2] & /@ Range@Length@verticesRepres // ReleaseHold, 1];
@@ -2904,9 +2979,7 @@ vertexDummies[a_op,sort_:(#&),opts___?OptionQ] /;Not@OptionQ@sort:=(*vertexDummi
   identificationList = Thread[Rule[#[[1]], #[[2]]], 1] & /@ verticesRepresList;
 
   (* use propagators for the rules of the GraphPlot *)
-  propagators=propagators /. identificationList /.bareVertexRule/.regulatorRule/. P[{B_, b_, bl_: ""}, {C_, c_, cl_: ""},d_] :> {Rule[{B, b, bl}, {C, c, cl}],d};
-  propagators=propagators+1;
-  propagators-1 
+  propagators=propagators /. identificationList /.bareVertexRule/.purePropRule/.regulatorRule/. P[{B_, b_, bl_: ""}, {C_, c_, cl_: ""},d_] :> {Rule[{B, b, bl}, {C, c, cl}],d}
    
   ];
   
@@ -2968,8 +3041,8 @@ regulatorSymbolFunction=regulatorSymbol/.Join[{opts},Options@RGEPlot];
 sls=Which[Not@FreeQ[a,"dt R"],1,
 	True,Automatic];
 
-(* exponent -1 for propagators *)
-exponent=If[Length@a===2,"-1","",""];
+(* exponent -1 for inverse propagators *)
+exponent=If[Length@a===2 && FreeQ[a, "P"],"-1","",""];
 
 Labeled[
 GraphPlot[a, EdgeRenderingFunction->((Which@@Join[
@@ -3027,8 +3100,8 @@ regulatorSymbolFunction=regulatorSymbol/.Join[{opts},Options@RGEPlot];
 sls=Which[Not@FreeQ[a,"dt R"],1,
 	True,Automatic];
 	
-(* exponent -1 for propagators *)
-exponent=If[Length@a===2,"-1","",""];
+(* exponent -1 for inverse propagators *)
+exponent=If[Length@a===2 && FreeQ[a, "P"],"-1","",""];
 
 Labeled[
 GraphPlot[a,
