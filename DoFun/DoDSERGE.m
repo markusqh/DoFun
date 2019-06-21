@@ -1381,6 +1381,9 @@ sf[a_, b___List] /;
   Not[FreeQ[
     b[[All, 1]], _?bosonQ | _?complexFieldQ | _?antiComplexFieldQ]] :=
   sf[a, DeleteCases[b, _?bosonQ | _?complexFieldQ | _?antiComplexFieldQ]]
+  
+(* if elements of op are sorted, do not touch sf expressions *)
+Sort[sf[a_, b_]] ^= sf[a, b]
 
 (* make signs explicit *)
 getSigns[exp_] := 
@@ -1875,7 +1878,10 @@ identifyGraphsRGE[a_?NumericQ,opts___]:=a;
 identifyGraphsRGE[exp_Plus,extFields_List]:=Module[{classes,ops,equalOps,orderedExp},
 
 (* TODO order bosonic fields in propagators; needed, e.g., for complex scalar fields; handled automatically in DoFun3 for complex fields, but still necessary for mixed fields *)
-orderedExp=exp/.P[{Q1_?cFieldQ,q1_},{Q2_?cFieldQ,q2_}]:>Sort@P[{Q1,q1},{Q2,q2}]/.S:>V;(* replace S by V for common treatment of vertices *)
+(*orderedExp=exp/.P[{Q1_?cFieldQ,q1_},{Q2_?cFieldQ,q2_}]:>Sort@P[{Q1,q1},{Q2,q2}]/.S:>V;(* replace S by V for common treatment of vertices *)*)
+(* TODO ordering handled automatically, but unclear what happend for mixed fields *)
+orderedExp=exp(*/.S:>V*);(* TODO: Remove replace S by V for common treatment of vertices *)
+
 
 (* split off the numerical factors; syntax: {{factor1,op1},{factor2, op2},{factor3,op3},...} *)
 ops=Replace[List@@Expand@orderedExp/.Times[b_?NumericQ,c_]:> {b,c},d_op:> {1,d},{1}];
@@ -1932,7 +1938,7 @@ getNeighbours[exp_, allExtFields_List] :=
    connectingFields = 
     List @@ Complement[mainVertex, 
       Sequence @@ (V[#] & /@ extFieldsOfMainVertex)];
-   connectingFields = List@@mainVertex /. {f_?fieldQ, i_}:>Sequence[]/;MemberQ[allExtFields, {f,i}];
+   connectingFields = List@@mainVertex /. {f_?fieldQ, j_}:>Sequence[]/;MemberQ[allExtFields, {f,j}];
    (* result: {starting vertex, {{field which connects to neighbour 1, neighbour 1},{field which connects to neighbour 2, neighbour 2}}} *)
    
    fieldValues = Association @@ Table[allExtFields[[i, 2]] -> i, {i, 1, Length[allExtFields]}];
@@ -1968,14 +1974,15 @@ getNeighbours[exp_, startingField_List, v_V, allExtFields_List] := Module[{conne
     Cases[List @@ v, 
      Alternatives @@ Union[allExtFields, {startingField}]];
   
-(* get new neighbour *)
-   connectingFields = List @@ Complement[v, V @@ fieldsDone];
+(* get new neighbour, delete fields already done *)
+   (*connectingFields = List @@ Complement[v, V @@ fieldsDone];*)
+   connectingFields = List @@ (v /. (Rule[#, Sequence[]] &/@fieldsDone));
    
 (* result: {vertex, {field which connects to new neighbour, new neighbour}} *)
    {v, Function[
       cF, {cF, 
        (Select[exp, 
-         Not@FreeQ[#, cF] && FreeQ[#, Alternatives@@fieldsDone] &](*/.{}:>{{}}*)(* avoids problems with external fields, which have no connections *))[[1]]}] /@ 
+         Not@FreeQ[#, cF] && FreeQ[#, Alternatives@@fieldsDone] &]/.{}:>{{}}(* avoids problems with external fields, which have no connections *))[[1]]}] /@ 
      connectingFields} 
 ];
 
@@ -2001,19 +2008,14 @@ getGraphCharacteristic[graph_op, extLegs_List] :=
   allFieldsInV=Cases[id,{_?fieldQ,_},\[Infinity]];
   extFields=Select[allFieldsInV,Count[allFieldsInV,#]==1&];
   (* rotate extFields until the first derivative is on position 1; this is necessary so that equal graphs with opposite directions of the fields can be identified  *)
-  extFieldsRotated=FixedPoint[RotateLeft[#]&, extFields, Length@extFields, SameTest->(Not[FreeQ[#2[[1]], extLegs[[1]]]] &)];
+  (*extFieldsRotated=FixedPoint[RotateLeft[#]&, extFields, Length@extFields, SameTest->(Not[FreeQ[#2[[1]], extLegs[[1]]]] &)];*)
   extFieldsRotated=extLegs;
   (* find neighbours from there *)
   firstNeighbours = getNeighbours[id, extFieldsRotated];
  
   (* repeat the process until the loop is closed *)
-  (*Print[Nest[(# /. {a_, b_V} :> {a, getNeighbours[id, a, b, extFieldsRotated]} )&,
-     firstNeighbours,
-     Max[0, Floor[(Length@props-2)/2]]]
-    /. {Q_?fieldQ, q_} :> {Q} /; 
-      Not@MemberQ[extFieldsRotated[[All, 2]], q] /. V[a__] :> Sort[V[a]]]*);
   Nest[(# /. {a_, b_V} :> {a, getNeighbours[id, a, b, extFieldsRotated]} )&,
-     firstNeighbours,
+     firstNeighbours,	
      Max[0, Floor[(Length@props-2)/2]]]
     /. {Q_?fieldQ, q_} :> {Q} /; 
       Not@MemberQ[extFieldsRotated[[All, 2]], q] /. V[a__] :> Sort[V[a]]
@@ -2023,13 +2025,19 @@ getGraphCharacteristic[graph_op, extLegs_List] :=
 
 
 sortCanonical[b_op, derivatives_List] := 
- Module[{ordered, fieldValues, i, intIndices, props, const, connectedLeg, intIndexAss, orderV, intVerts},
+ Module[{ordered, fieldValues, i, intIndices, props, const, connectedLeg, intIndexAss, intVertsAss, orderV, intVerts, extVerts},
 
   (* constant to distinguish internal from external indices *)
   const = 10^10;
   
   (* extract propagators *)
   props =  Cases[b, P[___]];
+  
+  (* get vertices with external legs *)
+  extVerts = Cases[b, V[a__]|S[a__]/;Not@FreeQ[{a}, Alternatives@@derivatives[[All,2]]]];
+  
+  (* get vertices without external legs *)
+  intVerts = Cases[b, V[a__]/;FreeQ[{a}, Alternatives@@derivatives[[All,2]]]];
   
   (* assign each index a number for sorting: 
   external ones by position in derivatives, 
@@ -2047,16 +2055,37 @@ sortCanonical[b_op, derivatives_List] :=
   (* set up association for internal indices: 
   extract vertices that internal indices connect to, 
   then determine their association values by the smallest value of an external field there and add a constant *)
-  
-  (* extract purely internal vertices and assign a value *)
-  intVerts = Cases[b, V[a__]/;FreeQ[{a}, Alternatives@@derivatives[[All,2]]]];
-  
-  intIndexAss = {#, Cases[b, V[a__]|S[a__] /; Not@FreeQ[{a}, connectedLeg@#]][[1]]} & /@  intIndices;
+   
+  (* assign internal vertices a value for ordering *)
+  (* extract for each internal index the vertex it connects to *)
+  intIndexAss = {#, Cases[b, V[a__]|S[a__] /; Not@FreeQ[{a}, connectedLeg@#]][[1]]} & /@ intIndices;
+  (* remove internal vertices *)
+  intIndexAss = Select[intIndexAss, Not@MemberQ[intVerts, #[[2]]]&];
+  (* assign a field value based on the lowest field value of the external legs of the connected vertex *)
   intIndexAss = intIndexAss /. V[a___]|S[a___] :> const + Sort[(fieldValues[#[[2]]] & /@ Select[{a}, MemberQ[derivatives, #] &])][[1]];
-    
+  
   (* combine associations *)
   fieldValues = Join[fieldValues, Association @@ Rule @@@ intIndexAss];
   
+  (* handle internal vertices by assigning a value based on the connected vertices *)
+  (* take their indices *)
+  intVertsAss = (List@@#)[[All,2]] & /@ intVerts;
+  (* get all vertices they connect to and take their indices only*)  
+  intVertsAss = Map[connectedLeg, intVertsAss, {2}];
+  intVertsAss = Map[Function[ind, Select[extVerts, Not@FreeQ[#, ind] &]], intVertsAss, {2}] /. {a_?fieldQ, 
+   j_} :> j /. S:>List /. V:>List;
+  (* get field values for all indices *)
+  intVertsAss = Map[fieldValues, intVertsAss, {4}];
+  (* determine lowest field value of vertex that internal indices connect to (those with missing keys) *)
+  intVertsAss = Map[Cases[#, Missing["KeyAbsent", ind_] :> {ind, Min@Select[#, NumericQ]}] &, intVertsAss, {3}];
+  (* assign field value *)
+  intVertsAss = Union@Flatten[Map[Rule[#[[1]], 2*const + #[[2]]] &, intVertsAss, {4}]];
+  (* do the same for the connecting counterparts *)
+  intVertsAss = Flatten[Join[intVertsAss, intVertsAss/.(j_->ind_):>(connectedLeg[j]->ind)]]; 
+   
+  (* add the new associations to the field value function *)
+  fieldValues = Join[fieldValues, Association @@ intVertsAss];
+    
   (* order fields of a vertex as bosons, antiFermions, 
   fermions and internally by fieldValues *)
   
@@ -2081,7 +2110,7 @@ sortCanonical[b_, derivatives_List] := b/. op[a___]:> sortCanonical[op[a], deriv
 getSignature[a_op] := Module[{verts},
   (* get vertices and keep only Grassmann fields *)
   verts = DeleteCases[
-    Cases[a, V[___]], {_?bosonQ, _} | {_?complexFieldQ, _} | {_?antiComplexFieldQ, _}, {2}];
+    Cases[a, V[___]|S[___]], {_?bosonQ, _} | {_?complexFieldQ, _} | {_?antiComplexFieldQ, _}, {2}];
   (* return sign *)
   Times @@ (Signature /@ verts)
 ]
@@ -2588,7 +2617,7 @@ finalExp=orderFermions@If[sourcesZero/.Join[{opts},Options@doDSE],sortDummies@se
 multiPoint,multiPoint]/.(Function[dField, 
    P[{dField[[2]], c_}, {dField[[1]], b_}] :> 
     P[{dField[[1]], b}, {dField[[2]], c}]] /@ Cases[complexFields,{_?(Head@#===boson&),_?(Head@#===boson&)}]);
-finalExp=sign identifyGraphs[getSigns[finalExp]];
+finalExp=sign identifyGraphsRGE[sortCanonical[getSigns[finalExp], derivs], derivs];
 
 finalExp
 
