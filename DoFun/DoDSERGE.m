@@ -78,6 +78,8 @@
         	* groupDiagrams
         	* cFieldQ
         -) modifications in plotting: standalone propagators can be plotted now
+        -) new option of DSEPlot:
+        	* coSymbol
 *)
 
 
@@ -122,6 +124,7 @@ getDiagramType::usage="";
 extractDiagramType::usage="";
 groupDiagrams::usage="";
 CO::usage="";
+coSymbol::usage="";
 
 (* temporary *)
 	replaceFieldsCO;
@@ -842,6 +845,7 @@ setSourcesZeroRGE[op[V[{A, i}, {A, r}, {A, s}, {A, t}], P[{A, r}, {$dummyField, 
 
 (* TODO*)
 sf::usage="Temporary function to determine the signs from fermions."
+sf2::usage="";
 
 (* TODO*)
 getSigns::usage="Make signs from the sf temporary functions explicit."
@@ -1281,9 +1285,9 @@ sortDummies[a_op]:=Module[
 (* discard sf terms, since their indices are not to be contracted *)
 b = a/.sf[_,_]:>1;
 
-(* get all indices from the epxression *)
+(* get all indices from the epxression, do not consider indices in sf and sf2 *)
 (*inds=Transpose[b[[Sequence@@#]]&/@Position[b,{_,ind_}]][[2]];*)
-inds = Cases[b, {c_?fieldQ, ind_} :> ind, Infinity];
+inds = Cases[b/.sf[_,_]:>1/.sf2[_,_]:>1, {c_?fieldQ, ind_} :> ind, Infinity];
 
 (* determine the dummy indices; only take the first appearance, don't change order, i.e. don't use Union *)
 (*exprDummies=
@@ -1313,7 +1317,7 @@ generateAction[action_,rest___]:=
 (*generateAction[interactions_List]:=Message[generateAction::fieldsNotSet,interactions];*)
 
 generateAction[interactions_List]:=Module[
-{interactions2, fields,autoList, userList, factor},
+{interactions2, fields, autoList, userList, allList, factor},
 
 (* in case the fields are given by their order and symmetry *)
 interactions2=interactions/. {
@@ -1336,8 +1340,15 @@ autoList = Function[ia,
       localFactors_List} :> {ia /. field_?fieldQ :> {field, insDummy[]}, 
       1/Times @@ Factorial /@ localFactors}] /@ autoList;
 
-(Plus @@ (#[[2]] op[S[Sequence @@ #[[1]]], Sequence @@ #[[1]]] & /@ Join[autoList, userList] // sortDummies))
-  /.a_S?(Length@#>2&):>-$signConvention a
+(*(Plus @@ (#[[2]] op[S[Sequence @@ #[[1]]], Sequence @@ Reverse@#[[1]]] & /@ Join[autoList, userList] // sortDummies))
+  /.a_S?(Length@#>2&):>-$signConvention a*)
+  (* join lists *)
+  allList = Join[autoList, userList];
+  
+  (* generate action; for vertices change the order of the fields to account for the correct order of fermions;
+  for propagators not necessary because they are defined with field/anti-fields exchanged *)
+  (Plus @@ (#[[2]] op[S[Sequence @@ #[[1]]], Sequence @@ #[[1]]] & /@ allList // sortDummies))
+  /.a_S?(Length@#>2&):>-$signConvention a /. op[b_S,c___List]:>op[b,Sequence@@Reverse[{c}]]/;Length[{c}]>2
 
 ];
 
@@ -1405,7 +1416,7 @@ firstDerivReplacementCO[a_?NumericQ]:=a;
 
 firstDerivReplacementCO[op[S_,c_List]]:=op[S,c];
 
-firstDerivReplacementCO[op[S_,b__List,c_List]]:=op[S,Sequence@@(replacedFieldCO/@{b}),c];
+firstDerivReplacementCO[op[S__,b__List,c_List]]:=op[S,Sequence@@(replacedFieldCO/@{b}),c];
 
 
 
@@ -1464,12 +1475,12 @@ replacementCalcStep[a_op]/;FreeQ[a,replacedField]:=a;
 
 (* the utmost right two terms, quite simple *)
 replacementCalcStep[op[S_,a___,replacedField[{Q_,q_}],c_List]]:=(op[S,a,{Q,q},c]+
-	op[S,a,P[{Q,q},c/.{d_,e_}:>{d,e}]]);
+	op[S,a,sf2[{Q,q},c],P[{Q,q},c/.{d_,e_}:>{d,e}]]);
 
 (* all higher terms *)
 replacementCalcStep[op[S_,a___,replacedField[{Q_,q_}],c__/;FreeQ[{c},replacedField]]]:=Module[{ind1,ind2},
 	op[S,a,{Q,q},c]+
-(* propagator and derivative w.r.t. field *)Plus@@((op[S,a, P[{Q,q},#],Sequence@@DeleteCases[{c},#1]])&)/@Cases[{c},{_,_}]+
+(* propagator and derivative w.r.t. field *)Plus@@((op[S,a,sf2[{Q,q},#], P[{Q,q},#],Sequence@@DeleteCases[{c},#1]])&)/@Cases[{c},{_,_}]+
 (* propagator and derivative w.r.t. vertex *)Plus@@(op[S,a,P[{Q,q},{$dummyField,ind1=insDummy[]}],Sequence@@DeleteCases[{c},#1],derivVertex[#1,{$dummyField,ind1}]]&)/@{c}+
 (* propagator and derivative w.r.t. propagator *)Plus@@(op[S,a, P[{Q,q},{$dummyField,ind2=insDummy[]}],
 	Sequence@@DeleteCases[{c},#1],derivPropagator[#1,{$dummyField,ind2}]]&)/@{c}
@@ -1683,6 +1694,7 @@ derivVertex[a_List,{Q_,q_}]:=0;
 derivVertex[a_dR,{Q_,q_}]:=0;
 
 derivVertex[a_sf,{Q_,q_}]:=0;
+derivVertex[a_sf2,{Q_,q_}]:=0;
  
 
 derivPropagator[V[a__],{Q_,q_}]:=0;
@@ -1692,6 +1704,7 @@ derivPropagator[a_List,{Q_,q_}]:=0;
 derivPropagator[S[__],{Q_,q_}]:=0;
 
 derivPropagator[sf[_,_],{Q_,q_}]:=0;
+derivPropagator[sf2[_,_],{Q_,q_}]:=0;
 
 (*derivPropagator[P[field1_List,field2_List],{Q_,q_}]:=ReleaseHold@Module[{dummy1,dummy2},
 	Hold@Sequence[sf[{Q,q},{field1,{$dummyField,dummy1}}],V[plugInFieldsV[{Q,q},{$dummyField,dummy1=insDummy[]},{$dummyField,dummy2=insDummy[]}]],
@@ -1731,7 +1744,7 @@ posInd=Position[a,Alternatives@@prop];
 {prop,DeleteCases[a[[Sequence@@#[[1]]]]&/@posInd,_P]}]/@props;
 
 (* delete appearances of sf function *)
-propConnections = propConnections/.sf[_,_]:>Sequence[];
+propConnections = propConnections/.sf[_,_]:>Sequence[]/.sf2[_,_]:>Sequence[];
 
 (* create a list of the factor, 1 representative and the connected vertices *)
 represConnections=Union[propConnections,SameTest->propagatorId];
@@ -2034,7 +2047,7 @@ sortCanonical[b_op, derivatives_List] :=
   props =  Cases[b, P[___]];
   
   (* get vertices with external legs *)
-  extVerts = Cases[b, V[a__]|S[a__]/;Not@FreeQ[{a}, Alternatives@@derivatives[[All,2]]]];
+  extVerts = Cases[b, V[a__]|S[a__]/;Not@FreeQ[{a}, Alternatives@@derivatives[[All,2]]] && Length[{a}]>2];
   
   (* get vertices without external legs *)
   intVerts = Cases[b, V[a__]/;FreeQ[{a}, Alternatives@@derivatives[[All,2]]]];
@@ -2093,7 +2106,8 @@ sortCanonical[b_op, derivatives_List] :=
   	SortBy[Select[{a}, bosonQ[#[[1]]] &], fieldValues[#[[2]]] &],
   	SortBy[Select[{a}, antiFermionQ[#[[1]]] &], fieldValues[#[[2]]] &], 
     SortBy[Select[{a}, fermionQ[#[[1]]] &], (fieldValues[#[[2]]]) &]]];
-  orderV[S[a__]] := orderV[V[a]]/.V:>S;
+  orderV[S[a__]] /; Length[{a}]>2 := orderV[V[a]]/.V:>S;
+  orderV[S[a__]] := S[a];
     
   ordered = b /. V[a__] :> orderV[V[a]] /. S[a__] :> orderV[S[a]];
   
@@ -2246,8 +2260,8 @@ propRules=createPropagatorRules[allowedPropagators,fields,opts];
 in DSE calculations it should be possible to set only a certain type of fields to zero, so do not truncate if we are in the symmtric phase;
 numberExtFields gives the external fields per vertex;
 add the marker ext to all external fields, then count them per vertex and set vertices with too many fields to zero, finally remove the marker *)
-verticesAtMinTruncMarked=a/.op[e___,f_List,g___]:>(op[e,f,g]/.f:>{f,ext});
-verticesAtMinTrunc=verticesAtMinTruncMarked/.exp_V|exp_S:>0/;Count[exp,{_List,ext}]>numberExtFields/.{l_List,ext}:>l;
+verticesAtMinTruncMarked=a//.op[e___,{F_?fieldQ,f_},g___]:>op[e,{{F,f},ext},g];
+verticesAtMinTrunc=verticesAtMinTruncMarked/.exp_op:>0/;Count[exp,{_List,ext}]>numberExtFields/.{l_List,ext}:>l;
 
 (* apply replacement rules for the propagators; note that here we can get a sum of ops;
 delete propagators that are not allowed *)
@@ -2500,7 +2514,7 @@ innerFermionsCanonicalQ[exp_op, v_V] := Module[
   extFields2ZeroRules = # :> Sequence[] & /@ extFields;
     
   (* expression with identifications, removed sf functions *)
-  expId = exp /. P[___] :> Sequence[] /. idRules/. sf[_,_]:>Sequence[];
+  expId = exp /. P[___] :> Sequence[] /. idRules/. sf[_,_]:>Sequence[]/. sf2[_,_]:>Sequence[];
   
   (* get all internal fields of the vertex = connectors*)  
   vConnectors = List @@ (v /. extFields2ZeroRules /. idRules);
@@ -2535,7 +2549,7 @@ getLoopNumber[a_op]:=Module[
 	{props, vertices, regulatorInsertions},
 	
 	(* get number of vertices, propagators and regulator insertions *)
-	vertices=Count[a, V[__] | S[__],\[Infinity]];
+	vertices=Count[a, V[__] | S[__] | CO[__],\[Infinity]];
 	props=Count[a, P[__],\[Infinity]];
 	regulatorInsertions=Count[a, dR[__],\[Infinity]];
 
@@ -2927,8 +2941,8 @@ up to now only necessary when invoked from DSEPlotCompare because a unique verte
 otherwise use an "empty" function *)
 (*vertexDummies[a_op,fields_List,sort_:(#&),opts___?OptionQ]*)
 vertexDummies[a_op,sort_:(#&),opts___?OptionQ] /;Not@OptionQ@sort:=(*vertexDummies[a,opts]=*) Module[
-  {allIndices, indices, vertices, bareVertexRepres, pureProps, purePropRepres, bareVertexRule, purePropRule,
-  	externalFields, externalFieldsSingle, externalPropagators, externalPropagatorsSingleFields, propagators, legs,regulators,regulatorsRepres,regulatorRule,
+  {allIndices, indices, vertices, bareVertexRepres, CORepres, pureProps, purePropRepres, bareVertexRule, CORule, purePropRule,
+  	externalFields, externalFieldsSingle, externalPropagators, externalPropagatorsSingleFields, propagators, legs, regulators,regulatorsRepres,regulatorRule,
   	verticesRepres, verticesRepresList, identificationList,sameVertTest, extText, extFieldText, allDirFields},
   
   (* bring directed fields into canonical order; make sure only bosons are changed as no sign changes are taken into account TODO REMOVE *)
@@ -2943,9 +2957,11 @@ vertexDummies[a_op,sort_:(#&),opts___?OptionQ] /;Not@OptionQ@sort:=(*vertexDummi
   extFieldText[q_]/;sort===Sort:=" extField ";
 
   (* get all vertices from the epxression and standalone propagators *)
-  vertices = Cases[a, _V | _S | _dR | _List];
+  vertices = Cases[a, _V | _S | _dR | _CO | _List];
 
   bareVertexRepres=Cases[a,_S][[All,1]];
+  
+  CORepres = Cases[a, _CO][[All,1]];
   
   (* get all indices and identify those at the same vertex *)
   allIndices = Cases[a, {_, _}, Infinity];
@@ -2997,8 +3013,9 @@ vertexDummies[a_op,sort_:(#&),opts___?OptionQ] /;Not@OptionQ@sort:=(*vertexDummi
   (* get indices of all vertices and choose one representative;
      sort to have uniquely defined representatives when plotting with DSEPlotCompare, but not otherwise since then the bare vertex can "disappear" *)
   verticesRepres = {First@#, List @@ #} & /@ sort/@ vertices;
-  (* determine how to add an "S" or "P" to the bare vertex representative; this is used in the VertexRenderingFunction to plot S, P and V differently *)
+  (* determine how to add an "S", "CO" or "P" to the bare vertex representative; this is used in the VertexRenderingFunction to plot S, P and V differently *)
   bareVertexRule=#->(#/.{Q_,q_}:> {Q,q,"S"})&/@bareVertexRepres;
+  CORule=#->(#/.{Q_,q_}:> {Q,q,"CO"})&/@CORepres;
   purePropRule = #->(#/.{Q_,q_}:> {Q,q,"P"})&/@purePropRepres;
 
   (* prepare a list for the identification of every index with the representative; Hold necessary for the use of Riffle *)
@@ -3008,7 +3025,7 @@ vertexDummies[a_op,sort_:(#&),opts___?OptionQ] /;Not@OptionQ@sort:=(*vertexDummi
   identificationList = Thread[Rule[#[[1]], #[[2]]], 1] & /@ verticesRepresList;
 
   (* use propagators for the rules of the GraphPlot *)
-  propagators=propagators /. identificationList /.bareVertexRule/.purePropRule/.regulatorRule/. P[{B_, b_, bl_: ""}, {C_, c_, cl_: ""},d_] :> {Rule[{B, b, bl}, {C, c, cl}],d}
+  propagators=propagators /. identificationList /.bareVertexRule/.CORule/.purePropRule/.regulatorRule/. P[{B_, b_, bl_: ""}, {C_, c_, cl_: ""},d_] :> {Rule[{B, b, bl}, {C, c, cl}],d}
    
   ];
   
@@ -3049,7 +3066,7 @@ DSEPlotList[a_List,plotRules_List,opts___?OptionQ]/;And @@ (fieldQ /@ Flatten[a]
 DSEPlotList[a_,plotRules_List,opts___?OptionQ]/;FreeQ[a,Rule,Infinity]:=
 	DSEPlotList[vertexDummies[a,opts],plotRules,opts];
 
-DSEPlotList[{a_List,b_?NumericQ},plotRules_List,opts___?OptionQ]:=Module[{allDirFields, exponent,regulatorSymbolFunction,sls,dirFieldsOrdered,plotRulesAll},
+DSEPlotList[{a_List,b_?NumericQ},plotRules_List,opts___?OptionQ]:=Module[{allDirFields, exponent,regulatorSymbolFunction,coSymbolFunction,sls,dirFieldsOrdered,plotRulesAll},
 
 (* extend plot Rules also to antifields *)
 plotRulesAll=Union@Replace[plotRules, {c_?fieldQ, d__} :> Sequence[{c, d}, {antiField@c, d}], 1];
@@ -3065,6 +3082,9 @@ dirFieldsOrdered=a;
 
 (* determine the function for drawing the regulator insertion *)
 regulatorSymbolFunction=regulatorSymbol/.Join[{opts},Options@RGEPlot];
+
+(* determine the function for drawing an composite operator *)
+coSymbolFunction=coSymbol(*/.Join[{opts},Options@DSEPlot]*);
 
 (* SelfLoopStyle is required for zero leg graphs in RGEs to avoid that the regulator symbol is larger than the loop *)
 sls=Which[Not@FreeQ[a,"dt R"],1,
@@ -3089,6 +3109,8 @@ GraphPlot[a, EdgeRenderingFunction->((Which@@Join[
 			{Text[Style[StringReplace[#2[[3]],"leg":> ""],Sequence@@(indexStyle/.Join[{opts},Options@DSEPlot]),FontSize:>14],#1+{0,0.3}],Disk[#1,0.02]},
 		Not@StringFreeQ[#2[[3]],"S"],
 			Disk[#1,0.02],
+		Not@StringFreeQ[#2[[3]],"CO"],
+			coSymbolFunction[#1],
 		Not@StringFreeQ[#2[[3]],"dt R"],
 			regulatorSymbolFunction[#1],
 		Not@StringFreeQ[#2[[3]],"ext"],
@@ -3120,10 +3142,13 @@ DSEPlotList[a_List,opts___?OptionQ]/;And @@ (fieldQ /@ Flatten[a]):=
 
 DSEPlotList[a_,opts___?OptionQ]/;FreeQ[a,Rule,Infinity]:=DSEPlotList[vertexDummies[a,opts],opts];
 
-DSEPlotList[{a_List,b_?NumericQ},opts___?OptionQ]:=Module[{exponent,regulatorSymbolFunction,sls},
+DSEPlotList[{a_List,b_?NumericQ},opts___?OptionQ]:=Module[{exponent,regulatorSymbolFunction,coSymbolFunction,sls},
 
 (* determine the function for drawing the regulator insertion *)
 regulatorSymbolFunction=regulatorSymbol/.Join[{opts},Options@RGEPlot];
+
+(* determine the function for drawing an composite operator *)
+coSymbolFunction=coSymbol(*/.Join[{opts},Options@DSEPlot]*);
 
 (* SelfLoopStyle is required for zero leg graphs in RGEs to avoid that the regulator symbol is larger than the loop *)
 sls=Which[Not@FreeQ[a,"dt R"],1,
@@ -3147,6 +3172,8 @@ GraphPlot[a,
 			{Text[Style[StringReplace[#2[[3]],"leg":> ""],Sequence@@(indexStyle/.Join[{opts},Options@DSEPlot]),FontSize:>14],#1+{0,0.3}],Disk[#1,0.02]},
 		Not@StringFreeQ[#2[[3]],"S"],
 			Disk[#1,0.02],
+		Not@StringFreeQ[#2[[3]],"CO"],
+			coSymbolFunction[#1],
 		Not@StringFreeQ[#2[[3]],"dt R"],
 			regulatorSymbolFunction[#1],
 		Not@StringFreeQ[#2[[3]],"ext"],
@@ -3335,6 +3362,12 @@ regulatorCross[x_]:=Module[{rad=0.1},
     Line[{x+rad{Sin[\[Pi]/4], -Cos[\[Pi]/4]},x+rad {-Sin[\[Pi]/4], Cos[\[Pi]/4]}}]
 	}
 ];
+
+
+(* graphical composite operator representation *)
+
+coSymbol[x_]:={GrayLevel[0.4],Polygon[{x- {0.1, 0.1}, x + {0.1, 0.0}, x + {-0.1, 0.1}}]};
+
 
 
 
