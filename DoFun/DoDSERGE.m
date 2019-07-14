@@ -110,6 +110,7 @@ If[DoFun`DoDSERGE`$doDSERGEStartMessage=!=False,
 
 (* TODO Remove *)
 getGraphCharacteristic;
+vertexDummies;
 
 (* ::Section:: *)
 (* Usages *)
@@ -125,6 +126,14 @@ extractDiagramType::usage="";
 groupDiagrams::usage="";
 CO::usage="";
 coSymbol::usage="";
+replacedFieldCO::usage="";
+connectedQ::usage="";
+disconnectedQ::usage="";
+getConnected::usage="";
+getDisconnected::usage="";
+onePIQ::usage="";
+get1PIPIQ::usage="";
+getNon1PI::usage="";
 
 (* temporary *)
 	replaceFieldsCO;
@@ -1416,7 +1425,11 @@ firstDerivReplacementCO[a_?NumericQ]:=a;
 
 firstDerivReplacementCO[op[S_,c_List]]:=op[S,c];
 
-firstDerivReplacementCO[op[S__,b__List,c_List]]:=op[S,Sequence@@(replacedFieldCO/@{b}),c];
+(*firstDerivReplacementCO[op[S___,b__List,c_List]]:=op[S,Sequence@@(replacedFieldCO1/@{b}),c];*)
+
+firstDerivReplacementCO[op[b___,c_List]]:=op[Sequence@@(replacedFieldCO/@{b}),c];
+
+replacedFieldCO[a_CO]:=a;
 
 
 
@@ -1427,15 +1440,16 @@ replacementCalcStepCO[a_?NumericQ]:=a;
 replacementCalcStepCO[a_op]/;FreeQ[a,replacedFieldCO]:=a;
 
 (* the utmost right two terms, quite simple *)
-replacementCalcStepCO[op[S_,a___,replacedFieldCO[{Q_,q_}],c_List]]:=(op[S,a,{Q,q},c]+
-	op[S,a,P[{Q,q},c/.{d_,e_}:>{d,e}]]);
+replacementCalcStepCO[op[a___,replacedFieldCO[{Q_,q_}],c_List]]:=(op[a,{Q,q},c]+
+	op[a,P[{Q,q},c/.{d_,e_}:>{d,e}]]);
 
 (* all higher terms *)
-replacementCalcStepCO[op[S_,a___,replacedFieldCO[{Q_,q_}],c__/;FreeQ[{c},replacedFieldCO]]]:=Module[{ind1,ind2},
-	op[S,a,{Q,q},c]+
-(* propagator and derivative w.r.t. field *)Plus@@((op[S,a, P[{Q,q},#],Sequence@@DeleteCases[{c},#1]])&)/@Cases[{c},{_,_}]+
-(* propagator and derivative w.r.t. vertex *)Plus@@(op[S,a,P[{Q,q},{$dummyField,ind1=insDummy[]}],Sequence@@DeleteCases[{c},#1],derivVertex[#1,{$dummyField,ind1}]]&)/@{c}+
-(* propagator and derivative w.r.t. propagator *)Plus@@(op[S,a, P[{Q,q},{$dummyField,ind2=insDummy[]}],
+replacementCalcStepCO[op[a___,replacedFieldCO[{Q_,q_}],c__/;FreeQ[{c},replacedFieldCO]]]:=Module[{ind1,ind2},
+	op[a,{Q,q},c]+
+(* propagator and derivative w.r.t. field *)Plus@@((op[a, P[{Q,q},#],Sequence@@DeleteCases[{c},#1]])&)/@Cases[{c},{_,_}]+
+(* propagator and derivative w.r.t. CO *)
+(* propagator and derivative w.r.t. vertex *)Plus@@(op[a,P[{Q,q},{$dummyField,ind1=insDummy[]}],Sequence@@DeleteCases[{c},#1],derivVertex[#1,{$dummyField,ind1}]]&)/@{c}+
+(* propagator and derivative w.r.t. propagator *)Plus@@(op[a, P[{Q,q},{$dummyField,ind2=insDummy[]}],
 	Sequence@@DeleteCases[{c},#1],derivPropagator[#1,{$dummyField,ind2}]]&)/@{c}
 ];
 
@@ -1689,6 +1703,8 @@ derivVertex[S[fields__],{Q_,q_}]:=0;
 
 derivVertex[P[a__],{Q_,q_}]:=0;
 
+derivVertex[CO[a__],{Q_,q_}]:=0;
+
 derivVertex[a_List,{Q_,q_}]:=0;
 
 derivVertex[a_dR,{Q_,q_}]:=0;
@@ -1698,6 +1714,8 @@ derivVertex[a_sf2,{Q_,q_}]:=0;
  
 
 derivPropagator[V[a__],{Q_,q_}]:=0;
+
+derivPropagator[CO[a__],{Q_,q_}]:=0;
 
 derivPropagator[a_List,{Q_,q_}]:=0;
 
@@ -1905,8 +1923,8 @@ classes are identified by
 -) types of vertices and their external legs *)
 classes=Flatten[GatherBy[ops, {
   Sort@Cases[#1, P[q1_, q2_] :> {q1[[1]], q2[[1]]}, 2]&,
-  Sort[(Cases[#, V[__], 2]/. {Q_?fieldQ, q_} :> {Q} /; 
-      Not@MemberQ[extFields[[All, 2]], q])/.V[a__]:> Sort[V[a]]
+  Sort[(Cases[#, V[__]|CO[__], 2]/. {Q_?fieldQ, q_} :> {Q} /; 
+      Not@MemberQ[extFields[[All, 2]], q])/.V[a__]:> Sort[V[a]]/.CO[a__]:>Sort[CO[a]]
       ] &}],1]; 
       
 (* add up equivalent graphs *)
@@ -1940,6 +1958,8 @@ getNeighbours[exp_, allExtFields_List] :=
 
    (* determine the first vertex *)
    mainVertex = Select[exp, Not@FreeQ[#, allExtFields[[1]]] &][[1]];
+   (* if there is a single loop that starts and ends at the starting vertex, we have to delete that *)
+   mainVertex = mainVertex/. V[a___, b_, c___, b_, d___] :> V[a, b, c, d]; 
    (*TODO: RESET FOR RGE *)
    (*mainVertex = Cases[exp,S[___]][[1]];*)
    
@@ -1960,7 +1980,6 @@ getNeighbours[exp_, allExtFields_List] :=
 	   (*sortByExtField[a_]:=SortBy[
 	      a, Function[b,Select[b, Not@FreeQ[#, Alternatives @@(allExtFields[[All,2]])]&]]];*)
    sortByExtField[a_]:=a;(* use sortCanonical before, so the vertex arguments should already be sorted *)
-      
    
    (*{mainVertex, 
     Sort[Function[
@@ -1973,9 +1992,11 @@ getNeighbours[exp_, allExtFields_List] :=
     sortByExtField[
       Function[cF,
       	{cF, Select[exp, Not@FreeQ[#, cF] && FreeQ[#, allExtFields[[1]]] &][[1]]}] /@ connectingFields]}*)
+      	(* TODO: commented the second FreeQ to work with diagrams with self-loops, 
+      	unclear if that works for other cases, because it was introduced on purpose *)
     {mainVertex, 
      Function[cF,
-      	{cF, Select[exp, Not@FreeQ[#, cF] && FreeQ[#, allExtFields[[1]]] &][[1]]}] /@ connectingFields}
+      	{cF, Select[exp, Not@FreeQ[#, cF] (*&& FreeQ[#, allExtFields[[1]]]*) &][[1]]}] /@ connectingFields}
    ];
    
 
@@ -2002,7 +2023,7 @@ getNeighbours[exp_, startingField_List, v_V, allExtFields_List] := Module[{conne
 
 (* special case: tadpole like diagram -> only one vertex *)
 getGraphCharacteristic[graph_op, extFields_List] /; 
-   Count[graph, V[__]] == 1 :=(* getGraphCharacteristic[graph, extFields] =*)
+   Count[graph, V[__]|CO[___]|S[___]] == 1 :=(* getGraphCharacteristic[graph, extFields] =*)
  graph /. P[__] :> Sequence[] /. {Q_Symbol, q_Symbol} :> {Q} /; 
       Not@MemberQ[extFields[[All, 2]], q] /. V[a__] :> Sort[V[a]];
 
@@ -2010,7 +2031,7 @@ getGraphCharacteristic[graph_op, extLegs_List] :=
  Module[{props, verts, id,firstNeighbours, allFieldsInV, extFields, extFieldsRotated},
 
   props = Cases[graph, P[__]];
-  verts = Cases[graph, V[__]|S[___]]/.S[a___]:>V[a];(* rewrite to vertices V for getNeighbours *)
+  verts = Cases[graph, V[__]|S[___]|CO[___]]/.S[a___]:>V[a]/.CO[a___]:>V[a];(* rewrite to vertices V for getNeighbours *)
   
   (* transform into vertices only; these rules produce apparently non-
   existent vertices, but the connections can still be identified, 
@@ -2027,7 +2048,7 @@ getGraphCharacteristic[graph_op, extLegs_List] :=
   firstNeighbours = getNeighbours[id, extFieldsRotated];
  
   (* repeat the process until the loop is closed *)
-  Nest[(# /. {a_, b_V} :> {a, getNeighbours[id, a, b, extFieldsRotated]} )&,
+  Nest[(# /. {a_, b_V|b_CO} :> {a, getNeighbours[id, a, b, extFieldsRotated]} )&,
      firstNeighbours,	
      Max[0, Floor[(Length@props-2)/2]]]
     /. {Q_?fieldQ, q_} :> {Q} /; 
@@ -2047,7 +2068,7 @@ sortCanonical[b_op, derivatives_List] :=
   props =  Cases[b, P[___]];
   
   (* get vertices with external legs *)
-  extVerts = Cases[b, V[a__]|S[a__]/;Not@FreeQ[{a}, Alternatives@@derivatives[[All,2]]] && Length[{a}]>2];
+  extVerts = Cases[b, V[a__]|S[a__]|CO[a__]/;Not@FreeQ[{a}, Alternatives@@derivatives[[All,2]]] && Length[{a}]>2];
   
   (* get vertices without external legs *)
   intVerts = Cases[b, V[a__]/;FreeQ[{a}, Alternatives@@derivatives[[All,2]]]];
@@ -2071,11 +2092,11 @@ sortCanonical[b_op, derivatives_List] :=
    
   (* assign internal vertices a value for ordering *)
   (* extract for each internal index the vertex it connects to *)
-  intIndexAss = {#, Cases[b, V[a__]|S[a__] /; Not@FreeQ[{a}, connectedLeg@#]][[1]]} & /@ intIndices;
+  intIndexAss = {#, Cases[b, V[a__]|S[a__]|CO[a__] /; Not@FreeQ[{a}, connectedLeg@#]][[1]]} & /@ intIndices;
   (* remove internal vertices *)
   intIndexAss = Select[intIndexAss, Not@MemberQ[intVerts, #[[2]]]&];
   (* assign a field value based on the lowest field value of the external legs of the connected vertex *)
-  intIndexAss = intIndexAss /. V[a___]|S[a___] :> const + Sort[(fieldValues[#[[2]]] & /@ Select[{a}, MemberQ[derivatives, #] &])][[1]];
+  intIndexAss = intIndexAss /. V[a___]|S[a___]|CO[a__] :> const + Sort[(fieldValues[#[[2]]] & /@ Select[{a}, MemberQ[derivatives, #] &])][[1]];
   
   (* combine associations *)
   fieldValues = Join[fieldValues, Association @@ Rule @@@ intIndexAss];
@@ -2086,7 +2107,7 @@ sortCanonical[b_op, derivatives_List] :=
   (* get all vertices they connect to and take their indices only*)  
   intVertsAss = Map[connectedLeg, intVertsAss, {2}];
   intVertsAss = Map[Function[ind, Select[extVerts, Not@FreeQ[#, ind] &]], intVertsAss, {2}] /. {a_?fieldQ, 
-   j_} :> j /. S:>List /. V:>List;
+   j_} :> j /. S:>List /. V:>List /. CO:>List;
   (* get field values for all indices *)
   intVertsAss = Map[fieldValues, intVertsAss, {4}];
   (* determine lowest field value of vertex that internal indices connect to (those with missing keys) *)
@@ -2107,9 +2128,11 @@ sortCanonical[b_op, derivatives_List] :=
   	SortBy[Select[{a}, antiFermionQ[#[[1]]] &], fieldValues[#[[2]]] &], 
     SortBy[Select[{a}, fermionQ[#[[1]]] &], (fieldValues[#[[2]]]) &]]];
   orderV[S[a__]] /; Length[{a}]>2 := orderV[V[a]]/.V:>S;
+  orderV[CO[a__]] /; Length[{a}]>2 := orderV[V[a]]/.V:>CO;
   orderV[S[a__]] := S[a];
+  orderV[CO[a__]] := CO[a];
     
-  ordered = b /. V[a__] :> orderV[V[a]] /. S[a__] :> orderV[S[a]];
+  ordered = b /. V[a__] :> orderV[V[a]] /. S[a__] :> orderV[S[a]] /. CO[a__] :> orderV[CO[a]];
   
   (* get signature sign of original and ordered expression for the relative sign *)
   getSignature@b getSignature@ordered ordered
@@ -3492,6 +3515,82 @@ countTerms[a___]:=Message[countTerms::syntax,a];
 
 
 
+(* types of diagrams and how to extract them: connected/disconnected, 1PI/non1PI *)
+
+(* Determines if graph is connected. *)
+connectedQ[graph_op] := Module[{extLegs, graphDistance},
+  
+  (* get external legs *)
+  extLegs = 
+   Cases[vertexDummies[graph], {__, a_String} /; 
+     StringMatchQ[a, " leg*"], Infinity];
+  
+  (* take all possible distinct combinations of external legs *)
+  extLegs = 
+   DeleteCases[
+    Union[Flatten[Outer[List, extLegs, extLegs, 1], 1]], {a_, a_}, 
+    2];
+    
+  (* get GraphDistance for all combinations and take the maximum, 
+  since infinity corresponds to disconnected *)
+  graphDistance = 
+   Max[GraphDistance[
+       vertexDummies[graph][[All, 1]] /. Rule :> UndirectedEdge, #[[
+        1]], #[[2]]] & /@ extLegs];
+       
+  (* return if connected or not *)
+  If[graphDistance == Infinity, False, True]
+  
+]
+
+
+(* Determine if graph is disconnected. *)
+disconnectedQ[graph_op] := Not[connectedQ[graph]]
+
+
+(* Extract all connected diagrams. *)
+getConnected[a_?NumericQ, exp_op] := a getConnected[exp]
+getConnected[exp_op] /; disconnectedQ[exp] := 0
+getConnected[exp_op] := exp
+getConnected[exp_Plus | exp_List] := Select[exp, connectedQ]
+
+
+(* Extract all disconnected diagrams. *)
+getDisconnected[a_?NumericQ, exp_op] := a getDisconnected[exp]
+getDisconnected[exp_op] /; connectedQ[exp] := 0
+getDisconnected[exp_op] := exp
+getDisconnected[exp_Plus | exp_List] := Select[exp, disconnectedQ]
+
+
+(* Determine if graph is 1PI. *)
+onePIQ[exp_op] := Module[{props, tot},
+	
+  (* extract all propagators *)
+  props = Cases[exp, P[___]];
+  
+  (* delete one propagator and check if it is connected *)
+  
+  tot = And @@ (connectedQ[DeleteCases[exp, #]] & /@ props);
+  
+  (* return if 1PI or not *)
+  If[tot, True, False]
+]
+
+
+(* Extract all 1PI diagrams. *)
+get1PI[a_?NumericQ, exp_op] := a get1PI[exp]
+get1PI[exp_op] /; onePIQ[exp] := exp
+get1PI[exp_op] := 0
+get1PI[exp_Plus | exp_List] := Select[exp, onePIQ]
+
+
+(* Extract all non1PI diagrams. *)
+getNon1PI[a_?NumericQ, exp_op] := a getNon1PI[exp]
+getNon1PI[exp_op] /; onePIQ[exp] := 0
+getNon1PI[exp_op] := exp
+getNon1PI[exp_Plus | exp_List] := Select[exp, Not@onePIQ[#] &]
+
+
 (* predicates for fields *)
 
 (* Note: Setting the Head of a field to 'field' does not work with pattern matching, thus fieldQ has to be used. *)
@@ -3536,7 +3635,7 @@ grassmannQ[a_List] := grassmannQ[a[[1]]](* field given together with index*)
 
 
 (* ::Section:: *)
-(* unused functions *)
+(* TOD: DELETE unused functions *)
 
 
 (* use the trace to shift quantities from the front to the end of the expression; discarded at no longer used *)

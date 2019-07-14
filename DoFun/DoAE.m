@@ -198,7 +198,7 @@ SetOptions[$FrontEnd,
 
 getAE::incorrectNumberOfMomenta="The expression has more or less legs than provided by `1`. Adjust the number of legs.";
 
-getAE::undefinedFields="The field(s) `1` are not defined yet. Use defineFieldsSpecific to do so.";
+getAE::undefinedFields="Not all field(s) `1` are defined yet. Use defineFieldsSpecific to do so.";
 
 getAE::incorrectFormat="The format of the list of external momenta and indices is not correct.
 It has to be of the form {{field1, ind, mom, specific index 1, specific index 2, ...}, {field2, ...}, ...},
@@ -414,7 +414,7 @@ insertMomenta[a_op, extMomenta_List] :=
   
   (* start at one vertex; take its indices *)
   
-  startVertex = First@Cases[extFieldsAdded, S[b__] | V[b__] :> {b}];
+  startVertex = First@Cases[extFieldsAdded, S[b__] | V[b__] | CO[b__] :> {b}];
   (* the internal legs and the external one *)
   
   startVertexIntLegs = 
@@ -578,8 +578,10 @@ removeDoubleIndices[exp_,fields_List]:=Module[{doubleIndexRules, allFields},
 getAE[a_, momenta_List,opts___?OptionQ]/;opts=!={}:=getAE[a, momenta, {}, opts];
 
 (* TODO: unfdefined fields! in case the user has not defined an index yet, it is defined with standard index names, a,b,... *)
-(*getAE[a_, (*fields_List,*) momenta_List, contractFunctions_List, opts___?OptionQ]/;Not[
-	And@@(fieldQ/@Flatten@fields)]:=Message[getAE::undefinedFields,Select[Flatten@fields,Not@fieldQ@#&]];*)
+
+(* fields are not defined for getAE *)
+getAE[a_, momenta_List, contractFunctions_List, opts___?OptionQ]/;Not[
+	And@@((ListQ@indices[#])&/@Flatten@momenta[[All,1]])]:=Message[getAE::undefinedFields,Union@momenta[[All,1]]];
 
 (* in case the user has not defined an index yet, it is defined with standard index names, a,b,... *)
 getAE[a_, momenta_List, contractFunctions_List, opts___?OptionQ]/;Not[
