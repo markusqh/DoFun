@@ -132,8 +132,9 @@ disconnectedQ::usage="";
 getConnected::usage="";
 getDisconnected::usage="";
 onePIQ::usage="";
-get1PIPIQ::usage="";
+get1PI::usage="";
 getNon1PI::usage="";
+doCO::usage="";
 
 (* temporary *)
 	replaceFieldsCO;
@@ -1356,6 +1357,10 @@ autoList = Function[ia,
   
   (* generate action; for vertices change the order of the fields to account for the correct order of fermions;
   for propagators not necessary because they are defined with field/anti-fields exchanged *)
+  (*(Plus @@ (#[[2]] op[S[Sequence @@ #[[1]]], Sequence @@ #[[1]]] & /@ allList // sortDummies))
+  /.a_S?(Length@#>2&):>-$signConvention a /. op[b_S,c___List]:>op[b,Sequence@@Reverse[{c}]]/;Length[{c}]>2*)
+(*  Print[(Plus @@ (#[[2]] op[S[Sequence @@ #[[1]]], Sequence @@ #[[1]]] & /@ allList // sortDummies))
+  /.a_S?(Length@#f>2&):>-$signConvention a ];*)
   (Plus @@ (#[[2]] op[S[Sequence @@ #[[1]]], Sequence @@ #[[1]]] & /@ allList // sortDummies))
   /.a_S?(Length@#>2&):>-$signConvention a /. op[b_S,c___List]:>op[b,Sequence@@Reverse[{c}]]/;Length[{c}]>2
 
@@ -1911,7 +1916,7 @@ identifyGraphsRGE[exp_Plus,extFields_List]:=Module[{classes,ops,equalOps,ordered
 (* TODO order bosonic fields in propagators; needed, e.g., for complex scalar fields; handled automatically in DoFun3 for complex fields, but still necessary for mixed fields *)
 (*orderedExp=exp/.P[{Q1_?cFieldQ,q1_},{Q2_?cFieldQ,q2_}]:>Sort@P[{Q1,q1},{Q2,q2}]/.S:>V;(* replace S by V for common treatment of vertices *)*)
 (* TODO ordering handled automatically, but unclear what happend for mixed fields *)
-orderedExp=exp(*/.S:>V*);(* TODO: Remove replace S by V for common treatment of vertices *)
+orderedExp=sortCanonical[exp, extFields](*/.S:>V*);(* TODO: Remove replace S by V for common treatment of vertices *)
 
 
 (* split off the numerical factors; syntax: {{factor1,op1},{factor2, op2},{factor3,op3},...} *)
@@ -2804,6 +2809,29 @@ If[tDerivative/.Join[{opts},Options@doRGE],
 doRGE[a___]:=Message[doRGE::syntax,a];
 
 
+(* derivation of correlation functions for composite operators *)
+
+(* main code *)
+doCO[action_Times|action_Plus|action_List, compOp_, filter_:True, opts___?OptionQ]:=Module[{
+	singleExp, allFields, extFields, compOpFieldsRep, compOpFieldsRepS0, compOpFieldsRepS0Filtered(*, compOpFieldsRepS0FilteredId*)
+	},
+	
+	singleExp = Expand[compOp];
+	singleExp = If[ListQ@singleExp||Head[singleExp]==Plus, singleExp[[1]], compOp];
+	allFields = Cases[singleExp, {_?fieldQ, _}, Infinity];
+	extFields = Select[allFields, Count[allFields, #]==1&];
+		
+	compOpFieldsRep = replaceFieldsCO@compOp;
+	compOpFieldsRepS0 = setSourcesZero[compOpFieldsRep, action, {}]	;
+	compOpFieldsRepS0Filtered = Select[compOpFieldsRepS0, filter];
+	(* currently the identification does not work reliably for disconnected diagrams, thus deactivate *) 
+	(* compOpFieldsRepS0FilteredId = identifyGraphsRGE[compOpFieldsRepS0Filtered, extFields];*)
+	compOpFieldsRepS0Filtered	
+]
+
+doCO[a___]:=Message[doCO::syntax,a];
+
+
 
 
 (* ::Section:: *)
@@ -3518,6 +3546,7 @@ countTerms[a___]:=Message[countTerms::syntax,a];
 (* types of diagrams and how to extract them: connected/disconnected, 1PI/non1PI *)
 
 (* Determines if graph is connected. *)
+connectedQ[a_?NumericQ exp_op]:=connectedQ[exp]
 connectedQ[graph_op] := Module[{extLegs, graphDistance},
   
   (* get external legs *)
@@ -3545,6 +3574,7 @@ connectedQ[graph_op] := Module[{extLegs, graphDistance},
 
 
 (* Determine if graph is disconnected. *)
+disconnectedQ[a_?NumericQ exp_op]:=disconnectedQ[exp]
 disconnectedQ[graph_op] := Not[connectedQ[graph]]
 
 
@@ -3563,6 +3593,7 @@ getDisconnected[exp_Plus | exp_List] := Select[exp, disconnectedQ]
 
 
 (* Determine if graph is 1PI. *)
+onePIQ[a_?NumericQ exp_op]:=onePIQ[exp]
 onePIQ[exp_op] := Module[{props, tot},
 	
   (* extract all propagators *)
@@ -3578,14 +3609,14 @@ onePIQ[exp_op] := Module[{props, tot},
 
 
 (* Extract all 1PI diagrams. *)
-get1PI[a_?NumericQ, exp_op] := a get1PI[exp]
+get1PI[a_?NumericQ exp_op] := a get1PI[exp]
 get1PI[exp_op] /; onePIQ[exp] := exp
 get1PI[exp_op] := 0
 get1PI[exp_Plus | exp_List] := Select[exp, onePIQ]
 
 
 (* Extract all non1PI diagrams. *)
-getNon1PI[a_?NumericQ, exp_op] := a getNon1PI[exp]
+getNon1PI[a_?NumericQ exp_op] := a getNon1PI[exp]
 getNon1PI[exp_op] /; onePIQ[exp] := 0
 getNon1PI[exp_op] := exp
 getNon1PI[exp_Plus | exp_List] := Select[exp, Not@onePIQ[#] &]
