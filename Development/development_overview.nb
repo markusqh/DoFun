@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     19990,        471]
-NotebookOptionsPosition[     16382,        403]
-NotebookOutlinePosition[     16714,        418]
-CellTagsIndexPosition[     16671,        415]
+NotebookDataLength[     20075,        473]
+NotebookOptionsPosition[     16467,        405]
+NotebookOutlinePosition[     16799,        420]
+CellTagsIndexPosition[     16756,        417]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -322,7 +322,8 @@ left derivatives.
 * Copyright information and loading messages.
 * Make coSymbol equivalent to regulatorSymbol. Rename regulatorBox and Cross \
 to generic names which can be used for both.
-* identifyGraphs: sortCanonical automatic? Otherwise there can be problems.\
+* identifyGraphs: sortCanonical automatic? Otherwise there can be problems.
+* Make get1PI more general: getnPI.\
 \>", "Text",
  CellChangeTimes->{{3.7364968418920193`*^9, 3.7364968600041447`*^9}, {
   3.75664564205364*^9, 3.756645673980197*^9}, {3.756704319770443*^9, 
@@ -334,7 +335,8 @@ to generic names which can be used for both.
   3.7679358074748373`*^9, 3.767935825131876*^9}, {3.7685631054302263`*^9, 
   3.768563106189897*^9}, {3.768819598991164*^9, 3.7688196089114027`*^9}, {
   3.771678094329938*^9, 3.7716781245255957`*^9}, {3.7721222320370693`*^9, 
-  3.77212225476341*^9}},ExpressionUUID->"9ece2174-0de3-4ef5-a782-\
+  3.77212225476341*^9}, {3.772717036455386*^9, 
+  3.772717046795117*^9}},ExpressionUUID->"9ece2174-0de3-4ef5-a782-\
 6c5573fd1256"]
 }, Open  ]],
 
@@ -457,19 +459,19 @@ Cell[11932, 294, 182, 3, 35, "Text",ExpressionUUID->"cefd01f8-cdc9-4605-bb5e-c6a
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[12151, 302, 162, 3, 55, "Subsection",ExpressionUUID->"9381da49-ebaf-4449-a330-2f5da810dfe8"],
-Cell[12316, 307, 1739, 30, 334, "Text",ExpressionUUID->"9ece2174-0de3-4ef5-a782-6c5573fd1256"]
+Cell[12316, 307, 1824, 32, 357, "Text",ExpressionUUID->"9ece2174-0de3-4ef5-a782-6c5573fd1256"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14092, 342, 159, 3, 55, "Subsection",ExpressionUUID->"820864a1-5442-467c-a5c1-0c1d9d296ecf"],
-Cell[14254, 347, 1372, 25, 242, "Text",ExpressionUUID->"2cb3baa8-ee89-497d-83be-67cfedd84ae3"]
+Cell[14177, 344, 159, 3, 55, "Subsection",ExpressionUUID->"820864a1-5442-467c-a5c1-0c1d9d296ecf"],
+Cell[14339, 349, 1372, 25, 242, "Text",ExpressionUUID->"2cb3baa8-ee89-497d-83be-67cfedd84ae3"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15675, 378, 151, 3, 68, "Section",ExpressionUUID->"460e3aea-39cf-42f7-bb62-d979b0ee064f"],
+Cell[15760, 380, 151, 3, 68, "Section",ExpressionUUID->"460e3aea-39cf-42f7-bb62-d979b0ee064f"],
 Cell[CellGroupData[{
-Cell[15851, 385, 152, 3, 55, "Subsection",ExpressionUUID->"998fe664-a946-4ce7-baeb-3e728446f4a6"],
-Cell[16006, 390, 167, 3, 35, "Text",ExpressionUUID->"b796a56a-4994-4909-95b2-1187ea7a0ac0"],
-Cell[16176, 395, 166, 3, 35, "Text",ExpressionUUID->"1af82734-9093-4cf1-b0cd-5ff61cbfecfd"]
+Cell[15936, 387, 152, 3, 55, "Subsection",ExpressionUUID->"998fe664-a946-4ce7-baeb-3e728446f4a6"],
+Cell[16091, 392, 167, 3, 35, "Text",ExpressionUUID->"b796a56a-4994-4909-95b2-1187ea7a0ac0"],
+Cell[16261, 397, 166, 3, 35, "Text",ExpressionUUID->"1af82734-9093-4cf1-b0cd-5ff61cbfecfd"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
