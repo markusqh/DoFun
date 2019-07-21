@@ -2812,7 +2812,7 @@ doRGE[a___]:=Message[doRGE::syntax,a];
 (* derivation of correlation functions for composite operators *)
 
 (* main code *)
-doCO[action_Times|action_Plus|action_List, compOp_, filter_:True, opts___?OptionQ]:=Module[{
+doCO[action_Times|action_Plus|action_List, compOp_, filter_:(True&), opts___?OptionQ]:=Module[{
 	singleExp, allFields, extFields, compOpFieldsRep, compOpFieldsRepS0, compOpFieldsRepS0Filtered(*, compOpFieldsRepS0FilteredId*)
 	},
 	
