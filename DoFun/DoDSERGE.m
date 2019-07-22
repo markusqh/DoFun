@@ -855,7 +855,6 @@ setSourcesZeroRGE[op[V[{A, i}, {A, r}, {A, s}, {A, t}], P[{A, r}, {$dummyField, 
 
 (* TODO*)
 sf::usage="Temporary function to determine the signs from fermions."
-sf2::usage="";
 
 (* TODO*)
 getSigns::usage="Make signs from the sf temporary functions explicit."
@@ -951,9 +950,6 @@ Evaluate@$dummyField /: grassmannQ[$dummyField] = False;
 
 
 (* fermionic dummy fields *)
-(*TODO: Remove Head[...]*)
-(*$dummyFieldF /: Head[$dummyFieldF] := field;
-$dummyFieldAF /: Head[$dummyFieldAF] := field;*)
 $dummyFieldF /: fieldType[$dummyFieldF] = fermion;
 $dummyFieldAF /: fieldType[$dummyFieldAF] = antiFermion;
 antiField[$dummyFieldF] = $dummyFieldAF;
@@ -1295,9 +1291,9 @@ sortDummies[a_op]:=Module[
 (* discard sf terms, since their indices are not to be contracted *)
 b = a/.sf[_,_]:>1;
 
-(* get all indices from the epxression, do not consider indices in sf and sf2 *)
+(* get all indices from the epxression, do not consider indices in sf *)
 (*inds=Transpose[b[[Sequence@@#]]&/@Position[b,{_,ind_}]][[2]];*)
-inds = Cases[b/.sf[_,_]:>1/.sf2[_,_]:>1, {c_?fieldQ, ind_} :> ind, Infinity];
+inds = Cases[b/.sf[_,_]:>1 {c_?fieldQ, ind_} :> ind, Infinity];
 
 (* determine the dummy indices; only take the first appearance, don't change order, i.e. don't use Union *)
 (*exprDummies=
@@ -1451,7 +1447,7 @@ replacementCalcStepCO[op[a___,replacedFieldCO[{Q_,q_}],c_List]]:=(op[a,{Q,q},c]+
 (* all higher terms *)
 replacementCalcStepCO[op[a___,replacedFieldCO[{Q_,q_}],c__/;FreeQ[{c},replacedFieldCO]]]:=Module[{ind1,ind2},
 	op[a,{Q,q},c]+
-(* propagator and derivative w.r.t. field *)Plus@@((op[a, P[{Q,q},#],Sequence@@DeleteCases[{c},#1]])&)/@Cases[{c},{_,_}]+
+(* propagator and derivative w.r.t. field *)Plus@@((op[a, P[{Q,q},#],Sequence@@DeleteCases[{c},#1]])&)/@Cases[{c},{_?fieldQ,_}]+
 (* propagator and derivative w.r.t. CO *)
 (* propagator and derivative w.r.t. vertex *)Plus@@(op[a,P[{Q,q},{$dummyField,ind1=insDummy[]}],Sequence@@DeleteCases[{c},#1],derivVertex[#1,{$dummyField,ind1}]]&)/@{c}+
 (* propagator and derivative w.r.t. propagator *)Plus@@(op[a, P[{Q,q},{$dummyField,ind2=insDummy[]}],
@@ -1494,12 +1490,12 @@ replacementCalcStep[a_op]/;FreeQ[a,replacedField]:=a;
 
 (* the utmost right two terms, quite simple *)
 replacementCalcStep[op[S_,a___,replacedField[{Q_,q_}],c_List]]:=(op[S,a,{Q,q},c]+
-	op[S,a,sf2[{Q,q},c],P[{Q,q},c/.{d_,e_}:>{d,e}]]);
+	op[S,a,sf[{Q,q},{{Q,q}}],P[{Q,q},c/.{d_,e_}:>{d,e}]]);
 
 (* all higher terms *)
 replacementCalcStep[op[S_,a___,replacedField[{Q_,q_}],c__/;FreeQ[{c},replacedField]]]:=Module[{ind1,ind2},
 	op[S,a,{Q,q},c]+
-(* propagator and derivative w.r.t. field *)Plus@@((op[S,a,sf2[{Q,q},#], P[{Q,q},#],Sequence@@DeleteCases[{c},#1]])&)/@Cases[{c},{_,_}]+
+(* propagator and derivative w.r.t. field *)Plus@@((op[S,a,sf[{Q,q},{{Q,q}}], P[{Q,q},#],Sequence@@DeleteCases[{c},#1]])&)/@Cases[{c},{_?fieldQ,_}]+
 (* propagator and derivative w.r.t. vertex *)Plus@@(op[S,a,P[{Q,q},{$dummyField,ind1=insDummy[]}],Sequence@@DeleteCases[{c},#1],derivVertex[#1,{$dummyField,ind1}]]&)/@{c}+
 (* propagator and derivative w.r.t. propagator *)Plus@@(op[S,a, P[{Q,q},{$dummyField,ind2=insDummy[]}],
 	Sequence@@DeleteCases[{c},#1],derivPropagator[#1,{$dummyField,ind2}]]&)/@{c}
@@ -1715,7 +1711,6 @@ derivVertex[a_List,{Q_,q_}]:=0;
 derivVertex[a_dR,{Q_,q_}]:=0;
 
 derivVertex[a_sf,{Q_,q_}]:=0;
-derivVertex[a_sf2,{Q_,q_}]:=0;
  
 
 derivPropagator[V[a__],{Q_,q_}]:=0;
@@ -1727,7 +1722,6 @@ derivPropagator[a_List,{Q_,q_}]:=0;
 derivPropagator[S[__],{Q_,q_}]:=0;
 
 derivPropagator[sf[_,_],{Q_,q_}]:=0;
-derivPropagator[sf2[_,_],{Q_,q_}]:=0;
 
 (*derivPropagator[P[field1_List,field2_List],{Q_,q_}]:=ReleaseHold@Module[{dummy1,dummy2},
 	Hold@Sequence[sf[{Q,q},{field1,{$dummyField,dummy1}}],V[plugInFieldsV[{Q,q},{$dummyField,dummy1=insDummy[]},{$dummyField,dummy2=insDummy[]}]],
@@ -1756,7 +1750,7 @@ derivPropagators[a_op,{Q_,q_}]:=Module[
 {props,propConnections,posInd,represConnections,connectionList,propFactors,propagatorId},
 
 (* test if two propagators can be considered equal *)
-propagatorId[b_,c_]:=(b[[2]]===c[[2]](* connections have to be the same *)&&Cases[Sort@b[[1]],{_,_}][[All,1]]===Cases[Sort@c[[1]],{_,_}][[All,1]](* fields have to be the same *));
+propagatorId[b_,c_]:=(b[[2]]===c[[2]](* connections have to be the same *)&&Cases[Sort@b[[1]],{_?fieldQ,_}][[All,1]]===Cases[Sort@c[[1]],{_?fieldQ,_}][[All,1]](* fields have to be the same *));
 
 (* get all propagators *)
 props=Cases[a,_P];
@@ -1767,7 +1761,7 @@ posInd=Position[a,Alternatives@@prop];
 {prop,DeleteCases[a[[Sequence@@#[[1]]]]&/@posInd,_P]}]/@props;
 
 (* delete appearances of sf function *)
-propConnections = propConnections/.sf[_,_]:>Sequence[]/.sf2[_,_]:>Sequence[];
+propConnections = propConnections/.sf[_,_]:>Sequence[];
 
 (* create a list of the factor, 1 representative and the connected vertices *)
 represConnections=Union[propConnections,SameTest->propagatorId];
@@ -1792,7 +1786,7 @@ derivPropagatorsdt[a_op]:=Module[
 {props,propConnections,posInd,represConnections,connectionList,propFactors,propagatorId},
 
 (* test if two propagators can be considered equal *)
-propagatorId[b_,c_]:=(b[[2]]===c[[2]](* connections have to be the same *)&&Cases[Sort@b[[1]],{_,_}][[All,1]]===Cases[Sort@c[[1]],{_,_}][[All,1]](* fields have to be the same *));
+propagatorId[b_,c_]:=(b[[2]]===c[[2]](* connections have to be the same *)&&Cases[Sort@b[[1]],{_?fieldQ,_}][[All,1]]===Cases[Sort@c[[1]],{_?fieldQ,_}][[All,1]](* fields have to be the same *));
 
 (* get all propagators *)
 props=a[[Sequence@@#]]&/@Position[a,_P];
@@ -1881,7 +1875,7 @@ ops=Replace[List@@Expand@a/.Times[b_?NumericQ,c_]:> {b,c},d_op:> {1,d},{1}];
 (* only compare graphs with the same type of propagators and vertices; this brings a huge speedup *)
 
 (* determine possible classes, i.e. they have the same type of propagators and vertices *)
-indices = Cases[ops[[1, 2]], {_, _}, \[Infinity]][[All, 2]];
+indices = Cases[ops[[1, 2]], {_?fieldQ, _}, \[Infinity]][[All, 2]];
 extIndices = Select[indices, Count[indices, #] == 1 &];
 classRule={{b_Symbol, c_} :> {b} /; (* can be quite time consuming if there are many terms:  fieldQ[b]; so I put b_Symbol instead of b_  &&*) FreeQ[extIndices, c]};
 classes = Union@Map[Sort,(ops[[All, 2]] /. classRule),2];
@@ -2318,14 +2312,14 @@ extGrassmann=extFields/.{_?cFieldQ,_}:>Sequence[];
 (* indices of the propagators *)
 c=d/.traceIndex1:>traceIndex2 (* close the trace here so that all variants are taken into account *);
 propagators=Cases[c,P[___],Infinity];
-propInds=Cases[propagators,{_,_},Infinity];
+propInds=Cases[propagators,{_?fieldQ,_},Infinity];
 
 
 propagatorsF=Select[propagators,(Head@#[[1,1]]==fermion)&];
 propagatorsB=Select[propagators,Head@#[[1,1]]==boson&];
 
-propIndsF=Cases[propagatorsF,{_,_},Infinity];
-propIndsB=Cases[propagatorsB,{_,_},Infinity];
+propIndsF=Cases[propagatorsF,{_?fieldQ,_},Infinity];
+propIndsB=Cases[propagatorsB,{_?fieldQ,_},Infinity];
 
 (* replace the indices of the vertices, delete the vertices that do not exist *)
 vertsReplaced=c/.Plus:>List/.{{$dummyField,ind_}:> (Flatten@Cases[propInds,{_,ind}]),
@@ -2542,7 +2536,7 @@ innerFermionsCanonicalQ[exp_op, v_V] := Module[
   extFields2ZeroRules = # :> Sequence[] & /@ extFields;
     
   (* expression with identifications, removed sf functions *)
-  expId = exp /. P[___] :> Sequence[] /. idRules/. sf[_,_]:>Sequence[]/. sf2[_,_]:>Sequence[];
+  expId = exp /. P[___] :> Sequence[] /. idRules/. sf[_,_]:>Sequence[];
   
   (* get all internal fields of the vertex = connectors*)  
   vConnectors = List @@ (v /. extFields2ZeroRules /. idRules);
@@ -2841,7 +2835,7 @@ doCO[a___]:=Message[doCO::syntax,a];
 (* check if no indices apppear more often than twice;
 indicesTest is the test function and checkIndices performs the test *)
 
-indicesTest[a_]/;Not@FreeQ[a,{_,_}]:=Module[
+indicesTest[a_]/;Not@FreeQ[a,{_?fieldQ,_}]:=Module[
 {inds},
 
 inds=Transpose[Cases[a,{_,ind_},Infinity]][[2]];
@@ -2867,13 +2861,13 @@ the propagators have the correct syntax of two indices and the vertices that of 
 opTest[a_]:=Select[Cases[{a},op[___],\[Infinity]],Cases[#,_S|_V|_P|_List]!= List@@#&];
 
 
-propagatorTest[a_]:=Select[Cases[{a},P[___],\[Infinity]],Not@MatchQ[#,P[{_,_},{_,_}]]&];
+propagatorTest[a_]:=Select[Cases[{a},P[___],\[Infinity]],Not@MatchQ[#,P[{_?fieldQ,_},{_?fieldQ,_}]]&];
 
 
 vertexTest[a_]:=Select[Cases[{a},S[___]|V[___],\[Infinity]],Cases[#,_List]!= List@@#&];
 
 
-regulatorInsertionTest[a_]:=Select[Cases[{a},dR[___],\[Infinity]],Not@MatchQ[#,dR[{_,_},{_,_}]]&];
+regulatorInsertionTest[a_]:=Select[Cases[{a},dR[___],\[Infinity]],Not@MatchQ[#,dR[{_?fieldQ,_},{_?fieldQ,_}]]&];
 
 
 checkSyntax[a_op]:=checkSyntax[{a}];
@@ -2936,6 +2930,8 @@ shortExpressionSingle[V[a__]]:=Subsuperscript[$vertexSymbol,StringJoin[ToString/
 shortExpressionSingle[dR[a__]]:=DisplayForm@RowBox[{SubscriptBox["\[PartialD]", "t"],Subsuperscript[$regulatorInsertionSymbol,StringJoin[ToString/@Riffle[{a}[[All,1]]," "]],StringJoin[ToString/@Riffle[{a}[[All,2]]," "]]]}];
 
 shortExpressionSingle[P[{F1_,i1_},{F2_,i2_}]]:=Subsuperscript[$propagatorSymbol,ToString@F1<>" "<>ToString@F2,ToString[i1]<>" "<>ToString[i2]];
+
+shortExpressionSingle[sf[___]] := 1
 
 
 shortExpressionStyle[a_,opts___]:=Style[a,
@@ -3015,7 +3011,7 @@ vertexDummies[a_op,sort_:(#&),opts___?OptionQ] /;Not@OptionQ@sort:=(*vertexDummi
   CORepres = Cases[a, _CO][[All,1]];
   
   (* get all indices and identify those at the same vertex *)
-  allIndices = Cases[a, {_, _}, Infinity];
+  allIndices = Cases[a, {_?fieldQ, _}, Infinity];
   sameVertTest[c_,d_]:=(Or @@ Function[{vert}, Not@FreeQ[vert, c] && Not@FreeQ[vert, d]] /@ vertices );
   indices = Union[allIndices, SameTest -> sameVertTest ];
   
@@ -3028,7 +3024,7 @@ vertexDummies[a_op,sort_:(#&),opts___?OptionQ] /;Not@OptionQ@sort:=(*vertexDummi
   regulatorRule=#->(#/.{Q_,q_}:> {Q,q,"dt R"})&/@regulatorsRepres;
 
   (* external fields *)
-  externalFields = Cases[a, {_, _}];
+  externalFields = Cases[a, {_?fieldQ, _}];
   
   (* external fields not coupled to anything *)
   externalFieldsSingle = Intersection[externalFields, legs];
@@ -3448,10 +3444,10 @@ propagatorsF=Cases[propagators,P[a_, b_] /; Head@a[[1]] == fermion];
 propagatorsB=Cases[propagators,P[a_, b_] /; Head@a[[1]] == boson || Head@b[[1]] == boson];
 
 (* classes: a field and all the propagators where it is involved *)
-propsClasses={#,Cases[propagators, P[{#,_},{_,_}]]}&/@ffields;
+propsClasses={#,Cases[propagators, P[{#,_},{_?fieldQ,_}]]}&/@ffields;
 
-propsClassesF={#,Cases[propagatorsF, P[{#,_},{_,_}]]}&/@ffields;
-propsClassesB={#,Cases[propagatorsB, P[{#,_},{_,_}]]}&/@ffields;
+propsClassesF={#,Cases[propagatorsF, P[{#,_},{_?fieldQ,_}]]}&/@ffields;
+propsClassesB={#,Cases[propagatorsB, P[{#,_},{_?fieldQ,_}]]}&/@ffields;
 
 (* all possible propagator replacements that are allowed *)
 
@@ -3489,7 +3485,7 @@ setFields[bosons_List, fermions_List] :=
 
 setFields[bosons_List, fermions_List, complexFields_List] /; 
    Not[And @@ 
-     Flatten[MatchQ[#, {_, _}] & /@ Join[fermions, complexFields]]] :=
+     Flatten[MatchQ[#, {_?fieldQ, _}] & /@ Join[fermions, complexFields]]] :=
    Message[setFields::noPair, fermions, complexFields];
 setFields[bosons_List, fermions_List, complexFields_List] := Module[{},
   
@@ -3501,10 +3497,7 @@ setFields[bosons_List, fermions_List, complexFields_List] := Module[{},
   (# /: fieldType[#] := antiFermion) & /@ fermions[[All, 2]];
   (# /: fieldType[#] := complex) & /@ complexFields[[All, 1]];
   (# /: fieldType[#] := antiComplex) & /@ complexFields[[All, 2]];
-  (* internally used dummy fields *)
-  $dummyFieldF /: fieldType[$dummyFieldF] := fermion;
-  $dummyFieldAF /: fieldType[$dummyFieldAF] := antiFermion;
-  
+ 
   (* set all fields to Head field: Not done, 
   since this does not fully work as expected *)
   (*(#/:Head[#]=
@@ -3512,8 +3505,7 @@ setFields[bosons_List, fermions_List, complexFields_List] := Module[{},
   
   (* set (anti-)commutating property *)
   (# /: grassmannQ[#] = False) & /@ Flatten[{bosons, complexFields}];
-  (# /: grassmannQ[#] = True) & /@ 
-   Flatten[{fermions, $dummyFieldF, $dummyFieldAF}];
+  (# /: grassmannQ[#] = True) & /@ fermions;
   (# /: cFieldQ[#] = True) & /@ Flatten[{bosons, complexFields}];
   (# /: cFieldQ[#] = False) & /@ Flatten[fermions];
   
@@ -3730,7 +3722,7 @@ Select[L /. op[a___, b_S, c___] :> op[b],
 (* auxiliary function to get a list of fermions from either the list of fields or the list of interactions;
  it is necessary that the fermions are given back in a list with the antiFermion  *)
 (* not working when using mixed complex (!) propagators: getFermionList[a_List]:=Union/@Cases[a, {_, _}] /. {_} :> Sequence[];*)
-getFermionList[a_List]:=Select[Cases[a, {_, _}], (Head@#[[1]] == fermion || 
+getFermionList[a_List]:=Select[Cases[a, {_?fieldQ, _}], (Head@#[[1]] == fermion || 
      Head@#[[1]] == antiFermion) && (Head@#[[2]] == fermion || 
      Head@#[[2]] == antiFermion) &];
 (* alternative which gives all fields that have not themselves as opposite field in the propagator; could be used for

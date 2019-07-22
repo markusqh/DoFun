@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     20075,        473]
-NotebookOptionsPosition[     16467,        405]
-NotebookOutlinePosition[     16799,        420]
-CellTagsIndexPosition[     16756,        417]
+NotebookDataLength[     19712,        472]
+NotebookOptionsPosition[     16061,        402]
+NotebookOutlinePosition[     16397,        417]
+CellTagsIndexPosition[     16354,        414]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -278,11 +278,6 @@ Cell["Top priority", "Subsection",
   3.756703778142911*^9}},ExpressionUUID->"1065e21f-b2f9-40b3-a9dc-\
 d6fc5d821354"],
 
-Cell["* Test fieldType[$dummyField]", "Text",
- CellChangeTimes->{{3.756704623855298*^9, 
-  3.756704626003584*^9}},ExpressionUUID->"2bca3471-bb28-4201-b265-\
-ff3348ba759f"],
-
 Cell["\<\
 * Add a function that creates the appropriate action and which is always \
 called by the function expecting an action, e.g., DSEPlot (DSEPlotList is an \
@@ -290,12 +285,7 @@ internal functions, thus DSEPlot should handle that?), doDSE, doRGE, ...\
 \>", "Text",
  CellChangeTimes->{{3.75670377962271*^9, 
   3.756703852134795*^9}},ExpressionUUID->"fd749ff3-b9e2-4223-b959-\
-67f241f17b6b"],
-
-Cell["* Get order of fermions straight in DoFR.", "Text",
- CellChangeTimes->{{3.76881676517199*^9, 
-  3.768816771908237*^9}},ExpressionUUID->"cefd01f8-cdc9-4605-bb5e-\
-c6a554fc9c5f"]
+67f241f17b6b"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -309,35 +299,42 @@ Cell["\<\
 * Automatic guessing of fields. Right now the user has to define the fields.
 * Update error and usage messages for changed functions, e.g., DSEPlot no \
 longer has the argument fields_List.
-* Remove all references to field as a Head.
-* Sign convention: In doRGE the first derivative has a minus sign without \
+* Sign convention: In doRGE the fir\tst derivative has a minus sign without \
 $signConvention. Is this inconsistent?
-* Identification of fermion loops running in different directions?
-* Check sE.
 * Check plugInFieldsV: Only required for broken phase. Has to be updated to \
 left derivatives.
-* Comfort functions: Extract diagram types, e.g., boxes etc.
 * Join order Fermions and order Canonical?
 * Add derivField in derivAll.
-* Copyright information and loading messages.
 * Make coSymbol equivalent to regulatorSymbol. Rename regulatorBox and Cross \
 to generic names which can be used for both.
-* identifyGraphs: sortCanonical automatic? Otherwise there can be problems.
-* Make get1PI more general: getnPI.\
+* identifyGraphs: Depricated. Use RGE version instead.
+* Make get1PI more general: getnPI.
+* Join Plot functions into one.
+* Update documentation.\
 \>", "Text",
- CellChangeTimes->{{3.7364968418920193`*^9, 3.7364968600041447`*^9}, {
-  3.75664564205364*^9, 3.756645673980197*^9}, {3.756704319770443*^9, 
-  3.756704332114352*^9}, {3.757061599194165*^9, 3.7570616264094057`*^9}, {
-  3.759473671438899*^9, 3.759473683359365*^9}, {3.759493403993402*^9, 
-  3.75949340784801*^9}, {3.7661266306513968`*^9, 3.766126651358989*^9}, {
-  3.766653189923918*^9, 3.766653191147925*^9}, {3.766653224779327*^9, 
-  3.766653241235689*^9}, {3.767865188221409*^9, 3.767865197284945*^9}, {
-  3.7679358074748373`*^9, 3.767935825131876*^9}, {3.7685631054302263`*^9, 
-  3.768563106189897*^9}, {3.768819598991164*^9, 3.7688196089114027`*^9}, {
-  3.771678094329938*^9, 3.7716781245255957`*^9}, {3.7721222320370693`*^9, 
-  3.77212225476341*^9}, {3.772717036455386*^9, 
-  3.772717046795117*^9}},ExpressionUUID->"9ece2174-0de3-4ef5-a782-\
-6c5573fd1256"]
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGAQA2IQndNtE3n22mvHL4oN0SA6e7vjQuu/rx2PxdovBdEV
+y3+4R4D4K5o9QfQss2e72f69drwl6bsfRJdxv2tYwPTG8XV9dhOI/nyyXnkV
+kH6m9BtM2924whLI/8bxWk02O4jeM2GvQpDAG8ezu5+AafsPEqog+kiXujqI
+PiHa/mah0BtHV7mVb0H0PcP36UeAdIiFShaIzjqiu+Wb8BvHxcJuYHre9vsf
+i0XeOJppyX4G0bf6Tm18LvnGcd3FCVtB9Bp9xv4DUm8cb+femAii2yb1/X0k
+/cZxZuHNfyD6ypstV5hk3jg+YfC7CqJdYm48AtHbqxmfgOgp38R/g+jmA9/+
+gOiJDw4LsIDEF6gJguh3JcL2ILqi4DaYnpMd4wGiW8+ngGkArcmw5A==
+  
+  "],ExpressionUUID->"9ece2174-0de3-4ef5-a782-6c5573fd1256"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Last things", "Subsection",
+ CellChangeTimes->{{3.7727823748889008`*^9, 
+  3.772782375991128*^9}},ExpressionUUID->"390ee375-e23d-46c3-9d7e-\
+d21f10cad8f7"],
+
+Cell["* Copyright information and loading messages.", "Text",
+ CellChangeTimes->{{3.7727823779378853`*^9, 
+  3.7727823800115128`*^9}},ExpressionUUID->"8de70c06-cffb-4657-94c2-\
+14bdf0f015d4"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -357,10 +354,9 @@ Cell["\<\
 long delay when physik was not reachable).
 * Can one use the version number from PacletInfo.m instead of defining it \
 directly?
-* Update documentation.
 * RGEPlot of one-point function contains an exponent -1.
 * Message[identifyGraphs::syntax,a] does not exist.
-* $dummyFieldAF and $dummyFieldF still required?\
+* Identification of fermion loops running in different directions?\
 \>", "Text",
  CellChangeTimes->{{3.736318351848378*^9, 3.736318381608193*^9}, {
   3.736318691900454*^9, 3.736318699294239*^9}, {3.740134532572054*^9, 
@@ -370,8 +366,9 @@ directly?
   3.76612714427011*^9, 3.766127162381712*^9}, {3.7666579195746737`*^9, 
   3.766657930530573*^9}, {3.767429890469883*^9, 3.767429895494532*^9}, {
   3.767934104926161*^9, 3.767934115558075*^9}, {3.7683028815324802`*^9, 
-  3.7683028827182217`*^9}, {3.7685633731085377`*^9, 
-  3.768563390464974*^9}},ExpressionUUID->"2cb3baa8-ee89-497d-83be-\
+  3.7683028827182217`*^9}, {3.7685633731085377`*^9, 3.768563390464974*^9}, {
+  3.772782561841969*^9, 3.772782562125737*^9}, {3.772785209879333*^9, 
+  3.7727852170122223`*^9}},ExpressionUUID->"2cb3baa8-ee89-497d-83be-\
 67cfedd84ae3"]
 }, Open  ]]
 }, Open  ]],
@@ -404,7 +401,7 @@ Cell["Checked all functions.", "Text",
 }, Open  ]]
 },
 WindowSize->{958, 997},
-WindowMargins->{{1, Automatic}, {0, Automatic}},
+WindowMargins->{{1921, Automatic}, {Automatic, 58}},
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
 StyleDefinitions->"Default.nb"
 ]
@@ -453,25 +450,27 @@ Cell[10648, 261, 530, 9, 58, "Text",ExpressionUUID->"fb9913ea-29cb-471f-b294-c2e
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[11215, 275, 162, 3, 55, "Subsection",ExpressionUUID->"1065e21f-b2f9-40b3-a9dc-d6fc5d821354"],
-Cell[11380, 280, 171, 3, 35, "Text",ExpressionUUID->"2bca3471-bb28-4201-b265-ff3348ba759f"],
-Cell[11554, 285, 375, 7, 58, "Text",ExpressionUUID->"fd749ff3-b9e2-4223-b959-67f241f17b6b"],
-Cell[11932, 294, 182, 3, 35, "Text",ExpressionUUID->"cefd01f8-cdc9-4605-bb5e-c6a554fc9c5f"]
+Cell[11380, 280, 375, 7, 58, "Text",ExpressionUUID->"fd749ff3-b9e2-4223-b959-67f241f17b6b"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12151, 302, 162, 3, 55, "Subsection",ExpressionUUID->"9381da49-ebaf-4449-a330-2f5da810dfe8"],
-Cell[12316, 307, 1824, 32, 357, "Text",ExpressionUUID->"9ece2174-0de3-4ef5-a782-6c5573fd1256"]
+Cell[11792, 292, 162, 3, 55, "Subsection",ExpressionUUID->"9381da49-ebaf-4449-a330-2f5da810dfe8"],
+Cell[11957, 297, 1294, 26, 288, "Text",ExpressionUUID->"9ece2174-0de3-4ef5-a782-6c5573fd1256"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14177, 344, 159, 3, 55, "Subsection",ExpressionUUID->"820864a1-5442-467c-a5c1-0c1d9d296ecf"],
-Cell[14339, 349, 1372, 25, 242, "Text",ExpressionUUID->"2cb3baa8-ee89-497d-83be-67cfedd84ae3"]
+Cell[13288, 328, 161, 3, 55, "Subsection",ExpressionUUID->"390ee375-e23d-46c3-9d7e-d21f10cad8f7"],
+Cell[13452, 333, 191, 3, 35, "Text",ExpressionUUID->"8de70c06-cffb-4657-94c2-14bdf0f015d4"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13680, 341, 159, 3, 55, "Subsection",ExpressionUUID->"820864a1-5442-467c-a5c1-0c1d9d296ecf"],
+Cell[13842, 346, 1463, 25, 219, "Text",ExpressionUUID->"2cb3baa8-ee89-497d-83be-67cfedd84ae3"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15760, 380, 151, 3, 68, "Section",ExpressionUUID->"460e3aea-39cf-42f7-bb62-d979b0ee064f"],
+Cell[15354, 377, 151, 3, 68, "Section",ExpressionUUID->"460e3aea-39cf-42f7-bb62-d979b0ee064f"],
 Cell[CellGroupData[{
-Cell[15936, 387, 152, 3, 55, "Subsection",ExpressionUUID->"998fe664-a946-4ce7-baeb-3e728446f4a6"],
-Cell[16091, 392, 167, 3, 35, "Text",ExpressionUUID->"b796a56a-4994-4909-95b2-1187ea7a0ac0"],
-Cell[16261, 397, 166, 3, 35, "Text",ExpressionUUID->"1af82734-9093-4cf1-b0cd-5ff61cbfecfd"]
+Cell[15530, 384, 152, 3, 55, "Subsection",ExpressionUUID->"998fe664-a946-4ce7-baeb-3e728446f4a6"],
+Cell[15685, 389, 167, 3, 35, "Text",ExpressionUUID->"b796a56a-4994-4909-95b2-1187ea7a0ac0"],
+Cell[15855, 394, 166, 3, 35, "Text",ExpressionUUID->"1af82734-9093-4cf1-b0cd-5ff61cbfecfd"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
