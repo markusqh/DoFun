@@ -78,6 +78,8 @@
         	* groupDiagrams
         	* cFieldQ
         -) modifications in plotting: standalone propagators can be plotted now
+        -) declared orderFermions deprecated; superseded by sortCanonical
+        -) replaced identifyGraphs by identifyGraphsRGE --> only one function now which is called identifyGraphs; removed compareGraphs and compareGraphs2
         -) new option of DSEPlot:
         	* coSymbol
 *)
@@ -382,21 +384,6 @@ checkSyntax[op[a,S[{A, i1}, {B, i2}], {A, i1}, {B, j1}]]
 checkSyntax[dR[{A, i}, {A, j}, {A, l}]]
 ";
 
-compareGraphs::usage="Compares two graphs using a graphical representation.\n
-Syntax:
-compareGraphs[a, b] with a and b op functions.\n
-Example:
-compareGraphs[op[S[{A, i}, {A, r}, {A, s}, {A, t}], P[{A, r}, {A, s}], {A, t}], op[S[{A, i}, {A, r}, {A, s}, {A, t}], P[{A, r}, {A, t}], {A, s}]]
-";
-
-compareGraphs2::usage="Compares two graphs by permuting the indices.
-Note: Can take very long when used for a large group of graphs.\n
-Syntax:
-compareGraphs2[a, b] with a and b op functions.\n
-Example:
-compareGraphs[op[S[{A, i}, {A, r}, {A, s}, {A, t}], P[{A, r}, {A, s}], {A, t}], op[S[{A, i}, {A, r}, {A, s}, {A, t}], P[{A, r}, {A, t}], {A, s}]]
-";
-
 complete::usage="Possible value for the option output of DSEPlot and RGEPlot.
 See ?output for details and examples.
 "
@@ -630,23 +617,13 @@ setFields[{A}, {{c,cb}}, {{phi,phib}}];
 grassmannQ/@{A,c,cb,phi,phib}
 ";
 
-identifyGraphs::usage="Adds up equivalent graphs in DSEs.
-Note: identifyGraphs works different than identifyGraphsRGE.\n
+identifyGraphs::usage="Adds up equivalent graphs in RGEs.
+Note: identifyGraphs works different than identifyGraphs.\n
 Syntax:
-identifyGraphs[expr] with expr being an expression containing op functions adds up identical graphs.
-identifyGraphs[expr, compareFunction->cfunc] with expr being an expression containing op functions adds up identical graphs using the function cfunc for identifying graphs.
-cfunc can be compareGraphs (default) or compareGraphs2, the latter being necessary for mixed propagators but taking longer. User-defined functions are possible.\n
-Example:
-identifyGraphs[op[S[{A, i}, {A, r}, {A, s}, {A, t}], P[{A, r}, {A, s}], {A, t}] + op[S[{A, i}, {A, r}, {A, s}, {A, t}], P[{A, r}, {A, t}], {A, s}]]
-";
-
-identifyGraphsRGE::usage="Adds up equivalent graphs in RGEs.
-Note: identifyGraphsRGE works different than identifyGraphs.\n
-Syntax:
-identifyGraphsRGE[expr, extFields] with expr being an expression containing op functions and extFields the external legs of all graphs adds up identical graphs.\n
+identifyGraphs[expr, extFields] with expr being an expression containing op functions and extFields the external legs of all graphs adds up identical graphs.\n
 Example:
 setFields[{A}, {}, {}];
-identifyGraphsRGE[op[V[{A, i}, {A, r}, {A, s}, {A, j}], P[{A, r}, {A, s}]] + op[V[{A, i}, {A, j}, {A, s}, {A, t}], P[{A, s}, {A, t}]], {{A, i}, {A, j}}]
+identifyGraphs[op[V[{A, i}, {A, r}, {A, s}, {A, j}], P[{A, r}, {A, s}]] + op[V[{A, i}, {A, j}, {A, s}, {A, t}], P[{A, s}, {A, t}]], {{A, i}, {A, j}}]
 ";
 
 indexStyle::usage="Options for the style of the external indices in DSE and RGE plots.
@@ -915,12 +892,10 @@ Options[RGEPlot]:=Options[DSEPlot];
 
 Options[setSourcesZero]={doGrassmannTest->True, propagatorCreationRules->DSERules};
 
-Options[doDSE]={sourcesZero:> True,identify:> True,compareFunction->compareGraphs, ansatz->{}};
+Options[doDSE]={sourcesZero:> True,identify:> True, ansatz->{}};
 
-Options[doRGE]={sourcesZero:> True,identify:> True,compareFunction->compareGraphs, tDerivative -> True, 
+Options[doRGE]={sourcesZero:> True,identify:> True, tDerivative -> True, 
 	symmetry->intact, userEvenFields->{}};
-
-Options[identifyGraphs]={compareFunction->compareGraphs};
 
 Options[shortExpression]={FontSize->16};
 
@@ -1123,9 +1098,6 @@ checkSyntax::"regulatorInsertion"="There is a syntax error in the regulator inse
 checkSyntax::"ok"="The syntax seems to be ok.";
 
 
-compareGraphs::syntax="The first element of op has to be S[___]. This is not the case in `1` and `2`.";
-
-
 countTerms::syntax="There was a syntax error in countTerms.\n
 Make sure the input has the form of countTerms[expr_]. For more details use ?countTerms.\n
 The expression causing the error is `1`.";
@@ -1205,12 +1177,8 @@ The expression causing the error is `1`.";
 doRGE::noTruncation="For a derivation of an RGE in the symmetry broken phase a truncated average effective action is required as the calculation
 cannot be done up to arbitrary order. Do this by restricting the action to the vertices contained in the truncation.";
 
-identifyGraphs::syntax="There was a syntax error in identifyGraphs.\n
-Make sure the input has the form of identifyGraphs[expr_]. For more details use ?identifyGraphs.\n
-The expression causing the error is `1`.";
 
-
-orderFermions::superseded="orderFermions is superseded by sortCanonical.";
+orderFermions::superseded="Note: orderFermions is deprecated and superseded by sortCanonical. It is no longer updated.";
 
 
 RGEPlot::fieldsUndefined=DSEPlot::fieldsUndefined;
@@ -1815,98 +1783,19 @@ ReleaseHold[Apply[Plus,(a/.#[[2,1]]:> #[[1]]Hold@insertRegulator[#[[2,1]]])&/@co
 (* Identification *)
 
 
-(*identify graphs appearing several times;
-compareGraphs: compares to graphs and gives True or False of they are the same;
-uses graphical representation for comparison;
-it is used by identifyGraphs which adds graphs if they are the same
-compareGraphs2 uses an old algorithm with permutation of the indices, can be very slow (hours for 4-point functions *)
-Clear@compareGraphs;
-compareGraphs[a_op,b_op]/;Not[And@@((Head@First@#===S)&/@{a,b})]:=Message[compareGraphs::syntax,a,b];
-
-compareGraphs[a_op,b_op]:=compareGraphs[a,b]=Module[{sorteda,sortedb},
-
-(* two graphs are euqal, if their graphical representation is the same *)
-
-sorteda=DSEPlotCompare[a];
-sortedb=DSEPlotCompare[b];
-
-sorteda===sortedb 
-
-];
-
-compareGraphs2[a_op,b_op]/;Not[And@@((Head@First@#===S)&/@{a,b})]:=Message[compareGraphs::syntax,a,b];
-
-compareGraphs2[a_op,b_op]:=compareGraphs2[a,b]=Module[{sorteda,verts,vertPerms,vertRules,permutateda,orderFunction},
-
-
-orderFunction[c_List, d_] := OrderedQ[{c, d}];
-orderFunction[c_, d_List] := OrderedQ[{c, d}];
-orderFunction[c_, d_] := OrderedQ[{c[[All, 1]], d[[All, 1]]}];
-
-(* check all possible variations of the vertices; Sort here to have the same order as below *)
-sorteda=Sort[Sort/@a,orderFunction[#1,#2]&];(*Sort[Sort/@a]; *)
-verts=Cases[sorteda,V[___]|S[___]]/.{}:> {{},{}};
-
-(* list of rules for all possible vertex variations *)
-vertPerms=Outer[List,Sequence@@Permutations/@verts];
-vertRules=Thread[verts:> #]&/@Flatten[vertPerms,Depth@vertPerms-5];
-
-(* check if the second graph is only a permutation of the first one; sort to have the same order of elements (S,P,V and fields as well as the indices in them) in both and rename the dummy indices to have them also equal; sort according to the fields so that P[A,B] and P[A,A] are sorted correctly *)
-permutateda=sorteda/.vertRules;
-
-
-MemberQ[sortDummies/@permutateda,sortDummies@Sort[Sort/@b,orderFunction[#1,#2]&]]
-
-];
-
-
-identifyGraphs[a_op,opts___]:=a;
-
-identifyGraphs[a_Times,opts___]:=a;
-
-identifyGraphs[a_?NumericQ,opts___]:=a;
-
-identifyGraphs[a_Plus,opts___]:=Module[{ops,equalOps,classes,classedOps,classRule,indices,extIndices,compareGraphsFunction},
-
-compareGraphsFunction=compareFunction/.Join[{opts},Options[identifyGraphs]];
-
-(* split off the numerical factors; syntax: {{factor1,op1},{factor2, op2},{factor3,op3},...} *)
-ops=Replace[List@@Expand@a/.Times[b_?NumericQ,c_]:> {b,c},d_op:> {1,d},{1}];
-
-(* only compare graphs with the same type of propagators and vertices; this brings a huge speedup *)
-
-(* determine possible classes, i.e. they have the same type of propagators and vertices *)
-indices = Cases[ops[[1, 2]], {_?fieldQ, _}, \[Infinity]][[All, 2]];
-extIndices = Select[indices, Count[indices, #] == 1 &];
-classRule={{b_Symbol, c_} :> {b} /; (* can be quite time consuming if there are many terms:  fieldQ[b]; so I put b_Symbol instead of b_  &&*) FreeQ[extIndices, c]};
-classes = Union@Map[Sort,(ops[[All, 2]] /. classRule),2];
-classedOps=Function[p, 
-  Select[ops, 
-   MatchQ[Map[Sort,(#[[2]] /.classRule),{0,1}], p] &]] /@ classes;
-(* add up equivalent graphs *)
-equalOps=Flatten[#//.{b___,c_List,d___,e_List,f___}:> {b,{c[[1]]+e[[1]],c[[2]]},d,f}/;compareGraphsFunction[c[[2]],e[[2]]]&/@classedOps,1];
-
-(* multiply with numerical factors *)
-equalOps[[All,1]].equalOps[[All,2]]
-
-];
-
-identifyGraphs[a___]:=Message[identifyGraphs::syntax,a];
-
-
 (* for RGEs there is an algorithm that will always work, since RGEs are one-loop only;
 note that the coefficient can become 0 if the signs are wrong, e.g., -1/2+1/2=0 *)
 
 (* in case there is only one term *)
-identifyGraphsRGE[exp_Times,extFields_List]:=exp;
+identifyGraphs[exp_Times,extFields_List]:=exp;
 
-identifyGraphsRGE[exp_op,extFields_List]:=exp;
+identifyGraphs[exp_op,extFields_List]:=exp;
 
-identifyGraphsRGE[a_?NumericQ,opts___]:=a;
+identifyGraphs[a_?NumericQ,opts___]:=a;
 
 
 (* more terms *)
-identifyGraphsRGE[exp_Plus,extFields_List]:=Module[{classes,ops,equalOps,orderedExp},
+identifyGraphs[exp_Plus,extFields_List]:=Module[{classes,ops,equalOps,orderedExp},
 
 (* TODO order bosonic fields in propagators; needed, e.g., for complex scalar fields; handled automatically in DoFun3 for complex fields, but still necessary for mixed fields *)
 (*orderedExp=exp/.P[{Q1_?cFieldQ,q1_},{Q2_?cFieldQ,q2_}]:>Sort@P[{Q1,q1},{Q2,q2}]/.S:>V;(* replace S by V for common treatment of vertices *)*)
@@ -1936,7 +1825,7 @@ equalOps[[All,1]].equalOps[[All,2]]
 
 ];
 
-identifyGraphsRGE[a___]:=Message[identifyGraphsRGE::syntax,a];
+identifyGraphs[a___]:=Message[identifyGraphs::syntax,a];
 
 
 (* get  characteristic of a graph
@@ -2171,7 +2060,6 @@ getSignature[a_op] := Module[{verts},
 
 (* ::Section:: *)
 (* Set Sources to Zero *)
-
 
 (* standard test checking for conservation of Grassmann numbers; test also for complex fields;
 here we assume that only Grassmann numbers of fields are conserved that have a propagator *)
@@ -2478,7 +2366,7 @@ orderFermions[a_?NumericQ]:=a;
 
 orderFermions[a_op] := Module[{fermions, bosons, antiFermions,orderF, orderB, orderExtFields, extFields, swapInnerFermions},
 
-Message[orderFermions::superseded]
+Message[orderFermions::superseded];
 
 (* get lists of fermions, antiFermions and bosons from INTERNAL fields *)
 fermions=Union@Cases[a,{f_?fermionQ,_}:>f,{2}];
@@ -2636,7 +2524,7 @@ doDSE[L_Times|L_Plus,derivs_List,vertexTest___Symbol,opts___?OptionQ]:=doDSE[L,d
 		Select[Cases[L, S[___], \[Infinity]], Length@# == 2 &]/. S[{Q1_, q1_}, {Q2_, q2_}] :> {Q1, Q2},vertexTest,opts];
 
 doDSE[L_Times|L_Plus,derivs_List,allowedPropagators_List,vertexTest___Symbol,opts___?OptionQ]:=Module[{firstDer,onePoint,multiPoint,
-	compareGraphsFunction,sign,finalExp, complexFields},
+	sign,finalExp, complexFields},
 
 (* get fields that are not necessarily fermions but directed, e.g., scalar complex fields;
 this does not work if allowedPropagators is used (i.e. not {}) because then we cannot say what the
@@ -2649,28 +2537,21 @@ complexFields={#,antiField@#}&/@Union@Cases[L, _?complexFieldQ,Infinity];
 (* for 1PI vertex function add a minus sign due to its definition as the negative derivative of the effective action *)
 sign= Which[Length@derivs>2,$signConvention (-1),True,(+1)];
 
-compareGraphsFunction=compareFunction/.Join[{opts},Options@doDSE];
-
 (* first derivative *)
 firstDer=deriv[L,First@derivs];
 
 (* replace the fields and identify equal graphs *)
-onePoint=identifyGraphs[replaceFields[firstDer],compareFunction->compareGraphsFunction];
+onePoint=replaceFields[firstDer];
 
 (* perform additional differentiations and set sources to zero *)
 multiPoint=deriv[onePoint,Sequence@@Rest@derivs];
 
 (* get the correct sign due to fermions by ordering them; also order directed (complex) fields for identification*)
-(*finalExp=sign identifyGraphs[orderFermions@If[sourcesZero/.Join[{opts},Options@doDSE],sortDummies@setSourcesZero[multiPoint,(*zeroSources,*)L,(*dirFields,*)derivs,allowedPropagators,vertexTest,opts],
-multiPoint,multiPoint]/.(Function[dField, 
-   P[{dField[[2]], c_}, {dField[[1]], b_}] :> 
-    P[{dField[[1]], b}, {dField[[2]], c}]] /@ Cases[complexFields,{_?(Head@#===boson&),_?(Head@#===boson&)}])];*)
-    (* TODO Check if ordering for complex fields is not obsolete by definition of P *)
 finalExp=If[sourcesZero/.Join[{opts},Options@doDSE],sortDummies@setSourcesZero[multiPoint,(*zeroSources,*)L,(*dirFields,*)derivs,allowedPropagators,vertexTest,opts],
 multiPoint,multiPoint](*/.(Function[dField, 
    P[{dField[[2]], c_}, {dField[[1]], b_}] :> 
     P[{dField[[1]], b}, {dField[[2]], c}]] /@ Cases[complexFields,{_?(Head@#===boson&),_?(Head@#===boson&)}])*);
-finalExp=sign identifyGraphsRGE[sortCanonical[getSigns[finalExp], derivs], derivs];
+finalExp=sign identifyGraphs[sortCanonical[getSigns[finalExp], derivs], derivs];
 
 finalExp
 
@@ -2727,7 +2608,7 @@ zeroPoint=Plus@@(1/2 op[dR[{$dummyField,traceIndex1},{$dummyField,ind}],P[{$dumm
 (* order fermions and set sources to physical values *)
 multiPointSources0= getSigns[setSourcesZeroRGE[zeroPoint,(*zeroSources,*)L,(*dirFields,*){{}},allowedPropagators,vertexTest,opts]];
 
-identifyGraphsRGE[sortDummies@multiPointSources0,{}]
+identifyGraphs[sortDummies@multiPointSources0,{}]
 
 ];
 
@@ -2810,9 +2691,9 @@ multiPoint=sortCanonical[multiPoint, orderedDerivs];
 
 (* the first dummy sorting is required for the identification to work; the second one treats the dummies introduced by derivPropagatorsdt *)
 If[tDerivative/.Join[{opts},Options@doRGE],
-	sortDummies[identifyGraphsRGE[multiPoint,extFields]/.a_op:>derivPropagatorsdt@a],
-	sortDummies[identifyGraphsRGE[multiPoint,extFields]],
-	sortDummies[identifyGraphsRGE[multiPoint,extFields]/.a_op:>derivPropagatorsdt@a]
+	sortDummies[identifyGraphs[multiPoint,extFields]/.a_op:>derivPropagatorsdt@a],
+	sortDummies[identifyGraphs[multiPoint,extFields]],
+	sortDummies[identifyGraphs[multiPoint,extFields]/.a_op:>derivPropagatorsdt@a]
 ]
 
 ];
@@ -2836,7 +2717,7 @@ doCO[action_Times|action_Plus|action_List, compOp_, filter_:(True&), opts___?Opt
 	compOpFieldsRepS0 = setSourcesZero[compOpFieldsRep, action, {}]	;
 	compOpFieldsRepS0Filtered = Select[compOpFieldsRepS0, filter];
 	(* currently the identification does not work reliably for disconnected diagrams, thus deactivate *) 
-	(* compOpFieldsRepS0FilteredId = identifyGraphsRGE[compOpFieldsRepS0Filtered, extFields];*)
+	(* compOpFieldsRepS0FilteredId = identifyGraphs[compOpFieldsRepS0Filtered, extFields];*)
 	compOpFieldsRepS0Filtered	
 ]
 
@@ -2948,7 +2829,7 @@ shortExpressionSingle[dR[a__]]:=DisplayForm@RowBox[{SubscriptBox["\[PartialD]", 
 
 shortExpressionSingle[P[{F1_,i1_},{F2_,i2_}]]:=Subsuperscript[$propagatorSymbol,ToString@F1<>" "<>ToString@F2,ToString[i1]<>" "<>ToString[i2]];
 
-shortExpressionSingle[sf[___]] := 1
+shortExpressionSingle[sf[_,_]] := 1
 
 
 shortExpressionStyle[a_,opts___]:=Style[a,
