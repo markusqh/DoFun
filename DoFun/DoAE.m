@@ -17,6 +17,7 @@
     2.0.2 (22.1.2015): no changes
     2.0.3 (19.1.2017): no changes
     2.0.4 (5.12.2017): no changes
+    3.0.0 (devel):
 *)
 
 
@@ -197,7 +198,7 @@ SetOptions[$FrontEnd,
 
 getAE::incorrectNumberOfMomenta="The expression has more or less legs than provided by `1`. Adjust the number of legs.";
 
-getAE::undefinedFields="The field(s) `1` are not defined yet. Use defineFieldsSpecific to do so.";
+getAE::undefinedFields="Not all field(s) `1` are defined yet. Use defineFieldsSpecific to do so.";
 
 getAE::incorrectFormat="The format of the list of external momenta and indices is not correct.
 It has to be of the form {{field1, ind, mom, specific index 1, specific index 2, ...}, {field2, ...}, ...},
@@ -368,7 +369,7 @@ insertMomenta[op[S[a__], P[b1_, b2_]], extMomenta_List] :=
 
 (* treat expressions with only one entry in op, e.g., bare diagrams, extra *)
 
-insertMomenta[op[SPV_[a__]], extMomenta_List]/;SPV==V||SPV==S||SPV==P:= 
+insertMomenta[op[SPV_[a__]], extMomenta_List]/;SPV==V||SPV==S||SPV==P||SPV==CO:= 
   Module[{external, totalOp},
 
    totalOp = op[SPV[a]];
@@ -389,7 +390,8 @@ insertMomenta[op[SPV_[a__]], extMomenta_List]/;SPV==V||SPV==S||SPV==P:=
 insertMomenta[a_op, extMomenta_List] := 
  Module[{momentaToInsert, external, noListQ,  extAdded, props, 
    startVertex, startVertexIntLegs, startVertexExtLegs, loopMomenta, 
-   newVertex, flowed,extFields,extFieldsAdded,extFieldsMomenta},
+   newVertex, flowed,extFields,extFieldsAdded,extFieldsMomenta,
+   verts, selfProps, momentaSelfProps, selfPropsAdded},
  
   momentaToInsert[b_, c_] := {c, -b - c};
   momentaToInsert[b_List, c_] := {Sequence @@ Most@b, Last@b - c, c};
@@ -413,7 +415,7 @@ insertMomenta[a_op, extMomenta_List] :=
   
   (* start at one vertex; take its indices *)
   
-  startVertex = First@Cases[extFieldsAdded, S[b__] | V[b__] :> {b}];
+  startVertex = First@Cases[extFieldsAdded, S[b__] | V[b__] | CO[b__] :> {b}];
   (* the internal legs and the external one *)
   
   startVertexIntLegs = 
@@ -422,14 +424,30 @@ insertMomenta[a_op, extMomenta_List] :=
   
   startVertexExtLegs = Complement[startVertex, startVertexIntLegs];
   
+  (* do self-loops *)
+  (* get propagators and vertices and check which propagator arguments appear in the same vertex *)
+  props = Cases[a, P[___]];
+  verts = Cases[a, V[___]|CO[___]|S[___]];
+  (* get all propagators closing on the same vertex *)
+  (*selfProps = Select[props, Position[verts,#[[1]]][[1, 1]]==Position[verts,#[[2]]][[1, 1]]&];*)
+  selfProps = Select[props, Position[verts,#[[1]]][[1, 1]]==Position[verts,#[[2]]][[1, 1]]&];
+  (* and their momenta *)  
+  (*momentaSelfProps = $loopMomenta[[Length@startVertexIntLegs - 2*Length@selfProps;;Length@startVertexIntLegs - Length@selfProps - 1]];*)
+  momentaSelfProps = $loopMomenta[[1;;Length@selfProps]];
+  (* add those momenta *)
+  selfPropsAdded = addMomentum[extFieldsAdded, Flatten[List@@@selfProps,1], Flatten[Transpose[{momentaSelfProps,-momentaSelfProps}],1]];
+  
+  (* remove the self-loops from the internal legs *)
+  startVertexIntLegs = Complement[startVertexIntLegs, Flatten[List@@@selfProps,1]];
+  
   (* determine the loop momenta *)
   
   loopMomenta = 
    Fold[momentaToInsert, (Plus @@ startVertexExtLegs)[[2]], 
-   Take[$loopMomenta, Length@startVertexIntLegs - 1]];
+   $loopMomenta[[Length@selfProps+1;;Length@selfProps+Length@startVertexIntLegs-1]]];
   
   (* replace the indices with the new momenta *)
-  newVertex = addMomentum[extFieldsAdded, startVertexIntLegs, loopMomenta];
+  newVertex = addMomentum[selfPropsAdded, startVertexIntLegs, loopMomenta];
   
   (* the propagators with one new momentum *)
   props = Cases[newVertex, 
@@ -451,19 +469,42 @@ flowDiagram[a_op] /;
            ListQ@# &), _}], \[Infinity]] == {} := a;
 flowDiagram[a_op] := 
  Module[{startVertex, indWMomenta, indWOMomenta, newMomentum, newOp, 
-   props},
+   props, newLoopMomentum, usedLoopMomenta},
   
   (* choose one vertex that has only one leg without momentum *)
-  startVertex = 
+  (*startVertex = 
    First@Cases[a, 
-     V[b__] | S[b__] | dR[b__]:> {b} /; 
-       Count[{b}, {_?(Not@ListQ@# &), _}] == 1];
+     V[b__] | S[b__] | dR[b__] | CO[b__] :> {b} /; 
+       Count[{b}, {_?(Not@ListQ@# &), _}] == 1];*)
+  startVertex = 
+   First@Cases[a,  
+     V[b__] | S[b__] | dR[b__] | CO[b__] :> {b} /; 
+       Count[{b}, {_?(Not@ListQ@# &), _}] >= 1];     
+  (*indWMomenta = Cases[startVertex, {b_List, c_}];
+  indWOMomenta = First@Complement[startVertex, indWMomenta];*)
+  (* get legs with and without momenta *)
   indWMomenta = Cases[startVertex, {b_List, c_}];
-  indWOMomenta = First@Complement[startVertex, indWMomenta];
+  indWOMomenta = Complement[startVertex, indWMomenta];
+  (*indWOMomenta = First@Cases[startVertex, {b_,c_}/;Head@b=!=List];
+  indWMomenta = Complement[List@@startVertex, {indWOMomenta}];*)
+  
+    (* for exactly one leg without momentum continue by momentum conservation, otherwise add new loop momentum *)
+  If[Length@indWOMomenta==1,
+  	newLoopMomentum=-Plus @@ indWMomenta[[All, 2]],
+  	
+  	(* get an unused loop momentum *)
+    usedLoopMomenta = Union@Cases[a, _?(MemberQ[$loopMomenta, #] &), Infinity];
+    newLoopMomentum = First[Complement[$loopMomenta, usedLoopMomenta]];
+    newLoopMomentum = First[$loopMomenta/.(#:>Sequence[]&/@usedLoopMomenta)];  	
+  ];
+  
+  (* take first entry to put a momentum there *)
+  indWOMomenta=First@indWOMomenta;
   
   (* determine the new momentum *)
   
-  newMomentum = {indWOMomenta, -Plus @@ indWMomenta[[All, 2]]};
+  (*newMomentum = {indWOMomenta, -Plus @@ indWMomenta[[All, 2]]};*)
+  newMomentum = {indWOMomenta, newLoopMomentum};
   
   (* add the new momentum *)
   
@@ -475,7 +516,7 @@ flowDiagram[a_op] :=
     P[{{_, _}, _}, {_?(Not@ListQ@# &), _}] | 
      P[{_?(Not@ListQ@# &), _}, {{_, _}, _}]];
   
-  (* and propagate it momentum to the vertex at the other end *)
+  (* and propagate its momentum to the vertex at the other end *)
   
   flowProps[newOp, props]
   ];
@@ -577,8 +618,10 @@ removeDoubleIndices[exp_,fields_List]:=Module[{doubleIndexRules, allFields},
 getAE[a_, momenta_List,opts___?OptionQ]/;opts=!={}:=getAE[a, momenta, {}, opts];
 
 (* TODO: unfdefined fields! in case the user has not defined an index yet, it is defined with standard index names, a,b,... *)
-(*getAE[a_, (*fields_List,*) momenta_List, contractFunctions_List, opts___?OptionQ]/;Not[
-	And@@(fieldQ/@Flatten@fields)]:=Message[getAE::undefinedFields,Select[Flatten@fields,Not@fieldQ@#&]];*)
+
+(* fields are not defined for getAE *)
+getAE[a_, momenta_List, contractFunctions_List, opts___?OptionQ]/;Not[
+	And@@((ListQ@indices[#])&/@Flatten@momenta[[All,1]])]:=Message[getAE::undefinedFields,Union@momenta[[All,1]]];
 
 (* in case the user has not defined an index yet, it is defined with standard index names, a,b,... *)
 getAE[a_, momenta_List, contractFunctions_List, opts___?OptionQ]/;Not[
@@ -677,6 +720,7 @@ indsReplaced=replaceIndices[doubleIndsReplaced, indsTypes];
 remove op function *)
 fullExpression=indsReplaced /. b_op :> Times @@ b /. {
   V[c___] :> V[c, explicit -> explicitTF], 
+  CO[c___] :> CO[c, explicit -> explicitTF],
   S[c___] :> S[c, explicit -> explicitTF], 
   P[c___] :> P[c, explicit -> explicitTF],
   dR[c___] :> dR[c, explicit -> explicitTF]};
@@ -700,7 +744,7 @@ checkMomentumConservation[a_Times | a_Plus] :=
   checkMomentumConservation /@ a;
 checkMomentumConservation[a_op] := 
  Apply[Plus, 
-  Replace[Cases[a, V[b__] | S[b__] :> {b}],{{Q_, q_}, p_} :> 
+  Replace[Cases[a, V[b__] | S[b__] |CO[b__] :> {b}],{{Q_, q_}, p_} :> 
     p, {2}], {1}];
 
 

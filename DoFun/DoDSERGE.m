@@ -77,8 +77,10 @@
         	* getVertexNumbers
         	* groupDiagrams
         	* cFieldQ
+        -) modifications in plotting: standalone propagators can be plotted now
+        -) new option of DSEPlot:
+        	* coSymbol
 *)
-
 
 
 
@@ -106,6 +108,9 @@ If[DoFun`DoDSERGE`$doDSERGEStartMessage=!=False,
 
 
 
+(* TODO Remove *)
+getGraphCharacteristic;
+vertexDummies;
 
 (* ::Section:: *)
 (* Usages *)
@@ -119,6 +124,24 @@ getVertexNumbers::usage="";
 getDiagramType::usage="";
 extractDiagramType::usage="";
 groupDiagrams::usage="";
+CO::usage="";
+coSymbol::usage="";
+replacedFieldCO::usage="";
+connectedQ::usage="";
+disconnectedQ::usage="";
+getConnected::usage="";
+getDisconnected::usage="";
+onePIQ::usage="";
+get1PI::usage="";
+getNon1PI::usage="";
+doCO::usage="";
+
+(* temporary *)
+	replaceFieldsCO;
+	firstDerivReplacementCO;
+	replacementCalcStepCO;
+	replacementCalcCO;
+
 
  	
 $bareVertexSymbol::usage="Symbol representing a bare vertex when using shortExpression.
@@ -927,9 +950,6 @@ Evaluate@$dummyField /: grassmannQ[$dummyField] = False;
 
 
 (* fermionic dummy fields *)
-(*TODO: Remove Head[...]*)
-(*$dummyFieldF /: Head[$dummyFieldF] := field;
-$dummyFieldAF /: Head[$dummyFieldAF] := field;*)
 $dummyFieldF /: fieldType[$dummyFieldF] = fermion;
 $dummyFieldAF /: fieldType[$dummyFieldAF] = antiFermion;
 antiField[$dummyFieldF] = $dummyFieldAF;
@@ -1271,9 +1291,9 @@ sortDummies[a_op]:=Module[
 (* discard sf terms, since their indices are not to be contracted *)
 b = a/.sf[_,_]:>1;
 
-(* get all indices from the epxression *)
+(* get all indices from the epxression, do not consider indices in sf *)
 (*inds=Transpose[b[[Sequence@@#]]&/@Position[b,{_,ind_}]][[2]];*)
-inds = Cases[b, {c_?fieldQ, ind_} :> ind, Infinity];
+inds = Cases[b/.sf[_,_]:>1 {c_?fieldQ, ind_} :> ind, Infinity];
 
 (* determine the dummy indices; only take the first appearance, don't change order, i.e. don't use Union *)
 (*exprDummies=
@@ -1303,7 +1323,7 @@ generateAction[action_,rest___]:=
 (*generateAction[interactions_List]:=Message[generateAction::fieldsNotSet,interactions];*)
 
 generateAction[interactions_List]:=Module[
-{interactions2, fields,autoList, userList, factor},
+{interactions2, fields, autoList, userList, allList, factor},
 
 (* in case the fields are given by their order and symmetry *)
 interactions2=interactions/. {
@@ -1326,8 +1346,19 @@ autoList = Function[ia,
       localFactors_List} :> {ia /. field_?fieldQ :> {field, insDummy[]}, 
       1/Times @@ Factorial /@ localFactors}] /@ autoList;
 
-(Plus @@ (#[[2]] op[S[Sequence @@ #[[1]]], Sequence @@ #[[1]]] & /@ Join[autoList, userList] // sortDummies))
-  /.a_S?(Length@#>2&):>-$signConvention a
+(*(Plus @@ (#[[2]] op[S[Sequence @@ #[[1]]], Sequence @@ Reverse@#[[1]]] & /@ Join[autoList, userList] // sortDummies))
+  /.a_S?(Length@#>2&):>-$signConvention a*)
+  (* join lists *)
+  allList = Join[autoList, userList];
+  
+  (* generate action; for vertices change the order of the fields to account for the correct order of fermions;
+  for propagators not necessary because they are defined with field/anti-fields exchanged *)
+  (*(Plus @@ (#[[2]] op[S[Sequence @@ #[[1]]], Sequence @@ #[[1]]] & /@ allList // sortDummies))
+  /.a_S?(Length@#>2&):>-$signConvention a /. op[b_S,c___List]:>op[b,Sequence@@Reverse[{c}]]/;Length[{c}]>2*)
+(*  Print[(Plus @@ (#[[2]] op[S[Sequence @@ #[[1]]], Sequence @@ #[[1]]] & /@ allList // sortDummies))
+  /.a_S?(Length@#f>2&):>-$signConvention a ];*)
+  (Plus @@ (#[[2]] op[S[Sequence @@ #[[1]]], Sequence @@ #[[1]]] & /@ allList // sortDummies))
+  /.a_S?(Length@#>2&):>-$signConvention a /. op[b_S,c___List]:>op[b,Sequence@@Reverse[{c}]]/;Length[{c}]>2
 
 ];
 
@@ -1371,10 +1402,61 @@ sf[a_, b___List] /;
   Not[FreeQ[
     b[[All, 1]], _?bosonQ | _?complexFieldQ | _?antiComplexFieldQ]] :=
   sf[a, DeleteCases[b, _?bosonQ | _?complexFieldQ | _?antiComplexFieldQ]]
+  
+(* if elements of op are sorted, do not touch sf expressions *)
+Sort[sf[a_, b_]] ^= sf[a, b]
 
 (* make signs explicit *)
 getSigns[exp_] := 
  exp /. sf[f_?grassmannQ, l__] :> (-1)^Count[l, _?grassmannQ]
+
+
+
+
+(* ::Section:: *)
+(* Composite operators *)
+
+
+replaceFieldsCO[a__]:=replacementCalcCO@firstDerivReplacementCO[a]//Expand;
+
+
+firstDerivReplacementCO[a_Times|a_Plus]:=firstDerivReplacementCO[#]&/@a;
+
+firstDerivReplacementCO[a_?NumericQ]:=a;
+
+firstDerivReplacementCO[op[S_,c_List]]:=op[S,c];
+
+(*firstDerivReplacementCO[op[S___,b__List,c_List]]:=op[S,Sequence@@(replacedFieldCO1/@{b}),c];*)
+
+firstDerivReplacementCO[op[b___,c_List]]:=op[Sequence@@(replacedFieldCO/@{b}),c];
+
+replacedFieldCO[a_CO]:=a;
+
+
+
+replacementCalcStepCO[a_Times|a_Plus]:=replacementCalcStepCO/@a;
+
+replacementCalcStepCO[a_?NumericQ]:=a;
+
+replacementCalcStepCO[a_op]/;FreeQ[a,replacedFieldCO]:=a;
+
+(* the utmost right two terms, quite simple *)
+replacementCalcStepCO[op[a___,replacedFieldCO[{Q_,q_}],c_List]]:=(op[a,{Q,q},c]+
+	op[a,P[{Q,q},c/.{d_,e_}:>{d,e}]]);
+
+(* all higher terms *)
+replacementCalcStepCO[op[a___,replacedFieldCO[{Q_,q_}],c__/;FreeQ[{c},replacedFieldCO]]]:=Module[{ind1,ind2},
+	op[a,{Q,q},c]+
+(* propagator and derivative w.r.t. field *)Plus@@((op[a, P[{Q,q},#],Sequence@@DeleteCases[{c},#1]])&)/@Cases[{c},{_?fieldQ,_}]+
+(* propagator and derivative w.r.t. CO *)
+(* propagator and derivative w.r.t. vertex *)Plus@@(op[a,P[{Q,q},{$dummyField,ind1=insDummy[]}],Sequence@@DeleteCases[{c},#1],derivVertex[#1,{$dummyField,ind1}]]&)/@{c}+
+(* propagator and derivative w.r.t. propagator *)Plus@@(op[a, P[{Q,q},{$dummyField,ind2=insDummy[]}],
+	Sequence@@DeleteCases[{c},#1],derivPropagator[#1,{$dummyField,ind2}]]&)/@{c}
+];
+
+
+
+replacementCalcCO[a_]:=FixedPoint[replacementCalcStepCO,a,50];
 
 
 
@@ -1408,12 +1490,12 @@ replacementCalcStep[a_op]/;FreeQ[a,replacedField]:=a;
 
 (* the utmost right two terms, quite simple *)
 replacementCalcStep[op[S_,a___,replacedField[{Q_,q_}],c_List]]:=(op[S,a,{Q,q},c]+
-	op[S,a,P[{Q,q},c/.{d_,e_}:>{d,e}]]);
+	op[S,a,sf[{Q,q},{{Q,q}}],P[{Q,q},c/.{d_,e_}:>{d,e}]]);
 
 (* all higher terms *)
 replacementCalcStep[op[S_,a___,replacedField[{Q_,q_}],c__/;FreeQ[{c},replacedField]]]:=Module[{ind1,ind2},
 	op[S,a,{Q,q},c]+
-(* propagator and derivative w.r.t. field *)Plus@@((op[S,a, P[{Q,q},#],Sequence@@DeleteCases[{c},#1]])&)/@Cases[{c},{_,_}]+
+(* propagator and derivative w.r.t. field *)Plus@@((op[S,a,sf[{Q,q},{{Q,q}}], P[{Q,q},#],Sequence@@DeleteCases[{c},#1]])&)/@Cases[{c},{_?fieldQ,_}]+
 (* propagator and derivative w.r.t. vertex *)Plus@@(op[S,a,P[{Q,q},{$dummyField,ind1=insDummy[]}],Sequence@@DeleteCases[{c},#1],derivVertex[#1,{$dummyField,ind1}]]&)/@{c}+
 (* propagator and derivative w.r.t. propagator *)Plus@@(op[S,a, P[{Q,q},{$dummyField,ind2=insDummy[]}],
 	Sequence@@DeleteCases[{c},#1],derivPropagator[#1,{$dummyField,ind2}]]&)/@{c}
@@ -1622,6 +1704,8 @@ derivVertex[S[fields__],{Q_,q_}]:=0;
 
 derivVertex[P[a__],{Q_,q_}]:=0;
 
+derivVertex[CO[a__],{Q_,q_}]:=0;
+
 derivVertex[a_List,{Q_,q_}]:=0;
 
 derivVertex[a_dR,{Q_,q_}]:=0;
@@ -1630,6 +1714,8 @@ derivVertex[a_sf,{Q_,q_}]:=0;
  
 
 derivPropagator[V[a__],{Q_,q_}]:=0;
+
+derivPropagator[CO[a__],{Q_,q_}]:=0;
 
 derivPropagator[a_List,{Q_,q_}]:=0;
 
@@ -1664,7 +1750,7 @@ derivPropagators[a_op,{Q_,q_}]:=Module[
 {props,propConnections,posInd,represConnections,connectionList,propFactors,propagatorId},
 
 (* test if two propagators can be considered equal *)
-propagatorId[b_,c_]:=(b[[2]]===c[[2]](* connections have to be the same *)&&Cases[Sort@b[[1]],{_,_}][[All,1]]===Cases[Sort@c[[1]],{_,_}][[All,1]](* fields have to be the same *));
+propagatorId[b_,c_]:=(b[[2]]===c[[2]](* connections have to be the same *)&&Cases[Sort@b[[1]],{_?fieldQ,_}][[All,1]]===Cases[Sort@c[[1]],{_?fieldQ,_}][[All,1]](* fields have to be the same *));
 
 (* get all propagators *)
 props=Cases[a,_P];
@@ -1700,7 +1786,7 @@ derivPropagatorsdt[a_op]:=Module[
 {props,propConnections,posInd,represConnections,connectionList,propFactors,propagatorId},
 
 (* test if two propagators can be considered equal *)
-propagatorId[b_,c_]:=(b[[2]]===c[[2]](* connections have to be the same *)&&Cases[Sort@b[[1]],{_,_}][[All,1]]===Cases[Sort@c[[1]],{_,_}][[All,1]](* fields have to be the same *));
+propagatorId[b_,c_]:=(b[[2]]===c[[2]](* connections have to be the same *)&&Cases[Sort@b[[1]],{_?fieldQ,_}][[All,1]]===Cases[Sort@c[[1]],{_?fieldQ,_}][[All,1]](* fields have to be the same *));
 
 (* get all propagators *)
 props=a[[Sequence@@#]]&/@Position[a,_P];
@@ -1789,7 +1875,7 @@ ops=Replace[List@@Expand@a/.Times[b_?NumericQ,c_]:> {b,c},d_op:> {1,d},{1}];
 (* only compare graphs with the same type of propagators and vertices; this brings a huge speedup *)
 
 (* determine possible classes, i.e. they have the same type of propagators and vertices *)
-indices = Cases[ops[[1, 2]], {_, _}, \[Infinity]][[All, 2]];
+indices = Cases[ops[[1, 2]], {_?fieldQ, _}, \[Infinity]][[All, 2]];
 extIndices = Select[indices, Count[indices, #] == 1 &];
 classRule={{b_Symbol, c_} :> {b} /; (* can be quite time consuming if there are many terms:  fieldQ[b]; so I put b_Symbol instead of b_  &&*) FreeQ[extIndices, c]};
 classes = Union@Map[Sort,(ops[[All, 2]] /. classRule),2];
@@ -1822,7 +1908,10 @@ identifyGraphsRGE[a_?NumericQ,opts___]:=a;
 identifyGraphsRGE[exp_Plus,extFields_List]:=Module[{classes,ops,equalOps,orderedExp},
 
 (* TODO order bosonic fields in propagators; needed, e.g., for complex scalar fields; handled automatically in DoFun3 for complex fields, but still necessary for mixed fields *)
-orderedExp=exp/.P[{Q1_?cFieldQ,q1_},{Q2_?cFieldQ,q2_}]:>Sort@P[{Q1,q1},{Q2,q2}]/.S:>V;(* replace S by V for common treatment of vertices *)
+(*orderedExp=exp/.P[{Q1_?cFieldQ,q1_},{Q2_?cFieldQ,q2_}]:>Sort@P[{Q1,q1},{Q2,q2}]/.S:>V;(* replace S by V for common treatment of vertices *)*)
+(* TODO ordering handled automatically, but unclear what happend for mixed fields *)
+orderedExp=sortCanonical[exp, extFields](*/.S:>V*);(* TODO: Remove replace S by V for common treatment of vertices *)
+
 
 (* split off the numerical factors; syntax: {{factor1,op1},{factor2, op2},{factor3,op3},...} *)
 ops=Replace[List@@Expand@orderedExp/.Times[b_?NumericQ,c_]:> {b,c},d_op:> {1,d},{1}];
@@ -1833,8 +1922,8 @@ classes are identified by
 -) types of vertices and their external legs *)
 classes=Flatten[GatherBy[ops, {
   Sort@Cases[#1, P[q1_, q2_] :> {q1[[1]], q2[[1]]}, 2]&,
-  Sort[(Cases[#, V[__], 2]/. {Q_?fieldQ, q_} :> {Q} /; 
-      Not@MemberQ[extFields[[All, 2]], q])/.V[a__]:> Sort[V[a]]
+  Sort[(Cases[#, V[__]|CO[__], 2]/. {Q_?fieldQ, q_} :> {Q} /; 
+      Not@MemberQ[extFields[[All, 2]], q])/.V[a__]:> Sort[V[a]]/.CO[a__]:>Sort[CO[a]]
       ] &}],1]; 
       
 (* add up equivalent graphs *)
@@ -1868,6 +1957,8 @@ getNeighbours[exp_, allExtFields_List] :=
 
    (* determine the first vertex *)
    mainVertex = Select[exp, Not@FreeQ[#, allExtFields[[1]]] &][[1]];
+   (* if there is a single loop that starts and ends at the starting vertex, we have to delete that *)
+   mainVertex = mainVertex/. V[a___, b_, c___, b_, d___] :> V[a, b, c, d]; 
    (*TODO: RESET FOR RGE *)
    (*mainVertex = Cases[exp,S[___]][[1]];*)
    
@@ -1879,16 +1970,15 @@ getNeighbours[exp_, allExtFields_List] :=
    connectingFields = 
     List @@ Complement[mainVertex, 
       Sequence @@ (V[#] & /@ extFieldsOfMainVertex)];
-   connectingFields = List@@mainVertex /. {f_?fieldQ, i_}:>Sequence[]/;MemberQ[allExtFields, {f,i}];
+   connectingFields = List@@mainVertex /. {f_?fieldQ, j_}:>Sequence[]/;MemberQ[allExtFields, {f,j}];
    (* result: {starting vertex, {{field which connects to neighbour 1, neighbour 1},{field which connects to neighbour 2, neighbour 2}}} *)
    
    fieldValues = Association @@ Table[allExtFields[[i, 2]] -> i, {i, 1, Length[allExtFields]}];
    
    (* sort the connections by the external fields *)
-	   sortByExtField[a_]:=SortBy[
-	      a, Function[b,Select[b, Not@FreeQ[#, Alternatives @@(allExtFields[[All,2]])]&]]];
-   (*sortByExtField[a_]:=a;(* use sortCanonical before, so the vertex arguments should already be sorted *)*)
-      
+	   (*sortByExtField[a_]:=SortBy[
+	      a, Function[b,Select[b, Not@FreeQ[#, Alternatives @@(allExtFields[[All,2]])]&]]];*)
+   sortByExtField[a_]:=a;(* use sortCanonical before, so the vertex arguments should already be sorted *)
    
    (*{mainVertex, 
     Sort[Function[
@@ -1897,10 +1987,15 @@ getNeighbours[exp_, allExtFields_List] :=
          Not@FreeQ[#, cF] && FreeQ[#, allExtFields[[1]]] &][[1]]}] /@ 
      connectingFields]}
   *)
-  {mainVertex, 
+  (*{mainVertex, 
     sortByExtField[
       Function[cF,
-      	{cF, Select[exp, Not@FreeQ[#, cF] && FreeQ[#, allExtFields[[1]]] &][[1]]}] /@ connectingFields]}
+      	{cF, Select[exp, Not@FreeQ[#, cF] && FreeQ[#, allExtFields[[1]]] &][[1]]}] /@ connectingFields]}*)
+      	(* TODO: commented the second FreeQ to work with diagrams with self-loops, 
+      	unclear if that works for other cases, because it was introduced on purpose *)
+    {mainVertex, 
+     Function[cF,
+      	{cF, Select[exp, Not@FreeQ[#, cF] (*&& FreeQ[#, allExtFields[[1]]]*) &][[1]]}] /@ connectingFields}
    ];
    
 
@@ -1912,21 +2007,22 @@ getNeighbours[exp_, startingField_List, v_V, allExtFields_List] := Module[{conne
     Cases[List @@ v, 
      Alternatives @@ Union[allExtFields, {startingField}]];
   
-(* get new neighbour *)
-   connectingFields = List @@ Complement[v, V @@ fieldsDone];
+(* get new neighbour, delete fields already done *)
+   (*connectingFields = List @@ Complement[v, V @@ fieldsDone];*)
+   connectingFields = List @@ (v /. (Rule[#, Sequence[]] &/@fieldsDone));
    
 (* result: {vertex, {field which connects to new neighbour, new neighbour}} *)
    {v, Function[
       cF, {cF, 
        (Select[exp, 
-         Not@FreeQ[#, cF] && FreeQ[#, Alternatives@@fieldsDone] &](*/.{}:>{{}}*)(* avoids problems with external fields, which have no connections *))[[1]]}] /@ 
+         Not@FreeQ[#, cF] && FreeQ[#, Alternatives@@fieldsDone] &]/.{}:>{{}}(* avoids problems with external fields, which have no connections *))[[1]]}] /@ 
      connectingFields} 
 ];
 
 
 (* special case: tadpole like diagram -> only one vertex *)
 getGraphCharacteristic[graph_op, extFields_List] /; 
-   Count[graph, V[__]] == 1 :=(* getGraphCharacteristic[graph, extFields] =*)
+   Count[graph, V[__]|CO[___]|S[___]] == 1 :=(* getGraphCharacteristic[graph, extFields] =*)
  graph /. P[__] :> Sequence[] /. {Q_Symbol, q_Symbol} :> {Q} /; 
       Not@MemberQ[extFields[[All, 2]], q] /. V[a__] :> Sort[V[a]];
 
@@ -1934,7 +2030,7 @@ getGraphCharacteristic[graph_op, extLegs_List] :=
  Module[{props, verts, id,firstNeighbours, allFieldsInV, extFields, extFieldsRotated},
 
   props = Cases[graph, P[__]];
-  verts = Cases[graph, V[__]|S[___]]/.S[a___]:>V[a];(* rewrite to vertices V for getNeighbours *)
+  verts = Cases[graph, V[__]|S[___]|CO[___]]/.S[a___]:>V[a]/.CO[a___]:>V[a];(* rewrite to vertices V for getNeighbours *)
   
   (* transform into vertices only; these rules produce apparently non-
   existent vertices, but the connections can still be identified, 
@@ -1945,19 +2041,14 @@ getGraphCharacteristic[graph_op, extLegs_List] :=
   allFieldsInV=Cases[id,{_?fieldQ,_},\[Infinity]];
   extFields=Select[allFieldsInV,Count[allFieldsInV,#]==1&];
   (* rotate extFields until the first derivative is on position 1; this is necessary so that equal graphs with opposite directions of the fields can be identified  *)
-  extFieldsRotated=FixedPoint[RotateLeft[#]&, extFields, Length@extFields, SameTest->(Not[FreeQ[#2[[1]], extLegs[[1]]]] &)];
+  (*extFieldsRotated=FixedPoint[RotateLeft[#]&, extFields, Length@extFields, SameTest->(Not[FreeQ[#2[[1]], extLegs[[1]]]] &)];*)
   extFieldsRotated=extLegs;
   (* find neighbours from there *)
   firstNeighbours = getNeighbours[id, extFieldsRotated];
  
   (* repeat the process until the loop is closed *)
-  (*Print[Nest[(# /. {a_, b_V} :> {a, getNeighbours[id, a, b, extFieldsRotated]} )&,
-     firstNeighbours,
-     Max[0, Floor[(Length@props-2)/2]]]
-    /. {Q_?fieldQ, q_} :> {Q} /; 
-      Not@MemberQ[extFieldsRotated[[All, 2]], q] /. V[a__] :> Sort[V[a]]]*);
-  Nest[(# /. {a_, b_V} :> {a, getNeighbours[id, a, b, extFieldsRotated]} )&,
-     firstNeighbours,
+  Nest[(# /. {a_, b_V|b_CO} :> {a, getNeighbours[id, a, b, extFieldsRotated]} )&,
+     firstNeighbours,	
      Max[0, Floor[(Length@props-2)/2]]]
     /. {Q_?fieldQ, q_} :> {Q} /; 
       Not@MemberQ[extFieldsRotated[[All, 2]], q] /. V[a__] :> Sort[V[a]]
@@ -1967,13 +2058,19 @@ getGraphCharacteristic[graph_op, extLegs_List] :=
 
 
 sortCanonical[b_op, derivatives_List] := 
- Module[{ordered, fieldValues, i, intIndices, props, const, connectedLeg, intIndexAss, orderV},
+ Module[{ordered, fieldValues, i, intIndices, props, const, connectedLeg, intIndexAss, intVertsAss, orderV, intVerts, extVerts},
 
   (* constant to distinguish internal from external indices *)
   const = 10^10;
   
   (* extract propagators *)
   props =  Cases[b, P[___]];
+  
+  (* get vertices with external legs *)
+  extVerts = Cases[b, V[a__]|S[a__]|CO[a__]/;Not@FreeQ[{a}, Alternatives@@derivatives[[All,2]]] && Length[{a}]>2];
+  
+  (* get vertices without external legs *)
+  intVerts = Cases[b, V[a__]/;FreeQ[{a}, Alternatives@@derivatives[[All,2]]]];
   
   (* assign each index a number for sorting: 
   external ones by position in derivatives, 
@@ -1991,13 +2088,37 @@ sortCanonical[b_op, derivatives_List] :=
   (* set up association for internal indices: 
   extract vertices that internal indices connect to, 
   then determine their association values by the smallest value of an external field there and add a constant *)
+   
+  (* assign internal vertices a value for ordering *)
+  (* extract for each internal index the vertex it connects to *)
+  intIndexAss = {#, Cases[b, V[a__]|S[a__]|CO[a__] /; Not@FreeQ[{a}, connectedLeg@#]][[1]]} & /@ intIndices;
+  (* remove internal vertices *)
+  intIndexAss = Select[intIndexAss, Not@MemberQ[intVerts, #[[2]]]&];
+  (* assign a field value based on the lowest field value of the external legs of the connected vertex *)
+  intIndexAss = intIndexAss /. V[a___]|S[a___]|CO[a__] :> const + Sort[(fieldValues[#[[2]]] & /@ Select[{a}, MemberQ[derivatives, #] &])][[1]];
   
-  intIndexAss = {#, Cases[b, V[a__]|S[a__] /; Not@FreeQ[{a}, connectedLeg@#]][[1]]} & /@  intIndices;
-  intIndexAss = intIndexAss /. V[a___]|S[a___] :> const + Sort[(fieldValues[#[[2]]] & /@ Select[{a}, MemberQ[derivatives, #] &])][[1]];
-    
   (* combine associations *)
   fieldValues = Join[fieldValues, Association @@ Rule @@@ intIndexAss];
   
+  (* handle internal vertices by assigning a value based on the connected vertices *)
+  (* take their indices *)
+  intVertsAss = (List@@#)[[All,2]] & /@ intVerts;
+  (* get all vertices they connect to and take their indices only*)  
+  intVertsAss = Map[connectedLeg, intVertsAss, {2}];
+  intVertsAss = Map[Function[ind, Select[extVerts, Not@FreeQ[#, ind] &]], intVertsAss, {2}] /. {a_?fieldQ, 
+   j_} :> j /. S:>List /. V:>List /. CO:>List;
+  (* get field values for all indices *)
+  intVertsAss = Map[fieldValues, intVertsAss, {4}];
+  (* determine lowest field value of vertex that internal indices connect to (those with missing keys) *)
+  intVertsAss = Map[Cases[#, Missing["KeyAbsent", ind_] :> {ind, Min@Select[#, NumericQ]}] &, intVertsAss, {3}];
+  (* assign field value *)
+  intVertsAss = Union@Flatten[Map[Rule[#[[1]], 2*const + #[[2]]] &, intVertsAss, {4}]];
+  (* do the same for the connecting counterparts *)
+  intVertsAss = Flatten[Join[intVertsAss, intVertsAss/.(j_->ind_):>(connectedLeg[j]->ind)]]; 
+   
+  (* add the new associations to the field value function *)
+  fieldValues = Join[fieldValues, Association @@ intVertsAss];
+    
   (* order fields of a vertex as bosons, antiFermions, 
   fermions and internally by fieldValues *)
   
@@ -2005,9 +2126,12 @@ sortCanonical[b_op, derivatives_List] :=
   	SortBy[Select[{a}, bosonQ[#[[1]]] &], fieldValues[#[[2]]] &],
   	SortBy[Select[{a}, antiFermionQ[#[[1]]] &], fieldValues[#[[2]]] &], 
     SortBy[Select[{a}, fermionQ[#[[1]]] &], (fieldValues[#[[2]]]) &]]];
-  orderV[S[a__]] := orderV[V[a]]/.V:>S;
+  orderV[S[a__]] /; Length[{a}]>2 := orderV[V[a]]/.V:>S;
+  orderV[CO[a__]] /; Length[{a}]>2 := orderV[V[a]]/.V:>CO;
+  orderV[S[a__]] := S[a];
+  orderV[CO[a__]] := CO[a];
     
-  ordered = b /. V[a__] :> orderV[V[a]] /. S[a__] :> orderV[S[a]];
+  ordered = b /. V[a__] :> orderV[V[a]] /. S[a__] :> orderV[S[a]] /. CO[a__] :> orderV[CO[a]];
   
   (* get signature sign of original and ordered expression for the relative sign *)
   getSignature@b getSignature@ordered ordered
@@ -2022,7 +2146,7 @@ sortCanonical[b_, derivatives_List] := b/. op[a___]:> sortCanonical[op[a], deriv
 getSignature[a_op] := Module[{verts},
   (* get vertices and keep only Grassmann fields *)
   verts = DeleteCases[
-    Cases[a, V[___]], {_?bosonQ, _} | {_?complexFieldQ, _} | {_?antiComplexFieldQ, _}, {2}];
+    Cases[a, V[___]|S[___]], {_?bosonQ, _} | {_?complexFieldQ, _} | {_?antiComplexFieldQ, _}, {2}];
   (* return sign *)
   Times @@ (Signature /@ verts)
 ]
@@ -2158,8 +2282,8 @@ propRules=createPropagatorRules[allowedPropagators,fields,opts];
 in DSE calculations it should be possible to set only a certain type of fields to zero, so do not truncate if we are in the symmtric phase;
 numberExtFields gives the external fields per vertex;
 add the marker ext to all external fields, then count them per vertex and set vertices with too many fields to zero, finally remove the marker *)
-verticesAtMinTruncMarked=a/.op[e___,f_List,g___]:>(op[e,f,g]/.f:>{f,ext});
-verticesAtMinTrunc=verticesAtMinTruncMarked/.exp_V|exp_S:>0/;Count[exp,{_List,ext}]>numberExtFields/.{l_List,ext}:>l;
+verticesAtMinTruncMarked=a//.op[e___,{F_?fieldQ,f_},g___]:>op[e,{{F,f},ext},g];
+verticesAtMinTrunc=verticesAtMinTruncMarked/.exp_op:>0/;Count[exp,{_List,ext}]>numberExtFields/.{l_List,ext}:>l;
 
 (* apply replacement rules for the propagators; note that here we can get a sum of ops;
 delete propagators that are not allowed *)
@@ -2188,14 +2312,14 @@ extGrassmann=extFields/.{_?cFieldQ,_}:>Sequence[];
 (* indices of the propagators *)
 c=d/.traceIndex1:>traceIndex2 (* close the trace here so that all variants are taken into account *);
 propagators=Cases[c,P[___],Infinity];
-propInds=Cases[propagators,{_,_},Infinity];
+propInds=Cases[propagators,{_?fieldQ,_},Infinity];
 
 
 propagatorsF=Select[propagators,(Head@#[[1,1]]==fermion)&];
 propagatorsB=Select[propagators,Head@#[[1,1]]==boson&];
 
-propIndsF=Cases[propagatorsF,{_,_},Infinity];
-propIndsB=Cases[propagatorsB,{_,_},Infinity];
+propIndsF=Cases[propagatorsF,{_?fieldQ,_},Infinity];
+propIndsB=Cases[propagatorsB,{_?fieldQ,_},Infinity];
 
 (* replace the indices of the vertices, delete the vertices that do not exist *)
 vertsReplaced=c/.Plus:>List/.{{$dummyField,ind_}:> (Flatten@Cases[propInds,{_,ind}]),
@@ -2447,7 +2571,7 @@ getLoopNumber[a_op]:=Module[
 	{props, vertices, regulatorInsertions},
 	
 	(* get number of vertices, propagators and regulator insertions *)
-	vertices=Count[a, V[__] | S[__],\[Infinity]];
+	vertices=Count[a, V[__] | S[__] | CO[__],\[Infinity]];
 	props=Count[a, P[__],\[Infinity]];
 	regulatorInsertions=Count[a, dR[__],\[Infinity]];
 
@@ -2529,7 +2653,7 @@ finalExp=orderFermions@If[sourcesZero/.Join[{opts},Options@doDSE],sortDummies@se
 multiPoint,multiPoint]/.(Function[dField, 
    P[{dField[[2]], c_}, {dField[[1]], b_}] :> 
     P[{dField[[1]], b}, {dField[[2]], c}]] /@ Cases[complexFields,{_?(Head@#===boson&),_?(Head@#===boson&)}]);
-finalExp=sign identifyGraphs[getSigns[finalExp]];
+finalExp=sign identifyGraphsRGE[sortCanonical[getSigns[finalExp], derivs], derivs];
 
 finalExp
 
@@ -2612,7 +2736,7 @@ doRGE[L_Times|L_Plus,derivs_List,vertexTest___Symbol,opts___?OptionQ]:=doRGE[L,d
 
 (* main code *)
 doRGE[L_Times|L_Plus,derivs_List,allowedPropagators_List,vertexTest___Symbol,opts___?OptionQ]:=Module[{
-	onePoint,orderedDerivs,multiPoint,multiDer,sign,multiPointSources0,ind=insDummy[], ind2=insDummy[], extFields, complexFields},
+	onePoint,orderedDerivs,multiPoint,multiDer,sign,multiPointSources0,ind=insDummy[], extFields, complexFields},
 
 (* get fields that are not necessarily fermions but directed, e.g., scalar complex fields;
 this does not work if allowedPropagators is used (i.e. not {}) because then we cannot say what the
@@ -2679,6 +2803,29 @@ If[tDerivative/.Join[{opts},Options@doRGE],
 doRGE[a___]:=Message[doRGE::syntax,a];
 
 
+(* derivation of correlation functions for composite operators *)
+
+(* main code *)
+doCO[action_Times|action_Plus|action_List, compOp_, filter_:(True&), opts___?OptionQ]:=Module[{
+	singleExp, allFields, extFields, compOpFieldsRep, compOpFieldsRepS0, compOpFieldsRepS0Filtered(*, compOpFieldsRepS0FilteredId*)
+	},
+	
+	singleExp = Expand[compOp];
+	singleExp = If[ListQ@singleExp||Head[singleExp]==Plus, singleExp[[1]], compOp];
+	allFields = Cases[singleExp, {_?fieldQ, _}, Infinity];
+	extFields = Select[allFields, Count[allFields, #]==1&];
+		
+	compOpFieldsRep = replaceFieldsCO@compOp;
+	compOpFieldsRepS0 = setSourcesZero[compOpFieldsRep, action, {}]	;
+	compOpFieldsRepS0Filtered = Select[compOpFieldsRepS0, filter];
+	(* currently the identification does not work reliably for disconnected diagrams, thus deactivate *) 
+	(* compOpFieldsRepS0FilteredId = identifyGraphsRGE[compOpFieldsRepS0Filtered, extFields];*)
+	compOpFieldsRepS0Filtered	
+]
+
+doCO[a___]:=Message[doCO::syntax,a];
+
+
 
 
 (* ::Section:: *)
@@ -2688,7 +2835,7 @@ doRGE[a___]:=Message[doRGE::syntax,a];
 (* check if no indices apppear more often than twice;
 indicesTest is the test function and checkIndices performs the test *)
 
-indicesTest[a_]/;Not@FreeQ[a,{_,_}]:=Module[
+indicesTest[a_]/;Not@FreeQ[a,{_?fieldQ,_}]:=Module[
 {inds},
 
 inds=Transpose[Cases[a,{_,ind_},Infinity]][[2]];
@@ -2714,13 +2861,13 @@ the propagators have the correct syntax of two indices and the vertices that of 
 opTest[a_]:=Select[Cases[{a},op[___],\[Infinity]],Cases[#,_S|_V|_P|_List]!= List@@#&];
 
 
-propagatorTest[a_]:=Select[Cases[{a},P[___],\[Infinity]],Not@MatchQ[#,P[{_,_},{_,_}]]&];
+propagatorTest[a_]:=Select[Cases[{a},P[___],\[Infinity]],Not@MatchQ[#,P[{_?fieldQ,_},{_?fieldQ,_}]]&];
 
 
 vertexTest[a_]:=Select[Cases[{a},S[___]|V[___],\[Infinity]],Cases[#,_List]!= List@@#&];
 
 
-regulatorInsertionTest[a_]:=Select[Cases[{a},dR[___],\[Infinity]],Not@MatchQ[#,dR[{_,_},{_,_}]]&];
+regulatorInsertionTest[a_]:=Select[Cases[{a},dR[___],\[Infinity]],Not@MatchQ[#,dR[{_?fieldQ,_},{_?fieldQ,_}]]&];
 
 
 checkSyntax[a_op]:=checkSyntax[{a}];
@@ -2784,6 +2931,8 @@ shortExpressionSingle[dR[a__]]:=DisplayForm@RowBox[{SubscriptBox["\[PartialD]", 
 
 shortExpressionSingle[P[{F1_,i1_},{F2_,i2_}]]:=Subsuperscript[$propagatorSymbol,ToString@F1<>" "<>ToString@F2,ToString[i1]<>" "<>ToString[i2]];
 
+shortExpressionSingle[sf[___]] := 1
+
 
 shortExpressionStyle[a_,opts___]:=Style[a,
 		Join[{opts}/.{Rule[_,_]:>Sequence[],RuleDelayed[_,_]:>Sequence[]},
@@ -2839,47 +2988,71 @@ up to now only necessary when invoked from DSEPlotCompare because a unique verte
 otherwise use an "empty" function *)
 (*vertexDummies[a_op,fields_List,sort_:(#&),opts___?OptionQ]*)
 vertexDummies[a_op,sort_:(#&),opts___?OptionQ] /;Not@OptionQ@sort:=(*vertexDummies[a,opts]=*) Module[
-  {allIndices, indices, vertices,bareVertexRepres,bareVertexRule,
-  	externalFields, externalPropagators, propagators, legs,regulators,regulatorsRepres,regulatorRule,
-  	verticesRepres, verticesRepresList, identificationList,sameVertTest, extText,dirFieldsOrdered,allDirFields},
+  {allIndices, indices, vertices, bareVertexRepres, CORepres, pureProps, purePropRepres, bareVertexRule, CORule, purePropRule,
+  	externalFields, externalFieldsSingle, externalPropagators, externalPropagatorsSingleFields, propagators, legs, regulators,regulatorsRepres,regulatorRule,
+  	verticesRepres, verticesRepresList, identificationList,sameVertTest, extText, extFieldText, allDirFields},
   
-  (* bring directed fields into canonical order; make sure only bosons are changed as no sign changes are taken into account *)
-  dirFieldsOrdered=a;
+  (* bring directed fields into canonical order; make sure only bosons are changed as no sign changes are taken into account TODO REMOVE *)
+  (*dirFieldsOrdered=a;*)
   
   allDirFields=getDirectedFieldsList[a];
 
   (* don't plot the index when called from DSEPlotCompare because then graphs won't be identified *)
   extText[q_]:=" ext "<>ToString@q;
   extText[q_]/;sort===Sort:=" ext ";
+  extFieldText[q_]:=" exField "<>ToString@q;
+  extFieldText[q_]/;sort===Sort:=" extField ";
 
-  (* get all vertices from the epxression *)
-  vertices = Cases[dirFieldsOrdered, _V | _S | _dR | _List];
+  (* get all vertices from the epxression and standalone propagators *)
+  vertices = Cases[a, _V | _S | _dR | _CO | _List];
 
-  bareVertexRepres=Cases[dirFieldsOrdered,_S][[All,1]];
-
+  bareVertexRepres=Cases[a,_S][[All,1]];
+  
+  CORepres = Cases[a, _CO][[All,1]];
+  
   (* get all indices and identify those at the same vertex *)
-  allIndices = Cases[dirFieldsOrdered, {_, _}, Infinity];
+  allIndices = Cases[a, {_?fieldQ, _}, Infinity];
   sameVertTest[c_,d_]:=(Or @@ Function[{vert}, Not@FreeQ[vert, c] && Not@FreeQ[vert, d]] /@ vertices );
   indices = Union[allIndices, SameTest -> sameVertTest ];
   
   (* get legs *)
-  legs = Select[allIndices, Count[dirFieldsOrdered, #, Infinity] == 1 &];
+  legs = Select[allIndices, Count[a, #, Infinity] == 1 &];
 
   (* regulator insertions *)
-  regulators=Cases[dirFieldsOrdered, _dR ];
-  regulatorsRepres=Cases[dirFieldsOrdered,_dR][[All,1]];
+  regulators=Cases[a, _dR ];
+  regulatorsRepres=Cases[a,_dR][[All,1]];
   regulatorRule=#->(#/.{Q_,q_}:> {Q,q,"dt R"})&/@regulatorsRepres;
 
   (* external fields *)
-  externalFields = Cases[dirFieldsOrdered, {_, _}];
+  externalFields = Cases[a, {_?fieldQ, _}];
+  
+  (* external fields not coupled to anything *)
+  externalFieldsSingle = Intersection[externalFields, legs];
+  externalFields = Complement[externalFields, externalFieldsSingle];
+  
+  (* delete exernal fields from legs *) 
+  legs = Complement[legs, externalFieldsSingle];
   
   (* get all internal propagators; sort according to order of directed fields *)
-  propagators =Sort[#,MemberQ[allDirFields,{#1,#2}]&]&/@ Cases[dirFieldsOrdered, _P];
+  propagators =Sort[#,MemberQ[allDirFields,{#1,#2}]&]&/@ Cases[a, _P];
+    
+  (* pure propagators *)
+  pureProps = Cases[propagators, P[{f1_,i1_},{f2_,i2_}]/;Not@FreeQ[legs,i1]&&Not@FreeQ[legs,i2]];
+  
+  (* add pure propagators to vertices *)
+  vertices = Join[vertices, pureProps];
+  purePropRepres = pureProps[[All,1]];
+  
+  (* drop standalone propagators *)
+  propagators = Complement[propagators, pureProps];
 
   (* add the propagators to external points *)
   externalPropagators = Join[legs /. {Q_, q_?(Not@ListQ@# &)} :> P[{Q, q}, {antiField@Q, q, " leg "<>ToString@q}], externalFields /. {Q_, q_?(Not@ListQ@# &)} :> P[{Q, q}, {antiField@Q, q,extText[q]}]];
+  
+  (* for single external fields create a propagator which will be plotted transparent *)
+  externalPropagatorsSingleFields = externalFieldsSingle /. {Q_, q_?(Not@ListQ@# &)} :> P[{Q, q}, {antiField@Q, q,extFieldText[q]}];
 
-  propagators =Sort[#,(* this is indeed the correct direction for directed fields *)Not@MemberQ[allDirFields,{#1[[1]],#2[[1]]}]&]&/@ Join[propagators, externalPropagators];
+  propagators =Sort[#,(* this is indeed the correct direction for directed fields *)Not@MemberQ[allDirFields,{#1[[1]],#2[[1]]}]&]&/@ Join[propagators, externalPropagators, externalPropagatorsSingleFields];
 
   (* give all propagators a "name" *)
   propagators=propagators/.P[{B_, b_,bl___}, {C_, c_,cl___}]:>P[{B, b,bl}, {C, c,cl},StringJoin[ToString@B,bl," ",ToString@C,cl]];
@@ -2887,8 +3060,10 @@ vertexDummies[a_op,sort_:(#&),opts___?OptionQ] /;Not@OptionQ@sort:=(*vertexDummi
   (* get indices of all vertices and choose one representative;
      sort to have uniquely defined representatives when plotting with DSEPlotCompare, but not otherwise since then the bare vertex can "disappear" *)
   verticesRepres = {First@#, List @@ #} & /@ sort/@ vertices;
-  (* determine how to add an "S" to the bare vertex representative; this is used in the VertexRenderingFunction to plot S and V differently; only add an S if  *)
+  (* determine how to add an "S", "CO" or "P" to the bare vertex representative; this is used in the VertexRenderingFunction to plot S, P and V differently *)
   bareVertexRule=#->(#/.{Q_,q_}:> {Q,q,"S"})&/@bareVertexRepres;
+  CORule=#->(#/.{Q_,q_}:> {Q,q,"CO"})&/@CORepres;
+  purePropRule = #->(#/.{Q_,q_}:> {Q,q,"P"})&/@purePropRepres;
 
   (* prepare a list for the identification of every index with the representative; Hold necessary for the use of Riffle *)
   verticesRepresList = Flatten[Partition[Riffle[verticesRepres[[#, 2]], Hold@verticesRepres[[#, 1]], {2, -1, 2}], 2] & /@ Range@Length@verticesRepres // ReleaseHold, 1];
@@ -2897,9 +3072,7 @@ vertexDummies[a_op,sort_:(#&),opts___?OptionQ] /;Not@OptionQ@sort:=(*vertexDummi
   identificationList = Thread[Rule[#[[1]], #[[2]]], 1] & /@ verticesRepresList;
 
   (* use propagators for the rules of the GraphPlot *)
-  propagators=propagators /. identificationList /.bareVertexRule/.regulatorRule/. P[{B_, b_, bl_: ""}, {C_, c_, cl_: ""},d_] :> {Rule[{B, b, bl}, {C, c, cl}],d};
-  propagators=propagators+1;
-  propagators-1 
+  propagators=propagators /. identificationList /.bareVertexRule/.CORule/.purePropRule/.regulatorRule/. P[{B_, b_, bl_: ""}, {C_, c_, cl_: ""},d_] :> {Rule[{B, b, bl}, {C, c, cl}],d}
    
   ];
   
@@ -2940,7 +3113,7 @@ DSEPlotList[a_List,plotRules_List,opts___?OptionQ]/;And @@ (fieldQ /@ Flatten[a]
 DSEPlotList[a_,plotRules_List,opts___?OptionQ]/;FreeQ[a,Rule,Infinity]:=
 	DSEPlotList[vertexDummies[a,opts],plotRules,opts];
 
-DSEPlotList[{a_List,b_?NumericQ},plotRules_List,opts___?OptionQ]:=Module[{allDirFields, exponent,regulatorSymbolFunction,sls,dirFieldsOrdered,plotRulesAll},
+DSEPlotList[{a_List,b_?NumericQ},plotRules_List,opts___?OptionQ]:=Module[{allDirFields, exponent,regulatorSymbolFunction,coSymbolFunction,sls,dirFieldsOrdered,plotRulesAll},
 
 (* extend plot Rules also to antifields *)
 plotRulesAll=Union@Replace[plotRules, {c_?fieldQ, d__} :> Sequence[{c, d}, {antiField@c, d}], 1];
@@ -2957,12 +3130,15 @@ dirFieldsOrdered=a;
 (* determine the function for drawing the regulator insertion *)
 regulatorSymbolFunction=regulatorSymbol/.Join[{opts},Options@RGEPlot];
 
+(* determine the function for drawing an composite operator *)
+coSymbolFunction=coSymbol(*/.Join[{opts},Options@DSEPlot]*);
+
 (* SelfLoopStyle is required for zero leg graphs in RGEs to avoid that the regulator symbol is larger than the loop *)
 sls=Which[Not@FreeQ[a,"dt R"],1,
 	True,Automatic];
 
-(* exponent -1 for propagators *)
-exponent=If[Length@a===2,"-1","",""];
+(* exponent -1 for inverse propagators *)
+exponent=If[Length@a===2 && FreeQ[a, "P"],"-1","",""];
 
 Labeled[
 GraphPlot[a, EdgeRenderingFunction->((Which@@Join[
@@ -2980,6 +3156,8 @@ GraphPlot[a, EdgeRenderingFunction->((Which@@Join[
 			{Text[Style[StringReplace[#2[[3]],"leg":> ""],Sequence@@(indexStyle/.Join[{opts},Options@DSEPlot]),FontSize:>14],#1+{0,0.3}],Disk[#1,0.02]},
 		Not@StringFreeQ[#2[[3]],"S"],
 			Disk[#1,0.02],
+		Not@StringFreeQ[#2[[3]],"CO"],
+			coSymbolFunction[#1],
 		Not@StringFreeQ[#2[[3]],"dt R"],
 			regulatorSymbolFunction[#1],
 		Not@StringFreeQ[#2[[3]],"ext"],
@@ -3011,17 +3189,20 @@ DSEPlotList[a_List,opts___?OptionQ]/;And @@ (fieldQ /@ Flatten[a]):=
 
 DSEPlotList[a_,opts___?OptionQ]/;FreeQ[a,Rule,Infinity]:=DSEPlotList[vertexDummies[a,opts],opts];
 
-DSEPlotList[{a_List,b_?NumericQ},opts___?OptionQ]:=Module[{exponent,regulatorSymbolFunction,sls},
+DSEPlotList[{a_List,b_?NumericQ},opts___?OptionQ]:=Module[{exponent,regulatorSymbolFunction,coSymbolFunction,sls},
 
 (* determine the function for drawing the regulator insertion *)
 regulatorSymbolFunction=regulatorSymbol/.Join[{opts},Options@RGEPlot];
+
+(* determine the function for drawing an composite operator *)
+coSymbolFunction=coSymbol(*/.Join[{opts},Options@DSEPlot]*);
 
 (* SelfLoopStyle is required for zero leg graphs in RGEs to avoid that the regulator symbol is larger than the loop *)
 sls=Which[Not@FreeQ[a,"dt R"],1,
 	True,Automatic];
 	
-(* exponent -1 for propagators *)
-exponent=If[Length@a===2,"-1","",""];
+(* exponent -1 for inverse propagators *)
+exponent=If[Length@a===2 && FreeQ[a, "P"],"-1","",""];
 
 Labeled[
 GraphPlot[a,
@@ -3038,6 +3219,8 @@ GraphPlot[a,
 			{Text[Style[StringReplace[#2[[3]],"leg":> ""],Sequence@@(indexStyle/.Join[{opts},Options@DSEPlot]),FontSize:>14],#1+{0,0.3}],Disk[#1,0.02]},
 		Not@StringFreeQ[#2[[3]],"S"],
 			Disk[#1,0.02],
+		Not@StringFreeQ[#2[[3]],"CO"],
+			coSymbolFunction[#1],
 		Not@StringFreeQ[#2[[3]],"dt R"],
 			regulatorSymbolFunction[#1],
 		Not@StringFreeQ[#2[[3]],"ext"],
@@ -3228,6 +3411,12 @@ regulatorCross[x_]:=Module[{rad=0.1},
 ];
 
 
+(* graphical composite operator representation *)
+
+coSymbol[x_]:={GrayLevel[0.4],Polygon[{x- {0.1, 0.1}, x + {0.1, 0.0}, x + {-0.1, 0.1}}]};
+
+
+
 
 
 (* ::Section:: *)
@@ -3255,10 +3444,10 @@ propagatorsF=Cases[propagators,P[a_, b_] /; Head@a[[1]] == fermion];
 propagatorsB=Cases[propagators,P[a_, b_] /; Head@a[[1]] == boson || Head@b[[1]] == boson];
 
 (* classes: a field and all the propagators where it is involved *)
-propsClasses={#,Cases[propagators, P[{#,_},{_,_}]]}&/@ffields;
+propsClasses={#,Cases[propagators, P[{#,_},{_?fieldQ,_}]]}&/@ffields;
 
-propsClassesF={#,Cases[propagatorsF, P[{#,_},{_,_}]]}&/@ffields;
-propsClassesB={#,Cases[propagatorsB, P[{#,_},{_,_}]]}&/@ffields;
+propsClassesF={#,Cases[propagatorsF, P[{#,_},{_?fieldQ,_}]]}&/@ffields;
+propsClassesB={#,Cases[propagatorsB, P[{#,_},{_?fieldQ,_}]]}&/@ffields;
 
 (* all possible propagator replacements that are allowed *)
 
@@ -3296,47 +3485,36 @@ setFields[bosons_List, fermions_List] :=
 
 setFields[bosons_List, fermions_List, complexFields_List] /; 
    Not[And @@ 
-     Flatten[MatchQ[#, {_, _}] & /@ Join[fermions, complexFields]]] :=
+     Flatten[MatchQ[#, {_?fieldQ, _}] & /@ Join[fermions, complexFields]]] :=
    Message[setFields::noPair, fermions, complexFields];
 setFields[bosons_List, fermions_List, complexFields_List] := Module[{},
   
   (* set the field types *)
   (* difference to DoFun2: 
   complex fields are their own types *)
-  (# /: fieldType[#] := 
-      boson) & /@ bosons;
+  (# /: fieldType[#] := boson) & /@ bosons;
   (# /: fieldType[#] := fermion) & /@ fermions[[All, 1]];
   (# /: fieldType[#] := antiFermion) & /@ fermions[[All, 2]];
   (# /: fieldType[#] := complex) & /@ complexFields[[All, 1]];
   (# /: fieldType[#] := antiComplex) & /@ complexFields[[All, 2]];
-  (* internally used dummy fields *)
-  $dummyFieldF /: 
-   fieldType[$dummyFieldF] := fermion;
-  $dummyFieldAF /: fieldType[$dummyFieldAF] := antiFermion;
-  
+ 
   (* set all fields to Head field: Not done, 
   since this does not fully work as expected *)
   (*(#/:Head[#]=
   field)&/@Flatten[{bosons,fermions,complexFields}];*)
   
   (* set (anti-)commutating property *)
-  (* TODO: 
-  put this in the init; now I actually do not know why anymore... *)
-  (# /: grassmannQ[#] = False) & /@ 
-   Flatten[{bosons, complexFields}];
-  (# /: grassmannQ[#] = True) & /@ 
-   Flatten[{fermions, $dummyFieldF, $dummyFieldAF}];
+  (# /: grassmannQ[#] = False) & /@ Flatten[{bosons, complexFields}];
+  (# /: grassmannQ[#] = True) & /@ fermions;
   (# /: cFieldQ[#] = True) & /@ Flatten[{bosons, complexFields}];
   (# /: cFieldQ[#] = False) & /@ Flatten[fermions];
   
-  (* define the anti-
-  fields *)
-  (antiField[#[[1]]] = #[[2]]) & /@ 
-   Transpose[{bosons, bosons}];
-  (antiField[#[[1]]] = #[[2]]) & /@ 
-   fermions; (antiField[#[[2]]] = #[[1]]) & /@ 
-   fermions; (antiField[#[[1]]] = #[[2]]) & /@ 
-   complexFields; (antiField[#[[2]]] = #[[1]]) & /@ complexFields;
+  (* define the anti-  fields *)
+  (antiField[#[[1]]] = #[[2]]) & /@ Transpose[{bosons, bosons}];
+  (antiField[#[[1]]] = #[[2]]) & /@ fermions;
+  (antiField[#[[2]]] = #[[1]]) & /@ fermions;
+  (antiField[#[[1]]] = #[[2]]) & /@ complexFields;
+  (antiField[#[[2]]] = #[[1]]) & /@ complexFields;
   
   ]
 (* default error handler *)
@@ -3355,6 +3533,85 @@ countTerms[a_Plus|a_Times,opts___]:=Count[a,op[___],Infinity];
 
 countTerms[a___]:=Message[countTerms::syntax,a];
 
+
+
+(* types of diagrams and how to extract them: connected/disconnected, 1PI/non1PI *)
+
+(* Determines if graph is connected. *)
+connectedQ[a_?NumericQ exp_op]:=connectedQ[exp]
+connectedQ[graph_op] := Module[{extLegs, graphDistance},
+  
+  (* get external legs *)
+  extLegs = 
+   Cases[vertexDummies[graph], {__, a_String} /; 
+     StringMatchQ[a, " leg*"], Infinity];
+  
+  (* take all possible distinct combinations of external legs *)
+  extLegs = 
+   DeleteCases[
+    Union[Flatten[Outer[List, extLegs, extLegs, 1], 1]], {a_, a_}, 
+    2];
+    
+  (* get GraphDistance for all combinations and take the maximum, 
+  since infinity corresponds to disconnected *)
+  graphDistance = 
+   Max[GraphDistance[
+       vertexDummies[graph][[All, 1]] /. Rule :> UndirectedEdge, #[[
+        1]], #[[2]]] & /@ extLegs];
+       
+  (* return if connected or not *)
+  If[graphDistance == Infinity, False, True]
+  
+]
+
+
+(* Determine if graph is disconnected. *)
+disconnectedQ[a_?NumericQ exp_op]:=disconnectedQ[exp]
+disconnectedQ[graph_op] := Not[connectedQ[graph]]
+
+
+(* Extract all connected diagrams. *)
+getConnected[a_?NumericQ, exp_op] := a getConnected[exp]
+getConnected[exp_op] /; disconnectedQ[exp] := 0
+getConnected[exp_op] := exp
+getConnected[exp_Plus | exp_List] := Select[exp, connectedQ]
+
+
+(* Extract all disconnected diagrams. *)
+getDisconnected[a_?NumericQ, exp_op] := a getDisconnected[exp]
+getDisconnected[exp_op] /; connectedQ[exp] := 0
+getDisconnected[exp_op] := exp
+getDisconnected[exp_Plus | exp_List] := Select[exp, disconnectedQ]
+
+
+(* Determine if graph is 1PI. *)
+onePIQ[a_?NumericQ exp_op]:=onePIQ[exp]
+onePIQ[exp_op] := Module[{props, tot},
+	
+  (* extract all propagators *)
+  props = Cases[exp, P[___]];
+  
+  (* delete one propagator and check if it is connected *)
+  
+  tot = And @@ (connectedQ[DeleteCases[exp, #]] & /@ props);
+  
+  (* return if 1PI or not *)
+  If[tot, True, False]
+]
+
+
+(* Extract all 1PI diagrams. *)
+get1PI[a_?NumericQ exp_op] := a get1PI[exp]
+get1PI[exp_op] /; onePIQ[exp] := exp
+get1PI[exp_op] := 0
+get1PI[exp_Plus | exp_List] := Select[exp, onePIQ]
+
+
+(* Extract all non1PI diagrams. *)
+getNon1PI[a_?NumericQ exp_op] := a getNon1PI[exp]
+getNon1PI[exp_op] /; onePIQ[exp] := 0
+getNon1PI[exp_op] := exp
+getNon1PI[exp_Plus | exp_List] := Select[exp, Not@onePIQ[#] &]
 
 
 (* predicates for fields *)
@@ -3401,7 +3658,7 @@ grassmannQ[a_List] := grassmannQ[a[[1]]](* field given together with index*)
 
 
 (* ::Section:: *)
-(* unused functions *)
+(* TOD: DELETE unused functions *)
 
 
 (* use the trace to shift quantities from the front to the end of the expression; discarded at no longer used *)
@@ -3465,7 +3722,7 @@ Select[L /. op[a___, b_S, c___] :> op[b],
 (* auxiliary function to get a list of fermions from either the list of fields or the list of interactions;
  it is necessary that the fermions are given back in a list with the antiFermion  *)
 (* not working when using mixed complex (!) propagators: getFermionList[a_List]:=Union/@Cases[a, {_, _}] /. {_} :> Sequence[];*)
-getFermionList[a_List]:=Select[Cases[a, {_, _}], (Head@#[[1]] == fermion || 
+getFermionList[a_List]:=Select[Cases[a, {_?fieldQ, _}], (Head@#[[1]] == fermion || 
      Head@#[[1]] == antiFermion) && (Head@#[[2]] == fermion || 
      Head@#[[2]] == antiFermion) &];
 (* alternative which gives all fields that have not themselves as opposite field in the propagator; could be used for
