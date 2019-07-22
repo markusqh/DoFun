@@ -701,7 +701,9 @@ sortCanonical::usage="Orders the fields in vertices in a canonical way:
 TODO: Example, Syntax
 ";
 
-orderFermions::usage="Orders derivatives with respect to Grassmann fields such that fields defined as antiFermions are left of the fields defined as fermions thereby possibly giving a minus sign.
+orderFermions::usage="Note: orderFermions is deprecated and superseded by sortCanonical.
+
+Orders derivatives with respect to Grassmann fields such that fields defined as antiFermions are left of the fields defined as fermions thereby possibly giving a minus sign.
 The canonical order is the following:
  -) vertices (V,S), regulator insertions (dR): antiFermions left of fermions
  -) propagators (P): antiFermions right (!) of fermions (In propagators the meaning of fermions and antiFermions is reversed for easier reading!)\n
@@ -1208,9 +1210,8 @@ Make sure the input has the form of identifyGraphs[expr_]. For more details use 
 The expression causing the error is `1`.";
 
 
-orderFermions::syntax="There was a syntax error in orderFermions.\n
-Make sure the input has the form of orderFermions[expr_] with expr containing op functions . Fore more details use ?orderFermions.\n
-The expression causing the error is `1`.";
+orderFermions::superseded="orderFermions is superseded by sortCanonical.";
+
 
 RGEPlot::fieldsUndefined=DSEPlot::fieldsUndefined;
 
@@ -1948,6 +1949,9 @@ At the end all indices except the external ones are removed and the vertex argum
 All equal graphs have then the same characteristic. *)
 
 (* auxiliary function to determine the neighbours *)
+(* if there are no external fields, it must be a zero-point RGE --> no starting vertex, just do canonial sorting  *)
+getNeighbours[exp_, {}] := sortCanonical[exp, {}];
+
 (* first instance: start at the vertex with the first external index *)
 getNeighbours[exp_, allExtFields_List] := 
   Module[{mainVertex, extFieldsOfMainVertex, connectingFields, allExtFields2, fieldValues, i, sortByExtField},
@@ -2057,8 +2061,12 @@ getGraphCharacteristic[graph_op, extLegs_List] :=
 ]
 
 
+(* Sorts expressions into a canonical order of field arguments. 
+Includes effect of the deprecated function orderFermions. *)
+
 sortCanonical[b_op, derivatives_List] := 
- Module[{ordered, fieldValues, i, intIndices, props, const, connectedLeg, intIndexAss, intVertsAss, orderV, intVerts, extVerts},
+ Module[{ordered, fieldValues, i, intIndices, props, const,
+ 	connectedLeg, intIndexAss, intVertsAss, orderV, orderP, orderR, intVerts, extVerts},
 
   (* constant to distinguish internal from external indices *)
   const = 10^10;
@@ -2091,7 +2099,7 @@ sortCanonical[b_op, derivatives_List] :=
    
   (* assign internal vertices a value for ordering *)
   (* extract for each internal index the vertex it connects to *)
-  intIndexAss = {#, Cases[b, V[a__]|S[a__]|CO[a__] /; Not@FreeQ[{a}, connectedLeg@#]][[1]]} & /@ intIndices;
+  intIndexAss = {#, (Cases[b, V[a__]|S[a__]|CO[a__] /; Not@FreeQ[{a}, connectedLeg@#]]/.{}:>{{}})[[1]]} & /@ intIndices;
   (* remove internal vertices *)
   intIndexAss = Select[intIndexAss, Not@MemberQ[intVerts, #[[2]]]&];
   (* assign a field value based on the lowest field value of the external legs of the connected vertex *)
@@ -2130,8 +2138,15 @@ sortCanonical[b_op, derivatives_List] :=
   orderV[CO[a__]] /; Length[{a}]>2 := orderV[V[a]]/.V:>CO;
   orderV[S[a__]] := S[a];
   orderV[CO[a__]] := CO[a];
+  
+  orderP[P[{Q1_?antiFermionQ, q1_}, {Q2_?fermionQ, q2_}]] := P[{Q2, q2}, {Q1, q1}];
+  orderP[P[{Q1_, q1_}, {Q2_, q2_}]] := P[{Q1, q1}, {Q2, q2}];
+  
+  orderR[dR[{Q1_?fermionQ, q1_}, {Q2_?antiFermionQ, q2_}]] := dR[{Q2, q2}, {Q1, q1}];
+  orderR[dR[{Q1_, q1_}, {Q2_, q2_}]] := dR[{Q1, q1}, {Q2, q2}];
     
-  ordered = b /. V[a__] :> orderV[V[a]] /. S[a__] :> orderV[S[a]] /. CO[a__] :> orderV[CO[a]];
+  ordered = b /. V[a__] :> orderV[V[a]] /. S[a__] :> orderV[S[a]] /. CO[a__] :> orderV[CO[a]] 
+  	/. P[a__] :> orderP[P[a]] /. dR[a__] :> orderR[dR[a]];
   
   (* get signature sign of original and ordered expression for the relative sign *)
   getSignature@b getSignature@ordered ordered
@@ -2146,7 +2161,7 @@ sortCanonical[b_, derivatives_List] := b/. op[a___]:> sortCanonical[op[a], deriv
 getSignature[a_op] := Module[{verts},
   (* get vertices and keep only Grassmann fields *)
   verts = DeleteCases[
-    Cases[a, V[___]|S[___]], {_?bosonQ, _} | {_?complexFieldQ, _} | {_?antiComplexFieldQ, _}, {2}];
+    Cases[a, V[___]|S[___]|CO[___]|P[___]|dR[___]], {_?bosonQ, _} | {_?complexFieldQ, _} | {_?antiComplexFieldQ, _}, {2}];
   (* return sign *)
   Times @@ (Signature /@ verts)
 ]
@@ -2453,15 +2468,17 @@ getExtGrassmannOrderIteration[exp_op, startingVertex_, intIndices_List, extInds_
 
 
 
-
 (* for Grassmann fields ordering might be necessary to have anti-fields left of fields;
 this can yield the minus sign of closed fermion loops *)
+(* orderFermions is superseded by sortCanonical *)
 
 orderFermions[a_Plus|a_Times]:=orderFermions/@a;
 
 orderFermions[a_?NumericQ]:=a;
 
 orderFermions[a_op] := Module[{fermions, bosons, antiFermions,orderF, orderB, orderExtFields, extFields, swapInnerFermions},
+
+Message[orderFermions::superseded]
 
 (* get lists of fermions, antiFermions and bosons from INTERNAL fields *)
 fermions=Union@Cases[a,{f_?fermionQ,_}:>f,{2}];
@@ -2649,10 +2666,10 @@ multiPoint,multiPoint]/.(Function[dField,
    P[{dField[[2]], c_}, {dField[[1]], b_}] :> 
     P[{dField[[1]], b}, {dField[[2]], c}]] /@ Cases[complexFields,{_?(Head@#===boson&),_?(Head@#===boson&)}])];*)
     (* TODO Check if ordering for complex fields is not obsolete by definition of P *)
-finalExp=orderFermions@If[sourcesZero/.Join[{opts},Options@doDSE],sortDummies@setSourcesZero[multiPoint,(*zeroSources,*)L,(*dirFields,*)derivs,allowedPropagators,vertexTest,opts],
-multiPoint,multiPoint]/.(Function[dField, 
+finalExp=If[sourcesZero/.Join[{opts},Options@doDSE],sortDummies@setSourcesZero[multiPoint,(*zeroSources,*)L,(*dirFields,*)derivs,allowedPropagators,vertexTest,opts],
+multiPoint,multiPoint](*/.(Function[dField, 
    P[{dField[[2]], c_}, {dField[[1]], b_}] :> 
-    P[{dField[[1]], b}, {dField[[2]], c}]] /@ Cases[complexFields,{_?(Head@#===boson&),_?(Head@#===boson&)}]);
+    P[{dField[[1]], b}, {dField[[2]], c}]] /@ Cases[complexFields,{_?(Head@#===boson&),_?(Head@#===boson&)}])*);
 finalExp=sign identifyGraphsRGE[sortCanonical[getSigns[finalExp], derivs], derivs];
 
 finalExp
@@ -2708,7 +2725,7 @@ zeroPoint=Plus@@(1/2 op[dR[{$dummyField,traceIndex1},{$dummyField,ind}],P[{$dumm
     P[{dField[[1]], b}, {dField[[2]], c}]] /@ Cases[complexFields,{_?(Head@#===boson&),_?(Head@#===boson&)}]);
 
 (* order fermions and set sources to physical values *)
-multiPointSources0= orderFermions[setSourcesZeroRGE[zeroPoint,(*zeroSources,*)L,(*dirFields,*){{}},allowedPropagators,vertexTest,opts]];
+multiPointSources0= getSigns[setSourcesZeroRGE[zeroPoint,(*zeroSources,*)L,(*dirFields,*){{}},allowedPropagators,vertexTest,opts]];
 
 identifyGraphsRGE[sortDummies@multiPointSources0,{}]
 
@@ -2788,7 +2805,7 @@ multiPoint=(multiPointSources0)
    P[{dField[[2]], c_}, {dField[[1]], b_}] :> P[{dField[[1]], b}, {dField[[2]], c}]] /@ Cases[complexFields,{_?(Head@#===boson&),_?(Head@#===boson&)}]);
    
 (* closing the trace adds a minus sign if fields are fermionic; get other signs from fermions *)
-multiPoint=orderFermions@getSigns[(multiPointSources0)/. P[Q1_, Q2_] :> -P[Q1, Q2] /; (Not@FreeQ[{Q1,Q2}, traceIndex1|traceIndex2,2] && (grassmannQ@Q1[[1]]||grassmannQ@Q2[[1]]))];
+multiPoint=getSigns[(multiPointSources0)/. P[Q1_, Q2_] :> -P[Q1, Q2] /; (Not@FreeQ[{Q1,Q2}, traceIndex1|traceIndex2,2] && (grassmannQ@Q1[[1]]||grassmannQ@Q2[[1]]))];
 multiPoint=sortCanonical[multiPoint, orderedDerivs];
 
 (* the first dummy sorting is required for the identification to work; the second one treats the dummies introduced by derivPropagatorsdt *)
