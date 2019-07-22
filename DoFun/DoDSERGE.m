@@ -1293,7 +1293,7 @@ b = a/.sf[_,_]:>1;
 
 (* get all indices from the epxression, do not consider indices in sf *)
 (*inds=Transpose[b[[Sequence@@#]]&/@Position[b,{_,ind_}]][[2]];*)
-inds = Cases[b/.sf[_,_]:>1 {c_?fieldQ, ind_} :> ind, Infinity];
+inds = Cases[b/.sf[_,_]:>1, {c_?fieldQ, ind_} :> ind, Infinity];
 
 (* determine the dummy indices; only take the first appearance, don't change order, i.e. don't use Union *)
 (*exprDummies=
@@ -3485,7 +3485,7 @@ setFields[bosons_List, fermions_List] :=
 
 setFields[bosons_List, fermions_List, complexFields_List] /; 
    Not[And @@ 
-     Flatten[MatchQ[#, {_?fieldQ, _}] & /@ Join[fermions, complexFields]]] :=
+     Flatten[MatchQ[#, {_, _}] & /@ Join[fermions, complexFields]]] :=
    Message[setFields::noPair, fermions, complexFields];
 setFields[bosons_List, fermions_List, complexFields_List] := Module[{},
   
@@ -3505,7 +3505,7 @@ setFields[bosons_List, fermions_List, complexFields_List] := Module[{},
   
   (* set (anti-)commutating property *)
   (# /: grassmannQ[#] = False) & /@ Flatten[{bosons, complexFields}];
-  (# /: grassmannQ[#] = True) & /@ fermions;
+  (# /: grassmannQ[#] = True) & /@ Flatten[fermions];
   (# /: cFieldQ[#] = True) & /@ Flatten[{bosons, complexFields}];
   (# /: cFieldQ[#] = False) & /@ Flatten[fermions];
   
