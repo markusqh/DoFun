@@ -94,16 +94,14 @@ BeginPackage["DoFun`DoDSERGE`"]
 
 (* Exported symbols added here with SymbolName::usage *)
 
-(* variable that gives the version of DoDSERGE; the last number is the version number of the file given by subversion;
-this last number is updated not necessarily regularly, partly because it is too much effort to get the new number in advance; so normally
-the number is the subversion revision number on which the changes were done *)
-$doRGEVersion="3.0.0";
+(* version of DoDSERGE *)
+$doDSERGEVersion="3.0.0";
 
 
 If[Not@FreeQ[Contexts[],"DoFun`"],DoFun`DoDSERGE`$doDSERGEStartMessage=False];
 If[DoFun`DoDSERGE`$doDSERGEStartMessage=!=False,
 	Print["Package DoDSERGE loaded.
-\nVersion "<> $doRGEVersion <>
+\nVersion "<> $doDSERGEVersion <>
 "\nJens Braun, Reinhard Alkofer, Markus Q. Huber, Kai Schwenzer, 2008-2018\n
 \nDetails in Comput.Phys.Commun. 183 (2012) 1290-1320 (http://inspirehep.net/record/890744)."];
 ];
@@ -172,6 +170,9 @@ Default value: R.";
 
 $vertexSymbol::usage="Symbol representing a vertex when using shortExpression.
 Default value: \[CapitalGamma].";
+
+$compOpSymbol::usage="Symbol representing a composite operator when using shortExpression.
+Default value: \[Omicron].";
 
 $fieldTypes::usage="List of all existing field types.\n
 Example:
@@ -838,7 +839,7 @@ sf::usage="Temporary function to determine the signs from fermions."
 (* TODO*)
 getSigns::usage="Make signs from the sf temporary functions explicit."
 
-shortExpression::usage="Rewrites a symbolic DSE or RGE into a shorter form using $bareVertexSymbol, $vertexSymbol, $regulatorInsertionSymbol and $propagatorSymbol for representation.
+shortExpression::usage="Rewrites a symbolic DSE or RGE into a shorter form using $bareVertexSymbol, $vertexSymbol, $regulatorInsertionSymbol, $compOpSymbol and $propagatorSymbol for representation.
 The function sE is identical to shortExpression.\n
 Syntax:
 shortExpression[expr, opts] with expr an expression containing op functions and opts options appropriate for Style.\n
@@ -941,6 +942,9 @@ $propagatorSymbol=\[CapitalDelta];
 
 (* the standard symbol for a vertex used in shortExpression *)
 $vertexSymbol=\[CapitalGamma];
+
+(* the standard symbol for a composite operator used in shortExpression *)
+$compOpSymbol=\[Omicron];
 
 (* the standard symbol for a regulator insertion used in shortExpression *)
 $regulatorInsertionSymbol=R;
@@ -2824,6 +2828,8 @@ shortExpressionSingle[S[a__]]:=Subsuperscript[$bareVertexSymbol,StringJoin[ToStr
 shortExpressionSingle[{Q_,q_}]:=Subscript[Q,q];
 
 shortExpressionSingle[V[a__]]:=Subsuperscript[$vertexSymbol,StringJoin[ToString/@Riffle[{a}[[All,1]]," "]],StringJoin[ToString/@Riffle[{a}[[All,2]]," "]]];
+
+shortExpressionSingle[CO[a__]]:=Subsuperscript[$compOpSymbol,StringJoin[ToString/@Riffle[{a}[[All,1]]," "]],StringJoin[ToString/@Riffle[{a}[[All,2]]," "]]];
 
 shortExpressionSingle[dR[a__]]:=DisplayForm@RowBox[{SubscriptBox["\[PartialD]", "t"],Subsuperscript[$regulatorInsertionSymbol,StringJoin[ToString/@Riffle[{a}[[All,1]]," "]],StringJoin[ToString/@Riffle[{a}[[All,2]]," "]]]}];
 
