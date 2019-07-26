@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     20091,        496]
-NotebookOptionsPosition[     16343,        425]
-NotebookOutlinePosition[     16675,        440]
-CellTagsIndexPosition[     16632,        437]
+NotebookDataLength[     20059,        494]
+NotebookOptionsPosition[     16311,        423]
+NotebookOutlinePosition[     16643,        438]
+CellTagsIndexPosition[     16600,        435]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -287,18 +287,13 @@ field arguments for getAE. orderFermions did that.
 * Check plugInFieldsV: Only required for broken phase. Has to be updated to \
 left derivatives.
 
+* getExtGrassmannOrder still required?
+
 * Add a function that creates the appropriate action and which is always \
 called by the function expecting an action, e.g., DSEPlot (DSEPlotList is an \
 internal functions, thus DSEPlot should handle that?), doDSE, doRGE, ...
 
 * Add derivField in derivAll.
-
-* Make coSymbol equivalent to regulatorSymbol. Rename regulatorBox and Cross \
-to generic names which can be used for both.
-
-* Join Plot functions into one.
-
-* LHS of plots for comp ops.
 
 * Identification of fermion loops running in different directions? --> Works \
 partially (DSEs).
@@ -313,17 +308,17 @@ longer has the argument fields_List.
 * M12\
 \>", "Text",
  CellChangeTimes->CompressedData["
-1:eJxTTMoPSmViYGBQAGIQndNtE3n22mvHL4oN0SA6e7vjQuu/rx2PxdovBdEV
-y3+4R4D4K5o9QfQss2e72f69drwl6bsfRJdxv2tYwPTG8XV9dhOI/nyyXnkV
-kH6m9BtM2924whLI/8bxWk02O4jeM2GvQpDAG8ezu5+AafsPEqog+kiXujqI
-PiHa/mah0BtHV7mVb0H0PcP36UeAdIiFShaIzjqiu+Wb8BvHxcJuYHre9vsf
-i0XeOJppyX4G0bf6Tm18LvnGcd3FCVtB9Bp9xv4DUm8cb+femAii2yb1/X0k
-/cZxZuHNfyD6ypstV5hk3jg+YfC7CqJdYm48AtHbqxmfgOgp38R/g+jmA9/+
-gOiJDw4LsIDEF6gJguh3JcL2ILqi4DaYnpMd4wGiW8+ngOmOfpNINiC9y9oO
-TDcvOerEAaRnbXR0B9ErdtueEQLSRnquZ0F03kzV+cJA+th+IzC9KKisTBNI
-8xR2gOm4n3y1IFrpkSiYjlZZ7WYAMsdiM5gOWLKzEkQffJJSD6K/bOT7DqLD
-ZgeDaa1dJV2GQDoxcUE3iAYAzfjz3A==
-  
+1:eJwdzGtI01EABfA5xIREzSlpaTSfJKVTQgaW40ZqQolOEcUpKEbg31JJhmIx
+aVhjA1/0RRObZvhkMB8MXaLSlBSHCEuWQskYBu2miTITU7rnfjj8OOfDkVbW
+Kh+LRSJRDAusMdwpsW96yJG0pRQKFtKffuYhy2WKj7Bx6G92MfqwNgf2pO1a
+/c49ZCvi0TxUX9xrMYop8WiEV/BwRRMzytyNPuVmOB2++UGUbL4QLsBPHXPX
+lcGU2K1uruJPeBy06RMS4JewN7Q/hJLMayO/4feU/Sc2ZqE8thpW225NeSWU
+fJBkcfssPw6eh1KSlhh1CLfaVs0/IygxbXRMw/Fkn/aFK5RsP3V2wtddbWeu
+q5R01387hw465RBHUuIW5X6F91VOF7Q0+7jhW+/lU6hd8P6DnTufg32xG+Mv
+wb0GiQI21m1zewXVA9i6XsXVtd8u8WPOpmdwtYNL9/yZPWaSDYetd9dCmKlJ
+mXb4rDvuvYS5PJ/KHVCq1TeYAfU6bvlJ4EsY7QrjlsaOZcnwI5/k5g3ONMFF
+d5UGHpkDj2HRuwJu4myDPoVZUWE0wACZlMiZpoMJruyX7qaBqQ/yT4I7DwXV
+KLPG3FwG/wNjrggz
   "],ExpressionUUID->"9ece2174-0de3-4ef5-a782-6c5573fd1256"]
 }, Open  ]],
 
@@ -334,9 +329,12 @@ Cell["Last things", "Subsection",
   3.772782375991128*^9}},ExpressionUUID->"390ee375-e23d-46c3-9d7e-\
 d21f10cad8f7"],
 
-Cell["* Copyright information and loading messages.", "Text",
- CellChangeTimes->{{3.7727823779378853`*^9, 
-  3.7727823800115128`*^9}},ExpressionUUID->"8de70c06-cffb-4657-94c2-\
+Cell["\<\
+* Copyright information and loading messages. Add journal ref.\
+\>", "Text",
+ CellChangeTimes->{{3.7727823779378853`*^9, 3.7727823800115128`*^9}, {
+  3.773044751035767*^9, 
+  3.773044759690984*^9}},ExpressionUUID->"8de70c06-cffb-4657-94c2-\
 14bdf0f015d4"]
 }, Open  ]],
 
@@ -474,27 +472,27 @@ Cell[10781, 269, 164, 3, 35, "Text",ExpressionUUID->"fd749ff3-b9e2-4223-b959-67f
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[10982, 277, 162, 3, 55, "Subsection",ExpressionUUID->"9381da49-ebaf-4449-a330-2f5da810dfe8"],
-Cell[11147, 282, 1653, 44, 610, "Text",ExpressionUUID->"9ece2174-0de3-4ef5-a782-6c5573fd1256"]
+Cell[11147, 282, 1547, 39, 495, "Text",ExpressionUUID->"9ece2174-0de3-4ef5-a782-6c5573fd1256"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12837, 331, 161, 3, 55, "Subsection",ExpressionUUID->"390ee375-e23d-46c3-9d7e-d21f10cad8f7"],
-Cell[13001, 336, 191, 3, 35, "Text",ExpressionUUID->"8de70c06-cffb-4657-94c2-14bdf0f015d4"]
+Cell[12731, 326, 161, 3, 55, "Subsection",ExpressionUUID->"390ee375-e23d-46c3-9d7e-d21f10cad8f7"],
+Cell[12895, 331, 265, 6, 35, "Text",ExpressionUUID->"8de70c06-cffb-4657-94c2-14bdf0f015d4"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13229, 344, 159, 3, 55, "Subsection",ExpressionUUID->"820864a1-5442-467c-a5c1-0c1d9d296ecf"],
-Cell[13391, 349, 1716, 29, 242, "Text",ExpressionUUID->"2cb3baa8-ee89-497d-83be-67cfedd84ae3"]
+Cell[13197, 342, 159, 3, 55, "Subsection",ExpressionUUID->"820864a1-5442-467c-a5c1-0c1d9d296ecf"],
+Cell[13359, 347, 1716, 29, 242, "Text",ExpressionUUID->"2cb3baa8-ee89-497d-83be-67cfedd84ae3"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15144, 383, 158, 3, 55, "Subsection",ExpressionUUID->"424484f0-8723-49f3-8869-11777e9762ce"],
-Cell[15305, 388, 282, 6, 58, "Text",ExpressionUUID->"02bd38d6-5b34-4e44-9af6-e2dbd3b89a89"]
+Cell[15112, 381, 158, 3, 55, "Subsection",ExpressionUUID->"424484f0-8723-49f3-8869-11777e9762ce"],
+Cell[15273, 386, 282, 6, 58, "Text",ExpressionUUID->"02bd38d6-5b34-4e44-9af6-e2dbd3b89a89"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15636, 400, 151, 3, 68, "Section",ExpressionUUID->"460e3aea-39cf-42f7-bb62-d979b0ee064f"],
+Cell[15604, 398, 151, 3, 68, "Section",ExpressionUUID->"460e3aea-39cf-42f7-bb62-d979b0ee064f"],
 Cell[CellGroupData[{
-Cell[15812, 407, 152, 3, 55, "Subsection",ExpressionUUID->"998fe664-a946-4ce7-baeb-3e728446f4a6"],
-Cell[15967, 412, 167, 3, 35, "Text",ExpressionUUID->"b796a56a-4994-4909-95b2-1187ea7a0ac0"],
-Cell[16137, 417, 166, 3, 35, "Text",ExpressionUUID->"1af82734-9093-4cf1-b0cd-5ff61cbfecfd"]
+Cell[15780, 405, 152, 3, 55, "Subsection",ExpressionUUID->"998fe664-a946-4ce7-baeb-3e728446f4a6"],
+Cell[15935, 410, 167, 3, 35, "Text",ExpressionUUID->"b796a56a-4994-4909-95b2-1187ea7a0ac0"],
+Cell[16105, 415, 166, 3, 35, "Text",ExpressionUUID->"1af82734-9093-4cf1-b0cd-5ff61cbfecfd"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]

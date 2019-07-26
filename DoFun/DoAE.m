@@ -37,7 +37,7 @@ If[Not@FreeQ[Contexts[],"DoFun`"],DoFun`DoAE`$doAEStartMessage=False];
 If[(DoFun`DoAE`$doAEStartMessage=!=False),
 	Print["Package DoAE loaded.
 \nVersion "<> $DoAEVersion <>
-"\nJens Braun, Markus Q. Huber, 2009-2017\n
+"\nJens Braun, Anton K. Cyrol, Reinhard Alkofer, Markus Q. Huber, Jan. M. Pawlowski, Kai Schwenzer, 2008-2019\n
 \nDetails in Comput.Phys.Commun. 183 (2012) 1290-1320 (http://inspirehep.net/record/890744)."];
 ];
 

@@ -80,8 +80,8 @@
         -) modifications in plotting: standalone propagators can be plotted now
         -) declared orderFermions deprecated; superseded by sortCanonical
         -) replaced identifyGraphs by identifyGraphsRGE --> only one function now which is called identifyGraphs; removed compareGraphs and compareGraphs2
-        -) new option of DSEPlot:
-        	* coSymbol
+        -) new options of DSEPlot/RGEPlot: bareVertexSymbol, vertexSymbol, coSymbol
+        -) new symbols for plotting: diskSymbol, diskOpenSymbol, diskTinySymbol, triangleSymbol
 *)
 
 
@@ -102,7 +102,7 @@ If[Not@FreeQ[Contexts[],"DoFun`"],DoFun`DoDSERGE`$doDSERGEStartMessage=False];
 If[DoFun`DoDSERGE`$doDSERGEStartMessage=!=False,
 	Print["Package DoDSERGE loaded.
 \nVersion "<> $doDSERGEVersion <>
-"\nJens Braun, Reinhard Alkofer, Markus Q. Huber, Kai Schwenzer, 2008-2018\n
+"\nJens Braun, Anton K. Cyrol, Reinhard Alkofer, Markus Q. Huber, Jan. M. Pawlowski, Kai Schwenzer, 2008-2019\n
 \nDetails in Comput.Phys.Commun. 183 (2012) 1290-1320 (http://inspirehep.net/record/890744)."];
 ];
 
@@ -135,6 +135,7 @@ onePIQ::usage="";
 get1PI::usage="";
 getNon1PI::usage="";
 doCO::usage="";
+COPlot::usage="";
 
 (* temporary *)
 	replaceFieldsCO;
@@ -423,6 +424,8 @@ Examples:
 derivRGE[op[V[{phi, i}, {phi, s}, {phi, t}], P[{phi, s}, {phi, t}]], {phi, j}]
 derivRGE[op[V[{phi, i}, {phi, s}, {phi, t}], P[{phi, s}, {phi, t}]], {phi, j}, {phi, l}]
 ";
+
+doCO::usage = "Derives the equation for the correlation function of composite operators.";
 
 doDSE::usage="Derives a DSE.\n
 Syntax:
@@ -875,6 +878,32 @@ traceIndex1::usage="Dummy index used internally by doRGE."
 traceIndex2::usage="Dummy index used internally by doRGE."
 
 
+(* graphics representation *)
+
+boxSymbol::usage="Box graphic to be used for for vertexSymbol, coSymbol, regulatorSymbol or vertexSymbol.";
+
+crossSymbol::usage="Cross graphic to be used for vertexSymbol, coSymbol, regulatorSymbol or vertexSymbol.";
+
+diskSymbol::usage="Disk graphic to be used for vertexSymbol, coSymbol, regulatorSymbol or vertexSymbol.";
+
+diskOpenSymbol::usage="Open disk graphic to be used for vertexSymbol, coSymbol, regulatorSymbol or vertexSymbol.";
+
+diskTinySymbol::usage="Tiny disk graphic to be used for vertexSymbol, coSymbol, regulatorSymbol or vertexSymbol.";
+
+triangleSymbol::usage="Triangle graphic to be used for vertexSymbol, coSymbol, regulatorSymbol or vertexSymbol.";
+
+
+bareVertexSymbol::usage="Option for how to represent bare vertices in diagrams.
+Default: diskTinySymbol.";
+
+coSymbol::usage="Option for how to represent composite operators in diagrams.
+Default: triangleSymbol.";
+
+vertexSymbol::usage="Option for how to represent vertices in diagrams.
+Default: diskSymbol.";
+
+
+
 
 
 (* ::Section:: *)
@@ -884,18 +913,28 @@ traceIndex2::usage="Dummy index used internally by doRGE."
 (* define the names for the dummy indices; later numbers will be added *)
 Options[createDummyList]={dummyNames->{Global`r,Global`s,Global`t,Global`u,Global`v,Global`w,Global`x,Global`y,Global`z}};
 
-Options[DSEPlot]={MultiedgeStyle->0.5,factorStyle->{FontSize:>16},indexStyle->{FontSize:>14},output->complete, arrowHeadSize->0.075,regulatorSymbol->regulatorBox,ImageSize->100};
+Options[DSEPlot]={MultiedgeStyle->0.5,
+	factorStyle->{FontSize:>16}, indexStyle->{FontSize:>14}, arrowHeadSize->0.075,
+	output->complete,
+	regulatorSymbol->boxSymbol, vertexSymbol->diskSymbol, coSymbol->triangleSymbol, bareVertexSymbol->diskTinySymbol,
+	ImageSize->100,
+	type->"DSE"};
+
+Options[DSEPlotList]:=Options[DSEPlot];
+
 (* other possible option settings *)
 forceEquation;
 
-(* since RGEPlot relies on DSEPlot the options should be the same; changing the former options may be ignored by some function, since they take the options of DSEPlot *)
-Options[RGEPlot]:=Options[DSEPlot];
+(* since RGEPlot and COPlot rely on DSEPlotList, the options should be the same; changing the former options may be ignored by some function, since they take the options of DSEPlot *)
+Options[RGEPlot]:=Join[{type->"RGE"}, DeleteCases[Options[DSEPlot], type->_]];
+
+Options[COPlot]:=Join[{type->"CO"}, DeleteCases[Options[DSEPlot], type->_]];
 
 Options[setSourcesZero]={doGrassmannTest->True, propagatorCreationRules->DSERules};
 
-Options[doDSE]={sourcesZero:> True,identify:> True, ansatz->{}};
+Options[doDSE]={sourcesZero:> True, identify:> True, ansatz->{}};
 
-Options[doRGE]={sourcesZero:> True,identify:> True, tDerivative -> True, 
+Options[doRGE]={sourcesZero:> True, identify:> True, tDerivative -> True, 
 	symmetry->intact, userEvenFields->{}};
 
 Options[shortExpression]={FontSize->16};
@@ -2024,7 +2063,7 @@ sortCanonical[b_op, derivatives_List] :=
   fermions and internally by fieldValues *)
   
   orderV[V[a__]] := V[Sequence @@ Join[
-  	SortBy[Select[{a}, bosonQ[#[[1]]] &], fieldValues[#[[2]]] &],
+  	SortBy[Select[{a}, cFieldQ[#[[1]]] &], fieldValues[#[[2]]] &],
   	SortBy[Select[{a}, antiFermionQ[#[[1]]] &], fieldValues[#[[2]]] &], 
     SortBy[Select[{a}, fermionQ[#[[1]]] &], (fieldValues[#[[2]]]) &]]];
   orderV[S[a__]] /; Length[{a}]>2 := orderV[V[a]]/.V:>S;
@@ -2997,7 +3036,7 @@ DSEPlotCompare[a_op]:=DSEPlotCompare[a]=GraphPlot[vertexDummies[a,Sort]];
 
 
 (* overview over DSEPlot functions:
-DSEPlotCompare: for comparing Graphs
+DSEPlotCompare: for comparing Graphs (deprecated)
 DSEPlot: main command, plots complete DSEs
 DSEPlotList: "old" main command, does the plotting, but gives a list
 DSEPlotGrid: puts the graphs into a GridBox
@@ -3017,7 +3056,7 @@ DSEPlotList[a_List,plotRules_List,opts___?OptionQ]/;And @@ (fieldQ /@ Flatten[a]
 DSEPlotList[a_,plotRules_List,opts___?OptionQ]/;FreeQ[a,Rule,Infinity]:=
 	DSEPlotList[vertexDummies[a,opts],plotRules,opts];
 
-DSEPlotList[{a_List,b_?NumericQ},plotRules_List,opts___?OptionQ]:=Module[{allDirFields, exponent,regulatorSymbolFunction,coSymbolFunction,sls,dirFieldsOrdered,plotRulesAll},
+DSEPlotList[{a_List,b_?NumericQ},plotRules_List,opts___?OptionQ]:=Module[{allDirFields, exponent,regulatorSymbolFunction,coSymbolFunction,bareVertexSymbolFunction,vertexSymbolFunction,sls,dirFieldsOrdered,plotRulesAll},
 
 (* extend plot Rules also to antifields *)
 plotRulesAll=Union@Replace[plotRules, {c_?fieldQ, d__} :> Sequence[{c, d}, {antiField@c, d}], 1];
@@ -3034,8 +3073,14 @@ dirFieldsOrdered=a;
 (* determine the function for drawing the regulator insertion *)
 regulatorSymbolFunction=regulatorSymbol/.Join[{opts},Options@RGEPlot];
 
+(* determine the function for drawing vertices *)
+vertexSymbolFunction=vertexSymbol/.Join[{opts},Options@RGEPlot];
+
+(* determine the function for drawing bare vertices *)
+bareVertexSymbolFunction=bareVertexSymbol/.Join[{opts},Options@RGEPlot];
+
 (* determine the function for drawing an composite operator *)
-coSymbolFunction=coSymbol(*/.Join[{opts},Options@DSEPlot]*);
+coSymbolFunction=coSymbol/.Join[{opts},Options@DSEPlot];
 
 (* SelfLoopStyle is required for zero leg graphs in RGEs to avoid that the regulator symbol is larger than the loop *)
 sls=Which[Not@FreeQ[a,"dt R"],1,
@@ -3059,7 +3104,7 @@ GraphPlot[a, EdgeRenderingFunction->((Which@@Join[
 		Not@StringFreeQ[#2[[3]],"leg"],
 			{Text[Style[StringReplace[#2[[3]],"leg":> ""],Sequence@@(indexStyle/.Join[{opts},Options@DSEPlot]),FontSize:>14],#1+{0,0.3}],Disk[#1,0.02]},
 		Not@StringFreeQ[#2[[3]],"S"],
-			Disk[#1,0.02],
+			bareVertexSymbolFunction[#1],
 		Not@StringFreeQ[#2[[3]],"CO"],
 			coSymbolFunction[#1],
 		Not@StringFreeQ[#2[[3]],"dt R"],
@@ -3067,7 +3112,7 @@ GraphPlot[a, EdgeRenderingFunction->((Which@@Join[
 		Not@StringFreeQ[#2[[3]],"ext"],
 			{Text[Style[StringReplace[#2[[3]],"ext":> ""],Sequence@@(indexStyle/.Join[{opts},Options@DSEPlot]),FontSize:>14],#1+{0,0.3}],Circle[#1,0.1]},
 		True,
-			Disk[#1,0.1]]&),
+			vertexSymbolFunction[#1]]&),
 		(*PlotLabel->Style[b,Sequence@@(factorStyle/.Join[{opts},Options@DSEPlot]),FontSize:>16],*)
 		FilterRules[Join[{opts},Options@DSEPlot],Options@GraphPlot],
 		SelfLoopStyle->sls],
@@ -3093,13 +3138,19 @@ DSEPlotList[a_List,opts___?OptionQ]/;And @@ (fieldQ /@ Flatten[a]):=
 
 DSEPlotList[a_,opts___?OptionQ]/;FreeQ[a,Rule,Infinity]:=DSEPlotList[vertexDummies[a,opts],opts];
 
-DSEPlotList[{a_List,b_?NumericQ},opts___?OptionQ]:=Module[{exponent,regulatorSymbolFunction,coSymbolFunction,sls},
+DSEPlotList[{a_List,b_?NumericQ},opts___?OptionQ]:=Module[{exponent,regulatorSymbolFunction,coSymbolFunction,vertexSymbolFunction,bareVertexSymbolFunction,sls},
 
 (* determine the function for drawing the regulator insertion *)
-regulatorSymbolFunction=regulatorSymbol/.Join[{opts},Options@RGEPlot];
+regulatorSymbolFunction=regulatorSymbol/.Join[{opts},Options@DSEPlot];
+
+(* determine the function for drawing vertices *)
+vertexSymbolFunction=vertexSymbol/.Join[{opts},Options@DSEPlot];
+
+(* determine the function for drawing bare vertices *)
+bareVertexSymbolFunction=bareVertexSymbol/.Join[{opts},Options@DSEPlot];
 
 (* determine the function for drawing an composite operator *)
-coSymbolFunction=coSymbol(*/.Join[{opts},Options@DSEPlot]*);
+coSymbolFunction=coSymbol/.Join[{opts},Options@DSEPlot];
 
 (* SelfLoopStyle is required for zero leg graphs in RGEs to avoid that the regulator symbol is larger than the loop *)
 sls=Which[Not@FreeQ[a,"dt R"],1,
@@ -3122,7 +3173,7 @@ GraphPlot[a,
 		Not@StringFreeQ[#2[[3]],"leg"],
 			{Text[Style[StringReplace[#2[[3]],"leg":> ""],Sequence@@(indexStyle/.Join[{opts},Options@DSEPlot]),FontSize:>14],#1+{0,0.3}],Disk[#1,0.02]},
 		Not@StringFreeQ[#2[[3]],"S"],
-			Disk[#1,0.02],
+			bareVertexSymbolFunction[#1],
 		Not@StringFreeQ[#2[[3]],"CO"],
 			coSymbolFunction[#1],
 		Not@StringFreeQ[#2[[3]],"dt R"],
@@ -3130,7 +3181,7 @@ GraphPlot[a,
 		Not@StringFreeQ[#2[[3]],"ext"],
 			{Text[Style[StringReplace[#2[[3]],"ext":> ""],Sequence@@(indexStyle/.Join[{opts},Options@DSEPlot]),FontSize:>14],#1+{0,0.3}],Circle[#1,0.1]},
 		True,
-			Disk[#1,0.1]]&),
+			vertexSymbolFunction[#1]]&),
 		FilterRules[Join[{opts},Options@DSEPlot],Options@GraphPlot],
 		SelfLoopStyle->sls],
 (* for positive integers explicitly print the +, for positive Rationals also, but it has to be prevented that the + goes into the numerator;
@@ -3152,6 +3203,13 @@ DSEPlotList[a___]:=Message[DSEPlot::syntax,a];
 
 
 
+(* plots are all based on DSEPlot, they are only distinguished by the option type *)
+
+COPlot[args___]:=DSEPlot[args, type->"CO"];
+
+RGEPlot[args___]:=DSEPlot[args, type->"RGE"];
+
+
 (* plot the complete equation including the left-hand side; employ a grid;
 if no PlotRules are given, call DSEPlotList accordingly without it *)
 
@@ -3162,7 +3220,7 @@ DSEPlot[a_?NumericQ,___]:=a;
 DSEPlot[a_,rest___]/;Not[And@@(fieldQ/@Union[Cases[a,{b_,_}:>b,{2,Infinity}]])]:=(Message[DSEPlot::fieldsUndefined,a];Abort[]);
 
 (* if only style definitions for one field are given and one pair of brackets is missing rewrite it with the proper syntax *) 
-DSEPlot[a_,{f_?fieldQ,styleDefs___},rest___]:=RGEPlot[a,{{f,styleDefs}},rest];
+DSEPlot[a_,{f_?fieldQ,styleDefs___},rest___]:=DSEPlot[a,{{f,styleDefs}},rest];
 
 (* if plotRules are not properly defined *)
 DSEPlot[a_,plotRules_List,___]/;Not@MatchQ[plotRules, {{__},___}]:=Message[DSEPlot::plotRules,plotRules];
@@ -3175,7 +3233,10 @@ DSEPlot[a_List,plotRules_List:{},len_Integer:5,opts___?OptionQ]:=DSEPlot[#,plotR
 
 (* plot sum of op operators; normally a single graph is plotted alone, except the option output is set to forceEquation *)
 DSEPlot[a_,plotRules_List:{},len_Integer:5,opts___?OptionQ]/;And@@(Not@FreeQ[#, op[__]] & /@ List@@Expand[a])||(output/.Join[{opts},Options@DSEPlot])===forceEquation:=Module[
-	{expandeda, rhs, lhs, inds, lhsFields, exponent, Q,q},
+	{expandeda, rhs, lhs, inds, lhsFields, exponent, Q,q, eqType, lhsSymbol},
+	
+	(* what equation should be plotted? *)
+	eqType = type/.Join[{opts}, Options[DSEPlot]];
 	
 	(* expand a or otherwise there may be problems with parentheses *)
 	expandeda=Expand@a;
@@ -3186,8 +3247,18 @@ DSEPlot[a_,plotRules_List:{},len_Integer:5,opts___?OptionQ]/;And@@(Not@FreeQ[#, 
 	(* determine the externals *)
 	lhsFields=Select[inds, Count[inds, #] == 1 &];
 	
-	(* plot the left-hand side; take only the graph withuot prefactor *)
-	lhs=DSEPlotList[op@V[Sequence@@lhsFields], (*IA,*) plotRules/.{}:>Sequence[],opts][[1]];
+	(* symbol to use for lhs *)
+	lhsSymbol = If[eqType==="CO",
+		CO,
+		V,
+		V];
+	
+	(* plot the left-hand side; take only the graph without prefactor; if the diagram has no external legs, take just Gamma_k; not required for DSEs as there are no vacuum diagrams *)
+	lhs=Which[lhsFields=={},
+		DisplayForm@StyleBox[SuperscriptBox["\[CapitalGamma]", "k"],factorStyle/.Join[{opts},Options@RGEPlot],FontSize->20],
+		True,
+		DSEPlotList[op@lhsSymbol[Sequence@@lhsFields], plotRules/.{}:>Sequence[],opts][[1]]
+	];
 	
     (* exponent -1 for propagators *)
     exponent=If[Length@lhsFields===2,"-1","",""];
@@ -3195,7 +3266,13 @@ DSEPlot[a_,plotRules_List:{},len_Integer:5,opts___?OptionQ]/;And@@(Not@FreeQ[#, 
 	(* plot the right hand side *)
 	rhs=DSEPlotList[expandeda,(*IA,*)plotRules/.{}:>Sequence[],opts];
 
-	DSEPlotGrid[rhs,{lhs,exponent},len,opts]
+	Which[eqType == "DSE",
+		DSEPlotGrid[rhs,{lhs,exponent},len,opts],
+		eqType == "RGE",
+		RGEPlotGrid[rhs,{lhs,exponent},len,opts],
+		eqType == "CO",
+		DSEPlotGrid[rhs,{lhs,exponent},len,opts]
+		]
 ];
 
 (* plot single diagrams as such *)	
@@ -3204,7 +3281,7 @@ DSEPlot[a_,plotRules_List:{},len_Integer:5,opts___?OptionQ]/;Count[a, op[___], \
 DSEPlot[a___]:=Message[DSEPlot::syntax,a];
 
 
-
+(* for DSEs and CO *)
 DSEPlotGrid[rhs_,  {lhs_,exponent_}, len_, opts___?OptionQ] := 
   Module[{partitioned, lhsLabeled, i},
 
@@ -3214,7 +3291,7 @@ DSEPlotGrid[rhs_,  {lhs_,exponent_}, len_, opts___?OptionQ] :=
 
    (* create the equal sign as label for lhs and add -1 exponent for propagator *)
    lhsLabeled = Labeled[lhs, Style[Row[{Overscript[Style["",FontSize:>50],Style[exponent,(factorStyle/.Join[{opts},Options@DSEPlot])
-   			/.(FontSize:>w_Integer):>(FontSize:>(* why was this here? did not look good so small 0.5 *)w)]],"="}],
+   			/.(FontSize:>w_Integer):>(FontSize:>w)]],"="}],
    		ShowStringCharacters->False,factorStyle/.Join[{opts},Options@DSEPlot]], Right];
 
    (* put in the lhs *)
@@ -3223,65 +3300,6 @@ DSEPlotGrid[rhs_,  {lhs_,exponent_}, len_, opts___?OptionQ] :=
    
 ];
 
-
-
-(* RGEPlot is based on DSEPlot; only difference: uses RGEPlotGrid *)
-
-(* plot the complete equation including the left-hand side; employ a grid;
-if no PlotRules are given, call DSEPlotList accordingly without it *)
-
-(* is there is only a number *)
-RGEPlot[a_?NumericQ,___]:=a;
-
-(* fields not defined *)
-RGEPlot[a_,rest___]/;Not[And@@(fieldQ/@Union[Cases[a,{b_,_}:>b,{2,Infinity}]])]:=(Message[RGEPlot::fieldsUndefined,a];Abort[]);
-
-(* if only style definitions for one field are given and one pair of brackets is missing rewrite it with the proper syntax *) 
-RGEPlot[a_,{f_?fieldQ,styleDefs___},rest___]:=RGEPlot[a,{{f,styleDefs}},rest];
-
-(* if plotRules are not properly defined *)
-RGEPlot[a_,(*IA_List,*)plotRules_List,___]/;Not@MatchQ[plotRules, {{__},___}]:=Message[RGEPlot::plotRules,plotRules];
-
-RGEPlot[a_,(*IA_List,*)plotRules_List:{},len_Integer:5,opts___?OptionQ]/;(output/.Join[{opts},Options@RGEPlot])===List:=
-	DSEPlotList[a,(*IA,*)plotRules/.{}:>Sequence[],opts];
-
-(* plot lists of diagrams as such *)
-RGEPlot[a_List,(*IA_List,*)plotRules_List:{},len_Integer:5,opts___?OptionQ]:=DSEPlot[#,(*IA,*)plotRules,len,opts]&/@a;
-
-(* plot sum of op operators; normally a single graph is plotted alone, except the option output is set to forceEquation *)
-RGEPlot[a_,(*IA_List,*)plotRules_List:{},len_Integer:5,opts___?OptionQ]/;And@@(Not@FreeQ[#, op[__]] & /@ List@@Expand[a])||(output/.Join[{opts},Options@RGEPlot])===forceEquation:=Module[
-	{expandeda, rhs, lhs, inds, lhsFields, exponent},
-
-	(* expand a or otherwise there may be problems with parentheses *)
-	expandeda=Expand@a;
-	
-	(* get all fields and indices; braces around expandeda are there to avoid problems if expandeda=op[...] *)
-	inds=Cases[First@Cases[{expandeda}, op[___], \[Infinity]], {Q_, q_}, \[Infinity]];
-	
-	(* determine the externals *)
-	lhsFields=Select[inds, Count[inds, #] == 1 &];
-	
-	(* plot the left-hand side; take only the graph without prefactor; if the diagram has no external legs, take just Gamma_k; not required for DSEs as there are no vacuum diagrams *)
-	lhs=Which[lhsFields=={},DisplayForm@StyleBox[SuperscriptBox["\[CapitalGamma]", "k"],factorStyle/.Join[{opts},Options@DSEPlot],FontSize->20],
-		True,DSEPlotList[op@V[Sequence@@lhsFields], (*IA,*) plotRules/.{}:>Sequence[],opts][[1]]
-	];
-	
-    (* exponent -1 for propagators *)
-    exponent=If[Length@lhsFields===2,"-1","",""];
-
-	(* plot the right hand side *)
-	rhs=DSEPlotList[expandeda,(*IA,*)plotRules/.{}:>Sequence[],opts];
-
-	RGEPlotGrid[rhs,{lhs,exponent},len,opts]
-];
-
-(* plot single diagrams as such *)
-RGEPlot[a_,(*IA_List,*)plotRules_List:{},len_Integer:5,opts___?OptionQ]/;Count[a, op[___], \[Infinity]]==1||Head@a==op:=DSEPlotList[a,(*IA,*)plotRules/.{}:>Sequence[],opts];
-
-RGEPlot[a___]:=Message[RGEPlot::syntax,a];
-
-
-(* based on DSEPlotGrid; difference: adds the scale derivative to the lhs *)
 
 RGEPlotGrid[rhs_,  {lhs_,exponent_}, len_, opts___?OptionQ] := 
   Module[{partitioned, lhsLabeled, i},
@@ -3294,7 +3312,7 @@ RGEPlotGrid[rhs_,  {lhs_,exponent_}, len_, opts___?OptionQ] :=
    lhsLabeled = Labeled[lhs,
    			Style[#,ShowStringCharacters->False,factorStyle/.Join[{opts},Options@DSEPlot]]&/@
    				{DisplayForm@SubscriptBox["\[PartialD]", "t"],Row[{Overscript[Style["",FontSize:>50],Style[exponent,(factorStyle/.Join[{opts},Options@DSEPlot])
-   			/.(FontSize:>w_Integer):>(FontSize:>(* why was this here? did not look good so small 0.5 *)w)]],"="}]}, {Left,Right}];
+   			/.(FontSize:>w_Integer):>(FontSize:>w)]],"="}]}, {Left,Right}];
 
    (* put in the lhs *)
    ReplacePart[Grid[Sequence @@@ List /@ partitioned,FilterRules[{opts},Options@Grid]], 
@@ -3303,10 +3321,11 @@ RGEPlotGrid[rhs_,  {lhs_,exponent_}, len_, opts___?OptionQ] :=
 ];
 
 
-(* choice of different regulators *)
+(* symbols for plotting *)
 
-regulatorBox[x_]:={GrayLevel[0.4],Rectangle[x-{0.1, 0.1},x+{0.1, 0.1}]};
-regulatorCross[x_]:=Module[{rad=0.1},
+boxSymbol[x_]:={GrayLevel[0.4],Rectangle[x-{0.1, 0.1},x+{0.1, 0.1}]};
+
+crossSymbol[x_]:=Module[{rad=0.1},
 	{
 	Circle[x, 0.1], 
     Line[{x+rad{-Sin[\[Pi]/4], -Cos[\[Pi]/4]}, x+rad{Sin[\[Pi]/4], Cos[\[Pi]/4]}}], 
@@ -3314,11 +3333,21 @@ regulatorCross[x_]:=Module[{rad=0.1},
 	}
 ];
 
+diskSymbol[x_]:={Disk[x,0.1]};
 
-(* graphical composite operator representation *)
+diskOpenSymbol[x_]:={Circle[x,0.1]};
 
-coSymbol[x_]:={GrayLevel[0.4],Polygon[{x- {0.1, 0.1}, x + {0.1, 0.0}, x + {-0.1, 0.1}}]};
+diskTinySymbol[x_]:={Disk[x,0.02]};
 
+triangleSymbol[x_]:={GrayLevel[0.4],Polygon[{x- {0.1, 0.1}, x + {0.1, 0.0}, x + {-0.1, 0.1}}]};
+
+
+(* choice of different regulators *)
+
+(* these names are kep for compatibility *)
+
+regulatorBox[x_]:=boxSymbol[x];
+regulatorCross[x_]:=crossSymbol;
 
 
 

@@ -41,7 +41,7 @@ If[Not@FreeQ[Contexts[],"DoFun`"],DoFun`DoFR`$doFRStartMessage=False];
 If[DoFun`DoFR`$doFRStartMessage=!=False,
 	Print["\nPackage DoFR loaded.
 \nVersion "<> $DoFRVersion <>
-"\nJens Braun, Markus Q. Huber, 2010-2017\n
+"\nJens Braun, Anton K. Cyrol, Markus Q. Huber, Jan. M. Pawlowski 2010-2019\n
 \nDetails in Comput.Phys.Commun. 183 (2012) 1290-1320 (http://inspirehep.net/record/890744)."];
 ];
 
@@ -54,7 +54,7 @@ convertAction::usage="Converts a given action into a form suitable for computati
 Syntax:
 convertAction[act_] where act is a physical action.\n
 Example:
-setFields[{\[CurlyPhi}];
+setFields[{\[CurlyPhi]}];
 defineFieldsSpecific[{\[CurlyPhi][momentum, type]}];
 convertAction[ 1/2 (p^2 Z[p^2] + R[k]) op[\[CurlyPhi][p, i], \[CurlyPhi][-p,i]] + 
  \[Lambda]2/8 op[\[CurlyPhi][p, i], \[CurlyPhi][q, i], \[CurlyPhi][r, j], \[CurlyPhi][-p - q - r, j]]]
