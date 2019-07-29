@@ -913,11 +913,11 @@ Default: diskSymbol.";
 (* define the names for the dummy indices; later numbers will be added *)
 Options[createDummyList]={dummyNames->{Global`r,Global`s,Global`t,Global`u,Global`v,Global`w,Global`x,Global`y,Global`z}};
 
-Options[DSEPlot]={MultiedgeStyle->0.5,
+Options[DSEPlot]={
 	factorStyle->{FontSize:>16}, indexStyle->{FontSize:>14}, arrowHeadSize->0.075,
 	output->complete,
 	regulatorSymbol->boxSymbol, vertexSymbol->diskSymbol, coSymbol->triangleSymbol, bareVertexSymbol->diskTinySymbol,
-	ImageSize->100,
+	ImageSize->200,
 	type->"DSE"};
 
 Options[DSEPlotList]:=Options[DSEPlot];
@@ -1048,6 +1048,7 @@ private functions (alphabetic)
 	derivPropagators
 	derivPropagatorsdt
 	derivVertex
+	edgeShapeFunction
 	evenBosonTest
 	DSEPlotCompare
 	DSEPlotGrid
@@ -1080,6 +1081,7 @@ private functions (alphabetic)
 	shortExpressionSingle
 	shortExpressionStyle
 	vertexDummies
+	vertexShapeFunction
 	vertexTest
 	
 private variables:
@@ -2196,7 +2198,7 @@ allowedPropagators=Join[ownAllowedPropagators,Cases[interactions, b_List /; Leng
 (* if there are fields that have only even interactions there cannot be a vertex with an odd number of these fields;
 for fermions this check is done with grassmannTest *)
 bosons=Select[Union@Flatten@interactions, cFieldQ];
-(* add the fields which can be specified by the user as even, when he uses doRGE and no truncations *)
+(* add the fields which can be specified by the user as even, when one uses doRGE and no truncations *)
 evenBosons=Union[userEvenFields/.Join[{opts},Options@doRGE],Function[boson, And @@ ((EvenQ@Count[#, boson] & /@ interactions)/.{}:>False)/. {True :> boson, False :> Sequence[]}] /@ bosons];
 evenComplexBosons=Function[complexBoson, And @@ ((Count[#, complexBoson[[1]]]==Count[#, complexBoson[[2]]] & /@ interactions)/.{}:>False)/. {True :> complexBoson, False :> Sequence[]}]/@({#,antiField[#]}&/@Select[bosons, complexFieldQ]);
 
@@ -3014,7 +3016,7 @@ vertexDummies[a_op,sort_:(#&),opts___?OptionQ] /;Not@OptionQ@sort:=(*vertexDummi
   (* identification rules *)
   identificationList = Thread[Rule[#[[1]], #[[2]]], 1] & /@ verticesRepresList;
 
-  (* use propagators for the rules of the GraphPlot *)
+  (* use propagators for the rules of the Graph *)
   propagators=propagators /. identificationList /.bareVertexRule/.CORule/.purePropRule/.regulatorRule/. P[{B_, b_, bl_: ""}, {C_, c_, cl_: ""},d_] :> {Rule[{B, b, bl}, {C, c, cl}],d}
    
   ];
@@ -3022,10 +3024,12 @@ vertexDummies[a_op,sort_:(#&),opts___?OptionQ] /;Not@OptionQ@sort:=(*vertexDummi
 
 (* auxiliary function for DSEPlotList for plotting arrows/lines for fermions/bosons instead of lines *)
 
-arrowLine[coords_List,label_String,fermions_List,opts___?OptionQ]:=Module[{arrowHeadS},
-	(* the default options of DSEPlot are used here, so changing the options of RGEPlot won't change it *)
-	arrowHeadS=arrowHeadSize/.Join[{opts},Options@DSEPlot];
-	Which[Not@StringFreeQ[label,Alternatives@@ToString/@Flatten@fermions],Unevaluated@Sequence[Arrowheads[arrowHeadS],Arrow[coords]],True,Line[coords]]
+arrowLine[field_, coords___, opts___?OptionQ]:=Module[{},
+	
+	If[grassmannQ[field] || complexFieldQ[field] || antiComplexFieldQ[field],
+		GraphElementData["Arrow"][coords], 
+    	GraphElementData["Line"][coords]
+    ]
 ];
 
 
@@ -3043,9 +3047,50 @@ DSEPlotGrid: puts the graphs into a GridBox
 *)
 
 
-(* Plotting graphs using GraphPlot; if a list of directed propagators/fermions is given, arrows will be used;
+(* auxiliary function for Graph: sets the styles of edges for fields *)
+
+(* determines the style of an edge based on given style rules and \
+grassmann/non-grassmann *)
+getEdgeShapeFunction[edge_, plotStyles_List] := Module[{field, line},
+  
+  (* extract which field we have in the propagator; 
+  note that for mixed propagators only one field is taken (could be \
+taken into account, though, by writing a dedicated plot function *)
+  field = ToExpression@
+    StringCases[{edge[[2]]}, 
+      f__ ~~ " " ~~ __ /; fieldQ[ToExpression[f]] :> f][[1, 1]];
+      
+  (* determine if an arrow should be plotted *) 
+  line[coords___] := If[
+    grassmannQ[field] || complexFieldQ[field] || 
+     antiComplexFieldQ[field], GraphElementData["Arrow"][coords], 
+    GraphElementData["Line"][coords]];
+  
+  (* extract the proper style and set the arrow *)
+  
+  Cases[plotStyles, {field | antiField@field, 
+      style___} :> Unevaluated[({style, arrowLine[field, ##]} &)]][[1]]
+]
+
+
+(* auxiliary function for Graph: sets the styles of vertices *)
+
+getVertexShapeFunction[{x_,y_}, label_, {w_, h_}, opts___?OptionQ]/;Not@StringFreeQ[label[[3]],"S"] := bareVertexSymbol[{x,y}]/.Join[{opts},Options@DSEPlotList]
+
+getVertexShapeFunction[{x_,y_}, label_, {w_, h_}, opts___?OptionQ]/;Not@StringFreeQ[label[[3]],"dt R"] := regulatorSymbol[{x,y},{w,h}]/.Join[{opts},Options@DSEPlotList]
+
+getVertexShapeFunction[{x_,y_}, label_, {w_, h_}, opts___?OptionQ]/;Not@StringFreeQ[label[[3]],"CO"] := coSymbol[{x,y}]/.Join[{opts},Options@DSEPlotList]
+
+getVertexShapeFunction[{x_,y_}, label_, {w_, h_}, opts___?OptionQ]/;Not@StringFreeQ[label[[3]],"leg"] := {Text[Style[StringReplace[label[[3]],"leg":> ""],Sequence@@(indexStyle/.Join[{opts},Options@DSEPlotList]),FontSize:>14],{x,y}+{0,0.3}],Disk[{x,y},0.02]}
+
+getVertexShapeFunction[{x_,y_}, label_, {w_, h_}, opts___?OptionQ]/;Not@StringFreeQ[label[[3]],"ext"] := {Text[Style[StringReplace[label,"ext":> ""],Sequence@@(indexStyle/.Join[{opts},Options@DSEPlotList]),FontSize:>14],{x,y}+{0,0.3}],Circle[{x,y},0.1]}
+
+getVertexShapeFunction[{x_,y_}, label_, {w_, h_}, opts___?OptionQ] := vertexSymbol[{x,y}]/.Join[{opts},Options@DSEPlotList]
+
+
+(* Plotting graphs using Graph; if a list of directed propagators/fermions is given, arrows will be used;
 the plotting is done in DSEPlotList, which creates a list of plots
-the user invokes DSEPlot and gets a complete DSE, but with the option output -> List he can also get a list *)
+the user invokes DSEPlot and gets a complete DSE, but with the option output -> List one can also get a list *)
 
 
 (* with edges rendered specially *)
@@ -3056,7 +3101,19 @@ DSEPlotList[a_List,plotRules_List,opts___?OptionQ]/;And @@ (fieldQ /@ Flatten[a]
 DSEPlotList[a_,plotRules_List,opts___?OptionQ]/;FreeQ[a,Rule,Infinity]:=
 	DSEPlotList[vertexDummies[a,opts],plotRules,opts];
 
-DSEPlotList[{a_List,b_?NumericQ},plotRules_List,opts___?OptionQ]:=Module[{allDirFields, exponent,regulatorSymbolFunction,coSymbolFunction,bareVertexSymbolFunction,vertexSymbolFunction,sls,dirFieldsOrdered,plotRulesAll},
+DSEPlotList[{a_List,b_?NumericQ},plotRules_List,opts___?OptionQ]:=Module[{graph, allDirFields, exponent, verts, dirFieldsOrdered, plotRulesAll, vsize},
+
+graph = a;
+
+(* add field style to propagators; if no style is given, add edge labels *)
+If[plotRules==={},
+	graph = Property[#[[1]], EdgeLabels -> #[[2]]] & /@ graph,
+	graph = Property[#[[1]], EdgeShapeFunction -> getEdgeShapeFunction[#, plotRules]] & /@ graph
+];
+
+(* add vertex style *)
+verts = Union@@List@@@a[[All,1]];
+graph = {Function[vert, Property[vert, VertexShapeFunction->(getVertexShapeFunction[##, opts]&)]] /@ verts, graph};
 
 (* extend plot Rules also to antifields *)
 plotRulesAll=Union@Replace[plotRules, {c_?fieldQ, d__} :> Sequence[{c, d}, {antiField@c, d}], 1];
@@ -3070,52 +3127,18 @@ allDirFields=getDirectedFieldsList[a];
 (* bring the directed fields into canonical order so that *)
 dirFieldsOrdered=a;
 
-(* determine the function for drawing the regulator insertion *)
-regulatorSymbolFunction=regulatorSymbol/.Join[{opts},Options@RGEPlot];
-
-(* determine the function for drawing vertices *)
-vertexSymbolFunction=vertexSymbol/.Join[{opts},Options@RGEPlot];
-
-(* determine the function for drawing bare vertices *)
-bareVertexSymbolFunction=bareVertexSymbol/.Join[{opts},Options@RGEPlot];
-
-(* determine the function for drawing an composite operator *)
-coSymbolFunction=coSymbol/.Join[{opts},Options@DSEPlot];
-
-(* SelfLoopStyle is required for zero leg graphs in RGEs to avoid that the regulator symbol is larger than the loop *)
-sls=Which[Not@FreeQ[a,"dt R"],1,
-	True,Automatic];
+(* a smaller regulator symbol size is required for zero leg graphs in RGEs to avoid that the regulator symbol is larger than the loop *)
+vsize = Automatic;
+If[Not@FreeQ[a,"dt R"], vsize=0.3];
 
 (* exponent -1 for inverse propagators *)
 exponent=If[Length@a===2 && FreeQ[a, "P"],"-1","",""];
 
 Labeled[
-GraphPlot[a, EdgeRenderingFunction->((Which@@Join[
-	Apply[Sequence,Function[{f},{Not@StringFreeQ[#3,f[[1]]<>" "](*checks if the label of an edge contains the field, the " " is required to avoid misidentification, e.g. phiR would match phi*),
-		{Sequence@@Rest@f,(* arrow for fermions, else line *)
-			arrowLine[#1,#3,allDirFields,opts]}}]
-			/@Replace[plotRulesAll,{Q_,d__}:>
-				(* create the strings appearing in the edge labeling and create also the anti-particles *)
-				Sequence[{ToString@Q,d}],1],1],
-		{True,{arrowLine[#1,#3,allDirFields,opts]}}])&),
-(* plot vertices thick, except they are bare, circles for external fields *)
-	VertexRenderingFunction->(
-	Which[
-		Not@StringFreeQ[#2[[3]],"leg"],
-			{Text[Style[StringReplace[#2[[3]],"leg":> ""],Sequence@@(indexStyle/.Join[{opts},Options@DSEPlot]),FontSize:>14],#1+{0,0.3}],Disk[#1,0.02]},
-		Not@StringFreeQ[#2[[3]],"S"],
-			bareVertexSymbolFunction[#1],
-		Not@StringFreeQ[#2[[3]],"CO"],
-			coSymbolFunction[#1],
-		Not@StringFreeQ[#2[[3]],"dt R"],
-			regulatorSymbolFunction[#1],
-		Not@StringFreeQ[#2[[3]],"ext"],
-			{Text[Style[StringReplace[#2[[3]],"ext":> ""],Sequence@@(indexStyle/.Join[{opts},Options@DSEPlot]),FontSize:>14],#1+{0,0.3}],Circle[#1,0.1]},
-		True,
-			vertexSymbolFunction[#1]]&),
-		(*PlotLabel->Style[b,Sequence@@(factorStyle/.Join[{opts},Options@DSEPlot]),FontSize:>16],*)
-		FilterRules[Join[{opts},Options@DSEPlot],Options@GraphPlot],
-		SelfLoopStyle->sls],
+Graph[Sequence@@graph, 
+		FilterRules[Join[{opts},Options@DSEPlot],Options@Graph],
+		VertexSize->vsize,
+		GraphLayout -> "SpringElectricalEmbedding"],
 		(* for positive integers explicitly print the +, for positive Rationals also, but it has to be prevented that the + goes into the numerator;
 			RowBox necessary to prevent automatic ordering *)
 {Style[b/.{
@@ -3132,72 +3155,7 @@ DSEPlotList[a_,plotRules_List,opts___?OptionQ]/;FreeQ[a,Rule[_,_],2]:=DSEPlotLis
 DSEPlotList[a_List,plotRules_List,opts___?OptionQ]:=DSEPlotList[{a,1},plotRules,opts];
 
 (* without edge rendering *)
-(* if action is given as list, it has to be transformed first *)
-DSEPlotList[a_List,opts___?OptionQ]/;And @@ (fieldQ /@ Flatten[a]):=
-	DSEPlotList[generateAction[a],opts];
-
-DSEPlotList[a_,opts___?OptionQ]/;FreeQ[a,Rule,Infinity]:=DSEPlotList[vertexDummies[a,opts],opts];
-
-DSEPlotList[{a_List,b_?NumericQ},opts___?OptionQ]:=Module[{exponent,regulatorSymbolFunction,coSymbolFunction,vertexSymbolFunction,bareVertexSymbolFunction,sls},
-
-(* determine the function for drawing the regulator insertion *)
-regulatorSymbolFunction=regulatorSymbol/.Join[{opts},Options@DSEPlot];
-
-(* determine the function for drawing vertices *)
-vertexSymbolFunction=vertexSymbol/.Join[{opts},Options@DSEPlot];
-
-(* determine the function for drawing bare vertices *)
-bareVertexSymbolFunction=bareVertexSymbol/.Join[{opts},Options@DSEPlot];
-
-(* determine the function for drawing an composite operator *)
-coSymbolFunction=coSymbol/.Join[{opts},Options@DSEPlot];
-
-(* SelfLoopStyle is required for zero leg graphs in RGEs to avoid that the regulator symbol is larger than the loop *)
-sls=Which[Not@FreeQ[a,"dt R"],1,
-	True,Automatic];
-	
-(* exponent -1 for inverse propagators *)
-exponent=If[Length@a===2 && FreeQ[a, "P"],"-1","",""];
-
-Labeled[
-GraphPlot[a,
-(* EdgeRenderingFunction deactivated (draws arrows) because the text for each edge is overwritten *)
-(*EdgeRenderingFunction->((Which@@Join[
-	Apply[Sequence,Function[{f},{Not@StringFreeQ[#3,f],{
-	(* arrow for fermions, else line *)
-	arrowLine[#1,#3,fermions]
-	}}]/@ToString/@Flatten@fields,1],
-	{True,{arrowLine[#1,#3,fermions]}}])&),*)
-(* plot vertices thick, except they are bare, circles for external fields *)VertexRenderingFunction->(
-	Which[
-		Not@StringFreeQ[#2[[3]],"leg"],
-			{Text[Style[StringReplace[#2[[3]],"leg":> ""],Sequence@@(indexStyle/.Join[{opts},Options@DSEPlot]),FontSize:>14],#1+{0,0.3}],Disk[#1,0.02]},
-		Not@StringFreeQ[#2[[3]],"S"],
-			bareVertexSymbolFunction[#1],
-		Not@StringFreeQ[#2[[3]],"CO"],
-			coSymbolFunction[#1],
-		Not@StringFreeQ[#2[[3]],"dt R"],
-			regulatorSymbolFunction[#1],
-		Not@StringFreeQ[#2[[3]],"ext"],
-			{Text[Style[StringReplace[#2[[3]],"ext":> ""],Sequence@@(indexStyle/.Join[{opts},Options@DSEPlot]),FontSize:>14],#1+{0,0.3}],Circle[#1,0.1]},
-		True,
-			vertexSymbolFunction[#1]]&),
-		FilterRules[Join[{opts},Options@DSEPlot],Options@GraphPlot],
-		SelfLoopStyle->sls],
-(* for positive integers explicitly print the +, for positive Rationals also, but it has to be prevented that the + goes into the numerator;
-			RowBox necessary to prevent automatic ordering *)
-{Style[b/.{
- 1 :> Style["+", ShowStringCharacters -> False],
- (c_Integer | c_Real | c_Rational)?Positive :> DisplayForm@RowBox[{Style["+", ShowStringCharacters -> False], c}],
- -1 :> Style["-", ShowStringCharacters -> False]},(factorStyle/.Join[{opts},Options@DSEPlot])],
-  Overscript[Style["",FontSize:>50,ShowStringCharacters -> False],Style[exponent,ShowStringCharacters -> False,(factorStyle/.Join[{opts},Options@DSEPlot])]]},
- {Left,Right}
-]
-];
-
-DSEPlotList[a_,opts___?OptionQ]/;FreeQ[a,Rule[_,_],2]:=DSEPlotList[#,opts]&/@a;
-
-DSEPlotList[a_List,opts___?OptionQ]:=DSEPlotList[{a,1},opts];
+DSEPlotList[a_, opts___?OptionQ]:=DSEPlotList[a,{},opts];
 
 DSEPlotList[a___]:=Message[DSEPlot::syntax,a];
 
@@ -3324,22 +3282,28 @@ RGEPlotGrid[rhs_,  {lhs_,exponent_}, len_, opts___?OptionQ] :=
 (* symbols for plotting *)
 
 boxSymbol[x_]:={GrayLevel[0.4],Rectangle[x-{0.1, 0.1},x+{0.1, 0.1}]};
+boxSymbol[x_,{w_,h_}]:={GrayLevel[0.4],Rectangle[x-{0.1w, 0.1h},x+{0.1w, 0.1h}]};
 
-crossSymbol[x_]:=Module[{rad=0.1},
+crossSymbol[x_,{w_,h_}]:=Module[{rad=0.1*Sqrt[w^2+h^2]},
 	{
-	Circle[x, 0.1], 
+	Circle[x, rad], 
     Line[{x+rad{-Sin[\[Pi]/4], -Cos[\[Pi]/4]}, x+rad{Sin[\[Pi]/4], Cos[\[Pi]/4]}}], 
     Line[{x+rad{Sin[\[Pi]/4], -Cos[\[Pi]/4]},x+rad {-Sin[\[Pi]/4], Cos[\[Pi]/4]}}]
 	}
 ];
+crossSymbol[x_]:=crossSymbol[x,{1,1}];
 
-diskSymbol[x_]:={Disk[x,0.1]};
+diskSymbol[x_,{w_,h_}]:={Disk[x,0.1*Sqrt[w^2+h^2]]};
+diskSymbol[x_]:=diskSymbol[x,{1,1}];
 
-diskOpenSymbol[x_]:={Circle[x,0.1]};
+diskOpenSymbol[x_,{w_,h_}]:={Circle[x, 0.1*Sqrt[w^2+h^2]]};
+diskOpenSymbol[x_]:=diskOpenSymbol[x, {1,1}];
 
-diskTinySymbol[x_]:={Disk[x,0.02]};
+diskTinySymbol[x_,{w_,h_}]:={Disk[x,0.02*Sqrt[w^2+h^2]]};
+diskTinySymbol[x_]:=diskTinySymbol[x,{1,1}];
 
-triangleSymbol[x_]:={GrayLevel[0.4],Polygon[{x- {0.1, 0.1}, x + {0.1, 0.0}, x + {-0.1, 0.1}}]};
+triangleSymbol[x_,{w_,h_}]:={GrayLevel[0.4],Polygon[{x- {0.1w, 0.1h}, x + {0.1w, 0.0h}, x + {-0.1w, 0.1h}}]};
+triangleSymbol[x_]:=triangleSymbol[x,{1,1}];
 
 
 (* choice of different regulators *)
