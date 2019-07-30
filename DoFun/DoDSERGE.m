@@ -1789,7 +1789,7 @@ ReleaseHold[Apply[Plus,(a/.#[[2,1]]:> #[[1]]Hold@derivPropagator[#[[2,1]],{Q,q}]
 
 
 (* insert a regulator; don't worry about the fields, they are fixed since the sources should already be zero *)
-(* a minus sign appears here (this minus sign vanished for peropagators only because we are using vertices V instead of derivatives) *)
+(* a minus sign appears here (no $signConvention because no vertices are involved) *)
 insertRegulator[P[{field1_,ind1_},{field2_,ind2_}]]:=ReleaseHold@Module[{dummy1,dummy2},
 	Hold@Sequence[-dR[{field2,dummy1=insDummy[]},{field1,dummy2=insDummy[]}],
 		P[{field1,ind1},{field2,dummy1}],P[{field1,dummy2},{field2,ind2}]]
@@ -3067,25 +3067,24 @@ taken into account, though, by writing a dedicated plot function *)
     GraphElementData["Line"][coords]];
   
   (* extract the proper style and set the arrow *)
-  
-  Cases[plotStyles, {field | antiField@field, 
-      style___} :> Unevaluated[({style, arrowLine[field, ##]} &)]][[1]]
+  Join[Cases[plotStyles, {field | antiField@field, 
+      style___} :> Unevaluated[({style, arrowLine[field, ##]} &)]], {({arrowLine[field, ##]}&)}(* in case no plotStyle matches *)][[1]]
 ]
 
 
 (* auxiliary function for Graph: sets the styles of vertices *)
 
-getVertexShapeFunction[{x_,y_}, label_, {w_, h_}, opts___?OptionQ]/;Not@StringFreeQ[label[[3]],"S"] := bareVertexSymbol[{x,y}]/.Join[{opts},Options@DSEPlotList]
+getVertexShapeFunction[{x_,y_}, label_, {w_, h_}, opts___?OptionQ]/;Not@StringFreeQ[label[[3]],"S"] := bareVertexSymbol[{x,y},{w,h}]/.Join[{opts},Options@DSEPlotList]
 
 getVertexShapeFunction[{x_,y_}, label_, {w_, h_}, opts___?OptionQ]/;Not@StringFreeQ[label[[3]],"dt R"] := regulatorSymbol[{x,y},{w,h}]/.Join[{opts},Options@DSEPlotList]
 
-getVertexShapeFunction[{x_,y_}, label_, {w_, h_}, opts___?OptionQ]/;Not@StringFreeQ[label[[3]],"CO"] := coSymbol[{x,y}]/.Join[{opts},Options@DSEPlotList]
+getVertexShapeFunction[{x_,y_}, label_, {w_, h_}, opts___?OptionQ]/;Not@StringFreeQ[label[[3]],"CO"] := coSymbol[{x,y},{w,h}]/.Join[{opts},Options@DSEPlotList]
 
-getVertexShapeFunction[{x_,y_}, label_, {w_, h_}, opts___?OptionQ]/;Not@StringFreeQ[label[[3]],"leg"] := {Text[Style[StringReplace[label[[3]],"leg":> ""],Sequence@@(indexStyle/.Join[{opts},Options@DSEPlotList]),FontSize:>14],{x,y}+{0,0.3}],Disk[{x,y},0.02]}
+getVertexShapeFunction[{x_,y_}, label_, {w_, h_}, opts___?OptionQ]/;Not@StringFreeQ[label[[3]],"leg"] := {Text[Style[StringReplace[label[[3]],"leg":> ""],Sequence@@(indexStyle/.Join[{opts},Options@DSEPlotList]),FontSize:>14],{x,y}+{0,0.3}]}
 
 getVertexShapeFunction[{x_,y_}, label_, {w_, h_}, opts___?OptionQ]/;Not@StringFreeQ[label[[3]],"ext"] := {Text[Style[StringReplace[label,"ext":> ""],Sequence@@(indexStyle/.Join[{opts},Options@DSEPlotList]),FontSize:>14],{x,y}+{0,0.3}],Circle[{x,y},0.1]}
 
-getVertexShapeFunction[{x_,y_}, label_, {w_, h_}, opts___?OptionQ] := vertexSymbol[{x,y}]/.Join[{opts},Options@DSEPlotList]
+getVertexShapeFunction[{x_,y_}, label_, {w_, h_}, opts___?OptionQ] := vertexSymbol[{x,y},{w,h}]/.Join[{opts},Options@DSEPlotList]
 
 
 (* Plotting graphs using Graph; if a list of directed propagators/fermions is given, arrows will be used;
@@ -3101,15 +3100,16 @@ DSEPlotList[a_List,plotRules_List,opts___?OptionQ]/;And @@ (fieldQ /@ Flatten[a]
 DSEPlotList[a_,plotRules_List,opts___?OptionQ]/;FreeQ[a,Rule,Infinity]:=
 	DSEPlotList[vertexDummies[a,opts],plotRules,opts];
 
-DSEPlotList[{a_List,b_?NumericQ},plotRules_List,opts___?OptionQ]:=Module[{graph, allDirFields, exponent, verts, dirFieldsOrdered, plotRulesAll, vsize},
+DSEPlotList[{a_List,b_?NumericQ},plotRules_List,opts___?OptionQ]:=Module[{graph, allDirFields, exponent, verts, dirFieldsOrdered, plotRulesAll, vsize, edgeLabels},
 
 graph = a;
 
 (* add field style to propagators; if no style is given, add edge labels *)
 If[plotRules==={},
-	graph = Property[#[[1]], EdgeLabels -> #[[2]]] & /@ graph,
-	graph = Property[#[[1]], EdgeShapeFunction -> getEdgeShapeFunction[#, plotRules]] & /@ graph
+	edgeLabels = (#[[1]]->#[[2]])&/@graph,
+	edgeLabels = {}
 ];
+graph = Property[#[[1]], EdgeShapeFunction -> getEdgeShapeFunction[#, plotRules]] & /@ graph;
 
 (* add vertex style *)
 verts = Union@@List@@@a[[All,1]];
@@ -3128,8 +3128,8 @@ allDirFields=getDirectedFieldsList[a];
 dirFieldsOrdered=a;
 
 (* a smaller regulator symbol size is required for zero leg graphs in RGEs to avoid that the regulator symbol is larger than the loop *)
-vsize = Automatic;
-If[Not@FreeQ[a,"dt R"], vsize=0.3];
+vsize = 0.15;
+If[Not@FreeQ[a,"dt R"] && And@@(StringFreeQ[#, "leg"]&/@a[[All,2]]), vsize=0.03];
 
 (* exponent -1 for inverse propagators *)
 exponent=If[Length@a===2 && FreeQ[a, "P"],"-1","",""];
@@ -3138,7 +3138,8 @@ Labeled[
 Graph[Sequence@@graph, 
 		FilterRules[Join[{opts},Options@DSEPlot],Options@Graph],
 		VertexSize->vsize,
-		GraphLayout -> "SpringElectricalEmbedding"],
+		GraphLayout -> "SpringElectricalEmbedding",
+		EdgeLabels -> edgeLabels],
 		(* for positive integers explicitly print the +, for positive Rationals also, but it has to be prevented that the + goes into the numerator;
 			RowBox necessary to prevent automatic ordering *)
 {Style[b/.{
@@ -3281,10 +3282,10 @@ RGEPlotGrid[rhs_,  {lhs_,exponent_}, len_, opts___?OptionQ] :=
 
 (* symbols for plotting *)
 
-boxSymbol[x_]:={GrayLevel[0.4],Rectangle[x-{0.1, 0.1},x+{0.1, 0.1}]};
-boxSymbol[x_,{w_,h_}]:={GrayLevel[0.4],Rectangle[x-{0.1w, 0.1h},x+{0.1w, 0.1h}]};
+boxSymbol[x_,{w_,h_}]:={GrayLevel[0.4],Rectangle[x-{w, h},x+{w, h}]};
+boxSymbol[x_]:=boxSymbol[x, {1,1}];
 
-crossSymbol[x_,{w_,h_}]:=Module[{rad=0.1*Sqrt[w^2+h^2]},
+crossSymbol[x_,{w_,h_}]:=Module[{rad=Sqrt[w^2+h^2]},
 	{
 	Circle[x, rad], 
     Line[{x+rad{-Sin[\[Pi]/4], -Cos[\[Pi]/4]}, x+rad{Sin[\[Pi]/4], Cos[\[Pi]/4]}}], 
@@ -3293,16 +3294,16 @@ crossSymbol[x_,{w_,h_}]:=Module[{rad=0.1*Sqrt[w^2+h^2]},
 ];
 crossSymbol[x_]:=crossSymbol[x,{1,1}];
 
-diskSymbol[x_,{w_,h_}]:={Disk[x,0.1*Sqrt[w^2+h^2]]};
+diskSymbol[x_,{w_,h_}]:={Disk[x,Sqrt[w^2+h^2]]};
 diskSymbol[x_]:=diskSymbol[x,{1,1}];
 
-diskOpenSymbol[x_,{w_,h_}]:={Circle[x, 0.1*Sqrt[w^2+h^2]]};
+diskOpenSymbol[x_,{w_,h_}]:={Circle[x, Sqrt[w^2+h^2]]};
 diskOpenSymbol[x_]:=diskOpenSymbol[x, {1,1}];
 
 diskTinySymbol[x_,{w_,h_}]:={Disk[x,0.02*Sqrt[w^2+h^2]]};
 diskTinySymbol[x_]:=diskTinySymbol[x,{1,1}];
 
-triangleSymbol[x_,{w_,h_}]:={GrayLevel[0.4],Polygon[{x- {0.1w, 0.1h}, x + {0.1w, 0.0h}, x + {-0.1w, 0.1h}}]};
+triangleSymbol[x_,{w_,h_}]:={GrayLevel[0.4],Polygon[{x- {w, h}, x + {w, 0}, x + {-w, h}}]};
 triangleSymbol[x_]:=triangleSymbol[x,{1,1}];
 
 
