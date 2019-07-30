@@ -82,6 +82,7 @@
         -) replaced identifyGraphs by identifyGraphsRGE --> only one function now which is called identifyGraphs; removed compareGraphs and compareGraphs2
         -) new options of DSEPlot/RGEPlot: bareVertexSymbol, vertexSymbol, coSymbol
         -) new symbols for plotting: diskSymbol, diskOpenSymbol, diskTinySymbol, triangleSymbol
+        -) removed getExtGrassmannOrder and related functions
 *)
 
 
@@ -126,7 +127,6 @@ extractDiagramType::usage="";
 groupDiagrams::usage="";
 CO::usage="";
 coSymbol::usage="";
-replacedFieldCO::usage="";
 connectedQ::usage="";
 disconnectedQ::usage="";
 getConnected::usage="";
@@ -138,10 +138,6 @@ doCO::usage="";
 COPlot::usage="";
 
 (* temporary *)
-	replaceFieldsCO;
-	firstDerivReplacementCO;
-	replacementCalcStepCO;
-	replacementCalcCO;
 
 
  	
@@ -917,7 +913,7 @@ Options[DSEPlot]={
 	factorStyle->{FontSize:>16}, indexStyle->{FontSize:>14}, arrowHeadSize->0.075,
 	output->complete,
 	regulatorSymbol->boxSymbol, vertexSymbol->diskSymbol, coSymbol->triangleSymbol, bareVertexSymbol->diskTinySymbol,
-	ImageSize->200,
+	ImageSize->100,
 	type->"DSE"};
 
 Options[DSEPlotList]:=Options[DSEPlot];
@@ -1055,7 +1051,6 @@ private functions (alphabetic)
 	DSEPlotList
 	firstDerivReplacement
 	getDirectedFieldsList
-	getExtGrassmannOrder
 	getGraphCharacteristic
 	getInteractionList
 	getSignature
@@ -1428,72 +1423,25 @@ getSigns[exp_] :=
 
 
 (* ::Section:: *)
-(* Composite operators *)
-
-
-replaceFieldsCO[a__]:=replacementCalcCO@firstDerivReplacementCO[a]//Expand;
-
-
-firstDerivReplacementCO[a_Times|a_Plus]:=firstDerivReplacementCO[#]&/@a;
-
-firstDerivReplacementCO[a_?NumericQ]:=a;
-
-firstDerivReplacementCO[op[S_,c_List]]:=op[S,c];
-
-(*firstDerivReplacementCO[op[S___,b__List,c_List]]:=op[S,Sequence@@(replacedFieldCO1/@{b}),c];*)
-
-firstDerivReplacementCO[op[b___,c_List]]:=op[Sequence@@(replacedFieldCO/@{b}),c];
-
-replacedFieldCO[a_CO]:=a;
-
-
-
-replacementCalcStepCO[a_Times|a_Plus]:=replacementCalcStepCO/@a;
-
-replacementCalcStepCO[a_?NumericQ]:=a;
-
-replacementCalcStepCO[a_op]/;FreeQ[a,replacedFieldCO]:=a;
-
-(* the utmost right two terms, quite simple *)
-replacementCalcStepCO[op[a___,replacedFieldCO[{Q_,q_}],c_List]]:=(op[a,{Q,q},c]+
-	op[a,P[{Q,q},c/.{d_,e_}:>{d,e}]]);
-
-(* all higher terms *)
-replacementCalcStepCO[op[a___,replacedFieldCO[{Q_,q_}],c__/;FreeQ[{c},replacedFieldCO]]]:=Module[{ind1,ind2},
-	op[a,{Q,q},c]+
-(* propagator and derivative w.r.t. field *)Plus@@((op[a, P[{Q,q},#],Sequence@@DeleteCases[{c},#1]])&)/@Cases[{c},{_?fieldQ,_}]+
-(* propagator and derivative w.r.t. CO *)
-(* propagator and derivative w.r.t. vertex *)Plus@@(op[a,P[{Q,q},{$dummyField,ind1=insDummy[]}],Sequence@@DeleteCases[{c},#1],derivVertex[#1,{$dummyField,ind1}]]&)/@{c}+
-(* propagator and derivative w.r.t. propagator *)Plus@@(op[a, P[{Q,q},{$dummyField,ind2=insDummy[]}],
-	Sequence@@DeleteCases[{c},#1],derivPropagator[#1,{$dummyField,ind2}]]&)/@{c}
-];
-
-
-
-replacementCalcCO[a_]:=FixedPoint[replacementCalcStepCO,a,50];
-
-
-
-
-(* ::Section:: *)
 (* Differentiation *)
 
 
 (* for the first derivative differentiate once and then replace the fields by the corresponding expressions
 using replaceFields *)
 
-
-replaceFields[a__]:=sortDummies[replacementCalc@firstDerivReplacement[a]//Expand];
+replaceFields[a__]:=replacementCalc@firstDerivReplacement[a]//Expand;
 
 
 firstDerivReplacement[a_Times|a_Plus]:=firstDerivReplacement[#]&/@a;
 
 firstDerivReplacement[a_?NumericQ]:=a;
 
-firstDerivReplacement[op[s___sf,S_,c_List]]:=op[s,S,c];
+firstDerivReplacement[op[b___,c_List]]:=op[Sequence@@(replacedField/@{b}),c];
 
-firstDerivReplacement[op[s___sf,S_,b__List,c_List]]:=op[s,S,Sequence@@(replacedField/@{b}),c];
 
+(* no action on S and CO *)
+replacedField[a_S]:=a;
+replacedField[a_CO]:=a;
 
 
 replacementCalcStep[a_Times|a_Plus]:=replacementCalcStep/@a;
@@ -1503,18 +1451,17 @@ replacementCalcStep[a_?NumericQ]:=a;
 replacementCalcStep[a_op]/;FreeQ[a,replacedField]:=a;
 
 (* the utmost right two terms, quite simple *)
-replacementCalcStep[op[S_,a___,replacedField[{Q_,q_}],c_List]]:=(op[S,a,{Q,q},c]+
-	op[S,a,sf[{Q,q},{{Q,q}}],P[{Q,q},c/.{d_,e_}:>{d,e}]]);
+replacementCalcStep[op[a___,replacedField[{Q_,q_}],c_List]]:=(op[a,{Q,q},c]+
+	op[a,sf[{Q,q},{{Q,q}}],P[{Q,q},c/.{d_,e_}:>{d,e}]]);
 
 (* all higher terms *)
-replacementCalcStep[op[S_,a___,replacedField[{Q_,q_}],c__/;FreeQ[{c},replacedField]]]:=Module[{ind1,ind2},
-	op[S,a,{Q,q},c]+
-(* propagator and derivative w.r.t. field *)Plus@@((op[S,a,sf[{Q,q},{{Q,q}}], P[{Q,q},#],Sequence@@DeleteCases[{c},#1]])&)/@Cases[{c},{_?fieldQ,_}]+
-(* propagator and derivative w.r.t. vertex *)Plus@@(op[S,a,P[{Q,q},{$dummyField,ind1=insDummy[]}],Sequence@@DeleteCases[{c},#1],derivVertex[#1,{$dummyField,ind1}]]&)/@{c}+
-(* propagator and derivative w.r.t. propagator *)Plus@@(op[S,a, P[{Q,q},{$dummyField,ind2=insDummy[]}],
+replacementCalcStep[op[a___,replacedField[{Q_,q_}],c__/;FreeQ[{c},replacedField]]]:=Module[{ind1,ind2},
+	op[a,{Q,q},c]+
+(* propagator and derivative w.r.t. field *)Plus@@((op[a,sf[{Q,q},{{Q,q}}], P[{Q,q},#],Sequence@@DeleteCases[{c},#1]])&)/@Cases[{c},{_?fieldQ,_}]+
+(* propagator and derivative w.r.t. vertex *)Plus@@(op[a,P[{Q,q},{$dummyField,ind1=insDummy[]}],Sequence@@DeleteCases[{c},#1],derivVertex[#1,{$dummyField,ind1}]]&)/@{c}+
+(* propagator and derivative w.r.t. propagator *)Plus@@(op[a, P[{Q,q},{$dummyField,ind2=insDummy[]}],
 	Sequence@@DeleteCases[{c},#1],derivPropagator[#1,{$dummyField,ind2}]]&)/@{c}
 ];
-
 
 
 replacementCalc[a_]:=FixedPoint[replacementCalcStep,a,50];
@@ -2252,16 +2199,12 @@ replaceVertices[c_Plus,rest___]:=replaceVertices[#,rest]&/@c;
 replaceVertices[a_?NumericQ,___]:=a;
 
 replaceVertices[d_op,vertexTest_Symbol,extFields_List,opts___?OptionQ]:=Module[{propagators,propInds, propagatorsF,
-	propagatorsB, propIndsF, propIndsB,c,vertsReplaced,extGrassmannSign,shouldBeSign,extGrassmann},
+	propagatorsB, propIndsF, propIndsB,c,vertsReplaced},
 
-(* reduce the list of the legs to the Grassmann fields *)
-extGrassmann=extFields/.{_?cFieldQ,_}:>Sequence[];	
-	
 (* indices of the propagators *)
 c=d/.traceIndex1:>traceIndex2 (* close the trace here so that all variants are taken into account *);
 propagators=Cases[c,P[___],Infinity];
 propInds=Cases[propagators,{_?fieldQ,_},Infinity];
-
 
 propagatorsF=Select[propagators,(Head@#[[1,1]]==fermion)&];
 propagatorsB=Select[propagators,Head@#[[1,1]]==boson&];
@@ -2273,19 +2216,8 @@ propIndsB=Cases[propagatorsB,{_?fieldQ,_},Infinity];
 vertsReplaced=c/.Plus:>List/.{{$dummyField,ind_}:> (Flatten@Cases[propInds,{_,ind}]),
 	{$dummyFieldF|$dummyFieldAF,ind_}:> (Flatten@Cases[propIndsF,{_,ind}]),
 	{$dummyFieldB,ind_}:> (Flatten@Cases[propIndsB,{_,ind}])}
-	/.V[___,{},___]:>0/.V[b__]:> 0/;(Not@vertexTest[V[b]]);
-
-(* determine signs from external Grassman fields only for RGEs *)
-If[RGERules==propagatorCreationRules/.Join[{opts},Options@setSourcesZero],
-	extGrassmannSign=Signature@getExtGrassmannOrder[vertsReplaced,extFields];
-	shouldBeSign=Signature@extGrassmann;,
-	extGrassmannSign=1;shouldBeSign=1;,
-	extGrassmannSign=1;shouldBeSign=1];
-
-(* override previous Grassmann signs *)
-extGrassmannSign=1;
-shouldBeSign=1;
-extGrassmannSign shouldBeSign vertsReplaced
+	/.V[___,{},___]:>0/.V[b__]:> 0/;(Not@vertexTest[V[b]])
+	
 ];
 
 
@@ -2333,72 +2265,6 @@ replaceVerticesBrokenPhase[exp_,fields_,numberExtFields_Integer,interactions_Lis
 	(exp/.V[a___]:>(Plus@@op@@@newVertexSum[V[a],fieldsToAdd]))
 ]
  
- 
-
-(* determine the order of external Grassmann indices; the present algorithm is used, since the order of the propagators
-   and vertices (which could also be used) is mixed up above by some sorting functions *)    
- 
-(* cases where it is no action is required *)
-getExtGrassmannOrder[0,rest___]:={{}};
-getExtGrassmannOrder[_,{{}},rest___]:={{}};
-
-(* for a product apply it only on the op part *)
-getExtGrassmannOrder[exp_Times,rest___]:=getExtGrassmannOrder[Cases[exp,_op,Infinity][[1]],rest];
-(* apply for each element of a list *)
-getExtGrassmannOrder[exp_List,rest___]:=getExtGrassmannOrder[#,rest]&/@exp;
-(* no Grassman variabes *)
-getExtGrassmannOrder[exp_op,extInds_List]/;And@@(cFieldQ/@extInds[[All,1]]):={{}}
-getExtGrassmannOrder[exp_op,extInds_List]:=Module[
-	{propRules,expWOProps,firstVertex,allInds,intInds,nIterations},
-	
-	(* determine field replacement rules from the propagators *)
-	propRules = Cases[exp /. P[___, {_, traceIndex2}, ___] :> Sequence[], P[a___] :> Rule[a], \[Infinity]];
-	(* discard the propagators and connect the vertices directly *)
-	expWOProps=exp/. P[___] :> Sequence[]/.propRules;
-	
-	(* starting expression: determined by the vertex with the index traceIndex2 *)
-    firstVertex = Cases[expWOProps, V[___, {_, traceIndex2}, ___]][[1]];
-    
-    (* determine all fields with their indices *)
-    allInds = Flatten[List @@ List @@@ expWOProps, 1];
-    
-    (* determine all internal fields/indices except the index for closing the trace*)
-    intInds = Union@Select[allInds, Count[allInds, #] == 2 &] /. {_,traceIndex2} :> Sequence[];
-    
-    (* determine number of iterations *)
-    nIterations=Count[exp,V[___]];
-    
-	Flatten[Last@Reap[Nest[getExtGrassmannOrderIteration[#[[1]], #[[2]], #[[3]], extInds] &, 
-		{expWOProps, firstVertex, intInds},  nIterations], order], 2] /. {_?cFieldQ, _} :> Sequence[]
-		
-];
-
-(* get the external grassmann legs of a vertex and pass on the new expression without this leg *)
-(* last instance *)
-getExtGrassmannOrderIteration[op[a_V], a_V, intInds_,extInds_] := 
-  Sow[Cases[a, _?(MemberQ[extInds, #] &)], order];
-(* standard iteration; yields as result the new expression without the "starting vertex", the new "starting vertex" and
-   the remaining indices *)
-getExtGrassmannOrderIteration[exp_op, startingVertex_, intIndices_List, extInds_List] := 
- Module[{newExp, newInternalIndices, nextStartingVertex},
- 	
-  (* sow the external index of the starting vertex *)	
-  Sow[Cases[startingVertex, _?(MemberQ[extInds, #] &)], order];
-  
-  (* delete the starting vertex from the working expression *)
-  newExp = exp /. startingVertex  :> Sequence[];
-  
-  (* determine the remaining indices *)
-  newInternalIndices = DeleteCases[intIndices, _?(MemberQ[startingVertex, #] &)];
-  
-  (* determine the next starting vertex *)
-  nextStartingVertex=(Select[newExp, MemberQ[#, Alternatives @@ startingVertex] &] /. 
-      op[] :> {{}})[[1]];
-    
-  {newExp, nextStartingVertex, newInternalIndices}
-];
-
-
 
 
 (* for Grassmann fields ordering might be necessary to have anti-fields left of fields;
@@ -2758,7 +2624,7 @@ doCO[action_Times|action_Plus|action_List, compOp_, filter_:(True&), opts___?Opt
 	allFields = Cases[singleExp, {_?fieldQ, _}, Infinity];
 	extFields = Select[allFields, Count[allFields, #]==1&];
 		
-	compOpFieldsRep = replaceFieldsCO@compOp;
+	compOpFieldsRep = replaceFields@compOp;
 	compOpFieldsRepS0 = setSourcesZero[compOpFieldsRep, action, {}]	;
 	compOpFieldsRepS0Filtered = Select[compOpFieldsRepS0, filter];
 	(* currently the identification does not work reliably for disconnected diagrams, thus deactivate *) 
@@ -3074,15 +2940,20 @@ taken into account, though, by writing a dedicated plot function *)
 
 (* auxiliary function for Graph: sets the styles of vertices *)
 
-getVertexShapeFunction[{x_,y_}, label_, {w_, h_}, opts___?OptionQ]/;Not@StringFreeQ[label[[3]],"S"] := bareVertexSymbol[{x,y},{w,h}]/.Join[{opts},Options@DSEPlotList]
+getVertexShapeFunction[{x_,y_}, label_, {w_, h_}, opts___?OptionQ]/;Not@StringFreeQ[label[[3]],"S"] := 
+	bareVertexSymbol[{x,y},{w,h}]/.Join[{opts},Options@DSEPlotList]
 
-getVertexShapeFunction[{x_,y_}, label_, {w_, h_}, opts___?OptionQ]/;Not@StringFreeQ[label[[3]],"dt R"] := regulatorSymbol[{x,y},{w,h}]/.Join[{opts},Options@DSEPlotList]
+getVertexShapeFunction[{x_,y_}, label_, {w_, h_}, opts___?OptionQ]/;Not@StringFreeQ[label[[3]],"dt R"] :=
+	regulatorSymbol[{x,y},{w,h}]/.Join[{opts},Options@DSEPlotList]
 
-getVertexShapeFunction[{x_,y_}, label_, {w_, h_}, opts___?OptionQ]/;Not@StringFreeQ[label[[3]],"CO"] := coSymbol[{x,y},{w,h}]/.Join[{opts},Options@DSEPlotList]
+getVertexShapeFunction[{x_,y_}, label_, {w_, h_}, opts___?OptionQ]/;Not@StringFreeQ[label[[3]],"CO"] :=
+	coSymbol[{x,y},{w,h}]/.Join[{opts},Options@DSEPlotList]
 
-getVertexShapeFunction[{x_,y_}, label_, {w_, h_}, opts___?OptionQ]/;Not@StringFreeQ[label[[3]],"leg"] := {Text[Style[StringReplace[label[[3]],"leg":> ""],Sequence@@(indexStyle/.Join[{opts},Options@DSEPlotList]),FontSize:>14],{x,y}+{0,0.3}]}
+getVertexShapeFunction[{x_,y_}, label_, {w_, h_}, opts___?OptionQ]/;Not@StringFreeQ[label[[3]],"leg"] :=
+	{Text[Style[StringReplace[label[[3]],"leg":> ""],Sequence@@(indexStyle/.Join[{opts},Options@DSEPlotList]),FontSize:>14],{x,y}+{0,0.3}]}
 
-getVertexShapeFunction[{x_,y_}, label_, {w_, h_}, opts___?OptionQ]/;Not@StringFreeQ[label[[3]],"ext"] := {Text[Style[StringReplace[label,"ext":> ""],Sequence@@(indexStyle/.Join[{opts},Options@DSEPlotList]),FontSize:>14],{x,y}+{0,0.3}],Circle[{x,y},0.1]}
+getVertexShapeFunction[{x_,y_}, label_, {w_, h_}, opts___?OptionQ]/;Not@StringFreeQ[label[[3]],"ext"] :=
+	{Text[Style[StringReplace[label[[3]],"ext":> ""],Sequence@@(indexStyle/.Join[{opts},Options@DSEPlotList]),FontSize:>14],{x,y}+{0,0.3}],Circle[{x,y},0.1]}
 
 getVertexShapeFunction[{x_,y_}, label_, {w_, h_}, opts___?OptionQ] := vertexSymbol[{x,y},{w,h}]/.Join[{opts},Options@DSEPlotList]
 
