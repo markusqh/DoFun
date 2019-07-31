@@ -118,28 +118,6 @@ vertexDummies;
 
 
 (* symbols *)
-
-(* new functions, TODO: write usage *)
-
-getVertexNumbers::usage="";
-getDiagramType::usage="";
-extractDiagramType::usage="";
-groupDiagrams::usage="";
-CO::usage="";
-coSymbol::usage="";
-connectedQ::usage="";
-disconnectedQ::usage="";
-getConnected::usage="";
-getDisconnected::usage="";
-onePIQ::usage="";
-get1PI::usage="";
-getNon1PI::usage="";
-doCO::usage="";
-COPlot::usage="";
-
-(* temporary *)
-
-
  	
 $bareVertexSymbol::usage="Symbol representing a bare vertex when using shortExpression.
 Default value: S.";
@@ -382,6 +360,8 @@ checkSyntax[op[a,S[{A, i1}, {B, i2}], {A, i1}, {B, j1}]]
 checkSyntax[dR[{A, i}, {A, j}, {A, l}]]
 ";
 
+CO::usage="Represents a composite operator.";
+
 complete::usage="Possible value for the option output of DSEPlot and RGEPlot.
 See ?output for details and examples.
 "
@@ -393,6 +373,10 @@ Example:
 setFields[{A}, {{c,cb}}, {{phi,phib}}];
 complexFieldQ@phi
 ";
+
+connectedQ::usage="Predicate to determine if a diagram is connected.";
+
+COPlot::usage="Plot equation for correlation functions of composite operators.";
 
 countTerms::usage="Counts the number of graphs appearing in an expression.\n
 Syntax:
@@ -420,6 +404,8 @@ Examples:
 derivRGE[op[V[{phi, i}, {phi, s}, {phi, t}], P[{phi, s}, {phi, t}]], {phi, j}]
 derivRGE[op[V[{phi, i}, {phi, s}, {phi, t}], P[{phi, s}, {phi, t}]], {phi, j}, {phi, l}]
 ";
+
+disconnectedQ::usage="Predicate to determine if a diagram is disconnected.";
 
 doCO::usage = "Derives the equation for the correlation function of composite operators.";
 
@@ -545,6 +531,8 @@ even::usage="Specifies that a field has only interactions with an even number of
 See ?generateAction for details and examples.
 ";
 
+extractDiagramType::usage="Extract diagrams of a certain type. Known diagram types are Values[diagramTypes].";
+
 factorStyle::usage="Options for the style of all text in DSE and RGE plots except indices and field labels.
 Standard value: {FontSize:>16}.\n
 Example:
@@ -592,6 +580,14 @@ generateAction[{{phi, phib}, {phib, phib, phi, phi}}, {phi, phib}]
 bosonQ@phi
 ";
 
+get1PI::usage="Extract diagrams which are 1PI.";
+
+getConnected::usage="Extract connected diagrams.";
+
+getDiagramType::usage="Get the type of the diagram. Known diagram types are Values[diagramTypes].";
+
+getDisconnected::usage="Extract disconnected diagrams.";
+
 getInteractionList::usage="Generates the list of interactions from a given symbolic action.\n
 Syntax:
 getInteractionList[ac] where ac is a symbolic action written in terms of op functions.\n
@@ -609,6 +605,10 @@ DSEPlot[dse, {{phi, Black}}]
 getLoopNumber@dse
 ";
 
+getNon1PI::usage="Extract diagrams which are 1PI.";
+
+getVertexNumbers::usage="Extract the number of vertices in a diagram.";
+
 grassmannQ::usage="Determines if an expression is defined as a Grassmannian field.\n
 Syntax:
 grassmannQ[f] where f is a field.\n
@@ -616,6 +616,8 @@ Example:
 setFields[{A}, {{c,cb}}, {{phi,phib}}];
 grassmannQ/@{A,c,cb,phi,phib}
 ";
+
+groupDiagrams::usage="Group diagrams by their type. Known diagram types are Values[diagramTypes].";
 
 identifyGraphs::usage="Adds up equivalent graphs in RGEs.
 Note: identifyGraphs works different than identifyGraphs.\n
@@ -648,6 +650,8 @@ See ?doDSE and ?doRGE for details and examples.
 odd::usage="Specifies that a field can have interactions with an odd number of legs. Opposite to even. Does not need to be used explicitly.
 See ?generateAction for details and examples.
 ";
+
+onePIQ::usage="Predicate to determine if a diagram is 1PI.";
 
 op::usage="The function op is used for symbolic and algebraic expressions:\n\n
 Symbolic form:
@@ -1180,6 +1184,10 @@ The expression causing the error is `1`.";
 
 getInteractionList::syntax="There was a syntax error in getInteractionList.\n
 Make sure the input has the form of getInteractionList[action_]. For more details use ?getInteractionList.\n
+The expression causing the error is `1`.";
+
+identifyGraphs::syntax="There was a syntax error in identifyGraphs.\n
+Make sure the input has the correct form. For more details use ?identifyGraphs.\n
 The expression causing the error is `1`.";
 
 setFields::noList="There is a syntax error in setFields, because where a pair of Grassmann or complex bosonic fields was expected, something else was encountered.\n
@@ -1889,7 +1897,7 @@ getGraphCharacteristic[graph_op, extLegs_List] :=
 Includes effect of the deprecated function orderFermions. *)
 
 sortCanonical[b_op, derivatives_List] := 
- Module[{ordered, fieldValues, i, intIndices, props, const,
+ Module[{ordered, fieldValues, i, intIndices, extFieldIndices, props, const,
  	connectedLeg, intIndexAss, intVertsAss, orderV, orderP, orderR, intVerts, extVerts},
 
   (* constant to distinguish internal from external indices *)
@@ -1907,9 +1915,14 @@ sortCanonical[b_op, derivatives_List] :=
   (* assign each index a number for sorting: 
   external ones by position in derivatives, 
   internal ones by their connection to external ones*)
+
+  extFieldIndices = Cases[b, {a_?fieldQ, j_}:>j];
   
   (* get internal indices *)
   intIndices = Complement[Union@Cases[b, {a_?fieldQ, j_} :> j, Infinity], derivatives[[All, 2]]];
+  
+  (* delete external field indices *)
+  intIndices = Complement[intIndices, extFieldIndices];
   
   (* set up association for external indices *)
   fieldValues = Association @@ Table[derivatives[[i, 2]] -> i, {i, 1, Length[derivatives]}];
