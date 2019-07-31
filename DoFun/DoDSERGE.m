@@ -443,6 +443,7 @@ dse=doDSE[{{phi, phi}, {phi, phi, phi, phi}}, {phi, phi}]
 DSEPlot[dse, {{phi,Black}}]
 
 Two-point DSE of an O(N) symmetric scalar theory in the phase with broken symmetry. Two different ansaetze are given.
+setFields[{phi}];
 dse1 = doDSE[{{phi, phi}, {phi, phi, phi, phi}}, {phi, phi}, symmetry -> broken, ansatz :> {{phi, phi, phi, phi}}];
 DSEPlot[dse1, {{phi, Black}}]
 dse2 = doDSE[{{phi, phi}, {phi, phi, phi, phi}}, {phi, phi}, symmetry -> broken, ansatz :> {{phi, 6}}];
@@ -450,15 +451,18 @@ DSEPlot[dse2, {{phi, Black}}]
 
 Three-gluon DSE of Landau gauge Yang-Mills theory with the dressed four-point vertices discarded by using a test function for all vertices
 Clear@vTest; vTest[a_V] := Length@a < 4;
+setFields[{A},{{c,cb}}];
 dse = doDSE[{{A, A}, {c, cb}, {A, A, A}, {A, cb, c}, {A, A, A, A}}, {A, A, A}, {{A, A}, {c, cb}}, vTest];
 DSEPlot[dse, {{A, Red}, {c, Green, Dashed}}]
 
 Three-gluon DSE of Landau gauge Yang-Mills theory with the dressed four-point vertices discarded by specifying an ansatz for the effective action
+setFields[{A},{{c,cb}}];
 dse = doDSE[{{A, A}, {c, cb}, {A, A, A}, {A, cb, c}, {A, A, A, A}}, {A, A, A}, {{A, A}, {c, cb}}, ansatz -> {{A, A, A}, {A, cb, c}}];
 DSEPlot[dse, {{A, Red}, {c, Green, Dashed}}]
 
 (* TODO Rewrite this example without specificFieldDefinitions *)
 Three-point DSE of a theory with bosonic fields A, phi, and phib which mix at the two-point level, i.e., additional propagators have to be given in an extra argument.
+setFields[{A},{},{{phi,phib}}];
 dse = doDSE[{{A, A}, {phi, phib}, {A, phi}, {A, phib}, {A, phib, phi}}, {A, A}, {{phi, phi}, {phib, phib}}, specificFieldDefinitions -> {A, phi, phib}]
 DSEPlot[dse]
 ";
@@ -483,24 +487,29 @@ Possible options are:
 Note that the allowed propagators will be taken from ac if the propagators argument is not given. It is required, e.g., for actions with fields mixing at the two-point level.\n
 Examples:
 Two-point RGE of an O(N) symmetric scalar theory in the symmetric phase
+setFields[{phi}];
 rge=doRGE[{{phi, phi}, {phi, phi, phi, phi}}, {phi, phi}]
 RGEPlot[rge,{{phi,Black}}, output->forceEquation]
 
 Two-point RGE of an O(N) symmetric scalar theory in the phase with broken symmetry
+setFields[{phi}];
 rge=doRGE[{{phi, phi}, {phi, phi, phi, phi}}, {phi, phi}, symmetry->broken]
 RGEPlot[rge,{{phi,Black}}]
 
 Three-gluon RGE of Landau gauge Yang-Mills theory with the four-point vertices discarded
 Clear@vTest; vTest[a_V] := Length@a < 4;
+setFields[{A},{{c,cb}}];
 rge = doRGE[{{A, A}, {c, cb}, {A, A, A}, {A, cb, c}, {A, A, A, A}}, {A, A, A}, {{A, A}, {c, cb}}, vTest];
 RGEPlot[rge, {{A, Red}, {c, Green, Dashed}}]
 
 Three-point RGE of phi^3 theory with no regulator insertions
+setFields[{phi}];
 rge = doRGE[{{phi, phi}, {phi,  phi, phi}}, {phi, phi, phi}, tDerivative -> False]
 RGEPlot[rge, {{phi, Black}}, output -> forceEquation]
 
 (* TODO: Rewrite this example without specificFieldDefinitions *)
 Three-point RGE of a theory with bosonic fields a, phi, and phib which mix at the two-point level, i.e., additional propagators have to be given in an extra argument. No regulator insertions performed.
+setFields[{A},{},{{phi,phib}}];
 rge = doRGE[{{A, A}, {phi, phib}, {A, phi}, {A, phib}, {A, phib, phi}}, {A, A, A}, {{phi, phi}, {phib, phib}}, specificFieldDefinitions -> {A, phi, phib}, tDerivative -> False]
 RGEPlot[rge]
 ";
@@ -520,18 +529,22 @@ DSEPlot accepts several options:
  -) factorStyle: Style settings for the factors, see ?factorStyle for details.\n
 Examples:
 The gluon two-point DSE of Landau gauge Yang-Mills theory
+setFields[{A},{{c,cb}}];
 dse = doDSE[{{A, A}, {c, cb}, {A, cb, c}, {A, A, A}, {A, A, A, A}}, {A, A}];
 DSEPlot[dse]
 
 The gluon two-point DSE of Landau gauge Yang-Mills theory with gluons in red and ghosts dashed in green and four graphs per row
+setFields[{A},{{c,cb}}];
 dse = doDSE[{{A, A}, {c, cb}, {A, cb, c}, {A, A, A}, {A, A, A, A}}, {A, A}];
 DSEPlot[dse,  {{A, Red}, {c, Green, Dashed}}, 4]
 
-The graphs of the gluon two-point DSE of Landau gauge Yang-Mills theory in a list 
+The graphs of the gluon two-point DSE of Landau gauge Yang-Mills theory in a list
+setFields[{A},{{c,cb}}]; 
 dse = doDSE[{{A, A}, {c, cb}, {A, cb, c}, {A, A, A}, {A, A, A, A}}, {A, A}];
 DSEPlot[dse,  {{A, Red}, {c, Green}}, output -> List]
 
 The complete two-point DSE of a free theory
+setFields[{phi}];
 dse = doDSE[{{phi, 2}}, {phi, phi}];
 DSEPlot[dse,  {{phi, Black}}, output -> forceEquation]
 
@@ -549,6 +562,7 @@ extractDiagramType::usage="Extract diagrams of a certain type. Known diagram typ
 factorStyle::usage="Options for the style of all text in DSE and RGE plots except indices and field labels.
 Standard value: {FontSize:>16}.\n
 Example:
+setFields[{phi}];
 rge = doRGE[{{phi, 4}}, {{phi, i}, { phi, j}}];
 RGEPlot[rge, {{phi, Black}}, factorStyle -> {FontSize -> 20, Red, FontWeight -> Bold}]
 ";
@@ -585,6 +599,7 @@ The list of interactions can have the following elements:
  -) a bosonic field, its maximal multiplicity and the argument even to indicate that only interactions with an even number of fields involved should be taken into account, e.g., {phi, 4, even} will give two- and four-point interactions
  -) a pair of bosonic complex fields or a pair of Grassmann fields and the maximal multiplicity of the pairs, e.g., {psi, psib, 2} will give the two- and the four-point functions\n
 Examples:
+setFields[{A,phi},{{psi,psib}}];
 generateAction[{{A,A},{A,A,A}}]
 generateAction[{{phi, 4}}]
 generateAction[{{phi, 4, even}}]
@@ -605,6 +620,7 @@ getInteractionList::usage="Generates the list of interactions from a given symbo
 Syntax:
 getInteractionList[ac] where ac is a symbolic action written in terms of op functions.\n
 Example:
+setFields[{A}];
 getInteractionList[1/2 op[S[{A, r1}, {A, s1}], {A, r1}, {A, s1}] - 1/6 op[S[{A, u1}, {A, v1}, {A, w1}], {A, u1}, {A, v1}, {A, w1}]]
 ";
  
@@ -613,6 +629,7 @@ Syntax:
 getLoopNumber[expr] where expr is a single graph yields the number of loops of expr.
 getLoopNumber[expr] where expr is a sum of graph yields a list with the numbers of loops of each single graph.\n
 Example:
+setFields[{phi}];
 dse = doDSE[{{phi, 4}}, {phi, phi}];
 DSEPlot[dse, {{phi, Black}}]
 getLoopNumber@dse
@@ -694,7 +711,6 @@ sortCanonical::usage="Orders the fields in vertices in a canonical way:
 -) anti-fermions left of fermions
 -) external fields fields ordered by list of derivatives
 -) internal fields ordered by connection to external fields.
-TODO: Example, Syntax
 ";
 
 orderFermions::usage="Note: orderFermions is deprecated and superseded by sortCanonical.
@@ -716,22 +732,26 @@ Possible values are:
  -) forceEquation: Output in form of an equation, even if a single graph is plotted.
  -) complete (default): Output for several graphs in form of an equation and for a single graph as such.\n
 Examples:
-The graphs of the gluon two-point DSE of Landau gauge Yang-Mills theory in a list 
+The graphs of the gluon two-point DSE of Landau gauge Yang-Mills theory in a list
+setFields[{A},{{c,cb}}]; 
 dse = doDSE[{{A, A}, {c, cb}, {A, cb, c}, {A, A, A}, {A, A, A, A}}, {A, A}];
 DSEPlot[dse,  {{A, Red}, {c, Green}}, output -> List]
 
 The complete two-point RGE of an O(N) symmetric scalar theory in the symmetric phase
+setFields[{phi}];
 dse = doRGE[{{phi, phi}, {phi,phi,phi,phi}}, {phi, phi}];
 RGEPlot[dse,  {{phi, Black}}, output -> forceEquation]
 ";
 
 regulatorBox::usage="Possible value for the option regulatorSymbol of RGEPlot. Draws a gray box for the regulator insertion.\n
 Example:
+setFields[{phi}];
 RGEPlot[1/2 op[dR[{phi, r1}, {phi, s1}], P[{phi, t1}, {phi, r1}], P[{phi, s1}, {phi, v1}], V[{phi, i}, {phi, j}, {phi, v1}, {phi, t1}]], {{phi, Black}}, regulatorSymbol -> regulatorBox]
 ";
 
 regulatorCross::usage="Possible value for the option regulatorSymbol of RGEPlot. Draws a circle with a cross for the regulator insertion.\n
 Example:
+setFields[{phi}];
 RGEPlot[1/2 op[dR[{phi, r1}, {phi, s1}], P[{phi, t1}, {phi, r1}], P[{phi, s1}, {phi, v1}], V[{phi, i}, {phi, j}, {phi, v1}, {phi, t1}]], {{phi, Black}}, regulatorSymbol -> regulatorCross]
 ";
 
@@ -775,18 +795,22 @@ RGEPlot accepts several options:
  -) factorStyle: Style settings for the factors, see ?factorStyle for details.\n
 Examples:
 The gluon two-point RGE of Landau gauge Yang-Mills theory
+setFields[{A},{{c,cb}}];
 dse = doRGE[{{A, A}, {c, cb}, {A, cb, c}, {A, A, A}, {A, A, A, A}}, {A, A}];
 RGEPlot[dse]
 
 The gluon three-point RGE of Landau gauge Yang-Mills theory with gluons in red and ghosts dashed in green and four graphs per row
+setFields[{A},{{c,cb}}];
 dse = doRGE[{{A, A}, {c, cb}, {A, cb, c}, {A, A, A}, {A, A, A, A}}, {A, A}];
 RGEPlot[dse,  {{A, Red}, {c, Green, Dashed}}, 4]
 
-The graphs of the gluon two-point RGE of Landau gauge Yang-Mills theory in a list 
+The graphs of the gluon two-point RGE of Landau gauge Yang-Mills theory in a list
+setFields[{A},{{c,cb}}]; 
 dse = doRGE[{{A, A}, {c, cb}, {A, cb, c}, {A, A, A}, {A, A, A, A}}, {A, A}];
 RGEPlot[dse,  {{A, Red}, {c, Green}}, output -> List]
 
 The complete two-point RGE of an O(N) symmetric scalar theory in the symmetric phase
+setFields[{phi}];
 dse = doRGE[{{phi, 100, even}}, {phi, phi}];
 RGEPlot[dse,  {{phi, Black}}, output -> forceEquation]
 

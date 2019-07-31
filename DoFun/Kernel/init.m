@@ -70,5 +70,5 @@ If[DoFun`$doFunStartMessage=!=False,
 	Print["\nDoFun loaded.
 \nVersion "<> $DoAEVersion<>
 "\nReinhard Alkofer, Jens Braun, Anton K. Cyrol, Markus Q. Huber, Jan M. Pawlowski, Kai Schwenzer, 2008-2019
-\nDetails on http://physik.uni-graz.at/~mqh/DoFun."];
+\nDetails at https://github.com/markusqh/DoFun/."];
 ];
