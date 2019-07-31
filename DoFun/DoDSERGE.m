@@ -956,7 +956,7 @@ $fieldTypes={boson, fermion, antiFermion, complex, antiComplex, superField};
 
 (* the standard superfield *)
 (*TODO: Remove Clear. Careful: All definitions refer to Phi and not to $dummyField. *)
-Clear@$dummyField;
+
 $dummyField = \[Phi]; 
 Evaluate@$dummyField /: fieldType[$dummyField] := superField;
 Evaluate@$dummyField /: grassmannQ[$dummyField] = False;
@@ -1076,20 +1076,7 @@ private functions (alphabetic)
 	shortExpressionSingle
 	shortExpressionStyle
 	vertexDummies
-	vertexShapeFunction
 	vertexTest
-	
-private variables:
-	dummyCounter
-    $externalIndices
-    RGERules
-    
-
-unused functions:
-	changeOrder
-	generateFlowEquation
-	getFermionList
-	getGrassmannLoopNumber
 
 *)
 
@@ -1240,6 +1227,8 @@ Make sure the input has the form of shortExpression[expr_, opts___]. For more de
 The expression causing the error is `1`.";
 
 sE::syntax=shortExpression::syntax;
+
+DSEPlotList::multiPropagators="Note: More than two different propagators connecting the same vertices cannot be displayed properly. The plot might contain wrong styles for these propagators.\n";
 
 
 
@@ -1442,6 +1431,7 @@ firstDerivReplacement[op[b___,c_List]]:=op[Sequence@@(replacedField/@{b}),c];
 (* no action on S and CO *)
 replacedField[a_S]:=a;
 replacedField[a_CO]:=a;
+replacedField[a_?NumericQ]:=a;
 
 
 replacementCalcStep[a_Times|a_Plus]:=replacementCalcStep/@a;
@@ -1458,36 +1448,22 @@ replacementCalcStep[op[a___,replacedField[{Q_,q_}],c_List]]:=(op[a,{Q,q},c]+
 replacementCalcStep[op[a___,replacedField[{Q_,q_}],c__/;FreeQ[{c},replacedField]]]:=Module[{ind1,ind2},
 	op[a,{Q,q},c]+
 (* propagator and derivative w.r.t. field *)Plus@@((op[a,sf[{Q,q},{{Q,q}}], P[{Q,q},#],Sequence@@DeleteCases[{c},#1]])&)/@Cases[{c},{_?fieldQ,_}]+
-(* propagator and derivative w.r.t. vertex *)Plus@@(op[a,P[{Q,q},{$dummyField,ind1=insDummy[]}],Sequence@@DeleteCases[{c},#1],derivVertex[#1,{$dummyField,ind1}]]&)/@{c}+
+(* propagator and derivative w.r.t. vertex *) Plus@@(op[a,P[{Q,q},{$dummyField,ind1=insDummy[]}],Sequence@@DeleteCases[{c},#1],derivVertex[#1,{$dummyField,ind1}]]&)/@{c}+
 (* propagator and derivative w.r.t. propagator *)Plus@@(op[a, P[{Q,q},{$dummyField,ind2=insDummy[]}],
-	Sequence@@DeleteCases[{c},#1],derivPropagator[#1,{$dummyField,ind2}]]&)/@{c}
+	$signConvention Sequence@@DeleteCases[{c},#1],derivPropagator[#1,{$dummyField,ind2}]]&)/@{c}
 ];
 
 
 replacementCalc[a_]:=FixedPoint[replacementCalcStep,a,50];
 
 
-(* auxiliary function for plugging in the fermions/anti-fermions at the right place, i.e. the latter left and the former right *)
+(* auxiliary function for plugging in the field into vertices and propagators *)
 (* called with no fields to plugin *)
-(* TODO Discard all plugFields* functions *)
 plugInFieldsV[{},b_V]:=b;
 plugInFieldsV[{Q_?fieldQ,q_},b_V]:=Prepend[b,{Q,q}];
-(* called with a vertex and one field to plugin *)
-(*plugInFieldsV[{Q_?fieldQ,q_},b_V]/;(fermionQ[Q]):=Append[b,{Q,q}];
-plugInFieldsV[{Q_?fieldQ,q_},b_V]:=Prepend[b,{Q,q}];
-(* called with several fields *)
-plugInFieldsV[newFields_List,b_V]:=Fold[plugInFieldsV[#2,#1]&,b,newFields];
-(* called with the argument of a vertex *)
-plugInFieldsV[newField_List,b__]/;(fermionQ[newField[[1]]]):=Sequence[b,newField];
-*)
 plugInFieldsV[newField_List,b__]:=Sequence[newField,b];
  
-(* propagators are defined reversely in DoDSE! *)
-
-(*plugInFieldsP[a_List,b__]/;(antiFermionQ[a[[1]]]):=Sequence[b,a];*)
 plugInFieldsP[a_List,b__]:=Sequence[a,b];
-
-
 
 
 
@@ -1530,8 +1506,8 @@ derivAll[op[fvp___],{Q_,q_}]:=Module[{allShifts,i, permSign},
 	permSign[leftFvp_,{R_,r_}]:=sf[{R,r}, Cases[leftFvp, S[___] | P[__] | V[__] | {_?fieldQ,_}]/.{S:>Sequence, P:>Sequence, V:>Sequence}];
 	
 	derivField[op[fvp],{Q,q}]+
-   + Plus @@ Table[ReplacePart[op[fvp], i -> Sequence[permSign[Take[{fvp}, i-1], {Q,q}], derivPropagator[{fvp}[[i]], {Q, q}]]], {i, 1, Length[{fvp}]}]
-   + Plus @@ Table[ReplacePart[op[fvp], i -> Sequence[permSign[Take[{fvp}, i-1], {Q,q}], $signConvention derivVertex[{fvp}[[i]], {Q, q}]]], {i, 1, Length[{fvp}]}]
+   + $signConvention Plus @@ Table[ReplacePart[op[fvp], i -> Sequence[permSign[Take[{fvp}, i-1], {Q,q}], derivPropagator[{fvp}[[i]], {Q, q}]]], {i, 1, Length[{fvp}]}]
+   + Plus @@ Table[ReplacePart[op[fvp], i -> Sequence[permSign[Take[{fvp}, i-1], {Q,q}], derivVertex[{fvp}[[i]], {Q, q}]]], {i, 1, Length[{fvp}]}]
 
 	
 	(*(derivField[op[fvp],{Q,q}]+
@@ -1553,24 +1529,7 @@ deriv[a___]:=Message[deriv::syntax,a];
 
 (* here the single op functions are orderd such that the derivatives can be done without sign problems *) 
 
-derivRGE[a_,(*extFields_List,*)firstInd_,otherInds__]:=derivRGE[derivRGE[a,(*extFields,*)firstInd],(*extFields,*)otherInds];
-
-(* for an anti-fermion do the differentiation from the left for all possible shifts *)
-(*derivRGE[a_,(*extFields_List,*){Q_?antiFermionQ,q_}]:=(*sortDummies[*)
-	(*Expand[a/.op[b__]:> derivAllRGEAF[op[b],extFields,{Q,q}]]*)
-	Expand[a/.op[b__]:> derivAllRGEAF[op[b],(*extFields,*){Q,q}]];
-(*]*)
-
-(* for a fermion do the differentiation from the right for all possible shifts *)
-derivRGE[a_,(*extFields_List,*){Q_?fermionQ,q_}]:=(*sortDummies[*)
-	(*Expand[a/.op[b__]:> derivAllRGEF[op[b],extFields,{Q,q}]]*)
-	Expand[a/.op[b__]:> derivAllRGEF[op[b],(*extFields,*){Q,q}]];
-(*]*)
-
-
-(* for bosons no reordering is required so take any of the fermionic derivatives *)
-derivRGE[a_,(*extFields_List,*){Q_,q_}]:=(*sortDummies@*)Expand[a/.op[b__]:> derivAllRGEAF[op[b],(*extFields,*){Q,q}]];
-*)
+derivRGE[a_,firstInd_,otherInds__]:=derivRGE[derivRGE[a, firstInd],otherInds];
 
 derivRGE[a_,{Q_,q_}]:=Expand[a/.op[b__]:> derivAllRGEAF[op[b],{Q,q}]];
 
@@ -1578,7 +1537,7 @@ derivRGE[a_,{Q_,q_}]:=Expand[a/.op[b__]:> derivAllRGEAF[op[b],{Q,q}]];
 (*derivRGE[a___]:=Message[derivRGE::syntax,a];*)
 
 
-derivAllRGEAF[op[fvp___],(*extFields_List,*){Q_,q_}]:=Module[{allShifts,i, permSign},
+derivAllRGEAF[op[fvp___], {Q_,q_}]:=Module[{allShifts, i, permSign},
 	
 	(* this is a list of all possible shifts sorted such that the quantity containing traceIndex1 is at the utmost left *)
 	(*allShifts=Sort[#, Not@FreeQ[#1, traceIndex1] &]&/@NestList[changeOrder[#,extFields]&,op[fvp],Length@op[fvp]-1];*)
@@ -1606,28 +1565,8 @@ derivAllRGEAF[op[fvp___],(*extFields_List,*){Q_,q_}]:=Module[{allShifts,i, permS
 	(* include signs from permuting the derivative through all expressions left of the target *)
 	permSign[leftFvp_,{R_,r_}]:=sf[{R,r}, Sequence@@@Cases[leftFvp, P[__] | V[__] | {_?fieldQ,_}]];
 	
-	Plus @@ Table[ReplacePart[op[fvp], i -> Sequence[permSign[Take[{fvp}, i-1], {Q,q}], derivPropagator[{fvp}[[i]], {Q, q}]]], {i, 1, Length[{fvp}]}]
-   + Plus @@ Table[ReplacePart[op[fvp], i -> Sequence[permSign[Take[{fvp}, i-1], {Q,q}], $signConvention derivVertex[{fvp}[[i]], {Q, q}]]], {i, 1, Length[{fvp}]}]
-];
-
-
-(* this should be the right one *)
-derivAllRGEF[op[fvp___],(*extFields_List,*){Q_,q_}]:=Module[{allShifts},
-	
-	(* this is a list of all possible shifts sorted such that the quantity containing traceIndex2 is at the utmost right *)
-	(*allShifts=Sort[#, FreeQ[#1, traceIndex2] &]&/@NestList[changeOrder[#,extFields]&,op[fvp],Length@op[fvp]-1];*)
-	(* test: do not shift *)
-	allShifts=op[fvp];
-	(* now apply the derivative to all quantities on the left; field derivatives as in DSEs cannot appear; *)
-	Plus@@Function[arg,
-		(* derivative of a vertex *)
-		(*op[derivVertex[Last@arg,{Q,q}],Most@arg]+*)
-		op[Most@arg,derivVertex[Last@arg,{Q,q}]]+
-		(* derivative of a propagator; do all explicitly to get the correct factors *)
-		op[Most@arg,derivPropagatorRGE[Last@arg,{Q,q}]]
-		]/@allShifts;
-	(Plus@@(op[Sequence@@DeleteCases[{fvp},#],$signConvention derivVertex[#,{Q,q}]]&/@{fvp})+
-	+Plus@@(op[Sequence@@DeleteCases[{fvp},#], derivPropagatorRGE[#,{Q,q}]]&/@{fvp}))
+	$signConvention Plus @@ Table[ReplacePart[op[fvp], i -> Sequence[permSign[Take[{fvp}, i-1], {Q,q}], derivPropagator[{fvp}[[i]], {Q, q}]]], {i, 1, Length[{fvp}]}]
+   + Plus @@ Table[ReplacePart[op[fvp], i -> Sequence[permSign[Take[{fvp}, i-1], {Q,q}],  derivVertex[{fvp}[[i]], {Q, q}]]], {i, 1, Length[{fvp}]}]
 ];
 
  
@@ -1669,6 +1608,8 @@ derivVertex[CO[a__],{Q_,q_}]:=0;
 
 derivVertex[a_List,{Q_,q_}]:=0;
 
+derivVertex[a_?NumericQ,{Q_,q_}]:=0;
+
 derivVertex[a_dR,{Q_,q_}]:=0;
 
 derivVertex[a_sf,{Q_,q_}]:=0;
@@ -1679,6 +1620,8 @@ derivPropagator[V[a__],{Q_,q_}]:=0;
 derivPropagator[CO[a__],{Q_,q_}]:=0;
 
 derivPropagator[a_List,{Q_,q_}]:=0;
+
+derivPropagator[a_?NumericQ,{Q_,q_}]:=0;
 
 derivPropagator[S[__],{Q_,q_}]:=0;
 
@@ -2413,7 +2356,6 @@ doDSE[action_,derivs_List,rest___,opts___?OptionQ]/;Cases[action,op[a__?(fieldQ@
   	 2],derivs,rest,opts];
 
 (* if list of interactions given, create action first; using the option specificFieldDefinitions one can give a list of fields for defineFields *)
-(* TODO Remove specificFieldDefinitions *)
 doDSE[interactions_List,rest___,opts___?OptionQ]:=doDSE[generateAction[interactions],rest,opts];
 
 (* only list of fields without indices, but $externalIndices is too short *)
@@ -2489,7 +2431,6 @@ doRGE[interactions_List,derivs_List,rest___,opts___?OptionQ]:=Message[doRGE::noT
 
 (* if list of interactions given, create action first; using the option specificFieldDefinitions one can give a list of fields for defineFields;
 converting the list into an action is strictly speaking not required but 1) allows a more uniform approach and 2) allows to keep things parallel to DoDSE *)
-(* TODO Remove specificFieldDefinitions *)
 doRGE[interactions_List,derivs_List,rest___,opts___?OptionQ]:=Module[{evenFields},
  evenFields=Cases[interactions,{Q_,even}:>Q];
  (* replace even fields definition by field two-point function *)
@@ -2578,7 +2519,7 @@ if the first derivative is w.r.t. an anti-fermion, the order has to be changed, 
 	True,
 	1/2 op[-V[plugInFieldsV[First@orderedDerivs,{$dummyField,traceIndex1},{$dummyField,ind}]],P[{$dummyField,ind},{$dummyField,traceIndex2}]]
 ];*)
-onePoint=1/2 op[sf[First@orderedDerivs,{{$dummyField,traceIndex1},{$dummyField,ind}}],P[{$dummyField,traceIndex1},{$dummyField,ind}],-V[First@orderedDerivs,{$dummyField,ind},{$dummyField,traceIndex2}]];
+onePoint=1/2 op[sf[First@orderedDerivs,{{$dummyField,traceIndex1},{$dummyField,ind}}],P[{$dummyField,traceIndex1},{$dummyField,ind}],-$signConvention V[First@orderedDerivs,{$dummyField,ind},{$dummyField,traceIndex2}]];
 (* TODO Test adding a second propagator *)
 (*onePoint=1/2 op[sf[First@orderedDerivs,{{$dummyField,traceIndex1},{$dummyField,ind}}],P[{$dummyField,traceIndex1},{$dummyField,ind}],
 	-V[First@orderedDerivs,{$dummyField,ind},{$dummyField,ind2}],P[{$dummyField,ind2},{$dummyField,traceIndex2}]];*)
@@ -2587,14 +2528,14 @@ onePoint=1/2 op[sf[First@orderedDerivs,{{$dummyField,traceIndex1},{$dummyField,i
 multiDer=derivRGE[onePoint,Sequence@@Rest@orderedDerivs];
 
 multiPointSources0= sign setSourcesZeroRGE[multiDer,L,extFields,allowedPropagators,vertexTest,opts];
-
+Global`X1=multiPointSources0;
 (*multiPoint=orderFermions[(multiPointSources0)
 	/. P[Q1_, Q2_] :> -P[Q1, Q2] /; (Not@FreeQ[{Q1,Q2}, traceIndex1|traceIndex2,2] && (grassmannQ@Q1[[1]]||grassmannQ@Q2[[1]]))/.(Function[dField, 
    P[{dField[[2]], c_}, {dField[[1]], b_}] :> 
     P[{dField[[1]], b}, {dField[[2]], c}]] /@ Cases[complexFields,{_?(Head@#===boson&),_?(Head@#===boson&)}])];*)
-multiPoint=(multiPointSources0)
+(*multiPoint=(multiPointSources0)
 	/. P[Q1_, Q2_] :> -P[Q1, Q2] /; (Not@FreeQ[{Q1,Q2}, traceIndex1|traceIndex2,2] && (grassmannQ@Q1[[1]]||grassmannQ@Q2[[1]]))/.(Function[dField, 
-   P[{dField[[2]], c_}, {dField[[1]], b_}] :> P[{dField[[1]], b}, {dField[[2]], c}]] /@ Cases[complexFields,{_?(Head@#===boson&),_?(Head@#===boson&)}]);
+   P[{dField[[2]], c_}, {dField[[1]], b_}] :> P[{dField[[1]], b}, {dField[[2]], c}]] /@ Cases[complexFields,{_?(Head@#===boson&),_?(Head@#===boson&)}]);*)
    
 (* closing the trace adds a minus sign if fields are fermionic; get other signs from fermions *)
 multiPoint=getSigns[(multiPointSources0)/. P[Q1_, Q2_] :> -P[Q1, Q2] /; (Not@FreeQ[{Q1,Q2}, traceIndex1|traceIndex2,2] && (grassmannQ@Q1[[1]]||grassmannQ@Q2[[1]]))];
@@ -2641,7 +2582,7 @@ doCO[a___]:=Message[doCO::syntax,a];
 (* Control Functions *)
 
 
-(* check if no indices apppear more often than twice;
+(* check if no indices appear more often than twice;
 indicesTest is the test function and checkIndices performs the test *)
 
 indicesTest[a_]/;Not@FreeQ[a,{_?fieldQ,_}]:=Module[
@@ -2920,18 +2861,18 @@ grassmann/non-grassmann *)
 getEdgeShapeFunction[edge_, plotStyles_List] := Module[{field, line},
   
   (* extract which field we have in the propagator; 
-  note that for mixed propagators only one field is taken (could be \
-taken into account, though, by writing a dedicated plot function *)
+  make detour via the label, because the vertices contain one representative field only;
+  note that for mixed propagators only one field is taken (could be taken into account, though, by writing a dedicated plot function *)
   field = ToExpression@
     StringCases[{edge[[2]]}, 
       f__ ~~ " " ~~ __ /; fieldQ[ToExpression[f]] :> f][[1, 1]];
-      
+ 
   (* determine if an arrow should be plotted *) 
   line[coords___] := If[
     grassmannQ[field] || complexFieldQ[field] || 
      antiComplexFieldQ[field], GraphElementData["Arrow"][coords], 
     GraphElementData["Line"][coords]];
-  
+
   (* extract the proper style and set the arrow *)
   Join[Cases[plotStyles, {field | antiField@field, 
       style___} :> Unevaluated[({style, arrowLine[field, ##]} &)]], {({arrowLine[field, ##]}&)}(* in case no plotStyle matches *)][[1]]
@@ -2971,55 +2912,84 @@ DSEPlotList[a_List,plotRules_List,opts___?OptionQ]/;And @@ (fieldQ /@ Flatten[a]
 DSEPlotList[a_,plotRules_List,opts___?OptionQ]/;FreeQ[a,Rule,Infinity]:=
 	DSEPlotList[vertexDummies[a,opts],plotRules,opts];
 
-DSEPlotList[{a_List,b_?NumericQ},plotRules_List,opts___?OptionQ]:=Module[{graph, allDirFields, exponent, verts, dirFieldsOrdered, plotRulesAll, vsize, edgeLabels},
+DSEPlotList[{a_List,b_?NumericQ},plotRules_List,opts___?OptionQ]:=Module[{graph, allDirFields, exponent, verts,
+	dirFieldsOrdered, plotRulesAll, vsize, edgeLabels, multiEdges, multiEdgeRules, multiEdgeReps},
 
-graph = a;
+	(* sort the bosonic edges to identify them more easily below, take the field info from the label *)
+	graph = Replace[a, {c_Rule, d_}:>{Sort[c], d}/;cFieldQ[ToExpression@StringCases[{d}, f__ ~~ " " ~~ __ /; fieldQ[ToExpression[f]] :> f][[1, 1]]], {1}];
 
-(* add field style to propagators; if no style is given, add edge labels *)
-If[plotRules==={},
-	edgeLabels = (#[[1]]->#[[2]])&/@graph,
-	edgeLabels = {}
-];
-graph = Property[#[[1]], EdgeShapeFunction -> getEdgeShapeFunction[#, plotRules]] & /@ graph;
+	(* add field style to propagators; if no style is given, add edge labels *)
+	If[plotRules==={},
+		edgeLabels = (#[[1]]->#[[2]])&/@graph,
+		edgeLabels = {}
+	];
+	
+	(* In Mathematica 12.0.0 EdgeRenderingFunction was superseded by EdgeShapeFunction at it was modified getting less arguments.
+	The label is no longer provided as argument and thus edges can no longer be distinguished properly.
+	To avoid problems in future versions, EdgeShapeFunction is used together with Graph (instead of GraphPlot).
+	The remaining problem is that edges connecting the same vertice cannot be distinguished. Possibly this is a bug/unforeseen problem in M12.
+	In case of two different edges a cheat is to use UndirectedEdge and DirectedEdge, which can be distinguished (the latter even twice because of two directions;
+	however, this is not used as different directions can appear by themselves).
+	If there are more different edges, no method is known. A warning is given then. *)
+	
+	(* get all adges that connect the same vertices *)
+	multiEdges = Select[graph, Count[graph, #[[1]], \[Infinity]] >= 2 &];
+	(* group them *)
+	multiEdges = Union/@GatherBy[multiEdges, #[[1]]&];
+	
+	(* make sure only one representative is there *)
+	multiEdgeReps = Function[d, DeleteDuplicatesBy[d, #[[2]]&]]/@multiEdges;
+	
+	(* give a warning if there are more than 2 different edges *)
+	If[Or@@(Length[#]>2 & /@ multiEdgeReps), Message[DSEPlotList::multiPropagators]];
+	
+	(* rules for replacing some of the edges: use undirected edges *)
+	multiEdgeRules = (#->{UndirectedEdge@@#[[1]], #[[2]]})&/@Select[multiEdgeReps, Length@#>1&][[All,2]];
 
-(* add vertex style *)
-verts = Union@@List@@@a[[All,1]];
-graph = {Function[vert, Property[vert, VertexShapeFunction->(getVertexShapeFunction[##, opts]&)]] /@ verts, graph};
-
-(* extend plot Rules also to antifields *)
-plotRulesAll=Union@Replace[plotRules, {c_?fieldQ, d__} :> Sequence[{c, d}, {antiField@c, d}], 1];
-
-(* get fields that are not necessarily fermions but directed, e.g., scalar complex fields *)
-(*dirFields=(directedFields/.Join[{opts},Options@DSEPlot]);*)
-
-(* get all directed fields, i.e., complex bosonic and fermionic ones *)
-allDirFields=getDirectedFieldsList[a];
-
-(* bring the directed fields into canonical order so that *)
-dirFieldsOrdered=a;
-
-(* a smaller regulator symbol size is required for zero leg graphs in RGEs to avoid that the regulator symbol is larger than the loop *)
-vsize = 0.15;
-If[Not@FreeQ[a,"dt R"] && And@@(StringFreeQ[#, "leg"]&/@a[[All,2]]), vsize=0.03];
-
-(* exponent -1 for inverse propagators *)
-exponent=If[Length@a===2 && FreeQ[a, "P"],"-1","",""];
-
-Labeled[
-Graph[Sequence@@graph, 
-		FilterRules[Join[{opts},Options@DSEPlot],Options@Graph],
-		VertexSize->vsize,
-		GraphLayout -> "SpringElectricalEmbedding",
-		EdgeLabels -> edgeLabels],
-		(* for positive integers explicitly print the +, for positive Rationals also, but it has to be prevented that the + goes into the numerator;
-			RowBox necessary to prevent automatic ordering *)
-{Style[b/.{
- 1 :> Style["+", ShowStringCharacters -> False],
- (c_Integer | c_Real | c_Rational)?Positive :> DisplayForm@RowBox[{Style["+", ShowStringCharacters -> False], c}],
- -1 :> Style["-", ShowStringCharacters -> False]},(factorStyle/.Join[{opts},Options@DSEPlot])],
- Overscript[Style["",FontSize:>50,ShowStringCharacters -> False],Style[exponent,ShowStringCharacters -> False,(factorStyle/.Join[{opts},Options@DSEPlot])]]},
- {Left,Right}
- ]
+	(* replace the edges *)
+	graph = graph/.multiEdgeRules;
+	
+	(* set properties of edges *)
+	graph = Property[#[[1]], EdgeShapeFunction -> getEdgeShapeFunction[#, plotRules]] & /@ graph;
+	
+	(* add vertex style *)
+	verts = Union@@List@@@a[[All,1]];
+	graph = {Function[vert, Property[vert, VertexShapeFunction->(getVertexShapeFunction[##, opts]&)]] /@ verts, graph};
+	
+	(* extend plot Rules also to antifields *)
+	plotRulesAll=Union@Replace[plotRules, {c_?fieldQ, d__} :> Sequence[{c, d}, {antiField@c, d}], 1];
+	
+	(* get fields that are not necessarily fermions but directed, e.g., scalar complex fields *)
+	(*dirFields=(directedFields/.Join[{opts},Options@DSEPlot]);*)
+	
+	(* get all directed fields, i.e., complex bosonic and fermionic ones *)
+	allDirFields=getDirectedFieldsList[a];
+	
+	(* bring the directed fields into canonical order so that *)
+	dirFieldsOrdered=a;
+	
+	(* a smaller regulator symbol size is required for zero leg graphs in RGEs to avoid that the regulator symbol is larger than the loop *)
+	vsize = 0.15;
+	If[Not@FreeQ[a,"dt R"] && And@@(StringFreeQ[#, "leg"]&/@a[[All,2]]), vsize=0.03];
+	
+	(* exponent -1 for inverse propagators *)
+	exponent=If[Length@a===2 && FreeQ[a, "P"],"-1","",""];
+	
+	Labeled[
+	Graph[Sequence@@graph, 
+			FilterRules[Join[{opts},Options@DSEPlot],Options@Graph],
+			VertexSize->vsize,
+			GraphLayout -> "SpringElectricalEmbedding",
+			EdgeLabels -> edgeLabels],
+			(* for positive integers explicitly print the +, for positive Rationals also, but it has to be prevented that the + goes into the numerator;
+				RowBox necessary to prevent automatic ordering *)
+	{Style[b/.{
+	 1 :> Style["+", ShowStringCharacters -> False],
+	 (c_Integer | c_Real | c_Rational)?Positive :> DisplayForm@RowBox[{Style["+", ShowStringCharacters -> False], c}],
+	 -1 :> Style["-", ShowStringCharacters -> False]},(factorStyle/.Join[{opts},Options@DSEPlot])],
+	 Overscript[Style["",FontSize:>50,ShowStringCharacters -> False],Style[exponent,ShowStringCharacters -> False,(factorStyle/.Join[{opts},Options@DSEPlot])]]},
+	 {Left,Right}
+	 ]
 ];
 
 DSEPlotList[a_,plotRules_List,opts___?OptionQ]/;FreeQ[a,Rule[_,_],2]:=DSEPlotList[#,plotRules,opts]&/@a;
@@ -3094,7 +3064,7 @@ DSEPlot[a_,plotRules_List:{},len_Integer:5,opts___?OptionQ]/;And@@(Not@FreeQ[#, 
     exponent=If[Length@lhsFields===2,"-1","",""];
 
 	(* plot the right hand side *)
-	rhs=DSEPlotList[expandeda,(*IA,*)plotRules/.{}:>Sequence[],opts];
+	rhs=DSEPlotList[expandeda,plotRules/.{}:>Sequence[],opts];
 
 	Which[eqType == "DSE",
 		DSEPlotGrid[rhs,{lhs,exponent},len,opts],
@@ -3171,7 +3141,7 @@ diskSymbol[x_]:=diskSymbol[x,{1,1}];
 diskOpenSymbol[x_,{w_,h_}]:={Circle[x, Sqrt[w^2+h^2]]};
 diskOpenSymbol[x_]:=diskOpenSymbol[x, {1,1}];
 
-diskTinySymbol[x_,{w_,h_}]:={Disk[x,0.02*Sqrt[w^2+h^2]]};
+diskTinySymbol[x_,{w_,h_}]:={Disk[x,0.2*Sqrt[w^2+h^2]]};
 diskTinySymbol[x_]:=diskTinySymbol[x,{1,1}];
 
 triangleSymbol[x_,{w_,h_}]:={GrayLevel[0.4],Polygon[{x- {w, h}, x + {w, 0}, x + {-w, h}}]};
@@ -3422,109 +3392,6 @@ grassmannQ[a_List] := grassmannQ[a[[1]]](* field given together with index*)
 
 
 (*SyntaxInformation[doRGE]={"ArgumentsPattern"->{_,_,OptionsPattern[]},"ArgumentsPattern"->{_,_,_,OptionsPattern[]}};*)
-
-
-
-
-(* ::Section:: *)
-(* TOD: DELETE unused functions *)
-
-
-(* use the trace to shift quantities from the front to the end of the expression; discarded at no longer used *)
-
-changeOrder[exp_, extFields_List] := 
- Module[{closingQuantity1, internalIndex1, externalIndices, 
-   ind = insDummy[], dummyIndex},
-  
-  (* determine all external indices *)
-  
-  externalIndices = extFields[[All, 2]];
-  
-  (* determine the utmost left quantity *)
-  
-  closingQuantity1 = 
-   Cases[exp, 
-     V[___, {_, traceIndex1}, ___] | 
-      P[___, {_, traceIndex1}, ___], \[Infinity]][[1]];
-  
-  (* and its index *)
-  internalIndex1 = 
-   Cases[closingQuantity1, {Q_, 
-       q_?(Not@MemberQ[Join[externalIndices, {traceIndex1}], #] &)} :>
-       q, \[Infinity]][[1]];
-  
-  (* change the indices: 
-  first replace the internal index of the utmost left quantity by a \
-dummy, then insert the new internal index for the two trace indices \
-and insert the new trace indices *)
-  
-  exp /. (closingQuantity1 -> (closingQuantity1 /. 
-           internalIndex1 :> dummyIndex)) /. traceIndex1 :> ind /. 
-     traceIndex2 :> ind /. internalIndex1 :> traceIndex1 /. 
-   dummyIndex :> traceIndex2
-];
-
-
-
-(* unused function to generate the flow equation *)
-(* flow equation only needs the propagators; regulators are inserted and the the fermion sign is added;
-makes use of the DSE routine generateAction, which defines the fields and creates the action; note that only the propagators are required to determine the effective action;
-vertices come in later *)
-
-(* if only a list of interactions is given, generate the actionfirst *)
-generateFlowEquation[L_List]:=generateFlowEquation[generateAction@L];
-
-generateFlowEquation[L_]:=Module[{},
-	 
-Select[L /. op[a___, b_S, c___] :> op[b], 
-   MemberQ[#, S[_, _], 2] &] /. 
-  S[f1_, f2_] :> Sequence[P[f1, f2], dR[f1, f2]] /. 
- op[a___, P[{f1_, i1_}, {f2_, i2_}], b___, dR[{f1_, i1_}, {f2_, i2_}], 
-   c___] :>  op[a, -P[{f1, i1},{f2, i2}], b, dR[{f2, i2}, {f1, i1}], c] /; f1 =!= f2
-   (* minus sign for fermionloop added; remember the propagator convention for the order of fermion fields (vertices are as expected, 
-    propagators with c and cb exchanged) *)
-];
-
-
-
-
-(* auxiliary function to get a list of fermions from either the list of fields or the list of interactions;
- it is necessary that the fermions are given back in a list with the antiFermion  *)
-(* not working when using mixed complex (!) propagators: getFermionList[a_List]:=Union/@Cases[a, {_, _}] /. {_} :> Sequence[];*)
-getFermionList[a_List]:=Select[Cases[a, {_?fieldQ, _}], (Head@#[[1]] == fermion || 
-     Head@#[[1]] == antiFermion) && (Head@#[[2]] == fermion || 
-     Head@#[[2]] == antiFermion) &];
-(* alternative which gives all fields that have not themselves as opposite field in the propagator; could be used for
-getFermionList[a_List]:=Cases[a, {b_, c_}/;b=!=c];*)
-
-
-
-
-(* get the number of Grassmann loops in a diagram; works only for connected Grassmann lines, i.e. a Grassmann line and a loop
-disconnected from it won't work *)
-
-getGrassmannLoopNumber[a_op]:=Module[
-	{externalInds, stripped, props, vertices},
-	
-	externalInds=Cases[a,{Q_,q_}/;Count[a,q,\[Infinity]]==1,\[Infinity]];
-	
-	(* get rid of bosons and external Grassmann fields *)
-	stripped=a/. {Q_, q_} :> Sequence[] /; (Head@Q == boson||MemberQ[externalInds,{Q,q}]);
-	
-	(* get number of vertices and propagators that involve fermions *)
-	vertices=Count[stripped, V[__] | S[__],\[Infinity]];
-	props=Count[stripped, P[__],\[Infinity]];
-
-	(* number of fermion loops; if negative there are disconnected fermion parts *)
-	props-vertices+1
-];
-
-getGrassmannLoopNumber[a___]:=Message[getGrassmannLoopNumber::syntax,a];
-
-getGrassmannLoopNumber::syntax="There was a syntax error in getGrassmannLoopNumber.\n
-Make sure the input has the form of getGrassmannLoopNumber[expr_].\n
-The expression causing the error is `1`.";
-
 
 
 
