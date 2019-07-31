@@ -2,7 +2,10 @@
 
 (* Mathematica Package *)
 
-(* (c) and written by Markus Q. Huber *)
+(* published under GNU General Public License v3.0 *)
+
+
+
 
 (* version history *)
 (*  0.1 (Nov. 9, 2010): copying code from development notebook
@@ -17,7 +20,7 @@
 		-) Bugfix in integrateMomenta when momentum is negative.
     2.0.3 (19.1.2017): no changes
     2.0.4 (5.12.2017): no changes
-    3.0.0 (devel):
+    3.0.0 (31.7.2019):
     	-) modified defineFieldsSpecific
     	-) modified derivF and getFR to left-derivatives
 *)
@@ -28,21 +31,12 @@ BeginPackage["DoFun`DoFR`", { "DoFun`DoDSERGE`", "DoFun`DoAE`"}]
 
 $DoFRVersion="3.0.0";
 
-
-(*If[DoDSERGE`$startMessage=!=False,
-	Print["Package DoDSERGE loaded.
-\n\nVersion "<> $doDSEVersion <>
-"\n\nReinhard Alkofer, Markus Q. Huber, Kai Schwenzer, 2008-2010\n
-\n\nreinhard.alkofer@uni-graz.at, markus.huber@uni-jena.de, kai.schwenzer@uni-graz.at
-\n\nVisit physik.uni-graz.at/~mah/DoDSE.html for updates.
-\n\nDetails to be found in arXiv:0808.2939 [hep-th]."];
-];*)
 If[Not@FreeQ[Contexts[],"DoFun`"],DoFun`DoFR`$doFRStartMessage=False];
 If[DoFun`DoFR`$doFRStartMessage=!=False,
 	Print["\nPackage DoFR loaded.
 \nVersion "<> $DoFRVersion <>
 "\nJens Braun, Anton K. Cyrol, Markus Q. Huber, Jan. M. Pawlowski 2010-2019\n
-\nDetails in Comput.Phys.Commun. 183 (2012) 1290-1320 (http://inspirehep.net/record/890744)."];
+\nDetails at https://github.com/markusqh/DoFun/."];
 ];
 
 

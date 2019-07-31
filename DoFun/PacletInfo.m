@@ -4,8 +4,8 @@
 
 Paclet[
     Name -> "DoFun",
-    Version -> "2.0.4",
-    MathematicaVersion -> "7+",
+    Version -> "3.0.0",
+    MathematicaVersion -> "11.3+",
     Extensions -> 
         {
             {"Documentation", Language -> "English", MainPage -> "Guides/Welcome to DoFun"}

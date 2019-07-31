@@ -4,6 +4,12 @@
 
 (* (c) and written by Markus Q. Huber *)
 
+(* published under GNU General Public License v3.0 *)
+
+
+
+
+
 (* version history *)
 (*  0.1 (autumn of 2008): first running version
     0.2 (never released):
@@ -17,7 +23,9 @@
     2.0.2 (22.1.2015): no changes
     2.0.3 (19.1.2017): no changes
     2.0.4 (5.12.2017): no changes
-    3.0.0 (devel):
+    3.0.0 (31.7.2019):
+    	-) added composite operator CO tofunctionality
+    	-) momentum routing for more general diagrams than DSEs and RGEs
 *)
 
 
@@ -25,20 +33,13 @@ BeginPackage["DoFun`DoAE`", { "DoFun`DoDSERGE`", "DoFun`DoFR`"}]
 
 (* variable that gives the version of DoDSE *)
 $DoAEVersion="3.0.0";
-(*If[DoDSERGE`$startMessage=!=False,
-	Print["Package DoDSERGE loaded.
-\n\nVersion "<> $doDSEVersion <>
-"\n\nReinhard Alkofer, Markus Q. Huber, Kai Schwenzer, 2008-2010\n
-\n\nreinhard.alkofer@uni-graz.at, markus.huber@uni-jena.de, kai.schwenzer@uni-graz.at
-\n\nVisit physik.uni-graz.at/~mah/DoDSE.html for updates.
-\n\nDetails to be found in arXiv:0808.2939 [hep-th]."];
-];*)
+
 If[Not@FreeQ[Contexts[],"DoFun`"],DoFun`DoAE`$doAEStartMessage=False];
 If[(DoFun`DoAE`$doAEStartMessage=!=False),
 	Print["Package DoAE loaded.
 \nVersion "<> $DoAEVersion <>
 "\nJens Braun, Anton K. Cyrol, Reinhard Alkofer, Markus Q. Huber, Jan. M. Pawlowski, Kai Schwenzer, 2008-2019\n
-\nDetails in Comput.Phys.Commun. 183 (2012) 1290-1320 (http://inspirehep.net/record/890744)."];
+\nDetails at https://github.com/markusqh/DoFun/."];
 ];
 
 
@@ -64,7 +65,7 @@ addIndices[{son, {a, b, c, d, e, f, g, h, i, j}}]
 (* not for use of the user but a global symbol *)
 createDummyListUnique::usage="Creates a list of unique variable names."
 
-explicit::usage="Option of V, P, S and dR.
+explicit::usage="Option of V, P, S, CO and dR.
 See ?getAE for details and examples.
 ";
 
@@ -388,8 +389,8 @@ insertMomenta[op[SPV_[a__]], extMomenta_List]/;SPV==V||SPV==S||SPV==P||SPV==CO:=
 
 
 insertMomenta[a_op, extMomenta_List] := 
- Module[{momentaToInsert, external, noListQ,  extAdded, props, 
-   startVertex, startVertexIntLegs, startVertexExtLegs, loopMomenta, 
+ Module[{momentaToInsert, external, noListQ,  extAdded, props, regs,
+   regRules, startVertex, startVertexIntLegs, startVertexExtLegs, loopMomenta, 
    newVertex, flowed,extFields,extFieldsAdded,extFieldsMomenta,
    verts, selfProps, momentaSelfProps, selfPropsAdded},
  
@@ -427,12 +428,21 @@ insertMomenta[a_op, extMomenta_List] :=
   (* do self-loops *)
   (* get propagators and vertices and check which propagator arguments appear in the same vertex *)
   props = Cases[a, P[___]];
-  verts = Cases[a, V[___]|CO[___]|S[___]];
+  (* get regulator insertions: to be treated special; actually not needed currently, but keep code for future use *)
+  regs = Cases[a, dR[___]];
+  (* rules to delete the dummy indices in P dR P *)
+  regRules = (# -> Sequence[]) & /@ Flatten[List @@@ regs, 1];
+  
+  (* extract the propagators attached to the regulators *)
+  regs = Cases[a, P[b___, {c_,Alternatives@@#[[All,2]]}, d___]]&/@regs;
+  (* merge into one propagator representing the self-loop *)
+  regs = regs /. regRules /. {P[b_List], P[c_List]} :> P[b, c];
+  
+  verts = Cases[a, V[___]|CO[___]|S[___]|dR[___]];
   (* get all propagators closing on the same vertex *)
-  (*selfProps = Select[props, Position[verts,#[[1]]][[1, 1]]==Position[verts,#[[2]]][[1, 1]]&];*)
   selfProps = Select[props, Position[verts,#[[1]]][[1, 1]]==Position[verts,#[[2]]][[1, 1]]&];
-  (* and their momenta *)  
-  (*momentaSelfProps = $loopMomenta[[Length@startVertexIntLegs - 2*Length@selfProps;;Length@startVertexIntLegs - Length@selfProps - 1]];*)
+  
+  (* and their momenta *)
   momentaSelfProps = $loopMomenta[[1;;Length@selfProps]];
   (* add those momenta *)
   selfPropsAdded = addMomentum[extFieldsAdded, Flatten[List@@@selfProps,1], Flatten[Transpose[{momentaSelfProps,-momentaSelfProps}],1]];
@@ -442,9 +452,13 @@ insertMomenta[a_op, extMomenta_List] :=
   
   (* determine the loop momenta *)
   
-  loopMomenta = 
-   Fold[momentaToInsert, (Plus @@ startVertexExtLegs)[[2]], 
-   $loopMomenta[[Length@selfProps+1;;Length@selfProps+Length@startVertexIntLegs-1]]];
+  If[Length[startVertexIntLegs]>1,
+  	loopMomenta = 
+   	Fold[momentaToInsert, (Plus @@ startVertexExtLegs)[[2]], 
+   	$loopMomenta[[Length@selfProps+1;;Length@selfProps+Length@startVertexIntLegs-1]]],
+   	(* no legs left, e.g., tadpoles *)
+   	loopMomenta = {}
+  ];
   
   (* replace the indices with the new momenta *)
   newVertex = addMomentum[selfPropsAdded, startVertexIntLegs, loopMomenta];
@@ -616,8 +630,6 @@ removeDoubleIndices[exp_,fields_List]:=Module[{doubleIndexRules, allFields},
 
 (* if no contractFunctions are given (standard case), provide an empty list to use the original functions *)
 getAE[a_, momenta_List,opts___?OptionQ]/;opts=!={}:=getAE[a, momenta, {}, opts];
-
-(* TODO: unfdefined fields! in case the user has not defined an index yet, it is defined with standard index names, a,b,... *)
 
 (* fields are not defined for getAE *)
 getAE[a_, momenta_List, contractFunctions_List, opts___?OptionQ]/;Not[

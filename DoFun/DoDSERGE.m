@@ -1449,8 +1449,8 @@ replacementCalcStep[op[a___,replacedField[{Q_,q_}],c__/;FreeQ[{c},replacedField]
 	op[a,{Q,q},c]+
 (* propagator and derivative w.r.t. field *)Plus@@((op[a,sf[{Q,q},{{Q,q}}], P[{Q,q},#],Sequence@@DeleteCases[{c},#1]])&)/@Cases[{c},{_?fieldQ,_}]+
 (* propagator and derivative w.r.t. vertex *) Plus@@(op[a,P[{Q,q},{$dummyField,ind1=insDummy[]}],Sequence@@DeleteCases[{c},#1],derivVertex[#1,{$dummyField,ind1}]]&)/@{c}+
-(* propagator and derivative w.r.t. propagator *)Plus@@(op[a, P[{Q,q},{$dummyField,ind2=insDummy[]}],
-	$signConvention Sequence@@DeleteCases[{c},#1],derivPropagator[#1,{$dummyField,ind2}]]&)/@{c}
+(* propagator and derivative w.r.t. propagator *) $signConvention Plus@@(op[a, P[{Q,q},{$dummyField,ind2=insDummy[]}],
+	 Sequence@@DeleteCases[{c},#1],derivPropagator[#1,{$dummyField,ind2}]]&)/@{c}
 ];
 
 
