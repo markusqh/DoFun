@@ -1,0 +1,367 @@
+All functions (private and public) should be listed here to have a complete list.
+
+
+List of all functions in DoDSERGE.m:
+
+    public
+        private
+
+    $bareVertexSymbol
+
+    $compOpSymbol
+
+    $diagramTypes
+
+    $dummyField
+    
+    $dummyFieldB
+
+    $dummyFieldAF
+
+    $dummyFieldF
+
+    $externalIndices
+
+    $fieldTypes
+
+    $propagatorSymbol
+
+    $regulatorInsertionSymbol
+
+    $signConvention
+
+    $vertexSymbol
+
+    ansatz
+
+    antiComplex
+
+    antiComplexFieldQ
+
+    antiFermion
+
+    antiFermionQ
+
+    antiField
+
+        arrowLine
+
+    bareVertexSymbol
+
+    boson
+
+    bosonQ
+
+    boxSymbol
+
+    broken
+
+    cFieldQ
+
+    checkAction
+
+    checkAll
+
+    checkFields
+
+    checkIndices
+
+    checkSyntax
+
+    ?CO
+
+    complete
+
+    complex
+
+    complexFieldQ
+
+    connectedQ
+
+    ?COPlot
+
+    ?example coSymbol
+
+    countTerms
+
+    createDummyList
+
+        createPropagatorRules
+
+    crossSymbol
+
+    deriv
+
+        derivAll
+
+        derivAllRGE
+
+    derivRGE
+
+        derivField
+
+         derivPropagator
+
+        derivPropagators
+
+        derivPropagatorsdt
+
+        derivVertex
+
+    diagramTypes
+
+    disconnectedQ
+
+    diskOpenSymbol
+
+    diskSymbol
+
+    diskTinySymbol
+
+    ?doCO
+
+    ?doDSE
+
+    doGrassmannTest
+
+    ?doRGE
+
+    dR
+
+    dummy
+
+    ?DSEPlot
+
+    DSEPlotCompare
+    
+    DSEPlotGrid
+
+    DSEPlotList
+
+    dummyCounter
+
+    dummyNames
+
+    even
+
+        evenBosonTest
+
+    explicit
+
+    extractDiagramType
+
+    factorStyle
+
+    fermion
+
+    fermionQ
+
+    fieldQ
+
+    fieldType
+
+        firstDerivReplacement
+
+    forceEquation
+
+    generateAction
+
+    get1PI
+
+    getConnected
+
+        getDirectedFieldsList
+
+    getDiagramType
+
+    getDisconnected
+
+        getEdgeShapeFunction
+
+        getGraphCharacteristic
+
+    getInteractionList
+
+    getLoopNumber
+
+        getNeighbours
+
+    getNon1PI
+
+        getSignature
+
+    getSigns
+
+    getVertexNumbers
+
+        getVertexShapeFunction
+
+    grassmannQ
+
+        grassmannTest
+
+    groupDiagrams
+
+    identify
+
+    identifyGraphs
+
+    indexStyle
+    
+        indicesTest
+
+        indicesTeice
+
+        innerFermionsCanonicalQ
+
+    insDummy
+
+        insertRegulator
+
+    intact
+
+        newVertex
+
+        newVertexSum
+
+    odd
+
+    onePIQ
+
+    op
+
+        opTest
+
+    orderFermions
+
+    output
+
+    P
+
+        plugInFieldsP
+
+        plugInFieldsV
+
+    propagatorCreationRules
+
+        propagatorTest
+
+    regulatorBox
+
+    regulatorCross
+
+        regulatorInsertionTest
+
+    regulatorSymbol
+
+    replacedField
+
+    replaceFields
+
+        replacementCalc
+
+        replacementCalcStep
+
+        replaceVertices
+
+        replaceVerticesBrokenPhase
+
+    resetDummy
+
+    RGEPlot
+
+        RGEPlotGrid
+
+    sE
+
+    setFields
+
+    setSourcesZero
+
+        setSourcesZeroDo
+
+    setSourcesZeroRGE
+
+    sf
+
+    shortExpression
+
+        shortExpressionSingle
+
+        shortExpressionStyle
+
+    ?sortCanonical
+
+    sortDummies
+
+    sourcesZero
+
+    specificFieldDefinitions
+
+    symmetry
+
+    superField
+
+    tDerivative
+
+    traceIndex1
+
+    traceIndex2
+
+    traceIndices
+
+    triangleSymbol
+    
+    type
+
+    userEvenFields
+
+    V
+
+        vertexDummies
+
+        vertexTest
+
+    vertexSymbol
+
+
+
+Options:
+    createDummyList:
+            dummyNames->{Global`r,Global`s,Global`t,Global`u,Global`v,Global`w,Global`x,Global`y,Global`z}
+
+    DSEPlot, DSEPlotList:
+	bareVertexSymbol->diskTinySymbol,
+	coSymbol->triangleSymbol,
+	factorStyle->{FontSize:>16},
+	indexStyle->{FontSize:>14},
+	output->complete (List, forceEquation)
+	type->"DSE",
+	regulatorSymbol->boxSymbol,
+	vertexSymbol->diskSymbol,
+	(* options of Graph *)
+	ImageSize->100
+
+RGEPlot: as DSEPlot, type->"RGE"
+
+COPlot: as DSEPlot, type->"CO"
+
+setSourcesZero:
+    doGrassmannTest->True
+    propagatorCreationRules->DSERules
+
+doDSE:
+    ansatz->{}
+    identify:> True
+    sourcesZero:> True
+
+doRGE:
+    identify:> True
+    sourcesZero:> True
+    symmetry->intact
+    tDerivative -> True
+    userEvenFields
+
+shortExpression:
+    FontSize->16
+
