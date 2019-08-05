@@ -44,9 +44,8 @@ If[DoFun`DoFR`$doFRStartMessage=!=False,
 (* ::Section::Closed:: *)
 (* usages *)
 
-convertAction::usage="Converts a given action into a form suitable for computation, i.e., with proper dummy indices and momenta.\n
-Syntax:
-convertAction[act_] where act is a physical action.\n
+convertAction::usage="convertAction[ac] converts a given physical action into a form suitable for computation, i.e., with proper dummy indices and momenta.
+
 Example:
 setFields[{\[CurlyPhi]}];
 defineFieldsSpecific[{\[CurlyPhi][momentum, type]}];
@@ -54,95 +53,74 @@ convertAction[ 1/2 (p^2 Z[p^2] + R[k]) op[\[CurlyPhi][p, i], \[CurlyPhi][-p,i]] 
  \[Lambda]2/8 op[\[CurlyPhi][p, i], \[CurlyPhi][q, i], \[CurlyPhi][r, j], \[CurlyPhi][-p - q - r, j]]]
 ";
 
-(*diffFields::usage="Differentiate with respect to fields."*)
+defineFieldsSpecific::usage="defineFieldsSpecific[fs] defines indices of fields fs.
+The indices of a field can be obtained with indices[field].
 
-defineFieldsSpecific::usage="Defines indices of fields. Also see setFields.\n
-Syntax:
-defineFieldsSpecific[fields_List] where fields is a list of fields. 
-The indices of a field can be obtained with indices[field].\n
 Example:
 setFields[{A,{c,cb}}];
 defineFieldsSpecific[{A[momentum,adjoint,lorentz], c[momentum,adjoint], cb[momentum,adjoint]}]
 indices/@{A,c,cb}
-"
+";
 
-deltam::usage="Momentum delta distribution.\n
-Syntax:
-deltam[p1+p2] corresponds to (2 \[Pi])^d \[Delta](p1+p2).\n
-Example:
-deltam[p1+p2+3+p4]
-"
+delta::usage="delta[a,b] represents an arbitrary Kronecker delta with indices a and b.
+delta[ind,a,b] corresponds to a Kronecker delta for the index ind.
 
-delta::usage="Represents a Kronecker delta.\n
-delta[a,b] corresponds to an arbitrary Kronecker delta.\n
-delta[ind,a,b] corresponds to a Kronecker delta for the index ind.\n
 Examples:
 {delta[1,1], delta[lorentz, mu, nu]}
 ";
 
-der::usage="Denotes a derivative with respect to a field.\n
-Syntax:
-der[exp, field].\n
+deltam::usage="deltam[p1+p2] is the momentum delta distribution (2 \[Pi])^d \[Delta](p1+p2).
+";
+
+der::usage="der[expr, f] denotes the derivative of expr with respect to the field f.
+
 Example:
 der[U, phi[q, i]]
-"
+";
 
-dim::usage="dim[ind] represents the dimension of the representation of the index ind. Values can be assigned by the user.\n
-Syntax:
-dim[ind_]\n
+dim::usage="dim[ind] represents the dimension of the representation of the index ind. Values can be assigned by the user.
+
 Example:
 dim[adjoint]:=Nc;
 integrateDeltas[delta[adjoint,a,b]delta[adjoint,b,a]]
-"
+";
 
-getFR::usage="Derives the Feynman rule for the specified n-point function.\n
-Syntax:
-getFR[action, fields_List] where action is a physical action and fields a list of fields corresponding
-to the legs of the vertex function.\n
+getFR::usage="getFR[ac, fs] derives the Feynman rule for the n-point function with the legs fs from the action ac.
+
 Example:
 setFields[{\[CurlyPhi]}]
 defineFieldsSpecific[{\[CurlyPhi][mom, type]}];
 getFR[convertAction[1/2 p2 op[\[CurlyPhi][q1, j], \[CurlyPhi][-q1, j]] + 
  1/8 \[Lambda] op[\[CurlyPhi][q1, j], \[CurlyPhi][q2, j], \[CurlyPhi][q3, l], \[CurlyPhi][-q1 - q2 - q3, l]]], 
 {\[CurlyPhi][p1,i],\[CurlyPhi][p2,j]}]
-"
+";
 
-indices::usage="Gives the types of indices of a field.\n
-Syntax: indices[f_] where f is a field.\n
+indices::usage="indices[f] gives the types of indices of a field f.
+
 Example:
 setFields[{phi}];
 defineFieldsSpecific[{phi[momentum,indexOfPhi]}];
 indices[phi]
-"
+";
 
-integrateDeltas::usage="Contracts indices of Kronecker deltas.\n
-Syntax:
-integrateDeltas[exp_] where exp is an expression containing Kronecker deltas denoted by delta.\n
+integrateDeltas::usage="integrateDeltas[expr] contracts indices of Kronecker deltas in expr.
+
 Examples:
 integrateDeltas[delta[a, b] delta[b, c]]
 integrateDeltas[delta[ind1, a, b] delta[ind1, a, b]]
 integrateDeltas[delta[ind1, a, b] delta[ind1, b, c]]
-"
+";
 
-integrateMomenta::usage="Automatically integrates out internal momenta, denoted by q$i, where i is a running number, in delta distributions.
-Alternatively it integrates out explicitly given momenta in delta distributions.\n
-Syntax:
-integrateMomenta[exp_] integrates out internal momenta q$i, where exp is an expression containing momentum delta distributions denoted by deltam.
-integrateMomenta[exp_,mom_] integrates out the momenta given in mom, which can be a single momentum or a list of momenta. exp is an expression containing momentum delta distributions denoted by deltam.\n
+integrateMomenta::usage="integrateMomenta[expr] integrates out internal momenta, denoted by q$i, where i is a running number, in momentum delta distributions.
+integrateMomenta[expr, mom] integrates out the momenta mom in expr. mom can be a single momentum or a list of momenta.
+
 Examples:
 integrateMomenta[deltam[p1+q$1]deltam[q$1-p3]]
 integrateMomenta[deltam[r1+p2]deltam[p2-r3],p2]
-"
+";
 
-U::usage="Represents a potential.\n
-Syntax:
-U[fields__] where fields denotes the quantities on which U depends.\n
-Example:
-U[phi]
-"
-
-
-
+U::usage="U[f] represents a potential depending on f.
+";
 
 
 
@@ -160,6 +138,14 @@ Options[integrateDeltas]:={delta}
 
 Begin["`Private`"];
 
+(* private functions (alphabetic)
+	diffFields
+	getDeltasForInt
+	getDeltasForMixed
+	getIndices
+	integrateDeltaDo
+	
+*)
 
 
 (* ::Section::Closed:: *)

@@ -264,9 +264,19 @@ checkSyntax[op[a,S[{A, i1}, {B, i2}], {A, i1}, {B, j1}]]
 checkSyntax[dR[{A, i}, {A, j}, {A, l}]]
 ";
 
-CO::usage="CO[{field1, index1}, {field2, index2}, ...] represents a composite operator of the fields fieldi with their indices indexi  in its symbolic form.
-CO[field1[momentum1, index1a, index1b, ...], field2[momentum2, index2a, index2b, ...], ..., explicit->True] represents a bare vertex of the fields fieldi with their momenta momentumi and explicit indices indexij in algebraic form.
-The option explicit can have an arbitrary value. It is advised to save True for the definition of the propagators and use False otherwise.
+CO::usage="CO[{fieldCO, indexCO}, {field1, index1}, {field2, index2}, ...] represents a composite operator fieldCO with index indexCO of the fields fieldi with their indices indexi  in its symbolic form.
+CO[fieldCO[mom, index1, index2, ...], fielda[momentuma, indexa1, indexa2, ...], fieldb[momentumb, indexb1, indexb2, ...], ..., explicit->True] represents a composite operator fieldCO with momentum mom and explicit indices indexi of the fields fieldji with their momenta momentumji and explicit indices indexji in algebraic form.
+The option explicit can have an arbitrary value.
+
+Symbolic example: Composite operator G=phi^2
+setFields[{G,phi}];
+op[CO[{G,i}, {phi, i1}, {phi, i2}], {phi, i1}, {phi, i2}]/2
+
+Algebraic example:
+CO[oper[mom, inds], field1[mom1, inds1], field2[mom2, inds2], explicit -> True]
+
+Example: Composite operator phi^a_i phi^a_j 
+CO[G[p_, i_, j_], phi[p1_, is_, as_], phi[p2_, js_, bs_], explicit -> True]:=delta[as, bs] delta[i, is] delta[j, js]
 ";
 
 complete::usage="complete is the default value for the option output of DSEPlot and RGEPlot.
@@ -286,17 +296,24 @@ COPlot[expr, styles] plots expr with formatting styles for the fields given in s
 
 Possible options are:
 	-) Options of Graph.
+	
+Example:
+setFields[{FF,A}];
+COPlot[1/2 op[CO[{FF, i}, {A, r1}, {A, s1}], P[{A, r1}, {A, t1}], 
+   P[{A, s1}, {A, u1}], CO[{FF, j}, {A, t1}, {A, u1}]], {{A, 
+   Red}, {FF, Thick, Blue, Dotted}}]
 ";
 
-coSymbol::usage="coSymbol  is an option of COPlot, DSEPlot, DSEPlotList and RGEPlot. It determines how to draw composite operators.
+coSymbol::usage="coSymbol is an option of COPlot, DSEPlot, DSEPlotList and RGEPlot. It determines how to draw composite operators.
 
 Possible values: boxSymbol, diskSymbol, triangleSymbol, diskTinySymbol, diskOpenSymbol, crossSymbol or a user-defined function which takes the coordinate of the regulator insertion as input.
 Default value: triangleSymbol.
 
 Example:
-setFields[{phi}, {}, {}];
-DSEPlot[1/2 op[dR[{phi, r1}, {phi, s1}], P[{phi, t1}, {phi, r1}], P[{phi, s1}, {phi, v1}], V[{phi, i}, {phi, j}, {phi, v1}, {phi, t1}]], {{phi, Black}}, regulatorSymbol -> ({Text[\"Here comes the regulator.\", #]} &)]
-";
+setFields[{A,FF}];
+COPlot[1/2 op[CO[{FF, i}, {A, r1}, {A, s1}], P[{A, r1}, {A, t1}], 
+   P[{A, s1}, {A, u1}], CO[{FF, j}, {A, t1}, {A, u1}]], {{A, 
+   Red}, {FF, Thick, Blue, Dotted}}, coSymbol -> boxSymbol]";
 
 countTerms::usage="countTerms[expr] counts the number of graphs appearing in expr.
 
@@ -307,7 +324,7 @@ countTerms[op[S[{A, i}, {A, j}]] +  1/2 op[S[{A, i}, {A, r1}, {A, s1}], V[{A, t1
 createDummyList::usage="createDummyList[n, dummyNames] creates ate least n names for dummy indices.
 ";
 
-crossSymbol::usage="crossSymbols a cross graphic used for bareVertexSymbol, coSymbol, regulatorSymbol or vertexSymbol.
+crossSymbol::usage="crossSymbol is a cross graphic used for bareVertexSymbol, coSymbol, regulatorSymbol or vertexSymbol.
 ";
 
 deriv::usage="deriv[expr, {field, i}] differentiates expr with respect to {field, i}.
@@ -348,13 +365,21 @@ diskOpenSymbol::usage="diskOpenSymbol is an open disk graphic used for bareVerte
 diskTinySymbol::usage="diskTinySymbol is a tiny disk graphic used for bareVertexSymbol, coSymbol, regulatorSymbol or vertexSymbol.
 ";
 
-doCO::usage = "doCO[ac, cf, [filter, opts]] derives the equation for the correlation function cf of composite operators with the action ac. filter are optional functions to select a subset of diagrams.";
+doCO::usage = "doCO[ac, cf, [filter, opts]] derives the equation for the correlation function cf of composite operators with the action ac. filter are optional functions to select a subset of diagrams.
+
+Example:
+setFields[{A, FF}];
+comp = doCO[{{A, A}, {A, A, A}, {A, A, A, A}}, 
+   1/4 op[CO[{FF, i}, {A, r1}, {A, s1}], {A, r1}, {A, s1}, 
+     CO[{FF, j}, {A, t1}, {A, u1}], {A, t1}, {A, u1}], onePIQ];
+COPlot[comp, {{A, Red}, {FF, Thick, Blue, Dotted}}]
+";
 
 doDSE::usage="doDSE[ac, flis, [opts]] derives the DSE from the action ac for the fields contained in flis.
 doDSE[ac, flis, props, [opts]] derives the DSE only with propagators contained in props given as {{field1a, field1b}, {field2a, field2b}.
 doDSE[ac, flist, vtest, [opts]] derives the DSE only with vertices allowed by vtest.
 
-Allowed propagators will be taken from ac if the props argument is not given. It is required, e.g., for actions with fields mixing at the two-point level.
+Allowed propagators will be taken from ac if the props argument is not given. It is required, e.g., for actions with fields mixing at the two-point level but no corresponding tree-level propagator.
 
 Examples:
 Two-point DSE of an O(N) symmetric scalar theory
@@ -394,7 +419,7 @@ doRGE::usage="doRGE[ac, flis, [opts]] derives the RGE from the action ac for the
 doRGE[ac, flis, props, [opts]] derives the RGE only with propagators contained in props given as {{field1a, field1b}, {field2a, field2b}.
 doDSE[ac, flist, vtest, [opts]] derives the RGE only with vertices allowed by vtest.
 
-Allowed propagators will be taken from ac if the props argument is not given. It is required, e.g., for actions with fields mixing at the two-point level.
+Allowed propagators will be taken from ac if the props argument is not given. It is required, e.g., for actions with fields mixing at the two-point level and no corresponding tree-level propagator.
 
 Examples:
 Two-point RGE of an O(N) symmetric scalar theory in the symmetric phase
@@ -418,7 +443,6 @@ setFields[{phi}];
 rge = doRGE[{{phi, phi}, {phi,  phi, phi}}, {phi, phi, phi}, tDerivative -> False]
 RGEPlot[rge, {{phi, Black}}, output -> forceEquation]
 
-(* TODO: Rewrite this example without specificFieldDefinitions *)
 Three-point RGE of a theory with bosonic fields a, phi, and phib which mix at the two-point level, i.e., additional propagators have to be given in an extra argument. No regulator insertions performed.
 setFields[{A},{},{{phi,phib}}];
 rge = doRGE[{{A, A}, {phi, phib}, {A, phi}, {A, phib}, {A, phib, phi}}, {A, A, A}, {{phi, phi}, {phib, phib}}, specificFieldDefinitions -> {A, phi, phib}, tDerivative -> False]
@@ -830,8 +854,13 @@ shortExpression[1/2 op[S[{A, i}, {A, r}, {A, s}], V[{A, t}, {A, u}, {A, j}], P[{
 sortCanonical::usage="sortCanonical[expr] orders the fields in vertices and propagators in a canonical way:
 -) Anti-fermions left of fermions in vertices.
 -) Fermions left of anti-fermions in propagators. This is due to the definition of propagators, which show the anti-fields instead of the fields to allow easier identification with the corresponding vertex legs.
--) External fields fields ordered by list of derivatives
--) Internal fields ordered by connection to external fields
+-) External fields fields ordered by list of derivatives.
+-) Internal fields ordered by connection to external fields.
+
+Example:
+setFields[{A}, {{c, cb}}];
+sortCanonical[op[V[{c, a}, {cb, b}, {A, i}], P[{cb, b}, {c, f}], 
+  P[{c, a}, {cb, g}], V[{cb, g}, {c, f}, {A, j}]], {{A, i}, {A, j}}]
 ";
 
 
@@ -1006,8 +1035,7 @@ antiField[$dummyFieldF] = $dummyFieldAF;
 antiField[$dummyFieldAF] = $dummyFieldF;
 (# /: grassmannQ[#] = True) & /@ {$dummyFieldF, $dummyFieldAF};
 
-(* automatic ordering of complex fields *)
-P[{phi_?fieldQ, ii1_}, {phibar_?fieldQ, ii2_}] /; (complexFieldQ[phibar] && antiField[phi]===phibar) := P[{phibar, ii2}, {phi, ii1}]
+
 
 
 (* Define various diagram types. 
@@ -1085,7 +1113,6 @@ private functions (alphabetic)
 	newVertex
 	newVertexSum
 	opTest
-	plugInFieldsP
 	plugInFieldsV
 	propagatorTest
 	regulatorInsertionTest
@@ -1483,10 +1510,6 @@ plugInFieldsV[{},b_V]:=b;
 plugInFieldsV[{Q_?fieldQ,q_},b_V]:=Prepend[b,{Q,q}];
 plugInFieldsV[newField_List,b__]:=Sequence[newField,b];
  
-plugInFieldsP[a_List,b__]:=Sequence[a,b];
-
-
-
 
 (* when performing the differentiation a set of rules is applied in deriv;
 this then calls derivAll which uses derivField, derivVertex and derivPropagators; 
@@ -1826,10 +1849,14 @@ Includes effect of the deprecated function orderFermions. *)
 
 sortCanonical[b_op, derivatives_List] := 
  Module[{ordered, fieldValues, i, intIndices, extFieldIndices, props, const,
- 	connectedLeg, intIndexAss, intVertsAss, orderV, orderP, orderR, intVerts, extVerts},
+ 	connectedLeg, intIndexAss, intVertsAss, orderV, orderP, orderR, intVerts, extVerts,
+ 	complexRules},
 
   (* constant to distinguish internal from external indices *)
   const = 10^10;
+  
+  (* rules to sort complex propagators *)
+  complexRules = {P[{phi_?fieldQ, ii1_}, {phibar_?fieldQ, ii2_}] /; (complexFieldQ[phibar] && antiField[phi]===phibar) :> P[{phibar, ii2}, {phi, ii1}]};
   
   (* extract propagators *)
   props =  Cases[b, P[___]];
@@ -1914,7 +1941,7 @@ sortCanonical[b_op, derivatives_List] :=
   	/. P[a__] :> orderP[P[a]] /. dR[a__] :> orderR[dR[a]];
   
   (* get signature sign of original and ordered expression for the relative sign *)
-  getSignature@b getSignature@ordered ordered
+  getSignature@b getSignature@ordered ordered/.complexRules
 ]
 
 
@@ -1937,11 +1964,10 @@ getSignature[a_op] := Module[{verts},
 (* ::Section:: *)
 (* Set Sources to Zero *)
 
-(* standard test checking for conservation of Grassmann numbers; test also for complex fields;
+(* standard test checking for conservation of Grassmann numbers
 here we assume that only Grassmann numbers of fields are conserved that have a propagator *)
 grassmannTest[a_V,fields_List] := Module[{fermionsList},
 
-(* treat complex bosonic fields as fermions here since this test amounts to the same for them *)
 fermionsList=Cases[fields,{_?(fermionQ@#||antiFermionQ@#&),_?(fermionQ@#||antiFermionQ@#&)}];
 
 And@@(Count[a,#[[1]],\[Infinity]]===Count[a,#[[2]],\[Infinity]]&/@fermionsList)
@@ -2000,8 +2026,7 @@ setSourcesZero[a_,L_,extLegs_List,ownAllowedPropagators_List:{},vertexTest___Sym
     verticesAtMin=replaceVerticesBrokenPhase[a,fields,numberExtFields,interactions];
  
     (* set sources to zero field by field *)
-	(*Fold[setSourcesZero[#1,#2,interactions,ownAllowedPropagators,vertexTest,opts]&,verticesAtMin,Flatten@Q]*)
-	setSourcesZeroDo[verticesAtMin,L,(*dirFields,*)extLegs,truncation,ownAllowedPropagators,numberExtFields,vertexTest,opts]
+	setSourcesZeroDo[verticesAtMin,L,extLegs,truncation,ownAllowedPropagators,numberExtFields,vertexTest,opts]
 ];
 
 
@@ -2023,15 +2048,16 @@ interactions=getInteractionList@L;
 
 fields=Union@Flatten@interactions;
 
-(* get allowed propagators from the action and add the user-defined allowed propagators *)
-allowedPropagators=Join[ownAllowedPropagators,Cases[interactions, b_List /; Length@b == 2]];
+(* get allowed propagators from the action or use the user-defined allowed propagators *)
+(*allowedPropagators=Join[ownAllowedPropagators,Cases[interactions, b_List /; Length@b == 2]];*)
+allowedPropagators = ownAllowedPropagators/.{}:>Cases[interactions, b_List /; Length@b == 2];
 
 (* if there are fields that have only even interactions there cannot be a vertex with an odd number of these fields;
 for fermions this check is done with grassmannTest *)
 bosons=Select[Union@Flatten@interactions, cFieldQ];
 (* add the fields which can be specified by the user as even, when one uses doRGE and no truncations *)
-evenBosons=Union[userEvenFields/.Join[{opts},Options@doRGE],Function[boson, And @@ ((EvenQ@Count[#, boson] & /@ interactions)/.{}:>False)/. {True :> boson, False :> Sequence[]}] /@ bosons];
-evenComplexBosons=Function[complexBoson, And @@ ((Count[#, complexBoson[[1]]]==Count[#, complexBoson[[2]]] & /@ interactions)/.{}:>False)/. {True :> complexBoson, False :> Sequence[]}]/@({#,antiField[#]}&/@Select[bosons, complexFieldQ]);
+evenBosons=Union[Cases[userEvenFields/.Join[{opts},Options@doRGE],_?fieldQ],Function[boson, And @@ ((EvenQ@Count[#, boson] & /@ interactions)/.{}:>False)/. {True :> boson, False :> Sequence[]}] /@ bosons];
+evenComplexBosons=Union[Cases[userEvenFields/.Join[{opts},Options@doRGE],{_?fieldQ,_?fieldQ}], Function[complexBoson, And @@ ((Count[#, complexBoson[[1]]]==Count[#, complexBoson[[2]]] & /@ interactions)/.{}:>False)/. {True :> complexBoson, False :> Sequence[]}]/@({#,antiField[#]}&/@Select[bosons, complexFieldQ])];
 
 (* determine the possible interactions from the truncation given as input;
 use the DSE function generateAction to create bare vertices and use them as patterns in a test;
@@ -2051,8 +2077,7 @@ test[b_]:=And[
 	truncationTest[b,truncation],
 	If[(propagatorCreationRules/.Join[{opts},Options@doDSE])===RGERules,truncationTest[b,interactions],True,True], (* RGEs, always compare against interactions in the action *)
 	standardTest[b], (* conserve boson number if they only have even interactions *)
-	vertexTest[b](*,*) (* user-defined test *)
-	(*vertexTestTruncation[b]*)
+	vertexTest[b](* user-defined test *)
 ];
 
 propRules=createPropagatorRules[allowedPropagators,fields,opts];
@@ -2068,7 +2093,7 @@ verticesAtMinTrunc=verticesAtMinTruncMarked/.exp_op:>0/;Count[exp,{_List,ext}]>n
 delete propagators that are not allowed *)
 propReplaced=verticesAtMinTrunc/.propRules/.P[{q1_,_},{q2_,_}]:>0 /; Not@MemberQ[allowedPropagators, {q1, q2}|{q2,q1}];
 
-(* for each term in sum replace the vertices separately;
+(* for each term in sum replace the vertices separately; 
 close the indices *)
 Expand@replaceVertices[propReplaced,test,extLegs,opts]
 
@@ -2341,11 +2366,11 @@ onePoint=replaceFields[firstDer];
 multiPoint=deriv[onePoint,Sequence@@Rest@derivs];
 
 (* get the correct sign due to fermions by ordering them; also order directed (complex) fields for identification*)
-finalExp=If[sourcesZero/.Join[{opts},Options@doDSE],sortDummies@setSourcesZero[multiPoint,(*zeroSources,*)L,(*dirFields,*)derivs,allowedPropagators,vertexTest,opts],
+finalExp=If[sourcesZero/.Join[{opts},Options@doDSE],sortDummies@setSourcesZero[multiPoint,L,derivs,allowedPropagators,vertexTest,opts],
 multiPoint,multiPoint](*/.(Function[dField, 
    P[{dField[[2]], c_}, {dField[[1]], b_}] :> 
     P[{dField[[1]], b}, {dField[[2]], c}]] /@ Cases[complexFields,{_?(Head@#===boson&),_?(Head@#===boson&)}])*);
-finalExp=sign identifyGraphs[sortCanonical[getSigns[finalExp], derivs], derivs];
+finalExp=sign identifyGraphs[getSigns[finalExp], derivs];
 
 finalExp
 
@@ -2761,7 +2786,7 @@ DSEPlotGrid: puts the graphs into a GridBox
 
 (* determines the style of an edge based on given style rules and \
 grassmann/non-grassmann *)
-getEdgeShapeFunction[edge_, plotStyles_List] := Module[{field, line},
+getEdgeShapeFunction[edge_, plotStyles_List] := Module[{field},
   
   (* extract which field we have in the propagator; 
   make detour via the label, because the vertices contain one representative field only;
@@ -2769,12 +2794,6 @@ getEdgeShapeFunction[edge_, plotStyles_List] := Module[{field, line},
   field = ToExpression@
     StringCases[{edge[[2]]}, 
       f__ ~~ " " ~~ __ /; fieldQ[ToExpression[f]] :> f][[1, 1]];
- 
-  (* determine if an arrow should be plotted *) 
-  line[coords___] := If[
-    grassmannQ[field] || complexFieldQ[field] || 
-     antiComplexFieldQ[field], GraphElementData["Arrow"][coords], 
-    GraphElementData["Line"][coords]];
 
   (* extract the proper style and set the arrow *)
   Join[Cases[plotStyles, {field | antiField@field, 
@@ -2815,17 +2834,11 @@ DSEPlotList[a_List,plotRules_List,opts___?OptionQ]/;And @@ (fieldQ /@ Flatten[a]
 DSEPlotList[a_,plotRules_List,opts___?OptionQ]/;FreeQ[a,Rule,Infinity]:=
 	DSEPlotList[vertexDummies[a,opts],plotRules,opts];
 
-DSEPlotList[{a_List,b_?NumericQ},plotRules_List,opts___?OptionQ]:=Module[{graph, allDirFields, exponent, verts,
-	dirFieldsOrdered, plotRulesAll, vsize, edgeLabels, multiEdges, multiEdgeRules, multiEdgeReps},
+DSEPlotList[{a_List,b_?NumericQ},plotRules_List,opts___?OptionQ]:=Module[{graph, exponent, verts,
+	plotRulesAll, vsize, edgeLabels, multiEdges, multiEdgeRules, multiEdgeReps},
 
-	(* sort the bosonic edges to identify them more easily below, take the field info from the label *)
-	graph = Replace[a, {c_Rule, d_}:>{Sort[c], d}/;cFieldQ[ToExpression@StringCases[{d}, f__ ~~ " " ~~ __ /; fieldQ[ToExpression[f]] :> f][[1, 1]]], {1}];
-
-	(* add field style to propagators; if no style is given, add edge labels *)
-	If[plotRules==={},
-		edgeLabels = (#[[1]]->#[[2]])&/@graph,
-		edgeLabels = {}
-	];
+	(* sort real complex fields for easier identification below, take the field info from the label *)
+	graph = Replace[a, {c_Rule, d_}:>{Sort@c, d}/;bosonQ[ToExpression@StringCases[{d}, f__ ~~ " " ~~ __ /; fieldQ[ToExpression[f]] :> f][[1, 1]]], {1}];
 	
 	(* In Mathematica 12.0.0 EdgeRenderingFunction was superseded by EdgeShapeFunction at it was modified getting less arguments.
 	The label is no longer provided as argument and thus edges can no longer be distinguished properly.
@@ -2852,6 +2865,12 @@ DSEPlotList[{a_List,b_?NumericQ},plotRules_List,opts___?OptionQ]:=Module[{graph,
 	(* replace the edges *)
 	graph = graph/.multiEdgeRules;
 	
+	(* add field style to propagators; if no style is given, add edge labels *)
+	If[plotRules==={},
+		edgeLabels = (#[[1]]->#[[2]])&/@graph,
+		edgeLabels = {}
+	];
+	
 	(* set properties of edges *)
 	graph = Property[#[[1]], EdgeShapeFunction -> getEdgeShapeFunction[#, plotRules]] & /@ graph;
 	
@@ -2864,12 +2883,6 @@ DSEPlotList[{a_List,b_?NumericQ},plotRules_List,opts___?OptionQ]:=Module[{graph,
 	
 	(* get fields that are not necessarily fermions but directed, e.g., scalar complex fields *)
 	(*dirFields=(directedFields/.Join[{opts},Options@DSEPlot]);*)
-	
-	(* get all directed fields, i.e., complex bosonic and fermionic ones *)
-	allDirFields=getDirectedFieldsList[a];
-	
-	(* bring the directed fields into canonical order so that *)
-	dirFieldsOrdered=a;
 	
 	(* a smaller regulator symbol size is required for zero leg graphs in RGEs to avoid that the regulator symbol is larger than the loop *)
 	vsize = 0.15;
@@ -3055,8 +3068,8 @@ triangleSymbol[x_]:=triangleSymbol[x,{1,1}];
 
 (* these names are kep for compatibility *)
 
-regulatorBox[x_]:=boxSymbol[x];
-regulatorCross[x_]:=crossSymbol;
+regulatorBox[x___]:=boxSymbol[x];
+regulatorCross[x___]:=crossSymbol[x];
 
 
 
@@ -3067,35 +3080,22 @@ regulatorCross[x_]:=crossSymbol;
 
 (* create the propagator rules for the dummy field according to the allowed propagators given in propagatorList
 in the form {{A,A},{c,cb}} *)
-createPropagatorRules[propagatorList_List, fields_List,opts___?OptionQ]:=createPropagatorRules[propagatorList, fields]=Module[{ffields,propagators,propsClasses,
-	propagatorsF, propagatorsB, propsClassesF, propsClassesB, propPlugInFunction},
-
-(* this function decides if plugInFieldsP is used or not;
-RGEs do not require it, but DSEs do; decided by using setSourcesZeroRGE instead of setSourcesZero *) 
-propPlugInFunction=If[RGERules==propagatorCreationRules/.Join[{opts},Options@setSourcesZero],(##)&,plugInFieldsP,plugInFieldsP];
-(* TODO overrule usage of plugInFields *)
-propPlugInFunction = (##)&; 
+createPropagatorRules[propagatorList_List, fields_List,opts___?OptionQ]:=Module[{ffields,propagators,propsClasses},
 
 ffields=Flatten@fields;
 
 (* create all possible propagators, i.e. when {c,cb} is given also create {cb,c}*)
 propagators=P[{#[[1]],ind1$}, {#[[2]],ind2$}] & /@ Union[propagatorList,Reverse/@propagatorList];
 
-propagatorsF=Cases[propagators,P[a_, b_] /; Head@a[[1]] == fermion];
-propagatorsB=Cases[propagators,P[a_, b_] /; Head@a[[1]] == boson || Head@b[[1]] == boson];
-
 (* classes: a field and all the propagators where it is involved *)
 propsClasses={#,Cases[propagators, P[{#,_},{_?fieldQ,_}]]}&/@ffields;
-
-propsClassesF={#,Cases[propagatorsF, P[{#,_},{_?fieldQ,_}]]}&/@ffields;
-propsClassesB={#,Cases[propagatorsB, P[{#,_},{_?fieldQ,_}]]}&/@ffields;
 
 (* all possible propagator replacements that are allowed *)
 
 Join[ 
-	Function[{Q},P[{Q[[1]],ind1_},{$dummyField,ind2_}]->Evaluate@Apply[Plus,Q[[2]]/.P[W__]:>P[propPlugInFunction[W]]]]/@propsClasses,
-	Function[{Q},P[{$dummyField,ind2_},{Q[[1]],ind1_}]->Evaluate@Apply[Plus,Reverse/@Q[[2]]/.P[W__]:>P[propPlugInFunction[W]]]]/@propsClasses,
-	{P[{$dummyField,ind1_},{$dummyField,ind2_}]->Evaluate[Plus@@(propagators/.P[{Q1_,Q2_}]:>P[{Q1,ind1},{Q2,ind2}]/.P[W__]:>P[propPlugInFunction[W]])]}
+	Function[{Q},P[{Q[[1]],ind1_},{$dummyField,ind2_}]->Evaluate@Apply[Plus,Q[[2]]]]/@propsClasses,
+	Function[{Q},P[{$dummyField,ind2_},{Q[[1]],ind1_}]->Evaluate@Apply[Plus,Reverse/@Q[[2]]]]/@propsClasses,
+	{P[{$dummyField,ind1_},{$dummyField,ind2_}]->Evaluate[Plus@@(propagators/.P[{Q1_,Q2_}]:>P[{Q1,ind1},{Q2,ind2}])]}
 ]
 
 ];

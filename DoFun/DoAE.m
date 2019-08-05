@@ -47,36 +47,36 @@ If[(DoFun`DoAE`$doAEStartMessage=!=False),
 (* usages *)
 
 
-$loopMomenta::usage="Determines the names given to loop momenta in DoFun.\n
+$loopMomenta::usage="$loopMomenta determines the names given to loop momenta in DoFun.
+
 Default: q1, q2, ...\n
 These names are protected and should not be used otherwise.
 ";
 
-addIndices::usage="Adds new indices to the indices known by DoFun.\n
-Syntax:
-addIndices[] gives the list of known indices.
+addIndices::usage="addIndices[] gives the list of indices known by DoFun.
 addIndices[{iname, dummies}] adds one new index, where iname gives the name of the index and dummies is the list of variable names that should be used.
-addIndices[{iname1, dummies1}, {iname2, dummies2}}] adds several indices.\n
+addIndices[{iname1, dummies1}, {iname2, dummies2}}] adds several indices.
+
 Examples:
 addIndices[]
 addIndices[{son, {a, b, c, d, e, f, g, h, i, j}}]
 ";
 
-(* not for use of the user but a global symbol *)
-createDummyListUnique::usage="Creates a list of unique variable names."
-
-explicit::usage="Option of V, P, S, CO and dR.
-See ?getAE for details and examples.
+createDummyListUnique::usage="createDummyListUnique[n, t] creates at least n unique variable names for the index type t.
+The option dummyNames[t] sets the variable names for the index type t.
 ";
 
-getAE::usage="Transforms a DSE or RGE in symbolic form into an algebraic expression.\n
-Syntax:
-getAE[exp, legs, opts] where exp is a DSE or RGE in symbolic form and legs is a list of the following form:
+explicit::usage="explicit is an option getAE and passed on to V, P, S, CO and dR in the result.
+";
+
+getAE::usage="getAE[exp, ls, [opts]] transforms a DSE, RGE or composite operator equation expr  with external legs ls into symbolic form into an algebraic expression.
+The external legs are given in the following form:
 {{field1, symInd1, mom1, inds1}, {field2, symInd2, mom2, inds2}, ...}.
 Each individual list correponds to one external leg of the diagram, where fieldi indicates the field name, symbIndi the index in the symbolic form and momi and indsi the momentum and the indices for the algebraic form .\n
-Options:
-A useful option is explicit -> False. If it is given, the propagators and vertices are not replaced by their algebraic form but with the generic expressions, which, however, already contain all indices.
-Another option is save. If set to true, it saves the results which can speed up repeated calculations. Should be used with care.\n
+
+Hint:
+A useful option is explicit -> False. With the option explicit -> False, the propagators and vertices are not replaced by their algebraic form but with the generic expressions, which, however, already contain all indices.
+
 Example:
 This example takes the so-called sunset diagram from the DSE of a field A. It has only one index adj. For illustration purposes the propagator and the vertices are taken as simple expressions.
 
@@ -92,29 +92,25 @@ V[A[p1_, i1_], A[p2_, i2_], A[p3_, i3_], A[p4_, i4_], explicit -> True] :=  S[A[
 getAE[op[S[{A, i1}, {A, r1}, {A, r2}, {A, s1}], P[{A, r1}, {A, s2}], P[{A, r2}, {A, t2}], P[{A, s1}, {A, u2}], V[{A, i2}, {A, s2}, {A, t2}, {A, u2}]], {{A, i1, p1, a}, {A, i2, p2, b}}] // integrateDeltas
 ";
 
-loadFeynCalc::usage="Fixes a problem when loading FeynCalc. Furthermore the output format is set to StandardForm.
-This should be used when problems with FeynCalc occur.\n
-Syntax:
-loadFeynCalc[pack] with pack the path of the FeynCalc package. If none is given, HighEnergyPhysics`FeynCalc` is used.\n
-Example:
-loadFeynCalc[]
+loadFeynCalc::usage="loadFeynCalc[] fixes a problem when loading FeynCalc. Furthermore the output format is set to StandardForm.
+loadFeynCalc[pack] with pack the path of the FeynCalc package. If none is given, HighEnergyPhysics`FeynCalc` is used.
+This should be used when problems with FeynCalc occur.
 ";
 
-removeIndices::usage="Removes one or several index types from the list of known indices.\n
-Syntax:
-removeIndices[iname] removes the index iname.
-removeIndices[{iname1, iname2}] removes the indices with names iname1 and iname2.\n
+removeIndices::usage="removeIndices[iname] removes the index iname from the list of known indices.
+removeIndices[{iname1, iname2}] removes the indices with names iname1 and iname2.
+
 Example:
 resetIndices[]
 removeIndices[lor]
-"
+";
 
-resetIndices::usage="Resets the known indices to the standard, i.e., only Lorentz and adjoint indices, lor and adj, respectively.\n
-Syntax:
-resetIndices[]\n
-Example:
-resetIndices[]
-"
+resetIndices::usage="resetIndices[] resets the known indices to the standard, i.e., only Lorentz and adjoint indices, lor and adj, respectively.
+";
+
+save::usage="save is an option of getAE. If set to True, it saves the results which can speed up repeated calculations. Should be used with care.
+Default: False.
+";
 
 
 
@@ -137,30 +133,20 @@ getAlgebraicExpression=getAE;
 
 Begin["`Private`"]
 
-(* global 
-addIndices
-getAE
-loadFeynCalc
-removeIndices
-resetIndices
-*)
-(* unknown 
-createDummyListUnique
-*)
-(* private commands *)
-(*
-addMomentum
-checkIndicesAlg
-checkMomentumConservation
-contractIndices
-flowDiagram
-flowProps
-getAEDo
-indicesTestAlg
-insertMomenta
-putIndices
-removeDoubleIndices
-replaceIndices
+(* private functions (alphabetic)
+	addMomentum
+	checkIndicesAlg
+	checkMomentumConservation
+	contractIndices
+	flowDiagram
+	flowProps
+	getAEDo
+	indicesTestAlg
+	insertMomenta
+	putIndices
+	removeDoubleIndices
+	replaceIndices
+
 *)
 
 

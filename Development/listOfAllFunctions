@@ -1,6 +1,42 @@
 All functions (private and public) should be listed here to have a complete list.
 
 
+List of all functions in DoAE.m:
+
+	public
+		private
+
+	$loopMomenta
+	addIndices
+		addMomentum
+	createDummyListUnique
+		checkIndicesAlg
+		checkMomentumConservation
+		contractIndices
+	explicit
+		flowDiagram
+		flowProps
+	getAE
+		getAEDo
+		indicesTestAlg
+		insertMomenta
+	loadFeynCalc
+		putIndices
+		removeDoubleIndices
+	removeIndices
+		replaceIndices
+	resetIndices
+	safe
+	
+Options:
+	getAE:
+		save:>False
+		explicit->True
+
+	createDummyListUnique:
+		dummyNames[ind]
+
+
 List of all functions in DoDSERGE.m:
 
     public
@@ -68,7 +104,7 @@ List of all functions in DoDSERGE.m:
 
     checkSyntax
 
-    ?CO
+    CO
 
     complete
 
@@ -78,9 +114,9 @@ List of all functions in DoDSERGE.m:
 
     connectedQ
 
-    ?COPlot
+    COPlot
 
-    ?example coSymbol
+    coSymbol
 
     countTerms
 
@@ -118,19 +154,19 @@ List of all functions in DoDSERGE.m:
 
     diskTinySymbol
 
-    ?doCO
+    doCO
 
     ?doDSE
 
     doGrassmannTest
 
-    ?doRGE
+    doRGE
 
     dR
 
     dummy
 
-    ?DSEPlot
+    DSEPlot
 
     DSEPlotCompare
     
@@ -238,8 +274,6 @@ List of all functions in DoDSERGE.m:
 
     P
 
-        plugInFieldsP
-
         plugInFieldsV
 
     propagatorCreationRules
@@ -290,7 +324,7 @@ List of all functions in DoDSERGE.m:
 
         shortExpressionStyle
 
-    ?sortCanonical
+    sortCanonical
 
     sortDummies
 
@@ -365,3 +399,28 @@ doRGE:
 shortExpression:
     FontSize->16
 
+
+List of all functions in DoFR.m:
+
+	public
+		private
+
+	convertAction
+	defineFieldsSpecific
+	delta
+	deltam		
+	der
+		derivF
+		diffFields
+	dim
+		getDeltasForInt
+		getDeltasForMixed
+	getFR
+		getIndices
+	indices
+		integrateDeltaDo
+	integrateDeltas
+	integrateMomenta
+	integrateMomentum
+	integrateNumDeltas
+	U
