@@ -4,40 +4,42 @@
 
 (* (c) and written by Markus Q. Huber *)
 
-(* version history *)
-(* 0.1 (autumn of 2008): first running version
-   0.2 (never released):	-) introduced DoDSE`$startMessage to allow suppression of the message when loading the package
-   				-) inclusion of RGEs
-   2.0.0 (25.2.2011): First public release of DoFun via http://www.tpi.uni-jena.de/qfphysics/homepage/mhub/DoFun/.
-   2.0.1 (22.1.2013, never released):
-   	-) bugfix in errorhandler getAE::incorrectFormat: correction of first condition that all fields have to be defined as such
-   	-) bugfix in getAEDo: fields with two indices of the same type are handled correctly now instead of using the same index names (new function removeDoubleIndices)
-	-) bugfix in insertMomenta: ops with only P or V work now (analogously to S)
-   2.0.2 (22.1.2015): no changes
-   2.0.3 (19.1.2017): no changes
-   2.0.4 (5.12.2017): no changes
+(* published under GNU General Public License v3.0 *)
 
+
+
+
+
+(* version history *)
+(*  0.1 (autumn of 2008): first running version
+    0.2 (never released):
+    	-) introduced DoDSE`$startMessage to allow suppression of the message when loading the package
+   		-) inclusion of RGEs
+    2.0.0 (25.2.2011): First public release of DoFun via http://www.tpi.uni-jena.de/qfphysics/homepage/mhub/DoFun/.
+    2.0.1 (22.1.2013, never released):
+   		-) bugfix in errorhandler getAE::incorrectFormat: correction of first condition that all fields have to be defined as such
+   		-) bugfix in getAEDo: fields with two indices of the same type are handled correctly now instead of using the same index names (new function removeDoubleIndices)
+		-) bugfix in insertMomenta: ops with only P or V work now (analogously to S)
+    2.0.2 (22.1.2015): no changes
+    2.0.3 (19.1.2017): no changes
+    2.0.4 (5.12.2017): no changes
+    3.0.0 (31.7.2019):
+    	-) added composite operator CO tofunctionality
+    	-) momentum routing for more general diagrams than DSEs and RGEs
 *)
 
 
 BeginPackage["DoFun`DoAE`", { "DoFun`DoDSERGE`", "DoFun`DoFR`"}]
 
 (* variable that gives the version of DoDSE *)
-$DoAEVersion="2.0.4";
-(*If[DoDSERGE`$startMessage=!=False,
-	Print["Package DoDSERGE loaded.
-\n\nVersion "<> $doDSEVersion <>
-"\n\nReinhard Alkofer, Markus Q. Huber, Kai Schwenzer, 2008-2010\n
-\n\nreinhard.alkofer@uni-graz.at, markus.huber@uni-jena.de, kai.schwenzer@uni-graz.at
-\n\nVisit physik.uni-graz.at/~mah/DoDSE.html for updates.
-\n\nDetails to be found in arXiv:0808.2939 [hep-th]."];
-];*)
+$DoAEVersion="3.0.0";
+
 If[Not@FreeQ[Contexts[],"DoFun`"],DoFun`DoAE`$doAEStartMessage=False];
 If[(DoFun`DoAE`$doAEStartMessage=!=False),
 	Print["Package DoAE loaded.
 \nVersion "<> $DoAEVersion <>
-"\nJens Braun, Markus Q. Huber, 2009-2017\n
-\nDetails in Comput.Phys.Commun. 183 (2012) 1290-1320 (http://inspirehep.net/record/890744)."];
+"\nJens Braun, Anton K. Cyrol, Reinhard Alkofer, Markus Q. Huber, Jan. M. Pawlowski, Kai Schwenzer, 2008-2019\n
+\nDetails at https://github.com/markusqh/DoFun/."];
 ];
 
 
@@ -45,36 +47,36 @@ If[(DoFun`DoAE`$doAEStartMessage=!=False),
 (* usages *)
 
 
-$loopMomenta::usage="Determines the names given to loop momenta in DoFun.\n
+$loopMomenta::usage="$loopMomenta determines the names given to loop momenta in DoFun.
+
 Default: q1, q2, ...\n
 These names are protected and should not be used otherwise.
 ";
 
-addIndices::usage="Adds new indices to the indices known by DoFun.\n
-Syntax:
-addIndices[] gives the list of known indices.
+addIndices::usage="addIndices[] gives the list of indices known by DoFun.
 addIndices[{iname, dummies}] adds one new index, where iname gives the name of the index and dummies is the list of variable names that should be used.
-addIndices[{iname1, dummies1}, {iname2, dummies2}}] adds several indices.\n
+addIndices[{iname1, dummies1}, {iname2, dummies2}}] adds several indices.
+
 Examples:
 addIndices[]
 addIndices[{son, {a, b, c, d, e, f, g, h, i, j}}]
 ";
 
-(* not for use of the user but a global symbol *)
-createDummyListUnique::usage="Creates a list of unique variable names."
-
-explicit::usage="Option of V, P, S and dR.
-See ?getAE for details and examples.
+createDummyListUnique::usage="createDummyListUnique[n, t] creates at least n unique variable names for the index type t.
+The option dummyNames[t] sets the variable names for the index type t.
 ";
 
-getAE::usage="Transforms a DSE or RGE in symbolic form into an algebraic expression.\n
-Syntax:
-getAE[exp, legs, opts] where exp is a DSE or RGE in symbolic form and legs is a list of the following form:
+explicit::usage="explicit is an option getAE and passed on to V, P, S, CO and dR in the result.
+";
+
+getAE::usage="getAE[exp, ls, [opts]] transforms a DSE, RGE or composite operator equation expr  with external legs ls from symbolic form into an algebraic expression.
+The external legs are given in the following form:
 {{field1, symInd1, mom1, inds1}, {field2, symInd2, mom2, inds2}, ...}.
-Each individual list correponds to one external leg of the diagram, where fieldi indicates the field name, symbIndi the index in the symbolic form and momi and indsi the momentum and the indices for the algebraic form .\n
-Options:
-A useful option is explicit -> False. If it is given, the propagators and vertices are not replaced by their algebraic form but with the generic expressions, which, however, already contain all indices.
-Another option is save. If set to true, it saves the results which can speed up repeated calculations. Should be used with care.\n
+Each individual list corresponds to one external leg of the diagram, where fieldi indicates the field name, symbIndi the index in the symbolic form and momi and indsi the momentum and the indices for the algebraic form .\n
+
+Hint:
+A useful option is explicit -> False. With the option explicit -> False, the propagators and vertices are not replaced by their algebraic form but with the generic expressions, which, however, already contain all indices.
+
 Example:
 This example takes the so-called sunset diagram from the DSE of a field A. It has only one index adj. For illustration purposes the propagator and the vertices are taken as simple expressions.
 
@@ -90,29 +92,25 @@ V[A[p1_, i1_], A[p2_, i2_], A[p3_, i3_], A[p4_, i4_], explicit -> True] :=  S[A[
 getAE[op[S[{A, i1}, {A, r1}, {A, r2}, {A, s1}], P[{A, r1}, {A, s2}], P[{A, r2}, {A, t2}], P[{A, s1}, {A, u2}], V[{A, i2}, {A, s2}, {A, t2}, {A, u2}]], {{A, i1, p1, a}, {A, i2, p2, b}}] // integrateDeltas
 ";
 
-loadFeynCalc::usage="Fixes a problem when loading FeynCalc. Furthermore the output format is set to StandardForm.
-This should be used when problems with FeynCalc occur.\n
-Syntax:
-loadFeynCalc[pack] with pack the path of the FeynCalc package. If none is given, HighEnergyPhysics`FeynCalc` is used.\n
-Example:
-loadFeynCalc[]
+loadFeynCalc::usage="loadFeynCalc[] fixes a problem when loading FeynCalc. Furthermore, the output format is set to StandardForm.
+loadFeynCalc[pack] with pack the path of the FeynCalc package. If none is given, HighEnergyPhysics`FeynCalc` is used.
+This should be used when problems with FeynCalc occur.
 ";
 
-removeIndices::usage="Removes one or several index types from the list of known indices.\n
-Syntax:
-removeIndices[iname] removes the index iname.
-removeIndices[{iname1, iname2}] removes the indices with names iname1 and iname2.\n
+removeIndices::usage="removeIndices[iname] removes the index iname from the list of known indices.
+removeIndices[{iname1, iname2}] removes the indices with names iname1 and iname2.
+
 Example:
 resetIndices[]
 removeIndices[lor]
-"
+";
 
-resetIndices::usage="Resets the known indices to the standard, i.e., only Lorentz and adjoint indices, lor and adj, respectively.\n
-Syntax:
-resetIndices[]\n
-Example:
-resetIndices[]
-"
+resetIndices::usage="resetIndices[] resets the known indices to the standard ones, i.e., only Lorentz and adjoint indices, lor and adj, respectively.
+";
+
+save::usage="save is an option of getAE. If set to True, it saves the results which can speed up repeated calculations. Should be used with care.
+Default: False.
+";
 
 
 
@@ -135,30 +133,20 @@ getAlgebraicExpression=getAE;
 
 Begin["`Private`"]
 
-(* global 
-addIndices
-getAE
-loadFeynCalc
-removeIndices
-resetIndices
-*)
-(* unknown 
-createDummyListUnique
-*)
-(* private commands *)
-(*
-addMomentum
-checkIndicesAlg
-checkMomentumConservation
-contractIndices
-flowDiagram
-flowProps
-getAEDo
-indicesTestAlg
-insertMomenta
-putIndices
-removeDoubleIndices
-replaceIndices
+(* private functions (alphabetic)
+	addMomentum
+	checkIndicesAlg
+	checkMomentumConservation
+	contractIndices
+	flowDiagram
+	flowProps
+	getAEDo
+	indicesTestAlg
+	insertMomenta
+	putIndices
+	removeDoubleIndices
+	replaceIndices
+
 *)
 
 
@@ -197,7 +185,7 @@ SetOptions[$FrontEnd,
 
 getAE::incorrectNumberOfMomenta="The expression has more or less legs than provided by `1`. Adjust the number of legs.";
 
-getAE::undefinedFields="The field(s) `1` are not defined yet. Use defineFieldsSpecific to do so.";
+getAE::undefinedFields="Not all field(s) `1` are defined yet. Use defineFieldsSpecific to do so.";
 
 getAE::incorrectFormat="The format of the list of external momenta and indices is not correct.
 It has to be of the form {{field1, ind, mom, specific index 1, specific index 2, ...}, {field2, ...}, ...},
@@ -368,7 +356,7 @@ insertMomenta[op[S[a__], P[b1_, b2_]], extMomenta_List] :=
 
 (* treat expressions with only one entry in op, e.g., bare diagrams, extra *)
 
-insertMomenta[op[SPV_[a__]], extMomenta_List]/;SPV==V||SPV==S||SPV==P:= 
+insertMomenta[op[SPV_[a__]], extMomenta_List]/;SPV==V||SPV==S||SPV==P||SPV==CO:= 
   Module[{external, totalOp},
 
    totalOp = op[SPV[a]];
@@ -387,9 +375,10 @@ insertMomenta[op[SPV_[a__]], extMomenta_List]/;SPV==V||SPV==S||SPV==P:=
 
 
 insertMomenta[a_op, extMomenta_List] := 
- Module[{momentaToInsert, external, noListQ,  extAdded, props, 
-   startVertex, startVertexIntLegs, startVertexExtLegs, loopMomenta, 
-   newVertex, flowed,extFields,extFieldsAdded,extFieldsMomenta},
+ Module[{momentaToInsert, external, noListQ,  extAdded, props, regs,
+   regRules, startVertex, startVertexIntLegs, startVertexExtLegs, loopMomenta, 
+   newVertex, flowed,extFields,extFieldsAdded,extFieldsMomenta,
+   verts, selfProps, momentaSelfProps, selfPropsAdded},
  
   momentaToInsert[b_, c_] := {c, -b - c};
   momentaToInsert[b_List, c_] := {Sequence @@ Most@b, Last@b - c, c};
@@ -413,7 +402,7 @@ insertMomenta[a_op, extMomenta_List] :=
   
   (* start at one vertex; take its indices *)
   
-  startVertex = First@Cases[extFieldsAdded, S[b__] | V[b__] :> {b}];
+  startVertex = First@Cases[extFieldsAdded, S[b__] | V[b__] | CO[b__] :> {b}];
   (* the internal legs and the external one *)
   
   startVertexIntLegs = 
@@ -422,14 +411,43 @@ insertMomenta[a_op, extMomenta_List] :=
   
   startVertexExtLegs = Complement[startVertex, startVertexIntLegs];
   
+  (* do self-loops *)
+  (* get propagators and vertices and check which propagator arguments appear in the same vertex *)
+  props = Cases[a, P[___]];
+  (* get regulator insertions: to be treated special; actually not needed currently, but keep code for future use *)
+  regs = Cases[a, dR[___]];
+  (* rules to delete the dummy indices in P dR P *)
+  regRules = (# -> Sequence[]) & /@ Flatten[List @@@ regs, 1];
+  
+  (* extract the propagators attached to the regulators *)
+  regs = Cases[a, P[b___, {c_,Alternatives@@#[[All,2]]}, d___]]&/@regs;
+  (* merge into one propagator representing the self-loop *)
+  regs = regs /. regRules /. {P[b_List], P[c_List]} :> P[b, c];
+  
+  verts = Cases[a, V[___]|CO[___]|S[___]|dR[___]];
+  (* get all propagators closing on the same vertex *)
+  selfProps = Select[props, Position[verts,#[[1]]][[1, 1]]==Position[verts,#[[2]]][[1, 1]]&];
+  
+  (* and their momenta *)
+  momentaSelfProps = $loopMomenta[[1;;Length@selfProps]];
+  (* add those momenta *)
+  selfPropsAdded = addMomentum[extFieldsAdded, Flatten[List@@@selfProps,1], Flatten[Transpose[{momentaSelfProps,-momentaSelfProps}],1]];
+  
+  (* remove the self-loops from the internal legs *)
+  startVertexIntLegs = Complement[startVertexIntLegs, Flatten[List@@@selfProps,1]];
+  
   (* determine the loop momenta *)
   
-  loopMomenta = 
-   Fold[momentaToInsert, (Plus @@ startVertexExtLegs)[[2]], 
-   Take[$loopMomenta, Length@startVertexIntLegs - 1]];
+  If[Length[startVertexIntLegs]>1,
+  	loopMomenta = 
+   	Fold[momentaToInsert, (Plus @@ startVertexExtLegs)[[2]], 
+   	$loopMomenta[[Length@selfProps+1;;Length@selfProps+Length@startVertexIntLegs-1]]],
+   	(* no legs left, e.g., tadpoles *)
+   	loopMomenta = {}
+  ];
   
   (* replace the indices with the new momenta *)
-  newVertex = addMomentum[extFieldsAdded, startVertexIntLegs, loopMomenta];
+  newVertex = addMomentum[selfPropsAdded, startVertexIntLegs, loopMomenta];
   
   (* the propagators with one new momentum *)
   props = Cases[newVertex, 
@@ -451,19 +469,42 @@ flowDiagram[a_op] /;
            ListQ@# &), _}], \[Infinity]] == {} := a;
 flowDiagram[a_op] := 
  Module[{startVertex, indWMomenta, indWOMomenta, newMomentum, newOp, 
-   props},
+   props, newLoopMomentum, usedLoopMomenta},
   
   (* choose one vertex that has only one leg without momentum *)
-  startVertex = 
+  (*startVertex = 
    First@Cases[a, 
-     V[b__] | S[b__] | dR[b__]:> {b} /; 
-       Count[{b}, {_?(Not@ListQ@# &), _}] == 1];
+     V[b__] | S[b__] | dR[b__] | CO[b__] :> {b} /; 
+       Count[{b}, {_?(Not@ListQ@# &), _}] == 1];*)
+  startVertex = 
+   First@Cases[a,  
+     V[b__] | S[b__] | dR[b__] | CO[b__] :> {b} /; 
+       Count[{b}, {_?(Not@ListQ@# &), _}] >= 1];     
+  (*indWMomenta = Cases[startVertex, {b_List, c_}];
+  indWOMomenta = First@Complement[startVertex, indWMomenta];*)
+  (* get legs with and without momenta *)
   indWMomenta = Cases[startVertex, {b_List, c_}];
-  indWOMomenta = First@Complement[startVertex, indWMomenta];
+  indWOMomenta = Complement[startVertex, indWMomenta];
+  (*indWOMomenta = First@Cases[startVertex, {b_,c_}/;Head@b=!=List];
+  indWMomenta = Complement[List@@startVertex, {indWOMomenta}];*)
+  
+    (* for exactly one leg without momentum continue by momentum conservation, otherwise add new loop momentum *)
+  If[Length@indWOMomenta==1,
+  	newLoopMomentum=-Plus @@ indWMomenta[[All, 2]],
+  	
+  	(* get an unused loop momentum *)
+    usedLoopMomenta = Union@Cases[a, _?(MemberQ[$loopMomenta, #] &), Infinity];
+    newLoopMomentum = First[Complement[$loopMomenta, usedLoopMomenta]];
+    newLoopMomentum = First[$loopMomenta/.(#:>Sequence[]&/@usedLoopMomenta)];  	
+  ];
+  
+  (* take first entry to put a momentum there *)
+  indWOMomenta=First@indWOMomenta;
   
   (* determine the new momentum *)
   
-  newMomentum = {indWOMomenta, -Plus @@ indWMomenta[[All, 2]]};
+  (*newMomentum = {indWOMomenta, -Plus @@ indWMomenta[[All, 2]]};*)
+  newMomentum = {indWOMomenta, newLoopMomentum};
   
   (* add the new momentum *)
   
@@ -475,7 +516,7 @@ flowDiagram[a_op] :=
     P[{{_, _}, _}, {_?(Not@ListQ@# &), _}] | 
      P[{_?(Not@ListQ@# &), _}, {{_, _}, _}]];
   
-  (* and propagate it momentum to the vertex at the other end *)
+  (* and propagate its momentum to the vertex at the other end *)
   
   flowProps[newOp, props]
   ];
@@ -576,9 +617,9 @@ removeDoubleIndices[exp_,fields_List]:=Module[{doubleIndexRules, allFields},
 (* if no contractFunctions are given (standard case), provide an empty list to use the original functions *)
 getAE[a_, momenta_List,opts___?OptionQ]/;opts=!={}:=getAE[a, momenta, {}, opts];
 
-(* TODO: unfdefined fields! in case the user has not defined an index yet, it is defined with standard index names, a,b,... *)
-(*getAE[a_, (*fields_List,*) momenta_List, contractFunctions_List, opts___?OptionQ]/;Not[
-	And@@(fieldQ/@Flatten@fields)]:=Message[getAE::undefinedFields,Select[Flatten@fields,Not@fieldQ@#&]];*)
+(* fields are not defined for getAE *)
+getAE[a_, momenta_List, contractFunctions_List, opts___?OptionQ]/;Not[
+	And@@((ListQ@indices[#])&/@Flatten@momenta[[All,1]])]:=Message[getAE::undefinedFields,Union@momenta[[All,1]]];
 
 (* in case the user has not defined an index yet, it is defined with standard index names, a,b,... *)
 getAE[a_, momenta_List, contractFunctions_List, opts___?OptionQ]/;Not[
@@ -631,7 +672,7 @@ getAEDo[a_, momenta_List, rest___]/;Depth[momenta]==2&&momenta=!={}:=
 getAEDo[a_, extMomentaIndices_List, contractFunctions_List, opts___?OptionQ]:=
 	(*getAE[a,indicesList,  momenta, contractFunctions, opts]=*)Module[{fields,uniqueExt,legRules,indicesList,
 	momentumRules,indsTypes,momentaInserted,indsPutIn,doubleIndsReplaced,indsReplaced,fullExpression, explicitTF,uniqueExtOrdered},
-fields=Union@Cases[a,_?fermionQ|_?bosonQ,\[Infinity]];
+fields=Union@Cases[a,_?fieldQ,\[Infinity]];
 
 (* get the fields and their indices *)
 (*indicesList=fields2/. {Q1_?fermionQ, Q2_?antiFermionQ} :> Q1 /. Q3_?fieldQ :> {Q3, Sequence @@ indices@Q3};*)
@@ -677,6 +718,7 @@ indsReplaced=replaceIndices[doubleIndsReplaced, indsTypes];
 remove op function *)
 fullExpression=indsReplaced /. b_op :> Times @@ b /. {
   V[c___] :> V[c, explicit -> explicitTF], 
+  CO[c___] :> CO[c, explicit -> explicitTF],
   S[c___] :> S[c, explicit -> explicitTF], 
   P[c___] :> P[c, explicit -> explicitTF],
   dR[c___] :> dR[c, explicit -> explicitTF]};
@@ -700,7 +742,7 @@ checkMomentumConservation[a_Times | a_Plus] :=
   checkMomentumConservation /@ a;
 checkMomentumConservation[a_op] := 
  Apply[Plus, 
-  Replace[Cases[a, V[b__] | S[b__] :> {b}],{{Q_, q_}, p_} :> 
+  Replace[Cases[a, V[b__] | S[b__] |CO[b__] :> {b}],{{Q_, q_}, p_} :> 
     p, {2}], {1}];
 
 

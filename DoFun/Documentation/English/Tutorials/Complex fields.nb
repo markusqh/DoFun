@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     17860,        433]
+NotebookDataLength[     17859,        433]
 NotebookOptionsPosition[     13705,        337]
-NotebookOutlinePosition[     16508,        406]
-CellTagsIndexPosition[     16429,        401]
+NotebookOutlinePosition[     16507,        406]
+CellTagsIndexPosition[     16428,        401]
 WindowTitle->Complex fields
 WindowFrame->Normal*)
 
@@ -21,14 +21,14 @@ WindowFrame->Normal*)
 Notebook[{
 Cell[BoxData[GridBox[{
    {Cell["DO FUN TUTORIAL", "PacletNameCell",ExpressionUUID->
-     "2a6b103f-96cc-4937-b7f0-0f38ad399463"], Cell[TextData[Cell[BoxData[
+     "29b6502f-44ae-42e8-8ff9-af167c06046c"], Cell[TextData[Cell[BoxData[
      ActionMenuBox[
       FrameBox[
        InterpretationBox[Cell[TextData[{
          "URL",
          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
           StripOnInput->False]
-        }],ExpressionUUID->"b7a296d8-153b-42ee-a3e2-fd96e080765e"],
+        }],ExpressionUUID->"e1e26d9d-5e4d-41d2-8080-775da15591d5"],
         TextCell[
          Row[{"URL", 
            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
@@ -60,7 +60,7 @@ Exporting diagrams.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$55647], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$59937], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/tutorial/Exporting diagrams", ".html"]], None}]}]},
@@ -68,19 +68,19 @@ Exporting diagrams.html"], StandardForm]], "Input", TextClipboardType ->
       MenuAppearance->Automatic,
       MenuStyle->"URLMenu"]],
      LineSpacing->{1.4, 0},ExpressionUUID->
-     "2fe45d8a-f9e0-4eca-a104-f299794392cd"]], "AnchorBar",ExpressionUUID->
-     "49779a8c-c4eb-4c49-90d7-4a3cd189b4a3"]}
+     "19efcc88-3610-415c-8254-d33b592e7f82"]], "AnchorBar",ExpressionUUID->
+     "e6721a0d-4a23-48c6-b909-a52808b81067"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
       Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
    "RowsIndexed" -> {}}},
- CellID->1,ExpressionUUID->"9517e2f2-249e-4f81-9cfb-0ba59f1a03a0"],
+ CellID->1,ExpressionUUID->"e3472ac7-1764-4d9c-8333-8160babce3a4"],
 
 Cell[CellGroupData[{
 
 Cell["Complex fields", "Title",
- CellID->509267359,ExpressionUUID->"3f392042-de59-40ba-83be-ae744957fcf6"],
+ CellID->509267359,ExpressionUUID->"8abe96ac-289a-4abf-8052-5b8849216876"],
 
 Cell["\<\
 In DoFun the statistics of fields is determined by the two-point part of the \
@@ -88,18 +88,18 @@ action: If the two field labels are the same, the fields are taken as \
 commuting, while they are treated as Grassmann fields if the two labels \
 differ.\
 \>", "Text",
- CellID->1676458223,ExpressionUUID->"8d9e7c22-2479-4e58-b256-eb4c0e8330b7"],
+ CellID->1676458223,ExpressionUUID->"63edb81d-7c4e-48b6-ab4a-d5d3d11ae8ed"],
 
 Cell["\<\
 Since also complex fields have two different field labels additional input is \
 required to let DoFun know that the fields commute, but have two labels.\
 \>", "Text",
- CellID->567950211,ExpressionUUID->"9802b94d-1a71-4d81-a688-753989182322"],
+ CellID->567950211,ExpressionUUID->"314db164-edf1-401e-afec-37a9394ad91c"],
 
 Cell["\<\
 The additional input is provided with the option specificFieldDefinitions.\
 \>", "Text",
- CellID->921065371,ExpressionUUID->"a5806d94-0506-4fd0-b16b-5a669ce8b991"],
+ CellID->921065371,ExpressionUUID->"f1333628-3b27-4a42-9a30-3afb600247b2"],
 
 Cell[BoxData[GridBox[{
    {
@@ -109,7 +109,7 @@ Cell[BoxData[GridBox[{
     Cell["\<\
 Derives the DSE corresponding to legs from action. fieldDefs contains \
 information about the fields being commuting or anti-commuting.\
-\>", "TableText",ExpressionUUID->"9152b643-6859-4d3a-8797-7b76881a0b50"]},
+\>", "TableText",ExpressionUUID->"6df32155-e4d1-4cbe-8d14-0514b1d8812a"]},
    {
     RowBox[{"doDSE", "[", 
      RowBox[{"action", ",", " ", "legs", ",", " ", 
@@ -117,9 +117,9 @@ information about the fields being commuting or anti-commuting.\
     Cell["\<\
 Derives the RGE corresponding to legs from action. fieldDefs contains \
 information about the fields being commuting or anti-commuting.\
-\>", "TableText",ExpressionUUID->"9ef76bb6-724c-4125-9256-a37ca676d9e0"]}
+\>", "TableText",ExpressionUUID->"dc56ed89-783f-456a-a809-f6ee30e80d5a"]}
   }]], "DefinitionBox",
- CellID->2096742444,ExpressionUUID->"d75d43af-b6a0-4e0d-94ae-2943e604bde5"],
+ CellID->2096742444,ExpressionUUID->"9bf0d69b-92ac-4657-aed6-0c9e71134472"],
 
 Cell[TextData[{
  "Derive the DSE of complex ",
@@ -128,10 +128,10 @@ Cell[TextData[{
    RowBox[{"(", 
     RowBox[{"\[CurlyPhi]", 
      OverscriptBox["\[CurlyPhi]", "_"]}], ")"}], "2"]], "InlineFormula",
-  ExpressionUUID->"5fcc109a-91ff-45d6-98d7-2d7c782d0da8"],
+  ExpressionUUID->"f3cdfc90-5da5-4969-ab55-df4ee12b06a4"],
  " theory."
 }], "MathCaption",
- CellID->836781195,ExpressionUUID->"97aca4fe-94ba-4e8a-9971-61f05171b52a"],
+ CellID->836781195,ExpressionUUID->"fc4477a6-ea52-4f6d-b502-838aa29b6100"],
 
 Cell[CellGroupData[{
 
@@ -154,7 +154,7 @@ Cell[BoxData[
       RowBox[{"\[CurlyPhi]", ",", "\[CurlyPhi]b"}], "}"}]}]}], 
    "]"}]}]], "Input",
  CellLabel->"In[1]:=",
- CellID->2058623809,ExpressionUUID->"5d95c55e-5982-4218-b40c-5a30cde46f24"],
+ CellID->2058623809,ExpressionUUID->"6614f64f-4aba-4d8b-9d46-fac13b43f0d5"],
 
 Cell[BoxData[
  RowBox[{
@@ -230,7 +230,7 @@ Cell[BoxData[
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[1]=",
- CellID->2087296576,ExpressionUUID->"a03577bf-455b-41a7-9216-5b5f085b83ee"]
+ CellID->2087296576,ExpressionUUID->"06514385-9a86-4f62-bcc1-cd43e2c8c8aa"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -242,7 +242,7 @@ Cell[BoxData[
     RowBox[{"{", 
      RowBox[{"\[CurlyPhi]", ",", "Black"}], "}"}], "}"}]}], "]"}]], "Input",
  CellLabel->"In[2]:=",
- CellID->855112902,ExpressionUUID->"0a197acb-b07a-4d38-a3ae-c5bfd8fdf050"],
+ CellID->855112902,ExpressionUUID->"9d379297-9470-4f84-bf63-c03bdb1e3524"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -329,11 +329,11 @@ BEEQBEEQBBnsVFRU+ImRlZXFtl0IgiAIgiAIgiAIgiAIgiAIgiAIgiAIggwO
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"RasterizedOutput",
  CellLabel->"Out[2]=",
- CellID->915093967,ExpressionUUID->"0d99f917-2e2e-4690-9a9b-e12a9738b890"]
+ CellID->980091599,ExpressionUUID->"45e5e641-9223-4efd-815a-b37175c20577"]
 }, Open  ]]
 }, Open  ]],
 
-Cell[" ", "FooterCell",ExpressionUUID->"cb4b7ee6-ea8a-42eb-b6b2-1c8f343b053d"]
+Cell[" ", "FooterCell",ExpressionUUID->"079a6b52-4565-4035-93f4-a0a4d0a0b9c6"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
@@ -349,7 +349,7 @@ TaggingRules->{
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
     Left], "ExampleCounter" -> 1, "NeedPlatMsgIn" -> None, "RootCaptions" -> 
   "", "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 45, 50.860987}", 
+   "built" -> "{2019, 1, 15, 9, 26, 47.056753}", 
     "history" -> {"0.0", "", "", ""}, "context" -> "DoFun`", "keywords" -> {},
      "specialkeywords" -> {}, "tutorialcollectionlinks" -> {}, "index" -> 
     True, "label" -> "Do Fun Tutorial", "language" -> "en", "paclet" -> 
@@ -361,7 +361,7 @@ differ. Since also complex fields have two different field labels additional \
 input is required to let DoFun know that the fields commute, but have two \
 labels. The additional input is provided with the option \
 specificFieldDefinitions.", "synonyms" -> {}, "tabletags" -> 
-    DocumentationBuild`Make`Private`tabletaggingrules$55591, "title" -> 
+    DocumentationBuild`Make`Private`tabletaggingrules$59881, "title" -> 
     "Complex fields", "titlemodifier" -> "", "windowtitle" -> 
     "Complex fields", "type" -> "Tutorial", "uri" -> 
     "DoFun/tutorial/Exporting diagrams", "WorkflowDockedCell" -> ""}, 
@@ -393,48 +393,48 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "RasterizedOutput"->{
-  Cell[8859, 246, 4737, 85, 61, "Output",ExpressionUUID->"0d99f917-2e2e-4690-9a9b-e12a9738b890",
+  Cell[8859, 246, 4737, 85, 61, "Output",ExpressionUUID->"45e5e641-9223-4efd-815a-b37175c20577",
    CellTags->"RasterizedOutput",
-   CellID->915093967]}
+   CellID->980091599]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"RasterizedOutput", 16252, 394}
+ {"RasterizedOutput", 16251, 394}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[586, 21, 2613, 56, 56, "AnchorBarGrid",ExpressionUUID->"9517e2f2-249e-4f81-9cfb-0ba59f1a03a0",
+Cell[586, 21, 2613, 56, 56, "AnchorBarGrid",ExpressionUUID->"e3472ac7-1764-4d9c-8333-8160babce3a4",
  CellID->1],
 Cell[CellGroupData[{
-Cell[3224, 81, 106, 1, 65, "Title",ExpressionUUID->"3f392042-de59-40ba-83be-ae744957fcf6",
+Cell[3224, 81, 106, 1, 65, "Title",ExpressionUUID->"8abe96ac-289a-4abf-8052-5b8849216876",
  CellID->509267359],
-Cell[3333, 84, 332, 6, 84, "Text",ExpressionUUID->"8d9e7c22-2479-4e58-b256-eb4c0e8330b7",
+Cell[3333, 84, 332, 6, 84, "Text",ExpressionUUID->"63edb81d-7c4e-48b6-ab4a-d5d3d11ae8ed",
  CellID->1676458223],
-Cell[3668, 92, 251, 4, 60, "Text",ExpressionUUID->"9802b94d-1a71-4d81-a688-753989182322",
+Cell[3668, 92, 251, 4, 60, "Text",ExpressionUUID->"314db164-edf1-401e-afec-37a9394ad91c",
  CellID->567950211],
-Cell[3922, 98, 173, 3, 36, "Text",ExpressionUUID->"a5806d94-0506-4fd0-b16b-5a669ce8b991",
+Cell[3922, 98, 173, 3, 36, "Text",ExpressionUUID->"f1333628-3b27-4a42-9a30-3afb600247b2",
  CellID->921065371],
-Cell[4098, 103, 897, 18, 181, "DefinitionBox",ExpressionUUID->"d75d43af-b6a0-4e0d-94ae-2943e604bde5",
+Cell[4098, 103, 897, 18, 181, "DefinitionBox",ExpressionUUID->"9bf0d69b-92ac-4657-aed6-0c9e71134472",
  CellID->2096742444],
-Cell[4998, 123, 362, 10, 37, "MathCaption",ExpressionUUID->"97aca4fe-94ba-4e8a-9971-61f05171b52a",
+Cell[4998, 123, 362, 10, 37, "MathCaption",ExpressionUUID->"fc4477a6-ea52-4f6d-b502-838aa29b6100",
  CellID->836781195],
 Cell[CellGroupData[{
-Cell[5385, 137, 686, 19, 49, "Input",ExpressionUUID->"5d95c55e-5982-4218-b40c-5a30cde46f24",
+Cell[5385, 137, 686, 19, 49, "Input",ExpressionUUID->"6614f64f-4aba-4d8b-9d46-fac13b43f0d5",
  CellID->2058623809],
-Cell[6074, 158, 2468, 74, 130, "Output",ExpressionUUID->"a03577bf-455b-41a7-9216-5b5f085b83ee",
+Cell[6074, 158, 2468, 74, 130, "Output",ExpressionUUID->"06514385-9a86-4f62-bcc1-cd43e2c8c8aa",
  CellID->2087296576]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8579, 237, 277, 7, 29, "Input",ExpressionUUID->"0a197acb-b07a-4d38-a3ae-c5bfd8fdf050",
+Cell[8579, 237, 277, 7, 29, "Input",ExpressionUUID->"9d379297-9470-4f84-bf63-c03bdb1e3524",
  CellID->855112902],
-Cell[8859, 246, 4737, 85, 61, "Output",ExpressionUUID->"0d99f917-2e2e-4690-9a9b-e12a9738b890",
+Cell[8859, 246, 4737, 85, 61, "Output",ExpressionUUID->"45e5e641-9223-4efd-815a-b37175c20577",
  CellTags->"RasterizedOutput",
- CellID->915093967]
+ CellID->980091599]
 }, Open  ]]
 }, Open  ]],
-Cell[13623, 335, 78, 0, 70, "FooterCell",ExpressionUUID->"cb4b7ee6-ea8a-42eb-b6b2-1c8f343b053d"]
+Cell[13623, 335, 78, 0, 70, "FooterCell",ExpressionUUID->"079a6b52-4565-4035-93f4-a0a4d0a0b9c6"]
 }
 ]
 *)
