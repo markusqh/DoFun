@@ -1,0 +1,301 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10743,        291]
+NotebookOptionsPosition[      7130,        205]
+NotebookOutlinePosition[      9452,        264]
+CellTagsIndexPosition[      9368,        259]
+WindowTitle->diagramTypes
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell",ExpressionUUID->
+     "8ce16c24-fa53-4cbe-b252-dca81798ccd7"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }],ExpressionUUID->"0a2df4c5-2ec0-4892-a8bc-9c15ca24525a"],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"DoFun/ref/diagramTypes\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["DoFun/ref/diagramTypes"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/DoFun/ref/diagramTypes.\
+html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+           False]]; SelectionMove[
+        DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$33454], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "DoFun/ref/diagramTypes", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
+     LineSpacing->{1.4, 0},ExpressionUUID->
+     "637993e4-ea2b-4692-9b01-af4eedebe5b5"]], "AnchorBar",ExpressionUUID->
+     "39e565fa-3e9f-41a6-a608-46d82417108f"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1,ExpressionUUID->"ef42dfaa-7e37-45d6-86ca-fa536ee5d48d"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell["diagramTypes", "ObjectName",ExpressionUUID->
+  "8d2f76f9-ab67-4816-a928-29d4a3e65da2"],
+ Cell[BoxData[
+  TemplateBox[{8},
+   "Spacer1"]],ExpressionUUID->"80efa691-ca73-413d-9416-4d3f5da0e412"],
+ Cell[BoxData[
+ ""], "ObjectNameTranslation",ExpressionUUID->
+  "4d6f5c0d-33ac-4f9c-95e0-10133fe4cc50"]
+}], "ObjectNameGrid",ExpressionUUID->"72efc954-7704-49cd-9d59-fe0ba5e4fda4"],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+     "diagramTypes"], "InlineFormula",ExpressionUUID->
+      "89a2589f-594f-4ae6-8beb-d71d86fe7d7e"],
+     "\[LineSeparator]is an association containing all known diagram types. A \
+diagram type is defined by a list ",
+     Cell[BoxData[
+      RowBox[{"{", 
+       RowBox[{
+        StyleBox["n", "TI"], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{
+          SubscriptBox[
+           StyleBox["v", "TI"], "1"], ",", " ", 
+          SubscriptBox[
+           StyleBox["v", "TI"], "2"], ",", " ", "..."}], "}"}]}], "}"}]], 
+      "InlineFormula",ExpressionUUID->"e9429258-f05a-419d-9071-ef1f5f869382"],
+     
+     ", where ",
+     Cell[BoxData[
+      StyleBox["n", "TI"]], "InlineFormula",ExpressionUUID->
+      "29a85f27-16fa-41ea-95b8-80219df2852b"],
+     " is the loop number and the ",
+     Cell[BoxData[
+      SubscriptBox[
+       StyleBox["v", "TI"], "i"]], "InlineFormula",ExpressionUUID->
+      "45d070f0-b7c3-44ee-9f38-b41c9e6f94ac"],
+     " are the numbers of legs of all vertices."
+    }],ExpressionUUID->"938c085b-4947-471c-835d-1d809f65ebc0"]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> \
+{}}},ExpressionUUID->"5d586231-9ad1-46d4-8e01-3e61c345b7ce"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"04ed5171-5d97-4bef-814a-394826aaab78"],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "3584b133-f622-470a-9683-d6a857566822"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->427478875,ExpressionUUID->"121459da-5608-41c2-9b94-eba87a6b65ab"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "7fe584b1-57dd-44a1-b656-ca01d9407a49"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->31132920,ExpressionUUID->"28d4045a-d3da-432e-932d-c9e35a3318af"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<DoFun`\>\"", "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->1414887963,ExpressionUUID->"e336712a-961c-44fa-a153-c057e199e740"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"diagramTypes", "[", 
+  RowBox[{"{", 
+   RowBox[{"2", ",", " ", 
+    RowBox[{"{", 
+     RowBox[{"4", ",", " ", "3", ",", " ", "3"}], "}"}]}], "}"}], 
+  "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->2034323036,ExpressionUUID->"45a13ae1-05b6-426b-a46d-482beb09b0bb"],
+
+Cell[BoxData["\<\"sunset\"\>"], "Output",
+ ImageSize->{51, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->2123377583,ExpressionUUID->"1e5daf7a-0bcd-418d-a48d-d8b58a06129d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"diagramTypes", "[", 
+  RowBox[{"{", 
+   RowBox[{"1", ",", " ", 
+    RowBox[{"{", 
+     RowBox[{"3", ",", " ", "3", ",", " ", "3", ",", " ", "3"}], "}"}]}], 
+   "}"}], "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->1447040662,ExpressionUUID->"1fa39515-1456-4c86-b46b-0356e96c3239"],
+
+Cell[BoxData["\<\"box\"\>"], "Output",
+ ImageSize->{27, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->1101469313,ExpressionUUID->"0745dbba-2e7a-44a3-a7be-159b01972d21"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell",ExpressionUUID->"924a615b-e3b0-46c9-a022-f53f0a2cc27f"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"diagramTypes",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:DoFun/guide/DoFun", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2019, 8, 7, 9, 20, 49.250621}", 
+    "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
+    "status" -> "None", "summary" -> 
+    "diagramTypes is an association containing all known diagram types. A \
+diagram type is defined by a list {n, {v1, v2, ...}}, where n is the loop \
+number and the vi are the numbers of legs of all vertices.", "synonyms" -> {},
+     "tabletags" -> {}, "title" -> "diagramTypes", "titlemodifier" -> "", 
+    "windowtitle" -> "diagramTypes", "type" -> "Symbol", "uri" -> 
+    "DoFun/ref/diagramTypes", "WorkflowDockedCell" -> ""}, 
+  "SearchTextTranslated" -> "", "NewStyles" -> False},
+CellContext->"Global`",
+FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  TaggingRules -> {"NewStyles" -> False}, FrontEndVersion -> 
+  "11.3 for Linux x86 (64-bit) (March 6, 2018)", StyleDefinitions -> 
+  "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[4954, 132, 435, 11, 36, "PrimaryExamplesSection",ExpressionUUID->"121459da-5608-41c2-9b94-eba87a6b65ab",
+   CellTags->"PrimaryExamplesSection",
+   CellID->427478875]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 9170, 252}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[584, 21, 2574, 56, 56, "AnchorBarGrid",ExpressionUUID->"ef42dfaa-7e37-45d6-86ca-fa536ee5d48d",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[3183, 81, 397, 9, 53, "ObjectNameGrid",ExpressionUUID->"72efc954-7704-49cd-9d59-fe0ba5e4fda4"],
+Cell[3583, 92, 1334, 35, 155, "Usage",ExpressionUUID->"5d586231-9ad1-46d4-8e01-3e61c345b7ce"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4954, 132, 435, 11, 36, "PrimaryExamplesSection",ExpressionUUID->"121459da-5608-41c2-9b94-eba87a6b65ab",
+ CellTags->"PrimaryExamplesSection",
+ CellID->427478875],
+Cell[CellGroupData[{
+Cell[5414, 147, 307, 7, 30, "ExampleSection",ExpressionUUID->"28d4045a-d3da-432e-932d-c9e35a3318af",
+ CellID->31132920],
+Cell[5724, 156, 170, 3, 29, "Input",ExpressionUUID->"e336712a-961c-44fa-a153-c057e199e740",
+ CellID->1414887963],
+Cell[CellGroupData[{
+Cell[5919, 163, 290, 8, 29, "Input",ExpressionUUID->"45a13ae1-05b6-426b-a46d-482beb09b0bb",
+ CellID->2034323036],
+Cell[6212, 173, 227, 5, 38, "Output",ExpressionUUID->"1e5daf7a-0bcd-418d-a48d-d8b58a06129d",
+ CellID->2123377583]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6476, 183, 306, 8, 29, "Input",ExpressionUUID->"1fa39515-1456-4c86-b46b-0356e96c3239",
+ CellID->1447040662],
+Cell[6785, 193, 224, 5, 38, "Output",ExpressionUUID->"0745dbba-2e7a-44a3-a7be-159b01972d21",
+ CellID->1101469313]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[7048, 203, 78, 0, 43, "FooterCell",ExpressionUUID->"924a615b-e3b0-46c9-a022-f53f0a2cc27f"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5787,        156]
-NotebookOptionsPosition[      3521,        103]
-NotebookOutlinePosition[      5524,        154]
-CellTagsIndexPosition[      5481,        151]
+NotebookDataLength[      5679,        155]
+NotebookOptionsPosition[      3598,        105]
+NotebookOutlinePosition[      5416,        153]
+CellTagsIndexPosition[      5373,        150]
 WindowTitle->fermion
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$29039], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$43995], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "DoFun/ref/fermion", 
             ".html"]], None}]}]},
@@ -84,15 +84,17 @@ Cell[TextData[{
 }], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
-   {"", Cell["\<\
-Represents an anti-commuting field. Specifically it is the first field of a \
-pair of anti-commuting fields.
-
-The following action contains two Grassmann fields psi and psib, where psib \
-is defined as fermion:
-generateAction[{{psi, psib}, {psib,psib,psi,psi}}];
-fermionQ@psi\
-\>"]}
+   {"", Cell[TextData[{
+     Cell[BoxData["fermion"], "InlineFormula"],
+     "\[LineSeparator]is the field type of a Grassmann field. Properties of \
+fields need to be set by ",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData["setFields"]],"paclet:DoFun/ref/setFields"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+     "."
+    }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
@@ -116,19 +118,16 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 44, 55.991222}", 
+   "built" -> "{2019, 8, 7, 9, 21, 5.326962}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
     "status" -> "None", "summary" -> 
-    "Represents an anti-commuting field. Specifically it is the first field \
-of a pair of anti-commuting fields. The following action contains two \
-Grassmann fields psi and psib, where psib is defined as fermion: \
-generateAction[{{psi, psib}, {psib,psib,psi,psi}}]; fermionQ@psi", 
-    "synonyms" -> {}, "tabletags" -> {}, "title" -> "fermion", 
-    "titlemodifier" -> "", "windowtitle" -> "fermion", "type" -> "Symbol", 
-    "uri" -> "DoFun/ref/fermion"}},
+    "fermion is the field type of a Grassmann field. Properties of fields \
+need to be set by setFields.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "fermion", "titlemodifier" -> "", "windowtitle" -> "fermion", "type" -> 
+    "Symbol", "uri" -> "DoFun/ref/fermion"}},
 CellContext->"Global`",
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
 StyleDefinitions->Notebook[{
@@ -153,11 +152,11 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[579, 21, 2266, 54, 70, "AnchorBarGrid",ExpressionUUID->"217e4dd2-7918-4ed4-8307-befc4ec726e5",
+Cell[579, 21, 2266, 54, 70, "AnchorBarGrid",ExpressionUUID->"1014d065-255c-48a7-b8dc-47f4c319d9cd",
  CellID->1],
-Cell[2848, 77, 164, 6, 70, "ObjectNameGrid",ExpressionUUID->"5328290b-0f9d-40b6-acf5-837bb2eb5522"],
-Cell[3015, 85, 476, 14, 70, "Usage",ExpressionUUID->"42f2fdd1-0688-4d0c-856b-9382211f76dd"],
-Cell[3494, 101, 23, 0, 70, "FooterCell",ExpressionUUID->"4525e5fc-9b1b-4129-a4e7-bf48d42c6286"]
+Cell[2848, 77, 164, 6, 70, "ObjectNameGrid",ExpressionUUID->"8cf23a33-aedd-4479-a947-0bdbefd9008b"],
+Cell[3015, 85, 553, 16, 70, "Usage",ExpressionUUID->"b1ff7242-0930-4284-ac10-88e4c5a864cb"],
+Cell[3571, 103, 23, 0, 70, "FooterCell",ExpressionUUID->"3b1c8cfa-33fb-4bcc-b16b-de5cef1b6733"]
 }
 ]
 *)

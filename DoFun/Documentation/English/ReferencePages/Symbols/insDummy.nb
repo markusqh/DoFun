@@ -10,25 +10,25 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5762,        158]
-NotebookOptionsPosition[      3509,        105]
-NotebookOutlinePosition[      5499,        156]
-CellTagsIndexPosition[      5456,        153]
+NotebookDataLength[     10421,        289]
+NotebookOptionsPosition[      7135,        209]
+NotebookOutlinePosition[      9277,        266]
+CellTagsIndexPosition[      9193,        261]
 WindowTitle->insDummy
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell"], Cell[TextData[Cell[
-    BoxData[
+   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell",ExpressionUUID->
+     "b513ea65-3ee1-4317-b10c-f64683c70003"], Cell[TextData[Cell[BoxData[
      ActionMenuBox[
       FrameBox[
        InterpretationBox[Cell[TextData[{
          "URL",
          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
           StripOnInput->False]
-        }]],
+        }],ExpressionUUID->"550c80e5-fbeb-4619-8b96-aa7daf59c7e9"],
         TextCell[
          Row[{"URL", 
            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
@@ -60,48 +60,152 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$35763], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$55022], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "DoFun/ref/insDummy", 
             ".html"]], None}]}]},
       Appearance->None,
       MenuAppearance->Automatic,
       MenuStyle->"URLMenu"]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+     LineSpacing->{1.4, 0},ExpressionUUID->
+     "b4bcd9e5-ccca-495e-b461-e9ec4cf219fb"]], "AnchorBar",ExpressionUUID->
+     "22a945e3-3c25-422c-80e9-5f169019e7ca"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
       Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
    "RowsIndexed" -> {}}},
- CellID->1],
+ CellID->1,ExpressionUUID->"05157450-4301-4a44-a9c7-f1795a44986a"],
+
+Cell[CellGroupData[{
 
 Cell[TextData[{
- Cell["insDummy", "ObjectName"],
+ Cell["insDummy", "ObjectName",ExpressionUUID->
+  "0b13af41-007e-4ad2-92bc-596229d3b162"],
  Cell[BoxData[
   TemplateBox[{8},
-   "Spacer1"]]],
- Cell[BoxData[""], "ObjectNameTranslation"]
-}], "ObjectNameGrid"],
+   "Spacer1"]],ExpressionUUID->"e71f5ea3-352b-4bf3-8d18-e649a9fbcddd"],
+ Cell[BoxData[
+ ""], "ObjectNameTranslation",ExpressionUUID->
+  "9791c5a8-8b30-4545-8cd8-d86678ad5c61"]
+}], "ObjectNameGrid",ExpressionUUID->"c36cb1b0-746a-4a7e-a51a-c64d32f483e9"],
 
 Cell[BoxData[GridBox[{
-   {"", Cell["\<\
-Gives a unique dummy variable.
-Used in many functions of DoFun.
-
-Syntax:
-insDummy[]
-
-Example: Write down a graph using unique dummy variables
-Module[{ind1=insDummy[],ind2=insDummy[]}, \
-op[S[{phi,i},{phi,j},{phi,ind1},{phi,ind2}], P[{phi,ind1},{phi,ind2}]]]\
-\>"]}
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"insDummy", "[", "]"}]], "InlineFormula",ExpressionUUID->
+      "1fc3c0be-cc72-490d-8b69-eac7a60ac02c"],
+     "\[LineSeparator]returns unique dummy variable."
+    }],ExpressionUUID->"7c032d29-95e1-482e-8186-0a8a05725502"]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
-   "RowsIndexed" -> {}}}],
+   "RowsIndexed" -> \
+{}}},ExpressionUUID->"bb1ab281-bc64-458d-ac6f-f71d7f1e32dd"]
+}, Open  ]],
 
-Cell[" ", "FooterCell"]
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"98d2f646-2258-4716-ad38-5453c4a64ec3"],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "610b592c-3a90-453c-bc1a-b1942e530e4a"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->951953352,ExpressionUUID->"5d9c552f-4241-4864-aa6c-4152fbeda17e"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "10694d92-8c51-485f-bb0d-fd40c873d68f"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1210635102,ExpressionUUID->"d416c9b9-a13e-4846-9e8d-5018ff7dc4e9"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<DoFun`\>\"", "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->1414887963,ExpressionUUID->"a631646b-21fd-4f89-b5d9-62bb5357380d"],
+
+Cell["Write down a graph using unique dummy variables:", "Text",
+ CellID->2006652038,ExpressionUUID->"6ccf88d9-d69e-406a-9ac1-5c3e2a2f6b19"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Module", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"ind1", "=", 
+      RowBox[{"insDummy", "[", "]"}]}], ",", 
+     RowBox[{"ind2", "=", 
+      RowBox[{"insDummy", "[", "]"}]}]}], "}"}], ",", 
+   RowBox[{"op", "[", 
+    RowBox[{
+     RowBox[{"S", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "i"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "j"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "ind1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "ind2"}], "}"}]}], "]"}], ",", 
+     RowBox[{"P", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "ind1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "ind2"}], "}"}]}], "]"}]}], "]"}]}], 
+  "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->832842323,ExpressionUUID->"8155bef4-6fc0-4415-bf00-377eff995b4a"],
+
+Cell[BoxData[
+ RowBox[{"op", "[", 
+  RowBox[{
+   RowBox[{"S", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"phi", ",", "i"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"phi", ",", "j"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"phi", ",", 
+       RowBox[{"dummy", "[", "27", "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"phi", ",", 
+       RowBox[{"dummy", "[", "28", "]"}]}], "}"}]}], "]"}], ",", 
+   RowBox[{"P", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"phi", ",", 
+       RowBox[{"dummy", "[", "27", "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"phi", ",", 
+       RowBox[{"dummy", "[", "28", "]"}]}], "}"}]}], "]"}]}], "]"}]], "Output",\
+
+ ImageSize->{465, 37},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->1588458029,ExpressionUUID->"b7d8825d-d317-46ed-b4ec-ddcc016ed52b"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell",ExpressionUUID->"fe4867e6-03a8-4af4-be36-d19660bf91b6"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
@@ -118,19 +222,17 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 45, 10.935094}", 
+   "built" -> "{2019, 8, 7, 9, 21, 22.254935}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
     "status" -> "None", "summary" -> 
-    "Gives a unique dummy variable. Used in many functions of DoFun. Syntax: \
-insDummy[] Example: Write down a graph using unique dummy variables \
-Module[{ind1=insDummy[],ind2=insDummy[]}, \
-op[S[{phi,i},{phi,j},{phi,ind1},{phi,ind2}], P[{phi,ind1},{phi,ind2}]]]", 
-    "synonyms" -> {}, "tabletags" -> {}, "title" -> "insDummy", 
-    "titlemodifier" -> "", "windowtitle" -> "insDummy", "type" -> "Symbol", 
-    "uri" -> "DoFun/ref/insDummy"}},
+    "insDummy[] returns unique dummy variable.", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "insDummy", "titlemodifier" -> "", 
+    "windowtitle" -> "insDummy", "type" -> "Symbol", "uri" -> 
+    "DoFun/ref/insDummy", "WorkflowDockedCell" -> ""}, "SearchTextTranslated" -> 
+  "", "NewStyles" -> False},
 CellContext->"Global`",
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
 StyleDefinitions->Notebook[{
@@ -141,27 +243,57 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
-  StyleDefinitions -> "Default.nb"]
+  TaggingRules -> {"NewStyles" -> False}, FrontEndVersion -> 
+  "11.3 for Linux x86 (64-bit) (March 6, 2018)", StyleDefinitions -> 
+  "Default.nb"]
 ]
 (* End of Notebook Content *)
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{}
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[4108, 109, 435, 11, 36, "PrimaryExamplesSection",ExpressionUUID->"5d9c552f-4241-4864-aa6c-4152fbeda17e",
+   CellTags->"PrimaryExamplesSection",
+   CellID->951953352]}
+ }
 *)
 (*CellTagsIndex
-CellTagsIndex->{}
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 8995, 254}
+ }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[580, 21, 2270, 54, 70, "AnchorBarGrid",ExpressionUUID->"a2ce80a5-22f7-4730-8be0-7baa0f533538",
+Cell[580, 21, 2558, 56, 56, "AnchorBarGrid",ExpressionUUID->"05157450-4301-4a44-a9c7-f1795a44986a",
  CellID->1],
-Cell[2853, 77, 165, 6, 70, "ObjectNameGrid",ExpressionUUID->"7e2d3c73-5f02-4e52-9f0f-010e452d4d90"],
-Cell[3021, 85, 458, 16, 70, "Usage",ExpressionUUID->"4c301be1-4402-4fe7-88ce-db54e46da719"],
-Cell[3482, 103, 23, 0, 70, "FooterCell",ExpressionUUID->"ab86ccfd-06b4-4ce6-b450-c260447b55f4"]
+Cell[CellGroupData[{
+Cell[3163, 81, 393, 9, 53, "ObjectNameGrid",ExpressionUUID->"c36cb1b0-746a-4a7e-a51a-c64d32f483e9"],
+Cell[3559, 92, 512, 12, 112, "Usage",ExpressionUUID->"bb1ab281-bc64-458d-ac6f-f71d7f1e32dd"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4108, 109, 435, 11, 36, "PrimaryExamplesSection",ExpressionUUID->"5d9c552f-4241-4864-aa6c-4152fbeda17e",
+ CellTags->"PrimaryExamplesSection",
+ CellID->951953352],
+Cell[CellGroupData[{
+Cell[4568, 124, 309, 7, 30, "ExampleSection",ExpressionUUID->"d416c9b9-a13e-4846-9e8d-5018ff7dc4e9",
+ CellID->1210635102],
+Cell[4880, 133, 170, 3, 29, "Input",ExpressionUUID->"a631646b-21fd-4f89-b5d9-62bb5357380d",
+ CellID->1414887963],
+Cell[5053, 138, 140, 1, 36, "Text",ExpressionUUID->"6ccf88d9-d69e-406a-9ac1-5c3e2a2f6b19",
+ CellID->2006652038],
+Cell[CellGroupData[{
+Cell[5218, 143, 915, 29, 68, "Input",ExpressionUUID->"8155bef4-6fc0-4415-bf00-377eff995b4a",
+ CellID->832842323],
+Cell[6136, 174, 878, 28, 58, "Output",ExpressionUUID->"b7d8825d-d317-46ed-b4ec-ddcc016ed52b",
+ CellID->1588458029]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[7053, 207, 78, 0, 43, "FooterCell",ExpressionUUID->"fe4867e6-03a8-4af4-be36-d19660bf91b6"]
 }
 ]
 *)
 
 (* End of internal cache information *)
+

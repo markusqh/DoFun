@@ -10,25 +10,25 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6525,        167]
-NotebookOptionsPosition[      3896,        110]
-NotebookOutlinePosition[      6262,        165]
-CellTagsIndexPosition[      6219,        162]
+NotebookDataLength[     12568,        333]
+NotebookOptionsPosition[      8517,        241]
+NotebookOutlinePosition[     11041,        303]
+CellTagsIndexPosition[     10956,        298]
 WindowTitle->orderFermions
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell"], Cell[TextData[Cell[
-    BoxData[
+   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell",ExpressionUUID->
+     "afc4a6fb-b631-43fa-84e3-47d4176f1623"], Cell[TextData[Cell[BoxData[
      ActionMenuBox[
       FrameBox[
        InterpretationBox[Cell[TextData[{
          "URL",
          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
           StripOnInput->False]
-        }]],
+        }],ExpressionUUID->"9011633a-c569-43d8-9e7f-1cb3e093c728"],
         TextCell[
          Row[{"URL", 
            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
@@ -60,53 +60,184 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$39129], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$58888], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/ref/orderFermions", ".html"]], None}]}]},
       Appearance->None,
       MenuAppearance->Automatic,
       MenuStyle->"URLMenu"]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+     LineSpacing->{1.4, 0},ExpressionUUID->
+     "c0b5c109-7ee9-40dd-a1e5-92595db35ab0"]], "AnchorBar",ExpressionUUID->
+     "51c39262-612a-4497-8f01-304a7a830eb7"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
       Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
    "RowsIndexed" -> {}}},
- CellID->1],
+ CellID->1,ExpressionUUID->"4a74eeaf-17b8-4e6d-928b-b0db77d235ec"],
+
+Cell[CellGroupData[{
 
 Cell[TextData[{
- Cell["orderFermions", "ObjectName"],
+ Cell["orderFermions", "ObjectName",ExpressionUUID->
+  "15d023e9-a8d9-4cb0-a110-8a61ccd10a75"],
  Cell[BoxData[
   TemplateBox[{8},
-   "Spacer1"]]],
- Cell[BoxData[""], "ObjectNameTranslation"]
-}], "ObjectNameGrid"],
+   "Spacer1"]],ExpressionUUID->"010441af-d028-4ba5-bcf2-d9dee8f20844"],
+ Cell[BoxData[
+ ""], "ObjectNameTranslation",ExpressionUUID->
+  "3b0f843c-aba6-46aa-b392-c065ab29345f"]
+}], "ObjectNameGrid",ExpressionUUID->"625cd60c-9539-492f-9a06-4a2849b6dcc2"],
 
 Cell[BoxData[GridBox[{
-   {"", Cell["\<\
-Orders derivatives with respect to Grassmann fields such that fields defined \
-as antiFermions are left of the fields defined as fermions thereby possibly \
-giving a minus sign.
-The canonical order is the following:
- -) vertices (V,S), regulator insertions (dR): antiFermions left of fermions
- -) propagators (P): antiFermions right (!) of fermions (In propagators the \
-meaning of fermions and antiFermions is reversed for easier reading!)
-
-Syntax:
-orderFermions[expr] with expr being an expression containing op functions.
-
-Example:
-defineFields[{A}, {{c, cb}}, {}];
-orderFermions[op[V[{c, i}, {cb, j}, {A, l}]]]\
-\>"]}
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"orderFermions", "[", 
+       StyleBox["expr", "TI"], "]"}]], "InlineFormula",ExpressionUUID->
+      "059a4ef1-53bd-4f40-97f0-6a956835cbbb"],
+     "\[LineSeparator]orders Grassmann fields in ",
+     Cell[BoxData[
+      StyleBox["expr", "TI"]], "InlineFormula",ExpressionUUID->
+      "cc07d4d4-c310-4c28-976c-a2cca0746c22"],
+     " canonically.\nNote: ",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData["orderFermions"]],"paclet:DoFun/ref/orderFermions"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
+      "d7b7fc7d-1abc-4f5d-b2a8-549b34392c94"],
+     " is deprecated and superseded by ",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData["sortCanonical"]],"paclet:DoFun/ref/sortCanonical"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
+      "dd17f5d5-9f68-4936-9de9-e3ade8f117bc"],
+     ".\nThe canonical order is the following:\n\t-) vertices (V,S)\n\t-) \
+regulator insertions (dR): antiFermions left of fermions\n\t-) propagators \
+(P): antiFermions right (!) of fermions (In propagators the meaning of \
+fermions and antiFermions is reversed for easier reading!)"
+    }],ExpressionUUID->"269e861f-3176-4841-9c8c-c7faea03ce48"]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
-   "RowsIndexed" -> {}}}],
+   "RowsIndexed" -> \
+{}}},ExpressionUUID->"b8c76d9b-ca4f-4284-a381-dbe8090ec401"]
+}, Open  ]],
 
-Cell[" ", "FooterCell"]
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"8f21f270-733b-4a6f-9e19-959b672ac7ed"],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "53a2cbe5-a147-4298-a2d1-a125215c9094"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->235705423,ExpressionUUID->"c3158091-2856-4601-92a7-c9fe84526f99"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "8ef7dca6-c9bd-4109-8639-1e7eac456629"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1147521831,ExpressionUUID->"91e7df53-79f8-4b3c-815d-67f2d2bdc1fb"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<DoFun`\>\"", "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->1414887963,ExpressionUUID->"a994f8b3-2ee5-4687-980b-9c77e848768b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"setFields", "[", 
+   RowBox[{
+    RowBox[{"{", "A", "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"{", 
+      RowBox[{"c", ",", "cb"}], "}"}], "}"}], ",", 
+    RowBox[{"{", "}"}]}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"orderFermions", "[", 
+  RowBox[{"op", "[", 
+   RowBox[{"V", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"c", ",", "i"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"cb", ",", "j"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"A", ",", "l"}], "}"}]}], "]"}], "]"}], "]"}]}], "Input",
+ CellLabel->"In[2]:=",
+ CellID->1188021709,ExpressionUUID->"98af36da-2d31-4fe2-9b17-53fbdce47bfc"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "orderFermions","superseded",
+   "\"Note: orderFermions is deprecated and superseded by sortCanonical. It \
+is no longer updated.\"",2,31,2,22808427393989918838,"Local",
+   "DoFun`DoDSERGE`orderFermions"},
+  "MessageTemplate2"]], "Message", "MSG",
+ CellLabel->"During evaluation of In[2]:=",
+ CellID->1786567575,ExpressionUUID->"ed793231-368e-440e-9a9f-c32c2b53fce4"],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  RowBox[{"op", "[", 
+   RowBox[{"V", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"A", ",", "l"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"cb", ",", "j"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"c", ",", "i"}], "}"}]}], "]"}], "]"}]}]], "Output",
+ ImageSize->{238, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->1378423485,ExpressionUUID->"1105ccf1-f182-4022-94bf-f19c1b56d020"]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer",ExpressionUUID->"228374b9-56ad-43f5-b15d-b48b1eda2fcb"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"b83ee5d3-6540-43ec-a1fc-acd1caa839b3"],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704,ExpressionUUID->"e2926bce-82bb-4a0f-a6d6-c5b8ab3bb1d3"],
+
+Cell[TextData[Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData[""]],"paclet:ref/"},
+  "RefLink",
+  BaseStyle->{
+   "InlineFormula", FontFamily -> 
+    "Verdana"}]], \
+"InlineFormula",ExpressionUUID->"9846a1cf-575d-44e0-8ae5-643193caa0da"]], \
+"SeeAlso",
+ CellID->1419846719,ExpressionUUID->"9beeb062-5594-4609-a4f2-6387eaf97d2c"]
+}, Open  ]],
+
+Cell[" ", "FooterCell",ExpressionUUID->"f7a9cac7-e032-43c8-9ab7-b4813134cace"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
@@ -123,23 +254,22 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 45, 19.934671}", 
+   "built" -> "{2019, 8, 7, 9, 21, 28.443127}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
     "status" -> "None", "summary" -> 
-    "Orders derivatives with respect to Grassmann fields such that fields \
-defined as antiFermions are left of the fields defined as fermions thereby \
-possibly giving a minus sign. The canonical order is the following: -) \
-vertices (V,S), regulator insertions (dR): antiFermions left of fermions -) \
-propagators (P): antiFermions right (!) of fermions (In propagators the \
-meaning of fermions and antiFermions is reversed for easier reading!) Syntax: \
-orderFermions[expr] with expr being an expression containing op functions. \
-Example: defineFields[{A}, {{c, cb}}, {}]; orderFermions[op[V[{c, i}, {cb, \
-j}, {A, l}]]]", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "orderFermions[expr] orders Grassmann fields in expr canonically. Note: \
+orderFermions is deprecated and superseded by sortCanonical. The canonical \
+order is the following: -) vertices (V,S) -) regulator insertions (dR): \
+antiFermions left of fermions -) propagators (P): antiFermions right (!) of \
+fermions (In propagators the meaning of fermions and antiFermions is reversed \
+for easier reading!)", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
     "orderFermions", "titlemodifier" -> "", "windowtitle" -> "orderFermions", 
-    "type" -> "Symbol", "uri" -> "DoFun/ref/orderFermions"}},
+    "type" -> "Symbol", "uri" -> "DoFun/ref/orderFermions", 
+    "WorkflowDockedCell" -> ""}, "SearchTextTranslated" -> "", "NewStyles" -> 
+  False},
 CellContext->"Global`",
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
 StyleDefinitions->Notebook[{
@@ -150,27 +280,64 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
-  StyleDefinitions -> "Default.nb"]
+  TaggingRules -> {"NewStyles" -> False}, FrontEndVersion -> 
+  "11.3 for Linux x86 (64-bit) (March 6, 2018)", StyleDefinitions -> 
+  "Default.nb"]
 ]
 (* End of Notebook Content *)
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{}
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[5165, 131, 435, 11, 36, "PrimaryExamplesSection",ExpressionUUID->"c3158091-2856-4601-92a7-c9fe84526f99",
+   CellTags->"PrimaryExamplesSection",
+   CellID->235705423]}
+ }
 *)
 (*CellTagsIndex
-CellTagsIndex->{}
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 10758, 291}
+ }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[585, 21, 2290, 54, 70, "AnchorBarGrid",ExpressionUUID->"d837ac4e-4560-4bfb-bc2a-63a7b5f12190",
+Cell[585, 21, 2578, 56, 56, "AnchorBarGrid",ExpressionUUID->"4a74eeaf-17b8-4e6d-928b-b0db77d235ec",
  CellID->1],
-Cell[2878, 77, 170, 6, 70, "ObjectNameGrid",ExpressionUUID->"8297ef16-a95a-4f8d-8f8c-28b02c38869b"],
-Cell[3051, 85, 815, 21, 70, "Usage",ExpressionUUID->"3171d6b6-5ced-4984-a2a4-4c4d0b71fb7e"],
-Cell[3869, 108, 23, 0, 70, "FooterCell",ExpressionUUID->"bdaac239-47b7-4f41-9c97-1a7b6bf2dfaa"]
+Cell[CellGroupData[{
+Cell[3188, 81, 398, 9, 53, "ObjectNameGrid",ExpressionUUID->"625cd60c-9539-492f-9a06-4a2849b6dcc2"],
+Cell[3589, 92, 1539, 34, 277, "Usage",ExpressionUUID->"b8c76d9b-ca4f-4284-a381-dbe8090ec401"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5165, 131, 435, 11, 36, "PrimaryExamplesSection",ExpressionUUID->"c3158091-2856-4601-92a7-c9fe84526f99",
+ CellTags->"PrimaryExamplesSection",
+ CellID->235705423],
+Cell[CellGroupData[{
+Cell[5625, 146, 309, 7, 30, "ExampleSection",ExpressionUUID->"91e7df53-79f8-4b3c-815d-67f2d2bdc1fb",
+ CellID->1147521831],
+Cell[5937, 155, 170, 3, 29, "Input",ExpressionUUID->"a994f8b3-2ee5-4687-980b-9c77e848768b",
+ CellID->1414887963],
+Cell[CellGroupData[{
+Cell[6132, 162, 659, 20, 49, "Input",ExpressionUUID->"98af36da-2d31-4fe2-9b17-53fbdce47bfc",
+ CellID->1188021709],
+Cell[6794, 184, 398, 8, 37, "Message",ExpressionUUID->"ed793231-368e-440e-9a9f-c32c2b53fce4",
+ CellID->1786567575],
+Cell[7195, 194, 485, 15, 38, "Output",ExpressionUUID->"1105ccf1-f182-4022-94bf-f19c1b56d020",
+ CellID->1378423485]
+}, Open  ]]
+}, Open  ]],
+Cell[7707, 213, 86, 0, 29, "SectionFooterSpacer",ExpressionUUID->"228374b9-56ad-43f5-b15d-b48b1eda2fcb"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7830, 218, 260, 7, 70, "SeeAlsoSection",ExpressionUUID->"e2926bce-82bb-4a0f-a6d6-c5b8ab3bb1d3",
+ CellID->1255426704],
+Cell[8093, 227, 327, 9, 70, "SeeAlso",ExpressionUUID->"9beeb062-5594-4609-a4f2-6387eaf97d2c",
+ CellID->1419846719]
+}, Open  ]],
+Cell[8435, 239, 78, 0, 70, "FooterCell",ExpressionUUID->"f7a9cac7-e032-43c8-9ab7-b4813134cace"]
 }
 ]
 *)
 
 (* End of internal cache information *)
+

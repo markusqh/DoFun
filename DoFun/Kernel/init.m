@@ -4,9 +4,9 @@
 
 BeginPackage["DoFun`"]
 
-$doFunMainVersion=2;
+$doFunMainVersion=3;
 $doFunSubVersion=0;
-$doFunBuiltVersion=4;
+$doFunBuiltVersion=0;
 
 $doFunVersion=ToString@$doFunMainVersion~~"."~~ToString@$doFunSubVersion~~"."~~ToString@$doFunBuiltVersion;
 
@@ -69,6 +69,6 @@ Needs/@{"DoFun`DoDSERGE`","DoFun`DoAE`","DoFun`DoFR`"}
 If[DoFun`$doFunStartMessage=!=False,
 	Print["\nDoFun loaded.
 \nVersion "<> $DoAEVersion<>
-"\nReinhard Alkofer, Jens Braun, Markus Q. Huber, Kai Schwenzer, 2008-2017
-\nDetails on http://physik.uni-graz.at/~mqh/DoFun."];
+"\nReinhard Alkofer, Jens Braun, Anton K. Cyrol, Markus Q. Huber, Jan M. Pawlowski, Kai Schwenzer, 2008-2019
+\nDetails at https://github.com/markusqh/DoFun/."];
 ];

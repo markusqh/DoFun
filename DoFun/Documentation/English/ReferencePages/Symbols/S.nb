@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6650,        170]
-NotebookOptionsPosition[      3953,        112]
-NotebookOutlinePosition[      6387,        168]
-CellTagsIndexPosition[      6344,        165]
+NotebookDataLength[     12687,        376]
+NotebookOptionsPosition[      8878,        291]
+NotebookOutlinePosition[     11288,        351]
+CellTagsIndexPosition[     11203,        346]
 WindowTitle->S
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$47054], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$69108], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "DoFun/ref/S", 
             ".html"]], None}]}]},
@@ -84,29 +84,208 @@ Cell[TextData[{
 }], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
-   {"", Cell["\<\
-Represents a bare vertex, i.e., an expansion coefficient of the action in the \
-fields.
-
-Syntax (symbolic, i.e., as a result of doDSE or doRGE):
-S[{field1, ind1}, ..., {fieldn, indn}] where fieldi are fields and indi \
-generic indices.
-Example: Symbolic representation of a bare three-gluon vertex
-S[{A,i},{A,j},{A,k}]
-
-Syntax (algebraic, i.e., as required for getAE):
-S[field1[mom1, inds1], ..., fieldn[momn, indsn], explicit -> True] where \
-fieldi are fields, momi their momenta and indsi their full indices.
-Example: Definition of a bare four-point vertex for an O(N) symmetric scalar \
-field
-S[phi[p1,i], phi[p2,j], phi[p3,l], phi[p4,m], explicit -> True]:=g \
-(delta[i,j]delta[l,m]+delta[i,l]delta[j,m]+delta[i,m]delta[j,l])\
-\>"]}
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"S", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          SubscriptBox[
+           StyleBox["field", "TI"], 
+           StyleBox["1", "TR"]], ",", " ", 
+          SubscriptBox[
+           StyleBox["index", "TI"], 
+           StyleBox["1", "TR"]]}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{
+          SubscriptBox[
+           StyleBox["field", "TI"], 
+           StyleBox["2", "TR"]], ",", " ", 
+          SubscriptBox[
+           StyleBox["index", "TI"], 
+           StyleBox["2", "TR"]]}], "}"}], ",", "  ", 
+        StyleBox["\[Ellipsis]", "TR"]}], "]"}]], "InlineFormula"],
+     "\[LineSeparator]represents a bare vertex, i.e., an expansion \
+coefficient of the action, of the fields fieldi with their ",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData["indices"]],"paclet:DoFun/ref/indices"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+     " indexi in its symbolic form. "
+    }]]},
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{
+       TemplateBox[{Cell[
+          TextData["S"]],"paclet:DoFun/ref/S"},
+        "RefLink",
+        BaseStyle->{"InlineFormula"}], "[", 
+       RowBox[{
+        RowBox[{
+         StyleBox["field1", "TI"], "[", 
+         RowBox[{
+          StyleBox["momentum1", "TI"], ",", " ", 
+          StyleBox["index1a", "TI"], ",", " ", 
+          StyleBox["index1b", "TI"], ",", " ", "..."}], "]"}], ",", " ", 
+        RowBox[{
+         StyleBox["field2", "TI"], "[", 
+         RowBox[{
+          StyleBox["momentum2", "TI"], ",", " ", 
+          StyleBox["index2a", "TI"], ",", " ", 
+          StyleBox["index2b", "TI"], ",", " ", "..."}], "]"}], ",", " ", "...",
+         ",", " ", 
+        RowBox[{
+         StyleBox["explicit", "TI"], "->", 
+         TemplateBox[{Cell[
+            TextData["True"]],"paclet:ref/True"},
+          "RefLink",
+          BaseStyle->{"InlineFormula"}]}]}], "]"}]], "InlineFormula"],
+     " represents a bare vertex of the fields ",
+     Cell[BoxData[
+      SubscriptBox[
+       StyleBox["field", "TI"], "i"]], "InlineFormula"],
+     " with their momenta ",
+     Cell[BoxData[
+      SubscriptBox[
+       StyleBox["momentum", "TI"], "i"]], "InlineFormula"],
+     " and explicit indices ",
+     Cell[BoxData[
+      SubscriptBox[
+       StyleBox["index", "TI"], "ij"]], "InlineFormula"],
+     " in algebraic form. The option ",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData["explicit"]],"paclet:DoFun/ref/explicit"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+     " can have an arbitrary value"
+    }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
-  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {None, {None}}, 
    "RowsIndexed" -> {}}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<DoFun`\>\"", "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->1414887963],
+
+Cell["Symbolic example:", "Text",
+ CellID->1872376343],
+
+Cell[BoxData[
+ RowBox[{" ", 
+  RowBox[{"S", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      ButtonBox["A",
+       BaseStyle->"Link",
+       ButtonData->"paclet:ref/A"], ",", 
+      StyleBox["i", "TI"]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      ButtonBox["A",
+       BaseStyle->"Link",
+       ButtonData->"paclet:ref/A"], ",", 
+      StyleBox["j", "TI"]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      ButtonBox["A",
+       BaseStyle->"Link",
+       ButtonData->"paclet:ref/A"], ",", 
+      StyleBox["k", "TI"]}], "}"}]}], "]"}], " "}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->1573509578],
+
+Cell["Algebraic example: ", "Text",
+ CellID->527786051],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"S", "[", 
+   RowBox[{
+    RowBox[{"field1", "[", 
+     RowBox[{"mom1", ",", " ", "inds1"}], "]"}], ",", " ", 
+    RowBox[{"field2", "[", 
+     RowBox[{"mom2", ",", " ", "inds2"}], "]"}], ",", " ", 
+    RowBox[{
+     ButtonBox["explicit",
+      BaseStyle->"Link",
+      ButtonData->"paclet:DoFun/ref/explicit"], "->", "True"}]}], "]"}], 
+  " "}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->1357358417],
+
+Cell["\<\
+Definition of a bare vertex for a scalar field with an O(N) index:\
+\>", "Text",
+ CellID->830480392],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"S", "[", 
+   RowBox[{
+    RowBox[{"phi", "[", 
+     RowBox[{"p1_", ",", "i_"}], "]"}], ",", " ", 
+    RowBox[{"phi", "[", 
+     RowBox[{"p2_", ",", "j_"}], "]"}], ",", " ", 
+    RowBox[{"phi", "[", 
+     RowBox[{"p3_", ",", "l_"}], "]"}], ",", " ", 
+    RowBox[{"phi", "[", 
+     RowBox[{"p4_", ",", "m_"}], "]"}], ",", " ", 
+    RowBox[{
+     ButtonBox["explicit",
+      BaseStyle->"Link",
+      ButtonData->"paclet:DoFun/ref/explicit"], "->", "True"}]}], "]"}], ":=", 
+  RowBox[{"g", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"delta", "[", 
+       RowBox[{"i", ",", "j"}], "]"}], 
+      RowBox[{"delta", "[", 
+       RowBox[{"l", ",", "m"}], "]"}]}], "+", 
+     RowBox[{
+      RowBox[{"delta", "[", 
+       RowBox[{"i", ",", "l"}], "]"}], 
+      RowBox[{"delta", "[", 
+       RowBox[{"j", ",", "m"}], "]"}]}], "+", 
+     RowBox[{
+      RowBox[{"delta", "[", 
+       RowBox[{"i", ",", "m"}], "]"}], 
+      RowBox[{"delta", "[", 
+       RowBox[{"j", ",", "l"}], "]"}]}]}], ")"}]}]}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->1835350179]
+}, Open  ]]
+}, Open  ]],
 
 Cell[" ", "FooterCell"]
 },
@@ -125,24 +304,21 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 45, 35.343134}", 
+   "built" -> "{2019, 8, 7, 9, 21, 45.208178}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
     "status" -> "None", "summary" -> 
-    "Represents a bare vertex, i.e., an expansion coefficient of the action \
-in the fields. Syntax (symbolic, i.e., as a result of doDSE or doRGE): \
-S[{field1, ind1}, ..., {fieldn, indn}] where fieldi are fields and indi \
-generic indices. Example: Symbolic representation of a bare three-gluon \
-vertex S[{A,i},{A,j},{A,k}] Syntax (algebraic, i.e., as required for getAE): \
-S[field1[mom1, inds1], ..., fieldn[momn, indsn], explicit -> True] where \
-fieldi are fields, momi their momenta and indsi their full indices. Example: \
-Definition of a bare four-point vertex for an O(N) symmetric scalar field \
-S[phi[p1,i], phi[p2,j], phi[p3,l], phi[p4,m], explicit -> True]:=g \
-(delta[i,j]delta[l,m]+delta[i,l]delta[j,m]+delta[i,m]delta[j,l])", 
-    "synonyms" -> {}, "tabletags" -> {}, "title" -> "S", "titlemodifier" -> 
-    "", "windowtitle" -> "S", "type" -> "Symbol", "uri" -> "DoFun/ref/S"}},
+    "S[{field1, index1}, {field2, index2}, ...] represents a bare vertex, \
+i.e., an expansion coefficient of the action, of the fields fieldi with their \
+indices indexi in its symbolic form. S[field1[momentum1, index1a, index1b, \
+...], field2[momentum2, index2a, index2b, ...], ..., explicit -> True] \
+represents a bare vertex of the fields fieldi with their momenta momentumi \
+and explicit indices indexij in algebraic form. The option explicit can have \
+an arbitrary value", "synonyms" -> {}, "tabletags" -> {}, "title" -> "S", 
+    "titlemodifier" -> "", "windowtitle" -> "S", "type" -> "Symbol", "uri" -> 
+    "DoFun/ref/S"}},
 CellContext->"Global`",
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
 StyleDefinitions->Notebook[{
@@ -160,18 +336,48 @@ StyleDefinitions->Notebook[{
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{}
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[5856, 171, 259, 10, 70, "PrimaryExamplesSection",ExpressionUUID->"838c47e2-f6ff-4b18-aafc-c3311b81d48a",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1]}
+ }
 *)
 (*CellTagsIndex
-CellTagsIndex->{}
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 11013, 339}
+ }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[573, 21, 2255, 54, 70, "AnchorBarGrid",ExpressionUUID->"39f9c615-2eac-4134-a617-7b7333928bac",
+Cell[573, 21, 2255, 54, 70, "AnchorBarGrid",ExpressionUUID->"32bde728-3071-418d-8dff-357de4ef2784",
  CellID->1],
-Cell[2831, 77, 158, 6, 70, "ObjectNameGrid",ExpressionUUID->"1d6b6fec-19a9-44f8-a667-642980735ce0"],
-Cell[2992, 85, 931, 23, 70, "Usage",ExpressionUUID->"63f9f9a4-9bd3-4283-af5d-40261c0bfe9f"],
-Cell[3926, 110, 23, 0, 70, "FooterCell",ExpressionUUID->"e240bf9b-7801-42a8-ab7b-3591ac77a0c8"]
+Cell[2831, 77, 158, 6, 70, "ObjectNameGrid",ExpressionUUID->"28886f10-a241-4206-9f15-e602fe422ee4"],
+Cell[2992, 85, 2839, 82, 70, "Usage",ExpressionUUID->"42a61e75-1436-4c76-842c-be91c7b4a10b"],
+Cell[CellGroupData[{
+Cell[5856, 171, 259, 10, 70, "PrimaryExamplesSection",ExpressionUUID->"838c47e2-f6ff-4b18-aafc-c3311b81d48a",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[6140, 185, 187, 6, 70, "ExampleSection",ExpressionUUID->"a1308c16-427b-4a4a-b72a-658bab7d0358",
+ CellID->1],
+Cell[6330, 193, 115, 3, 70, "Input",ExpressionUUID->"cfebda6f-ec5f-4938-b7d1-1b67463df17b",
+ CellID->1414887963],
+Cell[6448, 198, 54, 1, 70, "Text",ExpressionUUID->"4c687618-037f-47d2-bae1-3e9951a87854",
+ CellID->1872376343],
+Cell[6505, 201, 614, 23, 70, "Input",ExpressionUUID->"60d29ac5-6c27-436a-93d8-21164828f8a6",
+ CellID->1573509578],
+Cell[7122, 226, 55, 1, 70, "Text",ExpressionUUID->"187b3d16-8791-4444-bb3a-cf2cb6a1936b",
+ CellID->527786051],
+Cell[7180, 229, 434, 14, 70, "Input",ExpressionUUID->"a3b23976-be80-488e-ac5c-b0da6aedbef2",
+ CellID->1357358417],
+Cell[7617, 245, 110, 3, 70, "Text",ExpressionUUID->"fb1c0484-5781-4598-93c1-630ec1422535",
+ CellID->830480392],
+Cell[7730, 250, 1094, 35, 70, "Input",ExpressionUUID->"cb30b249-0d81-4353-8ce9-9f333296122f",
+ CellID->1835350179]
+}, Open  ]]
+}, Open  ]],
+Cell[8851, 289, 23, 0, 70, "FooterCell",ExpressionUUID->"f93c1cad-b44c-4dce-9d90-22fc71b43ceb"]
 }
 ]
 *)

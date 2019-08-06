@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6025,        161]
-NotebookOptionsPosition[      3646,        107]
-NotebookOutlinePosition[      5762,        159]
-CellTagsIndexPosition[      5719,        156]
+NotebookDataLength[      5609,        153]
+NotebookOptionsPosition[      3537,        103]
+NotebookOutlinePosition[      5346,        151]
+CellTagsIndexPosition[      5303,        148]
 WindowTitle->antiFermionQ
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$12333], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$18230], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/ref/antiFermionQ", ".html"]], None}]}]},
@@ -84,19 +84,15 @@ Cell[TextData[{
 }], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
-   {"", Cell["\<\
-Determines if an expression is defined as a Grassmannian field, specifically \
-if it is the second of a pair of Grassmannian fields.
-
-Syntax:
-antiFermionQ[f] where f is a field.
-
-Example:
-The following action contains a pair of Grassmannian fields psi and psib, \
-where psib is defined as antiFermion:
-generateAction[{{psi,psib}, {psib,psib,psi,psi}}];
-antiFermionQ@psib\
-\>"]}
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"antiFermionQ", "[", 
+       StyleBox["expr", "TI"], "]"}]], "InlineFormula"],
+     "\[LineSeparator]gives True if ",
+     Cell[BoxData[
+      StyleBox["expr", "TI"]], "InlineFormula"],
+     " is a Grassmann anti-field."
+    }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
@@ -120,20 +116,16 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 43, 37.258316}", 
+   "built" -> "{2019, 8, 7, 9, 20, 25.344325}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
     "status" -> "None", "summary" -> 
-    "Determines if an expression is defined as a Grassmannian field, \
-specifically if it is the second of a pair of Grassmannian fields. Syntax: \
-antiFermionQ[f] where f is a field. Example: The following action contains a \
-pair of Grassmannian fields psi and psib, where psib is defined as \
-antiFermion: generateAction[{{psi,psib}, {psib,psib,psi,psi}}]; \
-antiFermionQ@psib", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
-    "antiFermionQ", "titlemodifier" -> "", "windowtitle" -> "antiFermionQ", 
-    "type" -> "Symbol", "uri" -> "DoFun/ref/antiFermionQ"}},
+    "antiFermionQ[expr] gives True if expr is a Grassmann anti-field.", 
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "antiFermionQ", 
+    "titlemodifier" -> "", "windowtitle" -> "antiFermionQ", "type" -> 
+    "Symbol", "uri" -> "DoFun/ref/antiFermionQ"}},
 CellContext->"Global`",
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
 StyleDefinitions->Notebook[{
@@ -158,11 +150,11 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[584, 21, 2286, 54, 70, "AnchorBarGrid",ExpressionUUID->"33262232-fe9e-45f8-b1ed-a9a175352fac",
+Cell[584, 21, 2286, 54, 70, "AnchorBarGrid",ExpressionUUID->"6d2dfb91-6ee3-4885-8685-cd5b1dc479b5",
  CellID->1],
-Cell[2873, 77, 169, 6, 70, "ObjectNameGrid",ExpressionUUID->"d8787e8e-d9d8-4567-ae75-8223a70d4ad3"],
-Cell[3045, 85, 571, 18, 70, "Usage",ExpressionUUID->"36a5cce1-429d-471d-b5a0-9c8a94287e83"],
-Cell[3619, 105, 23, 0, 70, "FooterCell",ExpressionUUID->"ae80b363-5d7d-4133-912b-0c7214c5c0d2"]
+Cell[2873, 77, 169, 6, 70, "ObjectNameGrid",ExpressionUUID->"646eb2e3-029d-459b-8473-8f06c0496f8b"],
+Cell[3045, 85, 462, 14, 70, "Usage",ExpressionUUID->"3592ee1e-0b0b-4a29-af32-6650094c7a4c"],
+Cell[3510, 101, 23, 0, 70, "FooterCell",ExpressionUUID->"feeccfa1-2a4c-4fca-ad78-fdb79e4cef4a"]
 }
 ]
 *)

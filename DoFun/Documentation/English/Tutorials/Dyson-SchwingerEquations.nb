@@ -1,0 +1,1739 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     65506,       1729]
+NotebookOptionsPosition[     55867,       1528]
+NotebookOutlinePosition[     58199,       1586]
+CellTagsIndexPosition[     58156,       1583]
+WindowTitle->Dyson-Schwinger equations
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["DO FUN PACKAGE TUTORIAL", "PacletNameCell",ExpressionUUID->
+     "51defc35-ab08-47b9-abb3-ae8d8e82e35d"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }],ExpressionUUID->"21b6e83b-17a2-47e2-9fe0-88cea048ec56"],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->
+        False], {"\<\"DoFun/tutorial/Dyson-SchwingerEquations\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["DoFun/tutorial/Dyson-SchwingerEquations"]}, Visible -> 
+           False]]; SelectionMove[
+        DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/DoFun/tutorial/Dyson-\
+SchwingerEquations.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$84610], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "DoFun/tutorial/Dyson-SchwingerEquations", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
+     LineSpacing->{1.4, 0},ExpressionUUID->
+     "b15264e2-7876-46da-9a24-6e8cb8df3a61"]], "AnchorBar",ExpressionUUID->
+     "7e5bda2d-e873-47cc-a7e5-a8b3c53148b8"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1,ExpressionUUID->"26470e9f-30c6-45dd-8a1e-e8e5ebcc8e4c"],
+
+Cell[CellGroupData[{
+
+Cell["Dyson-Schwinger equations", "Title",
+ CellID->509267359,ExpressionUUID->"8bab9e32-edd7-418a-83b8-47292f5e57a8"],
+
+Cell["\<\
+This tutorial describes how to derive a functional renormalization group \
+equation.\
+\>", "Text",
+ CellID->1534169418,ExpressionUUID->"a6538a51-90d6-4818-a8bf-414d53759951"],
+
+Cell["To derive a DSE the function doDSE is used:", "Text",
+ CellID->1349004082,ExpressionUUID->"ea48f812-f240-4aab-a558-7138f8bab2f4"],
+
+Cell[BoxData[GridBox[{
+   {
+    RowBox[{"doDSE", "[", 
+     RowBox[{"action", ",", " ", "legs"}], "]"}], Cell[
+    "Derives a DSE for the correlation function defined by legs.", 
+     "TableText",ExpressionUUID->"904e68a6-306d-4819-9484-3d950eecf0fa"]},
+   {
+    RowBox[{"doDSE", "[", 
+     RowBox[{"action", ",", " ", "legs", ",", " ", "props"}], "]"}], Cell[
+    TextData[{
+     "Derives a DSE and allows only the propagators given by ",
+     StyleBox["props",
+      FontSlant->"Italic"],
+     "."
+    }], "TableText",ExpressionUUID->"3ab2144d-791a-4a72-8e09-e40578e554d4"]},
+   {
+    RowBox[{"doDSE", "[", 
+     RowBox[{"action", ",", " ", "legs", ",", " ", "vertexTest"}], "]"}], 
+    Cell[TextData[{
+     "Derives a DSE using only the vertices passing the test defined by ",
+     StyleBox["vertexTest", "TI"],
+     "."
+    }], "TableText",ExpressionUUID->"b432a1d4-7d4e-4031-b239-25207b41edb2"]},
+   {
+    RowBox[{"doDSE", "[", 
+     RowBox[{
+     "action", ",", " ", "legs", ",", " ", "props", ",", " ", "vertexTest"}], 
+     "]"}], Cell["\<\
+Derives a DSE with constraints on the propagators and vertices.\
+\>", "TableText",ExpressionUUID->"c66a2969-2095-4b92-b578-d8a59af110b0"]}
+  }]], "DefinitionBox",
+ CellID->2096742444,ExpressionUUID->"61ffe7ea-c3be-4b1a-b50c-5483b1829abd"],
+
+Cell["Derivation functions.", "Caption",
+ CellID->1891092685,ExpressionUUID->"6ef17d97-abad-41ac-88db-29c714187edd"],
+
+Cell["We also need some auxiliary functions:", "Text",
+ CellID->1475713941,ExpressionUUID->"d0050763-58a3-45aa-b61a-90b26bea4acf"],
+
+Cell[BoxData[GridBox[{
+   {
+    RowBox[{"setFields", "[", 
+     RowBox[{"bosons", ",", " ", "fermions", ",", " ", "complex"}], "]"}], 
+    Cell["Defines fields.", "TableText",ExpressionUUID->
+     "bbeeb99a-da28-4d3a-b1d8-8892af668bae"]},
+   {
+    RowBox[{"getAE", "[", 
+     RowBox[{"dse", ",", " ", "legs"}], "]"}], Cell[TextData[{
+     "Transforms the symbolic expression ",
+     StyleBox["dse",
+      FontSlant->"Italic"],
+     " into an algebraic expression. ",
+     StyleBox["legs",
+      FontSlant->"Italic"],
+     " contains the fields and indices of the legs."
+    }], "TableText",ExpressionUUID->"9e9a07de-6258-4f1c-a8cd-57b0860c90b2"]}
+  }]], "DefinitionBox",
+ CellID->1225823622,ExpressionUUID->"d6a6c672-ca29-4fa6-9197-2d8f3ba43370"],
+
+Cell["Auxiliary functions.", "Caption",
+ CellID->1724178967,ExpressionUUID->"76c6c9f3-04bc-4993-8038-f0cc008d7237"],
+
+Cell["For plotting DSEs the function DSEPlot is used:", "Text",
+ CellID->1045476368,ExpressionUUID->"9e3b2d76-570e-454f-81e6-5d3f558760df"],
+
+Cell[BoxData[GridBox[{
+   {
+    RowBox[{"DSEPlot", "[", "dse", "]"}], Cell[
+    "Plots a DSE with labels for the propagators.", "TableText",
+     ExpressionUUID->"cf63e32b-691c-49b1-93e7-9606aea10392"]},
+   {
+    RowBox[{"DSEPlot", "[", 
+     RowBox[{"dse", ",", " ", "fieldStyles"}], "]"}], Cell[TextData[{
+     "Plots a DSE with the styles for the propagators given by ",
+     StyleBox["fieldStyles",
+      FontSlant->"Italic"],
+     "."
+    }], "TableText",ExpressionUUID->"e8ea6ea8-dffd-462f-9fcc-51d3c8a5c41b"]}
+  }]], "DefinitionBox",
+ CellID->429162623,ExpressionUUID->"95318b72-ba1e-4a15-8867-0ca7c3db6465"],
+
+Cell["Plotting functions.", "Caption",
+ CellID->1119900583,ExpressionUUID->"02e880be-bf23-4e65-a9e5-4fd129c63eed"],
+
+Cell["\<\
+Before any derivations are done, the fields must be defined. Consider, for \
+example, Landau gauge QCD which has a gluon, a quark and two ghost fields:\
+\>", "Text",
+ CellID->1841528772,ExpressionUUID->"2ebcba94-596b-4fa4-b794-74dd630ae0fb"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"<<", "DoFun`"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->1892492974,ExpressionUUID->"f14ae2d1-b64e-40b5-bd62-6cc23a5a9965"],
+
+Cell[BoxData["\<\"\\nDoFun loaded.\\n\\nVersion 3.0.0\\nReinhard Alkofer, \
+Jens Braun, Anton K. Cyrol, Markus Q. Huber, Jan M. Pawlowski, Kai Schwenzer, \
+2008-2019\\n\\nDetails at https://github.com/markusqh/DoFun/.\"\>"], "Print",
+ CellLabel->"During evaluation of In[1]:=",
+ CellID->686099459,ExpressionUUID->"f6bf94ae-26a9-4486-87ae-0188cbbdec67"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"setFields", "[", 
+  RowBox[{
+   RowBox[{"{", "A", "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"q", ",", "qb"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"c", ",", "cb"}], "}"}]}], "}"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",ExpressionUUID->"64b23b31-f4af-4fed-ac85-69a001dce8a3"],
+
+Cell["\<\
+DSEs are derived from an action. It can be given as a simple list of \
+propagators and interactions. In the example from above, we have\
+\>", "Text",
+ CellID->1682869941,ExpressionUUID->"fdf5744a-6307-4253-a9fe-99dc213ef5ee"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"actionQCD", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"A", ",", "A"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"q", ",", "qb"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"c", ",", "cb"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"A", ",", "A", ",", "A"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"A", ",", "qb", ",", "q"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"A", ",", "cb", ",", "c"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"A", ",", "A", ",", "A", ",", "A"}], "}"}]}], "}"}]}], 
+  ";"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->1995051252,ExpressionUUID->"d0f0507c-fd9a-4045-8304-1f6449f18439"],
+
+Cell["With this, we can already derive DSEs in symbolic form:", "Text",
+ CellID->1161808145,ExpressionUUID->"4898efef-3db8-4ac6-8e21-2317288bd8c3"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"qbq", "=", 
+  RowBox[{"doDSE", "[", 
+   RowBox[{"actionQCD", ",", 
+    RowBox[{"{", 
+     RowBox[{"q", ",", "qb"}], "}"}]}], "]"}]}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->1038317495,ExpressionUUID->"37531ef0-4011-4b38-96fe-f3f68940ecae"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"op", "[", 
+   RowBox[{"S", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"q", ",", "i1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"qb", ",", "i2"}], "}"}]}], "]"}], "]"}], "-", 
+  RowBox[{"op", "[", 
+   RowBox[{
+    RowBox[{"S", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"A", ",", "r1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"qb", ",", "s1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"q", ",", "i1"}], "}"}]}], "]"}], ",", 
+    RowBox[{"P", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"q", ",", "t1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"qb", ",", "s1"}], "}"}]}], "]"}], ",", 
+    RowBox[{"V", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"A", ",", "u1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"qb", ",", "i2"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"q", ",", "t1"}], "}"}]}], "]"}], ",", 
+    RowBox[{"P", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"A", ",", "u1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"A", ",", "r1"}], "}"}]}], "]"}]}], "]"}]}]], "Output",
+ ImageSize->{566, 37},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->897947143,ExpressionUUID->"7d7e7199-d262-4e3b-a0d2-79768531c520"]
+}, Open  ]],
+
+Cell["\<\
+The output comes in terms of bare n-point functions (S) and dressed \
+propagators (P) and vertices (V). For plotting we define some styles:\
+\>", "Text",
+ CellID->1720619175,ExpressionUUID->"28ba7fec-dd5d-4d30-8e3e-70c5473a383d"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"fieldRules", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"A", ",", "Red"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"q", ",", "Blue"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"c", ",", 
+       RowBox[{"Darker", "@", 
+        RowBox[{"Darker", "@", "Green"}]}], ",", "Dashed"}], "}"}]}], "}"}]}],
+   ";"}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->2002455362,ExpressionUUID->"81a4225c-a120-4a7d-9dae-08fc120f5092"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DSEPlot", "[", 
+  RowBox[{"qbq", ",", "fieldRules"}], "]"}]], "Input",
+ CellLabel->"In[5]:=",
+ CellID->1996689018,ExpressionUUID->"86545b44-6726-4c35-b7ce-19f7d7c2a40e"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     TemplateBox[{GraphicsBox[
+        NamespaceBox["NetworkGraphics", 
+         DynamicModuleBox[{Typeset`graph = HoldComplete[
+             
+             Graph[{{$CellContext`q, $CellContext`i1, 
+                ""}, {$CellContext`q, $CellContext`i2, 
+                " leg i2"}, {$CellContext`qb, $CellContext`i1, 
+                " leg i1"}}, {{{3, 1}, {1, 2}}, Null}, {
+              EdgeShapeFunction -> {
+                DirectedEdge[{$CellContext`q, $CellContext`i1, 
+                    ""}, {$CellContext`q, $CellContext`i2, " leg i2"}] -> ({
+                   RGBColor[0, 0, 1], 
+                   DoFun`DoDSERGE`Private`arrowLine[
+                   DoFun`DoDSERGE`Private`field$2434, 
+                    SlotSequence[1]]}& ), 
+                 DirectedEdge[{$CellContext`qb, $CellContext`i1, 
+                    " leg i1"}, {$CellContext`q, $CellContext`i1, ""}] -> ({
+                   RGBColor[0, 0, 1], 
+                   DoFun`DoDSERGE`Private`arrowLine[
+                   DoFun`DoDSERGE`Private`field$2433, 
+                    SlotSequence[1]]}& )}, GraphLayout -> 
+               "SpringElectricalEmbedding", ImageSize -> 100, 
+               VertexShapeFunction -> {{$CellContext`qb, $CellContext`i1, 
+                   " leg i1"} -> (
+                  DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                   SlotSequence[1]]& ), {$CellContext`q, $CellContext`i1, 
+                   ""} -> (DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                   SlotSequence[1]]& ), {$CellContext`q, $CellContext`i2, 
+                   " leg i2"} -> (
+                  DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                   SlotSequence[1]]& )}, VertexSize -> {0.15}}]]}, 
+          TagBox[
+           GraphicsGroupBox[{{
+              Arrowheads[{{Medium, 0.8}}], 
+              Directive[
+               Opacity[0.7], 
+               Hue[0.6, 0.7, 0.5]], {
+               RGBColor[0, 0, 1], {
+                Arrowheads[{{0.04, 0.8}}], 
+                
+                ArrowBox[{{1.0006498060990778`, 2.8136378152319323`*^-15}, {
+                 0., 1.984068534791509*^-17}}]}}, {
+               RGBColor[0, 0, 1], {
+                Arrowheads[{{0.04, 0.8}}], 
+                ArrowBox[{{1.9999995774773867`, 0.}, {1.0006498060990778`, 
+                 2.8136378152319323`*^-15}}]}}}, {
+              Directive[
+               Hue[0.6, 0.2, 0.8], 
+               EdgeForm[
+                Directive[
+                 GrayLevel[0], 
+                 Opacity[0.7]]]], {
+               
+               DiskBox[{1.0006498060990778`, 2.8136378152319323`*^-15}, 
+                0.10599705001782421`]}, {
+               InsetBox[
+                FormBox[
+                 StyleBox[
+                 "\"  i2\"", FontSize :> 14, FontSize :> 14, StripOnInput -> 
+                  False], TraditionalForm], {0., 0.3}]}, {
+               InsetBox[
+                FormBox[
+                 StyleBox[
+                 "\"  i1\"", FontSize :> 14, FontSize :> 14, StripOnInput -> 
+                  False], TraditionalForm], {1.9999995774773867`, 0.3}]}}}], 
+           MouseAppearanceTag[
+           "NetworkGraphics"]], $CellContext`AllowKernelInitialization -> 
+          False]], {
+        FormatType -> TraditionalForm, FrameTicks -> None, ImageSize -> 100, 
+         DefaultBaseStyle -> {
+          "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
+           Hue[0.8, 1., 0.6]}}],StyleBox[
+        TemplateBox[{
+          OverscriptBox[
+           StyleBox["\"\"", FontSize :> 50, StripOnInput -> False], 
+           StyleBox["\"-1\"", {FontSize :> 16}, StripOnInput -> False]], 
+          "\"=\""}, "RowDefault"], ShowStringCharacters -> False, {
+        FontSize :> 16}, StripOnInput -> False]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 1}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", #2, ",", "Right"}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        NamespaceBox["NetworkGraphics", 
+         DynamicModuleBox[{Typeset`graph = HoldComplete[
+             
+             Graph[{{$CellContext`q, $CellContext`i1, 
+                "S"}, {$CellContext`q, $CellContext`i2, 
+                " leg i2"}, {$CellContext`qb, $CellContext`i1, 
+                " leg i1"}}, {{{3, 1}, {1, 2}}, Null}, {
+              EdgeShapeFunction -> {
+                DirectedEdge[{$CellContext`qb, $CellContext`i1, 
+                    " leg i1"}, {$CellContext`q, $CellContext`i1, "S"}] -> ({
+                   RGBColor[0, 0, 1], 
+                   DoFun`DoDSERGE`Private`arrowLine[
+                   DoFun`DoDSERGE`Private`field$2440, 
+                    SlotSequence[1]]}& ), 
+                 DirectedEdge[{$CellContext`q, $CellContext`i1, 
+                    "S"}, {$CellContext`q, $CellContext`i2, " leg i2"}] -> ({
+                   RGBColor[0, 0, 1], 
+                   DoFun`DoDSERGE`Private`arrowLine[
+                   DoFun`DoDSERGE`Private`field$2441, 
+                    SlotSequence[1]]}& )}, GraphLayout -> 
+               "SpringElectricalEmbedding", ImageSize -> 100, 
+               VertexShapeFunction -> {{$CellContext`qb, $CellContext`i1, 
+                   " leg i1"} -> (
+                  DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                   SlotSequence[1]]& ), {$CellContext`q, $CellContext`i1, 
+                   "S"} -> (DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                   SlotSequence[1]]& ), {$CellContext`q, $CellContext`i2, 
+                   " leg i2"} -> (
+                  DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                   SlotSequence[1]]& )}, VertexSize -> {0.15}}]]}, 
+          TagBox[
+           GraphicsGroupBox[{{
+              Arrowheads[{{Medium, 0.8}}], 
+              Directive[
+               Opacity[0.7], 
+               Hue[0.6, 0.7, 0.5]], {
+               RGBColor[0, 0, 1], {
+                Arrowheads[{{0.04, 0.8}}], 
+                
+                ArrowBox[{{1.0006498060990778`, 2.8136378152319323`*^-15}, {
+                 0., 1.984068534791509*^-17}}]}}, {
+               RGBColor[0, 0, 1], {
+                Arrowheads[{{0.04, 0.8}}], 
+                
+                ArrowBox[{{1.9999995774773867`, 0.}, {1.0006498060990778`, 
+                 2.8136378152319323`*^-15}}]}}}, {
+              Directive[
+               Hue[0.6, 0.2, 0.8], 
+               EdgeForm[
+                Directive[
+                 GrayLevel[0], 
+                 Opacity[0.7]]]], {
+               
+               DiskBox[{1.0006498060990778`, 2.8136378152319323`*^-15}, 
+                0.021199410003564845`]}, {
+               InsetBox[
+                FormBox[
+                 StyleBox[
+                 "\"  i2\"", FontSize :> 14, FontSize :> 14, StripOnInput -> 
+                  False], TraditionalForm], {0., 0.3}]}, {
+               InsetBox[
+                FormBox[
+                 StyleBox[
+                 "\"  i1\"", FontSize :> 14, FontSize :> 14, StripOnInput -> 
+                  False], TraditionalForm], {1.9999995774773867`, 0.3}]}}}], 
+           MouseAppearanceTag[
+           "NetworkGraphics"]], $CellContext`AllowKernelInitialization -> 
+          False]], {
+        FormatType -> TraditionalForm, FrameTicks -> None, ImageSize -> 100, 
+         DefaultBaseStyle -> {
+          "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
+           Hue[0.8, 1., 0.6]}}],StyleBox[
+        StyleBox[
+        "\"+\"", ShowStringCharacters -> False, StripOnInput -> False], {
+        FontSize :> 16}, StripOnInput -> False],OverscriptBox[
+        StyleBox[
+        "\"\"", FontSize :> 50, ShowStringCharacters -> False, StripOnInput -> 
+         False], 
+        StyleBox[
+        "\"-1\"", ShowStringCharacters -> False, {FontSize :> 16}, 
+         StripOnInput -> False]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        NamespaceBox["NetworkGraphics", 
+         DynamicModuleBox[{Typeset`graph = HoldComplete[
+             
+             Graph[{{$CellContext`A, $CellContext`r1, 
+                "S"}, {$CellContext`A, $CellContext`u1, 
+                ""}, {$CellContext`q, $CellContext`i2, 
+                " leg i2"}, {$CellContext`qb, $CellContext`i1, 
+                " leg i1"}}, {{{1, 2}, {4, 1}, {2, 3}}, {{1, 2}}}, {
+              EdgeShapeFunction -> {
+                DirectedEdge[{$CellContext`qb, $CellContext`i1, 
+                    " leg i1"}, {$CellContext`A, $CellContext`r1, "S"}] -> ({
+                   RGBColor[0, 0, 1], 
+                   DoFun`DoDSERGE`Private`arrowLine[
+                   DoFun`DoDSERGE`Private`field$2445, 
+                    SlotSequence[1]]}& ), 
+                 DirectedEdge[{$CellContext`A, $CellContext`r1, 
+                    "S"}, {$CellContext`A, $CellContext`u1, ""}] -> ({
+                   RGBColor[1, 0, 0], 
+                   DoFun`DoDSERGE`Private`arrowLine[
+                   DoFun`DoDSERGE`Private`field$2443, 
+                    SlotSequence[1]]}& ), 
+                 DirectedEdge[{$CellContext`A, $CellContext`u1, 
+                    ""}, {$CellContext`q, $CellContext`i2, " leg i2"}] -> ({
+                   RGBColor[0, 0, 1], 
+                   DoFun`DoDSERGE`Private`arrowLine[
+                   DoFun`DoDSERGE`Private`field$2446, 
+                    SlotSequence[1]]}& ), 
+                 UndirectedEdge[{$CellContext`A, $CellContext`r1, 
+                    "S"}, {$CellContext`A, $CellContext`u1, ""}] -> ({
+                   RGBColor[0, 0, 1], 
+                   DoFun`DoDSERGE`Private`arrowLine[
+                   DoFun`DoDSERGE`Private`field$2444, 
+                    SlotSequence[1]]}& )}, GraphLayout -> 
+               "SpringElectricalEmbedding", ImageSize -> 100, 
+               VertexShapeFunction -> {{$CellContext`A, $CellContext`r1, 
+                   "S"} -> (DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                   SlotSequence[1]]& ), {$CellContext`qb, $CellContext`i1, 
+                   " leg i1"} -> (
+                  DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                   SlotSequence[1]]& ), {$CellContext`A, $CellContext`u1, 
+                   ""} -> (DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                   SlotSequence[1]]& ), {$CellContext`q, $CellContext`i2, 
+                   " leg i2"} -> (
+                  DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                   SlotSequence[1]]& )}, VertexSize -> {0.15}}]]}, 
+          TagBox[
+           GraphicsGroupBox[{{
+              Arrowheads[{{Medium, 0.8}}], 
+              Directive[
+               Opacity[0.7], 
+               Hue[0.6, 0.7, 0.5]], {
+               RGBColor[1, 0, 0], {
+                
+                BezierCurveBox[{{2.0314736080651903`, 0.}, {
+                 1.4989235332644237`, -0.17514586442487098`}, {
+                 0.9663734584639367, 8.269034637457657*^-13}}]}}, {
+               RGBColor[0, 0, 1], {
+                Arrowheads[{{0.04, 0.8}}], 
+                ArrowBox[
+                 
+                 BezierCurveBox[{{2.0314736080651903`, 0.}, {
+                  1.4989235332647035`, 0.17514586442569427`}, {
+                  0.9663734584639367, 8.269034637457657*^-13}}]]}}, {
+               RGBColor[0, 0, 1], {
+                Arrowheads[{{0.04, 0.8}}], 
+                
+                ArrowBox[{{0.9663734584639367, 8.269034637457657*^-13}, {0., 
+                 2.787644949280188*^-12}}]}}, {
+               RGBColor[0, 0, 1], {
+                Arrowheads[{{0.04, 0.8}}], 
+                
+                ArrowBox[{{2.9967114078305315`, 3.0824965482603526`*^-12}, {
+                 2.0314736080651903`, 0.}}]}}}, {
+              Directive[
+               Hue[0.6, 0.2, 0.8], 
+               EdgeForm[
+                Directive[
+                 GrayLevel[0], 
+                 Opacity[0.7]]]], {
+               DiskBox[{2.0314736080651903`, 0.}, 0.02047578581014967]}, {
+               DiskBox[{0.9663734584639367, 8.269034637457657*^-13}, 
+                0.10237892905074834`]}, {
+               InsetBox[
+                FormBox[
+                 StyleBox[
+                 "\"  i2\"", FontSize :> 14, FontSize :> 14, StripOnInput -> 
+                  False], TraditionalForm], {0., 0.30000000000278765`}]}, {
+               InsetBox[
+                FormBox[
+                 StyleBox[
+                 "\"  i1\"", FontSize :> 14, FontSize :> 14, StripOnInput -> 
+                  False], TraditionalForm], {2.9967114078305315`, 
+                0.30000000000308247`}]}}}], 
+           MouseAppearanceTag[
+           "NetworkGraphics"]], $CellContext`AllowKernelInitialization -> 
+          False]], {
+        FormatType -> TraditionalForm, FrameTicks -> None, ImageSize -> 100, 
+         DefaultBaseStyle -> {
+          "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
+           Hue[0.8, 1., 0.6]}}],StyleBox[
+        StyleBox[
+        "\"-\"", ShowStringCharacters -> False, StripOnInput -> False], {
+        FontSize :> 16}, StripOnInput -> False],OverscriptBox[
+        StyleBox[
+        "\"\"", FontSize :> 50, ShowStringCharacters -> False, StripOnInput -> 
+         False], 
+        StyleBox[
+        "\"\"", ShowStringCharacters -> False, {FontSize :> 16}, StripOnInput -> 
+         False]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     StyleBox["\<\"\"\>",
+      StripOnInput->False,
+      ShowStringCharacters->False], 
+     StyleBox["\<\"\"\>",
+      StripOnInput->False,
+      ShowStringCharacters->False]}
+   },
+   AutoDelete->False,
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ ImageSize->{446, 45},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[5]=",
+ CellID->1607590168,ExpressionUUID->"634c9e45-57f7-4335-a8d4-1de962edf5f3"]
+}, Open  ]],
+
+Cell["\<\
+To obtain we need to define which explicit indices the fields have. In the \
+example these are the adjoint and fundamental color indices, Dirac indices \
+and Lorentz indices.\
+\>", "Text",
+ CellID->1946491,ExpressionUUID->"6b46736a-1090-40f6-9406-c40c10780b1a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"defineFieldsSpecific", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"A", "[", 
+     RowBox[{"mom", ",", "adj", ",", "lor"}], "]"}], ",", 
+    RowBox[{"c", "[", 
+     RowBox[{"mom", ",", "adj"}], "]"}], ",", 
+    RowBox[{"cb", "[", 
+     RowBox[{"mom", ",", "adj"}], "]"}], ",", 
+    RowBox[{"q", "[", 
+     RowBox[{"mom", ",", "fund", ",", "dirac"}], "]"}], ",", 
+    RowBox[{"qb", "[", 
+     RowBox[{"mom", ",", "fund", ",", "dirac"}], "]"}]}], "}"}], 
+  "]"}]], "Input",
+ CellLabel->"In[6]:=",
+ CellID->651129965,ExpressionUUID->"b31cd2b0-e132-4906-93ae-d8636a8f7fe2"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"A", "[", 
+    RowBox[{"mom", ",", "adj", ",", "lor"}], "]"}], ",", 
+   RowBox[{"c", "[", 
+    RowBox[{"mom", ",", "adj"}], "]"}], ",", 
+   RowBox[{"cb", "[", 
+    RowBox[{"mom", ",", "adj"}], "]"}], ",", 
+   RowBox[{"q", "[", 
+    RowBox[{"mom", ",", "fund", ",", "dirac"}], "]"}], ",", 
+   RowBox[{"qb", "[", 
+    RowBox[{"mom", ",", "fund", ",", "dirac"}], "]"}]}], "}"}]], "Output",
+ ImageSize->{342, 37},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[6]=",
+ CellID->1485404116,ExpressionUUID->"94c02984-ae7e-431a-9f01-c258658063e9"]
+}, Open  ]],
+
+Cell["The algebraic expression can be obtained with getAE:", "Text",
+ CellID->2054710982,ExpressionUUID->"1424829c-4350-41e6-91eb-6a4199ca75ae"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"qbqAlgPre", "=", 
+  RowBox[{"getAE", "[", 
+   RowBox[{"qbq", ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"q", ",", "i1", ",", "p", ",", "b", ",", "j"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"qb", ",", "i2", ",", 
+        RowBox[{"-", "p"}], ",", "a", ",", "i"}], "}"}]}], "}"}], ",", 
+    RowBox[{"explicit", "\[Rule]", "False"}]}], "]"}]}]], "Input",
+ CellLabel->"In[13]:=",
+ CellID->1872897726,ExpressionUUID->"0f250dc0-e3a9-4431-9159-63df99d9c6d5"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"S", "[", 
+    RowBox[{
+     RowBox[{"q", "[", 
+      RowBox[{"p", ",", "b", ",", "j"}], "]"}], ",", 
+     RowBox[{"qb", "[", 
+      RowBox[{
+       RowBox[{"-", "p"}], ",", "a", ",", "i"}], "]"}], ",", 
+     RowBox[{"explicit", "\[Rule]", "False"}]}], "]"}], ",", 
+   RowBox[{
+    RowBox[{"-", 
+     RowBox[{"P", "[", 
+      RowBox[{
+       RowBox[{"A", "[", 
+        RowBox[{
+         RowBox[{"-", "q1"}], ",", "b$3401", ",", "\[Nu]$3410"}], "]"}], ",", 
+       
+       RowBox[{"A", "[", 
+        RowBox[{"q1", ",", "a$3401", ",", "\[Mu]$3410"}], "]"}], ",", 
+       RowBox[{"explicit", "\[Rule]", "False"}]}], "]"}]}], " ", 
+    RowBox[{"P", "[", 
+     RowBox[{
+      RowBox[{"q", "[", 
+       RowBox[{
+        RowBox[{"p", "+", "q1"}], ",", "b$3407", ",", "b$3404"}], "]"}], ",", 
+      
+      RowBox[{"qb", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "p"}], "-", "q1"}], ",", "a$3407", ",", "a$3404"}], 
+       "]"}], ",", 
+      RowBox[{"explicit", "\[Rule]", "False"}]}], "]"}], " ", 
+    RowBox[{"S", "[", 
+     RowBox[{
+      RowBox[{"A", "[", 
+       RowBox[{"q1", ",", "a$3401", ",", "\[Mu]$3410"}], "]"}], ",", 
+      RowBox[{"qb", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "p"}], "-", "q1"}], ",", "a$3407", ",", "a$3404"}], 
+       "]"}], ",", 
+      RowBox[{"q", "[", 
+       RowBox[{"p", ",", "b", ",", "j"}], "]"}], ",", 
+      RowBox[{"explicit", "\[Rule]", "False"}]}], "]"}], " ", 
+    RowBox[{"V", "[", 
+     RowBox[{
+      RowBox[{"A", "[", 
+       RowBox[{
+        RowBox[{"-", "q1"}], ",", "b$3401", ",", "\[Nu]$3410"}], "]"}], ",", 
+      RowBox[{"qb", "[", 
+       RowBox[{
+        RowBox[{"-", "p"}], ",", "a", ",", "i"}], "]"}], ",", 
+      RowBox[{"q", "[", 
+       RowBox[{
+        RowBox[{"p", "+", "q1"}], ",", "b$3407", ",", "b$3404"}], "]"}], ",", 
+      
+      RowBox[{"explicit", "\[Rule]", "False"}]}], "]"}]}]}], "}"}]], "Output",\
+
+ ImageSize->{574, 113},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[13]=",
+ CellID->758979017,ExpressionUUID->"527b7181-6689-4642-a818-9dce52591e14"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"qbqAlgPre", "=", 
+  RowBox[{"getAE", "[", 
+   RowBox[{"qbq", ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"q", ",", "i1", ",", "p", ",", "a", ",", "i"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"qb", ",", "i2", ",", 
+        RowBox[{"-", "p"}], ",", "b", ",", "j"}], "}"}]}], "}"}], ",", 
+    RowBox[{"explicit", "\[Rule]", "False"}]}], "]"}]}]], "Input",
+ CellLabel->"In[55]:=",
+ CellID->2095723166,ExpressionUUID->"95ce81fb-9bf6-427e-920c-5ecf29306ddc"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"S", "[", 
+    RowBox[{
+     RowBox[{"q", "[", 
+      RowBox[{"p", ",", "a", ",", "i"}], "]"}], ",", 
+     RowBox[{"qb", "[", 
+      RowBox[{
+       RowBox[{"-", "p"}], ",", "b", ",", "j"}], "]"}], ",", 
+     RowBox[{"explicit", "\[Rule]", "False"}]}], "]"}], ",", 
+   RowBox[{
+    RowBox[{"-", 
+     RowBox[{"P", "[", 
+      RowBox[{
+       RowBox[{"A", "[", 
+        RowBox[{
+         RowBox[{"-", "q1"}], ",", "b$4234", ",", "\[Nu]$4243"}], "]"}], ",", 
+       
+       RowBox[{"A", "[", 
+        RowBox[{"q1", ",", "a$4234", ",", "\[Mu]$4243"}], "]"}], ",", 
+       RowBox[{"explicit", "\[Rule]", "False"}]}], "]"}]}], " ", 
+    RowBox[{"P", "[", 
+     RowBox[{
+      RowBox[{"q", "[", 
+       RowBox[{
+        RowBox[{"p", "+", "q1"}], ",", "b$4240", ",", "b$4237"}], "]"}], ",", 
+      
+      RowBox[{"qb", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "p"}], "-", "q1"}], ",", "a$4240", ",", "a$4237"}], 
+       "]"}], ",", 
+      RowBox[{"explicit", "\[Rule]", "False"}]}], "]"}], " ", 
+    RowBox[{"S", "[", 
+     RowBox[{
+      RowBox[{"A", "[", 
+       RowBox[{"q1", ",", "a$4234", ",", "\[Mu]$4243"}], "]"}], ",", 
+      RowBox[{"qb", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "p"}], "-", "q1"}], ",", "a$4240", ",", "a$4237"}], 
+       "]"}], ",", 
+      RowBox[{"q", "[", 
+       RowBox[{"p", ",", "a", ",", "i"}], "]"}], ",", 
+      RowBox[{"explicit", "\[Rule]", "False"}]}], "]"}], " ", 
+    RowBox[{"V", "[", 
+     RowBox[{
+      RowBox[{"A", "[", 
+       RowBox[{
+        RowBox[{"-", "q1"}], ",", "b$4234", ",", "\[Nu]$4243"}], "]"}], ",", 
+      RowBox[{"qb", "[", 
+       RowBox[{
+        RowBox[{"-", "p"}], ",", "b", ",", "j"}], "]"}], ",", 
+      RowBox[{"q", "[", 
+       RowBox[{
+        RowBox[{"p", "+", "q1"}], ",", "b$4240", ",", "b$4237"}], "]"}], ",", 
+      
+      RowBox[{"explicit", "\[Rule]", "False"}]}], "]"}]}]}], "}"}]], "Output",\
+
+ ImageSize->{574, 113},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[55]=",
+ CellID->1381726204,ExpressionUUID->"5d93f65b-7357-4801-af39-ab7ae6a27022"]
+}, Open  ]],
+
+Cell["\<\
+All the indices and momenta are correctly put now, but the expressions are \
+not defined yet. We do this as follows, where we use a tree-level \
+approximation for the vertex. The dressing for the gluon propagator is \
+dressZ, for the dressings for the quark propagator dressA and dressB and the \
+dressings for the vertex dressGamma:\
+\>", "Text",
+ CellID->552997836,ExpressionUUID->"d1828796-09e6-4333-be87-52b2a3174a1c"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"S", "[", 
+   RowBox[{
+    RowBox[{"q", "[", 
+     RowBox[{"p1_", ",", "a_", ",", "i_"}], "]"}], ",", 
+    RowBox[{"qb", "[", 
+     RowBox[{"p2_", ",", "b_", ",", "j_"}], "]"}], ",", 
+    RowBox[{"explicit", "\[Rule]", "True"}]}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"delta", "[", 
+    RowBox[{"fund", ",", "a", ",", "b"}], "]"}], 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"\[ImaginaryI]", " ", 
+      RowBox[{"vecSlash", "[", 
+       RowBox[{"p1", ",", "i", ",", "j"}], "]"}]}], "+", 
+     RowBox[{
+      RowBox[{"delta", "[", 
+       RowBox[{"dirac", ",", "i", ",", "j"}], "]"}], "m"}]}], 
+    ")"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"P", "[", 
+   RowBox[{
+    RowBox[{"q", "[", 
+     RowBox[{"p1_", ",", "a_", ",", "i_"}], "]"}], ",", 
+    RowBox[{"qb", "[", 
+     RowBox[{"p2_", ",", "b_", ",", "j_"}], "]"}], ",", 
+    RowBox[{"explicit", "\[Rule]", "True"}]}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"delta", "[", 
+    RowBox[{"fund", ",", "a", ",", "b"}], "]"}], 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"-", "\[ImaginaryI]"}], " ", 
+       RowBox[{"dressA", "[", 
+        RowBox[{"p1", "^", "2"}], "]"}], 
+       RowBox[{"vecSlash", "[", 
+        RowBox[{"p1", ",", "j", ",", "i"}], "]"}]}], "+", 
+      RowBox[{
+       RowBox[{"delta", "[", 
+        RowBox[{"dirac", ",", "j", ",", "i"}], "]"}], 
+       RowBox[{"dressB", "[", 
+        RowBox[{"p1", "^", "2"}], "]"}]}]}], ")"}], "/", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"p1", "^", "2"}], " ", 
+       RowBox[{"dressA", "[", 
+        RowBox[{"p1", "^", "2"}], "]"}]}], "+", 
+      RowBox[{"dressB", "[", 
+       RowBox[{"p1", "^", "2"}], "]"}]}], 
+     ")"}]}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"P", "[", 
+   RowBox[{
+    RowBox[{"A", "[", 
+     RowBox[{"p1_", ",", "a_", ",", "mu_"}], "]"}], ",", 
+    RowBox[{"A", "[", 
+     RowBox[{"p2_", ",", "b_", ",", "nu_"}], "]"}], ",", 
+    RowBox[{"explicit", "\[Rule]", "True"}]}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"delta", "[", 
+    RowBox[{"adj", ",", "a", ",", "b"}], "]"}], 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"delta", "[", 
+      RowBox[{"lor", ",", "mu", ",", "nu"}], "]"}], "-", 
+     RowBox[{
+      RowBox[{"vec", "[", 
+       RowBox[{"p1", ",", "mu"}], "]"}], 
+      RowBox[{
+       RowBox[{"vec", "[", 
+        RowBox[{"p1", ",", "nu"}], "]"}], "/", 
+       RowBox[{"sp", "[", "p1", "]"}]}]}]}], ")"}], 
+   RowBox[{"dressZ", "[", 
+    RowBox[{"p1", "^", "2"}], "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"S", "[", 
+   RowBox[{
+    RowBox[{"A", "[", 
+     RowBox[{"p1_", ",", "a_", ",", "mu_"}], "]"}], ",", 
+    RowBox[{"qb", "[", 
+     RowBox[{"p2_", ",", "b_", ",", "j_"}], "]"}], ",", 
+    RowBox[{"q", "[", 
+     RowBox[{"p3_", ",", "c_", ",", "k_"}], "]"}], ",", 
+    RowBox[{"explicit", "\[Rule]", "True"}]}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"-", "\[ImaginaryI]"}], " ", "g", " ", 
+   RowBox[{"T", "[", 
+    RowBox[{"a", ",", "b", ",", "c"}], "]"}], " ", 
+   RowBox[{"gamma", "[", 
+    RowBox[{"mu", ",", "k", ",", "j"}], "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"V", "[", 
+   RowBox[{
+    RowBox[{"A", "[", 
+     RowBox[{"p1_", ",", "a_", ",", "mu_"}], "]"}], ",", 
+    RowBox[{"qb", "[", 
+     RowBox[{"p2_", ",", "b_", ",", "j_"}], "]"}], ",", 
+    RowBox[{"q", "[", 
+     RowBox[{"p3_", ",", "c_", ",", "k_"}], "]"}], ",", 
+    RowBox[{"explicit", "\[Rule]", "True"}]}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"S", "[", 
+    RowBox[{
+     RowBox[{"A", "[", 
+      RowBox[{"p1", ",", "a", ",", "mu"}], "]"}], ",", 
+     RowBox[{"qb", "[", 
+      RowBox[{"p2", ",", "b", ",", "j"}], "]"}], ",", 
+     RowBox[{"q", "[", 
+      RowBox[{"p3", ",", "c", ",", "k"}], "]"}], ",", 
+     RowBox[{"explicit", "\[Rule]", "True"}]}], "]"}], " ", 
+   RowBox[{"dressGamma", "[", 
+    RowBox[{"p1", ",", "p2", ",", "p3"}], "]"}]}]}]}], "Input",
+ CellLabel->"In[63]:=",
+ CellID->268636086,ExpressionUUID->"a2b7b7bc-6e65-4e43-9a8a-fb2bee7610d3"],
+
+Cell["\<\
+A momentum transformation can be done at this point quite easily. To get the \
+explicit expressions, we set the option of the propagators and vertices \
+accordingly:\
+\>", "Text",
+ CellID->191462938,ExpressionUUID->"4ba55f13-03d2-4d4b-8578-c5d63edef7e4"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"qbqAlg", "=", 
+  RowBox[{
+   RowBox[{"qbqAlgPre", "/.", 
+    RowBox[{"q1", "\[RuleDelayed]", 
+     RowBox[{"q1", "-", "p"}]}]}], "/.", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"explicit", "\[Rule]", "False"}], ")"}], "\[RuleDelayed]", 
+    RowBox[{"(", 
+     RowBox[{"explicit", "\[Rule]", "True"}], ")"}]}]}]}]], "Input",
+ CellLabel->"In[68]:=",
+ CellID->1644949164,ExpressionUUID->"1ca8a508-e798-49f9-b3ea-f00f98589d6a"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"delta", "[", 
+     RowBox[{"fund", ",", "a", ",", "b"}], "]"}], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"m", " ", 
+       RowBox[{"delta", "[", 
+        RowBox[{"dirac", ",", "i", ",", "j"}], "]"}]}], "+", 
+      RowBox[{"\[ImaginaryI]", " ", 
+       RowBox[{"vecSlash", "[", 
+        RowBox[{"p", ",", "i", ",", "j"}], "]"}]}]}], ")"}]}], ",", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      SuperscriptBox["g", "2"], " ", 
+      RowBox[{"delta", "[", 
+       RowBox[{"adj", ",", "b$4234", ",", "a$4234"}], "]"}], " ", 
+      RowBox[{"delta", "[", 
+       RowBox[{"fund", ",", "b$4240", ",", "a$4240"}], "]"}], " ", 
+      RowBox[{"dressGamma", "[", 
+       RowBox[{
+        RowBox[{"p", "-", "q1"}], ",", 
+        RowBox[{"-", "p"}], ",", "q1"}], "]"}], " ", 
+      RowBox[{"dressZ", "[", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"p", "-", "q1"}], ")"}], "2"], "]"}], " ", 
+      RowBox[{"gamma", "[", 
+       RowBox[{"\[Mu]$4243", ",", "i", ",", "a$4237"}], "]"}], " ", 
+      RowBox[{"gamma", "[", 
+       RowBox[{"\[Nu]$4243", ",", "b$4237", ",", "j"}], "]"}], " ", 
+      RowBox[{"T", "[", 
+       RowBox[{"a$4234", ",", "a$4240", ",", "a"}], "]"}], " ", 
+      RowBox[{"T", "[", 
+       RowBox[{"b$4234", ",", "b", ",", "b$4240"}], "]"}], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"delta", "[", 
+         RowBox[{"lor", ",", "\[Nu]$4243", ",", "\[Mu]$4243"}], "]"}], "-", 
+        FractionBox[
+         RowBox[{
+          RowBox[{"vec", "[", 
+           RowBox[{
+            RowBox[{"p", "-", "q1"}], ",", "\[Mu]$4243"}], "]"}], " ", 
+          RowBox[{"vec", "[", 
+           RowBox[{
+            RowBox[{"p", "-", "q1"}], ",", "\[Nu]$4243"}], "]"}]}], 
+         RowBox[{"sp", "[", 
+          RowBox[{"p", "-", "q1"}], "]"}]]}], ")"}], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"delta", "[", 
+          RowBox[{"dirac", ",", "a$4237", ",", "b$4237"}], "]"}], " ", 
+         RowBox[{"dressB", "[", 
+          SuperscriptBox["q1", "2"], "]"}]}], "-", 
+        RowBox[{"\[ImaginaryI]", " ", 
+         RowBox[{"dressA", "[", 
+          SuperscriptBox["q1", "2"], "]"}], " ", 
+         RowBox[{"vecSlash", "[", 
+          RowBox[{"q1", ",", "a$4237", ",", "b$4237"}], "]"}]}]}], ")"}]}], 
+     ")"}], "/", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["q1", "2"], " ", 
+       RowBox[{"dressA", "[", 
+        SuperscriptBox["q1", "2"], "]"}]}], "+", 
+      RowBox[{"dressB", "[", 
+       SuperscriptBox["q1", "2"], "]"}]}], ")"}]}]}], "}"}]], "Output",
+ ImageSize->{550, 212},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[68]=",
+ CellID->276088933,ExpressionUUID->"26396eca-97f8-4225-8feb-77e3405f88da"]
+}, Open  ]],
+
+Cell["\<\
+The left-hand side of the equation is the inverse quark propagator:\
+\>", "Text",
+ CellID->555413753,ExpressionUUID->"a3acbfb2-0141-4898-adfe-d90c3d602fa2"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"lhs", "=", 
+   RowBox[{
+    RowBox[{"delta", "[", 
+     RowBox[{"fund", ",", "a", ",", "b"}], "]"}], 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"\[ImaginaryI]", " ", 
+       RowBox[{"vecSlash", "[", 
+        RowBox[{"p", ",", "i", ",", "j"}], "]"}], 
+       RowBox[{"dressA", "[", 
+        RowBox[{"p", "^", "2"}], "]"}]}], "+", 
+      RowBox[{
+       RowBox[{"delta", "[", 
+        RowBox[{"dirac", ",", "i", ",", "j"}], "]"}], 
+       RowBox[{"dressB", "[", 
+        RowBox[{"p", "^", "2"}], "]"}]}]}], ")"}]}]}], ";"}]], "Input",
+ CellLabel->"In[57]:=",
+ CellID->1168034431,ExpressionUUID->"77a51329-1659-43e1-9d81-8145869b30bf"],
+
+Cell["\<\
+For projecting out the equations for the two dressings, we define two \
+projectors:\
+\>", "Text",
+ CellID->1690102901,ExpressionUUID->"3e966442-6cb9-4c56-a4c1-7d1cc8f94310"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"projA", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "1"}], "/", 
+      RowBox[{"dim", "[", "dirac", "]"}]}], "/", 
+     RowBox[{"dim", "[", "fund", "]"}]}], 
+    RowBox[{
+     RowBox[{"delta", "[", 
+      RowBox[{"fund", ",", "a", ",", "b"}], "]"}], "/", 
+     RowBox[{"sp", "[", "p", "]"}]}], "\[ImaginaryI]", " ", 
+    RowBox[{"vecSlash", "[", 
+     RowBox[{"p", ",", "j", ",", "i"}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"projB", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"1", "/", 
+      RowBox[{"dim", "[", "dirac", "]"}]}], "/", 
+     RowBox[{"dim", "[", "fund", "]"}]}], 
+    RowBox[{"delta", "[", 
+     RowBox[{"fund", ",", "a", ",", "b"}], "]"}], 
+    RowBox[{"delta", "[", 
+     RowBox[{"dirac", ",", "j", ",", "i"}], "]"}]}]}], ";"}]}], "Input",
+ CellLabel->"In[58]:=",
+ CellID->2130758022,ExpressionUUID->"2760d85e-fb61-4143-b476-5837a11a3c94"],
+
+Cell["We define some rules to deal with Dirac and Lorentz indices:", "Text",
+ CellID->2037322274,ExpressionUUID->"3d40a1cc-2f33-4cac-be62-7699ab62f550"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"diracRules", "=", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"vecSlash", "[", 
+       RowBox[{"p_", ",", "i_", ",", "j_"}], "]"}], "\[RuleDelayed]", 
+      RowBox[{"Module", "[", 
+       RowBox[{
+        RowBox[{"{", "mu", "}"}], ",", 
+        RowBox[{
+         RowBox[{"vec", "[", 
+          RowBox[{"p", ",", "mu"}], "]"}], 
+         RowBox[{"gamma", "[", 
+          RowBox[{"mu", ",", "i", ",", "j"}], "]"}]}]}], "]"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"gamma", "[", 
+        RowBox[{"mu_", ",", "i_", ",", "j_"}], "]"}], 
+       RowBox[{"gamma", "[", 
+        RowBox[{"nu_", ",", "j_", ",", "i_"}], "]"}]}], "\[RuleDelayed]", 
+      RowBox[{
+       RowBox[{"delta", "[", 
+        RowBox[{"lor", ",", "mu", ",", "nu"}], "]"}], 
+       RowBox[{"dim", "[", "dirac", "]"}]}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"gamma", "[", 
+        RowBox[{"mu_", ",", "i_", ",", "j_"}], "]"}], 
+       RowBox[{"gamma", "[", 
+        RowBox[{"nu_", ",", "j_", ",", "k_"}], "]"}], 
+       RowBox[{"gamma", "[", 
+        RowBox[{"rho_", ",", "k_", ",", "i_"}], "]"}]}], "\[RuleDelayed]", 
+      "0"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"gamma", "[", 
+        RowBox[{"mu_", ",", "i_", ",", "j_"}], "]"}], 
+       RowBox[{"gamma", "[", 
+        RowBox[{"nu_", ",", "j_", ",", "k_"}], "]"}], 
+       RowBox[{"gamma", "[", 
+        RowBox[{"rho_", ",", "k_", ",", "l_"}], "]"}], 
+       RowBox[{"gamma", "[", 
+        RowBox[{"sigma_", ",", "l_", ",", "i_"}], "]"}]}], "\[RuleDelayed]", 
+      RowBox[{
+       RowBox[{"dim", "[", "dirac", "]"}], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"delta", "[", 
+           RowBox[{"lor", ",", "mu", ",", "nu"}], "]"}], 
+          RowBox[{"delta", "[", 
+           RowBox[{"lor", ",", "rho", ",", "sigma"}], "]"}]}], "-", 
+         RowBox[{
+          RowBox[{"delta", "[", 
+           RowBox[{"lor", ",", "mu", ",", "rho"}], "]"}], 
+          RowBox[{"delta", "[", 
+           RowBox[{"lor", ",", "nu", ",", "sigma"}], "]"}]}], "+", 
+         RowBox[{
+          RowBox[{"delta", "[", 
+           RowBox[{"lor", ",", "mu", ",", "sigma"}], "]"}], 
+          RowBox[{"delta", "[", 
+           RowBox[{"lor", ",", "nu", ",", "rho"}], "]"}]}]}], ")"}]}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"gamma", "[", 
+       RowBox[{"_", ",", "i_", ",", "i_"}], "]"}], "\[RuleDelayed]", "0"}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"vec", "[", 
+       RowBox[{
+        RowBox[{"p_", "+", "q_"}], ",", "mu"}], "]"}], "\[RuleDelayed]", 
+      RowBox[{
+       RowBox[{"vec", "[", 
+        RowBox[{"p", ",", "mu"}], "]"}], "+", 
+       RowBox[{"vec", "[", 
+        RowBox[{"q", ",", "mu"}], "]"}]}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"vec", "[", 
+       RowBox[{
+        RowBox[{"-", "p_"}], ",", "mu"}], "]"}], "\[RuleDelayed]", 
+      RowBox[{"-", 
+       RowBox[{"vec", "[", 
+        RowBox[{"p", ",", "mu"}], "]"}]}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"vec", "[", 
+        RowBox[{"p_", ",", "mu_"}], "]"}], 
+       RowBox[{"vec", "[", 
+        RowBox[{"q_", ",", "mu_"}], "]"}]}], "\[RuleDelayed]", 
+      RowBox[{"sp", "[", 
+       RowBox[{"p", ",", "q"}], "]"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"vec", "[", 
+        RowBox[{"p_", ",", "mu_"}], "]"}], "^", "2"}], "\[RuleDelayed]", 
+      RowBox[{"sp", "[", "p", "]"}]}]}], "}"}]}], ";"}]], "Input",
+ CellLabel->"In[69]:=",
+ CellID->2032259154,ExpressionUUID->"9483a255-5216-4251-9335-a8518408b40e"],
+
+Cell["And for color indices:", "Text",
+ CellID->791282679,ExpressionUUID->"c37ed879-7e77-4903-9150-1b6a5350f7a9"],
+
+Cell[BoxData[
+ RowBox[{"colorRules", ":=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"T", "[", 
+      RowBox[{"a_", ",", "i_", ",", "j_"}], "]"}], 
+     RowBox[{"T", "[", 
+      RowBox[{"a_", ",", "j_", ",", "i_"}], "]"}]}], "\[RuleDelayed]", 
+    RowBox[{"CF", "  ", 
+     RowBox[{"dim", "[", "fund", "]"}]}]}], "}"}]}]], "Input",
+ CellLabel->"In[70]:=",
+ CellID->1042520127,ExpressionUUID->"bb11e069-7b28-4bd7-8f13-9117d4e5c6d8"],
+
+Cell["\<\
+Projecting the left-hand side yields the dressings dressA and dressB. We have \
+to apply integrateDeltas and the rules several times:\
+\>", "Text",
+ CellID->454042,ExpressionUUID->"81b02daf-4a0b-4a37-b5d1-cabb1fa9dfe5"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"integrateDeltas", "[", 
+   RowBox[{
+    RowBox[{"integrateDeltas", "[", 
+     RowBox[{"lhs", " ", 
+      RowBox[{"{", 
+       RowBox[{"projA", ",", "projB"}], "}"}]}], "]"}], "//.", "diracRules"}],
+    "]"}], "//.", "diracRules"}]], "Input",
+ CellLabel->"In[71]:=",
+ CellID->1571807240,ExpressionUUID->"fbd003af-56e2-4d71-8bb2-48206416ee0f"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"dressA", "[", 
+    SuperscriptBox["p", "2"], "]"}], ",", 
+   RowBox[{"dressB", "[", 
+    SuperscriptBox["p", "2"], "]"}]}], "}"}]], "Output",
+ ImageSize->{189, 26},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[71]=",
+ CellID->772592562,ExpressionUUID->"0034ae60-44ec-4cd0-902a-f2da5ebd70d8"]
+}, Open  ]],
+
+Cell["\<\
+Projecting the first term of the DSE yields the tree-level expressions:\
+\>", "Text",
+ CellID->205281615,ExpressionUUID->"c98146a5-1357-4454-ac33-1ca935f1c974"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"integrateDeltas", "[", 
+   RowBox[{
+    RowBox[{"integrateDeltas", "[", 
+     RowBox[{
+      RowBox[{"qbqAlg", "[", 
+       RowBox[{"[", "1", "]"}], "]"}], " ", 
+      RowBox[{"{", 
+       RowBox[{"projA", ",", "projB"}], "}"}]}], "]"}], "//.", "diracRules"}],
+    "]"}], "//.", "diracRules"}]], "Input",
+ CellLabel->"In[72]:=",
+ CellID->1406674871,ExpressionUUID->"a5058593-5a2d-4aeb-b4b1-d03aeb975668"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", "m"}], "}"}]], "Output",
+ ImageSize->{49, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[72]=",
+ CellID->1635872138,ExpressionUUID->"459eeffd-be45-4c88-ac29-44d26b43b7a2"]
+}, Open  ]],
+
+Cell["\<\
+The second term, the self-energy leads to the following expressions for the \
+integrands:\
+\>", "Text",
+ CellID->1910471858,ExpressionUUID->"ca4b30fe-547f-4c4d-927f-f5a56a5f475e"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"integrandA", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"integrateDeltas", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"integrateDeltas", "[", 
+        RowBox[{
+         RowBox[{"qbqAlg", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], " ", "projA"}], "]"}], "//.", 
+       "diracRules"}], "/.", "colorRules"}], "]"}], "//.", "diracRules"}], "//",
+    "Simplify"}]}]], "Input",
+ CellLabel->"In[74]:=",
+ CellID->94459536,ExpressionUUID->"b7bd6a39-6928-4a38-8921-cfe380747e46"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"CF", " ", 
+    SuperscriptBox["g", "2"], " ", 
+    RowBox[{"dressA", "[", 
+     SuperscriptBox["q1", "2"], "]"}], " ", 
+    RowBox[{"dressGamma", "[", 
+     RowBox[{
+      RowBox[{"p", "-", "q1"}], ",", 
+      RowBox[{"-", "p"}], ",", "q1"}], "]"}], " ", 
+    RowBox[{"dressZ", "[", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{"p", "-", "q1"}], ")"}], "2"], "]"}], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"-", "3"}], "+", 
+         RowBox[{"dim", "[", "lor", "]"}]}], ")"}], " ", 
+       RowBox[{"sp", "[", 
+        RowBox[{"p", "-", "q1"}], "]"}], " ", 
+       RowBox[{"sp", "[", 
+        RowBox[{"p", ",", "q1"}], "]"}]}], "+", 
+      RowBox[{"2", " ", 
+       RowBox[{"sp", "[", 
+        RowBox[{"p", ",", 
+         RowBox[{"p", "-", "q1"}]}], "]"}], " ", 
+       RowBox[{"sp", "[", 
+        RowBox[{
+         RowBox[{"p", "-", "q1"}], ",", "q1"}], "]"}]}]}], ")"}]}], ")"}], 
+  "/", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["q1", "2"], " ", 
+       RowBox[{"dressA", "[", 
+        SuperscriptBox["q1", "2"], "]"}]}], "+", 
+      RowBox[{"dressB", "[", 
+       SuperscriptBox["q1", "2"], "]"}]}], ")"}], " ", 
+    RowBox[{"sp", "[", "p", "]"}], " ", 
+    RowBox[{"sp", "[", 
+     RowBox[{"p", "-", "q1"}], "]"}]}], ")"}]}]], "Output",
+ ImageSize->{540, 78},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[74]=",
+ CellID->844298445,ExpressionUUID->"90c9b56f-997a-4a1d-8ae1-47c7c3b3482a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"integrandB", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"integrateDeltas", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"integrateDeltas", "[", 
+        RowBox[{
+         RowBox[{"qbqAlg", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], " ", "projB"}], "]"}], "//.", 
+       "diracRules"}], "/.", "colorRules"}], "]"}], "//.", "diracRules"}], "//",
+    "Simplify"}]}]], "Input",
+ CellLabel->"In[76]:=",
+ CellID->1322507612,ExpressionUUID->"28e16e30-0926-46ad-9e3a-fcf5f6d1c780"],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"CF", " ", 
+   SuperscriptBox["g", "2"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"-", "1"}], "+", 
+     RowBox[{"dim", "[", "lor", "]"}]}], ")"}], " ", 
+   RowBox[{"dressB", "[", 
+    SuperscriptBox["q1", "2"], "]"}], " ", 
+   RowBox[{"dressGamma", "[", 
+    RowBox[{
+     RowBox[{"p", "-", "q1"}], ",", 
+     RowBox[{"-", "p"}], ",", "q1"}], "]"}], " ", 
+   RowBox[{"dressZ", "[", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"p", "-", "q1"}], ")"}], "2"], "]"}]}], 
+  RowBox[{
+   RowBox[{
+    SuperscriptBox["q1", "2"], " ", 
+    RowBox[{"dressA", "[", 
+     SuperscriptBox["q1", "2"], "]"}]}], "+", 
+   RowBox[{"dressB", "[", 
+    SuperscriptBox["q1", "2"], "]"}]}]]], "Output",
+ ImageSize->{566, 45},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[76]=",
+ CellID->546231862,ExpressionUUID->"1963298f-f2ac-4160-8473-7f68a07bbb6f"]
+}, Open  ]],
+
+Cell["\<\
+These expressions are the integrands of the quark gap equation.\
+\>", "Text",
+ CellID->1316407155,ExpressionUUID->"cc9012d1-e522-4709-9c89-f1ba8a4364d8"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["XXXX"], "Input",
+ CellLabel->"In[1]:=",
+ CellID->2058623809,ExpressionUUID->"3f507a42-48bf-4dce-a26d-9fccfa18bf01"],
+
+Cell[BoxData["XXXX"], "Output",
+ ImageSize->{35, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->1181321046,ExpressionUUID->"68514b35-b542-43e2-9f11-e4ac8550a584"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell",ExpressionUUID->"07473b16-2c39-4c48-b2df-46cc36ee28d8"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"Dyson-Schwinger equations",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "TutorialColor", 
+  "LinkTrails" -> GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:DoFun/guide/DoFun", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "ExampleCounter" -> 1, "NeedPlatMsgIn" -> None, "RootCaptions" -> 
+  "", "Metadata" -> {
+   "built" -> "{2019, 8, 7, 9, 22, 11.270547}", 
+    "history" -> {"XX", "", "", ""}, "context" -> "DoFun`", "keywords" -> {}, 
+    "specialkeywords" -> {}, "tutorialcollectionlinks" -> {}, "index" -> True,
+     "label" -> "Do Fun Package Tutorial", "language" -> "en", "paclet" -> 
+    "DoFun Package", "status" -> "None", "summary" -> 
+    "This tutorial describes how to derive a functional renormalization group \
+equation. To derive a DSE the function doDSE is used: Derivation functions.", 
+    "synonyms" -> {}, "tabletags" -> 
+    DocumentationBuild`Make`Private`tabletaggingrules$84507, "title" -> 
+    "Dyson-Schwinger equations", "titlemodifier" -> "", "windowtitle" -> 
+    "Dyson-Schwinger equations", "type" -> "Tutorial", "uri" -> 
+    "DoFun/tutorial/Dyson-SchwingerEquations", "WorkflowDockedCell" -> ""}, 
+  "SearchTextTranslated" -> ""},
+FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> Notebook], 
+   Cell[
+    StyleData["Output"], CellContext -> Notebook], 
+   Cell[
+    StyleData["TutorialMoreAboutSection"], 
+    CellGroupingRules -> {"SectionGrouping", 30}], 
+   Cell[
+    StyleData["RelatedTutorialsSection"], 
+    CellGroupingRules -> {"SectionGrouping", 30}], 
+   Cell[
+    StyleData["TutorialRelatedLinksSection"], 
+    CellGroupingRules -> {"SectionGrouping", 30}]}, Visible -> False, 
+  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[597, 21, 2667, 58, 56, "AnchorBarGrid",ExpressionUUID->"26470e9f-30c6-45dd-8a1e-e8e5ebcc8e4c",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[3289, 83, 117, 1, 65, "Title",ExpressionUUID->"8bab9e32-edd7-418a-83b8-47292f5e57a8",
+ CellID->509267359],
+Cell[3409, 86, 184, 4, 36, "Text",ExpressionUUID->"a6538a51-90d6-4818-a8bf-414d53759951",
+ CellID->1534169418],
+Cell[3596, 92, 135, 1, 36, "Text",ExpressionUUID->"ea48f812-f240-4aab-a558-7138f8bab2f4",
+ CellID->1349004082],
+Cell[3734, 95, 1287, 31, 237, "DefinitionBox",ExpressionUUID->"61ffe7ea-c3be-4b1a-b50c-5483b1829abd",
+ CellID->2096742444],
+Cell[5024, 128, 116, 1, 37, "Caption",ExpressionUUID->"6ef17d97-abad-41ac-88db-29c714187edd",
+ CellID->1891092685],
+Cell[5143, 131, 130, 1, 36, "Text",ExpressionUUID->"d0050763-58a3-45aa-b61a-90b26bea4acf",
+ CellID->1475713941],
+Cell[5276, 134, 746, 18, 156, "DefinitionBox",ExpressionUUID->"d6a6c672-ca29-4fa6-9197-2d8f3ba43370",
+ CellID->1225823622],
+Cell[6025, 154, 115, 1, 70, "Caption",ExpressionUUID->"76c6c9f3-04bc-4993-8038-f0cc008d7237",
+ CellID->1724178967],
+Cell[6143, 157, 139, 1, 70, "Text",ExpressionUUID->"9e3b2d76-570e-454f-81e6-5d3f558760df",
+ CellID->1045476368],
+Cell[6285, 160, 615, 14, 70, "DefinitionBox",ExpressionUUID->"95318b72-ba1e-4a15-8867-0ca7c3db6465",
+ CellID->429162623],
+Cell[6903, 176, 114, 1, 70, "Caption",ExpressionUUID->"02e880be-bf23-4e65-a9e5-4fd129c63eed",
+ CellID->1119900583],
+Cell[7020, 179, 251, 4, 70, "Text",ExpressionUUID->"2ebcba94-596b-4fa4-b794-74dd630ae0fb",
+ CellID->1841528772],
+Cell[CellGroupData[{
+Cell[7296, 187, 149, 3, 70, "Input",ExpressionUUID->"f14ae2d1-b64e-40b5-bd62-6cc23a5a9965",
+ CellID->1892492974],
+Cell[7448, 192, 352, 4, 70, "Print",ExpressionUUID->"f6bf94ae-26a9-4486-87ae-0188cbbdec67",
+ CellID->686099459]
+}, Open  ]],
+Cell[7815, 199, 344, 10, 70, "Input",ExpressionUUID->"64b23b31-f4af-4fed-ac85-69a001dce8a3"],
+Cell[8162, 211, 235, 4, 70, "Text",ExpressionUUID->"fdf5744a-6307-4253-a9fe-99dc213ef5ee",
+ CellID->1682869941],
+Cell[8400, 217, 701, 21, 70, "Input",ExpressionUUID->"d0f0507c-fd9a-4045-8304-1f6449f18439",
+ CellID->1995051252],
+Cell[9104, 240, 147, 1, 70, "Text",ExpressionUUID->"4898efef-3db8-4ac6-8e21-2317288bd8c3",
+ CellID->1161808145],
+Cell[CellGroupData[{
+Cell[9276, 245, 266, 7, 70, "Input",ExpressionUUID->"37531ef0-4011-4b38-96fe-f3f68940ecae",
+ CellID->1038317495],
+Cell[9545, 254, 1308, 43, 58, "Output",ExpressionUUID->"7d7e7199-d262-4e3b-a0d2-79768531c520",
+ CellID->897947143]
+}, Open  ]],
+Cell[10868, 300, 239, 4, 70, "Text",ExpressionUUID->"28ba7fec-dd5d-4d30-8e3e-70c5473a383d",
+ CellID->1720619175],
+Cell[11110, 306, 487, 15, 70, "Input",ExpressionUUID->"81a4225c-a120-4a7d-9dae-08fc120f5092",
+ CellID->2002455362],
+Cell[CellGroupData[{
+Cell[11622, 325, 193, 4, 70, "Input",ExpressionUUID->"86545b44-6726-4c35-b7ce-19f7d7c2a40e",
+ CellID->1996689018],
+Cell[11818, 331, 16076, 345, 70, "Output",ExpressionUUID->"634c9e45-57f7-4335-a8d4-1de962edf5f3",
+ CellID->1607590168]
+}, Open  ]],
+Cell[27909, 679, 271, 5, 70, "Text",ExpressionUUID->"6b46736a-1090-40f6-9406-c40c10780b1a",
+ CellID->1946491],
+Cell[CellGroupData[{
+Cell[28205, 688, 595, 16, 70, "Input",ExpressionUUID->"b31cd2b0-e132-4906-93ae-d8636a8f7fe2",
+ CellID->651129965],
+Cell[28803, 706, 624, 17, 58, "Output",ExpressionUUID->"94c02984-ae7e-431a-9f01-c258658063e9",
+ CellID->1485404116]
+}, Open  ]],
+Cell[29442, 726, 144, 1, 70, "Text",ExpressionUUID->"1424829c-4350-41e6-91eb-6a4199ca75ae",
+ CellID->2054710982],
+Cell[CellGroupData[{
+Cell[29611, 731, 515, 13, 70, "Input",ExpressionUUID->"0f250dc0-e3a9-4431-9159-63df99d9c6d5",
+ CellID->1872897726],
+Cell[30129, 746, 2145, 64, 134, "Output",ExpressionUUID->"527b7181-6689-4642-a818-9dce52591e14",
+ CellID->758979017]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[32311, 815, 515, 13, 70, "Input",ExpressionUUID->"95ce81fb-9bf6-427e-920c-5ecf29306ddc",
+ CellID->2095723166],
+Cell[32829, 830, 2146, 64, 134, "Output",ExpressionUUID->"5d93f65b-7357-4801-af39-ab7ae6a27022",
+ CellID->1381726204]
+}, Open  ]],
+Cell[34990, 897, 432, 7, 70, "Text",ExpressionUUID->"d1828796-09e6-4333-be87-52b2a3174a1c",
+ CellID->552997836],
+Cell[35425, 906, 4014, 118, 70, "Input",ExpressionUUID->"a2b7b7bc-6e65-4e43-9a8a-fb2bee7610d3",
+ CellID->268636086],
+Cell[39442, 1026, 264, 5, 70, "Text",ExpressionUUID->"4ba55f13-03d2-4d4b-8578-c5d63edef7e4",
+ CellID->191462938],
+Cell[CellGroupData[{
+Cell[39731, 1035, 449, 12, 70, "Input",ExpressionUUID->"1ca8a508-e798-49f9-b3ea-f00f98589d6a",
+ CellID->1644949164],
+Cell[40183, 1049, 2819, 77, 233, "Output",ExpressionUUID->"26396eca-97f8-4225-8feb-77e3405f88da",
+ CellID->276088933]
+}, Open  ]],
+Cell[43017, 1129, 166, 3, 70, "Text",ExpressionUUID->"a3acbfb2-0141-4898-adfe-d90c3d602fa2",
+ CellID->555413753],
+Cell[43186, 1134, 671, 19, 70, "Input",ExpressionUUID->"77a51329-1659-43e1-9d81-8145869b30bf",
+ CellID->1168034431],
+Cell[43860, 1155, 183, 4, 70, "Text",ExpressionUUID->"3e966442-6cb9-4c56-a4c1-7d1cc8f94310",
+ CellID->1690102901],
+Cell[44046, 1161, 942, 28, 70, "Input",ExpressionUUID->"2760d85e-fb61-4143-b476-5837a11a3c94",
+ CellID->2130758022],
+Cell[44991, 1191, 152, 1, 70, "Text",ExpressionUUID->"3d40a1cc-2f33-4cac-be62-7699ab62f550",
+ CellID->2037322274],
+Cell[45146, 1194, 3751, 100, 70, "Input",ExpressionUUID->"9483a255-5216-4251-9335-a8518408b40e",
+ CellID->2032259154],
+Cell[48900, 1296, 113, 1, 70, "Text",ExpressionUUID->"c37ed879-7e77-4903-9150-1b6a5350f7a9",
+ CellID->791282679],
+Cell[49016, 1299, 444, 12, 70, "Input",ExpressionUUID->"bb11e069-7b28-4bd7-8f13-9117d4e5c6d8",
+ CellID->1042520127],
+Cell[49463, 1313, 229, 4, 70, "Text",ExpressionUUID->"81b02daf-4a0b-4a37-b5d1-cabb1fa9dfe5",
+ CellID->454042],
+Cell[CellGroupData[{
+Cell[49717, 1321, 376, 10, 70, "Input",ExpressionUUID->"fbd003af-56e2-4d71-8bb2-48206416ee0f",
+ CellID->1571807240],
+Cell[50096, 1333, 380, 11, 47, "Output",ExpressionUUID->"0034ae60-44ec-4cd0-902a-f2da5ebd70d8",
+ CellID->772592562]
+}, Open  ]],
+Cell[50491, 1347, 170, 3, 70, "Text",ExpressionUUID->"c98146a5-1357-4454-ac33-1ca935f1c974",
+ CellID->205281615],
+Cell[CellGroupData[{
+Cell[50686, 1354, 439, 12, 70, "Input",ExpressionUUID->"a5058593-5a2d-4aeb-b4b1-d03aeb975668",
+ CellID->1406674871],
+Cell[51128, 1368, 260, 7, 38, "Output",ExpressionUUID->"459eeffd-be45-4c88-ac29-44d26b43b7a2",
+ CellID->1635872138]
+}, Open  ]],
+Cell[51403, 1378, 189, 4, 70, "Text",ExpressionUUID->"ca4b30fe-547f-4c4d-927f-f5a56a5f475e",
+ CellID->1910471858],
+Cell[CellGroupData[{
+Cell[51617, 1386, 503, 14, 70, "Input",ExpressionUUID->"b7bd6a39-6928-4a38-8921-cfe380747e46",
+ CellID->94459536],
+Cell[52123, 1402, 1614, 51, 99, "Output",ExpressionUUID->"90c9b56f-997a-4a1d-8ae1-47c7c3b3482a",
+ CellID->844298445]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[53774, 1458, 505, 14, 70, "Input",ExpressionUUID->"28e16e30-0926-46ad-9e3a-fcf5f6d1c780",
+ CellID->1322507612],
+Cell[54282, 1474, 924, 29, 66, "Output",ExpressionUUID->"1963298f-f2ac-4160-8473-7f68a07bbb6f",
+ CellID->546231862]
+}, Open  ]],
+Cell[55221, 1506, 163, 3, 70, "Text",ExpressionUUID->"cc9012d1-e522-4709-9c89-f1ba8a4364d8",
+ CellID->1316407155],
+Cell[CellGroupData[{
+Cell[55409, 1513, 129, 2, 70, "Input",ExpressionUUID->"3f507a42-48bf-4dce-a26d-9fccfa18bf01",
+ CellID->2058623809],
+Cell[55541, 1517, 217, 5, 38, "Output",ExpressionUUID->"68514b35-b542-43e2-9f11-e4ac8550a584",
+ CellID->1181321046]
+}, Open  ]]
+}, Open  ]],
+Cell[55785, 1526, 78, 0, 70, "FooterCell",ExpressionUUID->"07473b16-2c39-4c48-b2df-46cc36ee28d8"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

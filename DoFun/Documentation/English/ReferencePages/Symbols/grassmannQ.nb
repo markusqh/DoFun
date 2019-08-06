@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5797,        158]
-NotebookOptionsPosition[      3528,        105]
-NotebookOutlinePosition[      5534,        156]
-CellTagsIndexPosition[      5491,        153]
+NotebookDataLength[      5577,        153]
+NotebookOptionsPosition[      3519,        103]
+NotebookOutlinePosition[      5314,        151]
+CellTagsIndexPosition[      5271,        148]
 WindowTitle->grassmannQ
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$33358], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$52154], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/ref/grassmannQ", ".html"]], None}]}]},
@@ -84,17 +84,15 @@ Cell[TextData[{
 }], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
-   {"", Cell["\<\
-Determines if an expression is defined as a Grassmannian field.
-
-Syntax:
-grassmannQ[f] where f is a field.
-
-Example:
-The following action contains a pair of Grassmannian fields psi and psib:
-generateAction[{{psi,psib}, {psib,psib,psi,psi}}];
-grassmannQ/@{psi,psib}\
-\>"]}
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"grassmannQ", "[", 
+       StyleBox["expr", "TI"], "]"}]], "InlineFormula"],
+     "\[LineSeparator]return True if ",
+     Cell[BoxData[
+      StyleBox["expr", "TI"]], "InlineFormula"],
+     " is a Grassmann field."
+    }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
@@ -118,19 +116,16 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 45, 5.651896}", 
+   "built" -> "{2019, 8, 7, 9, 21, 17.802590}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
     "status" -> "None", "summary" -> 
-    "Determines if an expression is defined as a Grassmannian field. Syntax: \
-grassmannQ[f] where f is a field. Example: The following action contains a \
-pair of Grassmannian fields psi and psib: generateAction[{{psi,psib}, \
-{psib,psib,psi,psi}}]; grassmannQ/@{psi,psib}", "synonyms" -> {}, 
-    "tabletags" -> {}, "title" -> "grassmannQ", "titlemodifier" -> "", 
-    "windowtitle" -> "grassmannQ", "type" -> "Symbol", "uri" -> 
-    "DoFun/ref/grassmannQ"}},
+    "grassmannQ[expr] return True if expr is a Grassmann field.", 
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "grassmannQ", 
+    "titlemodifier" -> "", "windowtitle" -> "grassmannQ", "type" -> "Symbol", 
+    "uri" -> "DoFun/ref/grassmannQ"}},
 CellContext->"Global`",
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
 StyleDefinitions->Notebook[{
@@ -155,11 +150,11 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[582, 21, 2278, 54, 70, "AnchorBarGrid",ExpressionUUID->"7af093cf-ce65-4073-80fe-6cd6cc2bc32f",
+Cell[582, 21, 2278, 54, 70, "AnchorBarGrid",ExpressionUUID->"f2ae3cde-83c8-4155-89a0-805c80380bee",
  CellID->1],
-Cell[2863, 77, 167, 6, 70, "ObjectNameGrid",ExpressionUUID->"c476eeee-758e-49a8-b0b2-879cfc41a887"],
-Cell[3033, 85, 465, 16, 70, "Usage",ExpressionUUID->"46967f22-cbaa-41d4-9626-7a94df60c514"],
-Cell[3501, 103, 23, 0, 70, "FooterCell",ExpressionUUID->"ef1c05bc-a24f-4996-b1d1-e5141bd507de"]
+Cell[2863, 77, 167, 6, 70, "ObjectNameGrid",ExpressionUUID->"801f7e41-fcea-429a-8d57-8f7e23b0ec5a"],
+Cell[3033, 85, 456, 14, 70, "Usage",ExpressionUUID->"9cd85407-92fe-49c2-9d6d-8d6a1e2281c3"],
+Cell[3492, 101, 23, 0, 70, "FooterCell",ExpressionUUID->"2193577e-431f-4d93-b78c-3383fc0d7f70"]
 }
 ]
 *)

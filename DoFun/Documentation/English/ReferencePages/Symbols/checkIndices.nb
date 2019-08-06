@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5569,        154]
-NotebookOptionsPosition[      3419,        103]
-NotebookOutlinePosition[      5306,        152]
-CellTagsIndexPosition[      5263,        149]
+NotebookDataLength[      8550,        244]
+NotebookOptionsPosition[      5515,        170]
+NotebookOutlinePosition[      7571,        225]
+CellTagsIndexPosition[      7487,        220]
 WindowTitle->checkIndices
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$16157], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$23510], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/ref/checkIndices", ".html"]], None}]}]},
@@ -84,20 +84,87 @@ Cell[TextData[{
 }], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
-   {"", Cell["\<\
-Checks if an index appears more often than twice.
-
-Syntax:
-checkIndices[expr]
-
-Example:
-checkIndices[op[S[{A, i1}, {B, i1}], {A, i1}, {B, j1}]]\
-\>"]}
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"checkIndices", "[", 
+       StyleBox["expr", "TI"], "]"}]], "InlineFormula"],
+     "\[LineSeparator]checks if an index appears more often than twice in ",
+     Cell[BoxData[
+      StyleBox["expr", "TI"]], "InlineFormula"],
+     "."
+    }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
    "RowsIndexed" -> {}}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<DoFun`\>\"", "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->1414887963],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"checkIndices", "[", 
+  RowBox[{"op", "[", 
+   RowBox[{
+    RowBox[{"S", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"A", ",", "i1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"B", ",", "i1"}], "}"}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"A", ",", "i1"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"B", ",", "j1"}], "}"}]}], "]"}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->52668586],
+
+Cell[BoxData[
+ TemplateBox[{
+  "checkIndices","multipleIndices",
+   "\"The index \\!\\(\\*RowBox[{\\\"{\\\", \\\"i1\\\", \\\"}\\\"}]\\) \
+appears more than twice in \\!\\(\\*RowBox[{\\\"{\\\", RowBox[{\\\"op\\\", \\\
+\"[\\\", RowBox[{RowBox[{\\\"S\\\", \\\"[\\\", RowBox[{RowBox[{\\\"{\\\", \
+RowBox[{\\\"A\\\", \\\",\\\", \\\"i1\\\"}], \\\"}\\\"}], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{\\\"B\\\", \\\",\\\", \\\"i1\\\"}], \\\"}\\\"}]}], \
+\\\"]\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"A\\\", \\\",\\\", \
+\\\"i1\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"B\\\", \
+\\\",\\\", \\\"j1\\\"}], \\\"}\\\"}]}], \\\"]\\\"}], \\\"}\\\"}]\\).\"",2,50,
+   28,22808019000512774367,"Local","DoFun`DoDSERGE`checkIndices"},
+  "MessageTemplate2"]], "Message", "MSG",
+ CellLabel->"During evaluation of In[2]:=",
+ CellID->270451167]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
 
 Cell[" ", "FooterCell"]
 },
@@ -116,15 +183,14 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 43, 44.597943}", 
+   "built" -> "{2019, 8, 7, 9, 20, 33.145508}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
     "status" -> "None", "summary" -> 
-    "Checks if an index appears more often than twice. Syntax: \
-checkIndices[expr] Example: checkIndices[op[S[{A, i1}, {B, i1}], {A, i1}, {B, \
-j1}]]", "synonyms" -> {}, "tabletags" -> {}, "title" -> "checkIndices", 
+    "checkIndices[expr] checks if an index appears more often than twice in \
+expr.", "synonyms" -> {}, "tabletags" -> {}, "title" -> "checkIndices", 
     "titlemodifier" -> "", "windowtitle" -> "checkIndices", "type" -> 
     "Symbol", "uri" -> "DoFun/ref/checkIndices"}},
 CellContext->"Global`",
@@ -144,18 +210,42 @@ StyleDefinitions->Notebook[{
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{}
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3544, 103, 259, 10, 70, "PrimaryExamplesSection",ExpressionUUID->"a3c48cbb-9191-42f4-bbd7-9d30f934ca90",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1]}
+ }
 *)
 (*CellTagsIndex
-CellTagsIndex->{}
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 7297, 213}
+ }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[584, 21, 2286, 54, 70, "AnchorBarGrid",ExpressionUUID->"cfcbc629-1bdd-4ed9-b1aa-595da6e0a8d7",
+Cell[584, 21, 2286, 54, 70, "AnchorBarGrid",ExpressionUUID->"cccd3541-b39f-4571-8f5d-08204092dfaf",
  CellID->1],
-Cell[2873, 77, 169, 6, 70, "ObjectNameGrid",ExpressionUUID->"365903b3-a9d0-492c-b326-20a5532fe968"],
-Cell[3045, 85, 344, 14, 70, "Usage",ExpressionUUID->"18137c8e-0b05-4a9a-b52d-63407c2eeca9"],
-Cell[3392, 101, 23, 0, 70, "FooterCell",ExpressionUUID->"7a974eaf-b28b-42bb-b52e-ba48b8356e12"]
+Cell[2873, 77, 169, 6, 70, "ObjectNameGrid",ExpressionUUID->"9e33f1d9-bac2-4b27-aeda-516ad204efff"],
+Cell[3045, 85, 474, 14, 70, "Usage",ExpressionUUID->"95ff8672-c460-4598-8c2d-7116604e24ed"],
+Cell[CellGroupData[{
+Cell[3544, 103, 259, 10, 70, "PrimaryExamplesSection",ExpressionUUID->"a3c48cbb-9191-42f4-bbd7-9d30f934ca90",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[3828, 117, 187, 6, 70, "ExampleSection",ExpressionUUID->"99d052e0-fc9f-4f87-9947-9ac59cb956ae",
+ CellID->1],
+Cell[4018, 125, 115, 3, 70, "Input",ExpressionUUID->"edb096a5-7e39-45f0-99f8-1178548d9aba",
+ CellID->1414887963],
+Cell[CellGroupData[{
+Cell[4158, 132, 442, 15, 70, "Input",ExpressionUUID->"b935328b-816d-4d6d-ba31-abb11dec6998",
+ CellID->52668586],
+Cell[4603, 149, 846, 14, 70, "Message",ExpressionUUID->"f85e302e-094a-4193-902e-d90037ec6659",
+ CellID->270451167]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[5488, 168, 23, 0, 70, "FooterCell",ExpressionUUID->"aa16a375-474b-4ed2-967b-e048004ff947"]
 }
 ]
 *)

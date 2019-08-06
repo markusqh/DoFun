@@ -10,17 +10,18 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7449,        208]
-NotebookOptionsPosition[      4753,        147]
-NotebookOutlinePosition[      6814,        199]
-CellTagsIndexPosition[      6771,        196]
+NotebookDataLength[     13149,        356]
+NotebookOptionsPosition[      8913,        258]
+NotebookOutlinePosition[     11109,        315]
+CellTagsIndexPosition[     11024,        310]
 WindowTitle->integrateDeltas
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell"], Cell[TextData[{
+   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell",ExpressionUUID->
+     "8b44cc77-2999-4aee-babe-2bb8300e030d"], Cell[TextData[{
      Cell[BoxData[
       ActionMenuBox[
        FrameBox[
@@ -28,7 +29,7 @@ Cell[BoxData[GridBox[{
           "Related Guides",
           StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
            StripOnInput->False]
-         }]],
+         }],ExpressionUUID->"0ee0742d-c820-46e7-b20a-93d48aa61c72"],
          TextCell[
           Row[{"Related Guides", 
             Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
@@ -37,7 +38,8 @@ Cell[BoxData[GridBox[{
        Appearance->None,
        MenuAppearance->Automatic,
        MenuStyle->"MoreAbout"]],
-      LineSpacing->{1.4, 0}],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "c7b31e95-4e4f-4537-8f33-374b4da3d258"],
      "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
 \[ThickSpace]",
      Cell[BoxData[
@@ -47,7 +49,7 @@ Cell[BoxData[GridBox[{
           "URL",
           StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
            StripOnInput->False]
-         }]],
+         }],ExpressionUUID->"2d66ad52-67d7-4e46-879a-ca195776adab"],
          TextCell[
           Row[{"URL", 
             Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
@@ -79,71 +81,180 @@ integrateDeltas.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$36721], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$55972], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "DoFun/ref/integrateDeltas", ".html"]], None}]}]},
        Appearance->None,
        MenuAppearance->Automatic,
        MenuStyle->"URLMenu"]],
-      LineSpacing->{1.4, 0}]
-    }], "AnchorBar"]}
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "74d79cb8-7485-434f-8437-832213c20209"]
+    }], "AnchorBar",ExpressionUUID->"910efc90-2d2a-4e34-b138-18727d62587a"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
       Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
    "RowsIndexed" -> {}}},
- CellID->1],
+ CellID->1,ExpressionUUID->"20927864-f99c-415f-9c03-cf74a01e5bf7"],
+
+Cell[CellGroupData[{
 
 Cell[TextData[{
- Cell["integrateDeltas", "ObjectName"],
+ Cell["integrateDeltas", "ObjectName",ExpressionUUID->
+  "cabc31a9-abb3-485e-aa1d-3d246dc04663"],
  Cell[BoxData[
   TemplateBox[{8},
-   "Spacer1"]]],
- Cell[BoxData[""], "ObjectNameTranslation"]
-}], "ObjectNameGrid"],
+   "Spacer1"]],ExpressionUUID->"3e76e9be-41d7-4dd7-bc44-2d132295c994"],
+ Cell[BoxData[
+ ""], "ObjectNameTranslation",ExpressionUUID->
+  "365d8db2-7d02-496d-a92c-aa4fa78e8f6c"]
+}], "ObjectNameGrid",ExpressionUUID->"cbdb6af5-588b-4cd9-92d1-8b688dc69011"],
 
 Cell[BoxData[GridBox[{
-   {"", Cell["\<\
-Contracts indices of Kronecker deltas.
-
-Syntax:
-integrateDeltas[exp_] where exp is an expression containing Kronecker deltas \
-denoted by delta.
-
-Examples:
-integrateDeltas[delta[a, b] delta[b, c]]
-integrateDeltas[delta[ind1, a, b] delta[ind1, a, b]]
-integrateDeltas[delta[ind1, a, b] delta[ind1, b, c]]\
-\>"]}
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"integrateDeltas", "[", 
+       StyleBox["expr", "TI"], "]"}]], "InlineFormula",ExpressionUUID->
+      "d5833890-4849-4598-8fde-c66d3aac9beb"],
+     "\[LineSeparator]contracts indices of Kronecker deltas in ",
+     Cell[BoxData[
+      StyleBox["expr", "TI"]], "InlineFormula",ExpressionUUID->
+      "fb073b17-39ac-4019-8e2d-a8ee27a10832"],
+     "."
+    }],ExpressionUUID->"54a5e477-50f1-43c9-9b7b-a1431316d980"]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
-   "RowsIndexed" -> {}}}],
+   "RowsIndexed" -> \
+{}}},ExpressionUUID->"0cd7aa53-9892-4df9-95d1-a373f85188fa"]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[TextData[{
  Cell[BoxData[
   TemplateBox[{6},
-   "Spacer1"]]],
+   "Spacer1"]],ExpressionUUID->"b9b6a2ed-fb8d-4b8b-8350-9b15f0e51cb7"],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "56d78a46-6b37-454a-ae11-8513ab5fc17f"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->931866568,ExpressionUUID->"8f7aa33a-139d-4228-b946-25b91d292c8d"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "a2b00cb2-f588-4da9-aef5-50ba62d31b3b"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1872551779,ExpressionUUID->"6f38fe1a-fe9f-497c-9e0c-c49b227107e3"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<DoFun`\>\"", "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->1414887963,ExpressionUUID->"852045a4-d149-4a82-9f21-1a6e202f127a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"integrateDeltas", "[", 
+   RowBox[{
+    RowBox[{"delta", "[", 
+     RowBox[{"a", ",", "b"}], "]"}], " ", 
+    RowBox[{"delta", "[", 
+     RowBox[{"b", ",", "c"}], "]"}]}], "]"}], " "}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->19670904,ExpressionUUID->"3a636765-99b8-4c00-9df9-3872e0e83a7f"],
+
+Cell[BoxData[
+ RowBox[{"delta", "[", 
+  RowBox[{"a", ",", "c"}], "]"}]], "Output",
+ ImageSize->{88, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->1406571684,ExpressionUUID->"34788db9-ffe8-4afa-978e-5f87978f19e7"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"integrateDeltas", "[", 
+   RowBox[{
+    RowBox[{"delta", "[", 
+     RowBox[{"ind1", ",", "a", ",", "b"}], "]"}], " ", 
+    RowBox[{"delta", "[", 
+     RowBox[{"ind1", ",", "a", ",", "b"}], "]"}]}], "]"}], " "}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->1988913781,ExpressionUUID->"0ab63321-1af6-4f08-999d-00655d22084d"],
+
+Cell[BoxData[
+ RowBox[{"dim", "[", "ind1", "]"}]], "Output",
+ ImageSize->{75, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->1122970331,ExpressionUUID->"a6198cea-1990-48f2-9992-e98e895d4b14"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"integrateDeltas", "[", 
+  RowBox[{
+   RowBox[{"delta", "[", 
+    RowBox[{"ind1", ",", "a", ",", "b"}], "]"}], " ", 
+   RowBox[{"delta", "[", 
+    RowBox[{"ind1", ",", "b", ",", "c"}], "]"}]}], "]"}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->1683367837,ExpressionUUID->"4b54bece-41cc-48c6-9cd3-1872a1ec788a"],
+
+Cell[BoxData[
+ RowBox[{"delta", "[", 
+  RowBox[{"ind1", ",", "a", ",", "c"}], "]"}]], "Output",
+ ImageSize->{132, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[4]=",
+ CellID->1262852311,ExpressionUUID->"03d92ad2-ca76-46e2-8821-9dc2c14a637f"]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer",ExpressionUUID->"71cf04bd-d2ad-41e6-b445-36e477b8ec1b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"e4e26c9f-74c5-4efd-8fea-57c2909d2abc"],
  "Related Guides"
 }], "MoreAboutSection",
  WholeCellGroupOpener->True,
- CellID->38303248],
+ CellID->38303248,ExpressionUUID->"74adf2c5-649b-4c72-81bc-ef43686f5748"],
 
-Cell["", "SectionHeaderSpacer"],
+Cell["", "SectionHeaderSpacer",ExpressionUUID->"e334d672-249f-4534-8ef2-8a5801fb2128"],
 
 Cell[BoxData[
  TemplateBox[{Cell[
     TextData["Welcome to DoFun"]],"paclet:DoFun/guide/Welcome to DoFun"},
   "RefLink",
   BaseStyle->"MoreAbout"]], "MoreAbout",
- CellID->1]
+ CellID->1509286640,ExpressionUUID->"ba2fa16f-4580-44b9-b869-72e351f5c2c3"]
 }, Open  ]],
 
-Cell[" ", "FooterCell"]
+Cell[" ", "FooterCell",ExpressionUUID->"53382789-e247-4241-a04d-957098d272ba"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
@@ -160,20 +271,17 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 45, 12.957355}", 
+   "built" -> "{2019, 8, 7, 9, 21, 23.826402}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoFR`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
     "status" -> "None", "summary" -> 
-    "Contracts indices of Kronecker deltas. Syntax: integrateDeltas[exp_] \
-where exp is an expression containing Kronecker deltas denoted by delta. \
-Examples: integrateDeltas[delta[a, b] delta[b, c]] \
-integrateDeltas[delta[ind1, a, b] delta[ind1, a, b]] \
-integrateDeltas[delta[ind1, a, b] delta[ind1, b, c]]", "synonyms" -> {}, 
-    "tabletags" -> {}, "title" -> "integrateDeltas", "titlemodifier" -> "", 
-    "windowtitle" -> "integrateDeltas", "type" -> "Symbol", "uri" -> 
-    "DoFun/ref/integrateDeltas"}},
+    "integrateDeltas[expr] contracts indices of Kronecker deltas in expr.", 
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "integrateDeltas", 
+    "titlemodifier" -> "", "windowtitle" -> "integrateDeltas", "type" -> 
+    "Symbol", "uri" -> "DoFun/ref/integrateDeltas", "WorkflowDockedCell" -> 
+    ""}, "SearchTextTranslated" -> "", "NewStyles" -> False},
 CellContext->"Global`",
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
 StyleDefinitions->Notebook[{
@@ -184,34 +292,75 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
-  StyleDefinitions -> "Default.nb"]
+  TaggingRules -> {"NewStyles" -> False}, FrontEndVersion -> 
+  "11.3 for Linux x86 (64-bit) (March 6, 2018)", StyleDefinitions -> 
+  "Default.nb"]
 ]
 (* End of Notebook Content *)
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{}
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[5211, 135, 435, 11, 36, "PrimaryExamplesSection",ExpressionUUID->"8f7aa33a-139d-4228-b946-25b91d292c8d",
+   CellTags->"PrimaryExamplesSection",
+   CellID->931866568]}
+ }
 *)
 (*CellTagsIndex
-CellTagsIndex->{}
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 10826, 303}
+ }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[587, 21, 3052, 74, 70, "AnchorBarGrid",ExpressionUUID->"96cc2823-8382-4a5e-94ea-fbcdafd1ea7a",
+Cell[587, 21, 3457, 77, 56, "AnchorBarGrid",ExpressionUUID->"20927864-f99c-415f-9c03-cf74a01e5bf7",
  CellID->1],
-Cell[3642, 97, 172, 6, 70, "ObjectNameGrid",ExpressionUUID->"9579726d-df03-44ed-82ae-42a0cce4e3eb"],
-Cell[3817, 105, 503, 17, 70, "Usage",ExpressionUUID->"898f0a58-2631-43fe-bb7d-991736bfa308"],
 Cell[CellGroupData[{
-Cell[4345, 126, 156, 7, 70, "MoreAboutSection",ExpressionUUID->"e8f230c4-bf0c-4911-a0a3-bce5ebc51137",
- CellID->38303248],
-Cell[4504, 135, 31, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"97819a1d-edf4-451f-8378-3ded33757bb9"],
-Cell[4538, 137, 173, 5, 70, "MoreAbout",ExpressionUUID->"1e9bb8a9-b2c1-41a3-aa41-c3f181a45170",
- CellID->1]
+Cell[4069, 102, 400, 9, 53, "ObjectNameGrid",ExpressionUUID->"cbdb6af5-588b-4cd9-92d1-8b688dc69011"],
+Cell[4472, 113, 702, 17, 112, "Usage",ExpressionUUID->"0cd7aa53-9892-4df9-95d1-a373f85188fa"]
 }, Open  ]],
-Cell[4726, 145, 23, 0, 70, "FooterCell",ExpressionUUID->"7860252b-3f38-4de0-9160-4b4e10ea70ca"]
+Cell[CellGroupData[{
+Cell[5211, 135, 435, 11, 36, "PrimaryExamplesSection",ExpressionUUID->"8f7aa33a-139d-4228-b946-25b91d292c8d",
+ CellTags->"PrimaryExamplesSection",
+ CellID->931866568],
+Cell[CellGroupData[{
+Cell[5671, 150, 309, 7, 30, "ExampleSection",ExpressionUUID->"6f38fe1a-fe9f-497c-9e0c-c49b227107e3",
+ CellID->1872551779],
+Cell[5983, 159, 170, 3, 29, "Input",ExpressionUUID->"852045a4-d149-4a82-9f21-1a6e202f127a",
+ CellID->1414887963],
+Cell[CellGroupData[{
+Cell[6178, 166, 327, 9, 29, "Input",ExpressionUUID->"3a636765-99b8-4c00-9df9-3872e0e83a7f",
+ CellID->19670904],
+Cell[6508, 177, 268, 7, 38, "Output",ExpressionUUID->"34788db9-ffe8-4afa-978e-5f87978f19e7",
+ CellID->1406571684]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6813, 189, 355, 9, 29, "Input",ExpressionUUID->"0ab63321-1af6-4f08-999d-00655d22084d",
+ CellID->1988913781],
+Cell[7171, 200, 246, 6, 38, "Output",ExpressionUUID->"a6198cea-1990-48f2-9992-e98e895d4b14",
+ CellID->1122970331]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7454, 211, 332, 8, 29, "Input",ExpressionUUID->"4b54bece-41cc-48c6-9cd3-1872a1ec788a",
+ CellID->1683367837],
+Cell[7789, 221, 282, 7, 38, "Output",ExpressionUUID->"03d92ad2-ca76-46e2-8821-9dc2c14a637f",
+ CellID->1262852311]
+}, Open  ]]
+}, Open  ]],
+Cell[8098, 232, 86, 0, 29, "SectionFooterSpacer",ExpressionUUID->"71cf04bd-d2ad-41e6-b445-36e477b8ec1b"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8221, 237, 266, 7, 74, "MoreAboutSection",ExpressionUUID->"74adf2c5-649b-4c72-81bc-ef43686f5748",
+ CellID->38303248],
+Cell[8490, 246, 86, 0, 14, "SectionHeaderSpacer",ExpressionUUID->"e334d672-249f-4534-8ef2-8a5801fb2128"],
+Cell[8579, 248, 237, 5, 70, "MoreAbout",ExpressionUUID->"ba2fa16f-4580-44b9-b869-72e351f5c2c3",
+ CellID->1509286640]
+}, Open  ]],
+Cell[8831, 256, 78, 0, 70, "FooterCell",ExpressionUUID->"53382789-e247-4241-a04d-957098d272ba"]
 }
 ]
 *)
 
 (* End of internal cache information *)
+

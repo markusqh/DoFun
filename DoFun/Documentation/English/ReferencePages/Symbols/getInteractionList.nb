@@ -10,25 +10,25 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5958,        158]
-NotebookOptionsPosition[      3619,        105]
-NotebookOutlinePosition[      5695,        156]
-CellTagsIndexPosition[      5652,        153]
+NotebookDataLength[     10356,        284]
+NotebookOptionsPosition[      7092,        205]
+NotebookOutlinePosition[      9325,        263]
+CellTagsIndexPosition[      9241,        258]
 WindowTitle->getInteractionList
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell"], Cell[TextData[Cell[
-    BoxData[
+   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell",ExpressionUUID->
+     "4f6928fb-9642-4173-a995-00281d0ebd58"], Cell[TextData[Cell[BoxData[
      ActionMenuBox[
       FrameBox[
        InterpretationBox[Cell[TextData[{
          "URL",
          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
           StripOnInput->False]
-        }]],
+        }],ExpressionUUID->"0a543283-2ba9-4251-8d5d-25fe3c97421e"],
         TextCell[
          Row[{"URL", 
            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
@@ -60,48 +60,148 @@ getInteractionList.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$32402], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$49778], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/ref/getInteractionList", ".html"]], None}]}]},
       Appearance->None,
       MenuAppearance->Automatic,
       MenuStyle->"URLMenu"]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+     LineSpacing->{1.4, 0},ExpressionUUID->
+     "96c06d4e-e174-44a6-a04d-a6ad4c36fd47"]], "AnchorBar",ExpressionUUID->
+     "d11cc55d-3d9b-4442-b780-a8149d66806a"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
       Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
    "RowsIndexed" -> {}}},
- CellID->1],
+ CellID->1,ExpressionUUID->"b9ef1ecf-144c-4378-b82b-8634b1792a0a"],
+
+Cell[CellGroupData[{
 
 Cell[TextData[{
- Cell["getInteractionList", "ObjectName"],
+ Cell["getInteractionList", "ObjectName",ExpressionUUID->
+  "215bb1e6-ed62-4ecf-8a9d-02af687d5dc8"],
  Cell[BoxData[
   TemplateBox[{8},
-   "Spacer1"]]],
- Cell[BoxData[""], "ObjectNameTranslation"]
-}], "ObjectNameGrid"],
+   "Spacer1"]],ExpressionUUID->"704659c2-c607-4ecc-a666-0ec6c75f1440"],
+ Cell[BoxData[
+ ""], "ObjectNameTranslation",ExpressionUUID->
+  "51e4aad6-4dd2-4486-b56b-5269df104be5"]
+}], "ObjectNameGrid",ExpressionUUID->"7113c600-e98b-4d15-85fb-26814d078a43"],
 
 Cell[BoxData[GridBox[{
-   {"", Cell["\<\
-Generates the list of interactions from a given symbolic action.
-
-Syntax:
-getInteractionList[ac] where ac is a symbolic action written in terms of op \
-functions.
-
-Example:
-getInteractionList[1/2 op[S[{A, r1}, {A, s1}], {A, r1}, {A, s1}] - 1/6 \
-op[S[{A, u1}, {A, v1}, {A, w1}], {A, u1}, {A, v1}, {A, w1}]]\
-\>"]}
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"getInteractionList", "[", 
+       StyleBox["ac", "TI"], "]"}]], "InlineFormula",ExpressionUUID->
+      "35226244-5f1a-4ced-b3a9-49fb85e06cb5"],
+     "\[LineSeparator]generates the list of interactions from a given \
+symbolic action ",
+     Cell[BoxData[
+      StyleBox["ac", "TI"]], "InlineFormula",ExpressionUUID->
+      "a163cbff-4d3b-41ef-a5ee-68613b74402c"],
+     "."
+    }],ExpressionUUID->"64280fe7-6312-46b5-a617-50c15685fb40"]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
-   "RowsIndexed" -> {}}}],
+   "RowsIndexed" -> \
+{}}},ExpressionUUID->"c6f22eb4-7f9c-48ec-a55c-8fbde1306b4d"]
+}, Open  ]],
 
-Cell[" ", "FooterCell"]
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"6e6d7938-e2f3-471b-b701-44013276cbfe"],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "32c4e989-2590-48d2-9c89-104e200017cb"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->689357165,ExpressionUUID->"88533834-8d36-47cf-8242-c4b43ea6f956"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "cc35aaed-26c3-4539-91ef-3a7894847987"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1915158687,ExpressionUUID->"a1c2d0b4-fe55-4b39-8e7d-1b8d1ac34eb1"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<DoFun`\>\"", "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->1414887963,ExpressionUUID->"e9a9f1fe-6d7a-4d72-b298-1137b3e6eae2"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"setFields", "[", 
+   RowBox[{"{", "A", "}"}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"getInteractionList", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"1", "/", "2"}], " ", 
+    RowBox[{"op", "[", 
+     RowBox[{
+      RowBox[{"S", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"A", ",", "r1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"A", ",", "s1"}], "}"}]}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"A", ",", "r1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"A", ",", "s1"}], "}"}]}], "]"}]}], "-", 
+   RowBox[{
+    RowBox[{"1", "/", "6"}], " ", 
+    RowBox[{"op", "[", 
+     RowBox[{
+      RowBox[{"S", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"A", ",", "u1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"A", ",", "v1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"A", ",", "w1"}], "}"}]}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"A", ",", "u1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"A", ",", "v1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"A", ",", "w1"}], "}"}]}], "]"}]}]}], "]"}]}], "Input",
+ CellLabel->"In[2]:=",
+ CellID->914102591,ExpressionUUID->"60bdb6cd-bc88-4824-8341-c7a73e9d6266"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"A", ",", "A"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"A", ",", "A", ",", "A"}], "}"}]}], "}"}]], "Output",
+ ImageSize->{144, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->653354178,ExpressionUUID->"b2688dec-7c0e-49e7-ad7c-2b70845ed4cd"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell",ExpressionUUID->"5aa3ee6a-c417-4ac2-957c-93dc22427ffa"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
@@ -118,19 +218,18 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 45, 3.030288}", 
+   "built" -> "{2019, 8, 7, 9, 21, 14.183523}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
     "status" -> "None", "summary" -> 
-    "Generates the list of interactions from a given symbolic action. Syntax: \
-getInteractionList[ac] where ac is a symbolic action written in terms of op \
-functions. Example: getInteractionList[1/2 op[S[{A, r1}, {A, s1}], {A, r1}, \
-{A, s1}] - 1/6 op[S[{A, u1}, {A, v1}, {A, w1}], {A, u1}, {A, v1}, {A, w1}]]", 
-    "synonyms" -> {}, "tabletags" -> {}, "title" -> "getInteractionList", 
-    "titlemodifier" -> "", "windowtitle" -> "getInteractionList", "type" -> 
-    "Symbol", "uri" -> "DoFun/ref/getInteractionList"}},
+    "getInteractionList[ac] generates the list of interactions from a given \
+symbolic action ac.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "getInteractionList", "titlemodifier" -> "", "windowtitle" -> 
+    "getInteractionList", "type" -> "Symbol", "uri" -> 
+    "DoFun/ref/getInteractionList", "WorkflowDockedCell" -> ""}, 
+  "SearchTextTranslated" -> "", "NewStyles" -> False},
 CellContext->"Global`",
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
 StyleDefinitions->Notebook[{
@@ -141,27 +240,55 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
-  StyleDefinitions -> "Default.nb"]
+  TaggingRules -> {"NewStyles" -> False}, FrontEndVersion -> 
+  "11.3 for Linux x86 (64-bit) (March 6, 2018)", StyleDefinitions -> 
+  "Default.nb"]
 ]
 (* End of Notebook Content *)
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{}
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[4383, 115, 435, 11, 36, "PrimaryExamplesSection",ExpressionUUID->"88533834-8d36-47cf-8242-c4b43ea6f956",
+   CellTags->"PrimaryExamplesSection",
+   CellID->689357165]}
+ }
 *)
 (*CellTagsIndex
-CellTagsIndex->{}
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 9043, 251}
+ }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[590, 21, 2311, 54, 70, "AnchorBarGrid",ExpressionUUID->"6675253a-3543-4220-b4a0-aea90c6ed9cc",
+Cell[590, 21, 2599, 56, 56, "AnchorBarGrid",ExpressionUUID->"b9ef1ecf-144c-4378-b82b-8634b1792a0a",
  CellID->1],
-Cell[2904, 77, 175, 6, 70, "ObjectNameGrid",ExpressionUUID->"7304578e-b1dd-4836-9c19-912a36593718"],
-Cell[3082, 85, 507, 16, 70, "Usage",ExpressionUUID->"2eac00aa-8598-4115-934a-92e53a5f2728"],
-Cell[3592, 103, 23, 0, 70, "FooterCell",ExpressionUUID->"0f455206-f6bc-4573-a743-10505297a667"]
+Cell[CellGroupData[{
+Cell[3214, 81, 403, 9, 53, "ObjectNameGrid",ExpressionUUID->"7113c600-e98b-4d15-85fb-26814d078a43"],
+Cell[3620, 92, 726, 18, 112, "Usage",ExpressionUUID->"c6f22eb4-7f9c-48ec-a55c-8fbde1306b4d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4383, 115, 435, 11, 36, "PrimaryExamplesSection",ExpressionUUID->"88533834-8d36-47cf-8242-c4b43ea6f956",
+ CellTags->"PrimaryExamplesSection",
+ CellID->689357165],
+Cell[CellGroupData[{
+Cell[4843, 130, 309, 7, 30, "ExampleSection",ExpressionUUID->"a1c2d0b4-fe55-4b39-8e7d-1b8d1ac34eb1",
+ CellID->1915158687],
+Cell[5155, 139, 170, 3, 29, "Input",ExpressionUUID->"e9a9f1fe-6d7a-4d72-b298-1137b3e6eae2",
+ CellID->1414887963],
+Cell[CellGroupData[{
+Cell[5350, 146, 1251, 39, 68, "Input",ExpressionUUID->"60bdb6cd-bc88-4824-8341-c7a73e9d6266",
+ CellID->914102591],
+Cell[6604, 187, 367, 11, 38, "Output",ExpressionUUID->"b2688dec-7c0e-49e7-ad7c-2b70845ed4cd",
+ CellID->653354178]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[7010, 203, 78, 0, 43, "FooterCell",ExpressionUUID->"5aa3ee6a-c417-4ac2-957c-93dc22427ffa"]
 }
 ]
 *)
 
 (* End of internal cache information *)
+

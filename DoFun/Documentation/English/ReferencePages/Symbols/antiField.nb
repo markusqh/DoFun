@@ -10,25 +10,25 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5956,        161]
-NotebookOptionsPosition[      3606,        107]
-NotebookOutlinePosition[      5693,        159]
-CellTagsIndexPosition[      5650,        156]
+NotebookDataLength[      9282,        253]
+NotebookOptionsPosition[      6102,        175]
+NotebookOutlinePosition[      8254,        232]
+CellTagsIndexPosition[      8170,        227]
 WindowTitle->antiField
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell"], Cell[TextData[Cell[
-    BoxData[
+   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell",ExpressionUUID->
+     "b2167615-4220-4ba5-a614-6f1ad4211b97"], Cell[TextData[Cell[BoxData[
      ActionMenuBox[
       FrameBox[
        InterpretationBox[Cell[TextData[{
          "URL",
          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
           StripOnInput->False]
-        }]],
+        }],ExpressionUUID->"54d0ef90-f92d-4b28-833a-b5d3a79ef8c0"],
         TextCell[
          Row[{"URL", 
            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
@@ -60,50 +60,118 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$12811], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$18706], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "DoFun/ref/antiField",
              ".html"]], None}]}]},
       Appearance->None,
       MenuAppearance->Automatic,
       MenuStyle->"URLMenu"]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+     LineSpacing->{1.4, 0},ExpressionUUID->
+     "751ec401-470d-46f7-86ed-0e126a18109e"]], "AnchorBar",ExpressionUUID->
+     "4b684765-e113-4a98-a701-025ceec96158"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
       Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
    "RowsIndexed" -> {}}},
- CellID->1],
+ CellID->1,ExpressionUUID->"6932048c-6c32-4f1b-8f91-9dad2d89e0ca"],
+
+Cell[CellGroupData[{
 
 Cell[TextData[{
- Cell["antiField", "ObjectName"],
+ Cell["antiField", "ObjectName",ExpressionUUID->
+  "e3210f97-8532-4e9b-bcf6-1e19a36efc5d"],
  Cell[BoxData[
   TemplateBox[{8},
-   "Spacer1"]]],
- Cell[BoxData[""], "ObjectNameTranslation"]
-}], "ObjectNameGrid"],
+   "Spacer1"]],ExpressionUUID->"f26b860a-0055-470e-8301-aaf27ea4fffe"],
+ Cell[BoxData[
+ ""], "ObjectNameTranslation",ExpressionUUID->
+  "c5503ecc-9105-43cd-a1ec-b87df86d46ce"]
+}], "ObjectNameGrid",ExpressionUUID->"257d9b34-85dc-4ab7-b62f-cef8a8e32523"],
 
 Cell[BoxData[GridBox[{
-   {"", Cell["\<\
-Gives the anti-field of a field.
-Grassmann or bosonic complex fields are always defined in pairs. The two \
-fields are the anti-fields to each other.
-
-Syntax:
-antiField[f] where f is a field.
-
-Example:
-The following action contains a pair of Grassmannian fields psi and psib:
-generateAction[{{psi,psib}, {psib,psib,psi,psi}}];
-antiField/@{psi,psib}\
-\>"]}
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"antiField", "[", 
+       StyleBox["field", "TI"], "]"}]], "InlineFormula",ExpressionUUID->
+      "edb11126-164f-46f6-ba6a-9a01cb031adf"],
+     "\[LineSeparator]gives the anti-field of field."
+    }],ExpressionUUID->"8284d6fb-6241-4a95-82e5-8f05ad3b42bb"]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
-   "RowsIndexed" -> {}}}],
+   "RowsIndexed" -> \
+{}}},ExpressionUUID->"13b4df60-18df-45fc-aa95-abd479721093"]
+}, Open  ]],
 
-Cell[" ", "FooterCell"]
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"76ebccb1-c56f-453c-9a1c-501fcf4efc21"],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "355342f6-a137-4913-ad2f-2df9e6b6a315"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->175656099,ExpressionUUID->"966a03ee-8552-4c04-8c82-ffd144b82fb8"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "38edc6aa-b8f8-4ec4-8446-0e5ce20f84a5"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->613956216,ExpressionUUID->"25dc8534-ceff-4cd8-a608-cd47cef5ab88"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<DoFun`\>\"", "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->1414887963,ExpressionUUID->"f535e4d9-be56-4878-a1cc-e3257ca4fba1"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"setFields", "[", 
+   RowBox[{
+    RowBox[{"{", "A", "}"}], ",", " ", 
+    RowBox[{"{", 
+     RowBox[{"{", 
+      RowBox[{"c", ",", "cb"}], "}"}], "}"}], ",", " ", 
+    RowBox[{"{", 
+     RowBox[{"{", 
+      RowBox[{"psi", ",", "psib"}], "}"}], "}"}]}], "]"}], ";", " ", 
+  RowBox[{"antiField", "/@", 
+   RowBox[{"{", 
+    RowBox[{
+    "A", ",", " ", "c", ",", " ", "cb", ",", " ", "psi", ",", " ", "psib"}], 
+    "}"}]}]}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->1880128611,ExpressionUUID->"a3d05970-db23-4ef0-97a4-1635a8c53a33"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"A", ",", "cb", ",", "c", ",", "psib", ",", "psi"}], 
+  "}"}]], "Output",
+ ImageSize->{158, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->18548593,ExpressionUUID->"ed17fb6c-652a-4d0b-b78a-2dd3aa647b34"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell",ExpressionUUID->"a65de4c8-df9d-45fb-b37c-35a7b55089fa"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
@@ -120,20 +188,17 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 43, 38.179027}", 
+   "built" -> "{2019, 8, 7, 9, 20, 26.024273}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
     "status" -> "None", "summary" -> 
-    "Gives the anti-field of a field. Grassmann or bosonic complex fields are \
-always defined in pairs. The two fields are the anti-fields to each other. \
-Syntax: antiField[f] where f is a field. Example: The following action \
-contains a pair of Grassmannian fields psi and psib: \
-generateAction[{{psi,psib}, {psib,psib,psi,psi}}]; antiField/@{psi,psib}", 
-    "synonyms" -> {}, "tabletags" -> {}, "title" -> "antiField", 
-    "titlemodifier" -> "", "windowtitle" -> "antiField", "type" -> "Symbol", 
-    "uri" -> "DoFun/ref/antiField"}},
+    "antiField[field] gives the anti-field of field.", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "antiField", "titlemodifier" -> "", 
+    "windowtitle" -> "antiField", "type" -> "Symbol", "uri" -> 
+    "DoFun/ref/antiField", "WorkflowDockedCell" -> ""}, 
+  "SearchTextTranslated" -> "", "NewStyles" -> False},
 CellContext->"Global`",
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
 StyleDefinitions->Notebook[{
@@ -144,27 +209,55 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
-  StyleDefinitions -> "Default.nb"]
+  TaggingRules -> {"NewStyles" -> False}, FrontEndVersion -> 
+  "11.3 for Linux x86 (64-bit) (March 6, 2018)", StyleDefinitions -> 
+  "Default.nb"]
 ]
 (* End of Notebook Content *)
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{}
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[4148, 110, 435, 11, 36, "PrimaryExamplesSection",ExpressionUUID->"966a03ee-8552-4c04-8c82-ffd144b82fb8",
+   CellTags->"PrimaryExamplesSection",
+   CellID->175656099]}
+ }
 *)
 (*CellTagsIndex
-CellTagsIndex->{}
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 7972, 220}
+ }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[581, 21, 2274, 54, 70, "AnchorBarGrid",ExpressionUUID->"37ea5e4c-c97b-481c-bde2-8933edda407f",
+Cell[581, 21, 2562, 56, 56, "AnchorBarGrid",ExpressionUUID->"6932048c-6c32-4f1b-8f91-9dad2d89e0ca",
  CellID->1],
-Cell[2858, 77, 166, 6, 70, "ObjectNameGrid",ExpressionUUID->"1e3b5e0c-f733-48b5-a44b-a3ee8148f44b"],
-Cell[3027, 85, 549, 18, 70, "Usage",ExpressionUUID->"903bb513-8707-4378-89c6-5499d9b73441"],
-Cell[3579, 105, 23, 0, 70, "FooterCell",ExpressionUUID->"c8d2cb54-3581-4bd0-9a35-be8325a66632"]
+Cell[CellGroupData[{
+Cell[3168, 81, 394, 9, 53, "ObjectNameGrid",ExpressionUUID->"257d9b34-85dc-4ab7-b62f-cef8a8e32523"],
+Cell[3565, 92, 546, 13, 112, "Usage",ExpressionUUID->"13b4df60-18df-45fc-aa95-abd479721093"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4148, 110, 435, 11, 36, "PrimaryExamplesSection",ExpressionUUID->"966a03ee-8552-4c04-8c82-ffd144b82fb8",
+ CellTags->"PrimaryExamplesSection",
+ CellID->175656099],
+Cell[CellGroupData[{
+Cell[4608, 125, 308, 7, 30, "ExampleSection",ExpressionUUID->"25dc8534-ceff-4cd8-a608-cd47cef5ab88",
+ CellID->613956216],
+Cell[4919, 134, 170, 3, 29, "Input",ExpressionUUID->"f535e4d9-be56-4878-a1cc-e3257ca4fba1",
+ CellID->1414887963],
+Cell[CellGroupData[{
+Cell[5114, 141, 567, 17, 49, "Input",ExpressionUUID->"a3d05970-db23-4ef0-97a4-1635a8c53a33",
+ CellID->1880128611],
+Cell[5684, 160, 297, 8, 38, "Output",ExpressionUUID->"ed17fb6c-652a-4d0b-b78a-2dd3aa647b34",
+ CellID->18548593]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[6020, 173, 78, 0, 43, "FooterCell",ExpressionUUID->"a65de4c8-df9d-45fb-b37c-35a7b55089fa"]
 }
 ]
 *)
 
 (* End of internal cache information *)
+

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5558,        155]
-NotebookOptionsPosition[      3413,        104]
-NotebookOutlinePosition[      5295,        153]
-CellTagsIndexPosition[      5252,        150]
+NotebookDataLength[      8063,        238]
+NotebookOptionsPosition[      5045,        164]
+NotebookOutlinePosition[      7083,        219]
+CellTagsIndexPosition[      6999,        214]
 WindowTitle->checkFields
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$15679], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$23032], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/ref/checkFields", ".html"]], None}]}]},
@@ -84,21 +84,81 @@ Cell[TextData[{
 }], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
-   {"", Cell["\<\
-Checks if all fields in an expression are defined.
-
-Syntax:
-checkFields[expr]
-
-Example:
-
-checkFields[op[S[{A, i1}, {B, j1}], {A, i1}, {B, j1}]]\
-\>"]}
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"checkFields", "[", 
+       StyleBox["expr", "TI"], "]"}]], "InlineFormula"],
+     "\[LineSeparator]checks if all fields in ",
+     Cell[BoxData[
+      StyleBox["expr", "TI"]], "InlineFormula"],
+     " are defined."
+    }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
    "RowsIndexed" -> {}}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<DoFun`\>\"", "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->1414887963],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"checkFields", "[", 
+  RowBox[{"op", "[", 
+   RowBox[{
+    RowBox[{"S", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"A", ",", "i1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"B", ",", "j1"}], "}"}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"A", ",", "i1"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"B", ",", "j1"}], "}"}]}], "]"}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->644943272],
+
+Cell[BoxData[
+ TemplateBox[{
+  "checkFields","undefinedField",
+   "\"The expression(s) in \\!\\(\\*RowBox[{\\\"{\\\", \\\"B\\\", \\\"}\\\"}]\
+\\) is/are not defined as field(s). Use setFields or generateAction to do so.\
+\"",2,49,27,22808019000512774367,"Local","DoFun`DoDSERGE`checkFields"},
+  "MessageTemplate2"]], "Message", "MSG",
+ CellLabel->"During evaluation of In[2]:=",
+ CellID->1968262310]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
 
 Cell[" ", "FooterCell"]
 },
@@ -117,15 +177,14 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 43, 43.591323}", 
+   "built" -> "{2019, 8, 7, 9, 20, 32.476580}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
     "status" -> "None", "summary" -> 
-    "Checks if all fields in an expression are defined. Syntax: \
-checkFields[expr] Example: checkFields[op[S[{A, i1}, {B, j1}], {A, i1}, {B, \
-j1}]]", "synonyms" -> {}, "tabletags" -> {}, "title" -> "checkFields", 
+    "checkFields[expr] checks if all fields in expr are defined.", 
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "checkFields", 
     "titlemodifier" -> "", "windowtitle" -> "checkFields", "type" -> "Symbol",
      "uri" -> "DoFun/ref/checkFields"}},
 CellContext->"Global`",
@@ -145,18 +204,42 @@ StyleDefinitions->Notebook[{
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{}
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3521, 103, 259, 10, 70, "PrimaryExamplesSection",ExpressionUUID->"02e6312a-3244-4b52-9263-3f6e52d6a174",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1]}
+ }
 *)
 (*CellTagsIndex
-CellTagsIndex->{}
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 6809, 207}
+ }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[583, 21, 2282, 54, 70, "AnchorBarGrid",ExpressionUUID->"c7f76768-ef3c-4b96-9203-a33cc8022721",
+Cell[583, 21, 2282, 54, 70, "AnchorBarGrid",ExpressionUUID->"78517d20-63b1-479d-b57e-a057b71ee2ce",
  CellID->1],
-Cell[2868, 77, 168, 6, 70, "ObjectNameGrid",ExpressionUUID->"163d3e27-8200-44eb-b44a-f48347c92457"],
-Cell[3039, 85, 344, 15, 70, "Usage",ExpressionUUID->"f87b26b3-e30b-4146-bf65-d16960870a65"],
-Cell[3386, 102, 23, 0, 70, "FooterCell",ExpressionUUID->"745e31e9-f98a-42bf-86e5-02a3d480590e"]
+Cell[2868, 77, 168, 6, 70, "ObjectNameGrid",ExpressionUUID->"a193016a-887c-4d73-be55-ba6063756bff"],
+Cell[3039, 85, 457, 14, 70, "Usage",ExpressionUUID->"dae48e7d-37d9-4d69-8a36-3cfcc2a0e7cc"],
+Cell[CellGroupData[{
+Cell[3521, 103, 259, 10, 70, "PrimaryExamplesSection",ExpressionUUID->"02e6312a-3244-4b52-9263-3f6e52d6a174",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[3805, 117, 187, 6, 70, "ExampleSection",ExpressionUUID->"77a0a861-63fe-401b-b853-d5a03c7f0033",
+ CellID->1],
+Cell[3995, 125, 115, 3, 70, "Input",ExpressionUUID->"bdbed3e6-1ea8-4735-a2c1-2abe57e081fe",
+ CellID->1414887963],
+Cell[CellGroupData[{
+Cell[4135, 132, 442, 15, 70, "Input",ExpressionUUID->"88b220fb-1940-4322-a828-ff1d66010a62",
+ CellID->644943272],
+Cell[4580, 149, 399, 8, 70, "Message",ExpressionUUID->"063c4b2e-1964-4a7e-8157-57c569bd9a29",
+ CellID->1968262310]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[5018, 162, 23, 0, 70, "FooterCell",ExpressionUUID->"4ee7c482-cc77-48aa-833c-a61183b91067"]
 }
 ]
 *)

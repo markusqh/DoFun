@@ -10,25 +10,25 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6020,        160]
-NotebookOptionsPosition[      3643,        106]
-NotebookOutlinePosition[      5757,        158]
-CellTagsIndexPosition[      5714,        155]
+NotebookDataLength[     10442,        289]
+NotebookOptionsPosition[      7194,        210]
+NotebookOutlinePosition[      9411,        268]
+CellTagsIndexPosition[      9327,        263]
 WindowTitle->replaceFields
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell"], Cell[TextData[Cell[
-    BoxData[
+   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell",ExpressionUUID->
+     "3adae796-6f5b-4582-850c-d3ad46e31594"], Cell[TextData[Cell[BoxData[
      ActionMenuBox[
       FrameBox[
        InterpretationBox[Cell[TextData[{
          "URL",
          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
           StripOnInput->False]
-        }]],
+        }],ExpressionUUID->"1f03cd06-b910-4ced-b465-5e2dd81de5d5"],
         TextCell[
          Row[{"URL", 
            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
@@ -60,49 +60,153 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$42959], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$63254], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/ref/replaceFields", ".html"]], None}]}]},
       Appearance->None,
       MenuAppearance->Automatic,
       MenuStyle->"URLMenu"]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+     LineSpacing->{1.4, 0},ExpressionUUID->
+     "18be9438-e2db-4777-a087-75d234364c1d"]], "AnchorBar",ExpressionUUID->
+     "838811b8-f572-4941-8748-af9706af4ce6"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
       Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
    "RowsIndexed" -> {}}},
- CellID->1],
+ CellID->1,ExpressionUUID->"ecdbb865-0744-473b-bc11-b4ca2defb305"],
+
+Cell[CellGroupData[{
 
 Cell[TextData[{
- Cell["replaceFields", "ObjectName"],
+ Cell["replaceFields", "ObjectName",ExpressionUUID->
+  "f3a62bd2-68eb-4f9f-b6fd-403816a0dda7"],
  Cell[BoxData[
   TemplateBox[{8},
-   "Spacer1"]]],
- Cell[BoxData[""], "ObjectNameTranslation"]
-}], "ObjectNameGrid"],
+   "Spacer1"]],ExpressionUUID->"72605c8f-e723-48b9-983b-c8f117a51928"],
+ Cell[BoxData[
+ ""], "ObjectNameTranslation",ExpressionUUID->
+  "622746a8-1655-41e0-b176-8558f9407ae9"]
+}], "ObjectNameGrid",ExpressionUUID->"b3eac39b-c36b-40ff-bbc5-265364ddf385"],
 
 Cell[BoxData[GridBox[{
-   {"", Cell["\<\
-Used in the derivation of DSEs to replace the fields by the corresponding \
-expressions after the first differentiation is done to change from full to \
-1PI Green functions.
-
-Syntax:
-replaceFields[expr] with expr being an expression containing op functions.
-
-Example:
-defineFields[{}, {{c, cb}}, {}];
-replaceFields[op[S[{A, i}, {A, r}, {A, s}], {A, r}, {A, s}]]\
-\>"]}
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"replaceFields", "[", 
+       StyleBox["expr", "TI"], "]"}]], "InlineFormula",ExpressionUUID->
+      "1b4bd21f-bd2d-4e46-bc1e-977e80902924"],
+     "\[LineSeparator]replaces fields in ",
+     Cell[BoxData[
+      StyleBox["expr", "TI"]], "InlineFormula",ExpressionUUID->
+      "0a59e178-c535-484b-95f4-c9bad4480972"],
+     " by the field and the propagator with a derivative."
+    }],ExpressionUUID->"32f31bb4-39dc-4803-879e-fed4445128ca"]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
-   "RowsIndexed" -> {}}}],
+   "RowsIndexed" -> \
+{}}},ExpressionUUID->"7ead5d13-ca01-474c-a496-735d9998210a"]
+}, Open  ]],
 
-Cell[" ", "FooterCell"]
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"e0cc8bc8-248e-44ac-a8b8-6ae670ab9f74"],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "99e20aac-6e63-4afe-9577-d99ef26dafe1"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->177490090,ExpressionUUID->"844ff0ba-6c40-4b52-914c-88631fe2a716"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "798a6b53-0a26-4efc-9661-76276415e780"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->951339659,ExpressionUUID->"328282ff-c8d7-4061-8407-57aaa58b2c95"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<DoFun`\>\"", "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->1414887963,ExpressionUUID->"e296bfd2-d42c-436a-81b6-eb0d2302427b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"setFields", "[", 
+   RowBox[{"{", "A", "}"}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"replaceFields", "[", 
+  RowBox[{"op", "[", 
+   RowBox[{
+    RowBox[{"S", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"A", ",", "i"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"A", ",", "r"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"A", ",", "s"}], "}"}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"A", ",", "r"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"A", ",", "s"}], "}"}]}], "]"}], "]"}]}], "Input",
+ CellLabel->"In[2]:=",
+ CellID->619985117,ExpressionUUID->"0f8aec97-afb1-4532-b321-582f4bb9a94b"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"op", "[", 
+   RowBox[{
+    RowBox[{"S", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"A", ",", "i"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"A", ",", "r"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"A", ",", "s"}], "}"}]}], "]"}], ",", 
+    RowBox[{"P", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"A", ",", "r"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"A", ",", "s"}], "}"}]}], "]"}]}], "]"}], "+", 
+  RowBox[{"op", "[", 
+   RowBox[{
+    RowBox[{"S", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"A", ",", "i"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"A", ",", "r"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"A", ",", "s"}], "}"}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"A", ",", "r"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"A", ",", "s"}], "}"}]}], "]"}]}]], "Output",
+ ImageSize->{372, 37},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->2072822295,ExpressionUUID->"7ec22f03-ed41-4aa3-968c-9bb2768631d6"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell",ExpressionUUID->"9ecd5da4-19fb-4c68-a29a-2f4e2050890c"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
@@ -119,20 +223,18 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 45, 27.286624}", 
+   "built" -> "{2019, 8, 7, 9, 21, 35.436722}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
     "status" -> "None", "summary" -> 
-    "Used in the derivation of DSEs to replace the fields by the \
-corresponding expressions after the first differentiation is done to change \
-from full to 1PI Green functions. Syntax: replaceFields[expr] with expr being \
-an expression containing op functions. Example: defineFields[{}, {{c, cb}}, \
-{}]; replaceFields[op[S[{A, i}, {A, r}, {A, s}], {A, r}, {A, s}]]", 
-    "synonyms" -> {}, "tabletags" -> {}, "title" -> "replaceFields", 
-    "titlemodifier" -> "", "windowtitle" -> "replaceFields", "type" -> 
-    "Symbol", "uri" -> "DoFun/ref/replaceFields"}},
+    "replaceFields[expr] replaces fields in expr by the field and the \
+propagator with a derivative.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "replaceFields", "titlemodifier" -> "", "windowtitle" -> "replaceFields", 
+    "type" -> "Symbol", "uri" -> "DoFun/ref/replaceFields", 
+    "WorkflowDockedCell" -> ""}, "SearchTextTranslated" -> "", "NewStyles" -> 
+  False},
 CellContext->"Global`",
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
 StyleDefinitions->Notebook[{
@@ -143,27 +245,55 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
-  StyleDefinitions -> "Default.nb"]
+  TaggingRules -> {"NewStyles" -> False}, FrontEndVersion -> 
+  "11.3 for Linux x86 (64-bit) (March 6, 2018)", StyleDefinitions -> 
+  "Default.nb"]
 ]
 (* End of Notebook Content *)
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{}
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[4354, 114, 435, 11, 36, "PrimaryExamplesSection",ExpressionUUID->"844ff0ba-6c40-4b52-914c-88631fe2a716",
+   CellTags->"PrimaryExamplesSection",
+   CellID->177490090]}
+ }
 *)
 (*CellTagsIndex
-CellTagsIndex->{}
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 9129, 256}
+ }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[585, 21, 2290, 54, 70, "AnchorBarGrid",ExpressionUUID->"d4cadcff-43d0-4d2b-8ce9-d871015b2924",
+Cell[585, 21, 2578, 56, 56, "AnchorBarGrid",ExpressionUUID->"ecdbb865-0744-473b-bc11-b4ca2defb305",
  CellID->1],
-Cell[2878, 77, 170, 6, 70, "ObjectNameGrid",ExpressionUUID->"15cb38f8-4f74-4bd5-a64e-06bb613dd1c1"],
-Cell[3051, 85, 562, 17, 70, "Usage",ExpressionUUID->"6b0399e3-fc39-4990-b4e5-24d6870190bb"],
-Cell[3616, 104, 23, 0, 70, "FooterCell",ExpressionUUID->"1c0def84-e95d-4930-bb9c-25790c461c57"]
+Cell[CellGroupData[{
+Cell[3188, 81, 398, 9, 53, "ObjectNameGrid",ExpressionUUID->"b3eac39b-c36b-40ff-bbc5-265364ddf385"],
+Cell[3589, 92, 728, 17, 112, "Usage",ExpressionUUID->"7ead5d13-ca01-474c-a496-735d9998210a"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4354, 114, 435, 11, 36, "PrimaryExamplesSection",ExpressionUUID->"844ff0ba-6c40-4b52-914c-88631fe2a716",
+ CellTags->"PrimaryExamplesSection",
+ CellID->177490090],
+Cell[CellGroupData[{
+Cell[4814, 129, 308, 7, 30, "ExampleSection",ExpressionUUID->"328282ff-c8d7-4061-8407-57aaa58b2c95",
+ CellID->951339659],
+Cell[5125, 138, 170, 3, 29, "Input",ExpressionUUID->"e296bfd2-d42c-436a-81b6-eb0d2302427b",
+ CellID->1414887963],
+Cell[CellGroupData[{
+Cell[5320, 145, 667, 20, 49, "Input",ExpressionUUID->"0f8aec97-afb1-4532-b321-582f4bb9a94b",
+ CellID->619985117],
+Cell[5990, 167, 1083, 36, 58, "Output",ExpressionUUID->"7ec22f03-ed41-4aa3-968c-9bb2768631d6",
+ CellID->2072822295]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[7112, 208, 78, 0, 43, "FooterCell",ExpressionUUID->"9ecd5da4-19fb-4c68-a29a-2f4e2050890c"]
 }
 ]
 *)
 
 (* End of internal cache information *)
+

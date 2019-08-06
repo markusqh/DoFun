@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5656,        156]
-NotebookOptionsPosition[      3458,        104]
-NotebookOutlinePosition[      5393,        154]
-CellTagsIndexPosition[      5350,        151]
+NotebookDataLength[     10331,        297]
+NotebookOptionsPosition[      7062,        219]
+NotebookOutlinePosition[      9118,        274]
+CellTagsIndexPosition[      9034,        269]
 WindowTitle->checkAll
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$15201], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$22551], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "DoFun/ref/checkAll", 
             ".html"]], None}]}]},
@@ -84,21 +84,136 @@ Cell[TextData[{
 }], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
-   {"", Cell["\<\
-Performs a series of checks (checkIndices, checkSyntax, checkFields).
-
-Syntax:
-checkAll[expr]
-
-Example:
-checkAll[op[ S[{A, i1}, {A, j1}], {A, i1}, {A, j1}] +  op[a, S[{B, i1}, {B, \
-j1}], {B, i1}, {B, j1}]]\
-\>"]}
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"checkAll", "[", 
+       StyleBox["expr", "TI"], "]"}]], "InlineFormula"],
+     "\[LineSeparator]performs a series of checks (",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData["checkIndices"]],"paclet:DoFun/ref/checkIndices"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+     ", ",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData["checkSyntax"]],"paclet:DoFun/ref/checkSyntax"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+     ", ",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData["checkFields"]],"paclet:DoFun/ref/"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+     ") on ",
+     Cell[BoxData[
+      StyleBox["expr", "TI"]], "InlineFormula"],
+     "."
+    }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
    "RowsIndexed" -> {}}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<DoFun`\>\"", "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->1414887963],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"checkAll", "[", 
+  RowBox[{
+   RowBox[{"op", "[", 
+    RowBox[{
+     RowBox[{"S", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"A", ",", "i1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"A", ",", "j1"}], "}"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"A", ",", "i1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"A", ",", "j1"}], "}"}]}], "]"}], "+", 
+   RowBox[{"op", "[", 
+    RowBox[{"a", ",", 
+     RowBox[{"S", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"B", ",", "i1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"B", ",", "j1"}], "}"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"B", ",", "i1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"B", ",", "j1"}], "}"}]}], "]"}]}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->1841016351],
+
+Cell[BoxData[
+ TemplateBox[{
+  "checkIndices","ok","\"No indices appear more often than twice.\"",2,48,24,
+   22808019000512774367,"Local","DoFun`DoDSERGE`checkIndices"},
+  "MessageTemplate2"]], "Message", "MSG",
+ CellLabel->"During evaluation of In[2]:=",
+ CellID->1516554292],
+
+Cell[BoxData[
+ TemplateBox[{
+  "checkSyntax","op",
+   "\"There is a syntax error in \\!\\(\\*RowBox[{\\\"{\\\", RowBox[{\\\"op\\\
+\", \\\"[\\\", RowBox[{\\\"a\\\", \\\",\\\", RowBox[{\\\"S\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{\\\"B\\\", \\\",\\\", \\\"i1\\\"}], \
+\\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"B\\\", \\\",\\\", \
+\\\"j1\\\"}], \\\"}\\\"}]}], \\\"]\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{\\\"B\\\", \\\",\\\", \\\"i1\\\"}], \\\"}\\\"}], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{\\\"B\\\", \\\",\\\", \\\"j1\\\"}], \\\"}\\\"}]}], \
+\\\"]\\\"}], \\\"}\\\"}]\\).\"",2,48,25,22808019000512774367,"Local",
+   "DoFun`DoDSERGE`checkSyntax"},
+  "MessageTemplate2"]], "Message", "MSG",
+ CellLabel->"During evaluation of In[2]:=",
+ CellID->88133699],
+
+Cell[BoxData[
+ TemplateBox[{
+  "checkFields","undefinedField",
+   "\"The expression(s) in \\!\\(\\*RowBox[{\\\"{\\\", \\\"B\\\", \\\"}\\\"}]\
+\\) is/are not defined as field(s). Use setFields or generateAction to do so.\
+\"",2,48,26,22808019000512774367,"Local","DoFun`DoDSERGE`checkFields"},
+  "MessageTemplate2"]], "Message", "MSG",
+ CellLabel->"During evaluation of In[2]:=",
+ CellID->1071956188]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
 
 Cell[" ", "FooterCell"]
 },
@@ -117,18 +232,16 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 43, 42.675315}", 
+   "built" -> "{2019, 8, 7, 9, 20, 31.742499}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
     "status" -> "None", "summary" -> 
-    "Performs a series of checks (checkIndices, checkSyntax, checkFields). \
-Syntax: checkAll[expr] Example: checkAll[op[S[{A, i1}, {A, j1}], {A, i1}, {A, \
-j1}] + op[a, S[{B, i1}, {B, j1}], {B, i1}, {B, j1}]]", "synonyms" -> {}, 
-    "tabletags" -> {}, "title" -> "checkAll", "titlemodifier" -> "", 
-    "windowtitle" -> "checkAll", "type" -> "Symbol", "uri" -> 
-    "DoFun/ref/checkAll"}},
+    "checkAll[expr] performs a series of checks (checkIndices, checkSyntax, \
+checkFields) on expr.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "checkAll", "titlemodifier" -> "", "windowtitle" -> "checkAll", "type" -> 
+    "Symbol", "uri" -> "DoFun/ref/checkAll"}},
 CellContext->"Global`",
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
 StyleDefinitions->Notebook[{
@@ -146,18 +259,46 @@ StyleDefinitions->Notebook[{
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{}
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[4078, 121, 259, 10, 70, "PrimaryExamplesSection",ExpressionUUID->"4a4a8237-2527-4219-a69d-166a1cd6d54c",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1]}
+ }
 *)
 (*CellTagsIndex
-CellTagsIndex->{}
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 8844, 262}
+ }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[580, 21, 2270, 54, 70, "AnchorBarGrid",ExpressionUUID->"54dda8cc-3e6d-4be4-b191-7e0b41b105e0",
+Cell[580, 21, 2270, 54, 70, "AnchorBarGrid",ExpressionUUID->"67606eb0-6405-4866-afca-cac341ee610e",
  CellID->1],
-Cell[2853, 77, 165, 6, 70, "ObjectNameGrid",ExpressionUUID->"9729fe6b-0a11-4927-9116-7e1d75af99d9"],
-Cell[3021, 85, 407, 15, 70, "Usage",ExpressionUUID->"2600fc6b-7878-4db6-bead-f1662a391253"],
-Cell[3431, 102, 23, 0, 70, "FooterCell",ExpressionUUID->"cf6b608f-3b6a-47d9-b776-df6587c06998"]
+Cell[2853, 77, 165, 6, 70, "ObjectNameGrid",ExpressionUUID->"d6b90aff-8975-45b5-a79a-7f935d62e927"],
+Cell[3021, 85, 1032, 32, 70, "Usage",ExpressionUUID->"ab6685b8-18af-4b67-8d54-82dc0d5b4987"],
+Cell[CellGroupData[{
+Cell[4078, 121, 259, 10, 70, "PrimaryExamplesSection",ExpressionUUID->"4a4a8237-2527-4219-a69d-166a1cd6d54c",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[4362, 135, 187, 6, 70, "ExampleSection",ExpressionUUID->"ba9d4b31-8605-4746-b94b-127d7fc6c511",
+ CellID->1],
+Cell[4552, 143, 115, 3, 70, "Input",ExpressionUUID->"c0824f51-1673-4209-bdf8-facfbd7ff5a4",
+ CellID->1414887963],
+Cell[CellGroupData[{
+Cell[4692, 150, 832, 28, 70, "Input",ExpressionUUID->"eb15a114-f21f-4302-b43d-c0817389b81d",
+ CellID->1841016351],
+Cell[5527, 180, 277, 6, 70, "Message",ExpressionUUID->"cfb6217c-7b0c-42f7-bc9c-6c6e885cbd6f",
+ CellID->1516554292],
+Cell[5807, 188, 787, 14, 70, "Message",ExpressionUUID->"2dbd6a2b-50ac-42f5-8ed5-5f5e8774f964",
+ CellID->88133699],
+Cell[6597, 204, 399, 8, 70, "Message",ExpressionUUID->"7bff90e6-faa2-4198-a03b-2682fc50f7f5",
+ CellID->1071956188]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[7035, 217, 23, 0, 70, "FooterCell",ExpressionUUID->"0febfd6d-7d3c-4cea-8fd4-7950a4ac701c"]
 }
 ]
 *)

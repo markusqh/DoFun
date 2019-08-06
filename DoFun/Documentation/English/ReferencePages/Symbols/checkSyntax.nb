@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5928,        160]
-NotebookOptionsPosition[      3598,        107]
-NotebookOutlinePosition[      5665,        158]
-CellTagsIndexPosition[      5622,        155]
+NotebookDataLength[     10280,        291]
+NotebookOptionsPosition[      6835,        209]
+NotebookOutlinePosition[      9036,        266]
+CellTagsIndexPosition[      8952,        261]
 WindowTitle->checkSyntax
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$16635], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$23989], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/ref/checkSyntax", ".html"]], None}]}]},
@@ -84,24 +84,126 @@ Cell[TextData[{
 }], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
-   {"", Cell["\<\
-Checks if an expression has the correct syntax, i.e., op functions only \
-contain propagators, vertices, fields and regulator insertions and these \
-quantities also have the correct arguments.
-
-Syntax:
-checkSyntax[expr]
-
-Examples:
-checkSyntax[op[a,S[{A, i1}, {B, i2}], {A, i1}, {B, j1}]]
-
-checkSyntax[dR[{A, i}, {A, j}, {A, l}]]\
-\>"]}
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"checkSyntax", "[", 
+       StyleBox["expr", "TI"], "]"}]], "InlineFormula"],
+     "\[LineSeparator]checks if ",
+     Cell[BoxData[
+      StyleBox["expr", "TI"]], "InlineFormula"],
+     " has the correct syntax, i.e., ",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData["op"]],"paclet:DoFun/ref/op"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+     " functions only contain propagators, vertices, fields, composite \
+operators and regulator insertions and these quantities also have the correct \
+arguments."
+    }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
    "RowsIndexed" -> {}}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<DoFun`\>\"", "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->1414887963],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"checkSyntax", "[", 
+   RowBox[{"op", "[", 
+    RowBox[{"a", ",", 
+     RowBox[{"S", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"A", ",", "i1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"B", ",", "i2"}], "}"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"A", ",", "i1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"B", ",", "j1"}], "}"}]}], "]"}], "]"}], " "}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->953883358],
+
+Cell[BoxData[
+ TemplateBox[{
+  "checkSyntax","op",
+   "\"There is a syntax error in \\!\\(\\*RowBox[{\\\"{\\\", RowBox[{\\\"op\\\
+\", \\\"[\\\", RowBox[{\\\"a\\\", \\\",\\\", RowBox[{\\\"S\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{\\\"A\\\", \\\",\\\", \\\"i1\\\"}], \
+\\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"B\\\", \\\",\\\", \
+\\\"i2\\\"}], \\\"}\\\"}]}], \\\"]\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{\\\"A\\\", \\\",\\\", \\\"i1\\\"}], \\\"}\\\"}], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{\\\"B\\\", \\\",\\\", \\\"j1\\\"}], \\\"}\\\"}]}], \
+\\\"]\\\"}], \\\"}\\\"}]\\).\"",2,52,31,22808019000512774367,"Local",
+   "DoFun`DoDSERGE`checkSyntax"},
+  "MessageTemplate2"]], "Message", "MSG",
+ CellLabel->"During evaluation of In[2]:=",
+ CellID->1433005905]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"checkSyntax", "[", 
+  RowBox[{"dR", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"A", ",", "i"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"A", ",", "j"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"A", ",", "l"}], "}"}]}], "]"}], "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->982972966],
+
+Cell[BoxData[
+ TemplateBox[{
+  "checkSyntax","regulatorInsertion",
+   "\"There is a syntax error in the regulator insertion \
+\\!\\(\\*RowBox[{\\\"{\\\", RowBox[{\\\"dR\\\", \\\"[\\\", RowBox[{RowBox[{\\\
+\"{\\\", RowBox[{\\\"A\\\", \\\",\\\", \\\"i\\\"}], \\\"}\\\"}], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{\\\"A\\\", \\\",\\\", \\\"j\\\"}], \\\"}\\\"}], \\\
+\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"A\\\", \\\",\\\", \\\"l\\\"}], \
+\\\"}\\\"}]}], \\\"]\\\"}], \\\"}\\\"}]\\).\"",2,53,32,22808019000512774367,
+   "Local","DoFun`DoDSERGE`checkSyntax"},
+  "MessageTemplate2"]], "Message", "MSG",
+ CellLabel->"During evaluation of In[3]:=",
+ CellID->793470640]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
 
 Cell[" ", "FooterCell"]
 },
@@ -120,19 +222,18 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 43, 45.513715}", 
+   "built" -> "{2019, 8, 7, 9, 20, 33.890494}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
     "status" -> "None", "summary" -> 
-    "Checks if an expression has the correct syntax, i.e., op functions only \
-contain propagators, vertices, fields and regulator insertions and these \
-quantities also have the correct arguments. Syntax: checkSyntax[expr] \
-Examples: checkSyntax[op[a,S[{A, i1}, {B, i2}], {A, i1}, {B, j1}]] \
-checkSyntax[dR[{A, i}, {A, j}, {A, l}]]", "synonyms" -> {}, "tabletags" -> {},
-     "title" -> "checkSyntax", "titlemodifier" -> "", "windowtitle" -> 
-    "checkSyntax", "type" -> "Symbol", "uri" -> "DoFun/ref/checkSyntax"}},
+    "checkSyntax[expr] checks if expr has the correct syntax, i.e., op \
+functions only contain propagators, vertices, fields, composite operators and \
+regulator insertions and these quantities also have the correct arguments.", 
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "checkSyntax", 
+    "titlemodifier" -> "", "windowtitle" -> "checkSyntax", "type" -> "Symbol",
+     "uri" -> "DoFun/ref/checkSyntax"}},
 CellContext->"Global`",
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
 StyleDefinitions->Notebook[{
@@ -150,18 +251,48 @@ StyleDefinitions->Notebook[{
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{}
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3859, 111, 259, 10, 70, "PrimaryExamplesSection",ExpressionUUID->"5c646590-6f96-409c-b8d7-244806f17cf1",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1]}
+ }
 *)
 (*CellTagsIndex
-CellTagsIndex->{}
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 8762, 254}
+ }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[583, 21, 2282, 54, 70, "AnchorBarGrid",ExpressionUUID->"6f8ca123-cbb5-431f-9052-204076bf8efa",
+Cell[583, 21, 2282, 54, 70, "AnchorBarGrid",ExpressionUUID->"e03f58ac-cf90-4cd8-8ad6-db0d505ae380",
  CellID->1],
-Cell[2868, 77, 168, 6, 70, "ObjectNameGrid",ExpressionUUID->"48c7983b-bf12-4b0f-a784-7c9743be0424"],
-Cell[3039, 85, 529, 18, 70, "Usage",ExpressionUUID->"98c19b33-a818-4fbb-a9df-651e231690d5"],
-Cell[3571, 105, 23, 0, 70, "FooterCell",ExpressionUUID->"1b5b9c6e-638c-4fa6-b8ae-b1cc6218cc35"]
+Cell[2868, 77, 168, 6, 70, "ObjectNameGrid",ExpressionUUID->"86da1184-752d-4e25-8af7-c39ccd6cdb31"],
+Cell[3039, 85, 795, 22, 70, "Usage",ExpressionUUID->"3956fbe1-6534-447c-9445-c610810566ef"],
+Cell[CellGroupData[{
+Cell[3859, 111, 259, 10, 70, "PrimaryExamplesSection",ExpressionUUID->"5c646590-6f96-409c-b8d7-244806f17cf1",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[4143, 125, 187, 6, 70, "ExampleSection",ExpressionUUID->"c64dc42f-719b-4b33-92b1-71e55a23559c",
+ CellID->1],
+Cell[4333, 133, 115, 3, 70, "Input",ExpressionUUID->"1b4c15aa-ff6e-43ea-9c49-8625f939dd7b",
+ CellID->1414887963],
+Cell[CellGroupData[{
+Cell[4473, 140, 482, 16, 70, "Input",ExpressionUUID->"89b5b91d-5a3d-4a2c-9539-ceea7c6d76bf",
+ CellID->953883358],
+Cell[4958, 158, 789, 14, 70, "Message",ExpressionUUID->"fe6dd21a-d968-4a99-86c2-5c49af088d91",
+ CellID->1433005905]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5784, 177, 323, 11, 70, "Input",ExpressionUUID->"8b740500-c8d4-4726-9740-f05e1357148f",
+ CellID->982972966],
+Cell[6110, 190, 659, 12, 70, "Message",ExpressionUUID->"26a5f5d4-e483-4c24-8013-6c88adf50d5c",
+ CellID->793470640]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[6808, 207, 23, 0, 70, "FooterCell",ExpressionUUID->"dc619a67-7b90-43d5-a078-d6d1d8be961e"]
 }
 ]
 *)

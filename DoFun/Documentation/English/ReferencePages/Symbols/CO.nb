@@ -1,0 +1,438 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     15852,        428]
+NotebookOptionsPosition[     11919,        338]
+NotebookOutlinePosition[     14571,        402]
+CellTagsIndexPosition[     14486,        397]
+WindowTitle->CO
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell",ExpressionUUID->
+     "3ce2d3f1-5a1d-4a64-98f3-d7ea6b3e0449"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }],ExpressionUUID->"c972c47c-c018-44fe-96f1-ae9371f8a771"],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"DoFun/ref/CO\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["DoFun/ref/CO"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/DoFun/ref/CO.html"], 
+               StandardForm]], "Input", TextClipboardType -> "PlainText"]}, 
+           Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$25915], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], "DoFun/ref/CO", 
+            ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
+     LineSpacing->{1.4, 0},ExpressionUUID->
+     "8851e27c-345d-43aa-81f1-34749114186a"]], "AnchorBar",ExpressionUUID->
+     "8e9f4645-784d-4200-bd11-43125ca12281"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1,ExpressionUUID->"ecd8593e-959f-4caa-bfbc-c9a3c1bee962"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell["CO", "ObjectName",ExpressionUUID->
+  "53d7c75a-aa1a-4777-961b-871e36f18157"],
+ Cell[BoxData[
+  TemplateBox[{8},
+   "Spacer1"]],ExpressionUUID->"1f1a0a57-3d23-4c50-ac24-5b6e21025fc8"],
+ Cell[BoxData[
+ ""], "ObjectNameTranslation",ExpressionUUID->
+  "bf833593-be39-4bfa-a410-7c1c03eecaaa"]
+}], "ObjectNameGrid",ExpressionUUID->"3ea6d1a3-88b9-4063-94d3-fec1bb963af0"],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"CO", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          StyleBox["fieldCO", "TI"], ",", " ", 
+          StyleBox["indexCO", "TI"]}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{
+          SubscriptBox[
+           StyleBox["field", "TI"], 
+           StyleBox["1", "TR"]], ",", " ", 
+          SubscriptBox[
+           StyleBox["index", "TI"], 
+           StyleBox["1", "TR"]]}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{
+          SubscriptBox[
+           StyleBox["field", "TI"], 
+           StyleBox["2", "TR"]], ",", " ", 
+          SubscriptBox[
+           StyleBox["index", "TI"], 
+           StyleBox["2", "TR"]]}], "}"}], ",", "  ", 
+        StyleBox["\[Ellipsis]", "TR"]}], "]"}]], "InlineFormula",
+      ExpressionUUID->"6e34de90-3854-4f72-8351-b3f695e48356"],
+     "\[LineSeparator]represents a composite operator ",
+     Cell[BoxData[
+      StyleBox["fieldCO", "TI"]], "InlineFormula",ExpressionUUID->
+      "5c18dc42-21c8-4b82-977b-65dd2db9b46a"],
+     " with index ",
+     Cell[BoxData[
+      StyleBox["indexCO", "TI"]], "InlineFormula",ExpressionUUID->
+      "59213eac-ac4b-4b32-b8a3-f968a8a5bf45"],
+     " of the fields ",
+     Cell[BoxData[
+      SubscriptBox[
+       StyleBox["field", "TI"], "i"]], "InlineFormula",ExpressionUUID->
+      "9bc9683e-6240-48fb-a660-7a96ec8e9e2f"],
+     " with their indices  ",
+     Cell[BoxData[
+      SubscriptBox[
+       StyleBox["index", "TI"], "i"]], "InlineFormula",ExpressionUUID->
+      "ace71211-9fcf-43a5-8280-cb7f9df1d67c"],
+     "  in its symbolic form. "
+    }],ExpressionUUID->"b0da7520-fe00-438f-8e45-2dc2f2c503e0"]},
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"   ", 
+       RowBox[{"CO", "[", 
+        RowBox[{
+         RowBox[{
+          StyleBox["fieldCO", "TI"], "[", 
+          RowBox[{
+           StyleBox["mom", "TI"], ",", " ", 
+           StyleBox["index1", "TI"], ",", " ", 
+           StyleBox["index2", "TI"], ",", " ", "..."}], "]"}], ",", " ", 
+         RowBox[{
+          StyleBox["fielda", "TI"], "[", 
+          RowBox[{
+           StyleBox["momentuma", "TI"], ",", " ", 
+           StyleBox["indexa1", "TI"], ",", " ", 
+           StyleBox["indexa2", "TI"], ",", " ", "..."}], "]"}], ",", " ", 
+         RowBox[{
+          StyleBox["fieldb", "TI"], "[", 
+          RowBox[{
+           StyleBox["momentumb", "TI"], ",", " ", 
+           StyleBox["indexb1", "TI"], ",", " ", 
+           StyleBox["indexb2", "TI"], ",", " ", "..."}], "]"}], ",", " ", "...",
+          ",", " ", 
+         RowBox[{
+          StyleBox["explicit", "TI"], "->", 
+          TemplateBox[{Cell[
+             TextData["True"]],"paclet:ref/True"},
+           "RefLink",
+           BaseStyle->{"InlineFormula"}]}]}], "]"}]}]], "InlineFormula",
+      ExpressionUUID->"59939983-20a6-4978-a53e-857b0738dbe4"],
+     " \[LineSeparator]represents a composite operator ",
+     Cell[BoxData[
+      StyleBox["fieldCO", "TI"]], "InlineFormula",ExpressionUUID->
+      "84283927-2039-4a18-924a-6b7c14c74c4b"],
+     " with momentum ",
+     Cell[BoxData[
+      StyleBox["mom", "TI"]], "InlineFormula",ExpressionUUID->
+      "905725f0-ad0f-4cc2-a537-c64ec04df328"],
+     " and explicit indices ",
+     Cell[BoxData[
+      SubscriptBox[
+       StyleBox["index", "TI"], "i"]], "InlineFormula",ExpressionUUID->
+      "367c9ce7-d224-4c63-ae65-be03174e3c2d"],
+     " of the fields ",
+     Cell[BoxData[
+      SubscriptBox[
+       StyleBox["field", "TI"], "j"]], "InlineFormula",ExpressionUUID->
+      "1b0d0293-ba39-4b48-9bdf-ff34105c77ac"],
+     " with their momenta ",
+     Cell[BoxData[
+      SubscriptBox[
+       StyleBox["momentum", "TI"], "j"]], "InlineFormula",ExpressionUUID->
+      "f51f0b62-acf1-476a-88b7-eb66ae99b62d"],
+     " and indices ",
+     Cell[BoxData[
+      SubscriptBox[
+       StyleBox["index", "TI"], "jk"]], "InlineFormula",ExpressionUUID->
+      "cebead2f-360d-4825-97dc-10a2ff812cf8"],
+     " in algebraic form. The option ",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData["explicit"]],"paclet:DoFun/ref/explicit"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
+      "29909d32-b77a-4fe1-bf41-5cd37a5956d7"],
+     " can have an arbitrary value."
+    }],ExpressionUUID->"89acefca-fd95-43ef-b361-d562649b241f"]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {None, {None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->948891638,ExpressionUUID->"03ecab5a-56dc-46a1-a6dd-39607ff7aa47"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"80b072f8-1261-4f2a-b6ee-2a7684fa302f"],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "12866b3d-3215-4472-88d4-738118a3699a"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->791109055,ExpressionUUID->"ba3068fd-8201-480d-b1de-4dcd1c192b86"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "2445d35b-f2e9-4420-be14-db094bd6993d"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1502829462,ExpressionUUID->"1aa81acc-c9df-4583-9053-2c43171f898f"],
+
+Cell[TextData[{
+ "Symbolic example: Composite operator ",
+ Cell[BoxData[
+  RowBox[{"G", "=", 
+   SuperscriptBox["phi", "2"]}]], "InlineFormula",ExpressionUUID->
+  "d0cd4f95-a60c-4f9f-b75e-1017f7433118"]
+}], "Text",
+ CellID->1520832325,ExpressionUUID->"3537dc60-6a65-464a-b428-e5d09142ed0a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"setFields", "[", 
+   RowBox[{"{", "phi", "}"}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"op", "[", 
+   RowBox[{
+    RowBox[{"CO", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"G", ",", "i"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "i1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "i2"}], "}"}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"phi", ",", "i1"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"phi", ",", "i2"}], "}"}]}], "]"}], "/", "2"}]}], "Input",
+ CellLabel->"In[1]:=",
+ CellID->997542528,ExpressionUUID->"69f9c0d9-b59f-4f64-99fb-c324a1f905d2"],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox["1", "2"], " ", 
+  RowBox[{"op", "[", 
+   RowBox[{
+    RowBox[{"CO", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"G", ",", "i"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "i1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "i2"}], "}"}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"phi", ",", "i1"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"phi", ",", "i2"}], "}"}]}], "]"}]}]], "Output",
+ ImageSize->{453, 34},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->639194225,ExpressionUUID->"38a39e68-9ff7-4eb6-ba91-dae8c301162d"]
+}, Open  ]],
+
+Cell[TextData[{
+ "Algebraic example: Composite operator ",
+ Cell[BoxData[
+  RowBox[{
+   SubscriptBox["G", "ij"], "=", 
+   RowBox[{
+    SubsuperscriptBox["phi", "i", "a"], " ", 
+    SubsuperscriptBox["phi", "j", "a"]}]}]], "InlineFormula",ExpressionUUID->
+  "4a8a1bc9-2556-4251-9ffd-b291f5f2738b"]
+}], "Text",
+ CellID->627510785,ExpressionUUID->"cdff82bc-c921-48b1-b051-c7ae72408ca8"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"CO", "[", 
+   RowBox[{
+    RowBox[{"G", "[", 
+     RowBox[{"p_", ",", " ", "i_", ",", " ", "j_"}], "]"}], ",", " ", 
+    RowBox[{"phi", "[", 
+     RowBox[{"p1_", ",", " ", "is_", ",", " ", "as_"}], "]"}], ",", " ", 
+    RowBox[{"phi", "[", 
+     RowBox[{"p2_", ",", " ", "js_", ",", " ", "bs_"}], "]"}], ",", " ", 
+    RowBox[{
+     ButtonBox["explicit",
+      BaseStyle->"Link",
+      ButtonData->"paclet:DoFun/ref/explicit"], "->", "True"}]}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"delta", "[", 
+    RowBox[{"as", ",", "bs"}], "]"}], 
+   RowBox[{"delta", "[", 
+    RowBox[{"i", ",", "is"}], "]"}], 
+   RowBox[{"delta", "[", 
+    RowBox[{"j", ",", "js"}], "]"}]}]}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->176980154,ExpressionUUID->"c4e38d45-7420-4fc2-850d-08826d8a198e"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell",ExpressionUUID->"8a7354fc-0885-456b-a186-84cb99d7074a"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"CO",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:DoFun/guide/DoFun", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2019, 8, 7, 9, 20, 36.698722}", 
+    "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
+    "status" -> "None", "summary" -> 
+    "CO[{fieldCO, indexCO}, {field1, index1}, {field2, index2}, ...] \
+represents a composite operator fieldCO with index indexCO of the fields \
+fieldi with their indices indexi in its symbolic form. CO[fieldCO[mom, \
+index1, index2, ...], fielda[momentuma, indexa1, indexa2, ...], \
+fieldb[momentumb, indexb1, indexb2, ...], ..., explicit -> True] represents a \
+composite operator fieldCO with momentum mom and explicit indices indexi of \
+the fields fieldj with their momenta momentumj and indices indexjk in \
+algebraic form. The option explicit can have an arbitrary value.", 
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "CO", "titlemodifier" -> 
+    "", "windowtitle" -> "CO", "type" -> "Symbol", "uri" -> "DoFun/ref/CO", 
+    "WorkflowDockedCell" -> ""}, "SearchTextTranslated" -> "", "NewStyles" -> 
+  False},
+CellContext->"Global`",
+FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  TaggingRules -> {"NewStyles" -> False}, FrontEndVersion -> 
+  "11.3 for Linux x86 (64-bit) (March 6, 2018)", StyleDefinitions -> 
+  "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[8179, 217, 435, 11, 36, "PrimaryExamplesSection",ExpressionUUID->"ba3068fd-8201-480d-b1de-4dcd1c192b86",
+   CellTags->"PrimaryExamplesSection",
+   CellID->791109055]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 14288, 390}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[574, 21, 2547, 56, 56, "AnchorBarGrid",ExpressionUUID->"ecd8593e-959f-4caa-bfbc-c9a3c1bee962",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[3146, 81, 387, 9, 53, "ObjectNameGrid",ExpressionUUID->"3ea6d1a3-88b9-4063-94d3-fec1bb963af0"],
+Cell[3536, 92, 4606, 120, 306, "Usage",ExpressionUUID->"03ecab5a-56dc-46a1-a6dd-39607ff7aa47",
+ CellID->948891638]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8179, 217, 435, 11, 36, "PrimaryExamplesSection",ExpressionUUID->"ba3068fd-8201-480d-b1de-4dcd1c192b86",
+ CellTags->"PrimaryExamplesSection",
+ CellID->791109055],
+Cell[CellGroupData[{
+Cell[8639, 232, 309, 7, 30, "ExampleSection",ExpressionUUID->"1aa81acc-c9df-4583-9053-2c43171f898f",
+ CellID->1502829462],
+Cell[8951, 241, 290, 7, 36, "Text",ExpressionUUID->"3537dc60-6a65-464a-b428-e5d09142ed0a",
+ CellID->1520832325],
+Cell[CellGroupData[{
+Cell[9266, 252, 665, 20, 49, "Input",ExpressionUUID->"69f9c0d9-b59f-4f64-99fb-c324a1f905d2",
+ CellID->997542528],
+Cell[9934, 274, 666, 21, 55, "Output",ExpressionUUID->"38a39e68-9ff7-4eb6-ba91-dae8c301162d",
+ CellID->639194225]
+}, Open  ]],
+Cell[10615, 298, 383, 10, 40, "Text",ExpressionUUID->"cdff82bc-c921-48b1-b051-c7ae72408ca8",
+ CellID->627510785],
+Cell[11001, 310, 809, 22, 70, "Input",ExpressionUUID->"c4e38d45-7420-4fc2-850d-08826d8a198e",
+ CellID->176980154]
+}, Open  ]]
+}, Open  ]],
+Cell[11837, 336, 78, 0, 70, "FooterCell",ExpressionUUID->"8a7354fc-0885-456b-a186-84cb99d7074a"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5792,        156]
-NotebookOptionsPosition[      3528,        103]
-NotebookOutlinePosition[      5529,        154]
-CellTagsIndexPosition[      5486,        151]
+NotebookDataLength[      6089,        161]
+NotebookOptionsPosition[      3845,        109]
+NotebookOutlinePosition[      5826,        159]
+CellTagsIndexPosition[      5783,        156]
 WindowTitle->dummy
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$27121], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$41587], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "DoFun/ref/dummy", 
             ".html"]], None}]}]},
@@ -84,15 +84,21 @@ Cell[TextData[{
 }], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
-   {"", Cell["\<\
-Represents a dummy index, i.e., an index over which is summed and integrated \
-as appropriate. It is created by several functions of DoFun.
-If the user requires dummy indices the command insDummy[] should be used to \
-guarantee the uniqueness of this variable.
-
-Example:
-insDummy[]\
-\>"]}
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"dummy", "[", 
+       StyleBox["i", "TI"], "]"}]], "InlineFormula"],
+     "\[LineSeparator]represents a dummy index, i.e., an index over which is \
+summed and integrated as appropriate. It is created by several functions of \
+DoFun. If the user requires dummy indices, the command ",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData[
+          StyleBox["insDummy", "TI"]]],"paclet:DoFun/ref/"},
+       "RefLink",
+       BaseStyle->{"InlineFormula", "TI"}]], "InlineFormula"],
+     " should be used to guarantee the uniqueness of this variable."
+    }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
@@ -116,19 +122,18 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 44, 52.204172}", 
+   "built" -> "{2019, 8, 7, 9, 21, 1.892720}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
     "status" -> "None", "summary" -> 
-    "Represents a dummy index, i.e., an index over which is summed and \
-integrated as appropriate. It is created by several functions of DoFun. If \
-the user requires dummy indices the command insDummy[] should be used to \
-guarantee the uniqueness of this variable. Example: insDummy[]", 
-    "synonyms" -> {}, "tabletags" -> {}, "title" -> "dummy", "titlemodifier" -> 
-    "", "windowtitle" -> "dummy", "type" -> "Symbol", "uri" -> 
-    "DoFun/ref/dummy"}},
+    "dummy[i] represents a dummy index, i.e., an index over which is summed \
+and integrated as appropriate. It is created by several functions of DoFun. \
+If the user requires dummy indices, the command insDummy should be used to \
+guarantee the uniqueness of this variable.", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "dummy", "titlemodifier" -> "", 
+    "windowtitle" -> "dummy", "type" -> "Symbol", "uri" -> "DoFun/ref/dummy"}},
 CellContext->"Global`",
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
 StyleDefinitions->Notebook[{
@@ -153,11 +158,11 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[577, 21, 2271, 54, 70, "AnchorBarGrid",ExpressionUUID->"c9a301c0-a32c-440b-907f-2965a8ad98be",
+Cell[577, 21, 2271, 54, 70, "AnchorBarGrid",ExpressionUUID->"694061b3-6f09-4c9e-8508-f9c71348576e",
  CellID->1],
-Cell[2851, 77, 162, 6, 70, "ObjectNameGrid",ExpressionUUID->"7e7a3944-3e4b-4efc-952a-47a00aed5861"],
-Cell[3016, 85, 482, 14, 70, "Usage",ExpressionUUID->"be77e515-883e-4c2b-8178-f33bab39a572"],
-Cell[3501, 101, 23, 0, 70, "FooterCell",ExpressionUUID->"ed4308b5-6859-466b-b996-fcf6119843a0"]
+Cell[2851, 77, 162, 6, 70, "ObjectNameGrid",ExpressionUUID->"022e05c1-89e8-46d9-ad4f-00335abf0df2"],
+Cell[3016, 85, 799, 20, 70, "Usage",ExpressionUUID->"c3bdb9ab-8078-4068-b7e1-81c541fbae72"],
+Cell[3818, 107, 23, 0, 70, "FooterCell",ExpressionUUID->"38eef573-36d7-404e-9630-a0bfadc7f03f"]
 }
 ]
 *)

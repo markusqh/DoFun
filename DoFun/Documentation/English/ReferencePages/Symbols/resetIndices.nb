@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5595,        155]
-NotebookOptionsPosition[      3435,        104]
-NotebookOutlinePosition[      5332,        153]
-CellTagsIndexPosition[      5289,        150]
+NotebookDataLength[      5782,        157]
+NotebookOptionsPosition[      3648,        106]
+NotebookOutlinePosition[      5519,        155]
+CellTagsIndexPosition[      5476,        152]
 WindowTitle->resetIndices
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$43915], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$64194], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/ref/resetIndices", ".html"]], None}]}]},
@@ -84,16 +84,18 @@ Cell[TextData[{
 }], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
-   {"", Cell["\<\
-Resets the known indices to the standard, i.e., only Lorentz and adjoint \
-indices, lor and adj, respectively.
-
-Syntax:
-resetIndices[]
-
-Example:
-resetIndices[]\
-\>"]}
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"resetIndices", "[", "]"}]], "InlineFormula"],
+     "\[LineSeparator]resets the known indices to the standard ones, i.e., \
+only Lorentz and adjoint indices, ",
+     Cell[BoxData[
+      StyleBox["lor", "TI"]], "InlineFormula"],
+     " and ",
+     Cell[BoxData[
+      StyleBox["adj", "TI"]], "InlineFormula"],
+     ", respectively."
+    }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
@@ -117,17 +119,17 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 45, 29.244832}", 
+   "built" -> "{2019, 8, 7, 9, 21, 36.877596}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoAE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
     "status" -> "None", "summary" -> 
-    "Resets the known indices to the standard, i.e., only Lorentz and adjoint \
-indices, lor and adj, respectively. Syntax: resetIndices[] Example: \
-resetIndices[]", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
-    "resetIndices", "titlemodifier" -> "", "windowtitle" -> "resetIndices", 
-    "type" -> "Symbol", "uri" -> "DoFun/ref/resetIndices"}},
+    "resetIndices[] resets the known indices to the standard ones, i.e., only \
+Lorentz and adjoint indices, lor and adj, respectively.", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "resetIndices", "titlemodifier" -> "", 
+    "windowtitle" -> "resetIndices", "type" -> "Symbol", "uri" -> 
+    "DoFun/ref/resetIndices"}},
 CellContext->"Global`",
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
 StyleDefinitions->Notebook[{
@@ -152,11 +154,11 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[584, 21, 2286, 54, 70, "AnchorBarGrid",ExpressionUUID->"f488010e-e2ff-4b33-a8a5-e4f214977ec3",
+Cell[584, 21, 2286, 54, 70, "AnchorBarGrid",ExpressionUUID->"48260af6-d65f-4719-8e22-b4c8e5ec6104",
  CellID->1],
-Cell[2873, 77, 169, 6, 70, "ObjectNameGrid",ExpressionUUID->"b34973e0-a854-463d-97f0-d962c9540f20"],
-Cell[3045, 85, 360, 15, 70, "Usage",ExpressionUUID->"5c05380b-3eaa-4887-93ec-669f7c4d21d1"],
-Cell[3408, 102, 23, 0, 70, "FooterCell",ExpressionUUID->"390ac991-7eeb-4c8f-aabe-8b5251c4cafe"]
+Cell[2873, 77, 169, 6, 70, "ObjectNameGrid",ExpressionUUID->"f6dddcdd-b071-4b1f-9e1e-72bcbb2a8c41"],
+Cell[3045, 85, 573, 17, 70, "Usage",ExpressionUUID->"f7da2490-5233-41da-a12e-cac20c483364"],
+Cell[3621, 104, 23, 0, 70, "FooterCell",ExpressionUUID->"99a78203-7d8f-4748-a776-c351a5a3f43f"]
 }
 ]
 *)

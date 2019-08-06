@@ -1,0 +1,62 @@
+List of Files:
+==============
+
+DoDSERGE.m		    Mathematica package containing DoDSERGE
+DoAE.m  		    Mathematica package containing DoAE
+DoFR.m			    Mathematica package containing DoFR
+DoFunInstaller.m    Mathematica package for installing DoFun
+Kernel/init.m	    Mathematica package for initializing DoFun 
+Documentation	    Files for the Documentation Center
+PacletInfo.m	    File for the Documentation Center
+Readme		        The file you are reading right now
+
+
+Installation of DoFun:
+======================
+
+Online installation:
+Run Import["https://raw.githubusercontent.com/markusqh/DoFun/master/DoFun/DoFunInstaller.m"] in Mathematica to install the latest version.
+
+Manual installation:
+*) Unzip the package into the Applications folder of Mathematica such that DoFun is one of its subdirectories. It can be identified by evaluating $UserBaseDirectory in Mathematica. The applications folder is the subfolder Applications of the resulting path.
+Under Unix systems this is normally ~/.Mathematica/Applications.
+*) Alternatively, you can use the FrontEnd to install DoFun. In the 'File' menu select 'Install...', then choose 'Application' as type of item to be installed. Specify the zip-file as source. Finally click 'Ok' to start the installation process.
+
+
+Load DoFun:
+===========
+
+Evaluate Needs["DoFun`"] or <<DoFun`.
+
+
+Supported Mathematica Versions:
+===============================
+
+DoFun was developed under Mathematica 11.3 and testes in Mathematica 12.0.
+Most of its functionality will work with version 7.0 or higher.
+
+
+Documentation Available:
+=========================
+
+The Documentation Center contains its own section about DoFun. It can be accessed via Help -> Documentation Center -> Add-Ons and Packacges -> DoFun -> Documentation or by entering DoFun in the search line.
+Additionally, every command offers help using the command "?", e.g., ?DSEPlot.
+
+
+Updates:
+========
+
+Updates are made available at https://github.com/markusqh/DoFun.
+
+
+Contact:
+========
+
+Please send any comments, suggestions, bug reports, questions, ... to markus.huber@physik.jlug.de.
+
+
+Version History:
+================
+
+3.0 (Aug. 7, 2019): 
+	-) First public version of DoFun 3.0

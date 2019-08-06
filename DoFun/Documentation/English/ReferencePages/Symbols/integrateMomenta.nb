@@ -10,17 +10,18 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8195,        218]
-NotebookOptionsPosition[      5126,        152]
-NotebookOutlinePosition[      7560,        209]
-CellTagsIndexPosition[      7517,        206]
+NotebookDataLength[     13652,        361]
+NotebookOptionsPosition[      9477,        266]
+NotebookOutlinePosition[     11874,        326]
+CellTagsIndexPosition[     11789,        321]
 WindowTitle->integrateMomenta
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell"], Cell[TextData[{
+   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell",ExpressionUUID->
+     "5e84d227-5910-4dc8-ba66-0c761dbd5bcd"], Cell[TextData[{
      Cell[BoxData[
       ActionMenuBox[
        FrameBox[
@@ -28,7 +29,7 @@ Cell[BoxData[GridBox[{
           "Related Guides",
           StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
            StripOnInput->False]
-         }]],
+         }],ExpressionUUID->"1481d0b6-495f-46f9-a206-c483643983c3"],
          TextCell[
           Row[{"Related Guides", 
             Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
@@ -37,7 +38,8 @@ Cell[BoxData[GridBox[{
        Appearance->None,
        MenuAppearance->Automatic,
        MenuStyle->"MoreAbout"]],
-      LineSpacing->{1.4, 0}],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "6e5cb429-1d64-48d0-a65b-29f94b1f1232"],
      "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
 \[ThickSpace]",
      Cell[BoxData[
@@ -47,7 +49,7 @@ Cell[BoxData[GridBox[{
           "URL",
           StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
            StripOnInput->False]
-         }]],
+         }],ExpressionUUID->"45522fd1-4fe0-4866-837c-22231a052c70"],
          TextCell[
           Row[{"URL", 
             Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
@@ -79,76 +81,188 @@ integrateMomenta.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$37205], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$56457], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "DoFun/ref/integrateMomenta", ".html"]], None}]}]},
        Appearance->None,
        MenuAppearance->Automatic,
        MenuStyle->"URLMenu"]],
-      LineSpacing->{1.4, 0}]
-    }], "AnchorBar"]}
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "47cfb09d-324d-4def-9da6-0aae3e67c2c8"]
+    }], "AnchorBar",ExpressionUUID->"427d2b44-985d-4ccb-9293-8ef438057e20"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
       Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
    "RowsIndexed" -> {}}},
- CellID->1],
+ CellID->1,ExpressionUUID->"cf605ebd-6f6f-4ac4-9c05-303c082af1be"],
+
+Cell[CellGroupData[{
 
 Cell[TextData[{
- Cell["integrateMomenta", "ObjectName"],
+ Cell["integrateMomenta", "ObjectName",ExpressionUUID->
+  "c949f1e5-c97e-4ab6-8f79-d84aae424063"],
  Cell[BoxData[
   TemplateBox[{8},
-   "Spacer1"]]],
- Cell[BoxData[""], "ObjectNameTranslation"]
-}], "ObjectNameGrid"],
+   "Spacer1"]],ExpressionUUID->"f6bc2a5b-8ced-40c4-96e1-5fcb5704c94b"],
+ Cell[BoxData[
+ ""], "ObjectNameTranslation",ExpressionUUID->
+  "04eeab86-9728-4ca6-803a-8fc0ecc68bdb"]
+}], "ObjectNameGrid",ExpressionUUID->"f79010f4-c75d-47bd-b8c5-1ec86d998b14"],
 
 Cell[BoxData[GridBox[{
-   {"", Cell["\<\
-Automatically integrates out internal momenta, denoted by q$i, where i is a \
-running number, in delta distributions.
-Alternatively it integrates out explicitly given momenta in delta \
-distributions.
-
-Syntax:
-integrateMomenta[exp_] integrates out internal momenta q$i, where exp is an \
-expression containing momentum delta distributions denoted by deltam.
-integrateMomenta[exp_,mom_] integrates out the momenta given in mom, which \
-can be a single momentum or a list of momenta. exp is an expression \
-containing momentum delta distributions denoted by deltam.
-
-Examples:
-integrateMomenta[deltam[p1+q$1]deltam[q$1-p3]]
-integrateMomenta[deltam[r1+p2]deltam[p2-r3],p2]\
-\>"]}
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"integrateMomenta", "[", 
+       StyleBox["expr", "TI"], "]"}]], "InlineFormula",ExpressionUUID->
+      "0c977ad7-f158-4966-aff1-555e3164460f"],
+     "\[LineSeparator]integrates out internal momenta in ",
+     Cell[BoxData[
+      StyleBox["expr", "TI"]], "InlineFormula",ExpressionUUID->
+      "3a1e463d-1a8f-41d7-a7db-b2ec0140b65a"],
+     ", denoted by ",
+     Cell[BoxData[
+      StyleBox["q$i", "TI"]], "InlineFormula",ExpressionUUID->
+      "fe90f458-3b5d-4e39-bf83-79807eb985fd"],
+     ", where ",
+     Cell[BoxData[
+      StyleBox["i", "TI"]], "InlineFormula",ExpressionUUID->
+      "c4bf864f-db25-4dd3-8173-76f9402c16eb"],
+     " is a running number, in momentumdelta distributions. "
+    }],ExpressionUUID->"a56e1439-ab6a-4283-bf33-474f23492b34"]},
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"integrateMomenta", "[", 
+       RowBox[{
+        StyleBox["expr", "TI"], ",", " ", 
+        StyleBox["mom", "TI"]}], "]"}]], "InlineFormula",ExpressionUUID->
+      "40faa936-43b4-4b7b-b346-f4b0464b125a"],
+     "\[LineSeparator]integrates out the momenta ",
+     Cell[BoxData[
+      StyleBox["mom", "TI"]], "InlineFormula",ExpressionUUID->
+      "0a445221-2f6b-4993-9139-b9644441f44a"],
+     " in ",
+     Cell[BoxData[
+      StyleBox["expr", "TI"]], "InlineFormula",ExpressionUUID->
+      "ba245647-f072-4351-a498-3c81eceb7c5a"],
+     ". ",
+     Cell[BoxData[
+      StyleBox["mom", "TI"]], "InlineFormula",ExpressionUUID->
+      "894440f0-3ade-4bea-a3e5-006a61dd7928"],
+     " can be a single momentum or a list of momenta. "
+    }],ExpressionUUID->"7551b0c0-e209-4ec3-871b-ec0de2d8fab7"]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
-  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
-   "RowsIndexed" -> {}}}],
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {None, {None}}, 
+   "RowsIndexed" -> \
+{}}},ExpressionUUID->"162675e3-f1e8-4de6-ae1f-6d5b04f25f5e"]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[TextData[{
  Cell[BoxData[
   TemplateBox[{6},
-   "Spacer1"]]],
+   "Spacer1"]],ExpressionUUID->"c7e3851b-4dd5-4532-ba1b-dc77d9e4f74b"],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "f33fd58f-e8d7-4901-86cd-840810188980"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1661473346,ExpressionUUID->"99ed475b-8d30-4e5e-bf5d-ee2fb15ea22c"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "d489f69d-9a6c-45f4-88c1-cd857bb00c1b"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->348673041,ExpressionUUID->"d7d9af47-5c8b-47ea-a0e0-c4dbb755b738"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<DoFun`\>\"", "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->1414887963,ExpressionUUID->"6cbe509a-5883-4fae-827e-fb816050873e"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"integrateMomenta", "[", 
+  RowBox[{
+   RowBox[{"deltam", "[", 
+    RowBox[{"p1", "+", "q$1"}], "]"}], 
+   RowBox[{"deltam", "[", 
+    RowBox[{"q$1", "-", "p3"}], "]"}]}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->531526710,ExpressionUUID->"9c70ed72-0517-4697-b987-4e0ef6153a08"],
+
+Cell[BoxData[
+ RowBox[{"deltam", "[", 
+  RowBox[{"p1", "+", "p3"}], "]"}]], "Output",
+ ImageSize->{113, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->1809860211,ExpressionUUID->"03c5d208-1b67-412b-9bf6-70b600d3abf1"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{" ", 
+  RowBox[{"integrateMomenta", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"deltam", "[", 
+      RowBox[{"r1", "+", "p2"}], "]"}], 
+     RowBox[{"deltam", "[", 
+      RowBox[{"p2", "-", "r3"}], "]"}]}], ",", "p2"}], "]"}]}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->1467788266,ExpressionUUID->"7afc94f6-32db-46cf-be1e-d9b840136d14"],
+
+Cell[BoxData[
+ RowBox[{"deltam", "[", 
+  RowBox[{"r1", "+", "r3"}], "]"}]], "Output",
+ ImageSize->{113, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->47001786,ExpressionUUID->"55b9f801-6edf-4d1c-bbc8-f69ec683ab19"]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer",ExpressionUUID->"597ec22c-7802-499a-a116-ca1bac411e9a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"9f449991-1a7c-461e-8223-92721a63232d"],
  "Related Guides"
 }], "MoreAboutSection",
  WholeCellGroupOpener->True,
- CellID->38303248],
+ CellID->38303248,ExpressionUUID->"9a17dcea-d0ea-4030-8df0-f224743130cf"],
 
-Cell["", "SectionHeaderSpacer"],
+Cell["", "SectionHeaderSpacer",ExpressionUUID->"fa45e5f1-66be-456c-9fb5-86b8087f4136"],
 
 Cell[BoxData[
  TemplateBox[{Cell[
     TextData["Welcome to DoFun"]],"paclet:DoFun/guide/Welcome to DoFun"},
   "RefLink",
   BaseStyle->"MoreAbout"]], "MoreAbout",
- CellID->1]
+ CellID->513554342,ExpressionUUID->"05a7da4d-a1c3-445f-8501-f5417c4524f9"]
 }, Open  ]],
 
-Cell[" ", "FooterCell"]
+Cell[" ", "FooterCell",ExpressionUUID->"e928ff9e-4cab-4e58-a7de-a52535369e78"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
@@ -165,25 +279,20 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 45, 13.984465}", 
+   "built" -> "{2019, 8, 7, 9, 21, 24.577223}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoFR`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
     "status" -> "None", "summary" -> 
-    "Automatically integrates out internal momenta, denoted by q$i, where i \
-is a running number, in delta distributions. Alternatively it integrates out \
-explicitly given momenta in delta distributions. Syntax: \
-integrateMomenta[exp_] integrates out internal momenta q$i, where exp is an \
-expression containing momentum delta distributions denoted by deltam. \
-integrateMomenta[exp_,mom_] integrates out the momenta given in mom, which \
-can be a single momentum or a list of momenta. exp is an expression \
-containing momentum delta distributions denoted by deltam. Examples: \
-integrateMomenta[deltam[p1+q$1]deltam[q$1-p3]] \
-integrateMomenta[deltam[r1+p2]deltam[p2-r3],p2]", "synonyms" -> {}, 
+    "integrateMomenta[expr] integrates out internal momenta in expr, denoted \
+by q$i, where i is a running number, in momentumdelta distributions. \
+integrateMomenta[expr, mom] integrates out the momenta mom in expr. mom can \
+be a single momentum or a list of momenta. ", "synonyms" -> {}, 
     "tabletags" -> {}, "title" -> "integrateMomenta", "titlemodifier" -> "", 
     "windowtitle" -> "integrateMomenta", "type" -> "Symbol", "uri" -> 
-    "DoFun/ref/integrateMomenta"}},
+    "DoFun/ref/integrateMomenta", "WorkflowDockedCell" -> ""}, 
+  "SearchTextTranslated" -> "", "NewStyles" -> False},
 CellContext->"Global`",
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
 StyleDefinitions->Notebook[{
@@ -194,34 +303,69 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
-  StyleDefinitions -> "Default.nb"]
+  TaggingRules -> {"NewStyles" -> False}, FrontEndVersion -> 
+  "11.3 for Linux x86 (64-bit) (March 6, 2018)", StyleDefinitions -> 
+  "Default.nb"]
 ]
 (* End of Notebook Content *)
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{}
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[6414, 164, 436, 11, 36, "PrimaryExamplesSection",ExpressionUUID->"99ed475b-8d30-4e5e-bf5d-ee2fb15ea22c",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1661473346]}
+ }
 *)
 (*CellTagsIndex
-CellTagsIndex->{}
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 11590, 314}
+ }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[588, 21, 3056, 74, 70, "AnchorBarGrid",ExpressionUUID->"1bc8277f-1642-4d75-be1f-9d4916e3c541",
+Cell[588, 21, 3461, 77, 56, "AnchorBarGrid",ExpressionUUID->"cf605ebd-6f6f-4ac4-9c05-303c082af1be",
  CellID->1],
-Cell[3647, 97, 173, 6, 70, "ObjectNameGrid",ExpressionUUID->"07c05893-b6b5-4ddb-b133-ded6e72eac59"],
-Cell[3823, 105, 870, 22, 70, "Usage",ExpressionUUID->"e37cd37a-e279-481c-b38c-260b70a3f6b3"],
 Cell[CellGroupData[{
-Cell[4718, 131, 156, 7, 70, "MoreAboutSection",ExpressionUUID->"443e78c2-6248-4489-be92-e207d9295305",
- CellID->38303248],
-Cell[4877, 140, 31, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"595420cc-1fe7-4a1e-8512-bb363ed73840"],
-Cell[4911, 142, 173, 5, 70, "MoreAbout",ExpressionUUID->"b8be9dac-2c10-4503-b9f9-0ae43c5b9d58",
- CellID->1]
+Cell[4074, 102, 401, 9, 53, "ObjectNameGrid",ExpressionUUID->"f79010f4-c75d-47bd-b8c5-1ec86d998b14"],
+Cell[4478, 113, 1899, 46, 210, "Usage",ExpressionUUID->"162675e3-f1e8-4de6-ae1f-6d5b04f25f5e"]
 }, Open  ]],
-Cell[5099, 150, 23, 0, 70, "FooterCell",ExpressionUUID->"dce49f5d-db7b-45bc-9496-bda758d013c9"]
+Cell[CellGroupData[{
+Cell[6414, 164, 436, 11, 36, "PrimaryExamplesSection",ExpressionUUID->"99ed475b-8d30-4e5e-bf5d-ee2fb15ea22c",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1661473346],
+Cell[CellGroupData[{
+Cell[6875, 179, 308, 7, 30, "ExampleSection",ExpressionUUID->"d7d9af47-5c8b-47ea-a0e0-c4dbb755b738",
+ CellID->348673041],
+Cell[7186, 188, 170, 3, 29, "Input",ExpressionUUID->"6cbe509a-5883-4fae-827e-fb816050873e",
+ CellID->1414887963],
+Cell[CellGroupData[{
+Cell[7381, 195, 309, 8, 29, "Input",ExpressionUUID->"9c70ed72-0517-4697-b987-4e0ef6153a08",
+ CellID->531526710],
+Cell[7693, 205, 272, 7, 38, "Output",ExpressionUUID->"03c5d208-1b67-412b-9bf6-70b600d3abf1",
+ CellID->1809860211]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8002, 217, 361, 10, 29, "Input",ExpressionUUID->"7afc94f6-32db-46cf-be1e-d9b840136d14",
+ CellID->1467788266],
+Cell[8366, 229, 270, 7, 38, "Output",ExpressionUUID->"55b9f801-6edf-4d1c-bbc8-f69ec683ab19",
+ CellID->47001786]
+}, Open  ]]
+}, Open  ]],
+Cell[8663, 240, 86, 0, 29, "SectionFooterSpacer",ExpressionUUID->"597ec22c-7802-499a-a116-ca1bac411e9a"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8786, 245, 266, 7, 74, "MoreAboutSection",ExpressionUUID->"9a17dcea-d0ea-4030-8df0-f224743130cf",
+ CellID->38303248],
+Cell[9055, 254, 86, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"fa45e5f1-66be-456c-9fb5-86b8087f4136"],
+Cell[9144, 256, 236, 5, 70, "MoreAbout",ExpressionUUID->"05a7da4d-a1c3-445f-8501-f5417c4524f9",
+ CellID->513554342]
+}, Open  ]],
+Cell[9395, 264, 78, 0, 70, "FooterCell",ExpressionUUID->"e928ff9e-4cab-4e58-a7de-a52535369e78"]
 }
 ]
 *)
 
 (* End of internal cache information *)
+

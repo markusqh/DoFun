@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7000,        202]
-NotebookOptionsPosition[      4520,        144]
-NotebookOutlinePosition[      6365,        193]
-CellTagsIndexPosition[      6322,        190]
+NotebookDataLength[      7189,        205]
+NotebookOptionsPosition[      4759,        148]
+NotebookOutlinePosition[      6554,        196]
+CellTagsIndexPosition[      6511,        193]
 WindowTitle->deltam
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ Cell[BoxData[GridBox[{
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$21436], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$31064], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], "DoFun/ref/deltam", 
              ".html"]], None}]}]},
@@ -104,15 +104,19 @@ Cell[TextData[{
 }], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
-   {"", Cell["\<\
-Momentum delta distribution.
-
-Syntax:
-deltam[p1+p2] corresponds to (2 \[Pi])^d \[Delta](p1+p2).
-
-Example:
-deltam[p1+p2+3+p4]\
-\>"]}
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"deltam", "[", 
+       RowBox[{
+        SubscriptBox[
+         StyleBox["p", "TI"], 
+         StyleBox["1", "TR"]], "+", 
+        SubscriptBox[
+         StyleBox["p", "TI"], 
+         StyleBox["2", "TR"]]}], "]"}]], "InlineFormula"],
+     "\[LineSeparator]is the momentum delta distribution (2 \[Pi])^d \
+\[Delta](p1+p2)."
+    }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
@@ -157,17 +161,16 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 43, 55.356070}", 
+   "built" -> "{2019, 8, 7, 9, 20, 45.101715}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoFR`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
     "status" -> "None", "summary" -> 
-    "Momentum delta distribution. Syntax: deltam[p1+p2] corresponds to (2 \
-\\[Pi])^d \\[Delta](p1+p2). Example: deltam[p1+p2+3+p4]", "synonyms" -> {}, 
-    "tabletags" -> {}, "title" -> "deltam", "titlemodifier" -> "", 
-    "windowtitle" -> "deltam", "type" -> "Symbol", "uri" -> 
-    "DoFun/ref/deltam"}},
+    "deltam[p1 + p2] is the momentum delta distribution (2 \\[Pi])^d \
+\\[Delta](p1+p2).", "synonyms" -> {}, "tabletags" -> {}, "title" -> "deltam", 
+    "titlemodifier" -> "", "windowtitle" -> "deltam", "type" -> "Symbol", 
+    "uri" -> "DoFun/ref/deltam"}},
 CellContext->"Global`",
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
 StyleDefinitions->Notebook[{
@@ -192,18 +195,18 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[578, 21, 3015, 74, 70, "AnchorBarGrid",ExpressionUUID->"dec0dae8-2e18-4745-8d40-4760a9d9cb47",
+Cell[578, 21, 3015, 74, 70, "AnchorBarGrid",ExpressionUUID->"c125d04f-c1e7-49a1-823f-3118761bf1fc",
  CellID->1],
-Cell[3596, 97, 163, 6, 70, "ObjectNameGrid",ExpressionUUID->"ff8fa8ea-f033-456a-8129-731ef449e0f6"],
-Cell[3762, 105, 325, 14, 70, "Usage",ExpressionUUID->"325419d2-d633-4ea3-9f2f-dfc8e860ee06"],
+Cell[3596, 97, 163, 6, 70, "ObjectNameGrid",ExpressionUUID->"6a5807bc-0a34-446f-a858-e76c113c92a7"],
+Cell[3762, 105, 564, 18, 70, "Usage",ExpressionUUID->"07c945b5-8337-4b7b-86ea-531cb9f638f3"],
 Cell[CellGroupData[{
-Cell[4112, 123, 156, 7, 70, "MoreAboutSection",ExpressionUUID->"1102e24b-0e82-4cb8-91b9-07bc6af2559b",
+Cell[4351, 127, 156, 7, 70, "MoreAboutSection",ExpressionUUID->"c9d061ea-11a4-4c94-baeb-96c5ba7957ec",
  CellID->38303248],
-Cell[4271, 132, 31, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"d37a9ded-0600-47ab-96ba-227ec5bbe42f"],
-Cell[4305, 134, 173, 5, 70, "MoreAbout",ExpressionUUID->"7ed6e3e9-21d2-4ca0-9139-71c904e78a0c",
+Cell[4510, 136, 31, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"8de54367-bccc-479b-bbfb-38bc86b4224e"],
+Cell[4544, 138, 173, 5, 70, "MoreAbout",ExpressionUUID->"f5e06f03-3a46-4d52-a9a2-74a9c0a2448d",
  CellID->1]
 }, Open  ]],
-Cell[4493, 142, 23, 0, 70, "FooterCell",ExpressionUUID->"b063395d-12a0-4cf6-851d-f62c1b54fb6c"]
+Cell[4732, 146, 23, 0, 70, "FooterCell",ExpressionUUID->"aa862504-9fea-406a-9b9f-fc315a20b756"]
 }
 ]
 *)

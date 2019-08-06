@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6144,        163]
-NotebookOptionsPosition[      3705,        108]
-NotebookOutlinePosition[      5881,        161]
-CellTagsIndexPosition[      5838,        158]
+NotebookDataLength[      5623,        153]
+NotebookOptionsPosition[      3545,        103]
+NotebookOutlinePosition[      5360,        151]
+CellTagsIndexPosition[      5317,        148]
 WindowTitle->complexFieldQ
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$18547], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$24951], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/ref/complexFieldQ", ".html"]], None}]}]},
@@ -84,20 +84,15 @@ Cell[TextData[{
 }], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
-   {"", Cell["\<\
-Determines if an expression is defined as a bosonic complex field, \
-specifically if it is the first of a pair of bosonic complex fields.
-
-Syntax:
-complexFieldQ[f] where f is a field.
-
-Example:
-The following action contains a pair of bosonic complex fields phi and phib, \
-where phi is defined as complex field:
-generateAction[{{phi,phib}, {phib,phib,phi,phi}}, specificFieldDefinitions -> \
-{phi, phib}];
-complexFieldQ@phi\
-\>"]}
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"complexFieldQ", "[", 
+       StyleBox["expr", "TI"], "]"}]], "InlineFormula"],
+     "\[LineSeparator]gives True if ",
+     Cell[BoxData[
+      StyleBox["expr", "TI"]], "InlineFormula"],
+     " is a complex bosonic field."
+    }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
@@ -121,18 +116,13 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 43, 49.116357}", 
+   "built" -> "{2019, 8, 7, 9, 20, 35.262714}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
     "status" -> "None", "summary" -> 
-    "Determines if an expression is defined as a bosonic complex field, \
-specifically if it is the first of a pair of bosonic complex fields. Syntax: \
-complexFieldQ[f] where f is a field. Example: The following action contains a \
-pair of bosonic complex fields phi and phib, where phi is defined as complex \
-field: generateAction[{{phi,phib}, {phib,phib,phi,phi}}, \
-specificFieldDefinitions -> {phi, phib}]; complexFieldQ@phi", 
+    "complexFieldQ[expr] gives True if expr is a complex bosonic field.", 
     "synonyms" -> {}, "tabletags" -> {}, "title" -> "complexFieldQ", 
     "titlemodifier" -> "", "windowtitle" -> "complexFieldQ", "type" -> 
     "Symbol", "uri" -> "DoFun/ref/complexFieldQ"}},
@@ -160,11 +150,11 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[585, 21, 2290, 54, 70, "AnchorBarGrid",ExpressionUUID->"322f1f8d-f014-4ba6-8db8-4956bffc8462",
+Cell[585, 21, 2290, 54, 70, "AnchorBarGrid",ExpressionUUID->"bddfd5ff-820e-4553-8f29-2a4ada32df30",
  CellID->1],
-Cell[2878, 77, 170, 6, 70, "ObjectNameGrid",ExpressionUUID->"a6fac975-f127-4be5-a1e2-3a322fcf451a"],
-Cell[3051, 85, 624, 19, 70, "Usage",ExpressionUUID->"c4527b8b-45fd-4ec8-af77-80c40031f0e6"],
-Cell[3678, 106, 23, 0, 70, "FooterCell",ExpressionUUID->"17554c19-a35f-40d3-b7d4-e4012ec15715"]
+Cell[2878, 77, 170, 6, 70, "ObjectNameGrid",ExpressionUUID->"d87fb86a-98ba-4ace-a64d-7c1c2e7e46ed"],
+Cell[3051, 85, 464, 14, 70, "Usage",ExpressionUUID->"5f064f3b-aa1d-424f-afb7-aaefb9490a07"],
+Cell[3518, 101, 23, 0, 70, "FooterCell",ExpressionUUID->"6bd42485-9dcd-40bd-993f-c662cdb0d523"]
 }
 ]
 *)

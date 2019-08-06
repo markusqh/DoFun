@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6285,        162]
-NotebookOptionsPosition[      3788,        107]
-NotebookOutlinePosition[      6022,        160]
-CellTagsIndexPosition[      5979,        157]
+NotebookDataLength[      5578,        148]
+NotebookOptionsPosition[      3472,         98]
+NotebookOutlinePosition[      5317,        146]
+CellTagsIndexPosition[      5274,        143]
 WindowTitle->specificFieldDefinitions
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ specificFieldDefinitions.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$48010], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$71015], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/ref/specificFieldDefinitions", ".html"]], None}]}]},
@@ -84,19 +84,10 @@ Cell[TextData[{
 }], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
-   {"", Cell["\<\
-Option of doDSE and doRGE. Used to explicitly specify which fields are bosons \
-or Grassmann fields.
-This option is only required if this is not clear from the action.
-
-Syntax:
-specificFieldDefinitions->{boson1, ..., {fermion1, antiFermion1}, ...} where \
-the fields are given by their names. Grassmann fields are recognized by \
-grouping them into pairs.
-
-See ?antiComplexFieldQ, ?bosonQ, ?complexFieldQ, ?doDSE and ?doRGE for \
-examples.\
-\>"]}
+   {"", Cell[TextData[{
+     Cell[BoxData["specificFieldDefinitions"], "InlineFormula"],
+     "\[LineSeparator]was removed in DoFun 3.0.0."
+    }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
@@ -120,18 +111,13 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 45, 37.288813}", 
+   "built" -> "{2019, 8, 7, 9, 21, 48.589563}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
     "status" -> "None", "summary" -> 
-    "Option of doDSE and doRGE. Used to explicitly specify which fields are \
-bosons or Grassmann fields. This option is only required if this is not clear \
-from the action. Syntax: specificFieldDefinitions->{boson1, ..., {fermion1, \
-antiFermion1}, ...} where the fields are given by their names. Grassmann \
-fields are recognized by grouping them into pairs. See ?antiComplexFieldQ, \
-?bosonQ, ?complexFieldQ, ?doDSE and ?doRGE for examples.", "synonyms" -> {}, 
+    "specificFieldDefinitions was removed in DoFun 3.0.0.", "synonyms" -> {}, 
     "tabletags" -> {}, "title" -> "specificFieldDefinitions", "titlemodifier" -> 
     "", "windowtitle" -> "specificFieldDefinitions", "type" -> "Symbol", 
     "uri" -> "DoFun/ref/specificFieldDefinitions"}},
@@ -159,11 +145,11 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[596, 21, 2335, 54, 70, "AnchorBarGrid",ExpressionUUID->"68b96d73-a594-4002-9f04-f385e297f9b0",
+Cell[596, 21, 2335, 54, 70, "AnchorBarGrid",ExpressionUUID->"e7d8a6a8-1223-4f32-805b-0b7aefd14294",
  CellID->1],
-Cell[2934, 77, 181, 6, 70, "ObjectNameGrid",ExpressionUUID->"3281a955-c43f-4ee2-8a80-d5fb2f1ab01a"],
-Cell[3118, 85, 640, 18, 70, "Usage",ExpressionUUID->"8b8be812-8f44-40c9-b42e-9339a4231d75"],
-Cell[3761, 105, 23, 0, 70, "FooterCell",ExpressionUUID->"6fd8e580-fade-442d-99fa-c67e7e862127"]
+Cell[2934, 77, 181, 6, 70, "ObjectNameGrid",ExpressionUUID->"78427481-0380-4ce4-9358-1a1415cec140"],
+Cell[3118, 85, 324, 9, 70, "Usage",ExpressionUUID->"b2d0f4cb-a364-4117-bed2-5f31bdd3a185"],
+Cell[3445, 96, 23, 0, 70, "FooterCell",ExpressionUUID->"0ca9d522-6200-4c55-b0b8-290946d1a16b"]
 }
 ]
 *)

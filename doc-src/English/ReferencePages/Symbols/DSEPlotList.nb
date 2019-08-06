@@ -1,0 +1,1059 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     40522,       1051]
+NotebookOptionsPosition[     32999,        905]
+NotebookOutlinePosition[     33663,        929]
+CellTagsIndexPosition[     33584,        924]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ "New in: ",
+ Cell["XX", "HistoryData",
+  CellTags->"New",ExpressionUUID->"14c13721-f616-49a8-b3bb-6e7434bfbcc4"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified",ExpressionUUID->"751d2734-35de-4024-9fc1-428c97696c2f"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete",ExpressionUUID->"3572ae82-b074-4348-8e5a-dafc8fdae452"],
+ " | Excised in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Excised",ExpressionUUID->"feabac1f-40f4-4427-b467-90361a490ecd"]
+}], "History",
+ CellID->1247902091,ExpressionUUID->"bacd9d41-6fdd-4ef4-985b-c90b08ecb378"],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->1122911449,ExpressionUUID->"6d9cf373-97f1-4925-aa0c-a3afacf9c7cd"],
+
+Cell["Symbol", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->686433507,ExpressionUUID->"8d471367-e20f-4453-aee7-5fbb1ab4e850"],
+
+Cell["DoFun Package", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->18548593,ExpressionUUID->"5405447e-0e35-47fa-88de-edb992a5f523"],
+
+Cell["DoFun`DoDSERGE`", "Categorization",
+ CellLabel->"Context",
+ CellID->1619263835,ExpressionUUID->"78f0f91c-acac-4dfe-884b-89283ca2a854"],
+
+Cell["DoFun/ref/DSEPlotList", "Categorization",
+ CellLabel->"URI",
+ CellID->127924084,ExpressionUUID->"2a37c4a5-0dd5-4bcf-b24b-6aa3246ca2e3"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->477174294,ExpressionUUID->"35ae5e41-a63a-49d8-acfa-12d598ef5df7"],
+
+Cell["XXXX", "Keywords",
+ CellID->1164421360,ExpressionUUID->"4ebb6cf2-60e6-4751-8ef4-5c5191ef86c1"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Syntax Templates", "TemplatesSection",
+ CellID->1872225408,ExpressionUUID->"9db2d0e9-00f9-4096-ad68-0f9ada2fa771"],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Additional Function Template",
+ CellID->1562036412,ExpressionUUID->"8b2148f9-627a-4f0e-ad7e-13d9b1223613"],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Arguments Pattern",
+ CellID->158391909,ExpressionUUID->"12edbd60-9e6e-4cc3-835a-1a617b3230c1"],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Local Variables",
+ CellID->1360575930,ExpressionUUID->"59d9bfc1-d61d-4f76-ab17-1f5453649179"],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Color Equal Signs",
+ CellID->793782254,ExpressionUUID->"623e7c2b-3566-4199-9768-c9402f9962fc"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Details", "DetailsSection",
+ CellID->307771771,ExpressionUUID->"fcd25cfe-6747-451d-9ec4-42af114ec931"],
+
+Cell["XXXX", "Details",
+ CellLabel->"Lead",
+ CellID->670882175,ExpressionUUID->"2402fb37-5174-4775-a1ae-585182b843dc"],
+
+Cell["XXXX", "Details",
+ CellLabel->"Developers",
+ CellID->350963985,ExpressionUUID->"8dea96a3-7b74-4037-972c-4e37ed3ba748"],
+
+Cell["XXXX", "Details",
+ CellLabel->"Authors",
+ CellID->8391405,ExpressionUUID->"8da5f0ab-2e33-4ebf-b34c-d115bbad4dd4"],
+
+Cell["XXXX", "Details",
+ CellLabel->"Feature Name",
+ CellID->3610269,ExpressionUUID->"204d1539-b819-440c-b7ab-b09056468ac7"],
+
+Cell["XXXX", "Details",
+ CellLabel->"QA",
+ CellID->401364205,ExpressionUUID->"332c6b7f-a6bb-4f7a-97c8-c0bca735e6e0"],
+
+Cell["XXXX", "Details",
+ CellLabel->"DA",
+ CellID->350204745,ExpressionUUID->"40bb99e6-b251-49aa-b3ff-8132c08cfd03"],
+
+Cell["XXXX", "Details",
+ CellLabel->"Docs",
+ CellID->732958810,ExpressionUUID->"6a1b23b5-f5ca-4727-b9d0-0a3585c17013"],
+
+Cell["XXXX", "Details",
+ CellLabel->"Features Page Notes",
+ CellID->222905350,ExpressionUUID->"d17a51fc-6863-4516-a885-74bb77159522"],
+
+Cell["XXXX", "Details",
+ CellLabel->"Comments",
+ CellID->240026365,ExpressionUUID->"480e8e21-8eb4-4cfa-b6c6-52d6fbc168c7"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["DSEPlotList", "ObjectName",
+ CellID->1224892054,ExpressionUUID->"e78e1d3b-373d-44c6-b668-ead85144b756"],
+
+Cell[TextData[{
+ Cell["   ", "ModInfo",ExpressionUUID->"891bd48a-83d3-48e5-b3b6-3e6e0720312d"],
+ Cell[BoxData[
+  RowBox[{"DSEPlotList", "[", 
+   StyleBox["expr", "TI"], "]"}]], "InlineFormula",ExpressionUUID->
+  "7a9a5160-9449-431f-be85-d8e5f1607f3a"],
+ "\[LineSeparator]returns a list of plots of each term in ",
+ Cell[BoxData[
+  StyleBox["expr", "TI"]], "InlineFormula",ExpressionUUID->
+  "f9dd14bb-9278-4c8b-8b77-3236b1c97430"],
+ ".\n",
+ Cell["   ", "ModInfo",ExpressionUUID->"9e1cb80f-3fa8-4c47-a4dd-70076ff25a86"],
+ Cell[BoxData[
+  RowBox[{"DSEPlotList", "[", 
+   StyleBox[
+    RowBox[{"expr", ",", " ", "fieldStyles"}], "TI"], "]"}]], "InlineFormula",
+  ExpressionUUID->"40174ca1-adae-4829-ab10-b9a3facbf77a"],
+ " returns a list of plots of each term in ",
+ Cell[BoxData[
+  StyleBox["expr", "TI"]], "InlineFormula",ExpressionUUID->
+  "264d77bb-ca4c-451c-82ea-eaf944397958"],
+ " with the styles of the fields given by ",
+ Cell[BoxData[
+  StyleBox["fieldStyles", "TI"]], "InlineFormula",ExpressionUUID->
+  "a44b8814-9fc1-4253-91f7-ac2a4853a589"],
+ ". The syntax is ",
+ Cell[BoxData[
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       SubscriptBox[
+        StyleBox["field", "TI"], "1"], ",", " ", 
+       SubscriptBox[
+        StyleBox["style", "TI"], "1"]}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       SubscriptBox[
+        StyleBox["field", "TI"], "2"], ",", " ", 
+       SubscriptBox[
+        StyleBox["style", "TI"], "2"]}], "}"}], ",", " ", "..."}], "}"}], 
+   "}"}]], "InlineFormula",ExpressionUUID->
+  "7256b23f-99e3-4e3a-ac3e-8682e3df6521"],
+ " where ",
+ Cell[BoxData[
+  SubscriptBox[
+   StyleBox["style", "TI"], "i"]], "InlineFormula",ExpressionUUID->
+  "ca1ee025-2ee3-4aa6-b9c2-839fc510b2d4"],
+ " are graphics primitives like colors suitable for Line. ",
+ Cell[BoxData[
+  ButtonBox["DSEPlotList",
+   BaseStyle->"Link",
+   ButtonData->"paclet:DoFun/ref/DSEPlotList"]], "InlineFormula",
+  ExpressionUUID->"a7fddbe2-fa3a-47a6-8db8-b37851c68e0b"],
+ " is the basic plotting function used by ",
+ Cell[BoxData[
+  ButtonBox["COPlot",
+   BaseStyle->"Link",
+   ButtonData->"paclet:DoFun/ref/COPlot"]], "InlineFormula",ExpressionUUID->
+  "ccf24530-15d1-4e28-aa87-4fd9a9594f2b"],
+ ", ",
+ Cell[BoxData[
+  ButtonBox["DSEPlot",
+   BaseStyle->"Link",
+   ButtonData->"paclet:DoFun/ref/DSEPlot"]], "InlineFormula",ExpressionUUID->
+  "782cf245-9e43-4e46-aad2-bd6b4f72c9d5"],
+ ", ",
+ Cell[BoxData[
+  ButtonBox["RGEPlot",
+   BaseStyle->"Link",
+   ButtonData->"paclet:DoFun/ref/RGEPlot"]], "InlineFormula",ExpressionUUID->
+  "3d601002-039e-44fe-9d35-be1dd7e337e5"],
+ ".\nBy default, blobs denote dressed quantities (with the exception of \
+internal propagators), dots bare n-point functions, boxes regulator \
+insertions, triangles composite operators and external fields are indicated \
+by a circle.\nAdditional possible options are options of ",
+ ButtonBox["Graph",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Graph"],
+ "."
+}], "Usage",
+ CellChangeTimes->{{3.773934065676372*^9, 3.7739340658048153`*^9}, {
+  3.7740814778135643`*^9, 
+  3.774081557767009*^9}},ExpressionUUID->"d637eeeb-1d85-4e33-8a97-\
+02c47f6065c6"],
+
+Cell["The following options can be given: ", "Notes",ExpressionUUID->"0e1d5bdf-3e60-4533-929e-2ff2ae05ed4e"],
+
+Cell[BoxData[GridBox[{
+   {Cell["   ", "ModInfo",ExpressionUUID->
+     "1a5710cc-aaaa-40c3-b7f4-7dcfc44b01ae"], 
+    ButtonBox["type",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFunDoDSERGE/ref/type"], "\[Placeholder]", 
+    Cell["\<\
+Internal use to distinguish between DSEs, RGEs and equations for composite \
+operators.
+\
+\>", "TableText",ExpressionUUID->"3fa841c5-f5b1-4325-afdf-cc814fd02232"]},
+   {Cell["   ", "ModInfo",ExpressionUUID->
+     "9289ec13-a978-47ac-ace1-812ed9cddd80"], 
+    ButtonBox["bareVertexSymbol",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFun/ref/bareVertexSymbol"], 
+    ButtonBox["diskTinySymbol",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFun/ref/diskTinySymbol"], Cell[TextData[{
+     Cell[BoxData[
+      ButtonBox["bareVertexSymbol",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/bareVertexSymbol"]], "InlineFormula",
+      ExpressionUUID->"89ca0562-2a60-46dd-a85c-c8fd35c0780a"],
+     " is an option of ",
+     Cell[BoxData[
+     "COPlot"], "InlineFormula",ExpressionUUID->
+      "5eb46fe2-bc94-45a9-b568-27afeb1f12e2"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["DSEPlot",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/DSEPlot"]], "InlineFormula",
+      ExpressionUUID->"bce1f0ec-572b-4cfb-aca8-fbe5decb5875"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["DSEPlotList",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/DSEPlotList"]], "InlineFormula",
+      ExpressionUUID->"f52173d1-e511-4e99-a7d8-f4279a02eafd"],
+     " and ",
+     Cell[BoxData[
+      ButtonBox["RGEPlot",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/RGEPlot"]], "InlineFormula",
+      ExpressionUUID->"1842294c-ebd0-4066-a562-276686e927b5"],
+     ". It determines how to draw bare vertices.\n\nPossible values: ",
+     Cell[BoxData[
+      ButtonBox["boxSymbol",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/boxSymbol"]], "InlineFormula",
+      ExpressionUUID->"6b65ddc0-e0dc-432b-88ed-2c3c662fbac8"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["diskSymbol",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/diskSymbol"]], "InlineFormula",
+      ExpressionUUID->"7a01f86d-6032-4e4e-89b1-f19e78deeacc"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["triangleSymbol",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/triangleSymbol"]], "InlineFormula",
+      ExpressionUUID->"16ff728a-07c4-4225-836c-404ee8ac14ea"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["diskTinySymbol",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/diskTinySymbol"]], "InlineFormula",
+      ExpressionUUID->"360f13c0-ed02-4fa6-9e09-e00d1ea5be99"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["diskOpenSymbol",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/diskOpenSymbol"]], "InlineFormula",
+      ExpressionUUID->"4e78a77a-fd16-4190-8350-8877f0334029"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["crossSymbol",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/crossSymbol"]], "InlineFormula",
+      ExpressionUUID->"10d671a6-18d8-4623-9542-7cf5afeccb3d"],
+     " or a user-defined function which takes the coordinate of the regulator \
+insertion as input.\nDefault value: ",
+     Cell[BoxData[
+      ButtonBox["diskTinySymbol",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/diskTinySymbol"]], "InlineFormula",
+      ExpressionUUID->"1b26210d-687d-4f7d-bb03-e8e05a194481"],
+     "."
+    }], "TableText",ExpressionUUID->"381f9763-a277-426d-914f-b13455a2e621"]},
+   {Cell["   ", "ModInfo",ExpressionUUID->
+     "7448db39-fba7-4390-89d2-ccc99282e2f2"], 
+    ButtonBox["coSymbol",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFun/ref/coSymbol"], 
+    ButtonBox["triangleSymbol",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFun/ref/triangleSymbol"], Cell[TextData[{
+     Cell[BoxData[
+      ButtonBox["coSymbol",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/coSymbol"]], "InlineFormula",
+      ExpressionUUID->"4c3e3025-8d68-45b1-8c84-bb9eeac5e2a8"],
+     " is an option of ",
+     Cell[BoxData[
+     "COPlot"], "InlineFormula",ExpressionUUID->
+      "5f05c2c0-e184-4c17-a67c-9c4179d03816"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["DSEPlot",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/DSEPlot"]], "InlineFormula",
+      ExpressionUUID->"64028681-b120-4904-9be9-fed5c4a7d5cd"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["DSEPlotList",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/DSEPlotList"]], "InlineFormula",
+      ExpressionUUID->"bece73d7-9a0f-456f-b311-c3f0afaafe70"],
+     " and ",
+     Cell[BoxData[
+      ButtonBox["RGEPlot",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/RGEPlot"]], "InlineFormula",
+      ExpressionUUID->"37a74dc0-9c77-4d75-a8a1-0a12a4344d97"],
+     ". It determines how to draw composite operators.\n\nPossible values: ",
+     Cell[BoxData[
+      ButtonBox["boxSymbol",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/boxSymbol"]], "InlineFormula",
+      ExpressionUUID->"ae6b4795-e6b4-496c-a88d-1a514602b841"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["diskSymbol",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/diskSymbol"]], "InlineFormula",
+      ExpressionUUID->"c6577708-ec8a-4b76-a831-7416f531b8a3"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["triangleSymbol",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/triangleSymbol"]], "InlineFormula",
+      ExpressionUUID->"a4e87f3b-c766-4d3e-ad2e-82bbb846c792"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["diskTinySymbol",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/diskTinySymbol"]], "InlineFormula",
+      ExpressionUUID->"9e88f9a5-43f5-4101-bc6e-a56c8b7c4f54"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["diskOpenSymbol",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/diskOpenSymbol"]], "InlineFormula",
+      ExpressionUUID->"1667a496-a91d-48cf-ab09-4f51a6f64883"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["crossSymbol",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/crossSymbol"]], "InlineFormula",
+      ExpressionUUID->"2623d4f4-04b6-4467-b568-ece5b42e38f5"],
+     " or a user-defined function which takes the coordinate of the regulator \
+insertion as input.\nDefault value: ",
+     Cell[BoxData[
+      ButtonBox["triangleSymbol",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/triangleSymbol"]], "InlineFormula",
+      ExpressionUUID->"09875650-a105-48d1-bdf8-744d980fa6ec"],
+     "."
+    }], "TableText",ExpressionUUID->"fc5a31a9-ef68-4705-8492-e96f23fb1b2a"]},
+   {Cell["   ", "ModInfo",ExpressionUUID->
+     "e84d5a9a-0da0-43fd-ae2c-be2aded52ef7"], 
+    ButtonBox["factorStyle",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFun/ref/factorStyle"], 
+    RowBox[{"{", 
+     RowBox[{"FontSize", " ", ":>", " ", "16"}], "}"}], Cell[TextData[{
+     Cell[BoxData[
+      ButtonBox["factorStyle",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/factorStyle"]], "InlineFormula",
+      ExpressionUUID->"e57a56a2-0390-4cbf-834f-aca4b862a3a2"],
+     " is an option of ",
+     Cell[BoxData[
+     "COPlot"], "InlineFormula",ExpressionUUID->
+      "e253a3bd-9bab-45eb-b8fa-83703e77c82b"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["DSEPlot",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/DSEPlot"]], "InlineFormula",
+      ExpressionUUID->"9b3caf35-ff9d-43c9-ba4d-cc8fe04ddee8"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["DSEPlotList",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/DSEPlotList"]], "InlineFormula",
+      ExpressionUUID->"d1634be8-daa3-462b-b590-9ee1ce352f25"],
+     " and ",
+     Cell[BoxData[
+      ButtonBox["RGEPlot",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/RGEPlot"]], "InlineFormula",
+      ExpressionUUID->"a348a22a-5481-4095-996c-b99ea80ef90d"],
+     ". It determines the style of all text except ",
+     Cell[BoxData[
+      ButtonBox["indices",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/indices"]], "InlineFormula",
+      ExpressionUUID->"e802ec20-e91d-49a0-a359-826ce7749a85"],
+     " and field labels.\nStandard value: {FontSize:>16}."
+    }], "TableText",ExpressionUUID->"aa51bc6b-3a62-4565-925d-1f51f5e97156"]},
+   {Cell["   ", "ModInfo",ExpressionUUID->
+     "f80d2bd3-bc5c-4fb9-a5f2-22354b7960e0"], 
+    ButtonBox["indexStyle",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFun/ref/indexStyle"], 
+    RowBox[{"{", 
+     RowBox[{"FontSize", " ", ":>", " ", "14"}], "}"}], Cell[TextData[{
+     Cell[BoxData[
+      ButtonBox["indexStyle",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/indexStyle"]], "InlineFormula",
+      ExpressionUUID->"f46362e4-ccac-49b3-84fe-e50f03b92941"],
+     " is an option for ",
+     Cell[BoxData[
+     "COPlot"], "InlineFormula",ExpressionUUID->
+      "711f5cda-8e5a-412f-bd53-04aae8db8d20"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["DSEPlot",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/DSEPlot"]], "InlineFormula",
+      ExpressionUUID->"e07b6869-7e24-42f7-b003-c9ca68d5a894"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["DSEPlotList",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/DSEPlotList"]], "InlineFormula",
+      ExpressionUUID->"85db1a6e-2da0-4ca4-928e-bd733b9deba1"],
+     " and ",
+     Cell[BoxData[
+      ButtonBox["RGEPlot",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/RGEPlot"]], "InlineFormula",
+      ExpressionUUID->"0516e607-d568-4711-a53a-91c27198a541"],
+     ". It determines the style of all ",
+     Cell[BoxData[
+      ButtonBox["indices",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/indices"]], "InlineFormula",
+      ExpressionUUID->"a2a699c3-caf6-4c51-aab4-a6e3aa03536c"],
+     ".\nStandard value: {FontSize:>14}."
+    }], "TableText",ExpressionUUID->"822a72c2-4eb2-4a9c-9bc1-d31886f0f553"]},
+   {Cell["   ", "ModInfo",ExpressionUUID->
+     "63f72e7b-932f-4555-ac5c-398a2cf0e877"], 
+    ButtonBox["output",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFun/ref/output"], 
+    ButtonBox["complete",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFun/ref/complete"], Cell[TextData[{
+     Cell[BoxData[
+      ButtonBox["output",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/output"]], "InlineFormula",
+      ExpressionUUID->"f4e3fe83-d227-4243-b1cd-1cbe0a2d0f49"],
+     "  is an option of ",
+     Cell[BoxData[
+     "COPlot"], "InlineFormula",ExpressionUUID->
+      "0e9c006d-7c7c-4ea4-a375-164f85c35921"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["DSEPlot",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/DSEPlot"]], "InlineFormula",
+      ExpressionUUID->"cdcc8e77-d28a-4686-b58f-e62819108a49"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["DSEPlotList",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/DSEPlotList"]], "InlineFormula",
+      ExpressionUUID->"9ead6634-157f-4b15-b8d5-6e4a80cc6e9e"],
+     " and ",
+     Cell[BoxData[
+      ButtonBox["RGEPlot",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/RGEPlot"]], "InlineFormula",
+      ExpressionUUID->"e0cd3acb-9475-4768-a75c-5cd8761191e0"],
+     ". It determines in what the ",
+     Cell[BoxData[
+      ButtonBox["output",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/output"]], "InlineFormula",
+      ExpressionUUID->"dd3540f0-7096-49cd-80f5-b80e0b81e4f7"],
+     " is given.\n\nPossible values are:\n -) List: Gives a list of all \
+graphs.\n -) ",
+     Cell[BoxData[
+      ButtonBox["forceEquation",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/forceEquation"]], "InlineFormula",
+      ExpressionUUID->"932f820e-4c6a-4e0d-90e9-aad42bd75f4d"],
+     ": Output in form of an equation, ",
+     Cell[BoxData[
+      ButtonBox["even",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/even"]], "InlineFormula",ExpressionUUID->
+      "9109a113-8ed6-47ea-ac0e-9c7411fc9bd8"],
+     " if a single graph is plotted.\n -) ",
+     Cell[BoxData[
+      ButtonBox["complete",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/complete"]], "InlineFormula",
+      ExpressionUUID->"3ba08421-0260-40fe-a5fc-e2ba74921a62"],
+     " (default): Output for several graphs in form of an equation and for a \
+single graph as such.\n "
+    }], "TableText",ExpressionUUID->"eaf86df8-cb95-4c25-8dff-6f68add6c7d6"]},
+   {Cell["   ", "ModInfo",ExpressionUUID->
+     "b5fa12b6-e02b-4bad-a5d9-59da2ed47d5a"], 
+    ButtonBox["regulatorSymbol",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFun/ref/regulatorSymbol"], 
+    ButtonBox["boxSymbol",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFun/ref/boxSymbol"], Cell[TextData[{
+     Cell[BoxData[
+      ButtonBox["regulatorSymbol",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/regulatorSymbol"]], "InlineFormula",
+      ExpressionUUID->"d6cddcd7-b24f-45c2-946a-49c6e9145572"],
+     "  is an option of ",
+     Cell[BoxData[
+     "COPlot"], "InlineFormula",ExpressionUUID->
+      "10f25d0e-70fc-4e61-b652-fb6586dbb616"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["DSEPlot",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/DSEPlot"]], "InlineFormula",
+      ExpressionUUID->"3b67b6b3-e257-456e-881a-2e24c57ca47e"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["DSEPlotList",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/DSEPlotList"]], "InlineFormula",
+      ExpressionUUID->"5d629c04-4da6-451b-9847-993fe9929e5d"],
+     " and ",
+     Cell[BoxData[
+      ButtonBox["RGEPlot",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/RGEPlot"]], "InlineFormula",
+      ExpressionUUID->"e9b189ec-1453-4674-82ec-b76813afa46e"],
+     ". It determines how to draw regulator insertions.\n\nPossible values: ",
+     
+     Cell[BoxData[
+      ButtonBox["boxSymbol",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/boxSymbol"]], "InlineFormula",
+      ExpressionUUID->"d3ee71ba-60dd-4cbd-8258-3859812dd635"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["diskSymbol",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/diskSymbol"]], "InlineFormula",
+      ExpressionUUID->"cf07489e-bef4-45d4-851b-daf2d13e39e5"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["triangleSymbol",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/triangleSymbol"]], "InlineFormula",
+      ExpressionUUID->"8a93923d-dea4-4987-8784-f45e74cf91f3"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["diskTinySymbol",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/diskTinySymbol"]], "InlineFormula",
+      ExpressionUUID->"8d8a045f-d315-43f6-8584-4bae9a3bb89a"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["diskOpenSymbol",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/diskOpenSymbol"]], "InlineFormula",
+      ExpressionUUID->"04ffb1d1-de52-42fb-b73d-ca9dee5bc645"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["crossSymbol",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/crossSymbol"]], "InlineFormula",
+      ExpressionUUID->"ea09542b-2b49-4378-9729-b3bb410053b3"],
+     " or a user-defined function which takes the coordinate of the regulator \
+insertion as input.\nDefault value: ",
+     Cell[BoxData[
+      ButtonBox["boxSymbol",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/boxSymbol"]], "InlineFormula",
+      ExpressionUUID->"f43fb4a3-867c-411e-a9f6-5776801c1cc4"],
+     "."
+    }], "TableText",ExpressionUUID->"252777e8-24a8-4605-ae5e-0589ff03f19a"]},
+   {Cell["   ", "ModInfo",ExpressionUUID->
+     "b9982492-980b-47e9-8570-dde69d668cac"], 
+    ButtonBox["vertexSymbol",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFun/ref/vertexSymbol"], 
+    ButtonBox["diskSymbol",
+     BaseStyle->"Link",
+     ButtonData->"paclet:DoFun/ref/diskSymbol"], Cell[TextData[{
+     Cell[BoxData[
+      ButtonBox["vertexSymbol",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/vertexSymbol"]], "InlineFormula",
+      ExpressionUUID->"bcd238da-732b-4bb9-a138-48606a984746"],
+     " is an option of ",
+     Cell[BoxData[
+     "COPlot"], "InlineFormula",ExpressionUUID->
+      "26cb4803-23ce-4358-a1d3-99f999e18532"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["DSEPlot",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/DSEPlot"]], "InlineFormula",
+      ExpressionUUID->"6721bbd7-958f-4258-92f2-26a0c2ade301"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["DSEPlotList",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/DSEPlotList"]], "InlineFormula",
+      ExpressionUUID->"003f8c4a-7a5c-4aa9-8d03-1f739f13504a"],
+     " and ",
+     Cell[BoxData[
+      ButtonBox["RGEPlot",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/RGEPlot"]], "InlineFormula",
+      ExpressionUUID->"879aa915-ee29-4df5-a44f-c54b05bfba28"],
+     ". It determines how to draw dressed vertices.\n\nPossible values: ",
+     Cell[BoxData[
+      ButtonBox["boxSymbol",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/boxSymbol"]], "InlineFormula",
+      ExpressionUUID->"053ed20c-dcea-4ec2-87ac-ee349d7ec6d5"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["diskSymbol",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/diskSymbol"]], "InlineFormula",
+      ExpressionUUID->"74179189-3fc4-4748-8256-cad396b2e51c"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["triangleSymbol",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/triangleSymbol"]], "InlineFormula",
+      ExpressionUUID->"28fc9a7c-e712-416a-b8c8-fa84ef959704"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["diskTinySymbol",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/diskTinySymbol"]], "InlineFormula",
+      ExpressionUUID->"36907d42-4abe-47dc-b041-f10a6b2cefe9"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["diskOpenSymbol",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/diskOpenSymbol"]], "InlineFormula",
+      ExpressionUUID->"3156a758-95e7-46c8-bc02-f8db2d5d3a7a"],
+     ", ",
+     Cell[BoxData[
+      ButtonBox["crossSymbol",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/crossSymbol"]], "InlineFormula",
+      ExpressionUUID->"ba62bd39-78da-4127-859f-0c1f3790140a"],
+     " or a user-defined function which takes the coordinate of the regulator \
+insertion as input.\nDefault value: ",
+     Cell[BoxData[
+      ButtonBox["diskSymbol",
+       BaseStyle->"Link",
+       ButtonData->"paclet:DoFun/ref/diskSymbol"]], "InlineFormula",
+      ExpressionUUID->"42c96784-866b-4502-8a32-888618b1a392"],
+     "."
+    }], "TableText",ExpressionUUID->"a003ee11-5fff-4449-ba55-dedcbb95f79a"]},
+   {Cell["   ", "ModInfo",ExpressionUUID->
+     "deac992b-a368-4f42-987f-126c3f331c35"], 
+    ButtonBox["ImageSize",
+     BaseStyle->"Link"], "100", Cell["\<\
+ImageSize is an option that specifies the overall size of an image to display \
+for an object. \
+\>", "TableText",ExpressionUUID->"5501ba09-fb06-442c-bfa4-2426a83ac05d"]}
+  }]], "3ColumnTableMod",
+ CellChangeTimes->{{3.77400005801362*^9, 3.774000081656786*^9}, {
+  3.77400012376505*^9, 3.7740002460889597`*^9}, {3.7740815843246317`*^9, 
+  3.774081602071682*^9}},
+ CellID->1725773012,ExpressionUUID->"f354dd07-a1be-4c9f-a98d-e46bc563fb4b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Tutorials", "TutorialsSection",
+ CellID->250839057,ExpressionUUID->"8ded6780-4b60-4453-a3f2-fa3d1ec41e19"],
+
+Cell["XXXX", "Tutorials",
+ CellID->341631938,ExpressionUUID->"22829b60-392a-4ab0-a40f-9d1b4a9b8408"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Demonstrations", "RelatedDemonstrationsSection",
+ CellID->1268215905,ExpressionUUID->"5ea2b719-816a-4a5f-9eb4-1177ea328901"],
+
+Cell["XXXX", "RelatedDemonstrations",
+ CellID->1129518860,ExpressionUUID->"226e5a06-4107-4214-90f1-7ad4836f20a8"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Links", "RelatedLinksSection",
+ CellID->1584193535,ExpressionUUID->"00eaf0c8-f79a-4922-bd84-1da458b3cf8f"],
+
+Cell["XXXX", "RelatedLinks",
+ CellID->1038487239,ExpressionUUID->"c5dbc26a-5a73-4a3a-be6a-ec6f6b2b027b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",
+ CellID->1255426704,ExpressionUUID->"fea8b69f-07ba-47a5-824d-d8afbab0354a"],
+
+Cell["XXXX", "SeeAlso",
+ CellID->929782353,ExpressionUUID->"a06ba56e-5e12-48c5-a58b-58f67f0015b8"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More About", "MoreAboutSection",
+ CellID->38303248,ExpressionUUID->"27a85f28-13e3-417e-9810-730bd11c5e0f"],
+
+Cell["XXXX", "MoreAbout",
+ CellID->1665078683,ExpressionUUID->"4c164ced-e2c8-451f-8ac9-6b963ee1b427"]
+}, Open  ]],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     StyleBox["Examples", "PrimaryExamplesSection"], 
+     ButtonBox[
+      RowBox[{
+       RowBox[{"More", " ", "Examples"}], " ", "\[RightTriangle]"}],
+      BaseStyle->"ExtendedExamplesLink",
+      ButtonData:>"ExtendedExamples"]}
+   }],
+  $Line = 0; Null]], "PrimaryExamplesSection",
+ CellID->880084151,ExpressionUUID->"6a451068-7cf0-4157-926c-56c0e7c2e35e"],
+
+Cell[CellGroupData[{
+
+Cell["More Examples", "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->1854448968,ExpressionUUID->"fd481f31-9c3c-4d62-9f29-98fdf236b13b"],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "Scope", "ExampleSection",ExpressionUUID->
+   "eb222e6e-8a65-4873-be82-2aaf881b06aa"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1293636265,ExpressionUUID->"8841d7a0-8af0-4c8e-aa89-973eb4f9280d"],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "Generalizations & Extensions", "ExampleSection",ExpressionUUID->
+   "bb5e1ae0-e76b-4993-83ca-0ea8728db470"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1020263627,ExpressionUUID->"789e0bbf-5b77-4777-80e1-0e18ca7b288c"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "Options", "ExampleSection",ExpressionUUID->
+   "9f9734d7-e1a0-4abb-b6ab-fd09b08c948d"],
+  $Line = 0; Null]], "ExampleSection",ExpressionUUID->"359a47d4-96ab-4369-\
+bdb1-2d73aa8dc0b7"],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "bareVertexSymbol", "ExampleSubsection",ExpressionUUID->
+   "1f7ad238-eefd-4789-bbf8-a19061653c98"],
+  $Line = 0; Null]], "ExampleSubsection",ExpressionUUID->"e5f826e3-3a34-47a0-\
+859b-8c5c7451bf46"],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "coSymbol", "ExampleSubsection",ExpressionUUID->
+   "31c48d69-e39e-4dbe-a893-63719a6841a6"],
+  $Line = 0; Null]], "ExampleSubsection",ExpressionUUID->"c2990509-afa1-417e-\
+858f-9fa6d2cc08e9"],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "factorStyle", "ExampleSubsection",ExpressionUUID->
+   "b6ee1347-8b9b-4719-8e8f-79381a85b80a"],
+  $Line = 0; Null]], "ExampleSubsection",ExpressionUUID->"8f9f3921-861a-4510-\
+93b2-2c716e3eb2ca"],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "indexStyle", "ExampleSubsection",ExpressionUUID->
+   "7dd2048a-f7f4-4d92-a18c-65646988aeca"],
+  $Line = 0; Null]], "ExampleSubsection",ExpressionUUID->"b4e0e208-beeb-445c-\
+bfef-12372b451409"],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "output", "ExampleSubsection",ExpressionUUID->
+   "217a6a76-47a6-4c75-a60b-e3339b632b2d"],
+  $Line = 0; Null]], "ExampleSubsection",ExpressionUUID->"9879f6cf-359c-4916-\
+bd5c-9f6721ef9f31"],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "type", "ExampleSubsection",ExpressionUUID->
+   "0e206e41-6b48-4f38-8a8d-2ad3a2788cbf"],
+  $Line = 0; Null]], "ExampleSubsection",ExpressionUUID->"f430d459-c74b-4769-\
+81c6-d0f79981c0b0"],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "regulatorSymbol", "ExampleSubsection",ExpressionUUID->
+   "ef63deca-5efb-4a2f-9df4-d280c7401271"],
+  $Line = 0; Null]], "ExampleSubsection",ExpressionUUID->"24ace14d-6ec1-4f4b-\
+a2eb-2fd6b25fccc9"],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "vertexSymbol", "ExampleSubsection",ExpressionUUID->
+   "e79fedc7-2e31-4c46-9904-ee3c1defc908"],
+  $Line = 0; Null]], "ExampleSubsection",ExpressionUUID->"4709f73e-616d-44fa-\
+837e-3b6c23371dd5"],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "ImageSize", "ExampleSubsection",ExpressionUUID->
+   "4e4a3b75-4c71-4e4b-86d7-8cf71659c3a3"],
+  $Line = 0; Null]], "ExampleSubsection",ExpressionUUID->"2154f587-dac0-444d-\
+b8df-2fec46be39b5"]
+}, Closed]],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "Applications", "ExampleSection",ExpressionUUID->
+   "c1babcd4-f04b-4302-abbe-40e1ff187f14"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->258228157,ExpressionUUID->"b1cdfd51-b69d-4203-84a0-5a7425b5fa81"],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "Properties & Relations", "ExampleSection",ExpressionUUID->
+   "4c1587a9-1961-442e-a113-8eaa7716169b"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2123667759,ExpressionUUID->"2799b466-ae54-45e6-bcae-16055b3b0cef"],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "Possible Issues", "ExampleSection",ExpressionUUID->
+   "39205429-3043-4477-9bf6-6eff270fd7f6"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1305812373,ExpressionUUID->"7a2b3e55-edb4-485d-a718-c4d47725be02"],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "Interactive Examples", "ExampleSection",ExpressionUUID->
+   "1cc94fd8-79d7-45dd-9a18-a0b7b77066e1"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1653164318,ExpressionUUID->"3aadf764-f9a4-4b89-b66b-5796e5e05c05"],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "Neat Examples", "ExampleSection",ExpressionUUID->
+   "dc6019ae-46aa-4f23-9043-5c0da3842b8e"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->589267740,ExpressionUUID->"c509c6d8-725b-4413-aab0-79f8f61871e6"]
+}, Open  ]]
+},
+WindowSize->{700, 770},
+WindowMargins->{{4, Automatic}, {Automatic, 53}},
+CellContext->"Global`",
+FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
+  CharacterEncoding -> "UTF-8"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "ExtendedExamples"->{
+  Cell[28639, 778, 155, 2, 57, "ExtendedExamplesSection",ExpressionUUID->"fd481f31-9c3c-4d62-9f29-98fdf236b13b",
+   CellTags->"ExtendedExamples",
+   CellID->1854448968]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"ExtendedExamples", 33390, 917}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 599, 14, 25, "History",ExpressionUUID->"bacd9d41-6fdd-4ef4-985b-c90b08ecb378",
+ CellID->1247902091],
+Cell[CellGroupData[{
+Cell[1182, 38, 123, 1, 30, "CategorizationSection",ExpressionUUID->"6d9cf373-97f1-4925-aa0c-a3afacf9c7cd",
+ CellID->1122911449],
+Cell[1308, 41, 134, 2, 35, "Categorization",ExpressionUUID->"8d471367-e20f-4453-aee7-5fbb1ab4e850",
+ CellID->686433507],
+Cell[1445, 45, 140, 2, 35, "Categorization",ExpressionUUID->"5405447e-0e35-47fa-88de-edb992a5f523",
+ CellID->18548593],
+Cell[1588, 49, 140, 2, 35, "Categorization",ExpressionUUID->"78f0f91c-acac-4dfe-884b-89283ca2a854",
+ CellID->1619263835],
+Cell[1731, 53, 141, 2, 35, "Categorization",ExpressionUUID->"2a37c4a5-0dd5-4bcf-b24b-6aa3246ca2e3",
+ CellID->127924084]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1909, 60, 110, 1, 20, "KeywordsSection",ExpressionUUID->"35ae5e41-a63a-49d8-acfa-12d598ef5df7",
+ CellID->477174294],
+Cell[2022, 63, 100, 1, 70, "Keywords",ExpressionUUID->"4ebb6cf2-60e6-4751-8ef4-5c5191ef86c1",
+ CellID->1164421360]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2159, 69, 120, 1, 20, "TemplatesSection",ExpressionUUID->"9db2d0e9-00f9-4096-ad68-0f9ada2fa771",
+ CellID->1872225408],
+Cell[2282, 72, 149, 2, 70, "Template",ExpressionUUID->"8b2148f9-627a-4f0e-ad7e-13d9b1223613",
+ CellID->1562036412],
+Cell[2434, 76, 137, 2, 70, "Template",ExpressionUUID->"12edbd60-9e6e-4cc3-835a-1a617b3230c1",
+ CellID->158391909],
+Cell[2574, 80, 136, 2, 70, "Template",ExpressionUUID->"59d9bfc1-d61d-4f76-ab17-1f5453649179",
+ CellID->1360575930],
+Cell[2713, 84, 137, 2, 70, "Template",ExpressionUUID->"623e7c2b-3566-4199-9768-c9402f9962fc",
+ CellID->793782254]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2887, 91, 108, 1, 20, "DetailsSection",ExpressionUUID->"fcd25cfe-6747-451d-9ec4-42af114ec931",
+ CellID->307771771],
+Cell[2998, 94, 118, 2, 70, "Details",ExpressionUUID->"2402fb37-5174-4775-a1ae-585182b843dc",
+ CellID->670882175],
+Cell[3119, 98, 124, 2, 70, "Details",ExpressionUUID->"8dea96a3-7b74-4037-972c-4e37ed3ba748",
+ CellID->350963985],
+Cell[3246, 102, 119, 2, 70, "Details",ExpressionUUID->"8da5f0ab-2e33-4ebf-b34c-d115bbad4dd4",
+ CellID->8391405],
+Cell[3368, 106, 124, 2, 70, "Details",ExpressionUUID->"204d1539-b819-440c-b7ab-b09056468ac7",
+ CellID->3610269],
+Cell[3495, 110, 116, 2, 70, "Details",ExpressionUUID->"332c6b7f-a6bb-4f7a-97c8-c0bca735e6e0",
+ CellID->401364205],
+Cell[3614, 114, 116, 2, 70, "Details",ExpressionUUID->"40bb99e6-b251-49aa-b3ff-8132c08cfd03",
+ CellID->350204745],
+Cell[3733, 118, 118, 2, 70, "Details",ExpressionUUID->"6a1b23b5-f5ca-4727-b9d0-0a3585c17013",
+ CellID->732958810],
+Cell[3854, 122, 133, 2, 70, "Details",ExpressionUUID->"d17a51fc-6863-4516-a885-74bb77159522",
+ CellID->222905350],
+Cell[3990, 126, 122, 2, 70, "Details",ExpressionUUID->"480e8e21-8eb4-4cfa-b6c6-52d6fbc168c7",
+ CellID->240026365]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[4149, 133, 109, 1, 65, "ObjectName",ExpressionUUID->"e78e1d3b-373d-44c6-b668-ead85144b756",
+ CellID->1224892054],
+Cell[4261, 136, 3159, 85, 240, "Usage",ExpressionUUID->"d637eeeb-1d85-4e33-8a97-02c47f6065c6"],
+Cell[7423, 223, 108, 0, 26, "Notes",ExpressionUUID->"0e1d5bdf-3e60-4533-929e-2ff2ae05ed4e"],
+Cell[7534, 225, 19346, 490, 1422, "3ColumnTableMod",ExpressionUUID->"f354dd07-a1be-4c9f-a98d-e46bc563fb4b",
+ CellID->1725773012]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26917, 720, 112, 1, 46, "TutorialsSection",ExpressionUUID->"8ded6780-4b60-4453-a3f2-fa3d1ec41e19",
+ CellID->250839057],
+Cell[27032, 723, 100, 1, 17, "Tutorials",ExpressionUUID->"22829b60-392a-4ab0-a40f-9d1b4a9b8408",
+ CellID->341631938]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27169, 729, 138, 1, 33, "RelatedDemonstrationsSection",ExpressionUUID->"5ea2b719-816a-4a5f-9eb4-1177ea328901",
+ CellID->1268215905],
+Cell[27310, 732, 113, 1, 17, "RelatedDemonstrations",ExpressionUUID->"226e5a06-4107-4214-90f1-7ad4836f20a8",
+ CellID->1129518860]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27460, 738, 120, 1, 33, "RelatedLinksSection",ExpressionUUID->"00eaf0c8-f79a-4922-bd84-1da458b3cf8f",
+ CellID->1584193535],
+Cell[27583, 741, 104, 1, 17, "RelatedLinks",ExpressionUUID->"c5dbc26a-5a73-4a3a-be6a-ec6f6b2b027b",
+ CellID->1038487239]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27724, 747, 110, 1, 33, "SeeAlsoSection",ExpressionUUID->"fea8b69f-07ba-47a5-824d-d8afbab0354a",
+ CellID->1255426704],
+Cell[27837, 750, 98, 1, 17, "SeeAlso",ExpressionUUID->"a06ba56e-5e12-48c5-a58b-58f67f0015b8",
+ CellID->929782353]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27972, 756, 112, 1, 33, "MoreAboutSection",ExpressionUUID->"27a85f28-13e3-417e-9810-730bd11c5e0f",
+ CellID->38303248],
+Cell[28087, 759, 101, 1, 17, "MoreAbout",ExpressionUUID->"4c164ced-e2c8-451f-8ac9-6b963ee1b427",
+ CellID->1665078683]
+}, Open  ]],
+Cell[28203, 763, 411, 11, 71, "PrimaryExamplesSection",ExpressionUUID->"6a451068-7cf0-4157-926c-56c0e7c2e35e",
+ CellID->880084151],
+Cell[CellGroupData[{
+Cell[28639, 778, 155, 2, 57, "ExtendedExamplesSection",ExpressionUUID->"fd481f31-9c3c-4d62-9f29-98fdf236b13b",
+ CellTags->"ExtendedExamples",
+ CellID->1854448968],
+Cell[28797, 782, 242, 5, 33, "ExampleSection",ExpressionUUID->"8841d7a0-8af0-4c8e-aa89-973eb4f9280d",
+ CellID->1293636265],
+Cell[29042, 789, 265, 5, 21, "ExampleSection",ExpressionUUID->"789e0bbf-5b77-4777-80e1-0e18ca7b288c",
+ CellID->1020263627],
+Cell[CellGroupData[{
+Cell[29332, 798, 225, 5, 21, "ExampleSection",ExpressionUUID->"359a47d4-96ab-4369-bdb1-2d73aa8dc0b7"],
+Cell[29560, 805, 240, 5, 70, "ExampleSubsection",ExpressionUUID->"e5f826e3-3a34-47a0-859b-8c5c7451bf46"],
+Cell[29803, 812, 232, 5, 70, "ExampleSubsection",ExpressionUUID->"c2990509-afa1-417e-858f-9fa6d2cc08e9"],
+Cell[30038, 819, 235, 5, 70, "ExampleSubsection",ExpressionUUID->"8f9f3921-861a-4510-93b2-2c716e3eb2ca"],
+Cell[30276, 826, 234, 5, 70, "ExampleSubsection",ExpressionUUID->"b4e0e208-beeb-445c-bfef-12372b451409"],
+Cell[30513, 833, 230, 5, 70, "ExampleSubsection",ExpressionUUID->"9879f6cf-359c-4916-bd5c-9f6721ef9f31"],
+Cell[30746, 840, 228, 5, 70, "ExampleSubsection",ExpressionUUID->"f430d459-c74b-4769-81c6-d0f79981c0b0"],
+Cell[30977, 847, 239, 5, 70, "ExampleSubsection",ExpressionUUID->"24ace14d-6ec1-4f4b-a2eb-2fd6b25fccc9"],
+Cell[31219, 854, 236, 5, 70, "ExampleSubsection",ExpressionUUID->"4709f73e-616d-44fa-837e-3b6c23371dd5"],
+Cell[31458, 861, 233, 5, 70, "ExampleSubsection",ExpressionUUID->"2154f587-dac0-444d-b8df-2fec46be39b5"]
+}, Closed]],
+Cell[31706, 869, 248, 5, 21, "ExampleSection",ExpressionUUID->"b1cdfd51-b69d-4203-84a0-5a7425b5fa81",
+ CellID->258228157],
+Cell[31957, 876, 259, 5, 21, "ExampleSection",ExpressionUUID->"2799b466-ae54-45e6-bcae-16055b3b0cef",
+ CellID->2123667759],
+Cell[32219, 883, 252, 5, 21, "ExampleSection",ExpressionUUID->"7a2b3e55-edb4-485d-a718-c4d47725be02",
+ CellID->1305812373],
+Cell[32474, 890, 257, 5, 21, "ExampleSection",ExpressionUUID->"3aadf764-f9a4-4b89-b66b-5796e5e05c05",
+ CellID->1653164318],
+Cell[32734, 897, 249, 5, 21, "ExampleSection",ExpressionUUID->"c509c6d8-725b-4413-aab0-79f8f61871e6",
+ CellID->589267740]
+}, Open  ]]
+}
+]
+*)
+

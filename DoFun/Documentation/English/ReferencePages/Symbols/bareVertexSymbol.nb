@@ -1,0 +1,480 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     18557,        470]
+NotebookOptionsPosition[     15041,        388]
+NotebookOutlinePosition[     17521,        449]
+CellTagsIndexPosition[     17436,        444]
+WindowTitle->bareVertexSymbol
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell",ExpressionUUID->
+     "db2905b0-e677-4c70-bf19-f3b89521b60d"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }],ExpressionUUID->"98258c8e-1e81-4e55-bf7d-7d7767185356"],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"DoFun/ref/bareVertexSymbol\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["DoFun/ref/bareVertexSymbol"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/DoFun/ref/\
+bareVertexSymbol.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$19186], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "DoFun/ref/bareVertexSymbol", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
+     LineSpacing->{1.4, 0},ExpressionUUID->
+     "6e65d15c-208b-47d2-80c6-55365d429100"]], "AnchorBar",ExpressionUUID->
+     "42ed7c92-2653-4a6d-8840-35ba1e79ec47"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1,ExpressionUUID->"3cdc08d6-ee4d-4526-af41-1b563a6f686c"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell["bareVertexSymbol", "ObjectName",ExpressionUUID->
+  "a460e683-f93c-4aa2-aacb-bb96542f4dc9"],
+ Cell[BoxData[
+  TemplateBox[{8},
+   "Spacer1"]],ExpressionUUID->"401b82a3-c276-480a-ae9e-4f9db102a2f9"],
+ Cell[BoxData[
+ ""], "ObjectNameTranslation",ExpressionUUID->
+  "655cd6ec-1085-45dc-9b16-56a16353be0f"]
+}], "ObjectNameGrid",ExpressionUUID->"d8c4aecc-4a42-4c00-bfef-a373ab546422"],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+     "bareVertexSymbol"], "InlineFormula",ExpressionUUID->
+      "0e10976f-f872-4dfe-a2e3-d1d68f1fe4a1"],
+     "\[LineSeparator]is an option of ",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData["COPlot"]],"paclet:DoFun/ref/COPlot"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
+      "2129db7a-886e-4aa4-84b9-05eebd85e2a9"],
+     ", ",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData["DSEPlot"]],"paclet:DoFun/ref/DSEPlot"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
+      "26386182-e185-43d1-ac98-af534ae813e3"],
+     ", ",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData["DSEPlotList"]],"paclet:DoFun/ref/DSEPlotList"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
+      "d29f21e4-a3d6-4527-a187-1433eaf2e819"],
+     " and ",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData["RGEPlot"]],"paclet:DoFun/ref/RGEPlot"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
+      "eda30efb-ddb5-432d-b506-293ab829cc8b"],
+     ". It determines how to draw bare vertices. Possible values: ",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData["boxSymbol"]],"paclet:DoFun/ref/boxSymbol"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
+      "883d9a27-8a85-4d2a-9839-74b023f2ff13"],
+     ", ",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData["diskSymbol"]],"paclet:DoFun/ref/diskSymbol"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
+      "b6806025-2e99-43ba-a9d7-98c5682f0cbd"],
+     ", ",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData["triangleSymbol"]],"paclet:DoFun/ref/triangleSymbol"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
+      "c9e71060-d3fc-4547-b1b9-369ff24e11c8"],
+     ", ",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData["diskTinySymbol"]],"paclet:DoFun/ref/diskTinySymbol"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
+      "7ab7a35a-bd56-457d-8ac2-01b253649e30"],
+     ", ",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData["diskOpenSymbol"]],"paclet:DoFun/ref/diskOpenSymbol"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
+      "ec78913b-47f0-4792-a2ed-1b897c2096bb"],
+     ", ",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData["crossSymbol"]],"paclet:DoFun/ref/crossSymbol"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
+      "a08e6e0d-ce69-4970-9dd7-b3e5a0eb1b2d"],
+     " or a user-defined function which takes the coordinate of the regulator \
+insertion as input. Default value: ",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData["diskTinySymbol"]],"paclet:DoFun/ref/diskTinySymbol"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
+      "42baab3e-ce70-4095-8f1c-5ee4d7eb5466"],
+     "."
+    }],ExpressionUUID->"3aa8cf8f-95be-4cc7-87c1-2f420942b683"]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> \
+{}}},ExpressionUUID->"cee45db4-2f28-4ef9-87e9-de8a27f79c4d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"4e0c00a4-66b2-413e-bee5-071dade3c4fe"],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "f9e582fd-4b9c-488c-b48c-8e313f87a75d"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1108479648,ExpressionUUID->"b21c9f40-0843-4332-8ce7-da74fd18eb28"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "db8febfb-2cfd-42dc-9c22-4f68d02b1783"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->513593161,ExpressionUUID->"beaa6794-6281-4776-8cc3-5a1e19789450"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<DoFun`\>\"", "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->1414887963,ExpressionUUID->"669dfe87-a252-4734-9e02-2da8c8ccb8bb"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"setFields", "[", 
+   RowBox[{
+    RowBox[{"{", "phi", "}"}], ",", 
+    RowBox[{"{", "}"}], ",", 
+    RowBox[{"{", "}"}]}], "]"}], ";", 
+  RowBox[{"DSEPlot", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"1", "/", "2"}], " ", 
+     RowBox[{"op", "[", 
+      RowBox[{
+       RowBox[{"P", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"phi", ",", "t1"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"phi", ",", "v1"}], "}"}]}], "]"}], ",", 
+       RowBox[{"S", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"phi", ",", "i"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"phi", ",", "j"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"phi", ",", "v1"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"phi", ",", "t1"}], "}"}]}], "]"}]}], "]"}]}], ",", 
+    RowBox[{"{", 
+     RowBox[{"{", 
+      RowBox[{"phi", ",", "Black"}], "}"}], "}"}], ",", 
+    RowBox[{"bareVertexSymbol", "\[Rule]", "triangleSymbol"}]}], 
+   "]"}]}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->885629261,ExpressionUUID->"ee44edf7-4f31-4471-9581-53e171ad7ea0"],
+
+Cell[BoxData[
+ TemplateBox[{GraphicsBox[
+    NamespaceBox["NetworkGraphics", 
+     DynamicModuleBox[{Typeset`graph = HoldComplete[
+         Graph[{{$CellContext`phi, $CellContext`i, 
+            " leg i"}, {$CellContext`phi, $CellContext`i, 
+            "S"}, {$CellContext`phi, $CellContext`j, " leg j"}}, {{{2, 2}, {1,
+            2}, {2, 3}}, Null}, {
+          EdgeShapeFunction -> {
+            DirectedEdge[{$CellContext`phi, $CellContext`i, 
+                " leg i"}, {$CellContext`phi, $CellContext`i, "S"}] -> ({
+               GrayLevel[0], 
+               DoFun`DoDSERGE`Private`arrowLine[
+               DoFun`DoDSERGE`Private`field$27288, 
+                SlotSequence[1]]}& ), 
+             DirectedEdge[{$CellContext`phi, $CellContext`i, 
+                "S"}, {$CellContext`phi, $CellContext`i, "S"}] -> ({
+               GrayLevel[0], 
+               DoFun`DoDSERGE`Private`arrowLine[
+               DoFun`DoDSERGE`Private`field$27287, 
+                SlotSequence[1]]}& ), 
+             DirectedEdge[{$CellContext`phi, $CellContext`i, 
+                "S"}, {$CellContext`phi, $CellContext`j, " leg j"}] -> ({
+               GrayLevel[0], 
+               DoFun`DoDSERGE`Private`arrowLine[
+               DoFun`DoDSERGE`Private`field$27289, 
+                SlotSequence[1]]}& )}, GraphLayout -> 
+           "SpringElectricalEmbedding", ImageSize -> 100, 
+           VertexShapeFunction -> {{$CellContext`phi, $CellContext`i, 
+               "S"} -> (DoFun`DoDSERGE`Private`getVertexShapeFunction[
+               SlotSequence[1], DoFun`DoDSERGE`bareVertexSymbol -> 
+               DoFun`DoDSERGE`triangleSymbol]& ), {$CellContext`phi, \
+$CellContext`i, " leg i"} -> (DoFun`DoDSERGE`Private`getVertexShapeFunction[
+               SlotSequence[1], DoFun`DoDSERGE`bareVertexSymbol -> 
+               DoFun`DoDSERGE`triangleSymbol]& ), {$CellContext`phi, \
+$CellContext`j, " leg j"} -> (DoFun`DoDSERGE`Private`getVertexShapeFunction[
+               SlotSequence[1], DoFun`DoDSERGE`bareVertexSymbol -> 
+               DoFun`DoDSERGE`triangleSymbol]& )}, VertexSize -> {0.15}}]]}, 
+      TagBox[
+       GraphicsGroupBox[{{
+          Arrowheads[{{Medium, 0.8}}], 
+          Directive[
+           Opacity[0.7], 
+           Hue[0.6, 0.7, 0.5]], {
+           GrayLevel[0], {
+            
+            LineBox[{{0., 0.}, {1.0003055128773508`, 
+             4.665773677819736*^-18}}]}}, {
+           GrayLevel[0], {
+            
+            BezierCurveBox[{{1.0003055128773508`, 4.665773677819736*^-18}, {
+             1.2158671061029376`, -0.1425312379880006}, {
+             1.2341613846253103`, -0.32493768720862726`}, {
+             1.1701691253828344`, -0.43105693297714304`}, {
+             0.8304419003718674, -0.4310569329771431}, {
+             0.7664496411293912, -0.32493768720862726`}, {
+             0.784743919651764, -0.1425312379880006}, {1.0003055128773508`, 
+             4.665773677819736*^-18}}, SplineDegree -> 7]}}, {
+           GrayLevel[0], {
+            
+            LineBox[{{1.0003055128773508`, 4.665773677819736*^-18}, {
+             1.9999999066333527`, 4.956174529136317*^-18}}]}}}, {
+          Directive[
+           Hue[0.6, 0.2, 0.8], 
+           EdgeForm[
+            Directive[
+             GrayLevel[0], 
+             Opacity[0.7]]]], {
+           InsetBox[
+            FormBox[
+             StyleBox[
+             "\"  i\"", FontSize :> 14, FontSize :> 14, StripOnInput -> 
+              False], TraditionalForm], {0., 0.3}]}, {
+           GrayLevel[0.4], 
+           
+           PolygonBox[{{0.9253284333456506, -0.07497707953170014}, {
+            1.075282592409051, 4.665773677819736*^-18}, {0.9253284333456506, 
+            0.07497707953170014}}]}, {
+           InsetBox[
+            FormBox[
+             StyleBox[
+             "\"  j\"", FontSize :> 14, FontSize :> 14, StripOnInput -> 
+              False], TraditionalForm], {1.9999999066333527`, 0.3}]}}}], 
+       MouseAppearanceTag[
+       "NetworkGraphics"]], $CellContext`AllowKernelInitialization -> 
+      False]], {
+    FormatType -> TraditionalForm, FrameTicks -> None, ImageSize -> 100, 
+     DefaultBaseStyle -> {
+      "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
+       Hue[0.8, 1., 0.6]}}],StyleBox[
+    TagBox[
+     RowBox[{
+       StyleBox[
+       "\"+\"", ShowStringCharacters -> False, StripOnInput -> False], 
+       FractionBox["1", "2"]}], DisplayForm], {FontSize :> 16}, StripOnInput -> 
+    False],OverscriptBox[
+    StyleBox[
+    "\"\"", FontSize :> 50, ShowStringCharacters -> False, StripOnInput -> 
+     False], 
+    StyleBox[
+    "\"\"", ShowStringCharacters -> False, {FontSize :> 16}, StripOnInput -> 
+     False]]},
+  "Labeled",
+  DisplayFunction->(GridBox[{{
+      ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+      TagBox[
+       ItemBox[
+        PaneBox[
+         TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline}, 
+         BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+       "SkipImageSizeLevel"], 
+      ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+    GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+    AutoDelete -> False, 
+    GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+    BaselinePosition -> {1, 2}]& ),
+  InterpretationFunction->(RowBox[{"Labeled", "[", 
+     RowBox[{#, ",", 
+       RowBox[{"{", 
+         RowBox[{#2, ",", #3}], "}"}], ",", 
+       RowBox[{"{", 
+         RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )]], "Output",
+ ImageSize->{149, 47},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->1905191036,ExpressionUUID->"e2b08d65-8232-4f20-90e8-3fd1fbe69b84"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell",ExpressionUUID->"72ffa5c2-9f57-451a-af5a-cea6d48c7263"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"bareVertexSymbol",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Mathematica", ButtonData -> "paclet:DoFun/guide/DoFun", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2019, 8, 7, 9, 20, 26.880872}", 
+    "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
+    "status" -> "None", "summary" -> 
+    "bareVertexSymbol is an option of COPlot, DSEPlot, DSEPlotList and \
+RGEPlot. It determines how to draw bare vertices. Possible values: boxSymbol, \
+diskSymbol, triangleSymbol, diskTinySymbol, diskOpenSymbol, crossSymbol or a \
+user-defined function which takes the coordinate of the regulator insertion \
+as input. Default value: diskTinySymbol.", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "bareVertexSymbol", "titlemodifier" -> "", 
+    "windowtitle" -> "bareVertexSymbol", "type" -> "Symbol", "uri" -> 
+    "DoFun/ref/bareVertexSymbol", "WorkflowDockedCell" -> ""}, 
+  "SearchTextTranslated" -> "", "NewStyles" -> False},
+CellContext->"Global`",
+FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  TaggingRules -> {"NewStyles" -> False}, FrontEndVersion -> 
+  "11.3 for Linux x86 (64-bit) (March 6, 2018)", StyleDefinitions -> 
+  "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[7138, 187, 436, 11, 36, "PrimaryExamplesSection",ExpressionUUID->"b21c9f40-0843-4332-8ce7-da74fd18eb28",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1108479648]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 17237, 437}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[588, 21, 2591, 56, 56, "AnchorBarGrid",ExpressionUUID->"3cdc08d6-ee4d-4526-af41-1b563a6f686c",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[3204, 81, 401, 9, 53, "ObjectNameGrid",ExpressionUUID->"d8c4aecc-4a42-4c00-bfef-a373ab546422"],
+Cell[3608, 92, 3493, 90, 177, "Usage",ExpressionUUID->"cee45db4-2f28-4ef9-87e9-de8a27f79c4d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7138, 187, 436, 11, 36, "PrimaryExamplesSection",ExpressionUUID->"b21c9f40-0843-4332-8ce7-da74fd18eb28",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1108479648],
+Cell[CellGroupData[{
+Cell[7599, 202, 308, 7, 30, "ExampleSection",ExpressionUUID->"beaa6794-6281-4776-8cc3-5a1e19789450",
+ CellID->513593161],
+Cell[7910, 211, 170, 3, 29, "Input",ExpressionUUID->"669dfe87-a252-4734-9e02-2da8c8ccb8bb",
+ CellID->1414887963],
+Cell[CellGroupData[{
+Cell[8105, 218, 1135, 35, 68, "Input",ExpressionUUID->"ee44edf7-4f31-4471-9581-53e171ad7ea0",
+ CellID->885629261],
+Cell[9243, 255, 5677, 126, 68, "Output",ExpressionUUID->"e2b08d65-8232-4f20-90e8-3fd1fbe69b84",
+ CellID->1905191036]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[14959, 386, 78, 0, 43, "FooterCell",ExpressionUUID->"72ffa5c2-9f57-451a-af5a-cea6d48c7263"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

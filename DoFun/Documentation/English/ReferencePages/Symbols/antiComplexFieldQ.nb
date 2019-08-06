@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6225,        163]
-NotebookOptionsPosition[      3750,        108]
-NotebookOutlinePosition[      5962,        161]
-CellTagsIndexPosition[      5919,        158]
+NotebookDataLength[      5684,        154]
+NotebookOptionsPosition[      3579,        103]
+NotebookOutlinePosition[      5421,        152]
+CellTagsIndexPosition[      5378,        149]
 WindowTitle->antiComplexFieldQ
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ antiComplexFieldQ.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$11377], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$16798], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/ref/antiComplexFieldQ", ".html"]], None}]}]},
@@ -84,20 +84,15 @@ Cell[TextData[{
 }], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
-   {"", Cell["\<\
-Determines if an expression is defined as a bosonic complex field, \
-specifically if it is the second of a pair of bosonic complex fields.
-
-Syntax:
-antiComplexFieldQ[f] where f is a field.
-
-Example:
-The following action contains a pair of bosonic complex fields phi and phib, \
-where phib is defined as \"anti-complex\" field:
-generateAction[{{phi,phib}, {phib,phib,phi,phi}}, specificFieldDefinitions -> \
-{phi, phib}];
-antiComplexFieldQ@phib\
-\>"]}
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"antiComplexFieldQ", "[", 
+       StyleBox["expr", "TI"], "]"}]], "InlineFormula"],
+     "\[LineSeparator]gives True if ",
+     Cell[BoxData[
+      StyleBox["expr", "TI"]], "InlineFormula"],
+     " is a complex bosonic anti-field."
+    }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
@@ -121,21 +116,17 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 43, 35.463814}", 
+   "built" -> "{2019, 8, 7, 9, 20, 23.193811}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
     "status" -> "None", "summary" -> 
-    "Determines if an expression is defined as a bosonic complex field, \
-specifically if it is the second of a pair of bosonic complex fields. Syntax: \
-antiComplexFieldQ[f] where f is a field. Example: The following action \
-contains a pair of bosonic complex fields phi and phib, where phib is defined \
-as \"anti-complex\" field: generateAction[{{phi,phib}, {phib,phib,phi,phi}}, \
-specificFieldDefinitions -> {phi, phib}]; antiComplexFieldQ@phib", 
-    "synonyms" -> {}, "tabletags" -> {}, "title" -> "antiComplexFieldQ", 
-    "titlemodifier" -> "", "windowtitle" -> "antiComplexFieldQ", "type" -> 
-    "Symbol", "uri" -> "DoFun/ref/antiComplexFieldQ"}},
+    "antiComplexFieldQ[expr] gives True if expr is a complex bosonic \
+anti-field.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "antiComplexFieldQ", "titlemodifier" -> "", "windowtitle" -> 
+    "antiComplexFieldQ", "type" -> "Symbol", "uri" -> 
+    "DoFun/ref/antiComplexFieldQ"}},
 CellContext->"Global`",
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
 StyleDefinitions->Notebook[{
@@ -160,11 +151,11 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[589, 21, 2307, 54, 70, "AnchorBarGrid",ExpressionUUID->"239ef640-7ee0-4d94-a1ac-6fdc632583e9",
+Cell[589, 21, 2307, 54, 70, "AnchorBarGrid",ExpressionUUID->"b91c0b17-0635-42c8-b32b-09350506fa14",
  CellID->1],
-Cell[2899, 77, 174, 6, 70, "ObjectNameGrid",ExpressionUUID->"52aed042-a1c3-4474-9de3-b3ddc64767d1"],
-Cell[3076, 85, 644, 19, 70, "Usage",ExpressionUUID->"258c46e2-0158-4203-9c82-0138db78f588"],
-Cell[3723, 106, 23, 0, 70, "FooterCell",ExpressionUUID->"28972551-e493-4df7-8f50-9f66ccb437aa"]
+Cell[2899, 77, 174, 6, 70, "ObjectNameGrid",ExpressionUUID->"49ee820d-e76a-4c81-ac72-42fb78311cfb"],
+Cell[3076, 85, 473, 14, 70, "Usage",ExpressionUUID->"bff8f433-a963-47e1-a882-5e279d1aaebd"],
+Cell[3552, 101, 23, 0, 70, "FooterCell",ExpressionUUID->"1cc3ebf4-c946-4869-9867-f6f1f6056a12"]
 }
 ]
 *)

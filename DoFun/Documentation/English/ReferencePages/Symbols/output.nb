@@ -10,25 +10,25 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6787,        175]
-NotebookOptionsPosition[      4029,        116]
-NotebookOutlinePosition[      6524,        173]
-CellTagsIndexPosition[      6481,        170]
+NotebookDataLength[     74099,       1700]
+NotebookOptionsPosition[     69942,       1604]
+NotebookOutlinePosition[     72405,       1665]
+CellTagsIndexPosition[     72319,       1660]
 WindowTitle->output
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell"], Cell[TextData[Cell[
-    BoxData[
+   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell",ExpressionUUID->
+     "30485a71-2d87-41c3-b4e2-0e4da61e0d07"], Cell[TextData[Cell[BoxData[
      ActionMenuBox[
       FrameBox[
        InterpretationBox[Cell[TextData[{
          "URL",
          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
           StripOnInput->False]
-        }]],
+        }],ExpressionUUID->"38f3cc51-d9e2-4210-8707-32789d75e342"],
         TextCell[
          Row[{"URL", 
            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
@@ -60,59 +60,1547 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$39607], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$59385], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "DoFun/ref/output", 
             ".html"]], None}]}]},
       Appearance->None,
       MenuAppearance->Automatic,
       MenuStyle->"URLMenu"]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+     LineSpacing->{1.4, 0},ExpressionUUID->
+     "5d376ccf-75f3-4e88-ac97-397fd38dc479"]], "AnchorBar",ExpressionUUID->
+     "eded2131-0552-4f35-bb0b-44c3c10342f0"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
       Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
    "RowsIndexed" -> {}}},
- CellID->1],
+ CellID->1,ExpressionUUID->"f12a688d-0c04-4597-b3fd-32767035aaaa"],
+
+Cell[CellGroupData[{
 
 Cell[TextData[{
- Cell["output", "ObjectName"],
+ Cell["output", "ObjectName",ExpressionUUID->
+  "5c2aa186-67b4-4cd2-b25b-3cd9a8e1559b"],
  Cell[BoxData[
   TemplateBox[{8},
-   "Spacer1"]]],
- Cell[BoxData[""], "ObjectNameTranslation"]
-}], "ObjectNameGrid"],
+   "Spacer1"]],ExpressionUUID->"09166379-aa38-45a1-907c-a3554efc40e5"],
+ Cell[BoxData[
+ ""], "ObjectNameTranslation",ExpressionUUID->
+  "f966c25e-afd7-4ee4-8c65-b74313fba4b4"]
+}], "ObjectNameGrid",ExpressionUUID->"e378751a-cac3-46db-bd1e-e19fc129c3ef"],
 
 Cell[BoxData[GridBox[{
-   {"", Cell["\<\
-Option of DSEPlot and RGEPlot. Determines how the form of the output of \
-DSEPlot and RGEPlot.
-
-Possible values are:
- -) List: Gives a list of all graphs.
- -) forceEquation: Output in form of an equation, even if a single graph is \
-plotted.
- -) complete (default): Output for several graphs in form of an equation and \
-for a single graph as such.
-
-Examples:
-The graphs of the gluon two-point DSE of Landau gauge Yang-Mills theory in a \
-list 
-dse = doDSE[{{A, A}, {c, cb}, {A, cb, c}, {A, A, A}, {A, A, A, A}}, {A, A}];
-DSEPlot[dse,  {{A, Red}, {c, Green}}, output -> List]
-
-The complete two-point RGE of an O(N) symmetric scalar theory in the \
-symmetric phase
-dse = doRGE[{{phi, phi}, {phi,phi,phi,phi}}, {phi, phi}];
-RGEPlot[dse,  {{phi, Black}}, output -> forceEquation]\
-\>"]}
+   {"", Cell[TextData[{
+     Cell[BoxData[
+     "output"], "InlineFormula",ExpressionUUID->
+      "cdcecf03-83a2-45c8-b3e5-48fa063ba5ff"],
+     "\[LineSeparator]is an option of ",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData["COPlot"]],"paclet:DoFun/ref/COPlot"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
+      "19de0463-baca-492a-a819-557cbe6d04c3"],
+     ", ",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData["DSEPlot"]],"paclet:DoFun/ref/DSEPlot"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
+      "03e96aae-ef60-44a9-9844-19e5b21e0af4"],
+     ", ",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData["DSEPlotList"]],"paclet:DoFun/ref/DSEPlotList"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
+      "4d6cb4ff-bc68-4d54-b9b7-db89154bdad0"],
+     " and ",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData["RGEPlot"]],"paclet:DoFun/ref/RGEPlot"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
+      "8178112c-f73b-477b-9861-a8a8abfc66e7"],
+     ". It determines in form what the output is given.\nPossible values are:\
+\n\t-) List: Gives a list of all graphs. \n\t-) ",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData["forceEquation"]],"paclet:DoFun/ref/forceEquation"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
+      "79f75c3d-9356-4411-b5a4-5028059fb8cc"],
+     ": Output in form of an equation, even if a single graph is plotted. \n\t\
+-) ",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData["complete"]],"paclet:DoFun/ref/complete"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
+      "c22575d4-112d-431e-b3ac-d8826800b89e"],
+     " (default): Output for several graphs in form of an equation and for a \
+single graph as such. "
+    }],ExpressionUUID->"83baded1-8bed-4806-8303-a3062fdbb226"]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
-   "RowsIndexed" -> {}}}],
+   "RowsIndexed" -> \
+{}}},ExpressionUUID->"84b28768-a5ab-4061-b38f-45119081b382"]
+}, Open  ]],
 
-Cell[" ", "FooterCell"]
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"08085c3a-319a-4c60-9b6d-ac148c55f4d6"],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "00d68e15-5892-40ba-a76a-10705ba1c5b5"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1027170260,ExpressionUUID->"927eb56d-c1c1-458d-ae99-d62eba2279f3"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "87762f4c-fa5a-4e27-9b5f-5b52ecab3ec3"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->450390911,ExpressionUUID->"88234be5-1c8d-413c-8f9e-b8f758a2f3ef"],
+
+Cell["\<\
+The graphs of the gluon two-point DSE of Landau gauge Yang-Mills theory as a \
+list:\
+\>", "Text",
+ CellID->1275872628,ExpressionUUID->"bc9a7a04-8d66-4e70-b6fd-c2043d09ef57"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"setFields", "[", 
+   RowBox[{
+    RowBox[{"{", "A", "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"{", 
+      RowBox[{"c", ",", "cb"}], "}"}], "}"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"dse", "=", 
+   RowBox[{"doDSE", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"A", ",", "A"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"c", ",", "cb"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"A", ",", "cb", ",", "c"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"A", ",", "A", ",", "A"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"A", ",", "A", ",", "A", ",", "A"}], "}"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"A", ",", "A"}], "}"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{"DSEPlot", "[", 
+  RowBox[{"dse", ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"A", ",", "Red"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"c", ",", "Green"}], "}"}]}], "}"}], ",", 
+   RowBox[{"output", "\[Rule]", "List"}]}], "]"}]}], "Input",
+ CellLabel->"In[1]:=",
+ CellID->1880128611,ExpressionUUID->"fa3139f8-0326-4094-af19-6c90c163a336"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   TemplateBox[{GraphicsBox[
+      NamespaceBox["NetworkGraphics", 
+       DynamicModuleBox[{Typeset`graph = HoldComplete[
+           
+           Graph[{{$CellContext`A, $CellContext`i1, 
+              " leg i1"}, {$CellContext`A, $CellContext`i1, 
+              "S"}, {$CellContext`A, $CellContext`i2, " leg i2"}}, {{{1, 2}, {
+             2, 3}}, Null}, {
+            EdgeShapeFunction -> {
+              DirectedEdge[{$CellContext`A, $CellContext`i1, 
+                  "S"}, {$CellContext`A, $CellContext`i2, " leg i2"}] -> ({
+                 RGBColor[1, 0, 0], 
+                 DoFun`DoDSERGE`Private`arrowLine[
+                 DoFun`DoDSERGE`Private`field$12702, 
+                  SlotSequence[1]]}& ), 
+               DirectedEdge[{$CellContext`A, $CellContext`i1, 
+                  " leg i1"}, {$CellContext`A, $CellContext`i1, "S"}] -> ({
+                 RGBColor[1, 0, 0], 
+                 DoFun`DoDSERGE`Private`arrowLine[
+                 DoFun`DoDSERGE`Private`field$12701, 
+                  SlotSequence[1]]}& )}, GraphLayout -> 
+             "SpringElectricalEmbedding", ImageSize -> 100, 
+             VertexShapeFunction -> {{$CellContext`A, $CellContext`i1, 
+                 "S"} -> (DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                 SlotSequence[1], DoFun`DoDSERGE`output -> 
+                 List]& ), {$CellContext`A, $CellContext`i1, " leg i1"} -> (
+                DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                 SlotSequence[1], DoFun`DoDSERGE`output -> 
+                 List]& ), {$CellContext`A, $CellContext`i2, " leg i2"} -> (
+                DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                 SlotSequence[1], DoFun`DoDSERGE`output -> List]& )}, 
+             VertexSize -> {0.15}}]]}, 
+        TagBox[
+         GraphicsGroupBox[{{
+            Arrowheads[{{Medium, 0.8}}], 
+            Directive[
+             Opacity[0.7], 
+             Hue[0.6, 0.7, 0.5]], {
+             RGBColor[1, 0, 0], {
+              
+              LineBox[{{0., 0.}, {1.0003055128773508`, 
+               4.665773677819736*^-18}}]}}, {
+             RGBColor[1, 0, 0], {
+              
+              LineBox[{{1.0003055128773508`, 4.665773677819736*^-18}, {
+               1.9999999066333527`, 4.956174529136317*^-18}}]}}}, {
+            Directive[
+             Hue[0.6, 0.2, 0.8], 
+             EdgeForm[
+              Directive[
+               GrayLevel[0], 
+               Opacity[0.7]]]], {
+             InsetBox[
+              FormBox[
+               StyleBox[
+               "\"  i1\"", FontSize :> 14, FontSize :> 14, StripOnInput -> 
+                False], TraditionalForm], {0., 0.3}]}, {
+             
+             DiskBox[{1.0003055128773508`, 4.665773677819736*^-18}, 
+              0.02120672054817131]}, {
+             InsetBox[
+              FormBox[
+               StyleBox[
+               "\"  i2\"", FontSize :> 14, FontSize :> 14, StripOnInput -> 
+                False], TraditionalForm], {1.9999999066333527`, 0.3}]}}}], 
+         MouseAppearanceTag[
+         "NetworkGraphics"]], $CellContext`AllowKernelInitialization -> 
+        False]], {
+      FormatType -> TraditionalForm, FrameTicks -> None, ImageSize -> 100, 
+       DefaultBaseStyle -> {
+        "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
+         Hue[0.8, 1., 0.6]}}],StyleBox[
+      StyleBox[
+      "\"+\"", ShowStringCharacters -> False, StripOnInput -> False], {
+      FontSize :> 16}, StripOnInput -> False],OverscriptBox[
+      StyleBox[
+      "\"\"", FontSize :> 50, ShowStringCharacters -> False, StripOnInput -> 
+       False], 
+      StyleBox[
+      "\"-1\"", ShowStringCharacters -> False, {FontSize :> 16}, StripOnInput -> 
+       False]]},
+    "Labeled",
+    DisplayFunction->(GridBox[{{
+        ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+        TagBox[
+         ItemBox[
+          PaneBox[
+           TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline}, 
+           BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+         "SkipImageSizeLevel"], 
+        ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+      GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+      AutoDelete -> False, 
+      GridBoxItemSize -> {
+       "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+      BaselinePosition -> {1, 2}]& ),
+    InterpretationFunction->(RowBox[{"Labeled", "[", 
+       RowBox[{#, ",", 
+         RowBox[{"{", 
+           RowBox[{#2, ",", #3}], "}"}], ",", 
+         RowBox[{"{", 
+           RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], ",", 
+   TemplateBox[{GraphicsBox[
+      NamespaceBox["NetworkGraphics", 
+       DynamicModuleBox[{Typeset`graph = HoldComplete[
+           
+           Graph[{{$CellContext`A, $CellContext`i1, 
+              " leg i1"}, {$CellContext`A, $CellContext`i1, 
+              "S"}, {$CellContext`A, $CellContext`i2, " leg i2"}}, {{{2, 2}, {
+             1, 2}, {2, 3}}, Null}, {
+            EdgeShapeFunction -> {
+              DirectedEdge[{$CellContext`A, $CellContext`i1, 
+                  "S"}, {$CellContext`A, $CellContext`i1, "S"}] -> ({
+                 RGBColor[1, 0, 0], 
+                 DoFun`DoDSERGE`Private`arrowLine[
+                 DoFun`DoDSERGE`Private`field$12704, 
+                  SlotSequence[1]]}& ), 
+               DirectedEdge[{$CellContext`A, $CellContext`i1, 
+                  "S"}, {$CellContext`A, $CellContext`i2, " leg i2"}] -> ({
+                 RGBColor[1, 0, 0], 
+                 DoFun`DoDSERGE`Private`arrowLine[
+                 DoFun`DoDSERGE`Private`field$12706, 
+                  SlotSequence[1]]}& ), 
+               DirectedEdge[{$CellContext`A, $CellContext`i1, 
+                  " leg i1"}, {$CellContext`A, $CellContext`i1, "S"}] -> ({
+                 RGBColor[1, 0, 0], 
+                 DoFun`DoDSERGE`Private`arrowLine[
+                 DoFun`DoDSERGE`Private`field$12705, 
+                  SlotSequence[1]]}& )}, GraphLayout -> 
+             "SpringElectricalEmbedding", ImageSize -> 100, 
+             VertexShapeFunction -> {{$CellContext`A, $CellContext`i1, 
+                 "S"} -> (DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                 SlotSequence[1], DoFun`DoDSERGE`output -> 
+                 List]& ), {$CellContext`A, $CellContext`i1, " leg i1"} -> (
+                DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                 SlotSequence[1], DoFun`DoDSERGE`output -> 
+                 List]& ), {$CellContext`A, $CellContext`i2, " leg i2"} -> (
+                DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                 SlotSequence[1], DoFun`DoDSERGE`output -> List]& )}, 
+             VertexSize -> {0.15}}]]}, 
+        TagBox[
+         GraphicsGroupBox[{{
+            Arrowheads[{{Medium, 0.8}}], 
+            Directive[
+             Opacity[0.7], 
+             Hue[0.6, 0.7, 0.5]], {
+             RGBColor[1, 0, 0], {
+              
+              LineBox[{{0., 0.}, {1.0003055128773508`, 
+               4.665773677819736*^-18}}]}}, {
+             RGBColor[1, 0, 0], {
+              
+              BezierCurveBox[{{1.0003055128773508`, 4.665773677819736*^-18}, {
+               1.2158671061029376`, -0.1425312379880006}, {
+               1.2341613846253103`, -0.32493768720862726`}, {
+               1.1701691253828344`, -0.43105693297714304`}, {
+               0.8304419003718674, -0.4310569329771431}, {
+               0.7664496411293912, -0.32493768720862726`}, {
+               0.784743919651764, -0.1425312379880006}, {1.0003055128773508`, 
+               4.665773677819736*^-18}}, SplineDegree -> 7]}}, {
+             RGBColor[1, 0, 0], {
+              
+              LineBox[{{1.0003055128773508`, 4.665773677819736*^-18}, {
+               1.9999999066333527`, 4.956174529136317*^-18}}]}}}, {
+            Directive[
+             Hue[0.6, 0.2, 0.8], 
+             EdgeForm[
+              Directive[
+               GrayLevel[0], 
+               Opacity[0.7]]]], {
+             InsetBox[
+              FormBox[
+               StyleBox[
+               "\"  i1\"", FontSize :> 14, FontSize :> 14, StripOnInput -> 
+                False], TraditionalForm], {0., 0.3}]}, {
+             
+             DiskBox[{1.0003055128773508`, 4.665773677819736*^-18}, 
+              0.02120672054817131]}, {
+             InsetBox[
+              FormBox[
+               StyleBox[
+               "\"  i2\"", FontSize :> 14, FontSize :> 14, StripOnInput -> 
+                False], TraditionalForm], {1.9999999066333527`, 0.3}]}}}], 
+         MouseAppearanceTag[
+         "NetworkGraphics"]], $CellContext`AllowKernelInitialization -> 
+        False]], {
+      FormatType -> TraditionalForm, FrameTicks -> None, ImageSize -> 100, 
+       DefaultBaseStyle -> {
+        "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
+         Hue[0.8, 1., 0.6]}}],StyleBox[
+      TagBox[
+       RowBox[{
+         StyleBox[
+         "\"+\"", ShowStringCharacters -> False, StripOnInput -> False], 
+         FractionBox["1", "2"]}], DisplayForm], {FontSize :> 16}, 
+      StripOnInput -> False],OverscriptBox[
+      StyleBox[
+      "\"\"", FontSize :> 50, ShowStringCharacters -> False, StripOnInput -> 
+       False], 
+      StyleBox[
+      "\"\"", ShowStringCharacters -> False, {FontSize :> 16}, StripOnInput -> 
+       False]]},
+    "Labeled",
+    DisplayFunction->(GridBox[{{
+        ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+        TagBox[
+         ItemBox[
+          PaneBox[
+           TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline}, 
+           BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+         "SkipImageSizeLevel"], 
+        ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+      GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+      AutoDelete -> False, 
+      GridBoxItemSize -> {
+       "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+      BaselinePosition -> {1, 2}]& ),
+    InterpretationFunction->(RowBox[{"Labeled", "[", 
+       RowBox[{#, ",", 
+         RowBox[{"{", 
+           RowBox[{#2, ",", #3}], "}"}], ",", 
+         RowBox[{"{", 
+           RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], ",", 
+   TemplateBox[{GraphicsBox[
+      NamespaceBox["NetworkGraphics", 
+       DynamicModuleBox[{Typeset`graph = HoldComplete[
+           
+           Graph[{{$CellContext`A, $CellContext`i1, 
+              " leg i1"}, {$CellContext`A, $CellContext`i1, 
+              "S"}, {$CellContext`A, $CellContext`i2, 
+              ""}, {$CellContext`A, $CellContext`i2, " leg i2"}}, {{{2, 3}, {
+             2, 3}, {1, 2}, {3, 4}}, Null}, {
+            EdgeShapeFunction -> {
+              DirectedEdge[{$CellContext`A, $CellContext`i2, 
+                  ""}, {$CellContext`A, $CellContext`i2, " leg i2"}] -> ({
+                 RGBColor[1, 0, 0], 
+                 DoFun`DoDSERGE`Private`arrowLine[
+                 DoFun`DoDSERGE`Private`field$12711, 
+                  SlotSequence[1]]}& ), 
+               DirectedEdge[{$CellContext`A, $CellContext`i1, 
+                  "S"}, {$CellContext`A, $CellContext`i2, ""}] -> ({
+                 RGBColor[1, 0, 0], 
+                 DoFun`DoDSERGE`Private`arrowLine[
+                 DoFun`DoDSERGE`Private`field$12709, 
+                  SlotSequence[1]]}& ), 
+               DirectedEdge[{$CellContext`A, $CellContext`i1, 
+                  " leg i1"}, {$CellContext`A, $CellContext`i1, "S"}] -> ({
+                 RGBColor[1, 0, 0], 
+                 DoFun`DoDSERGE`Private`arrowLine[
+                 DoFun`DoDSERGE`Private`field$12710, 
+                  SlotSequence[1]]}& )}, GraphLayout -> 
+             "SpringElectricalEmbedding", ImageSize -> 100, 
+             VertexShapeFunction -> {{$CellContext`A, $CellContext`i1, 
+                 "S"} -> (DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                 SlotSequence[1], DoFun`DoDSERGE`output -> 
+                 List]& ), {$CellContext`A, $CellContext`i2, ""} -> (
+                DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                 SlotSequence[1], DoFun`DoDSERGE`output -> 
+                 List]& ), {$CellContext`A, $CellContext`i1, " leg i1"} -> (
+                DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                 SlotSequence[1], DoFun`DoDSERGE`output -> 
+                 List]& ), {$CellContext`A, $CellContext`i2, " leg i2"} -> (
+                DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                 SlotSequence[1], DoFun`DoDSERGE`output -> List]& )}, 
+             VertexSize -> {0.15}}]]}, 
+        TagBox[
+         GraphicsGroupBox[{{
+            Arrowheads[{{Medium, 0.8}}], 
+            Directive[
+             Opacity[0.7], 
+             Hue[0.6, 0.7, 0.5]], {
+             RGBColor[1, 0, 0], {
+              
+              LineBox[{{2.996818801401147, 2.649613141293699*^-15}, {
+               2.02978514216362, 0.}}]}}, {
+             RGBColor[1, 0, 0], {
+              
+              BezierCurveBox[{{2.02978514216362, 0.}, {
+               1.497762342865708, -0.1749724532700036}, {0.9657395435678013, 
+               5.948111133516466*^-16}}]}}, {
+             RGBColor[1, 0, 0], {
+              BezierCurveBox[{{2.02978514216362, 0.}, {1.4977623428657132`, 
+               0.17497245326999822`}, {0.9657395435678013, 
+               5.948111133516466*^-16}}]}}, {
+             RGBColor[1, 0, 0], {
+              
+              LineBox[{{0.9657395435678013, 5.948111133516466*^-16}, {0., 
+               2.541465666138854*^-15}}]}}}, {
+            Directive[
+             Hue[0.6, 0.2, 0.8], 
+             EdgeForm[
+              Directive[
+               GrayLevel[0], 
+               Opacity[0.7]]]], {
+             InsetBox[
+              FormBox[
+               StyleBox[
+               "\"  i1\"", FontSize :> 14, FontSize :> 14, StripOnInput -> 
+                False], TraditionalForm], {2.996818801401147, 
+              0.30000000000000265`}]}, {
+             DiskBox[{2.02978514216362, 0.}, 0.020486429403503807`]}, {
+             
+             DiskBox[{0.9657395435678013, 5.948111133516466*^-16}, 
+              0.10243214701751903`]}, {
+             InsetBox[
+              FormBox[
+               StyleBox[
+               "\"  i2\"", FontSize :> 14, FontSize :> 14, StripOnInput -> 
+                False], TraditionalForm], {0., 0.30000000000000254`}]}}}], 
+         MouseAppearanceTag[
+         "NetworkGraphics"]], $CellContext`AllowKernelInitialization -> 
+        False]], {
+      FormatType -> TraditionalForm, FrameTicks -> None, ImageSize -> 100, 
+       DefaultBaseStyle -> {
+        "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
+         Hue[0.8, 1., 0.6]}}],StyleBox[
+      RowBox[{"-", 
+        FractionBox["1", "2"]}], {FontSize :> 16}, StripOnInput -> False],
+     OverscriptBox[
+      StyleBox[
+      "\"\"", FontSize :> 50, ShowStringCharacters -> False, StripOnInput -> 
+       False], 
+      StyleBox[
+      "\"\"", ShowStringCharacters -> False, {FontSize :> 16}, StripOnInput -> 
+       False]]},
+    "Labeled",
+    DisplayFunction->(GridBox[{{
+        ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+        TagBox[
+         ItemBox[
+          PaneBox[
+           TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline}, 
+           BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+         "SkipImageSizeLevel"], 
+        ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+      GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+      AutoDelete -> False, 
+      GridBoxItemSize -> {
+       "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+      BaselinePosition -> {1, 2}]& ),
+    InterpretationFunction->(RowBox[{"Labeled", "[", 
+       RowBox[{#, ",", 
+         RowBox[{"{", 
+           RowBox[{#2, ",", #3}], "}"}], ",", 
+         RowBox[{"{", 
+           RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], ",", 
+   TemplateBox[{GraphicsBox[
+      NamespaceBox["NetworkGraphics", 
+       DynamicModuleBox[{Typeset`graph = HoldComplete[
+           
+           Graph[{{$CellContext`A, $CellContext`i1, 
+              " leg i1"}, {$CellContext`A, $CellContext`i1, 
+              "S"}, {$CellContext`A, $CellContext`i2, 
+              ""}, {$CellContext`A, $CellContext`i2, " leg i2"}}, {{{2, 3}, {
+             3, 2}, {1, 2}, {3, 4}}, Null}, {
+            EdgeShapeFunction -> {
+              DirectedEdge[{$CellContext`A, $CellContext`i2, 
+                  ""}, {$CellContext`A, $CellContext`i2, " leg i2"}] -> ({
+                 RGBColor[1, 0, 0], 
+                 DoFun`DoDSERGE`Private`arrowLine[
+                 DoFun`DoDSERGE`Private`field$12716, 
+                  SlotSequence[1]]}& ), 
+               DirectedEdge[{$CellContext`A, $CellContext`i1, 
+                  "S"}, {$CellContext`A, $CellContext`i2, ""}] -> ({
+                 RGBColor[0, 1, 0], 
+                 DoFun`DoDSERGE`Private`arrowLine[
+                 DoFun`DoDSERGE`Private`field$12713, 
+                  SlotSequence[1]]}& ), 
+               DirectedEdge[{$CellContext`A, $CellContext`i1, 
+                  " leg i1"}, {$CellContext`A, $CellContext`i1, "S"}] -> ({
+                 RGBColor[1, 0, 0], 
+                 DoFun`DoDSERGE`Private`arrowLine[
+                 DoFun`DoDSERGE`Private`field$12715, 
+                  SlotSequence[1]]}& ), 
+               DirectedEdge[{$CellContext`A, $CellContext`i2, 
+                  ""}, {$CellContext`A, $CellContext`i1, "S"}] -> ({
+                 RGBColor[0, 1, 0], 
+                 DoFun`DoDSERGE`Private`arrowLine[
+                 DoFun`DoDSERGE`Private`field$12714, 
+                  SlotSequence[1]]}& )}, GraphLayout -> 
+             "SpringElectricalEmbedding", ImageSize -> 100, 
+             VertexShapeFunction -> {{$CellContext`A, $CellContext`i1, 
+                 "S"} -> (DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                 SlotSequence[1], DoFun`DoDSERGE`output -> 
+                 List]& ), {$CellContext`A, $CellContext`i2, ""} -> (
+                DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                 SlotSequence[1], DoFun`DoDSERGE`output -> 
+                 List]& ), {$CellContext`A, $CellContext`i1, " leg i1"} -> (
+                DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                 SlotSequence[1], DoFun`DoDSERGE`output -> 
+                 List]& ), {$CellContext`A, $CellContext`i2, " leg i2"} -> (
+                DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                 SlotSequence[1], DoFun`DoDSERGE`output -> List]& )}, 
+             VertexSize -> {0.15}}]]}, 
+        TagBox[
+         GraphicsGroupBox[{{
+            Arrowheads[{{Medium, 0.8}}], 
+            Directive[
+             Opacity[0.7], 
+             Hue[0.6, 0.7, 0.5]], {
+             RGBColor[1, 0, 0], {
+              
+              LineBox[{{2.948493533596688, 2.60688674603371*^-15}, {
+               1.9970537970003064`, 0.}}]}}, {
+             RGBColor[0, 1, 0], {
+              Arrowheads[{{0.04, 0.8}}], 
+              ArrowBox[
+               
+               BezierCurveBox[{{1.9970537970003064`, 0.}, {
+                1.4736101431088968`, -0.17215093110832544`}, {
+                0.950166489217485, 5.852194735994043*^-16}}]]}}, {
+             RGBColor[0, 1, 0], {
+              Arrowheads[{{0.04, 0.8}}], 
+              ArrowBox[
+               
+               BezierCurveBox[{{0.950166489217485, 5.852194735994043*^-16}, {
+                1.4736101431088953`, 0.17215093110832924`}, {
+                1.9970537970003064`, 0.}}]]}}, {
+             RGBColor[1, 0, 0], {
+              
+              LineBox[{{0.950166489217485, 5.852194735994043*^-16}, {0., 
+               2.500483205379273*^-15}}]}}}, {
+            Directive[
+             Hue[0.6, 0.2, 0.8], 
+             EdgeForm[
+              Directive[
+               GrayLevel[0], 
+               Opacity[0.7]]]], {
+             InsetBox[
+              FormBox[
+               StyleBox[
+               "\"  i1\"", FontSize :> 14, FontSize :> 14, StripOnInput -> 
+                False], TraditionalForm], {2.948493533596688, 
+              0.3000000000000026}]}, {
+             DiskBox[{1.9970537970003064`, 0.}, 0.020156075033456948`]}, {
+             
+             DiskBox[{0.950166489217485, 5.852194735994043*^-16}, 
+              0.10078037516728473`]}, {
+             InsetBox[
+              FormBox[
+               StyleBox[
+               "\"  i2\"", FontSize :> 14, FontSize :> 14, StripOnInput -> 
+                False], TraditionalForm], {0., 0.3000000000000025}]}}}], 
+         MouseAppearanceTag[
+         "NetworkGraphics"]], $CellContext`AllowKernelInitialization -> 
+        False]], {
+      FormatType -> TraditionalForm, FrameTicks -> None, ImageSize -> 100, 
+       DefaultBaseStyle -> {
+        "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
+         Hue[0.8, 1., 0.6]}}],StyleBox[
+      StyleBox[
+      "\"+\"", ShowStringCharacters -> False, StripOnInput -> False], {
+      FontSize :> 16}, StripOnInput -> False],OverscriptBox[
+      StyleBox[
+      "\"\"", FontSize :> 50, ShowStringCharacters -> False, StripOnInput -> 
+       False], 
+      StyleBox[
+      "\"\"", ShowStringCharacters -> False, {FontSize :> 16}, StripOnInput -> 
+       False]]},
+    "Labeled",
+    DisplayFunction->(GridBox[{{
+        ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+        TagBox[
+         ItemBox[
+          PaneBox[
+           TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline}, 
+           BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+         "SkipImageSizeLevel"], 
+        ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+      GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+      AutoDelete -> False, 
+      GridBoxItemSize -> {
+       "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+      BaselinePosition -> {1, 2}]& ),
+    InterpretationFunction->(RowBox[{"Labeled", "[", 
+       RowBox[{#, ",", 
+         RowBox[{"{", 
+           RowBox[{#2, ",", #3}], "}"}], ",", 
+         RowBox[{"{", 
+           RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], ",", 
+   TemplateBox[{GraphicsBox[
+      NamespaceBox["NetworkGraphics", 
+       DynamicModuleBox[{Typeset`graph = HoldComplete[
+           
+           Graph[{{$CellContext`A, $CellContext`i1, 
+              " leg i1"}, {$CellContext`A, $CellContext`i1, 
+              "S"}, {$CellContext`A, $CellContext`i2, 
+              ""}, {$CellContext`A, $CellContext`i2, " leg i2"}}, {{{2, 3}, {
+             2, 3}, {2, 3}, {1, 2}, {3, 4}}, Null}, {
+            EdgeShapeFunction -> {
+              DirectedEdge[{$CellContext`A, $CellContext`i2, 
+                  ""}, {$CellContext`A, $CellContext`i2, " leg i2"}] -> ({
+                 RGBColor[1, 0, 0], 
+                 DoFun`DoDSERGE`Private`arrowLine[
+                 DoFun`DoDSERGE`Private`field$12722, 
+                  SlotSequence[1]]}& ), 
+               DirectedEdge[{$CellContext`A, $CellContext`i1, 
+                  "S"}, {$CellContext`A, $CellContext`i2, ""}] -> ({
+                 RGBColor[1, 0, 0], 
+                 DoFun`DoDSERGE`Private`arrowLine[
+                 DoFun`DoDSERGE`Private`field$12720, 
+                  SlotSequence[1]]}& ), 
+               DirectedEdge[{$CellContext`A, $CellContext`i1, 
+                  " leg i1"}, {$CellContext`A, $CellContext`i1, "S"}] -> ({
+                 RGBColor[1, 0, 0], 
+                 DoFun`DoDSERGE`Private`arrowLine[
+                 DoFun`DoDSERGE`Private`field$12721, 
+                  SlotSequence[1]]}& )}, GraphLayout -> 
+             "SpringElectricalEmbedding", ImageSize -> 100, 
+             VertexShapeFunction -> {{$CellContext`A, $CellContext`i1, 
+                 "S"} -> (DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                 SlotSequence[1], DoFun`DoDSERGE`output -> 
+                 List]& ), {$CellContext`A, $CellContext`i2, ""} -> (
+                DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                 SlotSequence[1], DoFun`DoDSERGE`output -> 
+                 List]& ), {$CellContext`A, $CellContext`i1, " leg i1"} -> (
+                DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                 SlotSequence[1], DoFun`DoDSERGE`output -> 
+                 List]& ), {$CellContext`A, $CellContext`i2, " leg i2"} -> (
+                DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                 SlotSequence[1], DoFun`DoDSERGE`output -> List]& )}, 
+             VertexSize -> {0.15}}]]}, 
+        TagBox[
+         GraphicsGroupBox[{{
+            Arrowheads[{{Medium, 0.8}}], 
+            Directive[
+             Opacity[0.7], 
+             Hue[0.6, 0.7, 0.5]], {
+             RGBColor[1, 0, 0], {
+              
+              LineBox[{{2.996818801401147, 2.649613141293699*^-15}, {
+               2.02978514216362, 0.}}]}}, {
+             RGBColor[1, 0, 0], {
+              
+              BezierCurveBox[{{2.02978514216362, 0.}, {
+               1.497762342865708, -0.1749724532700036}, {0.9657395435678013, 
+               5.948111133516466*^-16}}]}}, {
+             RGBColor[1, 0, 0], {
+              
+              LineBox[{{2.02978514216362, 0.}, {0.9657395435678013, 
+               5.948111133516466*^-16}}]}}, {
+             RGBColor[1, 0, 0], {
+              
+              BezierCurveBox[{{2.02978514216362, 0.}, {1.4977623428657132`, 
+               0.17497245326999822`}, {0.9657395435678013, 
+               5.948111133516466*^-16}}]}}, {
+             RGBColor[1, 0, 0], {
+              
+              LineBox[{{0.9657395435678013, 5.948111133516466*^-16}, {0., 
+               2.541465666138854*^-15}}]}}}, {
+            Directive[
+             Hue[0.6, 0.2, 0.8], 
+             EdgeForm[
+              Directive[
+               GrayLevel[0], 
+               Opacity[0.7]]]], {
+             InsetBox[
+              FormBox[
+               StyleBox[
+               "\"  i1\"", FontSize :> 14, FontSize :> 14, StripOnInput -> 
+                False], TraditionalForm], {2.996818801401147, 
+              0.30000000000000265`}]}, {
+             DiskBox[{2.02978514216362, 0.}, 0.020486429403503807`]}, {
+             
+             DiskBox[{0.9657395435678013, 5.948111133516466*^-16}, 
+              0.10243214701751903`]}, {
+             InsetBox[
+              FormBox[
+               StyleBox[
+               "\"  i2\"", FontSize :> 14, FontSize :> 14, StripOnInput -> 
+                False], TraditionalForm], {0., 0.30000000000000254`}]}}}], 
+         MouseAppearanceTag[
+         "NetworkGraphics"]], $CellContext`AllowKernelInitialization -> 
+        False]], {
+      FormatType -> TraditionalForm, FrameTicks -> None, ImageSize -> 100, 
+       DefaultBaseStyle -> {
+        "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
+         Hue[0.8, 1., 0.6]}}],StyleBox[
+      RowBox[{"-", 
+        FractionBox["1", "6"]}], {FontSize :> 16}, StripOnInput -> False],
+     OverscriptBox[
+      StyleBox[
+      "\"\"", FontSize :> 50, ShowStringCharacters -> False, StripOnInput -> 
+       False], 
+      StyleBox[
+      "\"\"", ShowStringCharacters -> False, {FontSize :> 16}, StripOnInput -> 
+       False]]},
+    "Labeled",
+    DisplayFunction->(GridBox[{{
+        ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+        TagBox[
+         ItemBox[
+          PaneBox[
+           TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline}, 
+           BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+         "SkipImageSizeLevel"], 
+        ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+      GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+      AutoDelete -> False, 
+      GridBoxItemSize -> {
+       "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+      BaselinePosition -> {1, 2}]& ),
+    InterpretationFunction->(RowBox[{"Labeled", "[", 
+       RowBox[{#, ",", 
+         RowBox[{"{", 
+           RowBox[{#2, ",", #3}], "}"}], ",", 
+         RowBox[{"{", 
+           RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], ",", 
+   TemplateBox[{GraphicsBox[
+      NamespaceBox["NetworkGraphics", 
+       DynamicModuleBox[{Typeset`graph = HoldComplete[
+           
+           Graph[{{$CellContext`A, $CellContext`i1, 
+              " leg i1"}, {$CellContext`A, $CellContext`i1, 
+              "S"}, {$CellContext`A, $CellContext`i2, 
+              ""}, {$CellContext`A, $CellContext`i2, 
+              " leg i2"}, {$CellContext`A, $CellContext`u1, ""}}, {{{2, 3}, {
+             2, 5}, {2, 5}, {3, 5}, {1, 2}, {3, 4}}, Null}, {
+            EdgeShapeFunction -> {
+              DirectedEdge[{$CellContext`A, $CellContext`i2, 
+                  ""}, {$CellContext`A, $CellContext`i2, " leg i2"}] -> ({
+                 RGBColor[1, 0, 0], 
+                 DoFun`DoDSERGE`Private`arrowLine[
+                 DoFun`DoDSERGE`Private`field$12729, 
+                  SlotSequence[1]]}& ), 
+               DirectedEdge[{$CellContext`A, $CellContext`i2, 
+                  ""}, {$CellContext`A, $CellContext`u1, ""}] -> ({
+                 RGBColor[1, 0, 0], 
+                 DoFun`DoDSERGE`Private`arrowLine[
+                 DoFun`DoDSERGE`Private`field$12727, 
+                  SlotSequence[1]]}& ), 
+               DirectedEdge[{$CellContext`A, $CellContext`i1, 
+                  "S"}, {$CellContext`A, $CellContext`i2, ""}] -> ({
+                 RGBColor[1, 0, 0], 
+                 DoFun`DoDSERGE`Private`arrowLine[
+                 DoFun`DoDSERGE`Private`field$12724, 
+                  SlotSequence[1]]}& ), 
+               DirectedEdge[{$CellContext`A, $CellContext`i1, 
+                  " leg i1"}, {$CellContext`A, $CellContext`i1, "S"}] -> ({
+                 RGBColor[1, 0, 0], 
+                 DoFun`DoDSERGE`Private`arrowLine[
+                 DoFun`DoDSERGE`Private`field$12728, 
+                  SlotSequence[1]]}& ), 
+               DirectedEdge[{$CellContext`A, $CellContext`i1, 
+                  "S"}, {$CellContext`A, $CellContext`u1, ""}] -> ({
+                 RGBColor[1, 0, 0], 
+                 DoFun`DoDSERGE`Private`arrowLine[
+                 DoFun`DoDSERGE`Private`field$12726, 
+                  SlotSequence[1]]}& )}, GraphLayout -> 
+             "SpringElectricalEmbedding", ImageSize -> 100, 
+             VertexShapeFunction -> {{$CellContext`A, $CellContext`i1, 
+                 "S"} -> (DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                 SlotSequence[1], DoFun`DoDSERGE`output -> 
+                 List]& ), {$CellContext`A, $CellContext`i2, ""} -> (
+                DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                 SlotSequence[1], DoFun`DoDSERGE`output -> 
+                 List]& ), {$CellContext`A, $CellContext`i1, " leg i1"} -> (
+                DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                 SlotSequence[1], DoFun`DoDSERGE`output -> 
+                 List]& ), {$CellContext`A, $CellContext`u1, ""} -> (
+                DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                 SlotSequence[1], DoFun`DoDSERGE`output -> 
+                 List]& ), {$CellContext`A, $CellContext`i2, " leg i2"} -> (
+                DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                 SlotSequence[1], DoFun`DoDSERGE`output -> List]& )}, 
+             VertexSize -> {0.15}}]]}, 
+        TagBox[
+         GraphicsGroupBox[{{
+            Arrowheads[{{Medium, 0.8}}], 
+            Directive[
+             Opacity[0.7], 
+             Hue[0.6, 0.7, 0.5]], {
+             RGBColor[1, 0, 0], {
+              
+              LineBox[{{0., 0.}, {1.0251413228692998`, 
+               0.28383141847648213`}}]}}, {
+             RGBColor[1, 0, 0], {
+              
+              LineBox[{{1.0251413228692998`, 0.28383141847648213`}, {
+               2.1251519122176887`, 0.2845238541754409}}]}}, {
+             RGBColor[1, 0, 0], {
+              
+              BezierCurveBox[{{1.0251413228692998`, 0.28383141847648213`}, {
+               1.1878136149285263`, 0.7139139357299346}, {1.5740108714606524`,
+                0.9634834156301911}}]}}, {
+             RGBColor[1, 0, 0], {
+              
+              BezierCurveBox[{{1.0251413228692998`, 0.28383141847648213`}, {
+               1.4113385794014244`, 0.5334008983769104}, {1.5740108714606524`,
+                0.9634834156301911}}]}}, {
+             RGBColor[1, 0, 0], {
+              
+              LineBox[{{2.1251519122176887`, 0.2845238541754409}, {
+               3.149693721429533, 0.00011543735366709162`}}]}}, {
+             RGBColor[1, 0, 0], {
+              
+              LineBox[{{2.1251519122176887`, 0.2845238541754409}, {
+               1.5740108714606524`, 0.9634834156301911}}]}}}, {
+            Directive[
+             Hue[0.6, 0.2, 0.8], 
+             EdgeForm[
+              Directive[
+               GrayLevel[0], 
+               Opacity[0.7]]]], {
+             InsetBox[
+              FormBox[
+               StyleBox[
+               "\"  i1\"", FontSize :> 14, FontSize :> 14, StripOnInput -> 
+                False], TraditionalForm], {0., 0.3}]}, {
+             
+             DiskBox[{1.0251413228692998`, 0.28383141847648213`}, 
+              0.01853194750620277]}, {
+             
+             DiskBox[{2.1251519122176887`, 0.2845238541754409}, 
+              0.09265973753101385]}, {
+             InsetBox[
+              FormBox[
+               StyleBox[
+               "\"  i2\"", FontSize :> 14, FontSize :> 14, StripOnInput -> 
+                False], TraditionalForm], {3.149693721429533, 
+              0.3001154373536671}]}, {
+             
+             DiskBox[{1.5740108714606524`, 0.9634834156301911}, 
+              0.09265973753101385]}}}], 
+         MouseAppearanceTag[
+         "NetworkGraphics"]], $CellContext`AllowKernelInitialization -> 
+        False]], {
+      FormatType -> TraditionalForm, FrameTicks -> None, ImageSize -> 100, 
+       DefaultBaseStyle -> {
+        "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
+         Hue[0.8, 1., 0.6]}}],StyleBox[
+      TagBox[
+       RowBox[{
+         StyleBox[
+         "\"+\"", ShowStringCharacters -> False, StripOnInput -> False], 
+         FractionBox["1", "2"]}], DisplayForm], {FontSize :> 16}, 
+      StripOnInput -> False],OverscriptBox[
+      StyleBox[
+      "\"\"", FontSize :> 50, ShowStringCharacters -> False, StripOnInput -> 
+       False], 
+      StyleBox[
+      "\"\"", ShowStringCharacters -> False, {FontSize :> 16}, StripOnInput -> 
+       False]]},
+    "Labeled",
+    DisplayFunction->(GridBox[{{
+        ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+        TagBox[
+         ItemBox[
+          PaneBox[
+           TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline}, 
+           BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+         "SkipImageSizeLevel"], 
+        ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+      GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+      AutoDelete -> False, 
+      GridBoxItemSize -> {
+       "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+      BaselinePosition -> {1, 2}]& ),
+    InterpretationFunction->(RowBox[{"Labeled", "[", 
+       RowBox[{#, ",", 
+         RowBox[{"{", 
+           RowBox[{#2, ",", #3}], "}"}], ",", 
+         RowBox[{"{", 
+           RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )]}], 
+  "}"}]], "Output",
+ ImageSize->{497, 86},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->991853233,ExpressionUUID->"2853f403-1b6f-41a9-adb0-7d336158a10e"]
+}, Open  ]],
+
+Cell["\<\
+ The complete two-point RGE of an O(N) symmetric scalar theory in the \
+symmetric phase:\
+\>", "Text",
+ CellID->1133104696,ExpressionUUID->"dd51d7b4-f0f9-486a-af97-2d89b6aa0b46"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"setFields", "[", 
+   RowBox[{"{", "phi", "}"}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"dse", "=", 
+   RowBox[{"doRGE", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "phi"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "phi", ",", "phi", ",", "phi"}], "}"}]}], "}"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"phi", ",", "phi"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"RGEPlot", "[", 
+  RowBox[{"dse", ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"phi", ",", "Black"}], "}"}], "}"}], ",", 
+   RowBox[{"output", "\[Rule]", "forceEquation"}]}], "]"}]}], "Input",
+ CellLabel->"In[2]:=",
+ CellID->1772991543,ExpressionUUID->"c6a49ad3-40a0-46f5-a261-22ecd77c04e0"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     TemplateBox[{GraphicsBox[
+        NamespaceBox["NetworkGraphics", 
+         DynamicModuleBox[{Typeset`graph = HoldComplete[
+             
+             Graph[{{$CellContext`phi, $CellContext`i1, 
+                ""}, {$CellContext`phi, $CellContext`i1, 
+                " leg i1"}, {$CellContext`phi, $CellContext`i2, 
+                " leg i2"}}, {{{1, 2}, {1, 3}}, Null}, {
+              EdgeShapeFunction -> {
+                DirectedEdge[{$CellContext`phi, $CellContext`i1, 
+                    ""}, {$CellContext`phi, $CellContext`i2, " leg i2"}] -> ({
+                  
+                   GrayLevel[0], 
+                   DoFun`DoDSERGE`Private`arrowLine[
+                   DoFun`DoDSERGE`Private`field$12887, 
+                    SlotSequence[1]]}& ), 
+                 DirectedEdge[{$CellContext`phi, $CellContext`i1, 
+                    ""}, {$CellContext`phi, $CellContext`i1, " leg i1"}] -> ({
+                  
+                   GrayLevel[0], 
+                   DoFun`DoDSERGE`Private`arrowLine[
+                   DoFun`DoDSERGE`Private`field$12886, 
+                    SlotSequence[1]]}& )}, GraphLayout -> 
+               "SpringElectricalEmbedding", ImageSize -> 100, 
+               VertexShapeFunction -> {{$CellContext`phi, $CellContext`i1, 
+                   " leg i1"} -> (
+                  DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                   SlotSequence[1], DoFun`DoDSERGE`output -> 
+                   DoFun`DoDSERGE`forceEquation, DoFun`DoDSERGE`type -> 
+                   "RGE"]& ), {$CellContext`phi, $CellContext`i1, ""} -> (
+                  DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                   SlotSequence[1], DoFun`DoDSERGE`output -> 
+                   DoFun`DoDSERGE`forceEquation, DoFun`DoDSERGE`type -> 
+                   "RGE"]& ), {$CellContext`phi, $CellContext`i2, 
+                   " leg i2"} -> (
+                  DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                   SlotSequence[1], DoFun`DoDSERGE`output -> 
+                   DoFun`DoDSERGE`forceEquation, DoFun`DoDSERGE`type -> 
+                   "RGE"]& )}, VertexSize -> {0.15}}]]}, 
+          TagBox[
+           GraphicsGroupBox[{{
+              Arrowheads[{{Medium, 0.8}}], 
+              Directive[
+               Opacity[0.7], 
+               Hue[0.6, 0.7, 0.5]], {
+               GrayLevel[0], {
+                
+                LineBox[{{0.9993107564578606, 3.5228735599432735`*^-15}, {
+                 1.9999995252704312`, 7.936250193338282*^-17}}]}}, {
+               GrayLevel[0], {
+                
+                LineBox[{{0.9993107564578606, 3.5228735599432735`*^-15}, {0., 
+                 0.}}]}}}, {
+              Directive[
+               Hue[0.6, 0.2, 0.8], 
+               EdgeForm[
+                Directive[
+                 GrayLevel[0], 
+                 Opacity[0.7]]]], {
+               
+               DiskBox[{0.9993107564578606, 3.5228735599432735`*^-15}, 
+                0.10599291186060175`]}, {
+               InsetBox[
+                FormBox[
+                 StyleBox[
+                 "\"  i1\"", FontSize :> 14, FontSize :> 14, StripOnInput -> 
+                  False], TraditionalForm], {1.9999995252704312`, 
+                0.30000000000000004`}]}, {
+               InsetBox[
+                FormBox[
+                 StyleBox[
+                 "\"  i2\"", FontSize :> 14, FontSize :> 14, StripOnInput -> 
+                  False], TraditionalForm], {0., 0.3}]}}}], 
+           MouseAppearanceTag[
+           "NetworkGraphics"]], $CellContext`AllowKernelInitialization -> 
+          False]], {
+        FormatType -> TraditionalForm, FrameTicks -> None, ImageSize -> 100, 
+         DefaultBaseStyle -> {
+          "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
+           Hue[0.8, 1., 0.6]}}],StyleBox[
+        TagBox[
+         SubscriptBox["\[PartialD]", "t"], DisplayForm], ShowStringCharacters -> 
+        False, {FontSize :> 16}, StripOnInput -> False],StyleBox[
+        TemplateBox[{
+          OverscriptBox[
+           StyleBox["\"\"", FontSize :> 50, StripOnInput -> False], 
+           StyleBox["\"-1\"", {FontSize :> 16}, StripOnInput -> False]], 
+          "\"=\""}, "RowDefault"], ShowStringCharacters -> False, {
+        FontSize :> 16}, StripOnInput -> False]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        NamespaceBox["NetworkGraphics", 
+         DynamicModuleBox[{Typeset`graph = HoldComplete[
+             
+             Graph[{{$CellContext`phi, $CellContext`i1, 
+                ""}, {$CellContext`phi, $CellContext`i1, 
+                " leg i1"}, {$CellContext`phi, $CellContext`i2, 
+                " leg i2"}, {$CellContext`phi, $CellContext`r1, "dt R"}}, {{{
+               1, 4}, {1, 4}, {1, 2}, {1, 3}}, Null}, {
+              EdgeShapeFunction -> {
+                DirectedEdge[{$CellContext`phi, $CellContext`i1, 
+                    ""}, {$CellContext`phi, $CellContext`r1, "dt R"}] -> ({
+                   GrayLevel[0], 
+                   DoFun`DoDSERGE`Private`arrowLine[
+                   DoFun`DoDSERGE`Private`field$12892, 
+                    SlotSequence[1]]}& ), 
+                 DirectedEdge[{$CellContext`phi, $CellContext`i1, 
+                    ""}, {$CellContext`phi, $CellContext`i2, " leg i2"}] -> ({
+                  
+                   GrayLevel[0], 
+                   DoFun`DoDSERGE`Private`arrowLine[
+                   DoFun`DoDSERGE`Private`field$12894, 
+                    SlotSequence[1]]}& ), 
+                 DirectedEdge[{$CellContext`phi, $CellContext`i1, 
+                    ""}, {$CellContext`phi, $CellContext`i1, " leg i1"}] -> ({
+                  
+                   GrayLevel[0], 
+                   DoFun`DoDSERGE`Private`arrowLine[
+                   DoFun`DoDSERGE`Private`field$12893, 
+                    SlotSequence[1]]}& )}, GraphLayout -> 
+               "SpringElectricalEmbedding", ImageSize -> 100, 
+               VertexShapeFunction -> {{$CellContext`phi, $CellContext`i1, 
+                   " leg i1"} -> (
+                  DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                   SlotSequence[1], DoFun`DoDSERGE`output -> 
+                   DoFun`DoDSERGE`forceEquation, DoFun`DoDSERGE`type -> 
+                   "RGE"]& ), {$CellContext`phi, $CellContext`r1, "dt R"} -> (
+                  DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                   SlotSequence[1], DoFun`DoDSERGE`output -> 
+                   DoFun`DoDSERGE`forceEquation, DoFun`DoDSERGE`type -> 
+                   "RGE"]& ), {$CellContext`phi, $CellContext`i1, ""} -> (
+                  DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                   SlotSequence[1], DoFun`DoDSERGE`output -> 
+                   DoFun`DoDSERGE`forceEquation, DoFun`DoDSERGE`type -> 
+                   "RGE"]& ), {$CellContext`phi, $CellContext`i2, 
+                   " leg i2"} -> (
+                  DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                   SlotSequence[1], DoFun`DoDSERGE`output -> 
+                   DoFun`DoDSERGE`forceEquation, DoFun`DoDSERGE`type -> 
+                   "RGE"]& )}, VertexSize -> {0.15}}]]}, 
+          TagBox[
+           GraphicsGroupBox[{{
+              Arrowheads[{{Medium, 0.8}}], 
+              Directive[
+               Opacity[0.7], 
+               Hue[0.6, 0.7, 0.5]], {
+               GrayLevel[0], {
+                
+                LineBox[{{0.8615472132931282, 1.0002050989081908`}, {
+                 1.73238128781784, 1.49056318343442}}]}}, {
+               GrayLevel[0], {
+                
+                LineBox[{{0.8615472132931282, 1.0002050989081908`}, {
+                 0.8527160239610769, 0.}}]}}, {
+               GrayLevel[0], {
+                
+                BezierCurveBox[{{0.8615472132931282, 1.0002050989081908`}, {
+                 0.3471760430198263, 1.1127191277033037`}, {0., 
+                 1.5085800914740513`}}]}}, {
+               GrayLevel[0], {
+                
+                BezierCurveBox[{{0.8615472132931282, 1.0002050989081908`}, {
+                 0.5143711702733086, 1.3960660626793213`}, {0., 
+                 1.5085800914740513`}}]}}}, {
+              Directive[
+               Hue[0.6, 0.2, 0.8], 
+               EdgeForm[
+                Directive[
+                 GrayLevel[0], 
+                 Opacity[0.7]]]], {
+               
+               DiskBox[{0.8615472132931282, 1.0002050989081908`}, 
+                0.10600251959105673`]}, {
+               InsetBox[
+                FormBox[
+                 StyleBox[
+                 "\"  i1\"", FontSize :> 14, FontSize :> 14, StripOnInput -> 
+                  False], TraditionalForm], {1.73238128781784, 
+                1.79056318343442}]}, {
+               InsetBox[
+                FormBox[
+                 StyleBox[
+                 "\"  i2\"", FontSize :> 14, FontSize :> 14, StripOnInput -> 
+                  False], TraditionalForm], {0.8527160239610769, 0.3}]}, {
+               GrayLevel[0.4], 
+               
+               RectangleBox[{-0.07495510042569607, 1.4336249910483552`}, {
+                0.07495510042569607, 1.5835351918997473`}]}}}], 
+           MouseAppearanceTag[
+           "NetworkGraphics"]], $CellContext`AllowKernelInitialization -> 
+          False]], {
+        FormatType -> TraditionalForm, FrameTicks -> None, ImageSize -> 100, 
+         DefaultBaseStyle -> {
+          "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
+           Hue[0.8, 1., 0.6]}}],StyleBox[
+        RowBox[{"-", 
+          FractionBox["1", "2"]}], {FontSize :> 16}, StripOnInput -> False],
+       OverscriptBox[
+        StyleBox[
+        "\"\"", FontSize :> 50, ShowStringCharacters -> False, StripOnInput -> 
+         False], 
+        StyleBox[
+        "\"\"", ShowStringCharacters -> False, {FontSize :> 16}, StripOnInput -> 
+         False]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     StyleBox["\<\"\"\>",
+      StripOnInput->False,
+      ShowStringCharacters->False], 
+     StyleBox["\<\"\"\>",
+      StripOnInput->False,
+      ShowStringCharacters->False], 
+     StyleBox["\<\"\"\>",
+      StripOnInput->False,
+      ShowStringCharacters->False]}
+   },
+   AutoDelete->False,
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ ImageSize->{343, 101},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->1582738395,ExpressionUUID->"580aa5ed-dc12-43b4-9e63-881b2bd1659e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"setFields", "[", 
+   RowBox[{"{", "phi", "}"}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"dse", "=", 
+   RowBox[{"doRGE", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "phi"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"phi", ",", "phi", ",", "phi", ",", "phi"}], "}"}]}], "}"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"phi", ",", "phi"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"RGEPlot", "[", 
+  RowBox[{"dse", ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"phi", ",", "Black"}], "}"}], "}"}], ",", 
+   RowBox[{"output", "\[Rule]", "forceEquation"}]}], "]"}]}], "Input",
+ CellLabel->"In[3]:=",
+ CellID->2085934795,ExpressionUUID->"fd2b64d0-09fe-4935-8828-03a967608d41"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     TemplateBox[{GraphicsBox[
+        NamespaceBox["NetworkGraphics", 
+         DynamicModuleBox[{Typeset`graph = HoldComplete[
+             
+             Graph[{{$CellContext`phi, $CellContext`i1, 
+                ""}, {$CellContext`phi, $CellContext`i1, 
+                " leg i1"}, {$CellContext`phi, $CellContext`i2, 
+                " leg i2"}}, {{{1, 2}, {1, 3}}, Null}, {
+              EdgeShapeFunction -> {
+                DirectedEdge[{$CellContext`phi, $CellContext`i1, 
+                    ""}, {$CellContext`phi, $CellContext`i2, " leg i2"}] -> ({
+                  
+                   GrayLevel[0], 
+                   DoFun`DoDSERGE`Private`arrowLine[
+                   DoFun`DoDSERGE`Private`field$13419, 
+                    SlotSequence[1]]}& ), 
+                 DirectedEdge[{$CellContext`phi, $CellContext`i1, 
+                    ""}, {$CellContext`phi, $CellContext`i1, " leg i1"}] -> ({
+                  
+                   GrayLevel[0], 
+                   DoFun`DoDSERGE`Private`arrowLine[
+                   DoFun`DoDSERGE`Private`field$13418, 
+                    SlotSequence[1]]}& )}, GraphLayout -> 
+               "SpringElectricalEmbedding", ImageSize -> 100, 
+               VertexShapeFunction -> {{$CellContext`phi, $CellContext`i1, 
+                   " leg i1"} -> (
+                  DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                   SlotSequence[1], DoFun`DoDSERGE`output -> 
+                   DoFun`DoDSERGE`forceEquation, DoFun`DoDSERGE`type -> 
+                   "RGE"]& ), {$CellContext`phi, $CellContext`i1, ""} -> (
+                  DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                   SlotSequence[1], DoFun`DoDSERGE`output -> 
+                   DoFun`DoDSERGE`forceEquation, DoFun`DoDSERGE`type -> 
+                   "RGE"]& ), {$CellContext`phi, $CellContext`i2, 
+                   " leg i2"} -> (
+                  DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                   SlotSequence[1], DoFun`DoDSERGE`output -> 
+                   DoFun`DoDSERGE`forceEquation, DoFun`DoDSERGE`type -> 
+                   "RGE"]& )}, VertexSize -> {0.15}}]]}, 
+          TagBox[
+           GraphicsGroupBox[{{
+              Arrowheads[{{Medium, 0.8}}], 
+              Directive[
+               Opacity[0.7], 
+               Hue[0.6, 0.7, 0.5]], {
+               GrayLevel[0], {
+                
+                LineBox[{{0.9993107564578606, 3.5228735599432735`*^-15}, {
+                 1.9999995252704312`, 7.936250193338282*^-17}}]}}, {
+               GrayLevel[0], {
+                
+                LineBox[{{0.9993107564578606, 3.5228735599432735`*^-15}, {0., 
+                 0.}}]}}}, {
+              Directive[
+               Hue[0.6, 0.2, 0.8], 
+               EdgeForm[
+                Directive[
+                 GrayLevel[0], 
+                 Opacity[0.7]]]], {
+               
+               DiskBox[{0.9993107564578606, 3.5228735599432735`*^-15}, 
+                0.10599291186060175`]}, {
+               InsetBox[
+                FormBox[
+                 StyleBox[
+                 "\"  i1\"", FontSize :> 14, FontSize :> 14, StripOnInput -> 
+                  False], TraditionalForm], {1.9999995252704312`, 
+                0.30000000000000004`}]}, {
+               InsetBox[
+                FormBox[
+                 StyleBox[
+                 "\"  i2\"", FontSize :> 14, FontSize :> 14, StripOnInput -> 
+                  False], TraditionalForm], {0., 0.3}]}}}], 
+           MouseAppearanceTag[
+           "NetworkGraphics"]], $CellContext`AllowKernelInitialization -> 
+          False]], {
+        FormatType -> TraditionalForm, FrameTicks -> None, ImageSize -> 100, 
+         DefaultBaseStyle -> {
+          "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
+           Hue[0.8, 1., 0.6]}}],StyleBox[
+        TagBox[
+         SubscriptBox["\[PartialD]", "t"], DisplayForm], ShowStringCharacters -> 
+        False, {FontSize :> 16}, StripOnInput -> False],StyleBox[
+        TemplateBox[{
+          OverscriptBox[
+           StyleBox["\"\"", FontSize :> 50, StripOnInput -> False], 
+           StyleBox["\"-1\"", {FontSize :> 16}, StripOnInput -> False]], 
+          "\"=\""}, "RowDefault"], ShowStringCharacters -> False, {
+        FontSize :> 16}, StripOnInput -> False]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     TemplateBox[{GraphicsBox[
+        NamespaceBox["NetworkGraphics", 
+         DynamicModuleBox[{Typeset`graph = HoldComplete[
+             
+             Graph[{{$CellContext`phi, $CellContext`i1, 
+                ""}, {$CellContext`phi, $CellContext`i1, 
+                " leg i1"}, {$CellContext`phi, $CellContext`i2, 
+                " leg i2"}, {$CellContext`phi, $CellContext`r1, "dt R"}}, {{{
+               1, 4}, {1, 4}, {1, 2}, {1, 3}}, Null}, {
+              EdgeShapeFunction -> {
+                DirectedEdge[{$CellContext`phi, $CellContext`i1, 
+                    ""}, {$CellContext`phi, $CellContext`r1, "dt R"}] -> ({
+                   GrayLevel[0], 
+                   DoFun`DoDSERGE`Private`arrowLine[
+                   DoFun`DoDSERGE`Private`field$13424, 
+                    SlotSequence[1]]}& ), 
+                 DirectedEdge[{$CellContext`phi, $CellContext`i1, 
+                    ""}, {$CellContext`phi, $CellContext`i2, " leg i2"}] -> ({
+                  
+                   GrayLevel[0], 
+                   DoFun`DoDSERGE`Private`arrowLine[
+                   DoFun`DoDSERGE`Private`field$13426, 
+                    SlotSequence[1]]}& ), 
+                 DirectedEdge[{$CellContext`phi, $CellContext`i1, 
+                    ""}, {$CellContext`phi, $CellContext`i1, " leg i1"}] -> ({
+                  
+                   GrayLevel[0], 
+                   DoFun`DoDSERGE`Private`arrowLine[
+                   DoFun`DoDSERGE`Private`field$13425, 
+                    SlotSequence[1]]}& )}, GraphLayout -> 
+               "SpringElectricalEmbedding", ImageSize -> 100, 
+               VertexShapeFunction -> {{$CellContext`phi, $CellContext`i1, 
+                   " leg i1"} -> (
+                  DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                   SlotSequence[1], DoFun`DoDSERGE`output -> 
+                   DoFun`DoDSERGE`forceEquation, DoFun`DoDSERGE`type -> 
+                   "RGE"]& ), {$CellContext`phi, $CellContext`r1, "dt R"} -> (
+                  DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                   SlotSequence[1], DoFun`DoDSERGE`output -> 
+                   DoFun`DoDSERGE`forceEquation, DoFun`DoDSERGE`type -> 
+                   "RGE"]& ), {$CellContext`phi, $CellContext`i1, ""} -> (
+                  DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                   SlotSequence[1], DoFun`DoDSERGE`output -> 
+                   DoFun`DoDSERGE`forceEquation, DoFun`DoDSERGE`type -> 
+                   "RGE"]& ), {$CellContext`phi, $CellContext`i2, 
+                   " leg i2"} -> (
+                  DoFun`DoDSERGE`Private`getVertexShapeFunction[
+                   SlotSequence[1], DoFun`DoDSERGE`output -> 
+                   DoFun`DoDSERGE`forceEquation, DoFun`DoDSERGE`type -> 
+                   "RGE"]& )}, VertexSize -> {0.15}}]]}, 
+          TagBox[
+           GraphicsGroupBox[{{
+              Arrowheads[{{Medium, 0.8}}], 
+              Directive[
+               Opacity[0.7], 
+               Hue[0.6, 0.7, 0.5]], {
+               GrayLevel[0], {
+                
+                LineBox[{{0.8615472132931282, 1.0002050989081908`}, {
+                 1.73238128781784, 1.49056318343442}}]}}, {
+               GrayLevel[0], {
+                
+                LineBox[{{0.8615472132931282, 1.0002050989081908`}, {
+                 0.8527160239610769, 0.}}]}}, {
+               GrayLevel[0], {
+                
+                BezierCurveBox[{{0.8615472132931282, 1.0002050989081908`}, {
+                 0.3471760430198263, 1.1127191277033037`}, {0., 
+                 1.5085800914740513`}}]}}, {
+               GrayLevel[0], {
+                
+                BezierCurveBox[{{0.8615472132931282, 1.0002050989081908`}, {
+                 0.5143711702733086, 1.3960660626793213`}, {0., 
+                 1.5085800914740513`}}]}}}, {
+              Directive[
+               Hue[0.6, 0.2, 0.8], 
+               EdgeForm[
+                Directive[
+                 GrayLevel[0], 
+                 Opacity[0.7]]]], {
+               
+               DiskBox[{0.8615472132931282, 1.0002050989081908`}, 
+                0.10600251959105673`]}, {
+               InsetBox[
+                FormBox[
+                 StyleBox[
+                 "\"  i1\"", FontSize :> 14, FontSize :> 14, StripOnInput -> 
+                  False], TraditionalForm], {1.73238128781784, 
+                1.79056318343442}]}, {
+               InsetBox[
+                FormBox[
+                 StyleBox[
+                 "\"  i2\"", FontSize :> 14, FontSize :> 14, StripOnInput -> 
+                  False], TraditionalForm], {0.8527160239610769, 0.3}]}, {
+               GrayLevel[0.4], 
+               
+               RectangleBox[{-0.07495510042569607, 1.4336249910483552`}, {
+                0.07495510042569607, 1.5835351918997473`}]}}}], 
+           MouseAppearanceTag[
+           "NetworkGraphics"]], $CellContext`AllowKernelInitialization -> 
+          False]], {
+        FormatType -> TraditionalForm, FrameTicks -> None, ImageSize -> 100, 
+         DefaultBaseStyle -> {
+          "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
+           Hue[0.8, 1., 0.6]}}],StyleBox[
+        RowBox[{"-", 
+          FractionBox["1", "2"]}], {FontSize :> 16}, StripOnInput -> False],
+       OverscriptBox[
+        StyleBox[
+        "\"\"", FontSize :> 50, ShowStringCharacters -> False, StripOnInput -> 
+         False], 
+        StyleBox[
+        "\"\"", ShowStringCharacters -> False, {FontSize :> 16}, StripOnInput -> 
+         False]]},
+      "Labeled",
+      DisplayFunction->(GridBox[{{
+          ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"], 
+          TagBox[
+           ItemBox[
+            PaneBox[
+             TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline},
+              BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+           "SkipImageSizeLevel"], 
+          ItemBox[#3, DefaultBaseStyle -> "LabeledLabel"]}}, 
+        GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+        AutoDelete -> False, 
+        GridBoxItemSize -> {
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+        BaselinePosition -> {1, 2}]& ),
+      InterpretationFunction->(RowBox[{"Labeled", "[", 
+         RowBox[{#, ",", 
+           RowBox[{"{", 
+             RowBox[{#2, ",", #3}], "}"}], ",", 
+           RowBox[{"{", 
+             RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
+     StyleBox["\<\"\"\>",
+      StripOnInput->False,
+      ShowStringCharacters->False], 
+     StyleBox["\<\"\"\>",
+      StripOnInput->False,
+      ShowStringCharacters->False], 
+     StyleBox["\<\"\"\>",
+      StripOnInput->False,
+      ShowStringCharacters->False]}
+   },
+   AutoDelete->False,
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ ImageSize->{343, 101},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->404332534,ExpressionUUID->"a26ace03-4115-4390-b2fe-0fda7a2875d8"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell",ExpressionUUID->"0f622816-1563-4732-8a13-209c4990e3ae"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
@@ -129,25 +1617,21 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 45, 20.814033}", 
+   "built" -> "{2019, 8, 7, 9, 21, 29.420548}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
     "status" -> "None", "summary" -> 
-    "Option of DSEPlot and RGEPlot. Determines how the form of the output of \
-DSEPlot and RGEPlot. Possible values are: -) List: Gives a list of all \
-graphs. -) forceEquation: Output in form of an equation, even if a single \
-graph is plotted. -) complete (default): Output for several graphs in form of \
-an equation and for a single graph as such. Examples: The graphs of the gluon \
-two-point DSE of Landau gauge Yang-Mills theory in a list dse = doDSE[{{A, \
-A}, {c, cb}, {A, cb, c}, {A, A, A}, {A, A, A, A}}, {A, A}]; DSEPlot[dse, {{A, \
-Red}, {c, Green}}, output -> List] The complete two-point RGE of an O(N) \
-symmetric scalar theory in the symmetric phase dse = doRGE[{{phi, phi}, \
-{phi,phi,phi,phi}}, {phi, phi}]; RGEPlot[dse, {{phi, Black}}, output -> \
-forceEquation]", "synonyms" -> {}, "tabletags" -> {}, "title" -> "output", 
-    "titlemodifier" -> "", "windowtitle" -> "output", "type" -> "Symbol", 
-    "uri" -> "DoFun/ref/output"}},
+    "output is an option of COPlot, DSEPlot, DSEPlotList and RGEPlot. It \
+determines in form what the output is given. Possible values are: -) List: \
+Gives a list of all graphs. -) forceEquation: Output in form of an equation, \
+even if a single graph is plotted. -) complete (default): Output for several \
+graphs in form of an equation and for a single graph as such. ", 
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "output", "titlemodifier" -> 
+    "", "windowtitle" -> "output", "type" -> "Symbol", "uri" -> 
+    "DoFun/ref/output", "WorkflowDockedCell" -> ""}, "SearchTextTranslated" -> 
+  "", "NewStyles" -> False},
 CellContext->"Global`",
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
 StyleDefinitions->Notebook[{
@@ -158,27 +1642,69 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
-  StyleDefinitions -> "Default.nb"]
+  TaggingRules -> {"NewStyles" -> False}, FrontEndVersion -> 
+  "11.3 for Linux x86 (64-bit) (March 6, 2018)", StyleDefinitions -> 
+  "Default.nb"]
 ]
 (* End of Notebook Content *)
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{}
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[5888, 154, 436, 11, 36, "PrimaryExamplesSection",ExpressionUUID->"927eb56d-c1c1-458d-ae99-d62eba2279f3",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1027170260]}
+ }
 *)
 (*CellTagsIndex
-CellTagsIndex->{}
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 72120, 1653}
+ }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[578, 21, 2275, 54, 70, "AnchorBarGrid",ExpressionUUID->"ef71122e-674d-4cb7-b17f-228ef699df3c",
+Cell[578, 21, 2563, 56, 56, "AnchorBarGrid",ExpressionUUID->"f12a688d-0c04-4597-b3fd-32767035aaaa",
  CellID->1],
-Cell[2856, 77, 163, 6, 70, "ObjectNameGrid",ExpressionUUID->"b006fad0-14eb-42c9-a428-5666ec2b9cfc"],
-Cell[3022, 85, 977, 27, 70, "Usage",ExpressionUUID->"f66e1b9b-74b1-4038-a886-8ca1dd2fd56f"],
-Cell[4002, 114, 23, 0, 70, "FooterCell",ExpressionUUID->"3f569414-3e03-45e8-9e93-ea38868179a8"]
+Cell[CellGroupData[{
+Cell[3166, 81, 391, 9, 53, "ObjectNameGrid",ExpressionUUID->"e378751a-cac3-46db-bd1e-e19fc129c3ef"],
+Cell[3560, 92, 2291, 57, 270, "Usage",ExpressionUUID->"84b28768-a5ab-4061-b38f-45119081b382"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5888, 154, 436, 11, 36, "PrimaryExamplesSection",ExpressionUUID->"927eb56d-c1c1-458d-ae99-d62eba2279f3",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1027170260],
+Cell[CellGroupData[{
+Cell[6349, 169, 308, 7, 30, "ExampleSection",ExpressionUUID->"88234be5-1c8d-413c-8f9e-b8f758a2f3ef",
+ CellID->450390911],
+Cell[6660, 178, 184, 4, 36, "Text",ExpressionUUID->"bc9a7a04-8d66-4e70-b6fd-c2043d09ef57",
+ CellID->1275872628],
+Cell[CellGroupData[{
+Cell[6869, 186, 1181, 37, 87, "Input",ExpressionUUID->"fa3139f8-0326-4094-af19-6c90c163a336",
+ CellID->1880128611],
+Cell[8053, 225, 35370, 772, 107, "Output",ExpressionUUID->"2853f403-1b6f-41a9-adb0-7d336158a10e",
+ CellID->991853233]
+}, Open  ]],
+Cell[43438, 1000, 188, 4, 70, "Text",ExpressionUUID->"dd51d7b4-f0f9-486a-af97-2d89b6aa0b46",
+ CellID->1133104696],
+Cell[CellGroupData[{
+Cell[43651, 1008, 824, 25, 70, "Input",ExpressionUUID->"c6a49ad3-40a0-46f5-a261-22ecd77c04e0",
+ CellID->1772991543],
+Cell[44478, 1035, 12240, 265, 70, "Output",ExpressionUUID->"580aa5ed-dc12-43b4-9e63-881b2bd1659e",
+ CellID->1582738395]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[56755, 1305, 824, 25, 70, "Input",ExpressionUUID->"fd2b64d0-09fe-4935-8828-03a967608d41",
+ CellID->2085934795],
+Cell[57582, 1332, 12239, 265, 70, "Output",ExpressionUUID->"a26ace03-4115-4390-b2fe-0fda7a2875d8",
+ CellID->404332534]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[69860, 1602, 78, 0, 70, "FooterCell",ExpressionUUID->"0f622816-1563-4732-8a13-209c4990e3ae"]
 }
 ]
 *)
 
 (* End of internal cache information *)
+

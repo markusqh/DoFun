@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5568,        149]
-NotebookOptionsPosition[      3419,         98]
-NotebookOutlinePosition[      5307,        147]
-CellTagsIndexPosition[      5264,        144]
+NotebookDataLength[      5757,        155]
+NotebookOptionsPosition[      3612,        104]
+NotebookOutlinePosition[      5494,        153]
+CellTagsIndexPosition[      5451,        150]
 WindowTitle->replacedField
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$42481], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$62778], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/ref/replacedField", ".html"]], None}]}]},
@@ -84,10 +84,16 @@ Cell[TextData[{
 }], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
-   {"", Cell["\<\
-Represents a field replaced by the new argument after the first derivative in \
-the derivation of a DSE done. Only an intermediate dummy.\
-\>"]}
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"replacedField", "[", 
+       StyleBox["expr", "TI"], "]"}]], "InlineFormula"],
+     "\[LineSeparator]represents a field ",
+     Cell[BoxData[
+      StyleBox["expr", "TI"]], "InlineFormula"],
+     " replaced by the field and the propagator with a derivative. Only an \
+intermediate dummy."
+    }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
@@ -111,14 +117,14 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 45, 26.354059}", 
+   "built" -> "{2019, 8, 7, 9, 21, 34.707518}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
     "status" -> "None", "summary" -> 
-    "Represents a field replaced by the new argument after the first \
-derivative in the derivation of a DSE done. Only an intermediate dummy.", 
+    "replacedField[expr] represents a field expr replaced by the field and \
+the propagator with a derivative. Only an intermediate dummy.", 
     "synonyms" -> {}, "tabletags" -> {}, "title" -> "replacedField", 
     "titlemodifier" -> "", "windowtitle" -> "replacedField", "type" -> 
     "Symbol", "uri" -> "DoFun/ref/replacedField"}},
@@ -146,11 +152,11 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[585, 21, 2290, 54, 70, "AnchorBarGrid",ExpressionUUID->"5f128eca-7c42-4724-93e8-44abfb9de2a2",
+Cell[585, 21, 2290, 54, 70, "AnchorBarGrid",ExpressionUUID->"62108454-214a-41eb-b75d-5962da2f5f85",
  CellID->1],
-Cell[2878, 77, 170, 6, 70, "ObjectNameGrid",ExpressionUUID->"baa7bba0-32ac-4a63-a05a-d8aa3ae5d574"],
-Cell[3051, 85, 338, 9, 70, "Usage",ExpressionUUID->"b78ce125-db0c-4530-ac22-23fae537c2d6"],
-Cell[3392, 96, 23, 0, 70, "FooterCell",ExpressionUUID->"8c934ba5-2f4c-4ad3-8f9a-62fbda7d9af1"]
+Cell[2878, 77, 170, 6, 70, "ObjectNameGrid",ExpressionUUID->"7a73c0d8-00ab-4064-b0a8-567a90078fac"],
+Cell[3051, 85, 531, 15, 70, "Usage",ExpressionUUID->"1b71ccd5-e8bf-43bb-8900-44f8135436b0"],
+Cell[3585, 102, 23, 0, 70, "FooterCell",ExpressionUUID->"4446e43e-241b-417b-8ee2-2091873139e3"]
 }
 ]
 *)

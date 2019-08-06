@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5505,        149]
-NotebookOptionsPosition[      3389,         98]
-NotebookOutlinePosition[      5244,        147]
-CellTagsIndexPosition[      5201,        144]
+NotebookDataLength[      5843,        156]
+NotebookOptionsPosition[      3688,        105]
+NotebookOutlinePosition[      5580,        154]
+CellTagsIndexPosition[      5537,        151]
 WindowTitle->doGrassmannTest
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ doGrassmannTest.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$24930], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$37450], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/ref/doGrassmannTest", ".html"]], None}]}]},
@@ -84,10 +84,17 @@ Cell[TextData[{
 }], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
-   {"", Cell["\<\
-Option of doDSE, doRGE, setSourcesZero and setSourcesZeroRGE.
-See ?setSourcesZero for details.\
-\>"]}
+   {"", Cell[TextData[{
+     Cell[BoxData["doGrassmannTest"], "InlineFormula"],
+     "\[LineSeparator]is an option of ",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData["setSourcesZero"]],"paclet:DoFun/ref/setSourcesZero"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+     ". It ensures that the Grassmann number of each vertex is zero for each \
+Grassmann field."
+    }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
@@ -111,17 +118,17 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 44, 42.131461}", 
+   "built" -> "{2019, 8, 7, 9, 20, 55.680556}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
     "status" -> "None", "summary" -> 
-    "Option of doDSE, doRGE, setSourcesZero and setSourcesZeroRGE. See \
-?setSourcesZero for details.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
-    "doGrassmannTest", "titlemodifier" -> "", "windowtitle" -> 
-    "doGrassmannTest", "type" -> "Symbol", "uri" -> 
-    "DoFun/ref/doGrassmannTest"}},
+    "doGrassmannTest is an option of setSourcesZero. It ensures that the \
+Grassmann number of each vertex is zero for each Grassmann field.", 
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "doGrassmannTest", 
+    "titlemodifier" -> "", "windowtitle" -> "doGrassmannTest", "type" -> 
+    "Symbol", "uri" -> "DoFun/ref/doGrassmannTest"}},
 CellContext->"Global`",
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
 StyleDefinitions->Notebook[{
@@ -146,11 +153,11 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[587, 21, 2299, 54, 70, "AnchorBarGrid",ExpressionUUID->"52668396-b2ba-488d-ab7f-958c5e5d7d2d",
+Cell[587, 21, 2299, 54, 70, "AnchorBarGrid",ExpressionUUID->"bdffe4ce-a412-4a2c-9287-4136af230e38",
  CellID->1],
-Cell[2889, 77, 172, 6, 70, "ObjectNameGrid",ExpressionUUID->"b1ed587d-b85a-4b0b-94c2-673f28764efc"],
-Cell[3064, 85, 295, 9, 70, "Usage",ExpressionUUID->"f6a481d6-5724-4433-9947-a798bd47845b"],
-Cell[3362, 96, 23, 0, 70, "FooterCell",ExpressionUUID->"d1bc8e81-9a61-4c40-8bae-b9bce3fee5a7"]
+Cell[2889, 77, 172, 6, 70, "ObjectNameGrid",ExpressionUUID->"215d70e6-2ca9-403c-ba25-4bef27f76428"],
+Cell[3064, 85, 594, 16, 70, "Usage",ExpressionUUID->"7b1db6ad-8053-4765-ae0e-15b3b6c301f6"],
+Cell[3661, 103, 23, 0, 70, "FooterCell",ExpressionUUID->"f3edce3d-93bc-4795-a578-dbd72bb56b9c"]
 }
 ]
 *)

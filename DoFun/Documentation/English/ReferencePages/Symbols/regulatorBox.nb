@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5895,        156]
-NotebookOptionsPosition[      3581,        103]
-NotebookOutlinePosition[      5632,        154]
-CellTagsIndexPosition[      5589,        151]
+NotebookDataLength[      5617,        154]
+NotebookOptionsPosition[      3569,        104]
+NotebookOutlinePosition[      5354,        152]
+CellTagsIndexPosition[      5311,        149]
 WindowTitle->regulatorBox
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$40569], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$60856], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/ref/regulatorBox", ".html"]], None}]}]},
@@ -84,15 +84,16 @@ Cell[TextData[{
 }], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
-   {"", Cell["\<\
-Possible value for the option regulatorSymbol of RGEPlot. Draws a gray box \
-for the regulator insertion.
-
-Example:
-RGEPlot[1/2 op[dR[{phi, r1}, {phi, s1}], P[{phi, t1}, {phi, r1}], P[{phi, \
-s1}, {phi, v1}], V[{phi, i}, {phi, j}, {phi, v1}, {phi, t1}]], {{phi, \
-Black}}, regulatorSymbol -> regulatorBox]\
-\>"]}
+   {"", Cell[TextData[{
+     Cell[BoxData["regulatorBox"], "InlineFormula"],
+     "\[LineSeparator]is superseded by ",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData["boxSymbol"]],"paclet:DoFun/ref/boxSymbol"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+     "."
+    }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
@@ -116,19 +117,16 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 45, 22.734559}", 
+   "built" -> "{2019, 8, 7, 9, 21, 31.606346}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
     "status" -> "None", "summary" -> 
-    "Possible value for the option regulatorSymbol of RGEPlot. Draws a gray \
-box for the regulator insertion. Example: RGEPlot[1/2 op[dR[{phi, r1}, {phi, \
-s1}], P[{phi, t1}, {phi, r1}], P[{phi, s1}, {phi, v1}], V[{phi, i}, {phi, j}, \
-{phi, v1}, {phi, t1}]], {{phi, Black}}, regulatorSymbol -> regulatorBox]", 
-    "synonyms" -> {}, "tabletags" -> {}, "title" -> "regulatorBox", 
-    "titlemodifier" -> "", "windowtitle" -> "regulatorBox", "type" -> 
-    "Symbol", "uri" -> "DoFun/ref/regulatorBox"}},
+    "regulatorBox is superseded by boxSymbol.", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "regulatorBox", "titlemodifier" -> "", 
+    "windowtitle" -> "regulatorBox", "type" -> "Symbol", "uri" -> 
+    "DoFun/ref/regulatorBox"}},
 CellContext->"Global`",
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
 StyleDefinitions->Notebook[{
@@ -153,11 +151,11 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[584, 21, 2286, 54, 70, "AnchorBarGrid",ExpressionUUID->"fc542ee8-77ce-4721-9b16-958fa16aa190",
+Cell[584, 21, 2286, 54, 70, "AnchorBarGrid",ExpressionUUID->"1bfb6d7e-14dd-4733-8c30-64474f482086",
  CellID->1],
-Cell[2873, 77, 169, 6, 70, "ObjectNameGrid",ExpressionUUID->"c3daacd5-e8b8-4db8-9620-72563ef9d04d"],
-Cell[3045, 85, 506, 14, 70, "Usage",ExpressionUUID->"0d0cd410-ce4c-441b-9776-b400ad7e2b67"],
-Cell[3554, 101, 23, 0, 70, "FooterCell",ExpressionUUID->"d34ce1e5-722a-4b96-972a-7ec0389dcd4f"]
+Cell[2873, 77, 169, 6, 70, "ObjectNameGrid",ExpressionUUID->"ff489ecc-ccd2-4047-9dc8-89d608105cc1"],
+Cell[3045, 85, 494, 15, 70, "Usage",ExpressionUUID->"50231c91-0d46-43c2-9ed5-cd5aedaa8b62"],
+Cell[3542, 102, 23, 0, 70, "FooterCell",ExpressionUUID->"4601cc9d-d9fe-4a77-b343-ec9ac5036618"]
 }
 ]
 *)

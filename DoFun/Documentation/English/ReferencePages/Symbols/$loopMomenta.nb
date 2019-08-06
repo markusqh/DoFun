@@ -10,24 +10,25 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7538,        212]
-NotebookOptionsPosition[      4571,        141]
-NotebookOutlinePosition[      6663,        196]
-CellTagsIndexPosition[      6579,        191]
+NotebookDataLength[     10236,        256]
+NotebookOptionsPosition[      6948,        177]
+NotebookOutlinePosition[      9205,        235]
+CellTagsIndexPosition[      9121,        230]
 WindowTitle->$loopMomenta
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["DO FUN SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell",ExpressionUUID->
+     "8d347038-7640-43dd-a46a-a22dcea452da"], Cell[TextData[Cell[BoxData[
      ActionMenuBox[
       FrameBox[
        InterpretationBox[Cell[TextData[{
          "URL",
          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
           StripOnInput->False]
-        }]],
+        }],ExpressionUUID->"a89b2224-56b1-4afe-9478-d262a0a9db78"],
         TextCell[
          Row[{"URL", 
            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
@@ -59,85 +60,120 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$53755], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$81148], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/ref/$loopMomenta", ".html"]], None}]}]},
       Appearance->None,
       MenuAppearance->Automatic,
       MenuStyle->"URLMenu"]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+     LineSpacing->{1.4, 0},ExpressionUUID->
+     "a58c16a3-0f32-40cf-8fda-d84741cf0203"]], "AnchorBar",ExpressionUUID->
+     "5d8e5733-2931-423b-8974-5a83a28167fb"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
       Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
    "RowsIndexed" -> {}}},
- CellID->1],
+ CellID->1,ExpressionUUID->"e0233fb1-0b4c-4cf3-9ea4-f757c92fa286"],
+
+Cell[CellGroupData[{
 
 Cell[TextData[{
- Cell["$loopMomenta", "ObjectName"],
+ Cell["$loopMomenta", "ObjectName",ExpressionUUID->
+  "72e80d6d-592f-48d7-ae7e-fa11d61a3d19"],
  Cell[BoxData[
   TemplateBox[{8},
-   "Spacer1"]]],
- Cell[BoxData[""], "ObjectNameTranslation"]
-}], "ObjectNameGrid"],
+   "Spacer1"]],ExpressionUUID->"344918e9-0026-42b7-9d95-f33f03dca49f"],
+ Cell[BoxData[
+ ""], "ObjectNameTranslation",ExpressionUUID->
+  "cd075559-c77a-4458-bb83-fc79e1249072"]
+}], "ObjectNameGrid",ExpressionUUID->"a37a2764-e771-4347-9760-08769469da53"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
-      RowBox[{"$loopMomenta", "[", "]"}]], "InlineFormula"],
-     " \[LineSeparator]Determines the names given to loop momenta in DoFun.\n\
-Default: q1, q2, ...\nThese name are protected and should not be used \
+     "$loopMomenta"], "InlineFormula",ExpressionUUID->
+      "24292bae-ade6-4e8c-98fe-28e1416d3c13"],
+     "\[LineSeparator]determines the names given to loop momenta in DoFun. \
+Default: q1, q2, ... These names are protected and should not be used \
 otherwise."
-    }]]}
+    }],ExpressionUUID->"a8db8543-307a-44a5-8370-c97673f8db90"]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
-   "RowsIndexed" -> {}}},
- CellID->982511436],
+   "RowsIndexed" -> \
+{}}},ExpressionUUID->"b2c759ab-e6c0-458f-8761-35ec05da060c"]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell[TextData[Cell[BoxData[
- ButtonBox[Cell[TextData[{
-   Cell[BoxData[
-    TemplateBox[{6},
-     "Spacer1"]]],
-   "Details"
-  }], "NotesFrameText"],
-  Appearance->{Automatic, None, "Normal", Automatic},
-  BaseStyle->None,
-  ButtonFunction:>(FrontEndExecute[{
-     FrontEnd`SelectionMove[
-      FrontEnd`SelectedNotebook[], All, ButtonCell], 
-     FrontEndToken["OpenCloseGroup"], 
-     FrontEnd`SelectionMove[
-      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
-  Evaluator->None,
-  Method->"Preemptive"]]]], "NotesSection",
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"3cae2056-4cdc-4b0c-b98d-bfaddf51093a"],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "640fe2ba-4abb-405c-8040-10478a2355e7"]
+}], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
- CellGroupingRules->{"SectionGrouping", 50},
- CellID->1],
-
-Cell["", "SectionHeaderSpacer"],
+ CellTags->"PrimaryExamplesSection",
+ CellID->738443903,ExpressionUUID->"a9c70fca-017a-44fc-89d5-dcbb6e221c73"],
 
 Cell[CellGroupData[{
 
-Cell[BoxData[
- RowBox[{"?", "$loopMomenta"}]], "Input",
- CellLabel->"In[12]:=",
- CellID->563455417],
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "b3160dc2-1383-41e7-a20e-8ddf6d8541fc"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->177466388,ExpressionUUID->"b0c2b906-bce0-4a83-aaf7-06245b1cff1e"],
 
 Cell[BoxData[
- StyleBox["\<\"Determines the names given to loop momenta in \
-DoFun.\\n\\nDefault: q1, q2, ...\\n\"\>", "MSG"]], "Print", "PrintUsage",
- CellTags->"Info3507041452-4063928",
- CellID->431221606]
+ RowBox[{"Needs", "[", "\"\<DoFun`\>\"", "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->1414887963,ExpressionUUID->"f3ca57da-3269-4589-8b2d-e9a3023049e1"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["$loopMomenta"], "Input",
+ CellLabel->"In[2]:=",
+ CellID->136671754,ExpressionUUID->"3d3fb93b-8a04-4f6f-8b33-b720a18b67f7"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "q1", ",", "q2", ",", "q3", ",", "q4", ",", "q5", ",", "q6", ",", "q7", ",",
+    "q8", ",", "q9", ",", "q10", ",", "q11", ",", "q12", ",", "q13", ",", 
+   "q14", ",", "q15", ",", "q16", ",", "q17", ",", "q18", ",", "q19", ",", 
+   "q20", ",", "q21", ",", "q22", ",", "q23", ",", "q24", ",", "q25", ",", 
+   "q26", ",", "q27", ",", "q28", ",", "q29", ",", "q30", ",", "q31", ",", 
+   "q32", ",", "q33", ",", "q34", ",", "q35", ",", "q36", ",", "q37", ",", 
+   "q38", ",", "q39", ",", "q40", ",", "q41", ",", "q42", ",", "q43", ",", 
+   "q44", ",", "q45", ",", "q46", ",", "q47", ",", "q48", ",", "q49", ",", 
+   "q50", ",", "q51", ",", "q52", ",", "q53", ",", "q54", ",", "q55", ",", 
+   "q56", ",", "q57", ",", "q58", ",", "q59", ",", "q60", ",", "q61", ",", 
+   "q62", ",", "q63", ",", "q64", ",", "q65", ",", "q66", ",", "q67", ",", 
+   "q68", ",", "q69", ",", "q70", ",", "q71", ",", "q72", ",", "q73", ",", 
+   "q74", ",", "q75", ",", "q76", ",", "q77", ",", "q78", ",", "q79", ",", 
+   "q80", ",", "q81", ",", "q82", ",", "q83", ",", "q84", ",", "q85", ",", 
+   "q86", ",", "q87", ",", "q88", ",", "q89", ",", "q90", ",", "q91", ",", 
+   "q92", ",", "q93", ",", "q94", ",", "q95", ",", "q96", ",", "q97", ",", 
+   "q98", ",", "q99", ",", "q100"}], "}"}]], "Output",
+ ImageSize->{521, 132},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->1247719927,ExpressionUUID->"e1dd57c0-f035-420c-bbfe-3327922d5035"]
 }, Open  ]]
-}, Closed]],
+}, Open  ]]
+}, Open  ]],
 
-Cell[" ", "FooterCell"]
+Cell[" ", "FooterCell",ExpressionUUID->"787fc16e-4c78-4810-9589-8b7b4dc367d3"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
@@ -154,16 +190,18 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 45, 47.707732}", 
-    "history" -> {"1.9", "", "", ""}, "context" -> "DoFun`", "keywords" -> {},
-     "specialkeywords" -> {}, "tutorialcollectionlinks" -> {}, "index" -> 
-    True, "label" -> "Do Fun Symbol", "language" -> "en", "paclet" -> "DoFun",
-     "status" -> "None", "summary" -> 
-    "$loopMomenta[] Determines the names given to loop momenta in DoFun. \
-Default: q1, q2, ... These name are protected and should not be used \
+   "built" -> "{2019, 8, 7, 9, 22, 5.095437}", 
+    "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoAE`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
+    "status" -> "None", "summary" -> 
+    "$loopMomenta determines the names given to loop momenta in DoFun. \
+Default: q1, q2, ... These names are protected and should not be used \
 otherwise.", "synonyms" -> {}, "tabletags" -> {}, "title" -> "$loopMomenta", 
     "titlemodifier" -> "", "windowtitle" -> "$loopMomenta", "type" -> 
-    "Symbol", "uri" -> "DoFun/ref/$loopMomenta"}},
+    "Symbol", "uri" -> "DoFun/ref/$loopMomenta", "WorkflowDockedCell" -> ""}, 
+  "SearchTextTranslated" -> "", "NewStyles" -> False},
 CellContext->"Global`",
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
 StyleDefinitions->Notebook[{
@@ -174,48 +212,55 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
-  StyleDefinitions -> "Default.nb"]
+  TaggingRules -> {"NewStyles" -> False}, FrontEndVersion -> 
+  "11.3 for Linux x86 (64-bit) (March 6, 2018)", StyleDefinitions -> 
+  "Default.nb"]
 ]
 (* End of Notebook Content *)
 
 (* Internal cache information *)
 (*CellTagsOutline
 CellTagsIndex->{
- "Info3507041452-4063928"->{
-  Cell[4310, 131, 207, 4, 70, "Print",ExpressionUUID->"1ae40a29-f240-40dc-9d4d-9372e694883e",
-   CellTags->"Info3507041452-4063928",
-   CellID->431221606]}
+ "PrimaryExamplesSection"->{
+  Cell[4222, 111, 435, 11, 36, "PrimaryExamplesSection",ExpressionUUID->"a9c70fca-017a-44fc-89d5-dcbb6e221c73",
+   CellTags->"PrimaryExamplesSection",
+   CellID->738443903]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"Info3507041452-4063928", 6399, 184}
+ {"PrimaryExamplesSection", 8923, 223}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[584, 21, 2273, 53, 70, "AnchorBarGrid",ExpressionUUID->"74bd70ce-aaa4-4fb1-b812-2828da58e417",
+Cell[584, 21, 2574, 56, 56, "AnchorBarGrid",ExpressionUUID->"e0233fb1-0b4c-4cf3-9ea4-f757c92fa286",
  CellID->1],
-Cell[2860, 76, 169, 6, 70, "ObjectNameGrid",ExpressionUUID->"5b7ef935-b01d-42e2-9d2d-dd2b2603b890"],
-Cell[3032, 84, 471, 13, 70, "Usage",ExpressionUUID->"377e0770-dfc5-436c-9841-a8b78b075036",
- CellID->982511436],
 Cell[CellGroupData[{
-Cell[3528, 101, 621, 19, 70, "NotesSection",ExpressionUUID->"1faf7311-ca84-4843-bf10-b8fc2961a411",
- CellGroupingRules->{"SectionGrouping", 50},
- CellID->1],
-Cell[4152, 122, 31, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"7a90cdc8-11b6-4928-be6d-2bdc3856e6c4"],
+Cell[3183, 81, 397, 9, 53, "ObjectNameGrid",ExpressionUUID->"a37a2764-e771-4347-9760-08769469da53"],
+Cell[3583, 92, 602, 14, 134, "Usage",ExpressionUUID->"b2c759ab-e6c0-458f-8761-35ec05da060c"]
+}, Open  ]],
 Cell[CellGroupData[{
-Cell[4208, 126, 99, 3, 70, "Input",ExpressionUUID->"5bfe42ff-e33d-4f3a-ad57-d1a584be511c",
- CellID->563455417],
-Cell[4310, 131, 207, 4, 70, "Print",ExpressionUUID->"1ae40a29-f240-40dc-9d4d-9372e694883e",
- CellTags->"Info3507041452-4063928",
- CellID->431221606]
+Cell[4222, 111, 435, 11, 36, "PrimaryExamplesSection",ExpressionUUID->"a9c70fca-017a-44fc-89d5-dcbb6e221c73",
+ CellTags->"PrimaryExamplesSection",
+ CellID->738443903],
+Cell[CellGroupData[{
+Cell[4682, 126, 308, 7, 30, "ExampleSection",ExpressionUUID->"b0c2b906-bce0-4a83-aaf7-06245b1cff1e",
+ CellID->177466388],
+Cell[4993, 135, 170, 3, 29, "Input",ExpressionUUID->"f3ca57da-3269-4589-8b2d-e9a3023049e1",
+ CellID->1414887963],
+Cell[CellGroupData[{
+Cell[5188, 142, 136, 2, 29, "Input",ExpressionUUID->"3d3fb93b-8a04-4f6f-8b33-b720a18b67f7",
+ CellID->136671754],
+Cell[5327, 146, 1500, 24, 153, "Output",ExpressionUUID->"e1dd57c0-f035-420c-bbfe-3327922d5035",
+ CellID->1247719927]
 }, Open  ]]
-}, Closed]],
-Cell[4544, 139, 23, 0, 70, "FooterCell",ExpressionUUID->"8a22cfd9-9608-4a2a-9a4f-820cfd401fb8"]
+}, Open  ]]
+}, Open  ]],
+Cell[6866, 175, 78, 0, 43, "FooterCell",ExpressionUUID->"787fc16e-4c78-4810-9589-8b7b4dc367d3"]
 }
 ]
 *)
 
 (* End of internal cache information *)
+

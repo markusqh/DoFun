@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5991,        162]
-NotebookOptionsPosition[      3629,        108]
-NotebookOutlinePosition[      5728,        160]
-CellTagsIndexPosition[      5685,        157]
+NotebookDataLength[      7692,        223]
+NotebookOptionsPosition[      4739,        152]
+NotebookOutlinePosition[      6861,        208]
+CellTagsIndexPosition[      6777,        203]
 WindowTitle->getLoopNumber
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$32880], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$50246], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/ref/getLoopNumber", ".html"]], None}]}]},
@@ -84,25 +84,69 @@ Cell[TextData[{
 }], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
-   {"", Cell["\<\
-Determines the number of loops of a diagram.
-
-Syntax:
-getLoopNumber[expr] where expr is a single graph yields the number of loops \
-of expr.
-getLoopNumber[expr] where expr is a sum of graph yields a list with the \
-numbers of loops of each single graph.
-
-Example:
-dse = doDSE[{{phi, 4}}, {phi, phi}];
-DSEPlot[dse, {{phi, Black}}]
-getLoopNumber@dse\
-\>"]}
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"getLoopNumber", "[", 
+       StyleBox["expr", "TI"], "]"}]], "InlineFormula"],
+     "\[LineSeparator]returns the number of loops of a diagram. If ",
+     Cell[BoxData[
+      StyleBox["expr", "TI"]], "InlineFormula"],
+     " is a sum of diagrams, a list with the loop numbers is returned."
+    }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
    "RowsIndexed" -> {}}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<DoFun`\>\"", "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->1414887963],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"setFields", "[", 
+   RowBox[{"{", "phi", "}"}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"dse", "=", 
+   RowBox[{"doDSE", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"{", 
+       RowBox[{"phi", ",", "4"}], "}"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"phi", ",", "phi"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"getLoopNumber", "@", "dse"}]}], "Input",
+ CellLabel->"In[2]:=",
+ CellID->648953051]
+}, Open  ]]
+}, Open  ]],
 
 Cell[" ", "FooterCell"]
 },
@@ -121,20 +165,17 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 45, 3.990640}", 
+   "built" -> "{2019, 8, 7, 9, 21, 14.981890}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
     "status" -> "None", "summary" -> 
-    "Determines the number of loops of a diagram. Syntax: getLoopNumber[expr] \
-where expr is a single graph yields the number of loops of expr. \
-getLoopNumber[expr] where expr is a sum of graph yields a list with the \
-numbers of loops of each single graph. Example: dse = doDSE[{{phi, 4}}, {phi, \
-phi}]; DSEPlot[dse, {{phi, Black}}] getLoopNumber@dse", "synonyms" -> {}, 
-    "tabletags" -> {}, "title" -> "getLoopNumber", "titlemodifier" -> "", 
-    "windowtitle" -> "getLoopNumber", "type" -> "Symbol", "uri" -> 
-    "DoFun/ref/getLoopNumber"}},
+    "getLoopNumber[expr] returns the number of loops of a diagram. If expr is \
+a sum of diagrams, a list with the loop numbers is returned.", 
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "getLoopNumber", 
+    "titlemodifier" -> "", "windowtitle" -> "getLoopNumber", "type" -> 
+    "Symbol", "uri" -> "DoFun/ref/getLoopNumber"}},
 CellContext->"Global`",
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
 StyleDefinitions->Notebook[{
@@ -152,18 +193,38 @@ StyleDefinitions->Notebook[{
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{}
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3607, 103, 259, 10, 70, "PrimaryExamplesSection",ExpressionUUID->"c6d54bf9-39ac-44b8-8b2f-0375b89ecaf1",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1]}
+ }
 *)
 (*CellTagsIndex
-CellTagsIndex->{}
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 6587, 196}
+ }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[585, 21, 2290, 54, 70, "AnchorBarGrid",ExpressionUUID->"3649d2eb-cfff-41a4-a08f-20220845c325",
+Cell[585, 21, 2290, 54, 70, "AnchorBarGrid",ExpressionUUID->"ef131304-0732-4ba4-b925-f316b93d2034",
  CellID->1],
-Cell[2878, 77, 170, 6, 70, "ObjectNameGrid",ExpressionUUID->"a4bed6f8-683e-4a60-ab20-9235597190c7"],
-Cell[3051, 85, 548, 19, 70, "Usage",ExpressionUUID->"f498d810-4af7-48f5-800d-f2a63f8c9b9a"],
-Cell[3602, 106, 23, 0, 70, "FooterCell",ExpressionUUID->"540778fe-5355-40fe-bce9-3f3b14dd974f"]
+Cell[2878, 77, 170, 6, 70, "ObjectNameGrid",ExpressionUUID->"ee81d430-fd86-44d6-8290-ae50133cb601"],
+Cell[3051, 85, 531, 14, 70, "Usage",ExpressionUUID->"1430c3b7-279b-4305-83e3-c1c29c187ee1"],
+Cell[CellGroupData[{
+Cell[3607, 103, 259, 10, 70, "PrimaryExamplesSection",ExpressionUUID->"c6d54bf9-39ac-44b8-8b2f-0375b89ecaf1",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[3891, 117, 187, 6, 70, "ExampleSection",ExpressionUUID->"5d9afa35-2067-4948-b674-d4692a9d9c74",
+ CellID->1],
+Cell[4081, 125, 115, 3, 70, "Input",ExpressionUUID->"7621315d-2821-4927-acda-b1dc2e06373d",
+ CellID->1414887963],
+Cell[4199, 130, 486, 16, 70, "Input",ExpressionUUID->"31f9c174-9d8e-4496-8a16-1f4f237564c4",
+ CellID->648953051]
+}, Open  ]]
+}, Open  ]],
+Cell[4712, 150, 23, 0, 70, "FooterCell",ExpressionUUID->"7987ecdc-c4b3-4644-a70f-7844565911de"]
 }
 ]
 *)

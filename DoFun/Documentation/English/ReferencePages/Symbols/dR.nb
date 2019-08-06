@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6455,        167]
-NotebookOptionsPosition[      3855,        110]
-NotebookOutlinePosition[      6192,        165]
-CellTagsIndexPosition[      6149,        162]
+NotebookDataLength[     10315,        307]
+NotebookOptionsPosition[      6976,        230]
+NotebookOutlinePosition[      9259,        288]
+CellTagsIndexPosition[      9175,        283]
 WindowTitle->dR
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$25981], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$38591], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "DoFun/ref/dR", 
             ".html"]], None}]}]},
@@ -84,27 +84,147 @@ Cell[TextData[{
 }], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
-   {"", Cell["\<\
-Represents a regulator insertion, \[PartialD]_t R_k.
-
-Syntax (symbolic, i.e., as a result of doDSE or doRGE):
-dR[{field1, ind1}, {field2, ind2}] where fieldi are fields and indi generic \
-indices.
-Example: Symbolic representation of a regulator insertion for gluons
-dR[{A,i},{A,j}]
-
-Syntax (algebraic, i.e., as required for getAE):
-dR[field1[mom1, inds1], field2[mom2, inds2], explicit -> True] where fieldi \
-are fields, momi their momenta and indsi their full indices.
-Example: Definition of regulator insertion for a scalar field with an O(N) \
-index
-dR[phi[p1,i], phi[p2,j], explicit -> True]:=delta[i,j] p1^2 dr[p1^2/k^2]\
-\>"]}
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"dR", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          SubscriptBox[
+           StyleBox["field", "TI"], 
+           StyleBox["1", "TR"]], ",", " ", 
+          SubscriptBox[
+           StyleBox["ind", "TI"], 
+           StyleBox["1", "TR"]]}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{
+          SubscriptBox[
+           StyleBox["field", "TI"], 
+           StyleBox["2", "TR"]], ",", " ", 
+          SubscriptBox[
+           StyleBox["ind", "TI"], 
+           StyleBox["2", "TR"]]}], "}"}]}], "]"}]], "InlineFormula"],
+     "\[LineSeparator]represents in symbolic form a regulator insertion, \
+\[PartialD]_t R_k, where fieldi are fields and their indi ",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData["indices"]],"paclet:DoFun/ref/indices"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+     ". "
+    }]]},
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{
+       StyleBox["dR", "TI"], "[", 
+       RowBox[{
+        RowBox[{
+         StyleBox["field1", "TI"], "[", 
+         RowBox[{
+          StyleBox["mom1", "TI"], ",", " ", 
+          StyleBox["inds1", "TI"]}], "]"}], ",", " ", 
+        RowBox[{
+         StyleBox["field2", "TI"], "[", 
+         RowBox[{
+          StyleBox["mom2", "TI"], ",", " ", 
+          StyleBox["inds2", "TI"]}], "]"}], ",", " ", 
+        RowBox[{
+         StyleBox["explicit", "TI"], "->", 
+         TemplateBox[{Cell[
+            TextData["True"]],"paclet:ref/True"},
+          "RefLink",
+          BaseStyle->{"InlineFormula"}]}]}], "]"}]], "InlineFormula"],
+     " represents a regulator insertion as needed by ",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData["getAE"]],"paclet:DoFun/ref/getAE"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+     ". ",
+     Cell[BoxData[
+      SubscriptBox[
+       StyleBox["field", "TI"], "i"]], "InlineFormula"],
+     " are fields, ",
+     Cell[BoxData[
+      SubscriptBox[
+       StyleBox["mom", "TI"], "i"]], "InlineFormula"],
+     " their momenta and ",
+     Cell[BoxData[
+      SubscriptBox[
+       StyleBox["inds", "TI"], "i"]], "InlineFormula"],
+     " their full indices."
+    }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
-  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {None, {None}}, 
    "RowsIndexed" -> {}}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1],
+
+Cell["\<\
+ Symbolic representation of a regulator insertion for gluons:\
+\>", "Text",
+ CellID->633802963],
+
+Cell[BoxData[
+ RowBox[{"dR", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"A", ",", "i"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"A", ",", "j"}], "}"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->161230850],
+
+Cell["\<\
+Definition of regulator insertion for a scalar field with an O(N) index:\
+\>", "Text",
+ CellID->658113772],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"dR", "[", 
+   RowBox[{
+    RowBox[{"phi", "[", 
+     RowBox[{"p1", ",", "i"}], "]"}], ",", 
+    RowBox[{"phi", "[", 
+     RowBox[{"p2", ",", "j"}], "]"}], ",", 
+    RowBox[{"explicit", "\[Rule]", "True"}]}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"delta", "[", 
+    RowBox[{"i", ",", "j"}], "]"}], " ", 
+   RowBox[{"p1", "^", "2"}], " ", 
+   RowBox[{"dr", "[", 
+    RowBox[{
+     RowBox[{"p1", "^", "2"}], "/", 
+     RowBox[{"k", "^", "2"}]}], "]"}]}]}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->1800719875]
+}, Open  ]]
+}, Open  ]],
 
 Cell[" ", "FooterCell"]
 },
@@ -123,21 +243,17 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 44, 49.213620}", 
+   "built" -> "{2019, 8, 7, 9, 20, 57.605825}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
     "status" -> "None", "summary" -> 
-    "Represents a regulator insertion, \\[PartialD]_t R_k. Syntax (symbolic, \
-i.e., as a result of doDSE or doRGE): dR[{field1, ind1}, {field2, ind2}] \
-where fieldi are fields and indi generic indices. Example: Symbolic \
-representation of a regulator insertion for gluons dR[{A,i},{A,j}] Syntax \
-(algebraic, i.e., as required for getAE): dR[field1[mom1, inds1], \
-field2[mom2, inds2], explicit -> True] where fieldi are fields, momi their \
-momenta and indsi their full indices. Example: Definition of regulator \
-insertion for a scalar field with an O(N) index dR[phi[p1,i], phi[p2,j], \
-explicit -> True]:=delta[i,j] p1^2 dr[p1^2/k^2]", "synonyms" -> {}, 
+    "dR[{field1, ind1}, {field2, ind2}] represents in symbolic form a \
+regulator insertion, \\[PartialD]_t R_k, where fieldi are fields and their \
+indi indices. dR[field1[mom1, inds1], field2[mom2, inds2], explicit -> True] \
+represents a regulator insertion as needed by getAE. fieldi are fields, momi \
+their momenta and indsi their full indices.", "synonyms" -> {}, 
     "tabletags" -> {}, "title" -> "dR", "titlemodifier" -> "", "windowtitle" -> 
     "dR", "type" -> "Symbol", "uri" -> "DoFun/ref/dR"}},
 CellContext->"Global`",
@@ -157,18 +273,42 @@ StyleDefinitions->Notebook[{
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{}
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[5459, 164, 259, 10, 70, "PrimaryExamplesSection",ExpressionUUID->"a7454fac-35ab-4efe-bfb6-1d7523f7b78a",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1]}
+ }
 *)
 (*CellTagsIndex
-CellTagsIndex->{}
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 8985, 276}
+ }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[574, 21, 2259, 54, 70, "AnchorBarGrid",ExpressionUUID->"b29dce06-9817-4510-bdf1-447749cfedac",
+Cell[574, 21, 2259, 54, 70, "AnchorBarGrid",ExpressionUUID->"21104972-5f0a-495c-816e-adc0755483d8",
  CellID->1],
-Cell[2836, 77, 159, 6, 70, "ObjectNameGrid",ExpressionUUID->"349631a5-55c8-4553-aded-66ff5a89f52d"],
-Cell[2998, 85, 827, 21, 70, "Usage",ExpressionUUID->"e89e823d-a32b-4e7e-9eec-cc2d622701a6"],
-Cell[3828, 108, 23, 0, 70, "FooterCell",ExpressionUUID->"40250909-4d45-4f44-a69a-3abba7f6bc5b"]
+Cell[2836, 77, 159, 6, 70, "ObjectNameGrid",ExpressionUUID->"122b4fee-7679-4459-a1b4-ed0a60587b4e"],
+Cell[2998, 85, 2436, 75, 70, "Usage",ExpressionUUID->"6bb68c57-d0a6-4734-87a7-a4d9ac575459"],
+Cell[CellGroupData[{
+Cell[5459, 164, 259, 10, 70, "PrimaryExamplesSection",ExpressionUUID->"a7454fac-35ab-4efe-bfb6-1d7523f7b78a",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[5743, 178, 187, 6, 70, "ExampleSection",ExpressionUUID->"3ef8d2fe-9f93-4956-8c3e-aec020c0b323",
+ CellID->1],
+Cell[5933, 186, 105, 3, 70, "Text",ExpressionUUID->"d41872fa-171d-4702-bb17-60ad56374a1b",
+ CellID->633802963],
+Cell[6041, 191, 219, 8, 70, "Input",ExpressionUUID->"d7fd134c-0e05-4849-ad7d-339af0c009f0",
+ CellID->161230850],
+Cell[6263, 201, 116, 3, 70, "Text",ExpressionUUID->"914c06e7-f12e-4c6f-a1f8-c0446b355d27",
+ CellID->658113772],
+Cell[6382, 206, 540, 18, 70, "Input",ExpressionUUID->"b7ebaf8c-bbe5-4498-9e18-5fef6a3fa1e0",
+ CellID->1800719875]
+}, Open  ]]
+}, Open  ]],
+Cell[6949, 228, 23, 0, 70, "FooterCell",ExpressionUUID->"569dd8a2-95bb-4193-be72-044f262c06e8"]
 }
 ]
 *)

@@ -10,25 +10,25 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6143,        163]
-NotebookOptionsPosition[      3704,        108]
-NotebookOutlinePosition[      5880,        161]
-CellTagsIndexPosition[      5837,        158]
+NotebookDataLength[     12138,        329]
+NotebookOptionsPosition[      8849,        250]
+NotebookOutlinePosition[     11105,        308]
+CellTagsIndexPosition[     11020,        303]
 WindowTitle->convertAction
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell"], Cell[TextData[Cell[
-    BoxData[
+   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell",ExpressionUUID->
+     "9e83a86b-eb44-44d4-8032-e56f65ce39c6"], Cell[TextData[Cell[BoxData[
      ActionMenuBox[
       FrameBox[
        InterpretationBox[Cell[TextData[{
          "URL",
          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
           StripOnInput->False]
-        }]],
+        }],ExpressionUUID->"2e7fec59-0a8a-4ba1-b130-697800d93856"],
         TextCell[
          Row[{"URL", 
            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
@@ -60,51 +60,193 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$19025], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$26862], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/ref/convertAction", ".html"]], None}]}]},
       Appearance->None,
       MenuAppearance->Automatic,
       MenuStyle->"URLMenu"]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+     LineSpacing->{1.4, 0},ExpressionUUID->
+     "fd9bb823-3668-4ebc-87fe-2d10bebee70b"]], "AnchorBar",ExpressionUUID->
+     "cc07ead2-b46a-4e20-8c3c-9d12f5562aa0"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
       Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
    "RowsIndexed" -> {}}},
- CellID->1],
+ CellID->1,ExpressionUUID->"1e5afaab-7c32-4ed9-b5f5-a32eddb48a8f"],
+
+Cell[CellGroupData[{
 
 Cell[TextData[{
- Cell["convertAction", "ObjectName"],
+ Cell["convertAction", "ObjectName",ExpressionUUID->
+  "a2708e14-f83d-4a36-9ed6-0bb189988f72"],
  Cell[BoxData[
   TemplateBox[{8},
-   "Spacer1"]]],
- Cell[BoxData[""], "ObjectNameTranslation"]
-}], "ObjectNameGrid"],
+   "Spacer1"]],ExpressionUUID->"ec02c4c9-df3f-4537-8e85-4b52236a8411"],
+ Cell[BoxData[
+ ""], "ObjectNameTranslation",ExpressionUUID->
+  "20e03024-b609-46e3-aa4b-a8ca7be5081e"]
+}], "ObjectNameGrid",ExpressionUUID->"d79cca00-fc1a-4ba2-96a2-cfe5c20117e8"],
 
 Cell[BoxData[GridBox[{
-   {"", Cell["\<\
-Converts a given action into a form suitable for computation, i.e., with \
-proper dummy indices and momenta.
-
-Syntax:
-convertAction[act_] where act is a physical action.
-
-Example:
-defineFieldsSpecific[{\[CurlyPhi][momentum, type]}];
-convertAction[ 1/2 (p^2 Z[p^2] + R[k]) op[\[CurlyPhi][p, i], \
-\[CurlyPhi][-p,i]] + 
- \[Lambda]2/8 op[\[CurlyPhi][p, i], \[CurlyPhi][q, i], \[CurlyPhi][r, j], \
-\[CurlyPhi][-p - q - r, j]]]\
-\>"]}
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"convertAction", "[", 
+       StyleBox["ac", "TI"], "]"}]], "InlineFormula",ExpressionUUID->
+      "5bdf6ea2-346b-4a88-9e26-48296ac8424e"],
+     "\[LineSeparator]converts a given physical action ",
+     Cell[BoxData[
+      StyleBox["a", "TI"]], "InlineFormula",ExpressionUUID->
+      "21613685-c5da-4915-905e-6a7408afde6d"],
+     "c into a form suitable for computation, i.e., with proper dummy indices \
+and momenta."
+    }],ExpressionUUID->"de3bf05d-fa0b-4c55-bea4-99886447ef15"]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
-   "RowsIndexed" -> {}}}],
+   "RowsIndexed" -> \
+{}}},ExpressionUUID->"4c9cc598-9501-4c55-ba7e-25eccf11a8be"]
+}, Open  ]],
 
-Cell[" ", "FooterCell"]
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"77050760-6154-4124-919e-1747c571651b"],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "aa02f078-819b-4079-93a6-2d51e94e03a8"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->381249447,ExpressionUUID->"24fe8bd5-db65-4552-a2ae-bc0c73769359"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "fcb899e4-0602-4220-89fc-e931af71d586"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->777962394,ExpressionUUID->"2433f3e1-8142-4580-9e09-c690bbabe8e3"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<DoFun`\>\"", "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->1414887963,ExpressionUUID->"78915343-de62-4293-9fde-1892da15a923"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"setFields", "[", 
+   RowBox[{"{", "\[CurlyPhi]", "}"}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"defineFieldsSpecific", "[", 
+   RowBox[{"{", 
+    RowBox[{"\[CurlyPhi]", "[", 
+     RowBox[{"momentum", ",", " ", "type"}], "]"}], "}"}], "]"}], ";", " ", 
+  RowBox[{"convertAction", "[", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"1", "/", "2"}], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"p", "^", "2"}], 
+        RowBox[{"Z", "[", 
+         RowBox[{"p", "^", "2"}], "]"}]}], " ", "+", 
+       RowBox[{"R", "[", "k", "]"}]}], ")"}], 
+     RowBox[{"op", "[", 
+      RowBox[{
+       RowBox[{"\[CurlyPhi]", "[", 
+        RowBox[{"p", ",", " ", "i"}], "]"}], ",", " ", 
+       RowBox[{"\[CurlyPhi]", "[", 
+        RowBox[{
+         RowBox[{"-", "p"}], ",", "i"}], "]"}]}], "]"}]}], " ", "+", "  ", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox["\[Lambda]", "2"], "/", "8"}], " ", 
+     RowBox[{"op", "[", 
+      RowBox[{
+       RowBox[{"\[CurlyPhi]", "[", 
+        RowBox[{"p", ",", " ", "i"}], "]"}], ",", " ", 
+       RowBox[{"\[CurlyPhi]", "[", 
+        RowBox[{"q", ",", " ", "i"}], "]"}], ",", " ", 
+       RowBox[{"\[CurlyPhi]", "[", 
+        RowBox[{"r", ",", " ", "j"}], "]"}], ",", " ", 
+       RowBox[{"\[CurlyPhi]", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"-", "p"}], " ", "-", " ", "q", " ", "-", " ", "r"}], ",", 
+         " ", "j"}], "]"}]}], "]"}]}]}], "]"}]}]}], "Input",
+ CellLabel->"In[2]:=",
+ CellID->1667019068,ExpressionUUID->"011134b6-4ffe-43cc-9396-fef38645185a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   FractionBox["1", "2"], " ", 
+   RowBox[{"op", "[", 
+    RowBox[{
+     RowBox[{"\[CurlyPhi]", "[", 
+      RowBox[{"q$18574", ",", 
+       RowBox[{"dummy", "[", "31", "]"}]}], "]"}], ",", 
+     RowBox[{"\[CurlyPhi]", "[", 
+      RowBox[{
+       RowBox[{"-", "q$18574"}], ",", 
+       RowBox[{"dummy", "[", "31", "]"}]}], "]"}]}], "]"}], " ", 
+   RowBox[{"R", "[", "k", "]"}]}], "+", 
+  RowBox[{
+   FractionBox["1", "8"], " ", 
+   RowBox[{"op", "[", 
+    RowBox[{
+     RowBox[{"\[CurlyPhi]", "[", 
+      RowBox[{"q$18566", ",", 
+       RowBox[{"dummy", "[", "29", "]"}]}], "]"}], ",", 
+     RowBox[{"\[CurlyPhi]", "[", 
+      RowBox[{"q$18567", ",", 
+       RowBox[{"dummy", "[", "29", "]"}]}], "]"}], ",", 
+     RowBox[{"\[CurlyPhi]", "[", 
+      RowBox[{"q$18568", ",", 
+       RowBox[{"dummy", "[", "30", "]"}]}], "]"}], ",", 
+     RowBox[{"\[CurlyPhi]", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "q$18566"}], "-", "q$18567", "-", "q$18568"}], ",", 
+       RowBox[{"dummy", "[", "30", "]"}]}], "]"}]}], "]"}], " ", 
+   SubscriptBox["\[Lambda]", "2"]}], "+", 
+  RowBox[{
+   FractionBox["1", "2"], " ", 
+   SuperscriptBox["q$18578", "2"], " ", 
+   RowBox[{"op", "[", 
+    RowBox[{
+     RowBox[{"\[CurlyPhi]", "[", 
+      RowBox[{"q$18578", ",", 
+       RowBox[{"dummy", "[", "32", "]"}]}], "]"}], ",", 
+     RowBox[{"\[CurlyPhi]", "[", 
+      RowBox[{
+       RowBox[{"-", "q$18578"}], ",", 
+       RowBox[{"dummy", "[", "32", "]"}]}], "]"}]}], "]"}], " ", 
+   RowBox[{"Z", "[", 
+    SuperscriptBox["q$18578", "2"], "]"}]}]}]], "Output",
+ ImageSize->{562, 121},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->719736971,ExpressionUUID->"1ff852e0-ea18-44ee-b117-bf928239ae93"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell",ExpressionUUID->"fcb4b12c-c1c4-443e-96d1-63a6f0614de3"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
@@ -121,21 +263,18 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 43, 50.533797}", 
+   "built" -> "{2019, 8, 7, 9, 20, 38.034489}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoFR`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
     "status" -> "None", "summary" -> 
-    "Converts a given action into a form suitable for computation, i.e., with \
-proper dummy indices and momenta. Syntax: convertAction[act_] where act is a \
-physical action. Example: defineFieldsSpecific[{\\[CurlyPhi][momentum, \
-type]}]; convertAction[1/2 (p^2 Z[p^2] + R[k]) op[\\[CurlyPhi][p, i], \
-\\[CurlyPhi][-p,i]] + \\[Lambda]2/8 op[\\[CurlyPhi][p, i], \\[CurlyPhi][q, \
-i], \\[CurlyPhi][r, j], \\[CurlyPhi][-p - q - r, j]]]", "synonyms" -> {}, 
-    "tabletags" -> {}, "title" -> "convertAction", "titlemodifier" -> "", 
-    "windowtitle" -> "convertAction", "type" -> "Symbol", "uri" -> 
-    "DoFun/ref/convertAction"}},
+    "convertAction[ac] converts a given physical action ac into a form \
+suitable for computation, i.e., with proper dummy indices and momenta.", 
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "convertAction", 
+    "titlemodifier" -> "", "windowtitle" -> "convertAction", "type" -> 
+    "Symbol", "uri" -> "DoFun/ref/convertAction", "WorkflowDockedCell" -> ""},
+   "SearchTextTranslated" -> "", "NewStyles" -> False},
 CellContext->"Global`",
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
 StyleDefinitions->Notebook[{
@@ -146,27 +285,55 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
-  StyleDefinitions -> "Default.nb"]
+  TaggingRules -> {"NewStyles" -> False}, FrontEndVersion -> 
+  "11.3 for Linux x86 (64-bit) (March 6, 2018)", StyleDefinitions -> 
+  "Default.nb"]
 ]
 (* End of Notebook Content *)
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{}
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[4398, 115, 435, 11, 36, "PrimaryExamplesSection",ExpressionUUID->"24fe8bd5-db65-4552-a2ae-bc0c73769359",
+   CellTags->"PrimaryExamplesSection",
+   CellID->381249447]}
+ }
 *)
 (*CellTagsIndex
-CellTagsIndex->{}
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 10822, 296}
+ }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[585, 21, 2290, 54, 70, "AnchorBarGrid",ExpressionUUID->"4d727190-892e-46d6-bc46-48aec4e3b0cd",
+Cell[585, 21, 2578, 56, 56, "AnchorBarGrid",ExpressionUUID->"1e5afaab-7c32-4ed9-b5f5-a32eddb48a8f",
  CellID->1],
-Cell[2878, 77, 170, 6, 70, "ObjectNameGrid",ExpressionUUID->"2d0be9af-8a34-4961-8b56-818bf88afd25"],
-Cell[3051, 85, 623, 19, 70, "Usage",ExpressionUUID->"a61bbdaa-7628-45be-955e-8273fea171bf"],
-Cell[3677, 106, 23, 0, 70, "FooterCell",ExpressionUUID->"f9815024-9c84-401c-b79c-6848b8bec887"]
+Cell[CellGroupData[{
+Cell[3188, 81, 398, 9, 53, "ObjectNameGrid",ExpressionUUID->"d79cca00-fc1a-4ba2-96a2-cfe5c20117e8"],
+Cell[3589, 92, 772, 18, 134, "Usage",ExpressionUUID->"4c9cc598-9501-4c55-ba7e-25eccf11a8be"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4398, 115, 435, 11, 36, "PrimaryExamplesSection",ExpressionUUID->"24fe8bd5-db65-4552-a2ae-bc0c73769359",
+ CellTags->"PrimaryExamplesSection",
+ CellID->381249447],
+Cell[CellGroupData[{
+Cell[4858, 130, 308, 7, 30, "ExampleSection",ExpressionUUID->"2433f3e1-8142-4580-9e09-c690bbabe8e3",
+ CellID->777962394],
+Cell[5169, 139, 170, 3, 29, "Input",ExpressionUUID->"78915343-de62-4293-9fde-1892da15a923",
+ CellID->1414887963],
+Cell[CellGroupData[{
+Cell[5364, 146, 1586, 44, 87, "Input",ExpressionUUID->"011134b6-4ffe-43cc-9396-fef38645185a",
+ CellID->1667019068],
+Cell[6953, 192, 1775, 51, 142, "Output",ExpressionUUID->"1ff852e0-ea18-44ee-b117-bf928239ae93",
+ CellID->719736971]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[8767, 248, 78, 0, 43, "FooterCell",ExpressionUUID->"fcb4b12c-c1c4-443e-96d1-63a6f0614de3"]
 }
 ]
 *)
 
 (* End of internal cache information *)
+

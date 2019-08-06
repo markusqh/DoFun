@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6374,        166]
-NotebookOptionsPosition[      3815,        110]
-NotebookOutlinePosition[      6111,        164]
-CellTagsIndexPosition[      6068,        161]
+NotebookDataLength[     11750,        348]
+NotebookOptionsPosition[      7987,        264]
+NotebookOutlinePosition[     10354,        323]
+CellTagsIndexPosition[     10269,        318]
 WindowTitle->P
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$40091], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$59890], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "DoFun/ref/P", 
             ".html"]], None}]}]},
@@ -84,27 +84,181 @@ Cell[TextData[{
 }], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
-   {"", Cell["\<\
-Represents a dressed propagator.
-
-Syntax (symbolic, i.e., as a result of doDSE or doRGE):
-P[{field1, ind1}, {field2, ind2}] where fieldi are fields and indi generic \
-indices.
-Example: Symbolic representation of a dressed gluon propagator
-P[{A,i},{A,j}]
-
-Syntax (algebraic, i.e., as required for getAE):
-P[field1[mom1, inds1], field2[mom2, inds2], explicit -> True] where fieldi \
-are fields, momi their momenta and indsi their full indices.
-Example: Definition of a dressed propagator for a scalar field with an O(N) \
-index
-P[phi[p1,i], phi[p2,j], explicit -> True]:=delta[i,j] D[p1^2]/p1^2\
-\>"]}
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"P", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          SubscriptBox[
+           StyleBox["field", "TI"], 
+           StyleBox["1", "TR"]], ",", " ", 
+          SubscriptBox[
+           StyleBox["index", "TI"], 
+           StyleBox["1", "TR"]]}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{
+          SubscriptBox[
+           StyleBox["field", "TI"], 
+           StyleBox["2", "TR"]], ",", " ", 
+          SubscriptBox[
+           StyleBox["index", "TI"], 
+           StyleBox["2", "TR"]]}], "}"}]}], "]"}]], "InlineFormula"],
+     "\[LineSeparator]represents a dressed propagator of the fields fieldi \
+with their ",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData["indices"]],"paclet:DoFun/ref/indices"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+     " indexi in its symbolic form. "
+    }]]},
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"P", "[", 
+       RowBox[{
+        RowBox[{
+         StyleBox["field1", "TI"], "[", 
+         RowBox[{
+          StyleBox["momentum1", "TI"], ",", " ", 
+          StyleBox["index1a", "TI"], ",", " ", 
+          StyleBox["index1b", "TI"], ",", " ", "..."}], "]"}], ",", " ", 
+        RowBox[{
+         StyleBox["field2", "TI"], "[", 
+         RowBox[{
+          StyleBox["momentum2", "TI"], ",", " ", 
+          StyleBox["index2a", "TI"], ",", " ", 
+          StyleBox["index2b", "TI"], ",", " ", "..."}], "]"}], ",", " ", 
+        RowBox[{
+         StyleBox["explicit", "TI"], "->", 
+         TemplateBox[{Cell[
+            TextData["True"]],"paclet:ref/True"},
+          "RefLink",
+          BaseStyle->{"InlineFormula"}]}]}], "]"}]], "InlineFormula"],
+     " represents a dressed propagator of the fields ",
+     Cell[BoxData[
+      SubscriptBox[
+       StyleBox["field", "TI"], "i"]], "InlineFormula"],
+     "i with their momenta ",
+     Cell[BoxData[
+      SubscriptBox[
+       StyleBox["momentum", "TI"], "i"]], "InlineFormula"],
+     " and explicit indices ",
+     Cell[BoxData[
+      SubscriptBox[
+       StyleBox["index", "TI"], "ij"]], "InlineFormula"],
+     " in algebraic form. The option ",
+     Cell[BoxData[
+      TemplateBox[{Cell[
+         TextData["explicit"]],"paclet:DoFun/ref/explicit"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+     " can have an arbitrary value."
+    }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
-  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {None, {None}}, 
    "RowsIndexed" -> {}}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<DoFun`\>\"", "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->1414887963],
+
+Cell["Symbolic example:", "Text",
+ CellID->521627062],
+
+Cell[BoxData[
+ RowBox[{" ", 
+  RowBox[{"P", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      ButtonBox["A",
+       BaseStyle->"Link",
+       ButtonData->"paclet:ref/A"], ",", 
+      StyleBox["i", "TI"]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      ButtonBox["A",
+       BaseStyle->"Link",
+       ButtonData->"paclet:ref/A"], ",", 
+      StyleBox["j", "TI"]}], "}"}]}], "]"}]}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->2011140835],
+
+Cell[" Algebraic example: ", "Text",
+ CellID->449633699],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"P", "[", 
+   RowBox[{
+    RowBox[{"field1", "[", 
+     RowBox[{"mom1", ",", " ", "inds1"}], "]"}], ",", " ", 
+    RowBox[{"field2", "[", 
+     RowBox[{"mom2", ",", " ", "inds2"}], "]"}], ",", " ", 
+    RowBox[{
+     ButtonBox["explicit",
+      BaseStyle->"Link",
+      ButtonData->"paclet:DoFun/ref/explicit"], "->", "True"}]}], "]"}], 
+  " "}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->1094081562],
+
+Cell["\<\
+Definition of a dressed propagator for a scalar field with an O(N) index:\
+\>", "Text",
+ CellID->868284822],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"P", "[", 
+   RowBox[{
+    RowBox[{"phi", "[", 
+     RowBox[{"p1_", ",", "i_"}], "]"}], ",", " ", 
+    RowBox[{"phi", "[", 
+     RowBox[{"p2_", ",", "j_"}], "]"}], ",", " ", 
+    RowBox[{
+     ButtonBox["explicit",
+      BaseStyle->"Link",
+      ButtonData->"paclet:DoFun/ref/explicit"], "->", "True"}]}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"delta", "[", 
+    RowBox[{"i", ",", "j"}], "]"}], " ", 
+   RowBox[{
+    RowBox[{"D", "[", 
+     RowBox[{"p1", "^", "2"}], "]"}], "/", 
+    RowBox[{"p1", "^", "2"}]}]}]}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->969077787]
+}, Open  ]]
+}, Open  ]],
 
 Cell[" ", "FooterCell"]
 },
@@ -123,20 +277,18 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 45, 21.764401}", 
+   "built" -> "{2019, 8, 7, 9, 21, 30.191970}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
     "status" -> "None", "summary" -> 
-    "Represents a dressed propagator. Syntax (symbolic, i.e., as a result of \
-doDSE or doRGE): P[{field1, ind1}, {field2, ind2}] where fieldi are fields \
-and indi generic indices. Example: Symbolic representation of a dressed gluon \
-propagator P[{A,i},{A,j}] Syntax (algebraic, i.e., as required for getAE): \
-P[field1[mom1, inds1], field2[mom2, inds2], explicit -> True] where fieldi \
-are fields, momi their momenta and indsi their full indices. Example: \
-Definition of a dressed propagator for a scalar field with an O(N) index \
-P[phi[p1,i], phi[p2,j], explicit -> True]:=delta[i,j] D[p1^2]/p1^2", 
+    "P[{field1, index1}, {field2, index2}] represents a dressed propagator of \
+the fields fieldi with their indices indexi in its symbolic form. \
+P[field1[momentum1, index1a, index1b, ...], field2[momentum2, index2a, \
+index2b, ...], explicit -> True] represents a dressed propagator of the \
+fields fieldii with their momenta momentumi and explicit indices indexij in \
+algebraic form. The option explicit can have an arbitrary value.", 
     "synonyms" -> {}, "tabletags" -> {}, "title" -> "P", "titlemodifier" -> 
     "", "windowtitle" -> "P", "type" -> "Symbol", "uri" -> "DoFun/ref/P"}},
 CellContext->"Global`",
@@ -156,18 +308,48 @@ StyleDefinitions->Notebook[{
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{}
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[5620, 165, 259, 10, 70, "PrimaryExamplesSection",ExpressionUUID->"5a1919d8-63f5-4608-ab5e-55e64e18ea86",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1]}
+ }
 *)
 (*CellTagsIndex
-CellTagsIndex->{}
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 10079, 311}
+ }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[573, 21, 2255, 54, 70, "AnchorBarGrid",ExpressionUUID->"81b67d6e-c3af-4b96-be14-190692c42a5f",
+Cell[573, 21, 2255, 54, 70, "AnchorBarGrid",ExpressionUUID->"030e8360-4a35-42fb-93fc-4b61a5398eaf",
  CellID->1],
-Cell[2831, 77, 158, 6, 70, "ObjectNameGrid",ExpressionUUID->"6e3cf8dc-2b39-49c1-8ff7-0097ae49b904"],
-Cell[2992, 85, 793, 21, 70, "Usage",ExpressionUUID->"39e0a0f1-5082-4168-860a-a57c346bf8f8"],
-Cell[3788, 108, 23, 0, 70, "FooterCell",ExpressionUUID->"ee3a4046-fed9-4414-82d0-4297453b8b18"]
+Cell[2831, 77, 158, 6, 70, "ObjectNameGrid",ExpressionUUID->"89a2af49-b9f1-4e9c-86cc-1c4d4be43698"],
+Cell[2992, 85, 2603, 76, 70, "Usage",ExpressionUUID->"df649173-bf4a-40ab-b1ed-b16a3e2884e0"],
+Cell[CellGroupData[{
+Cell[5620, 165, 259, 10, 70, "PrimaryExamplesSection",ExpressionUUID->"5a1919d8-63f5-4608-ab5e-55e64e18ea86",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[5904, 179, 187, 6, 70, "ExampleSection",ExpressionUUID->"2b9b93be-3160-4daf-8ab8-30a2bef956ac",
+ CellID->1],
+Cell[6094, 187, 115, 3, 70, "Input",ExpressionUUID->"e39c9a59-2143-4fec-9d7c-77e3e0216ea3",
+ CellID->1414887963],
+Cell[6212, 192, 53, 1, 70, "Text",ExpressionUUID->"8e4a4b5a-639d-4e36-abe4-60e7de1b6cd1",
+ CellID->521627062],
+Cell[6268, 195, 446, 17, 70, "Input",ExpressionUUID->"92f25339-cf55-435b-8c6e-b71c6fe0d6e3",
+ CellID->2011140835],
+Cell[6717, 214, 56, 1, 70, "Text",ExpressionUUID->"d95fd11d-b7ec-4e57-a48b-33572365aadb",
+ CellID->449633699],
+Cell[6776, 217, 434, 14, 70, "Input",ExpressionUUID->"fa060024-9a43-4d07-b8ec-ae5b9037b8e5",
+ CellID->1094081562],
+Cell[7213, 233, 117, 3, 70, "Text",ExpressionUUID->"f24eed07-7833-4fef-8915-6f746b0b79cb",
+ CellID->868284822],
+Cell[7333, 238, 600, 20, 70, "Input",ExpressionUUID->"5a9a49b5-e0e5-489f-b3f6-67f08d63159c",
+ CellID->969077787]
+}, Open  ]]
+}, Open  ]],
+Cell[7960, 262, 23, 0, 70, "FooterCell",ExpressionUUID->"05cd14cd-cba3-44ef-9bde-69982e84e97d"]
 }
 ]
 *)

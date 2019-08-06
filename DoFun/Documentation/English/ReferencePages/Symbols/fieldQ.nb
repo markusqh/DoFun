@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5513,        154]
-NotebookOptionsPosition[      3390,        103]
-NotebookOutlinePosition[      5250,        152]
-CellTagsIndexPosition[      5207,        149]
+NotebookDataLength[      5521,        153]
+NotebookOptionsPosition[      3494,        103]
+NotebookOutlinePosition[      5258,        151]
+CellTagsIndexPosition[      5215,        148]
 WindowTitle->fieldQ
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$29995], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$44948], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "DoFun/ref/fieldQ", 
             ".html"]], None}]}]},
@@ -84,15 +84,15 @@ Cell[TextData[{
 }], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
-   {"", Cell["\<\
-Determines if an expression is defined as a field.
-
-Syntax: fieldQ[f]
-
-Example:
-defineFields[{phi},{{psi,psib}},{}];
-fieldQ/@{A,phi,psib}\
-\>"]}
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"fieldQ", "[", 
+       StyleBox["expr", "TI"], "]"}]], "InlineFormula"],
+     "\[LineSeparator]yields True if ",
+     Cell[BoxData[
+      StyleBox["expr", "TI"]], "InlineFormula"],
+     " is a field."
+    }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
@@ -116,16 +116,15 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 44, 58.074116}", 
+   "built" -> "{2019, 8, 7, 9, 21, 6.776218}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
     "status" -> "None", "summary" -> 
-    "Determines if an expression is defined as a field. Syntax: fieldQ[f] \
-Example: defineFields[{phi},{{psi,psib}},{}]; fieldQ/@{A,phi,psib}", 
-    "synonyms" -> {}, "tabletags" -> {}, "title" -> "fieldQ", "titlemodifier" -> 
-    "", "windowtitle" -> "fieldQ", "type" -> "Symbol", "uri" -> 
+    "fieldQ[expr] yields True if expr is a field.", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "fieldQ", "titlemodifier" -> "", 
+    "windowtitle" -> "fieldQ", "type" -> "Symbol", "uri" -> 
     "DoFun/ref/fieldQ"}},
 CellContext->"Global`",
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
@@ -151,11 +150,11 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[578, 21, 2275, 54, 70, "AnchorBarGrid",ExpressionUUID->"10382abe-427b-4db7-ba9f-2817dd01d600",
+Cell[578, 21, 2275, 54, 70, "AnchorBarGrid",ExpressionUUID->"11fd464e-04ac-40c3-81e3-c3d2739ec3d1",
  CellID->1],
-Cell[2856, 77, 163, 6, 70, "ObjectNameGrid",ExpressionUUID->"f07990fd-5acb-4d0d-8f83-216100eab812"],
-Cell[3022, 85, 338, 14, 70, "Usage",ExpressionUUID->"6ac50823-5ac7-45c8-b1e5-4185e057fb4e"],
-Cell[3363, 101, 23, 0, 70, "FooterCell",ExpressionUUID->"cf9f6211-6567-422b-b0a2-345c7c2a7a5f"]
+Cell[2856, 77, 163, 6, 70, "ObjectNameGrid",ExpressionUUID->"3bdf3523-de0c-4963-ab59-53da5c26c807"],
+Cell[3022, 85, 442, 14, 70, "Usage",ExpressionUUID->"caedfa4c-1bbd-4677-a4c7-467de399616a"],
+Cell[3467, 101, 23, 0, 70, "FooterCell",ExpressionUUID->"d21c5647-f859-4b57-aaab-329daf25c901"]
 }
 ]
 *)

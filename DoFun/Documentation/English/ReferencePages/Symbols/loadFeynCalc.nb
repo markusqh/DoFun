@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7416,        207]
-NotebookOptionsPosition[      4735,        147]
-NotebookOutlinePosition[      6781,        198]
-CellTagsIndexPosition[      6738,        195]
+NotebookDataLength[      7745,        214]
+NotebookOptionsPosition[      5082,        154]
+NotebookOutlinePosition[      7110,        205]
+CellTagsIndexPosition[      7067,        202]
 WindowTitle->loadFeynCalc
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$37690], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$56941], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "DoFun/ref/loadFeynCalc", ".html"]], None}]}]},
@@ -104,22 +104,29 @@ Cell[TextData[{
 }], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
-   {"", Cell["\<\
-Fixes a problem when loading FeynCalc. Furthermore the output format is set \
-to StandardForm.
-This should be used when problems with FeynCalc occur.
-
-Syntax:
-loadFeynCalc[pack] with pack the path of the FeynCalc package. If none is \
-given, HighEnergyPhysics`FeynCalc` is used.
-
-Example:
-loadFeynCalc[]\
-\>"]}
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"loadFeynCalc", "[", "]"}]], "InlineFormula"],
+     "\[LineSeparator]fixes a problem when loading FeynCalc. Furthermore, the \
+output format is set to ",
+     StyleBox["StandardForm", "Notes"],
+     ". "
+    }]]},
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"loadFeynCalc", "[", 
+       StyleBox["pack", "TI"], "]"}]], "InlineFormula"],
+     "\[LineSeparator]with ",
+     Cell[BoxData[
+      StyleBox["pack", "TI"]], "InlineFormula"],
+     " the path of the FeynCalc package. If none is given, \
+HighEnergyPhysics`FeynCalc` is used. This should be used when problems with \
+FeynCalc occur."
+    }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
-  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {None, {None}}, 
    "RowsIndexed" -> {}}}],
 
 Cell[CellGroupData[{
@@ -160,16 +167,16 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 45, 14.942219}", 
+   "built" -> "{2019, 8, 7, 9, 21, 25.427309}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoAE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
     "status" -> "None", "summary" -> 
-    "Fixes a problem when loading FeynCalc. Furthermore the output format is \
-set to StandardForm. This should be used when problems with FeynCalc occur. \
-Syntax: loadFeynCalc[pack] with pack the path of the FeynCalc package. If \
-none is given, HighEnergyPhysics`FeynCalc` is used. Example: loadFeynCalc[]", 
+    "loadFeynCalc[] fixes a problem when loading FeynCalc. Furthermore, the \
+output format is set to StandardForm. loadFeynCalc[pack] with pack the path \
+of the FeynCalc package. If none is given, HighEnergyPhysics`FeynCalc` is \
+used. This should be used when problems with FeynCalc occur.", 
     "synonyms" -> {}, "tabletags" -> {}, "title" -> "loadFeynCalc", 
     "titlemodifier" -> "", "windowtitle" -> "loadFeynCalc", "type" -> 
     "Symbol", "uri" -> "DoFun/ref/loadFeynCalc"}},
@@ -197,18 +204,18 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[584, 21, 3039, 74, 70, "AnchorBarGrid",ExpressionUUID->"20a08bd9-359c-44e8-86b2-a9d243ae0694",
+Cell[584, 21, 3039, 74, 70, "AnchorBarGrid",ExpressionUUID->"79517eb0-173c-4b3c-abea-1759c3cc462d",
  CellID->1],
-Cell[3626, 97, 169, 6, 70, "ObjectNameGrid",ExpressionUUID->"a25d6e61-8a31-4f2f-a29a-430a71a71792"],
-Cell[3798, 105, 504, 17, 70, "Usage",ExpressionUUID->"97512690-8f7f-4f31-81eb-6be945d546d3"],
+Cell[3626, 97, 169, 6, 70, "ObjectNameGrid",ExpressionUUID->"01caeeb3-4dae-4b21-9573-9e5fb79a27fc"],
+Cell[3798, 105, 851, 24, 70, "Usage",ExpressionUUID->"80a40cba-959f-4923-8fed-371311f9ad40"],
 Cell[CellGroupData[{
-Cell[4327, 126, 156, 7, 70, "MoreAboutSection",ExpressionUUID->"35fb5a0d-0297-4378-a26c-491721a39bfc",
+Cell[4674, 133, 156, 7, 70, "MoreAboutSection",ExpressionUUID->"5d4a4e3e-cd26-4630-a045-1642781ad79d",
  CellID->38303248],
-Cell[4486, 135, 31, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"6108b061-cf5c-41cf-9b3c-10a6e8682e28"],
-Cell[4520, 137, 173, 5, 70, "MoreAbout",ExpressionUUID->"fcdfc701-1862-4ac3-9313-da30e960c0f8",
+Cell[4833, 142, 31, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"5668657a-77e4-4b25-a5d9-5d03c28af992"],
+Cell[4867, 144, 173, 5, 70, "MoreAbout",ExpressionUUID->"f02d9ecf-9875-457b-97d9-c24cd5712da9",
  CellID->1]
 }, Open  ]],
-Cell[4708, 145, 23, 0, 70, "FooterCell",ExpressionUUID->"78edd5ac-931c-4e8a-a9c2-99c2ffdc3084"]
+Cell[5055, 152, 23, 0, 70, "FooterCell",ExpressionUUID->"4004ca8b-b291-4803-9a76-5f049247923a"]
 }
 ]
 *)

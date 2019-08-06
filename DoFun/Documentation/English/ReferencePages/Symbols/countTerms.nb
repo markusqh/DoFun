@@ -10,25 +10,25 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5839,        157]
-NotebookOptionsPosition[      3550,        104]
-NotebookOutlinePosition[      5576,        155]
-CellTagsIndexPosition[      5533,        152]
+NotebookDataLength[     12056,        342]
+NotebookOptionsPosition[      8853,        264]
+NotebookOutlinePosition[     11026,        321]
+CellTagsIndexPosition[     10941,        316]
 WindowTitle->countTerms
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell"], Cell[TextData[Cell[
-    BoxData[
+   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell",ExpressionUUID->
+     "0b162230-4efa-4298-bdef-8ca02e78bb0f"], Cell[TextData[Cell[BoxData[
      ActionMenuBox[
       FrameBox[
        InterpretationBox[Cell[TextData[{
          "URL",
          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
           StripOnInput->False]
-        }]],
+        }],ExpressionUUID->"371226ca-0fe0-4c00-8476-780ccf3838b6"],
         TextCell[
          Row[{"URL", 
            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
@@ -60,47 +60,207 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$19503], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$28615], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/ref/countTerms", ".html"]], None}]}]},
       Appearance->None,
       MenuAppearance->Automatic,
       MenuStyle->"URLMenu"]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+     LineSpacing->{1.4, 0},ExpressionUUID->
+     "fb99795b-790d-43f6-9e48-c6df3f7df22d"]], "AnchorBar",ExpressionUUID->
+     "acc6beeb-2436-47a1-99e9-f0b3478df3f7"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
       Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
    "RowsIndexed" -> {}}},
- CellID->1],
+ CellID->1,ExpressionUUID->"65d82169-538a-48b6-85db-4881011ce5be"],
+
+Cell[CellGroupData[{
 
 Cell[TextData[{
- Cell["countTerms", "ObjectName"],
+ Cell["countTerms", "ObjectName",ExpressionUUID->
+  "019b4225-98c9-4cea-b0e8-234c6dce2ce3"],
  Cell[BoxData[
   TemplateBox[{8},
-   "Spacer1"]]],
- Cell[BoxData[""], "ObjectNameTranslation"]
-}], "ObjectNameGrid"],
+   "Spacer1"]],ExpressionUUID->"c2d07c19-7316-4598-b9b6-63df024c503b"],
+ Cell[BoxData[
+ ""], "ObjectNameTranslation",ExpressionUUID->
+  "a4ed8931-2e54-4712-9308-33fa80ec9c01"]
+}], "ObjectNameGrid",ExpressionUUID->"e6795313-7aa6-40a1-a911-c1e6ad33082d"],
 
 Cell[BoxData[GridBox[{
-   {"", Cell["\<\
-Counts the number of graphs appearing in an expression.
-
-Syntax:
-countTerms[expr] with expr an expression containing op functions.
-
-Example:
-countTerms[op[S[{A, i}, {A, j}]] +  1/2 op[S[{A, i}, {A, r1}, {A, s1}], V[{A, \
-t1}, {A, u1}, {A, j}], P[{A, t1}, {A, r1}], P[{A, u1}, {A, s1}]]]\
-\>"]}
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"countTerms", "[", 
+       StyleBox["expr", "TI"], "]"}]], "InlineFormula",ExpressionUUID->
+      "7a653fc7-ebc3-4c68-8394-1893d5ddad27"],
+     "\[LineSeparator]counts the number of graphs appearing in ",
+     Cell[BoxData[
+      StyleBox["expr", "TI"]], "InlineFormula",ExpressionUUID->
+      "5cdb8ff9-bbd0-4d97-925b-17bffd61b862"],
+     "."
+    }],ExpressionUUID->"f519c02c-6aaa-4058-ab7c-82d3121c4119"]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
-   "RowsIndexed" -> {}}}],
+   "RowsIndexed" -> \
+{}}},ExpressionUUID->"c30b9bd4-f880-48a3-8f20-ac4403791cda"]
+}, Open  ]],
 
-Cell[" ", "FooterCell"]
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{6},
+   "Spacer1"]],ExpressionUUID->"5748bc6c-3172-4f31-b85e-b86613876796"],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "06c89934-4cea-4b72-99fb-0c1763ba131c"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->223374418,ExpressionUUID->"7b472ce1-ec1a-42e7-a5fa-cdfca5ef62c3"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "f70b1541-ed12-4bb9-8b26-fcbb04e6ede8"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->666186453,ExpressionUUID->"3fb6b230-0482-44c1-9ee7-0d30874ac705"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<DoFun`\>\"", "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->1414887963,ExpressionUUID->"1936a6bb-f0b6-4bfd-88ac-70c32be499ea"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"countTerms", "[", 
+  RowBox[{
+   RowBox[{"op", "[", 
+    RowBox[{
+     ButtonBox["S",
+      BaseStyle->"Link",
+      ButtonData->"paclet:DoFun/ref/S"], "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        ButtonBox["A",
+         BaseStyle->"Link",
+         ButtonData->"paclet:ref/A"], ",", " ", "i"}], "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{
+        ButtonBox["A",
+         BaseStyle->"Link",
+         ButtonData->"paclet:ref/A"], ",", " ", "j"}], "}"}]}], "]"}], "]"}], 
+   " ", "+", "  ", 
+   RowBox[{
+    RowBox[{"1", "/", "2"}], " ", 
+    RowBox[{"op", "[", 
+     RowBox[{
+      RowBox[{
+       ButtonBox["S",
+        BaseStyle->"Link",
+        ButtonData->"paclet:DoFun/ref/S"], "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          ButtonBox["A",
+           BaseStyle->"Link",
+           ButtonData->"paclet:ref/A"], ",", " ", "i"}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{
+          ButtonBox["A",
+           BaseStyle->"Link",
+           ButtonData->"paclet:ref/A"], ",", " ", 
+          SubscriptBox["r", "1"]}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{
+          ButtonBox["A",
+           BaseStyle->"Link",
+           ButtonData->"paclet:ref/A"], ",", " ", 
+          SubscriptBox["s", "1"]}], "}"}]}], "]"}], ",", " ", 
+      RowBox[{
+       ButtonBox["V",
+        BaseStyle->"Link",
+        ButtonData->"paclet:DoFun/ref/V"], "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          ButtonBox["A",
+           BaseStyle->"Link",
+           ButtonData->"paclet:ref/A"], ",", " ", 
+          SubscriptBox["t", "1"]}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{
+          ButtonBox["A",
+           BaseStyle->"Link",
+           ButtonData->"paclet:ref/A"], ",", " ", 
+          SubscriptBox["u", "1"]}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{
+          ButtonBox["A",
+           BaseStyle->"Link",
+           ButtonData->"paclet:ref/A"], ",", " ", "j"}], "}"}]}], "]"}], ",", 
+      " ", 
+      RowBox[{
+       ButtonBox["P",
+        BaseStyle->"Link",
+        ButtonData->"paclet:DoFun/ref/P"], "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          ButtonBox["A",
+           BaseStyle->"Link",
+           ButtonData->"paclet:ref/A"], ",", " ", 
+          SubscriptBox["t", "1"]}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{
+          ButtonBox["A",
+           BaseStyle->"Link",
+           ButtonData->"paclet:ref/A"], ",", " ", 
+          SubscriptBox["r", "1"]}], "}"}]}], "]"}], ",", " ", 
+      RowBox[{
+       ButtonBox["P",
+        BaseStyle->"Link",
+        ButtonData->"paclet:DoFun/ref/P"], "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          ButtonBox["A",
+           BaseStyle->"Link",
+           ButtonData->"paclet:ref/A"], ",", " ", 
+          SubscriptBox["u", "1"]}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{
+          ButtonBox["A",
+           BaseStyle->"Link",
+           ButtonData->"paclet:ref/A"], ",", " ", 
+          SubscriptBox["s", "1"]}], "}"}]}], "]"}]}], "]"}]}]}], 
+  "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->388558967,ExpressionUUID->"24b92046-6802-4336-a331-d61641145c13"],
+
+Cell[BoxData["2"], "Output",
+ ImageSize->{12, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->940580666,ExpressionUUID->"3c136864-038e-4b46-9855-79f1eaae5e51"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell",ExpressionUUID->"82d7d617-0ba2-4c52-aa39-ede7f60e26ab"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
@@ -117,19 +277,17 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2018, 4, 14, 14, 43, 51.527580}", 
+   "built" -> "{2019, 8, 7, 9, 20, 41.354937}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Do Fun Package Symbol", "language" -> "en", "paclet" -> "DoFun Package", 
     "status" -> "None", "summary" -> 
-    "Counts the number of graphs appearing in an expression. Syntax: \
-countTerms[expr] with expr an expression containing op functions. Example: \
-countTerms[op[S[{A, i}, {A, j}]] + 1/2 op[S[{A, i}, {A, r1}, {A, s1}], V[{A, \
-t1}, {A, u1}, {A, j}], P[{A, t1}, {A, r1}], P[{A, u1}, {A, s1}]]]", 
+    "countTerms[expr] counts the number of graphs appearing in expr.", 
     "synonyms" -> {}, "tabletags" -> {}, "title" -> "countTerms", 
     "titlemodifier" -> "", "windowtitle" -> "countTerms", "type" -> "Symbol", 
-    "uri" -> "DoFun/ref/countTerms"}},
+    "uri" -> "DoFun/ref/countTerms", "WorkflowDockedCell" -> ""}, 
+  "SearchTextTranslated" -> "", "NewStyles" -> False},
 CellContext->"Global`",
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
 StyleDefinitions->Notebook[{
@@ -140,27 +298,55 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
-  StyleDefinitions -> "Default.nb"]
+  TaggingRules -> {"NewStyles" -> False}, FrontEndVersion -> 
+  "11.3 for Linux x86 (64-bit) (March 6, 2018)", StyleDefinitions -> 
+  "Default.nb"]
 ]
 (* End of Notebook Content *)
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{}
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[4305, 114, 435, 11, 36, "PrimaryExamplesSection",ExpressionUUID->"7b472ce1-ec1a-42e7-a5fa-cdfca5ef62c3",
+   CellTags->"PrimaryExamplesSection",
+   CellID->223374418]}
+ }
 *)
 (*CellTagsIndex
-CellTagsIndex->{}
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 10743, 309}
+ }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[582, 21, 2278, 54, 70, "AnchorBarGrid",ExpressionUUID->"4f8e4aa6-4411-4aa3-8666-7ad638389ffe",
+Cell[582, 21, 2566, 56, 56, "AnchorBarGrid",ExpressionUUID->"65d82169-538a-48b6-85db-4881011ce5be",
  CellID->1],
-Cell[2863, 77, 167, 6, 70, "ObjectNameGrid",ExpressionUUID->"5bf30401-7e7b-4c36-97df-55b3fbd10174"],
-Cell[3033, 85, 487, 15, 70, "Usage",ExpressionUUID->"4aa1844c-7ba4-4beb-86b8-b64cbb4fb82f"],
-Cell[3523, 102, 23, 0, 70, "FooterCell",ExpressionUUID->"664d6ad5-70db-4554-8fd6-399b3af54ff8"]
+Cell[CellGroupData[{
+Cell[3173, 81, 395, 9, 53, "ObjectNameGrid",ExpressionUUID->"e6795313-7aa6-40a1-a911-c1e6ad33082d"],
+Cell[3571, 92, 697, 17, 112, "Usage",ExpressionUUID->"c30b9bd4-f880-48a3-8f20-ac4403791cda"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4305, 114, 435, 11, 36, "PrimaryExamplesSection",ExpressionUUID->"7b472ce1-ec1a-42e7-a5fa-cdfca5ef62c3",
+ CellTags->"PrimaryExamplesSection",
+ CellID->223374418],
+Cell[CellGroupData[{
+Cell[4765, 129, 308, 7, 30, "ExampleSection",ExpressionUUID->"3fb6b230-0482-44c1-9ee7-0d30874ac705",
+ CellID->666186453],
+Cell[5076, 138, 170, 3, 29, "Input",ExpressionUUID->"1936a6bb-f0b6-4bfd-88ac-70c32be499ea",
+ CellID->1414887963],
+Cell[CellGroupData[{
+Cell[5271, 145, 3245, 105, 74, "Input",ExpressionUUID->"24b92046-6802-4336-a331-d61641145c13",
+ CellID->388558967],
+Cell[8519, 252, 213, 5, 38, "Output",ExpressionUUID->"3c136864-038e-4b46-9855-79f1eaae5e51",
+ CellID->940580666]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[8771, 262, 78, 0, 43, "FooterCell",ExpressionUUID->"82d7d617-0ba2-4c52-aa39-ede7f60e26ab"]
 }
 ]
 *)
 
 (* End of internal cache information *)
+
