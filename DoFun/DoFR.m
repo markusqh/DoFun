@@ -44,7 +44,7 @@ If[DoFun`DoFR`$doFRStartMessage=!=False,
 (* ::Section::Closed:: *)
 (* usages *)
 
-convertAction::usage="convertAction[ac] converts a given physical action into a form suitable for computation, i.e., with proper dummy indices and momenta.
+convertAction::usage="convertAction[ac] converts a given physical action ac into a form suitable for computation, i.e., with proper dummy indices and momenta.
 
 Example:
 setFields[{\[CurlyPhi]}];
@@ -111,7 +111,7 @@ integrateDeltas[delta[ind1, a, b] delta[ind1, a, b]]
 integrateDeltas[delta[ind1, a, b] delta[ind1, b, c]]
 ";
 
-integrateMomenta::usage="integrateMomenta[expr] integrates out internal momenta, denoted by q$i, where i is a running number, in momentum delta distributions.
+integrateMomenta::usage="integrateMomenta[expr] integrates out internal momenta in expr, denoted by q$i, where i is a running number, in momentum delta distributions.
 integrateMomenta[expr, mom] integrates out the momenta mom in expr. mom can be a single momentum or a list of momenta.
 
 Examples:

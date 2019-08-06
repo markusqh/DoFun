@@ -69,10 +69,10 @@ The option dummyNames[t] sets the variable names for the index type t.
 explicit::usage="explicit is an option getAE and passed on to V, P, S, CO and dR in the result.
 ";
 
-getAE::usage="getAE[exp, ls, [opts]] transforms a DSE, RGE or composite operator equation expr  with external legs ls into symbolic form into an algebraic expression.
+getAE::usage="getAE[exp, ls, [opts]] transforms a DSE, RGE or composite operator equation expr  with external legs ls from symbolic form into an algebraic expression.
 The external legs are given in the following form:
 {{field1, symInd1, mom1, inds1}, {field2, symInd2, mom2, inds2}, ...}.
-Each individual list correponds to one external leg of the diagram, where fieldi indicates the field name, symbIndi the index in the symbolic form and momi and indsi the momentum and the indices for the algebraic form .\n
+Each individual list corresponds to one external leg of the diagram, where fieldi indicates the field name, symbIndi the index in the symbolic form and momi and indsi the momentum and the indices for the algebraic form .\n
 
 Hint:
 A useful option is explicit -> False. With the option explicit -> False, the propagators and vertices are not replaced by their algebraic form but with the generic expressions, which, however, already contain all indices.
@@ -92,7 +92,7 @@ V[A[p1_, i1_], A[p2_, i2_], A[p3_, i3_], A[p4_, i4_], explicit -> True] :=  S[A[
 getAE[op[S[{A, i1}, {A, r1}, {A, r2}, {A, s1}], P[{A, r1}, {A, s2}], P[{A, r2}, {A, t2}], P[{A, s1}, {A, u2}], V[{A, i2}, {A, s2}, {A, t2}, {A, u2}]], {{A, i1, p1, a}, {A, i2, p2, b}}] // integrateDeltas
 ";
 
-loadFeynCalc::usage="loadFeynCalc[] fixes a problem when loading FeynCalc. Furthermore the output format is set to StandardForm.
+loadFeynCalc::usage="loadFeynCalc[] fixes a problem when loading FeynCalc. Furthermore, the output format is set to StandardForm.
 loadFeynCalc[pack] with pack the path of the FeynCalc package. If none is given, HighEnergyPhysics`FeynCalc` is used.
 This should be used when problems with FeynCalc occur.
 ";
@@ -105,7 +105,7 @@ resetIndices[]
 removeIndices[lor]
 ";
 
-resetIndices::usage="resetIndices[] resets the known indices to the standard, i.e., only Lorentz and adjoint indices, lor and adj, respectively.
+resetIndices::usage="resetIndices[] resets the known indices to the standard ones, i.e., only Lorentz and adjoint indices, lor and adj, respectively.
 ";
 
 save::usage="save is an option of getAE. If set to True, it saves the results which can speed up repeated calculations. Should be used with care.

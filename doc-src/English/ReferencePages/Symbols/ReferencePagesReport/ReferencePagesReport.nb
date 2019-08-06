@@ -1,19 +1,19 @@
-(* Content-type: application/mathematica *)
+(* Content-type: application/vnd.wolfram.mathematica *)
 
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 7.0' *)
+(* CreatedBy='Mathematica 11.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
-NotebookDataPosition[       145,          7]
-NotebookDataLength[     31680,       1206]
-NotebookOptionsPosition[     27882,       1099]
-NotebookOutlinePosition[     28221,       1114]
-CellTagsIndexPosition[     28178,       1111]
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     46682,       1377]
+NotebookOptionsPosition[     37314,       1264]
+NotebookOutlinePosition[     37649,       1279]
+CellTagsIndexPosition[     37606,       1276]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -23,1083 +23,1248 @@ Cell[CellGroupData[{
 Cell["\<\
 Information About Usage Messages of Symbols Whose Reference Pages Were Left \
 With No Templatizing.\
-\>", "Section"],
+\>", "Section",ExpressionUUID->"8bbc5d53-a592-4c89-9f98-9b55aa77275a"],
 
 Cell["\<\
 This notebook is saved in the same directory as the reference pages which \
 have been created. The directory may be moved and the hyperlinks here will \
 continue to work. However if this notebook is moved out to a different \
 directory, then the hyperlinks will no longer function properly.\
-\>", "Text"],
+\>", "Text",ExpressionUUID->"5f4bb233-47be-425c-b727-d7751b97f95c"],
 
 Cell[CellGroupData[{
 
 Cell["\<\
-Usage messages for the following symbols do not begin with their symbol name:\
-\
-\>", "Subsection"],
+Usage messages for the following symbols are not plain strings:\
+\>", "Subsection",ExpressionUUID->"fa605ae9-c2f5-42a4-ba1b-7667c903bac0"],
 
 Cell[BoxData[
- ButtonBox["$regulatorInsertionSymbol",
+ ButtonBox["$DoAEVersion",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["$regulatorInsertionSymbol", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["$DoAEVersion", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"2931c00d-f1d0-4d8d-a510-\
+852695e21492"],
 
 Cell[BoxData[
- ButtonBox["specificFieldDefinitions",
+ ButtonBox["$DoFRVersion",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["specificFieldDefinitions", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["$DoFRVersion", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"8a4713cf-bbb2-4220-b0a1-\
+0682efdaa313"],
 
 Cell[BoxData[
- ButtonBox["createDummyListUnique",
+ ButtonBox["$doDSERGEVersion",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["createDummyListUnique", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["$doDSERGEVersion", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"8e39b62e-8dd5-4d6f-96ea-\
+9f7a5e131607"],
 
 Cell[BoxData[
- ButtonBox["defineFieldsSpecific",
+ ButtonBox["$doFunBuiltVersion",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["defineFieldsSpecific", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["$doFunBuiltVersion", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"6f5580b7-adba-471f-9ff6-\
+2c53b450a754"],
 
 Cell[BoxData[
- ButtonBox["getInteractionList",
+ ButtonBox["$doFunMainVersion",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["getInteractionList", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["$doFunMainVersion", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"79eed6bc-2d8f-4089-b74f-\
+a6ab53907345"],
 
 Cell[BoxData[
- ButtonBox["$propagatorSymbol",
+ ButtonBox["$doFunSubVersion",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["$propagatorSymbol", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["$doFunSubVersion", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"67eb4f82-f680-4422-a819-\
+2876816a9141"],
 
 Cell[BoxData[
- ButtonBox["$bareVertexSymbol",
+ ButtonBox["$doFunVersion",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["$bareVertexSymbol", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["$doFunVersion", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"e5fdbc5b-20f0-4cb3-ade0-\
+a33fcd5e8865"],
 
 Cell[BoxData[
- ButtonBox["setSourcesZeroRGE",
+ ButtonBox["CapitalDelta",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["setSourcesZeroRGE", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["CapitalDelta", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"3e4a740b-8b60-42fd-af53-\
+3dc2e4f5423b"],
 
 Cell[BoxData[
- ButtonBox["identifyGraphsRGE",
+ ButtonBox["CapitalGamma",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["identifyGraphsRGE", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["CapitalGamma", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"6bb4a4b0-42b3-4750-8996-\
+c6bd69a95f97"],
 
 Cell[BoxData[
- ButtonBox["antiComplexFieldQ",
+ ButtonBox["DSE",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["antiComplexFieldQ", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["DSE", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"f56ddd8e-4863-421d-a696-\
+b634932a1ee4"],
 
 Cell[BoxData[
- ButtonBox["integrateMomenta",
+ ButtonBox["DSERules",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["integrateMomenta", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["DSERules", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"3e7cdc1c-d846-44cb-bf6b-\
+af5b8271a2e5"],
 
 Cell[BoxData[
- ButtonBox["shortExpression",
+ ButtonBox["DoFun`$doFunStartMessage",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["shortExpression", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["DoFun`$doFunStartMessage", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"61a4b6d6-8952-4878-8cd6-\
+531f72ae4df6"],
 
 Cell[BoxData[
- ButtonBox["regulatorSymbol",
+ ButtonBox["DoFun`DoAE`$doAEStartMessage",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["regulatorSymbol", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["DoFun`DoAE`$doAEStartMessage", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"75cf2f83-f6cf-4b43-9790-\
+1c5d5346c3a0"],
 
 Cell[BoxData[
- ButtonBox["integrateDeltas",
+ ButtonBox["DoFun`DoDSERGE`$doDSERGEStartMessage",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["integrateDeltas", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["DoFun`DoDSERGE`$doDSERGEStartMessage", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"5b8d4c7d-09eb-4f3b-9bc5-\
+5a32756e0f53"],
 
 Cell[BoxData[
- ButtonBox["doGrassmannTest",
+ ButtonBox["DoFun`DoFR`$doFRStartMessage",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["doGrassmannTest", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["DoFun`DoFR`$doFRStartMessage", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"d7ca309d-2bbe-4921-9a9c-\
+aa88469f0d10"],
 
 Cell[BoxData[
- ButtonBox["setSourcesZero",
+ ButtonBox["Global`Alpha",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["setSourcesZero", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`Alpha", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"133d525e-4d72-4079-8cfa-\
+adb5320ac1c2"],
 
 Cell[BoxData[
- ButtonBox["regulatorCross",
+ ButtonBox["Global`Beta",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["regulatorCross", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`Beta", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"3ad8c71c-12e3-4e5c-956a-\
+0786e534c680"],
 
 Cell[BoxData[
- ButtonBox["identifyGraphs",
+ ButtonBox["Global`Delta",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["identifyGraphs", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`Delta", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"8699fe45-7617-4ee6-8541-\
+45260a9ebee3"],
 
 Cell[BoxData[
- ButtonBox["generateAction",
+ ButtonBox["Global`Epsilon",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["generateAction", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`Epsilon", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"93c7e806-346d-4de8-a904-\
+f3ab259bd3cf"],
 
 Cell[BoxData[
- ButtonBox["compareGraphs2",
+ ButtonBox["Global`Gamma",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["compareGraphs2", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`Gamma", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"e57c4008-a88f-4751-b567-\
+d961f1851036"],
 
 Cell[BoxData[
- ButtonBox["$vertexSymbol",
+ ButtonBox["Global`Mu",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["$vertexSymbol", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`Mu", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"27d33f20-6325-4bc9-97dd-\
+704c1b834c4f"],
 
 Cell[BoxData[
- ButtonBox["$dummyFieldAF",
+ ButtonBox["Global`Nu",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["$dummyFieldAF", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`Nu", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"3ff57fd0-3242-4158-aaf0-\
+b6235c057523"],
 
 Cell[BoxData[
- ButtonBox["replaceFields",
+ ButtonBox["Global`Rho",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["replaceFields", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`Rho", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"33193a9b-1cb8-4212-b2e6-\
+e5ff2928479b"],
 
 Cell[BoxData[
- ButtonBox["replacedField",
+ ButtonBox["Global`Sigma",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["replacedField", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`Sigma", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"f828f660-336a-49bf-900d-\
+0e2ae7adc176"],
 
 Cell[BoxData[
- ButtonBox["removeIndices",
+ ButtonBox["Global`Tau",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["removeIndices", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`Tau", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"afeb5638-ebdc-4ad7-8918-\
+a42ca0f22c28"],
 
 Cell[BoxData[
- ButtonBox["orderFermions",
+ ButtonBox["Global`a",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["orderFermions", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`a", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"1e61f2f7-4089-4fe0-8143-\
+f9fa98b1fca1"],
 
 Cell[BoxData[
- ButtonBox["getLoopNumber",
+ ButtonBox["Global`b",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["getLoopNumber", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`b", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"11fc0e39-8d84-4241-b3a4-\
+071d326de90d"],
 
 Cell[BoxData[
- ButtonBox["forceEquation",
+ ButtonBox["Global`c",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["forceEquation", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`c", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"8d4e0e57-97ad-46e8-b2b1-\
+c642c159111a"],
 
 Cell[BoxData[
- ButtonBox["convertAction",
+ ButtonBox["Global`d",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["convertAction", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`d", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"f2f59174-9c80-4988-8cd4-\
+7f9974438350"],
 
 Cell[BoxData[
- ButtonBox["complexFieldQ",
+ ButtonBox["Global`e",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["complexFieldQ", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`e", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"5967246b-d9f6-49bb-a3ec-\
+83acc83c3a69"],
 
 Cell[BoxData[
- ButtonBox["compareGraphs",
+ ButtonBox["Global`f",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["compareGraphs", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`f", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"c337ca58-fa0d-46b5-9678-\
+6fb2c36bfedf"],
 
 Cell[BoxData[
- ButtonBox["$dummyFieldF",
+ ButtonBox["Global`g",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["$dummyFieldF", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`g", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"6743c60f-1e00-4a98-9ad6-\
+994b2070a541"],
 
 Cell[BoxData[
- ButtonBox["$dummyFieldB",
+ ButtonBox["Global`h",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["$dummyFieldB", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`h", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"a1ce7cba-0606-4dca-b6b4-\
+d288dc7f3ed0"],
 
 Cell[BoxData[
- ButtonBox["resetIndices",
+ ButtonBox["Global`i",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["resetIndices", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`i", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"ebebbf02-165f-40a8-9626-\
+aa15246fbcc9"],
 
 Cell[BoxData[
- ButtonBox["regulatorBox",
+ ButtonBox["Global`i1",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["regulatorBox", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`i1", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"4d00edec-dbc3-43ef-aa83-\
+e4d6f77bdf42"],
 
 Cell[BoxData[
- ButtonBox["loadFeynCalc",
+ ButtonBox["Global`i10",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["loadFeynCalc", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`i10", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"e6e0409c-e456-466b-83ce-\
+23a0943adcf1"],
 
 Cell[BoxData[
- ButtonBox["defineFields",
+ ButtonBox["Global`i2",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["defineFields", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`i2", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"27c84fb8-f0bd-48c4-8b50-\
+94fde71026c8"],
 
 Cell[BoxData[
- ButtonBox["checkIndices",
+ ButtonBox["Global`i3",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["checkIndices", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`i3", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"ff4ef525-03bf-4078-a525-\
+cc11272bba8f"],
 
 Cell[BoxData[
- ButtonBox["antiFermionQ",
+ ButtonBox["Global`i4",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["antiFermionQ", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`i4", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"efde45b6-923b-4c1a-b47a-\
+b82f28961388"],
 
 Cell[BoxData[
- ButtonBox["$dummyField",
+ ButtonBox["Global`i5",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["$dummyField", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`i5", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"42a96636-74ea-4303-b0f6-\
+1755f179a153"],
 
 Cell[BoxData[
- ButtonBox["tDerivative",
+ ButtonBox["Global`i6",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["tDerivative", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`i6", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"e722a600-0062-444b-8e22-\
+2374100f47cc"],
 
 Cell[BoxData[
- ButtonBox["sortDummies",
+ ButtonBox["Global`i7",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["sortDummies", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`i7", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"a1692444-0398-4feb-ac0d-\
+82fd7d3febbe"],
 
 Cell[BoxData[
- ButtonBox["factorStyle",
+ ButtonBox["Global`i8",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["factorStyle", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`i8", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"3214d873-908e-4bba-8439-\
+69f698cab940"],
 
 Cell[BoxData[
- ButtonBox["checkSyntax",
+ ButtonBox["Global`i9",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["checkSyntax", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`i9", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"eda484aa-143a-496a-a233-\
+2b32c49befd7"],
 
 Cell[BoxData[
- ButtonBox["checkFields",
+ ButtonBox["Global`j",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["checkFields", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`j", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"12e2f343-9920-492f-b993-\
+5c72063c6b27"],
 
 Cell[BoxData[
- ButtonBox["checkAction",
+ ButtonBox["Global`r",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["checkAction", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`r", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"e7b34b08-d862-4d3a-9c2c-\
+c0556682fcbc"],
 
 Cell[BoxData[
- ButtonBox["antiFermion",
+ ButtonBox["Global`s",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["antiFermion", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`s", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"c9aec614-bb5f-45ab-a22a-\
+07bf32a7eb38"],
 
 Cell[BoxData[
- ButtonBox["resetDummy",
+ ButtonBox["Global`t",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["resetDummy", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`t", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"a5fc4ad5-b98d-41b2-b02e-\
+5c13d1267d3e"],
 
 Cell[BoxData[
- ButtonBox["indexStyle",
+ ButtonBox["Global`u",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["indexStyle", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`u", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"a4a1498e-6e4b-40d3-a9e6-\
+70227ac28be3"],
 
 Cell[BoxData[
- ButtonBox["grassmannQ",
+ ButtonBox["Global`v",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["grassmannQ", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`v", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"13d0fe4b-b5f1-4aaa-bcee-\
+626c9f5b26e6"],
 
 Cell[BoxData[
- ButtonBox["countTerms",
+ ButtonBox["Global`w",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["countTerms", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`w", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"14e526d1-0308-4b29-8646-\
+007ff70081d8"],
 
 Cell[BoxData[
- ButtonBox["addIndices",
+ ButtonBox["Global`x",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["addIndices", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`x", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"05fcf4bd-2214-427e-98b0-\
+3ee7f02489c4"],
 
 Cell[BoxData[
- ButtonBox["antiField",
+ ButtonBox["Global`y",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["antiField", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`y", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"5eb3741f-0dee-4bea-864c-\
+914526ee0816"],
 
 Cell[BoxData[
- ButtonBox["symmetry",
+ ButtonBox["Global`z",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["symmetry", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`z", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"e60211a2-5482-413a-9f6c-\
+eb089a87e2bf"],
 
 Cell[BoxData[
- ButtonBox["insDummy",
+ ButtonBox["Omicron",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["insDummy", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Omicron", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"7ad981d1-cf6b-4b1e-b813-\
+8b99defe63cf"],
 
 Cell[BoxData[
- ButtonBox["fermionQ",
+ ButtonBox["Parenthesis",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["fermionQ", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Parenthesis", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"d740885a-9698-4b3d-8e9b-\
+a016e345cdf5"],
 
 Cell[BoxData[
- ButtonBox["derivRGE",
+ ButtonBox["Phi",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["derivRGE", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Phi", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"24c52e5a-f466-4320-8ae4-\
+e2eadcd0bc52"],
 
 Cell[BoxData[
- ButtonBox["complete",
+ ButtonBox["R",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["complete", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["R", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"482c4669-c30a-453c-86e9-\
+0f940af9257e"],
 
 Cell[BoxData[
- ButtonBox["checkAll",
+ ButtonBox["RGE",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["checkAll", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["RGE", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"34b034c5-c5e8-4507-ac41-\
+6832e5338091"],
 
 Cell[BoxData[
- ButtonBox["RGEPlot",
+ ButtonBox["adj",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["RGEPlot", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["adj", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"ddd74fbb-c697-4470-9781-\
+70ddc6c85a4c"],
 
 Cell[BoxData[
- ButtonBox["indices",
+ ButtonBox["built",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["indices", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["built", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"d7da3865-f4d1-4405-82db-\
+145aa3b255f7"],
 
 Cell[BoxData[
- ButtonBox["fermion",
+ ButtonBox["doFunVersion",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["fermion", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["doFunVersion", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"e3ffe033-b611-4138-b204-\
+00c28c1fa0de"],
 
 Cell[BoxData[
- ButtonBox["DSEPlot",
+ ButtonBox["getAlgebraicExpression",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["DSEPlot", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["getAlgebraicExpression", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"7c0ff675-ab71-4b78-bef4-\
+7c075b861314"],
 
 Cell[BoxData[
- ButtonBox["output",
+ ButtonBox["ii1",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["output", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["ii1", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"2401d972-55de-4dcb-8675-\
+4839b91fc89f"],
 
 Cell[BoxData[
- ButtonBox["intact",
+ ButtonBox["ii2",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["intact", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["ii2", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"3f572e1f-69d4-4cd4-b7b6-\
+17205b44c63e"],
 
 Cell[BoxData[
- ButtonBox["fieldQ",
+ ButtonBox["lor",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["fieldQ", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["lor", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"cfc7c081-c6b7-41d4-95e5-\
+32edaacb4c43"],
 
 Cell[BoxData[
- ButtonBox["deltam",
+ ButtonBox["main",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["deltam", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["main", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"255d3baf-242c-41fa-ba28-\
+620e667204fa"],
 
 Cell[BoxData[
- ButtonBox["broken",
+ ButtonBox["onlineBuiltVersion",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["broken", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["onlineBuiltVersion", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"e06f9f66-6774-4c0e-8688-\
+cbe9cc2c4ab7"],
 
 Cell[BoxData[
- ButtonBox["bosonQ",
+ ButtonBox["onlineMainVersion",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["bosonQ", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["onlineMainVersion", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"db6dca2c-c7a1-4d34-8ffa-\
+08fdf5fd9f9a"],
 
 Cell[BoxData[
- ButtonBox["ansatz",
+ ButtonBox["onlineSubVersion",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["ansatz", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["onlineSubVersion", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"b1deb99e-a458-458f-9e03-\
+3959157d88bc"],
 
 Cell[BoxData[
- ButtonBox["getFM",
+ ButtonBox["onlineVersion",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["getFM", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["onlineVersion", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"91eed40c-904c-4629-a2bb-\
+6ff8d1bb679a"],
 
 Cell[BoxData[
- ButtonBox["getAE",
+ ButtonBox["override",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["getAE", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["override", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"57363be1-03fc-4868-b344-\
+7b76c32a8b30"],
 
 Cell[BoxData[
- ButtonBox["dummy",
+ ButtonBox["overrideNew",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["dummy", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["overrideNew", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"c8e23f2f-896d-4c85-a2b9-\
+85d2f1a56ed1"],
 
 Cell[BoxData[
- ButtonBox["doRGE",
+ ButtonBox["phi",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["doRGE", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["phi", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"3bc4dda5-894a-497c-be4d-\
+e28b06a42bc5"],
 
 Cell[BoxData[
- ButtonBox["doDSE",
+ ButtonBox["phibar",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["doDSE", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["phibar", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"bb8936bb-121c-4587-ad98-\
+5a110a05a900"],
 
 Cell[BoxData[
- ButtonBox["deriv",
+ ButtonBox["resetDoFunVersionCheckOverride",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["deriv", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["resetDoFunVersionCheckOverride", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"adc871ca-eccd-4261-ba42-\
+157cbc816b56"],
 
 Cell[BoxData[
- ButtonBox["delta",
+ ButtonBox["sub",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["delta", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["sub", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"f637bb89-0641-4620-9e74-\
+d49f73be4543"],
 
 Cell[BoxData[
- ButtonBox["boson",
+ ButtonBox["superField",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["boson", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["superField", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"ec6a4989-8037-4e32-b0e9-\
+5af0970aa383"],
 
 Cell[BoxData[
- ButtonBox["even",
+ ButtonBox["symb2Alg",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["even", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["symb2Alg", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"c109499d-251e-4624-8f48-\
+f4a0c80ff458"],
 
 Cell[BoxData[
- ButtonBox["odd",
+ ButtonBox["type",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["odd", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["type", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"fc77a42d-dadc-421b-8984-\
+5e47531b07a4"],
 
 Cell[BoxData[
- ButtonBox["der",
+ ButtonBox["Global`\[Epsilon]",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["der", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`\[Epsilon]", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"9dc1682d-bed0-4f12-a94d-\
+19eba44a59ef"],
 
 Cell[BoxData[
- ButtonBox["sE",
+ ButtonBox["\[CapitalGamma]",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["sE", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["\[CapitalGamma]", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"1204d523-19ef-40c7-8523-\
+9ef967c99570"],
 
 Cell[BoxData[
- ButtonBox["op",
+ ButtonBox["\[CapitalDelta]",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["op", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["\[CapitalDelta]", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"efda41a1-1f94-480d-b2dd-\
+a6706af28dd3"],
 
 Cell[BoxData[
- ButtonBox["dR",
+ ButtonBox["\[Omicron]",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["dR", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["\[Omicron]", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"99ca9526-03e8-4ffb-80ae-\
+bea9b60b8e4d"],
 
 Cell[BoxData[
- ButtonBox["V",
+ ButtonBox["Global`\[Beta]",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["V", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`\[Beta]", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"8fb180db-06d7-423a-b9f0-\
+1afbb69ddbc5"],
 
 Cell[BoxData[
- ButtonBox["U",
+ ButtonBox["Global`\[Alpha]",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["U", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`\[Alpha]", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"113f608c-2e69-4a9b-84ff-\
+b7241f5b42ec"],
 
 Cell[BoxData[
- ButtonBox["S",
+ ButtonBox["Global`\[Delta]",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["S", ".nb"]]],
-  Evaluator->Automatic]], "Text"],
+     StringJoin["Global`\[Delta]", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"724f5eee-7867-44c5-af6f-\
+9b1fe2fd529d"],
 
 Cell[BoxData[
- ButtonBox["P",
+ ButtonBox["Global`\[Gamma]",
   Active->True,
-  Appearance->{Automatic, "DialogBox"},
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
   ButtonFunction:>NotebookOpen[
     ToFileName[{
       ParentDirectory[
        NotebookDirectory[
         EvaluationNotebook[]]]}, 
-     StringJoin["P", ".nb"]]],
-  Evaluator->Automatic]], "Text"]
+     StringJoin["Global`\[Gamma]", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"dd4e2d98-2759-455f-9f82-\
+9e0d559a2c44"],
+
+Cell[BoxData[
+ ButtonBox["Global`\[Mu]",
+  Active->True,
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
+  ButtonFunction:>NotebookOpen[
+    ToFileName[{
+      ParentDirectory[
+       NotebookDirectory[
+        EvaluationNotebook[]]]}, 
+     StringJoin["Global`\[Mu]", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"17648f9b-277c-41a0-ab9a-\
+83061609e1a5"],
+
+Cell[BoxData[
+ ButtonBox["\[Phi]",
+  Active->True,
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
+  ButtonFunction:>NotebookOpen[
+    ToFileName[{
+      ParentDirectory[
+       NotebookDirectory[
+        EvaluationNotebook[]]]}, 
+     StringJoin["\[Phi]", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"783b4592-904b-4c18-8fe1-\
+85b8d9bc19da"],
+
+Cell[BoxData[
+ ButtonBox["Global`\[Nu]",
+  Active->True,
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
+  ButtonFunction:>NotebookOpen[
+    ToFileName[{
+      ParentDirectory[
+       NotebookDirectory[
+        EvaluationNotebook[]]]}, 
+     StringJoin["Global`\[Nu]", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"794081a0-03cc-4423-954a-\
+71cc725880c0"],
+
+Cell[BoxData[
+ ButtonBox["Global`\[Rho]",
+  Active->True,
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
+  ButtonFunction:>NotebookOpen[
+    ToFileName[{
+      ParentDirectory[
+       NotebookDirectory[
+        EvaluationNotebook[]]]}, 
+     StringJoin["Global`\[Rho]", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"d2697617-fcb5-46dd-944e-\
+a03fe452fe80"],
+
+Cell[BoxData[
+ ButtonBox["Global`\[Tau]",
+  Active->True,
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
+  ButtonFunction:>NotebookOpen[
+    ToFileName[{
+      ParentDirectory[
+       NotebookDirectory[
+        EvaluationNotebook[]]]}, 
+     StringJoin["Global`\[Tau]", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"01814b99-ac95-410e-a78d-\
+0c74d531ab57"],
+
+Cell[BoxData[
+ ButtonBox["Global`\[Sigma]",
+  Active->True,
+  Appearance->{Automatic, "DialogBox", "Normal", Automatic},
+  ButtonFunction:>NotebookOpen[
+    ToFileName[{
+      ParentDirectory[
+       NotebookDirectory[
+        EvaluationNotebook[]]]}, 
+     StringJoin["Global`\[Sigma]", ".nb"]]],
+  Evaluator->Automatic]], "Text",ExpressionUUID->"f4d84e8f-d70c-40d9-b3ff-\
+73b9e2041204"]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{640, 750},
-WindowMargins->{{640, Automatic}, {Automatic, 165}},
-FrontEndVersion->"7.0 for Linux x86 (64-bit) (February 25, 2009)",
+WindowSize->{808, 850},
+WindowMargins->{{278, Automatic}, {Automatic, 59}},
+FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -1114,98 +1279,104 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[567, 22, 126, 3, 70, "Section"],
-Cell[696, 27, 314, 5, 70, "Text"],
+Cell[580, 22, 181, 3, 70, "Section",ExpressionUUID->"8bbc5d53-a592-4c89-9f98-9b55aa77275a"],
+Cell[764, 27, 369, 5, 70, "Text",ExpressionUUID->"5f4bb233-47be-425c-b727-d7751b97f95c"],
 Cell[CellGroupData[{
-Cell[1035, 36, 109, 3, 70, "Subsection"],
-Cell[1147, 41, 330, 10, 70, "Text"],
-Cell[1480, 53, 328, 10, 70, "Text"],
-Cell[1811, 65, 322, 10, 70, "Text"],
-Cell[2136, 77, 320, 10, 70, "Text"],
-Cell[2459, 89, 316, 10, 70, "Text"],
-Cell[2778, 101, 314, 10, 70, "Text"],
-Cell[3095, 113, 314, 10, 70, "Text"],
-Cell[3412, 125, 314, 10, 70, "Text"],
-Cell[3729, 137, 314, 10, 70, "Text"],
-Cell[4046, 149, 314, 10, 70, "Text"],
-Cell[4363, 161, 312, 10, 70, "Text"],
-Cell[4678, 173, 310, 10, 70, "Text"],
-Cell[4991, 185, 310, 10, 70, "Text"],
-Cell[5304, 197, 310, 10, 70, "Text"],
-Cell[5617, 209, 310, 10, 70, "Text"],
-Cell[5930, 221, 308, 10, 70, "Text"],
-Cell[6241, 233, 308, 10, 70, "Text"],
-Cell[6552, 245, 308, 10, 70, "Text"],
-Cell[6863, 257, 308, 10, 70, "Text"],
-Cell[7174, 269, 308, 10, 70, "Text"],
-Cell[7485, 281, 306, 10, 70, "Text"],
-Cell[7794, 293, 306, 10, 70, "Text"],
-Cell[8103, 305, 306, 10, 70, "Text"],
-Cell[8412, 317, 306, 10, 70, "Text"],
-Cell[8721, 329, 306, 10, 70, "Text"],
-Cell[9030, 341, 306, 10, 70, "Text"],
-Cell[9339, 353, 306, 10, 70, "Text"],
-Cell[9648, 365, 306, 10, 70, "Text"],
-Cell[9957, 377, 306, 10, 70, "Text"],
-Cell[10266, 389, 306, 10, 70, "Text"],
-Cell[10575, 401, 306, 10, 70, "Text"],
-Cell[10884, 413, 304, 10, 70, "Text"],
-Cell[11191, 425, 304, 10, 70, "Text"],
-Cell[11498, 437, 304, 10, 70, "Text"],
-Cell[11805, 449, 304, 10, 70, "Text"],
-Cell[12112, 461, 304, 10, 70, "Text"],
-Cell[12419, 473, 304, 10, 70, "Text"],
-Cell[12726, 485, 304, 10, 70, "Text"],
-Cell[13033, 497, 304, 10, 70, "Text"],
-Cell[13340, 509, 302, 10, 70, "Text"],
-Cell[13645, 521, 302, 10, 70, "Text"],
-Cell[13950, 533, 302, 10, 70, "Text"],
-Cell[14255, 545, 302, 10, 70, "Text"],
-Cell[14560, 557, 302, 10, 70, "Text"],
-Cell[14865, 569, 302, 10, 70, "Text"],
-Cell[15170, 581, 302, 10, 70, "Text"],
-Cell[15475, 593, 302, 10, 70, "Text"],
-Cell[15780, 605, 300, 10, 70, "Text"],
-Cell[16083, 617, 300, 10, 70, "Text"],
-Cell[16386, 629, 300, 10, 70, "Text"],
-Cell[16689, 641, 300, 10, 70, "Text"],
-Cell[16992, 653, 300, 10, 70, "Text"],
-Cell[17295, 665, 298, 10, 70, "Text"],
-Cell[17596, 677, 296, 10, 70, "Text"],
-Cell[17895, 689, 296, 10, 70, "Text"],
-Cell[18194, 701, 296, 10, 70, "Text"],
-Cell[18493, 713, 296, 10, 70, "Text"],
-Cell[18792, 725, 296, 10, 70, "Text"],
-Cell[19091, 737, 296, 10, 70, "Text"],
-Cell[19390, 749, 294, 10, 70, "Text"],
-Cell[19687, 761, 294, 10, 70, "Text"],
-Cell[19984, 773, 294, 10, 70, "Text"],
-Cell[20281, 785, 294, 10, 70, "Text"],
-Cell[20578, 797, 292, 10, 70, "Text"],
-Cell[20873, 809, 292, 10, 70, "Text"],
-Cell[21168, 821, 292, 10, 70, "Text"],
-Cell[21463, 833, 292, 10, 70, "Text"],
-Cell[21758, 845, 292, 10, 70, "Text"],
-Cell[22053, 857, 292, 10, 70, "Text"],
-Cell[22348, 869, 292, 10, 70, "Text"],
-Cell[22643, 881, 290, 10, 70, "Text"],
-Cell[22936, 893, 290, 10, 70, "Text"],
-Cell[23229, 905, 290, 10, 70, "Text"],
-Cell[23522, 917, 290, 10, 70, "Text"],
-Cell[23815, 929, 290, 10, 70, "Text"],
-Cell[24108, 941, 290, 10, 70, "Text"],
-Cell[24401, 953, 290, 10, 70, "Text"],
-Cell[24694, 965, 290, 10, 70, "Text"],
-Cell[24987, 977, 288, 10, 70, "Text"],
-Cell[25278, 989, 286, 10, 70, "Text"],
-Cell[25567, 1001, 286, 10, 70, "Text"],
-Cell[25856, 1013, 284, 10, 70, "Text"],
-Cell[26143, 1025, 284, 10, 70, "Text"],
-Cell[26430, 1037, 284, 10, 70, "Text"],
-Cell[26717, 1049, 282, 10, 70, "Text"],
-Cell[27002, 1061, 282, 10, 70, "Text"],
-Cell[27287, 1073, 282, 10, 70, "Text"],
-Cell[27572, 1085, 282, 10, 70, "Text"]
+Cell[1158, 36, 148, 2, 70, "Subsection",ExpressionUUID->"fa605ae9-c2f5-42a4-ba1b-7667c903bac0"],
+Cell[1309, 40, 382, 11, 70, "Text",ExpressionUUID->"2931c00d-f1d0-4d8d-a510-852695e21492"],
+Cell[1694, 53, 382, 11, 70, "Text",ExpressionUUID->"8a4713cf-bbb2-4220-b0a1-0682efdaa313"],
+Cell[2079, 66, 390, 11, 70, "Text",ExpressionUUID->"8e39b62e-8dd5-4d6f-96ea-9f7a5e131607"],
+Cell[2472, 79, 394, 11, 70, "Text",ExpressionUUID->"6f5580b7-adba-471f-9ff6-2c53b450a754"],
+Cell[2869, 92, 392, 11, 70, "Text",ExpressionUUID->"79eed6bc-2d8f-4089-b74f-a6ab53907345"],
+Cell[3264, 105, 390, 11, 70, "Text",ExpressionUUID->"67eb4f82-f680-4422-a819-2876816a9141"],
+Cell[3657, 118, 384, 11, 70, "Text",ExpressionUUID->"e5fdbc5b-20f0-4cb3-ade0-a33fcd5e8865"],
+Cell[4044, 131, 382, 11, 70, "Text",ExpressionUUID->"3e4a740b-8b60-42fd-af53-3dc2e4f5423b"],
+Cell[4429, 144, 382, 11, 70, "Text",ExpressionUUID->"6bb4a4b0-42b3-4750-8996-c6bd69a95f97"],
+Cell[4814, 157, 364, 11, 70, "Text",ExpressionUUID->"f56ddd8e-4863-421d-a696-b634932a1ee4"],
+Cell[5181, 170, 374, 11, 70, "Text",ExpressionUUID->"3e7cdc1c-d846-44cb-bf6b-af5b8271a2e5"],
+Cell[5558, 183, 406, 11, 70, "Text",ExpressionUUID->"61a4b6d6-8952-4878-8cd6-531f72ae4df6"],
+Cell[5967, 196, 414, 11, 70, "Text",ExpressionUUID->"75cf2f83-f6cf-4b43-9790-1c5d5346c3a0"],
+Cell[6384, 209, 430, 11, 70, "Text",ExpressionUUID->"5b8d4c7d-09eb-4f3b-9bc5-5a32756e0f53"],
+Cell[6817, 222, 414, 11, 70, "Text",ExpressionUUID->"d7ca309d-2bbe-4921-9a9c-aa88469f0d10"],
+Cell[7234, 235, 382, 11, 70, "Text",ExpressionUUID->"133d525e-4d72-4079-8cfa-adb5320ac1c2"],
+Cell[7619, 248, 380, 11, 70, "Text",ExpressionUUID->"3ad8c71c-12e3-4e5c-956a-0786e534c680"],
+Cell[8002, 261, 382, 11, 70, "Text",ExpressionUUID->"8699fe45-7617-4ee6-8541-45260a9ebee3"],
+Cell[8387, 274, 386, 11, 70, "Text",ExpressionUUID->"93c7e806-346d-4de8-a904-f3ab259bd3cf"],
+Cell[8776, 287, 382, 11, 70, "Text",ExpressionUUID->"e57c4008-a88f-4751-b567-d961f1851036"],
+Cell[9161, 300, 376, 11, 70, "Text",ExpressionUUID->"27d33f20-6325-4bc9-97dd-704c1b834c4f"],
+Cell[9540, 313, 376, 11, 70, "Text",ExpressionUUID->"3ff57fd0-3242-4158-aaf0-b6235c057523"],
+Cell[9919, 326, 378, 11, 70, "Text",ExpressionUUID->"33193a9b-1cb8-4212-b2e6-e5ff2928479b"],
+Cell[10300, 339, 382, 11, 70, "Text",ExpressionUUID->"f828f660-336a-49bf-900d-0e2ae7adc176"],
+Cell[10685, 352, 378, 11, 70, "Text",ExpressionUUID->"afeb5638-ebdc-4ad7-8918-a42ca0f22c28"],
+Cell[11066, 365, 374, 11, 70, "Text",ExpressionUUID->"1e61f2f7-4089-4fe0-8143-f9fa98b1fca1"],
+Cell[11443, 378, 374, 11, 70, "Text",ExpressionUUID->"11fc0e39-8d84-4241-b3a4-071d326de90d"],
+Cell[11820, 391, 374, 11, 70, "Text",ExpressionUUID->"8d4e0e57-97ad-46e8-b2b1-c642c159111a"],
+Cell[12197, 404, 374, 11, 70, "Text",ExpressionUUID->"f2f59174-9c80-4988-8cd4-7f9974438350"],
+Cell[12574, 417, 374, 11, 70, "Text",ExpressionUUID->"5967246b-d9f6-49bb-a3ec-83acc83c3a69"],
+Cell[12951, 430, 374, 11, 70, "Text",ExpressionUUID->"c337ca58-fa0d-46b5-9678-6fb2c36bfedf"],
+Cell[13328, 443, 374, 11, 70, "Text",ExpressionUUID->"6743c60f-1e00-4a98-9ad6-994b2070a541"],
+Cell[13705, 456, 374, 11, 70, "Text",ExpressionUUID->"a1ce7cba-0606-4dca-b6b4-d288dc7f3ed0"],
+Cell[14082, 469, 374, 11, 70, "Text",ExpressionUUID->"ebebbf02-165f-40a8-9626-aa15246fbcc9"],
+Cell[14459, 482, 376, 11, 70, "Text",ExpressionUUID->"4d00edec-dbc3-43ef-aa83-e4d6f77bdf42"],
+Cell[14838, 495, 378, 11, 70, "Text",ExpressionUUID->"e6e0409c-e456-466b-83ce-23a0943adcf1"],
+Cell[15219, 508, 376, 11, 70, "Text",ExpressionUUID->"27c84fb8-f0bd-48c4-8b50-94fde71026c8"],
+Cell[15598, 521, 376, 11, 70, "Text",ExpressionUUID->"ff4ef525-03bf-4078-a525-cc11272bba8f"],
+Cell[15977, 534, 376, 11, 70, "Text",ExpressionUUID->"efde45b6-923b-4c1a-b47a-b82f28961388"],
+Cell[16356, 547, 376, 11, 70, "Text",ExpressionUUID->"42a96636-74ea-4303-b0f6-1755f179a153"],
+Cell[16735, 560, 376, 11, 70, "Text",ExpressionUUID->"e722a600-0062-444b-8e22-2374100f47cc"],
+Cell[17114, 573, 376, 11, 70, "Text",ExpressionUUID->"a1692444-0398-4feb-ac0d-82fd7d3febbe"],
+Cell[17493, 586, 376, 11, 70, "Text",ExpressionUUID->"3214d873-908e-4bba-8439-69f698cab940"],
+Cell[17872, 599, 376, 11, 70, "Text",ExpressionUUID->"eda484aa-143a-496a-a233-2b32c49befd7"],
+Cell[18251, 612, 374, 11, 70, "Text",ExpressionUUID->"12e2f343-9920-492f-b993-5c72063c6b27"],
+Cell[18628, 625, 374, 11, 70, "Text",ExpressionUUID->"e7b34b08-d862-4d3a-9c2c-c0556682fcbc"],
+Cell[19005, 638, 374, 11, 70, "Text",ExpressionUUID->"c9aec614-bb5f-45ab-a22a-07bf32a7eb38"],
+Cell[19382, 651, 374, 11, 70, "Text",ExpressionUUID->"a5fc4ad5-b98d-41b2-b02e-5c13d1267d3e"],
+Cell[19759, 664, 374, 11, 70, "Text",ExpressionUUID->"a4a1498e-6e4b-40d3-a9e6-70227ac28be3"],
+Cell[20136, 677, 374, 11, 70, "Text",ExpressionUUID->"13d0fe4b-b5f1-4aaa-bcee-626c9f5b26e6"],
+Cell[20513, 690, 374, 11, 70, "Text",ExpressionUUID->"14e526d1-0308-4b29-8646-007ff70081d8"],
+Cell[20890, 703, 374, 11, 70, "Text",ExpressionUUID->"05fcf4bd-2214-427e-98b0-3ee7f02489c4"],
+Cell[21267, 716, 374, 11, 70, "Text",ExpressionUUID->"5eb3741f-0dee-4bea-864c-914526ee0816"],
+Cell[21644, 729, 374, 11, 70, "Text",ExpressionUUID->"e60211a2-5482-413a-9f6c-eb089a87e2bf"],
+Cell[22021, 742, 372, 11, 70, "Text",ExpressionUUID->"7ad981d1-cf6b-4b1e-b813-8b99defe63cf"],
+Cell[22396, 755, 380, 11, 70, "Text",ExpressionUUID->"d740885a-9698-4b3d-8e9b-a016e345cdf5"],
+Cell[22779, 768, 364, 11, 70, "Text",ExpressionUUID->"24c52e5a-f466-4320-8ae4-e2eadcd0bc52"],
+Cell[23146, 781, 360, 11, 70, "Text",ExpressionUUID->"482c4669-c30a-453c-86e9-0f940af9257e"],
+Cell[23509, 794, 364, 11, 70, "Text",ExpressionUUID->"34b034c5-c5e8-4507-ac41-6832e5338091"],
+Cell[23876, 807, 364, 11, 70, "Text",ExpressionUUID->"ddd74fbb-c697-4470-9781-70ddc6c85a4c"],
+Cell[24243, 820, 368, 11, 70, "Text",ExpressionUUID->"d7da3865-f4d1-4405-82db-145aa3b255f7"],
+Cell[24614, 833, 382, 11, 70, "Text",ExpressionUUID->"e3ffe033-b611-4138-b204-00c28c1fa0de"],
+Cell[24999, 846, 402, 11, 70, "Text",ExpressionUUID->"7c0ff675-ab71-4b78-bef4-7c075b861314"],
+Cell[25404, 859, 364, 11, 70, "Text",ExpressionUUID->"2401d972-55de-4dcb-8675-4839b91fc89f"],
+Cell[25771, 872, 364, 11, 70, "Text",ExpressionUUID->"3f572e1f-69d4-4cd4-b7b6-17205b44c63e"],
+Cell[26138, 885, 364, 11, 70, "Text",ExpressionUUID->"cfc7c081-c6b7-41d4-95e5-32edaacb4c43"],
+Cell[26505, 898, 366, 11, 70, "Text",ExpressionUUID->"255d3baf-242c-41fa-ba28-620e667204fa"],
+Cell[26874, 911, 394, 11, 70, "Text",ExpressionUUID->"e06f9f66-6774-4c0e-8688-cbe9cc2c4ab7"],
+Cell[27271, 924, 392, 11, 70, "Text",ExpressionUUID->"db6dca2c-c7a1-4d34-8ffa-08fdf5fd9f9a"],
+Cell[27666, 937, 390, 11, 70, "Text",ExpressionUUID->"b1deb99e-a458-458f-9e03-3959157d88bc"],
+Cell[28059, 950, 384, 11, 70, "Text",ExpressionUUID->"91eed40c-904c-4629-a2bb-6ff8d1bb679a"],
+Cell[28446, 963, 374, 11, 70, "Text",ExpressionUUID->"57363be1-03fc-4868-b344-7b76c32a8b30"],
+Cell[28823, 976, 380, 11, 70, "Text",ExpressionUUID->"c8e23f2f-896d-4c85-a2b9-85d2f1a56ed1"],
+Cell[29206, 989, 364, 11, 70, "Text",ExpressionUUID->"3bc4dda5-894a-497c-be4d-e28b06a42bc5"],
+Cell[29573, 1002, 370, 11, 70, "Text",ExpressionUUID->"bb8936bb-121c-4587-ad98-5a110a05a900"],
+Cell[29946, 1015, 418, 11, 70, "Text",ExpressionUUID->"adc871ca-eccd-4261-ba42-157cbc816b56"],
+Cell[30367, 1028, 364, 11, 70, "Text",ExpressionUUID->"f637bb89-0641-4620-9e74-d49f73be4543"],
+Cell[30734, 1041, 378, 11, 70, "Text",ExpressionUUID->"ec6a4989-8037-4e32-b0e9-5af0970aa383"],
+Cell[31115, 1054, 374, 11, 70, "Text",ExpressionUUID->"c109499d-251e-4624-8f48-f4a0c80ff458"],
+Cell[31492, 1067, 366, 11, 70, "Text",ExpressionUUID->"fc77a42d-dadc-421b-8984-5e47531b07a4"],
+Cell[31861, 1080, 392, 11, 70, "Text",ExpressionUUID->"9dc1682d-bed0-4f12-a94d-19eba44a59ef"],
+Cell[32256, 1093, 388, 11, 70, "Text",ExpressionUUID->"1204d523-19ef-40c7-8523-9ef967c99570"],
+Cell[32647, 1106, 388, 11, 70, "Text",ExpressionUUID->"efda41a1-1f94-480d-b2dd-a6706af28dd3"],
+Cell[33038, 1119, 378, 11, 70, "Text",ExpressionUUID->"99ca9526-03e8-4ffb-80ae-bea9b60b8e4d"],
+Cell[33419, 1132, 386, 11, 70, "Text",ExpressionUUID->"8fb180db-06d7-423a-b9f0-1afbb69ddbc5"],
+Cell[33808, 1145, 388, 11, 70, "Text",ExpressionUUID->"113f608c-2e69-4a9b-84ff-b7241f5b42ec"],
+Cell[34199, 1158, 388, 11, 70, "Text",ExpressionUUID->"724f5eee-7867-44c5-af6f-9b1fe2fd529d"],
+Cell[34590, 1171, 388, 11, 70, "Text",ExpressionUUID->"dd4e2d98-2759-455f-9f82-9e0d559a2c44"],
+Cell[34981, 1184, 382, 11, 70, "Text",ExpressionUUID->"17648f9b-277c-41a0-ab9a-83061609e1a5"],
+Cell[35366, 1197, 370, 11, 70, "Text",ExpressionUUID->"783b4592-904b-4c18-8fe1-85b8d9bc19da"],
+Cell[35739, 1210, 382, 11, 70, "Text",ExpressionUUID->"794081a0-03cc-4423-954a-71cc725880c0"],
+Cell[36124, 1223, 384, 11, 70, "Text",ExpressionUUID->"d2697617-fcb5-46dd-944e-a03fe452fe80"],
+Cell[36511, 1236, 384, 11, 70, "Text",ExpressionUUID->"01814b99-ac95-410e-a78d-0c74d531ab57"],
+Cell[36898, 1249, 388, 11, 70, "Text",ExpressionUUID->"f4d84e8f-d70c-40d9-b3ff-73b9e2041204"]
 }, Open  ]]
 }, Open  ]]
 }

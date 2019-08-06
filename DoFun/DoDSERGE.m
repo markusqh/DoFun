@@ -143,19 +143,19 @@ Default value: \[Omicron].";
 $diagramTypes::usage="$diagramTypes is a list of all known diagram types.
 ";
 
-$dummyField::usage="$dummyField is the superfield representing all possible fields.
+$dummyField::usage="$dummyField is the super field representing all possible fields.
 Default value: \[Phi].
 ";
 
-$dummyFieldAF::usage="$dummyFieldAF is a superfield representing all possible anti-fermionic fields.
+$dummyFieldAF::usage="$dummyFieldAF is a super field representing all possible anti-fermionic fields.
 Default value: \[Phi].
 ";
 
-$dummyFieldB::usage="$dummyFieldB is a superfield representing all possible bosonic fields.
+$dummyFieldB::usage="$dummyFieldB is a super field representing all possible bosonic fields.
 Default value: \[Phi].
 ";
 
-$dummyFieldF::usage="$dummyFieldF is a superfield representing all possible fermionic fields.
+$dummyFieldF::usage="$dummyFieldF is a super field representing all possible fermionic fields.
 Default value: \[Phi].
 ";
 
@@ -202,18 +202,20 @@ antiFermionQ::usage="antiFermionQ[expr] gives True if expr is a Grassmann anti-f
 
 antiField::usage="antiField[field] gives the anti-field of field.
 Example:
-setFields[{A}, {{c,cb}}, {{phi,phib}}];
+setFields[{A}, {{c,cb}}, {{psi,psib}}];
 antiField/@{A, c, cb, psi, psib}
 ";
 
-bareVertexSymbol::usage="bareVertexSymbol is an option of COPlot, DSEPlot, DSEPlotList and RGEPlot. Itdetermines how to draw bare vertices.
+bareVertexSymbol::usage="bareVertexSymbol is an option of COPlot, DSEPlot, DSEPlotList and RGEPlot. It determines how to draw bare vertices.
 
 Possible values: boxSymbol, diskSymbol, triangleSymbol, diskTinySymbol, diskOpenSymbol, crossSymbol or a user-defined function which takes the coordinate of the regulator insertion as input.
 Default value: diskTinySymbol.
 
 Example:
-setFields[{phi}, {}, {}];
-DSEPlot[1/2 op[dR[{phi, r1}, {phi, s1}], P[{phi, t1}, {phi, r1}], P[{phi, s1}, {phi, v1}], V[{phi, i}, {phi, j}, {phi, v1}, {phi, t1}]], {{phi, Black}}, bareVertexSymbol -> triangleSymbol]
+setFields[{phi}, {}, {}]; DSEPlot[
+ 1/2 op[P[{phi, t1}, {phi, v1}], 
+   S[{phi, i}, {phi, j}, {phi, v1}, {phi, t1}]], {{phi, Black}}, 
+ bareVertexSymbol -> triangleSymbol]
 ";
 
 boson::usage="boson is the field type of a real bosonic field.
@@ -265,7 +267,7 @@ checkSyntax[dR[{A, i}, {A, j}, {A, l}]]
 ";
 
 CO::usage="CO[{fieldCO, indexCO}, {field1, index1}, {field2, index2}, ...] represents a composite operator fieldCO with index indexCO of the fields fieldi with their indices indexi  in its symbolic form.
-CO[fieldCO[mom, index1, index2, ...], fielda[momentuma, indexa1, indexa2, ...], fieldb[momentumb, indexb1, indexb2, ...], ..., explicit->True] represents a composite operator fieldCO with momentum mom and explicit indices indexi of the fields fieldji with their momenta momentumji and explicit indices indexji in algebraic form.
+CO[fieldCO[mom, index1, index2, ...], fielda[momentuma, indexa1, indexa2, ...], fieldb[momentumb, indexb1, indexb2, ...], ..., explicit->True] represents a composite operator fieldCO with momentum mom and explicit indices indexi of the fields fieldji with their momenta momentumji and explicit indices indexjk in algebraic form.
 The option explicit can have an arbitrary value.
 
 Symbolic example: Composite operator G=phi^2
@@ -298,10 +300,14 @@ Possible options are:
 	-) Options of Graph.
 	
 Example:
-setFields[{FF,A}];
-COPlot[1/2 op[CO[{FF, i}, {A, r1}, {A, s1}], P[{A, r1}, {A, t1}], 
-   P[{A, s1}, {A, u1}], CO[{FF, j}, {A, t1}, {A, u1}]], {{A, 
-   Red}, {FF, Thick, Blue, Dotted}}]
+setFields[{phi, pp}];
+action = {{phi, phi}};
+Clear@F
+F[j_] := Module[{i1, i2}, 
+  op[CO[{pp, j}, {phi, i1}, {phi, i2}], {phi, i1}, {phi, i2}]/2]
+FF = op[F[i], F[j]];
+co = identifyGraphs[doCO[action, FF, onePIQ], {{pp, i}, {pp, j}}];
+COPlot[co, {{phi, Black}}]
 ";
 
 coSymbol::usage="coSymbol is an option of COPlot, DSEPlot, DSEPlotList and RGEPlot. It determines how to draw composite operators.
@@ -310,10 +316,12 @@ Possible values: boxSymbol, diskSymbol, triangleSymbol, diskTinySymbol, diskOpen
 Default value: triangleSymbol.
 
 Example:
-setFields[{A,FF}];
-COPlot[1/2 op[CO[{FF, i}, {A, r1}, {A, s1}], P[{A, r1}, {A, t1}], 
-   P[{A, s1}, {A, u1}], CO[{FF, j}, {A, t1}, {A, u1}]], {{A, 
-   Red}, {FF, Thick, Blue, Dotted}}, coSymbol -> boxSymbol]";
+setFields[{A, FF}]; COPlot[
+ op[CO[{FF, i}, {A, r1}, {A, s1}, {A, t1}, {A, u1}], 
+  P[{A, r1}, {A, v1}], P[{A, s1}, {A, w1}], P[{A, t1}, {A, x1}], 
+  P[{A, u1}, {A, y1}], 
+  CO[{FF, j}, {A, v1}, {A, w1}, {A, x1}, {A, y1}]], {{A, Red}}, 
+ coSymbol -> boxSymbol]";
 
 countTerms::usage="countTerms[expr] counts the number of graphs appearing in expr.
 
@@ -328,7 +336,7 @@ crossSymbol::usage="crossSymbol is a cross graphic used for bareVertexSymbol, co
 ";
 
 deriv::usage="deriv[expr, {field, i}] differentiates expr with respect to {field, i}.
-deriv[expr, fields] perform several derivatives with respect to the fields given in flis.
+deriv[expr, fields] performs several derivatives with respect to the fields given in flis.
 This function is used in doDSE.
 
 Examples:
@@ -346,10 +354,10 @@ derivRGE[op[V[{phi, i}, {phi, s}, {phi, t}], P[{phi, s}, {phi, t}]], {phi, j}, {
 ";
 
 diagramTypes::usage="diagramTypes is an association containing all known diagram types.
-A diagram type is defined by a list {n, {v1, v2, ...}}, where n is the loop number and the vi are the number of legs of all vertices.
+A diagram type is defined by a list {n, {v1, v2, ...}}, where n is the loop number and the vi are the numbers of legs of all vertices.
 
 Examples:
-diagramTypes[{2, {4, 3, 3}]
+diagramTypes[{2, {4, 3, 3}}]
 diagramTypes[{1, {3, 3, 3, 3}}]
 ";
 
@@ -368,11 +376,14 @@ diskTinySymbol::usage="diskTinySymbol is a tiny disk graphic used for bareVertex
 doCO::usage = "doCO[ac, cf, [filter, opts]] derives the equation for the correlation function cf of composite operators with the action ac. filter are optional functions to select a subset of diagrams.
 
 Example:
-setFields[{A, FF}];
-comp = doCO[{{A, A}, {A, A, A}, {A, A, A, A}}, 
-   1/4 op[CO[{FF, i}, {A, r1}, {A, s1}], {A, r1}, {A, s1}, 
-     CO[{FF, j}, {A, t1}, {A, u1}], {A, t1}, {A, u1}], onePIQ];
-COPlot[comp, {{A, Red}, {FF, Thick, Blue, Dotted}}]
+setFields[{phi, pp}];
+action = {{phi, phi}};
+Clear@F
+F[j_] := Module[{i1, i2}, 
+  op[CO[{pp, j}, {phi, i1}, {phi, i2}], {phi, i1}, {phi, i2}]/2]
+FF = op[F[i], F[j]];
+co = identifyGraphs[doCO[action, FF, onePIQ], {{pp, i}, {pp, j}}];
+COPlot[co, {{phi, Black}}]
 ";
 
 doDSE::usage="doDSE[ac, flis, [opts]] derives the DSE from the action ac for the fields contained in flis.
@@ -443,14 +454,14 @@ setFields[{phi}];
 rge = doRGE[{{phi, phi}, {phi,  phi, phi}}, {phi, phi, phi}, tDerivative -> False]
 RGEPlot[rge, {{phi, Black}}, output -> forceEquation]
 
-Three-point RGE of a theory with bosonic fields a, phi, and phib which mix at the two-point level, i.e., additional propagators have to be given in an extra argument. No regulator insertions performed.
+Three-point RGE of a theory with bosonic fields A, phi, and phib which mix at the two-point level, i.e., additional propagators have to be given in an extra argument. No regulator insertions performed.
 setFields[{A},{},{{phi,phib}}];
 rge = doRGE[{{A, A}, {phi, phib}, {A, phi}, {A, phib}, {A, phib, phi}}, {A, A, A}, {{phi, phi}, {phib, phib}}, specificFieldDefinitions -> {A, phi, phib}, tDerivative -> False]
 RGEPlot[rge]
 ";
 
 dR::usage="dR[{field1, ind1}, {field2, ind2}] represents in symbolic form a regulator insertion, \[PartialD]_t R_k, where fieldi are fields and their indi indices.
-dR[field1[mom1, inds1], field2[mom2, inds2], explicit -> True] representa a regulator insertion as needed by getAE. fieldi are fields, momi their momenta and indsi their full indices.
+dR[field1[mom1, inds1], field2[mom2, inds2], explicit -> True] represents a regulator insertion as needed by getAE. fieldi are fields, momi their momenta and indsi their full indices.
 
 Example: Symbolic representation of a regulator insertion for gluons
 dR[{A,i},{A,j}]
@@ -500,6 +511,8 @@ DSEPlot[op[S[{phi, i}, {phi, j}, {phi, l}, {phi, m}], P[{phi, l}, {phi, m}], {ph
 DSEPlotList::usage="DSEPlotList[expr] returns a list of plots of each term in expr.
 DSEPlot[expr, fieldStyles] returns a list of plots of each term in expr with the styles of the fields given by fieldStyles. The syntax is {{field1, style1}, {field2, style2}, ...}} where stylei are graphics primitives like colors suitable for Line.
 DSEPlotList is the basic plotting function used by COPlot, DSEPlot, RGEPlot.
+By default, blobs denote dressed quantities (with the exception of internal propagators), dots bare n-point functions, boxes regulator insertions, triangles composite operators and external fields are indicated by a circle.
+By default, blobs denote dressed quantities (with the exception of internal propagators), dots bare n-point functions, boxes regulator insertions, triangles composite operators and external fields are indicated by a circle.
 ";
 
 dummyCounter::usage="dummyCounter is a counter for dummy indices used by insDummy[].
@@ -530,13 +543,13 @@ fermion::usage="fermion is the field type of a Grassmann field.
 Properties of fields need to be set by setFields.
 ";
 
-fermionQ::usage="fermionQ[expr] returns True if expr is a Grassmannian field.
+fermionQ::usage="fermionQ[expr] returns True if expr is a Grassmann field.
 ";
 
 fieldQ::usage="fieldQ[expr] yields True if expr is a field.
 ";
 
-fieldType::usage="fieldType[expr] gives the field type of expr. Possible values are stored in
+fieldType::usage="fieldType[expr] gives the field type of expr. Possible values are stored in $fieldTypes.
 ";
 
 forceEquation::usage="forceEquation makes sure an equation is plotted for a single diagram.
@@ -557,7 +570,7 @@ generateAction[{{A,A},{A,A,A}}]
 generateAction[{{phi, 4}}]
 generateAction[{{phi, 4, even}}]
 generateAction[{{psi, psib, 2}}]
-generateAction[{{phi, phib}, {phib, phib, phi, phi}}, {phi, phib}]
+generateAction[{{psi, psib}, {psib, psib, psi, psi}}]
 ";
 
 get1PI::usage="get1PI[expr] returns the 1PI diagrams from expr.
@@ -566,7 +579,7 @@ get1PI::usage="get1PI[expr] returns the 1PI diagrams from expr.
 getConnected::usage="getConnected[expr] returns the connected diagrams from expr.
 ";
 
-getDiagramType::usage="getDiagramType[expr] returns the type of the diagram expr. Known diagram types are $diagramTypes.
+getDiagramType::usage="getDiagramType[expr] returns the type of the diagram expr. Known diagram types are stored in $diagramTypes.
 ";
 
 getDisconnected::usage="getDisconnected[expr] returns the disconnected diagrams from expr.
@@ -579,7 +592,7 @@ setFields[{A}];
 getInteractionList[1/2 op[S[{A, r1}, {A, s1}], {A, r1}, {A, s1}] - 1/6 op[S[{A, u1}, {A, v1}, {A, w1}], {A, u1}, {A, v1}, {A, w1}]]
 ";
  
-getLoopNumber::usage="getLoopNumber[expr] return the number of loops of a diagram. If expr is a sum of diagrams, a list with the loop numbers is returned.
+getLoopNumber::usage="getLoopNumber[expr] returns the number of loops of a diagram. If expr is a sum of diagrams, a list with the loop numbers is returned.
 
 Example:
 setFields[{phi}];
@@ -599,7 +612,7 @@ getVertexNumbers::usage="getVertexNumbers[expr] returns the number of vertices i
 grassmannQ::usage="grassmannQ[expr] return True if expr is a Grassmann field.\n
 ";
 
-groupDiagrams::usage="groupDiagrams[expr] returns a list of diagrams in expr grouped by their type. Known diagram types are $diagramTypes.";
+groupDiagrams::usage="groupDiagrams[expr] returns a list of diagrams in expr grouped by their types. Known diagram types are stored in $diagramTypes.";
 
 identify::usage="identify is an option of doDSE and doRGE. It allows switching off the identification of diagrams.
 ";
@@ -629,7 +642,7 @@ Module[{ind1=insDummy[],ind2=insDummy[]}, op[S[{phi,i},{phi,j},{phi,ind1},{phi,i
 intact::usage="intact is a value for the option symmetry.
 "
 
-odd::usage="odd specifies that a field has only interactions with an odd number of legs. Devault value. See generateAction for details.
+odd::usage="odd specifies that a field can have interactions with an odd number of legs. Default value. See generateAction for details.
 ";
 
 onePIQ::usage="onePIQ[expr] returns True if expr is a 1PI diagram.
@@ -648,6 +661,7 @@ Examples:
 op[S[{A,i},{A,r},{A,u}], P[{A,r},{A,s}], P[{A,u},{A,v}], V[{A,j}, {A,s}, {A,v}]]
 op[0, V[{A, i}, {A, r}, {A, u}]]
 op[2 S[{A, i}, {A, r}, {A, u}]]
+op[V[{A, i}, {A, r}, {A, u}] - S[{A, i}, {A, r}, {A, u}], P[{A, r}, {A, u}]]
 
 Algebraic form:
 Operator comprising fields in the definition of physical actions.
@@ -656,6 +670,7 @@ Summation and integration over mutliple indices is understood.
 op is used in this way in getFR and convertAction.
 
 Example: The two-point part of an O(N) symmetric scalar theory
+setFields[{phi}];
 convertAction[1/2 p^2 op[phi[p, i], phi[-p,i]]] 
 ";
 
@@ -672,7 +687,7 @@ setFields[{A}, {{c, cb}}, {}];
 orderFermions[op[V[{c, i}, {cb, j}, {A, l}]]]
 ";
 
-output::usage="output  is an option of COPlot, DSEPlot, DSEPlotList and RGEPlot. It determines in what the output is given.
+output::usage="output  is an option of COPlot, DSEPlot, DSEPlotList and RGEPlot. It determines in what form the output is given.
 
 Possible values are:
  -) List: Gives a list of all graphs.
@@ -693,7 +708,7 @@ RGEPlot[dse,  {{phi, Black}}, output -> forceEquation]
 
 P::usage="P[{field1, index1}, {field2, index2}] represents a dressed propagator of the fields fieldi with their indices indexi in its symbolic form.
 P[field1[momentum1, index1a, index1b, ...], field2[momentum2, index2a, index2b, ...], explicit->True] represents a dressed propagator of the fields fieldi with their momenta momentumi and explicit indices indexij in algebraic form.
-The option explicit can have an arbitrary value. It is advised to save True for the definition of the propagators and use False otherwise.
+The option explicit can have an arbitrary value.
 
 Symbolic example:
 P[{A,i},{A,j}]
@@ -702,7 +717,7 @@ Algebraic example:
 P[field1[mom1, inds1], field2[mom2, inds2], explicit -> True]
 
 Example: Definition of a dressed propagator for a scalar field with an O(N) index
-P[phi[p1,i], phi[p2,j], explicit -> True]:=delta[i,j] D[p1^2]/p1^2
+P[phi[p1_,i_], phi[p2_,j_], explicit -> True]:=delta[i,j] D[p1^2]/p1^2
 ";
 
 propagatorCreationRules::usage="propagatorCreationRules is an option of setSourcesZero. It is used to distinguish between DSEs and RGEs.
@@ -735,7 +750,7 @@ replaceFields[op[S[{A, i}, {A, r}, {A, s}], {A, r}, {A, s}]]
 ";
 
 resetDummy::usage="resetDummy[] resets the counter in the dummy function.
-Note: Should be used with care because the uniqueness of dummy indices is not guaranted after using resetDummy.
+Note: Should be used with care, because the uniqueness of dummy indices is not guaranteed after using resetDummy.
 
 Example:
 {insDummy[], insDummy[], resetDummy[], insDummy[]}
@@ -744,7 +759,7 @@ Example:
 RGEPlot::usage="RGEPlot[expr] plots an RGE expr.
 RGEPlot[expr, fieldStyle] plots an RGE expr with  the styles of the fields given by fieldStyles. The syntax is {{field1, style1}, {field2, style2}, ...}} where stylei are graphics primitives like colors suitable for Line.
 RGEPlot[expr, n] or RGEPlot[expr, fieldStyles, n] plots the RGE expr with n graphs per row.
-By default, blobs denote dressed quantities (with the exception of internal propagators), dots bare n-point functions and external fields are indicated by a circle.
+By default, blobs denote dressed quantities (with the exception of internal propagators), dots bare n-point functions, boxes regulator insertions and external fields are indicated by a circle.
 
 Possible options are:
  -) Options of Graph.
@@ -777,7 +792,7 @@ RGEPlot[op[S[{phi, i}, {phi, j}, {phi, l}, {phi, m}], P[{phi, l}, {phi, m}], {ph
 
 S::usage="S[{field1, index1}, {field2, index2}, ...] represents a bare vertex, i.e., an expansion coefficient of the action, of the fields fieldi with their indices indexi in its symbolic form.
 S[field1[momentum1, index1a, index1b, ...], field2[momentum2, index2a, index2b, ...], ..., explicit->True] represents a bare vertex of the fields fieldi with their momenta momentumi and explicit indices indexij in algebraic form.
-The option explicit can have an arbitrary value. It is advised to save True for the definition of the propagators and use False otherwise.
+The option explicit can have an arbitrary value.
 
 Symbolic example:
 S[{A,i},{A,j},{A,k}]
@@ -786,12 +801,12 @@ Algebraic example:
 S[field1[mom1, inds1], field2[mom2, inds2], explicit -> True]
 
 Example: Definition of a bare vertex for a scalar field with an O(N) index
-S[phi[p1,i], phi[p2,j], phi[p3,l], phi[p4,m], explicit -> True]:=g (delta[i,j]delta[l,m]+delta[i,l]delta[j,m]+delta[i,m]delta[j,l])
+S[phi[p1_,i_], phi[p2_,j_], phi[p3_,l_], phi[p4_,m_], explicit -> True]:=g (delta[i,j]delta[l,m]+delta[i,l]delta[j,m]+delta[i,m]delta[j,l])
 ";
 
 sE::usage:="sE is identical to shortExpression."
 
-setFields::usage = "setFields[bos, ferm, comp] sets the properties of the real bosonic fields bos, the Grassmann fields ferm and the complex field comp.
+setFields::usage = "setFields[bos, ferm, comp] sets the properties of the real bosonic fields bos, the Grassmann fields ferm and the complex fields comp.
 setFields[bos, ferm] sets the properties of the real bosonic fields bos and the Grassmann fields ferm.
 setFields[bos] sets the properties of the real bosonic fields bos.
 The real bosonic fields are given as lists, the Grassmann and complex fields as pairs of lists. 
@@ -805,7 +820,7 @@ antiField/@{A,c,cb,phi,phib}
 ";
 
 setSourcesZero::usage="setSourcesZero[expr, ac, extLegs] sets the sources in expr with external legs extLegs to zero, i.e., only physical propagators and vertices for the action ac are left.
-setSourcesZero[expr, ac, extLegs, ownAllowedPropagators] sets the sources in expr with external legs extLegs to zero with ownAllowedPropagators a list of propagators allowed additionally to the ones appearing in the action ac. Given in the form {{field1a, field1b}, {field2a, field2b}, ...}.
+setSourcesZero[expr, ac, extLegs, ownAllowedPropagators] sets the sources in expr with external legs extLegs to zero with ownAllowedPropagators a list of propagators allowed. Given in the form {{field1a, field1b}, {field2a, field2b}, ...}.
 setSourcesZero[expr, ac, legs, ownAllowedPropagators, vertexTest, opts] sets the sources in expr with external legs extLegs to zero with vertexTest a function to determine if a vertex should be kept.
 This function is not for RGEs.
 
@@ -822,7 +837,7 @@ setSourcesZero[op[S[{A, i}, {A, r}, {A, s}, {A, t}], P[{A, r}, {$dummyField, u}]
 ";
   
 setSourcesZeroRGE::usage="setSourcesZeroRGE[expr, ac, extLegs] sets the sources in expr with external legs extLegs to zero, i.e., only physical propagators and vertices for the action ac are left.
-setsetSourcesZeroRGEpr, ac, extLegs, ownAllowedPropagators] sets the sources in expr with external legs extLegs to zero with ownAllowedPropagators a list of propagators allowed additionally to the ones appearing in the action ac. Given in the form {{field1a, field1b}, {field2a, field2b}, ...}.
+setsetSourcesZeroRGEpr, ac, extLegs, ownAllowedPropagators] sets the sources in expr with external legs extLegs to zero with ownAllowedPropagators a list of propagators allowed. Given in the form {{field1a, field1b}, {field2a, field2b}, ...}.
 setsetSourcesZeroRGEpr, ac, legs, ownAllowedPropagators, vertexTest, opts] sets the sources in expr with external legs extLegs to zero with vertexTest a function to determine if a vertex should be kept.
 This function is for RGEs.
 
@@ -841,6 +856,13 @@ setSourcesZeroRGE[op[V[{A, i}, {A, r}, {A, s}, {A, t}], P[{A, r}, {$dummyField, 
 sf::usage="sf[field1, {field2, field3, ...}] encodes the sign for Grassmann fields. It is -1 if field1 is a Grassmann field and there is an odd number of Grassmann fields in the second argument.
 Fields are given as {field, index}.
 Some simplifications are done automatically. 
+Signs are made explicit with getSigns.
+
+Examples:
+setFields[{A}, {{c, cb}}];
+getSigns[sf[{cb, i}, {{cb, j}}]]
+getSigns[sf[{cb, i}, {{cb, j}, {c, k}}]]
+sf[{A, i}, {{cb, j}}]
 ";
 
 shortExpression::usage="shortExpression[expr] writes a symbolic expression expr containing propagators, vertices and so on into a shorter form using $bareVertexSymbol, $vertexSymbol, $regulatorInsertionSymbol, $compOpSymbol and $propagatorSymbol for representation.
@@ -851,7 +873,7 @@ Example:
 shortExpression[1/2 op[S[{A, i}, {A, r}, {A, s}], V[{A, t}, {A, u}, {A, j}], P[{A, t}, {A, r}], P[{A, u}, {A, s}]], Red, FontSize -> 20]\n
 ";
 
-sortCanonical::usage="sortCanonical[expr] orders the fields in vertices and propagators in a canonical way:
+sortCanonical::usage="sortCanonical[expr] orders the fields in vertices and propagators in expr in a canonical way:
 -) Anti-fermions left of fermions in vertices.
 -) Fermions left of anti-fermions in propagators. This is due to the definition of propagators, which show the anti-fields instead of the fields to allow easier identification with the corresponding vertex legs.
 -) External fields fields ordered by list of derivatives.
@@ -866,7 +888,7 @@ sortCanonical[op[V[{c, a}, {cb, b}, {A, i}], P[{cb, b}, {c, f}],
 
 S::usage="S[{field1, index1}, {field2, index2}, ...] represents a bare vertex, i.e., an expansion coefficient of the action, of the fields fieldi with their indices indexi in its symbolic form.
 S[field1[momentum1, index1a, index1b, ...], field2[momentum2, index2a, index2b, ...], ..., explicit->True] represents a bare vertex of the fields fieldi with their momenta momentumi and explicit indices indexij in algebraic form.
-The option explicit can have an arbitrary value. It is advised to save True for the definition of the propagators and use False otherwise.
+The option explicit can have an arbitrary value.
 
 Symbolic example:
 S[{A,i},{A,j},{A,k}]
@@ -875,7 +897,7 @@ Algebraic example:
 S[field1[mom1, inds1], field2[mom2, inds2], explicit -> True]
 
 Example: Definition of a bare vertex for a scalar field with an O(N) index
-S[phi[p1,i], phi[p2,j], phi[p3,l], phi[p4,m], explicit -> True]:=g (delta[i,j]delta[l,m]+delta[i,l]delta[j,m]+delta[i,m]delta[j,l])
+S[phi[p1_,i_], phi[p2_,j_], phi[p3_,l_], phi[p4_,m_], explicit -> True]:=g (delta[i,j]delta[l,m]+delta[i,l]delta[j,m]+delta[i,m]delta[j,l])
 ";
 
 sortDummies::usage="sortDummies[expr] replaces the dummy indices by shorter dummies making the expression thus easier to read.
@@ -899,17 +921,17 @@ Possible values:
  -) intact (default)
 ";
 
-superfield::usage="superfield is the field type of a super field representing all possible fields.
+superField::usage="superField is the field type of a super field representing all possible fields.
 ";
 
 tDerivative::usage="tDerivative is an option of doRGE. It determines if the regulator insertion is performed.
 Default: True.
 ";
 
-traceIndex1::usage="traceIndex1 is a dummy indices used by doRGE.
+traceIndex1::usage="traceIndex1 is a dummy index used by doRGE.
 ";
 
-traceIndex2::usage="traceIndex2 is a dummy indices used by doRGE.
+traceIndex2::usage="traceIndex2 is a dummy index used by doRGE.
 ";
 
 traceIndices::usage="traceIndices are dummy indices used by doRGE.
@@ -918,20 +940,20 @@ traceIndices::usage="traceIndices are dummy indices used by doRGE.
 triangleSymbol::usage="triangleSymbol is a triangle graphic used for bareVertexSymbol, coSymbol, regulatorSymbol or vertexSymbol.
 ";
 
-type::usage="type is an option of COPlot, DSEPlot, DSEPlotList and RGEPlot. It serves to tell the underlying plot function DSEPlotList how to plot the left-hand side of the equation.
+type::usage="types is an option of COPlot, DSEPlot, DSEPlotList and RGEPlot. It serves to tell the underlying plot function DSEPlotList how to plot the left-hand side of the equation.
 
 Possible values are:
-	-) "CO"
-	-) "DSE"
-	-) "RGE"
+	-) \"CO\"
+	-) \"DSE\"
+	-) \"RGE\"
 ";
 
-userEvenFields::usage="userEvenFields is an option of doRGE. It allows providing fields which can only appear in even numbers in vertices.
+userEvenFields::usage="userEvenFields is an option of doDSE and doRGE. It allows providing fields which can only appear in even numbers in vertices.
 ";
 
 V::usage="V[{field1, index1}, {field2, index2}, ...] represents a dressed vertex of the fields fieldi with their indices indexi  in its symbolic form.
 V[field1[momentum1, index1a, index1b, ...], field2[momentum2, index2a, index2b, ...], ..., explicit->True] represents a bare vertex of the fields fieldi with their momenta momentumi and explicit indices indexij in algebraic form.
-The option explicit can have an arbitrary value. It is advised to save True for the definition of the propagators and use False otherwise.
+The option explicit can have an arbitrary value.
 
 Symbolic example:
 V[{A,i},{A,j},{A,k}]
@@ -940,7 +962,7 @@ Algebraic example:
 V[field1[mom1, inds1], field2[mom2, inds2], explicit -> True]
 
 Example: Definition of a dressed vertex for a scalar field with an O(N) index
-V[phi[p1,i], phi[p2,j], phi[p3,l], phi[p4,m], explicit -> True]:=g (delta[i,j]delta[l,m]+delta[i,l]delta[j,m]+delta[i,m]delta[j,l])
+V[phi[p1_,i_], phi[p2_,j_], phi[p3_,l-], phi[p4_,m_], explicit -> True]:=g (delta[i,j]delta[l,m]+delta[i,l]delta[j,m]+delta[i,m]delta[j,l])
 ";
 
 vertexSymbol::usage="vertexSymbol is an option of COPlot, DSEPlot, DSEPlotList and RGEPlot. It determines how to draw dressed vertices.
@@ -950,7 +972,7 @@ Default value: diskSymbol.
 
 Example:
 setFields[{phi}, {}, {}];
-DSEPlot[1/2 op[dR[{phi, r1}, {phi, s1}], P[{phi, t1}, {phi, r1}], P[{phi, s1}, {phi, v1}], V[{phi, i}, {phi, j}, {phi, v1}, {phi, t1}]], {{phi, Black}}, vertexSymbol -> triangleSymbol]
+op[P[{phi, t1}, {phi, v1}], V[{phi, i}, {phi, j}, {phi, v1}, {phi, t1}]], {{phi, Black}}, vertexSymbol -> triangleSymbol]
 ";
 
 
@@ -985,7 +1007,7 @@ Options[COPlot]:=Join[{type->"CO"}, DeleteCases[Options[DSEPlot], type->_]];
 
 Options[setSourcesZero]={doGrassmannTest->True, propagatorCreationRules->DSERules};
 
-Options[doDSE]={sourcesZero:> True, identify:> True, ansatz->{}};
+Options[doDSE]={sourcesZero:> True, identify:> True, ansatz->{}, userEvenFields->{}};
 
 Options[doRGE]={sourcesZero:> True, identify:> True, tDerivative -> True, 
 	symmetry->intact, userEvenFields->{}};
@@ -1022,7 +1044,7 @@ Protect/@$externalIndices;
 (* list of all field types *)
 $fieldTypes={boson, fermion, antiFermion, complex, antiComplex, superField};
 
-(* the standard superfield *)
+(* the standard super field *)
 $dummyField = \[Phi]; 
 Evaluate@$dummyField /: fieldType[$dummyField] := superField;
 Evaluate@$dummyField /: grassmannQ[$dummyField] = False;
@@ -1508,7 +1530,7 @@ replacementCalc[a_]:=FixedPoint[replacementCalcStep,a,50];
 (* called with no fields to plugin *)
 plugInFieldsV[{},b_V]:=b;
 plugInFieldsV[{Q_?fieldQ,q_},b_V]:=Prepend[b,{Q,q}];
-plugInFieldsV[newField_List,b__]:=Sequence[newField,b];
+plugInFieldsV[newField_List,b__]:=plugInFieldsV[Most@newField, plugInFieldsV[newField[[-1]], b]];
  
 
 (* when performing the differentiation a set of rules is applied in deriv;
@@ -1845,18 +1867,22 @@ getGraphCharacteristic[graph_op, extLegs_List] :=
 
 
 (* Sorts expressions into a canonical order of field arguments. 
-Includes effect of the deprecated function orderFermions. *)
+Includes effect of the deprecated function orderFermions.
+External fields are not fully included here.*)
 
 sortCanonical[b_op, derivatives_List] := 
  Module[{ordered, fieldValues, i, intIndices, extFieldIndices, props, const,
  	connectedLeg, intIndexAss, intVertsAss, orderV, orderP, orderR, intVerts, extVerts,
- 	complexRules},
+ 	complexPropRules,extFields},
 
   (* constant to distinguish internal from external indices *)
   const = 10^10;
   
   (* rules to sort complex propagators *)
-  complexRules = {P[{phi_?fieldQ, ii1_}, {phibar_?fieldQ, ii2_}] /; (complexFieldQ[phibar] && antiField[phi]===phibar) :> P[{phibar, ii2}, {phi, ii1}]};
+  complexPropRules = {P[{phi_?fieldQ, ii1_}, {phibar_?fieldQ, ii2_}] /; (complexFieldQ[phibar] && antiField[phi]===phibar) :> P[{phibar, ii2}, {phi, ii1}]};
+  
+  (* extract external fields *)
+  extFields = Cases[b, {_?fieldQ,_}];
   
   (* extract propagators *)
   props =  Cases[b, P[___]];
@@ -1883,6 +1909,7 @@ sortCanonical[b_op, derivatives_List] :=
   fieldValues = Association @@ Table[derivatives[[i, 2]] -> i, {i, 1, Length[derivatives]}];
   
   (* determine index that connects the index fieldInd with a vertex *)
+  connectedLeg[fieldInd_]/;MemberQ[extFields[[All,2]],fieldInd]:={};
   connectedLeg[fieldInd_] := DeleteCases[Select[List @@@ props, Not@FreeQ[#, fieldInd] &][[1]], {_, fieldInd}][[1, 2]];
   
   (* set up association for internal indices: 
@@ -1941,7 +1968,7 @@ sortCanonical[b_op, derivatives_List] :=
   	/. P[a__] :> orderP[P[a]] /. dR[a__] :> orderR[dR[a]];
   
   (* get signature sign of original and ordered expression for the relative sign *)
-  getSignature@b getSignature@ordered ordered/.complexRules
+  getSignature@b getSignature@ordered ordered/.complexPropRules
 ]
 
 
@@ -1992,15 +2019,15 @@ createPropagatorRules then knows what to do;
 note that the RGE convention is considered superior as it is unique, while for the DSE convention there are still problems for vertices and two loops, like, e.g., the A c cb vertex
 -> it is recommended to order Grassmann and anti-Grassmann fields starting with the second derivative, so use A cb c here;
 unfortunately not known/possible how to use the RGE convention for DSEs *)
-setSourcesZeroRGE[a_,interactions_,extLegs_List,ownAllowedPropagators_List:{},vertexTest___Symbol,opts___?OptionQ]:=
-	setSourcesZero[a,interactions,extLegs,ownAllowedPropagators,vertexTest,propagatorCreationRules->RGERules,opts];
+setSourcesZeroRGE[all___,opts___?OptionQ]:=
+	setSourcesZero[all,propagatorCreationRules->RGERules,opts];
 
 
 
 (* the following two calls of setSourcesZero replace the vertices appropriately;
 this is done here in order to exclude double counting, because the real code of setSourcesZero is called for every field *)
 (* interactions given *)
-setSourcesZero[a_,L_,extLegs_List,ownAllowedPropagators_List:{},vertexTest___Symbol,opts___?OptionQ]:=Module[
+setSourcesZero[a_,L_,extLegs_List,ownAllowedPropagators_List:{},vertexTest_Symbol|vertexTest_Function,opts___?OptionQ]:=Module[
 	{fields,numberExtFields,verticesAtMin,interactions,truncation},
 	
 	(* get interactions from the action *)
@@ -2029,12 +2056,14 @@ setSourcesZero[a_,L_,extLegs_List,ownAllowedPropagators_List:{},vertexTest___Sym
 	setSourcesZeroDo[verticesAtMin,L,extLegs,truncation,ownAllowedPropagators,numberExtFields,vertexTest,opts]
 ];
 
+(* if no vertex test given *)
+setSourcesZero[a_,L_,extLegs_List,ownAllowedPropagators_List:{},opts___?OptionQ]:=setSourcesZero[a, L, extLegs, ownAllowedPropagators, (True&), opts]
 
 setSourcesZero[a___]:=Message[setSourcesZero::syntax,a];
 
 
 
-setSourcesZeroDo[a_,L_,extLegs_List,truncation_List,ownAllowedPropagators_List:{},numberExtFields_Integer,vertexTest___Symbol,opts___?OptionQ]:=Module[
+setSourcesZeroDo[a_,L_,extLegs_List,truncation_List,ownAllowedPropagators_List:{},numberExtFields_Integer,vertexTest_Symbol|vertexTest_Function,opts___?OptionQ]:=Module[
 {test,standardTest,propRules,propReplaced,allowedPropagators,fields,evenBosons,evenComplexBosons,bosons,
 verticesAtMinTrunc, verticesAtMinTruncMarked,vertexPatterns,vertexTestTruncation,interactions,truncationTest},
 
@@ -2086,8 +2115,8 @@ propRules=createPropagatorRules[allowedPropagators,fields,opts];
 in DSE calculations it should be possible to set only a certain type of fields to zero, so do not truncate if we are in the symmtric phase;
 numberExtFields gives the external fields per vertex;
 add the marker ext to all external fields, then count them per vertex and set vertices with too many fields to zero, finally remove the marker *)
-verticesAtMinTruncMarked=a//.op[e___,{F_?fieldQ,f_},g___]:>op[e,{{F,f},ext},g];
-verticesAtMinTrunc=verticesAtMinTruncMarked/.exp_op:>0/;Count[exp,{_List,ext}]>numberExtFields/.{l_List,ext}:>l;
+verticesAtMinTruncMarked=a/.op[e___,{F_?fieldQ,f_},g___]:>(op[e,{F,f},g]/.{F,f}:>{{F,f},ext});
+verticesAtMinTrunc=verticesAtMinTruncMarked/.exp_V|exp_S|exp_CO:>0/;Count[exp,{_List,ext}]>numberExtFields/.{l_List,ext}:>l;
 
 (* apply replacement rules for the propagators; note that here we can get a sum of ops;
 delete propagators that are not allowed *)
@@ -2107,7 +2136,7 @@ replaceVertices[c_Plus,rest___]:=replaceVertices[#,rest]&/@c;
 
 replaceVertices[a_?NumericQ,___]:=a;
 
-replaceVertices[d_op,vertexTest_Symbol,extFields_List,opts___?OptionQ]:=Module[{propagators,propInds, propagatorsF,
+replaceVertices[d_op,vertexTest_Symbol|vertexTest_Function,extFields_List,opts___?OptionQ]:=Module[{propagators,propInds, propagatorsF,
 	propagatorsB, propIndsF, propIndsB,c,vertsReplaced},
 
 (* indices of the propagators *)
@@ -2339,10 +2368,10 @@ doDSE[L_Times|L_Plus,derivs_List,b___]/;Depth@derivs==4:=doDSE[L,#,b]&/@derivs;
 doDSE[L_Times|L_Plus,derivs_List,b___]/;Or@@(fieldQ[#]&/@derivs[[All,2]]):=Message[doDSE::fieldAsIndex,Select[derivs[[All,2]],fieldQ[#]&]];
 
 (* if no propagators are given, use only the ones given in the action *)
-doDSE[L_Times|L_Plus,derivs_List,vertexTest___Symbol,opts___?OptionQ]:=doDSE[L,derivs,
+doDSE[L_Times|L_Plus,derivs_List,vertexTest_Symbol|vertexTest_Function,opts___?OptionQ]:=doDSE[L,derivs,
 		Select[Cases[L, S[___], \[Infinity]], Length@# == 2 &]/. S[{Q1_, q1_}, {Q2_, q2_}] :> {Q1, Q2},vertexTest,opts];
 
-doDSE[L_Times|L_Plus,derivs_List,allowedPropagators_List,vertexTest___Symbol,opts___?OptionQ]:=Module[{firstDer,onePoint,multiPoint,
+doDSE[L_Times|L_Plus,derivs_List,allowedPropagators_List,vertexTest_Symbol|vertexTest_Function,opts___?OptionQ]:=Module[{firstDer,onePoint,multiPoint,
 	sign,finalExp, complexFields},
 
 (* get fields that are not necessarily fermions but directed, e.g., scalar complex fields;
@@ -2376,6 +2405,9 @@ finalExp
 
 ];
 
+(* if no vertex test is given, use default *)
+doDSE[L_Times|L_Plus,derivs_List,allowedPropagators___List,opts___?OptionQ]:=doDSE[L,derivs,allowedPropagators, (True&), opts]
+
 doDSE[a___]:=Message[doDSE::syntax,a];
 
 
@@ -2403,8 +2435,10 @@ doRGE[interactions_List,derivs_List,rest___,opts___?OptionQ]:=Module[{evenFields
  doRGE[generateAction[interactions/.{Q_,even}:>{Q,Q}],derivs,rest,userEvenFields->evenFields,opts]
 ];
 
-(* no derivatives, i.e., "zero-point function" *)
-doRGE[L_Times|L_Plus,{},allowedPropagators_List,vertexTest___Symbol,opts___?OptionQ]:=Module[{
+(* no derivatives, i.e., "zero-point function"; vertex test has no effect here *)
+doRGE[L_Times|L_Plus,{},allowedPropagators_List,vertexTest_Symbol|vertexTest_Function,opts___?OptionQ]:=doRGE[L, {}, allowedPropagators, opts]
+
+doRGE[L_Times|L_Plus,{},allowedPropagators_List,opts___?OptionQ]:=Module[{
 	complexFields,zeroPoint,multiPointSources0,traceFieldRules,ind=insDummy[]},
 	
 (* get fields that are not necessarily fermions but directed, e.g., scalar complex fields;
@@ -2446,12 +2480,12 @@ doRGE[L_Times|L_Plus,derivs_List,b___]/;Depth@derivs==4:=doRGE[L,#,b]&/@derivs;
 doRGE[L_Times|L_Plus,derivs_List,b___]/;Or@@(fieldQ[#]&/@derivs[[All,2]]):=Message[doRGE::fieldAsIndex,Select[derivs[[All,2]],fieldQ[#]&]];
 
 (* if no propagators are given, use only the ones given in the action *)
-doRGE[L_Times|L_Plus,derivs_List,vertexTest___Symbol,opts___?OptionQ]:=doRGE[L,derivs,
+doRGE[L_Times|L_Plus,derivs_List,vertexTest_Symbol|vertexTest_Function,opts___?OptionQ]:=doRGE[L,derivs,
 		Select[Cases[L, S[___], \[Infinity]], Length@# == 2 &]/. S[{Q1_, q1_}, {Q2_, q2_}] :> {Q1, Q2},vertexTest,opts];
 
 
 (* main code *)
-doRGE[L_Times|L_Plus,derivs_List,allowedPropagators_List,vertexTest___Symbol,opts___?OptionQ]:=Module[{
+doRGE[L_Times|L_Plus,derivs_List,allowedPropagators_List,vertexTest_Symbol|vertexTest_Function,opts___?OptionQ]:=Module[{
 	onePoint,multiPoint,multiDer,sign,multiPointSources0,ind=insDummy[], extFields},
 
 (* the external fields are given by the derivatives; extFields is just another name for it here *)
@@ -2480,6 +2514,9 @@ If[tDerivative/.Join[{opts},Options@doRGE],
 ]
 
 ];
+
+(* no vertex test given, use default *)
+doRGE[L_Times|L_Plus,derivs_List,allowedPropagators___List,opts___?OptionQ]:=doRGE[L, derivs, allowedPropagators, (True&), opts]
 
 doRGE[a___]:=Message[doRGE::syntax,a];
 
@@ -3114,7 +3151,7 @@ getDirectedFieldsList[exp_]:=Module[{fermions,antiFermions,complexFields},
 
 (* Fields: Properties of fields need to be defined.
 The following types of fields are defined:
-Real bosons, fermions (or Grassmannian fields in general), complex bosons.
+Real bosons, fermions (or Grassmann fields in general), complex bosons.
 Fields must be defined before doing any calculations.
 No other function should interfer with the fields' definitions. *)
 

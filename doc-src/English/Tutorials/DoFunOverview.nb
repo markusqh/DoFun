@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 11.2' *)
+(* CreatedBy='Mathematica 11.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     37336,        871]
-NotebookOptionsPosition[     23592,        688]
-NotebookOutlinePosition[     24006,        704]
-CellTagsIndexPosition[     23963,        701]
+NotebookDataLength[     49625,       1141]
+NotebookOptionsPosition[     31497,        912]
+NotebookOutlinePosition[     31906,        928]
+CellTagsIndexPosition[     31863,        925]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -21,146 +21,156 @@ Notebook[{
 Cell[TextData[{
  "New in: ",
  Cell["XX", "HistoryData",
-  CellTags->"New",ExpressionUUID->"ed65759f-9c88-4c5b-ae9e-b6a2ff161a79"],
+  CellTags->"New",ExpressionUUID->"de8b2a2d-66a8-45a9-b320-55fe033eb801"],
  " | Modified in: ",
  Cell[" ", "HistoryData",
-  CellTags->"Modified",ExpressionUUID->"14b3bc63-0c2c-4ecd-bafa-47d72693e530"],
+  CellTags->"Modified",ExpressionUUID->"10c96da2-3b17-4093-a392-8fa08e42024e"],
  " | Obsolete in: ",
  Cell[" ", "HistoryData",
-  CellTags->"Obsolete",ExpressionUUID->"38fe970a-94e9-410f-8156-f8ccd2d0970b"],
+  CellTags->"Obsolete",ExpressionUUID->"144c75c2-4408-4cfa-9495-6c3dd05466dc"],
  " | Excised in: ",
  Cell[" ", "HistoryData",
-  CellTags->"Excised",ExpressionUUID->"2ab88a63-37ed-4267-a639-1ea20549ca5a"]
+  CellTags->"Excised",ExpressionUUID->"fefea7d8-d521-40ef-b08f-1cb64e4214ee"]
 }], "History",
- CellID->1247902091,ExpressionUUID->"da58c157-6038-4b90-9921-28518dc4d438"],
+ CellID->1247902091,ExpressionUUID->"8666aaaf-1cbd-4db3-b091-4deed2222550"],
 
 Cell[CellGroupData[{
 
 Cell["Categorization", "CategorizationSection",
- CellID->1122911449,ExpressionUUID->"cd0041c7-61b6-4249-b0e8-312dfbdd2d4c"],
+ CellID->1122911449,ExpressionUUID->"3a03aea8-3cf7-4c0a-a0a2-58fdbf762d4c"],
 
 Cell["Overview", "Categorization",
  CellLabel->"Entity Type",
- CellID->686433507,ExpressionUUID->"01747e29-ca90-42e4-a2dd-89d87f0b43b5"],
+ CellID->686433507,ExpressionUUID->"77529343-9be7-467f-9e1f-4da406381594"],
 
 Cell["DoFun Package", "Categorization",
  CellLabel->"Paclet Name",
- CellID->605800465,ExpressionUUID->"b62d2085-e90b-4d7e-9a7e-4055079fba04"],
+ CellID->605800465,ExpressionUUID->"d1ace8d2-3aac-4136-9b95-4945b049b030"],
 
 Cell["DoFun`", "Categorization",
  CellLabel->"Context",
- CellID->468444828,ExpressionUUID->"901921e0-9bd4-4e34-b61f-a1cedb1a4bf5"],
+ CellID->468444828,ExpressionUUID->"73d51753-17b5-47d1-a35f-5c83ec2a46e8"],
 
 Cell["DoFun/tutorial/DoFunOverview", "Categorization",
- CellLabel->"URI",ExpressionUUID->"c8ec5931-fb65-4909-95b0-e6b15cb70515"]
+ CellLabel->"URI",ExpressionUUID->"2e01b1ea-ec1e-4580-a8ba-026597d4fedb"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["Synonyms", "SynonymsSection",
- CellID->1427418553,ExpressionUUID->"ba572f36-c8c7-42de-b50b-c2551cb5ef82"],
+ CellID->1427418553,ExpressionUUID->"be92663c-f8cb-4e78-a340-9f46eb38eb78"],
 
 Cell["XXXX", "Synonyms",
- CellID->1251652828,ExpressionUUID->"2f10cfe1-9f95-4733-a034-057d8260693e"]
+ CellID->1251652828,ExpressionUUID->"49e53fe3-d042-4c39-8d45-ca6156ce14a2"]
 }, Closed]],
 
 Cell[CellGroupData[{
 
 Cell["Keywords", "KeywordsSection",
- CellID->1427428552,ExpressionUUID->"a983c32d-8e90-4a13-8c4d-b40e568f05a9"],
+ CellID->1427428552,ExpressionUUID->"b3d25fff-d34c-4ac7-afef-feda4a44cd8a"],
 
 Cell["XXXX", "Keywords",
- CellID->1251852827,ExpressionUUID->"dec0b8d5-6ff7-444a-b609-fc4ff2ee99fc"]
+ CellID->1251852827,ExpressionUUID->"2b4e84ca-45ef-4207-8c6b-4cac86f3d822"]
 }, Closed]],
 
 Cell[CellGroupData[{
 
 Cell["Details", "DetailsSection",
- CellID->307771771,ExpressionUUID->"b2490e6b-0724-44b7-8a44-258226b8d174"],
+ CellID->307771771,ExpressionUUID->"25cc9178-313d-4966-9883-eb8061637b96"],
 
 Cell["XXXX", "Details",
  CellLabel->"Lead",
- CellID->218895918,ExpressionUUID->"ae2d430a-0b08-4e14-8e24-a0de59a513a4"],
+ CellID->218895918,ExpressionUUID->"c6a25b41-02c5-4316-8eb8-2363a73e1029"],
 
 Cell["XXXX", "Details",
  CellLabel->"Developers",
- CellID->350963985,ExpressionUUID->"817c2833-2fb8-48e7-bd7f-95df3996619f"],
+ CellID->350963985,ExpressionUUID->"b2ef0373-23e7-4175-a999-05a0c47059a7"],
 
 Cell["XXXX", "Details",
  CellLabel->"Authors",
- CellID->795871300,ExpressionUUID->"fe6d2b08-f9c7-476b-af86-f115fe4f6bf2"],
+ CellID->795871300,ExpressionUUID->"9651f588-9038-4e45-8d9a-d4d8c96ea211"],
 
 Cell["XXXX", "Details",
  CellLabel->"Feature Name",
- CellID->199739161,ExpressionUUID->"5d0fce03-3680-45f2-a786-151a551c1f61"],
+ CellID->199739161,ExpressionUUID->"9acc1e02-0af5-49e3-a789-2cead05165c8"],
 
 Cell["XXXX", "Details",
  CellLabel->"QA",
- CellID->40625308,ExpressionUUID->"51c15cc6-912a-4c2c-9244-7460c6c19d34"],
+ CellID->40625308,ExpressionUUID->"98b1d523-6837-4a3d-a944-ba37d158dba4"],
 
 Cell["XXXX", "Details",
  CellLabel->"DA",
- CellID->357121918,ExpressionUUID->"ff0e53ac-92ca-4127-a400-656237c8116d"],
+ CellID->357121918,ExpressionUUID->"a0b2445c-cac1-4f05-8ff5-4cccbb6da54d"],
 
 Cell["XXXX", "Details",
  CellLabel->"Docs",
- CellID->35949532,ExpressionUUID->"737b0db6-0310-4200-a354-e82e043d964b"],
+ CellID->35949532,ExpressionUUID->"95e63554-1f2f-4552-b00b-9464c6247a28"],
 
 Cell["XXXX", "Details",
  CellLabel->"Features Page Notes",
- CellID->929432370,ExpressionUUID->"c952bc1e-b8bc-4c04-9565-081b256916b8"],
+ CellID->929432370,ExpressionUUID->"7a469210-8c12-483f-826b-448c354b6274"],
 
 Cell["XXXX", "Details",
  CellLabel->"Comments",
- CellID->240026365,ExpressionUUID->"f0ebe378-5059-4c3d-910f-d3a7506b940a"]
+ CellID->240026365,ExpressionUUID->"f267de45-3cc7-4bad-8987-01c7ba4877bf"]
 }, Closed]],
 
 Cell[CellGroupData[{
 
-Cell["DoFun Overview", "TOCDocumentTitle",ExpressionUUID->"0e05b1ba-3634-478a-8518-7546f321df1a"],
+Cell["DoFun Overview", "TOCDocumentTitle",ExpressionUUID->"d7e312a1-da89-4a83-8a91-78767acac92e"],
 
-Cell[TextData[ButtonBox["Complex fields",
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["Composite operators",
  BaseStyle->"Link",
- ButtonData->"paclet:DoFun/tutorial/Complex fields#509267359"]], "TOCChapter",\
-ExpressionUUID->"64dc0f5f-1149-4082-809c-c50f61f7bbf5"],
+ ButtonData->
+  "paclet:DoFun/tutorial/Composite operators#509267359"]], "TOCChapter",Expres\
+sionUUID->"c50e8237-ad49-4ad1-bdb0-9a7aca0a4cf4"],
+
+Cell[TextData[ButtonBox["Correlation function",
+ BaseStyle->"Link",
+ ButtonData->
+  "paclet:DoFun/tutorial/Composite operators#352696352"]], "TOCSection",Expres\
+sionUUID->"7c6e9e21-ea9c-48be-bca1-c343d8d198d8"]
+}, Open  ]],
 
 Cell[TextData[ButtonBox["Exporting diagrams",
  BaseStyle->"Link",
  ButtonData->
   "paclet:DoFun/tutorial/Exporting diagrams#509267359"]], "TOCChapter",Express\
-ionUUID->"78f30404-9a71-4b74-a98c-913faa8668e8"],
+ionUUID->"98f72c2e-b431-4972-8a6f-71bb08012c82"],
 
 Cell[TextData[ButtonBox["Fields mixing at the two-point level",
  BaseStyle->"Link",
  ButtonData->
   "paclet:DoFun/tutorial/Fields mixing at the two-point level#509267359"]], \
-"TOCChapter",ExpressionUUID->"538fac3f-ef6b-485d-876a-ea1906df9faf"],
+"TOCChapter",ExpressionUUID->"5bac129b-50ad-47d2-bad6-b8f852e6251e"],
 
 Cell[CellGroupData[{
 
 Cell[TextData[ButtonBox["Known issues",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/tutorial/Known issues#509267359"]], "TOCChapter",Ex\
-pressionUUID->"a8f9f1f6-10c3-4b1d-9358-acc9d0ac103d"],
+pressionUUID->"a0b2fe89-8edf-46cd-b70d-53533debdbad"],
 
 Cell[CellGroupData[{
 
 Cell[TextData[ButtonBox["DSEPlot",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/tutorial/Known issues#1536219457"]], "TOCSection",E\
-xpressionUUID->"d1574d9b-2ff7-47dd-a6c5-57f07cbf0223"],
+xpressionUUID->"d5033d86-e999-4d8e-b2d0-3afba5735438"],
 
 Cell[TextData[ButtonBox["Non-planar diagrams",
  BaseStyle->"Link",
  ButtonData->
   "paclet:DoFun/tutorial/Known issues#1975056533"]], "TOCSubsection",Expressio\
-nUUID->"43b70334-6731-4677-bcba-1c2aaf82724c"]
+nUUID->"9a805460-ad09-4c2c-93d4-e511d8e2eed7"]
 }, Open  ]],
 
 Cell[TextData[ButtonBox["doDSE",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/tutorial/Known issues#1131011768"]], "TOCSection",E\
-xpressionUUID->"b4c8c577-b6d0-46ca-84b2-782eff44c610"]
+xpressionUUID->"c1c28d8b-5f50-4aea-a568-1490c63b8ee9"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -169,7 +179,7 @@ Cell[TextData[ButtonBox["Scalar O(N) symmetric theory",
  BaseStyle->"Link",
  ButtonData->
   "paclet:DoFun/tutorial/Scalar O(N) symmetric theory#509267359"]], \
-"TOCChapter",ExpressionUUID->"13511632-e2f8-4793-95cd-995eb924e6e4"],
+"TOCChapter",ExpressionUUID->"2894d42b-2757-4cf8-807d-9a9ecf3dc7a6"],
 
 Cell[CellGroupData[{
 
@@ -177,26 +187,20 @@ Cell[TextData[ButtonBox["Symmetric phase",
  BaseStyle->"Link",
  ButtonData->
   "paclet:DoFun/tutorial/Scalar O(N) symmetric theory#352696352"]], \
-"TOCSection",ExpressionUUID->"84c96060-4481-4f0c-8422-04e4970c67f0"],
+"TOCSection",ExpressionUUID->"ff134596-97a4-42dc-b11d-e56f6dcd13e5"],
 
 Cell[TextData[ButtonBox["Symbolic derivation",
  BaseStyle->"Link",
  ButtonData->
   "paclet:DoFun/tutorial/Scalar O(N) symmetric theory#447702864"]], \
-"TOCSubsection",ExpressionUUID->"660823b1-5d4d-47fb-aadc-716476dffb21"],
+"TOCSubsection",ExpressionUUID->"9dc6e275-3986-4edb-b15e-b2831364aaa8"],
 
 Cell[TextData[ButtonBox["Algebraic expressions",
  BaseStyle->"Link",
  ButtonData->
   "paclet:DoFun/tutorial/Scalar O(N) symmetric theory#664575954"]], \
-"TOCSubsection",ExpressionUUID->"2dbdd534-a769-452b-8607-f516b2b4f1f0"]
-}, Open  ]],
-
-Cell[TextData[ButtonBox["Symmetry broken phase",
- BaseStyle->"Link",
- ButtonData->
-  "paclet:DoFun/tutorial/Scalar O(N) symmetric theory#466097708"]], \
-"TOCSection",ExpressionUUID->"2d4135d9-9c22-40e2-aa37-124040a2926c"]
+"TOCSubsection",ExpressionUUID->"29529b02-d22c-4d02-83bd-aafc37040f1a"]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -204,491 +208,711 @@ Cell[CellGroupData[{
 Cell[TextData[ButtonBox["ReferencePages/Symbols",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/$bareVertexSymbol"]], "TOCChapter",ExpressionUU\
-ID->"89ea69c5-8ef6-4266-b2fb-ff0c08ff2f0c"],
+ID->"f88ac1d8-ffb8-4f88-944a-bf5d1456a365"],
 
 Cell[TextData[ButtonBox["$bareVertexSymbol",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/$bareVertexSymbol"]], "TOCSection",ExpressionUU\
-ID->"6b81b8d6-5ee9-4365-b8e7-6427b81f6ab6"],
+ID->"ee3c0090-b686-48af-ac43-99b1ea928409"],
+
+Cell[TextData[ButtonBox["$compOpSymbol",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/$compOpSymbol"]], "TOCSection",ExpressionUUID->\
+"38c47288-360a-4203-a5ab-1189b92509b1"],
+
+Cell[TextData[ButtonBox["$diagramTypes",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/$diagramTypes"]], "TOCSection",ExpressionUUID->\
+"3a3a7ef0-f47f-4052-95c2-f1a89fc21f88"],
 
 Cell[TextData[ButtonBox["$dummyField",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/$dummyField"]], "TOCSection",ExpressionUUID->\
-"d5bf89a2-3637-4cb5-bd05-309221c1c88e"],
+"8dd2d808-de72-4cd8-a483-626890262933"],
 
 Cell[TextData[ButtonBox["$dummyFieldAF",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/$dummyFieldAF"]], "TOCSection",ExpressionUUID->\
-"f0b0cb9e-fd11-471f-9128-9bf6ba13b8d2"],
+"1d81cdca-0bed-4c0d-a0a6-f5132f933222"],
 
 Cell[TextData[ButtonBox["$dummyFieldB",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/$dummyFieldB"]], "TOCSection",ExpressionUUID->\
-"e3e80394-4219-46f9-bdcb-5dd41f34e006"],
+"97b5799a-1ee7-4ef5-ab06-a480bc3bcd8e"],
 
 Cell[TextData[ButtonBox["$dummyFieldF",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/$dummyFieldF"]], "TOCSection",ExpressionUUID->\
-"844f9218-e245-4721-b7bb-2d6e8df20e87"],
+"19a99c60-3212-4223-a844-29df433a8717"],
+
+Cell[TextData[ButtonBox["$externalIndices",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/$externalIndices"]], "TOCSection",ExpressionUUI\
+D->"0bffb47b-f6ce-4214-94ba-880394dd1d7c"],
+
+Cell[TextData[ButtonBox["$fieldTypes",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/$fieldTypes"]], "TOCSection",ExpressionUUID->\
+"6095c82b-0c19-49d8-b84c-af6c255ba1ac"],
 
 Cell[TextData[ButtonBox["$loopMomenta",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/$loopMomenta"]], "TOCSection",ExpressionUUID->\
-"cbfc3938-9d63-45c6-b032-a20fbdddb381"],
+"7f0a66a6-2b57-4f79-bc05-1a334f374db4"],
 
 Cell[TextData[ButtonBox["$propagatorSymbol",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/$propagatorSymbol"]], "TOCSection",ExpressionUU\
-ID->"b80812ab-4062-46c7-bcf8-10ca79d0389c"],
+ID->"e1b81b68-a194-4495-9bfb-ed033ccea7da"],
 
 Cell[TextData[ButtonBox["$regulatorInsertionSymbol",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/$regulatorInsertionSymbol"]], "TOCSection",Expr\
-essionUUID->"1015333e-fa75-4a88-94a2-703effedf963"],
+essionUUID->"1e2888e4-3002-4721-9ba1-579115c08409"],
+
+Cell[TextData[ButtonBox["$signConvention",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/$signConvention"]], "TOCSection",ExpressionUUID\
+->"448e3d49-2b86-49a8-b8ff-3863ef2a8242"],
 
 Cell[TextData[ButtonBox["$vertexSymbol",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/$vertexSymbol"]], "TOCSection",ExpressionUUID->\
-"bd13051f-c9b5-41d6-88b1-704a8ab44cec"],
+"de70d725-0c27-4aac-aff6-0a8db4eeb4d5"],
+
+Cell[TextData[ButtonBox["CO",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/CO"]], "TOCSection",ExpressionUUID->"30fded9a-\
+db79-454e-80ad-f656104435f1"],
+
+Cell[TextData[ButtonBox["COPlot",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/COPlot"]], "TOCSection",ExpressionUUID->\
+"ea693da8-755c-4915-8336-40d5889cd718"],
 
 Cell[TextData[ButtonBox["DSEPlot",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/DSEPlot"]], "TOCSection",ExpressionUUID->\
-"88d9ed6f-5592-4581-9560-f321854c9db4"],
+"4d769e5d-d722-4631-9fa6-f507b73c1b73"],
+
+Cell[TextData[ButtonBox["DSEPlotList",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/DSEPlotList"]], "TOCSection",ExpressionUUID->\
+"e22b2dea-1e39-4f86-b8fc-1061d6e14351"],
 
 Cell[TextData[ButtonBox["P",
  BaseStyle->"Link",
- ButtonData->"paclet:DoFun/ref/P"]], "TOCSection",ExpressionUUID->"6b4c20d3-\
-5c0d-40d1-bbab-ff4e1b87f550"],
+ ButtonData->"paclet:DoFun/ref/P"]], "TOCSection",ExpressionUUID->"32750312-\
+2029-4faa-95f4-473650421b52"],
 
 Cell[TextData[ButtonBox["RGEPlot",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/RGEPlot"]], "TOCSection",ExpressionUUID->\
-"df554a8f-faeb-4b81-b22b-b825eca62237"],
+"9e77b8db-71de-40c8-b2d2-41507ec584bd"],
 
 Cell[TextData[ButtonBox["S",
  BaseStyle->"Link",
- ButtonData->"paclet:DoFun/ref/S"]], "TOCSection",ExpressionUUID->"b5c0331d-\
-2663-4c8b-8525-59b34465d88a"],
+ ButtonData->"paclet:DoFun/ref/S"]], "TOCSection",ExpressionUUID->"59d4b6a1-\
+5a62-49f4-becb-2771fdc05bdb"],
 
 Cell[TextData[ButtonBox["U",
  BaseStyle->"Link",
- ButtonData->"paclet:DoFun/ref/U"]], "TOCSection",ExpressionUUID->"76250f27-\
-b651-41d3-8511-d720fc88b4a9"],
+ ButtonData->"paclet:DoFun/ref/U"]], "TOCSection",ExpressionUUID->"0a6f13a0-\
+6e2d-4a04-8616-78361c930c28"],
 
 Cell[TextData[ButtonBox["V",
  BaseStyle->"Link",
- ButtonData->"paclet:DoFun/ref/V"]], "TOCSection",ExpressionUUID->"2543f715-\
-1af1-43cb-bfeb-93399a1e6b60"],
+ ButtonData->"paclet:DoFun/ref/V"]], "TOCSection",ExpressionUUID->"5c19ddf5-\
+b325-401d-94d4-a696d2ac1d45"],
 
 Cell[TextData[ButtonBox["addIndices",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/addIndices"]], "TOCSection",ExpressionUUID->\
-"5f8afea7-499e-48bf-9f4d-386b4da6587f"],
+"486a88ae-a7ea-40df-a10a-8a7e8396d9cb"],
 
 Cell[TextData[ButtonBox["ansatz",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/ansatz"]], "TOCSection",ExpressionUUID->\
-"96a9564a-3250-4695-a6c5-c1cbe1b7112b"],
+"e4c45511-2f77-4152-a840-311227effc36"],
+
+Cell[TextData[ButtonBox["antiComplex",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/antiComplex"]], "TOCSection",ExpressionUUID->\
+"5bfe5f24-7f19-45f0-8628-caa82b45b356"],
 
 Cell[TextData[ButtonBox["antiComplexFieldQ",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/antiComplexFieldQ"]], "TOCSection",ExpressionUU\
-ID->"06277947-0336-4fe6-ab18-727b094aebb2"],
+ID->"c3b63491-51b0-4cce-849c-b4afbb9463c0"],
 
 Cell[TextData[ButtonBox["antiFermion",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/antiFermion"]], "TOCSection",ExpressionUUID->\
-"5b997ed7-8565-425d-942b-7bb68ea327f6"],
+"3e8a51f9-9093-4af6-9595-7e1d012c0729"],
 
 Cell[TextData[ButtonBox["antiFermionQ",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/antiFermionQ"]], "TOCSection",ExpressionUUID->\
-"611607a5-302d-4246-8085-e9f993b3368a"],
+"00691e11-aa87-40b4-b1a6-9582be0dba92"],
 
 Cell[TextData[ButtonBox["antiField",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/antiField"]], "TOCSection",ExpressionUUID->\
-"019399e0-a85b-40c6-84cf-5c139cb619b2"],
+"8dcf8eac-ca04-4fe1-b256-c312ed114f4f"],
+
+Cell[TextData[ButtonBox["bareVertexSymbol",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/bareVertexSymbol"]], "TOCSection",ExpressionUUI\
+D->"d65e6476-9148-4a37-b894-9632a5678777"],
 
 Cell[TextData[ButtonBox["boson",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/boson"]], "TOCSection",ExpressionUUID->\
-"71fd7c88-371a-42a8-bb20-374883f36d61"],
+"3d49df7a-441d-43e6-8263-9780b0181901"],
 
 Cell[TextData[ButtonBox["bosonQ",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/bosonQ"]], "TOCSection",ExpressionUUID->\
-"b9bbc205-9cd5-4065-ad6b-714e78e03e04"],
+"8f6f92a6-e058-448d-9e69-97ce465ffa5f"],
+
+Cell[TextData[ButtonBox["boxSymbol",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/boxSymbol"]], "TOCSection",ExpressionUUID->\
+"7cc272fd-21f7-43fc-b79d-900859d11955"],
 
 Cell[TextData[ButtonBox["broken",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/broken"]], "TOCSection",ExpressionUUID->\
-"b1148b4f-ecdb-48c3-8f2a-0ac05d860135"],
+"3f0f147b-2bb7-4831-b373-7eac3bdb5f80"],
+
+Cell[TextData[ButtonBox["cFieldQ",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/cFieldQ"]], "TOCSection",ExpressionUUID->\
+"eacc2ae3-bdbd-402b-9de8-ed95b1f68c7b"],
 
 Cell[TextData[ButtonBox["checkAction",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/checkAction"]], "TOCSection",ExpressionUUID->\
-"a8c11b6a-5fd7-4255-a485-a68b64914380"],
+"d1518f49-0462-4ec9-bbd1-2ebe45fdc439"],
 
 Cell[TextData[ButtonBox["checkAll",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/checkAll"]], "TOCSection",ExpressionUUID->\
-"04e37ab7-b873-4897-a055-b4f15b250b0f"],
+"97d6756f-69e6-4098-bbd9-b9f4b0eec028"],
 
 Cell[TextData[ButtonBox["checkFields",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/checkFields"]], "TOCSection",ExpressionUUID->\
-"d7b789c1-0797-4009-af4f-553dc77ebeae"],
+"5e0f67f1-f7d4-41ae-885d-0f637ff01f1d"],
 
 Cell[TextData[ButtonBox["checkIndices",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/checkIndices"]], "TOCSection",ExpressionUUID->\
-"d234c3a6-569a-4235-9d60-da1f01728f41"],
+"d4c21dfa-b3ad-45b9-93e3-71c34ce963f9"],
 
 Cell[TextData[ButtonBox["checkSyntax",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/checkSyntax"]], "TOCSection",ExpressionUUID->\
-"64e2fd9b-02d2-4622-bbe4-3585a3d81a5e"],
+"a0a52468-50dd-40d3-8594-743dee6ba7c0"],
 
-Cell[TextData[ButtonBox["compareGraphs",
+Cell[TextData[ButtonBox["coSymbol",
  BaseStyle->"Link",
- ButtonData->"paclet:DoFun/ref/compareGraphs"]], "TOCSection",ExpressionUUID->\
-"2534ed49-5e05-4ecb-8043-87d1c9159bac"],
-
-Cell[TextData[ButtonBox["compareGraphs2",
- BaseStyle->"Link",
- ButtonData->"paclet:DoFun/ref/compareGraphs2"]], "TOCSection",ExpressionUUID-\
->"55f75045-2515-472b-8ac9-f0a1e326031f"],
+ ButtonData->"paclet:DoFun/ref/coSymbol"]], "TOCSection",ExpressionUUID->\
+"9bce1d99-e9ff-4b4a-9f98-0cef3ce72536"],
 
 Cell[TextData[ButtonBox["complete",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/complete"]], "TOCSection",ExpressionUUID->\
-"4339ec3d-38c4-40fd-97cb-506625dbdb19"],
+"3c01b1fb-ab4e-4085-b75d-b4e4128afe9e"],
+
+Cell[TextData[ButtonBox["complex",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/complex"]], "TOCSection",ExpressionUUID->\
+"c65c493b-31b6-42c7-83e8-798eea95e61e"],
 
 Cell[TextData[ButtonBox["complexFieldQ",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/complexFieldQ"]], "TOCSection",ExpressionUUID->\
-"f815d3bb-d0a6-4ecd-b316-b539cc530dfe"],
+"5bfdaab3-e924-41bc-93b1-f4a8651fc119"],
+
+Cell[TextData[ButtonBox["connectedQ",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/connectedQ"]], "TOCSection",ExpressionUUID->\
+"5af2fb38-18ea-473c-a3f6-7c439f9c6716"],
 
 Cell[TextData[ButtonBox["convertAction",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/convertAction"]], "TOCSection",ExpressionUUID->\
-"9fdd6dc3-e3c4-43f0-bba7-f86d1399a1cc"],
+"30e22530-7073-4fc1-8b04-dc0f3a204f30"],
 
 Cell[TextData[ButtonBox["countTerms",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/countTerms"]], "TOCSection",ExpressionUUID->\
-"2144bfd2-61b1-4bcd-a543-b34b2d51958c"],
+"c7e866a4-fe50-4fb8-9325-7e196a4f0c01"],
+
+Cell[TextData[ButtonBox["createDummyList",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/createDummyList"]], "TOCSection",ExpressionUUID\
+->"1296cc3e-4565-45e4-9191-d736dcea232c"],
 
 Cell[TextData[ButtonBox["createDummyListUnique",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/createDummyListUnique"]], "TOCSection",Expressi\
-onUUID->"5fb8b063-7df8-4129-96e9-97ad5a9d26a9"],
+onUUID->"bca39354-3171-4762-833d-3334d5074cd3"],
+
+Cell[TextData[ButtonBox["crossSymbol",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/crossSymbol"]], "TOCSection",ExpressionUUID->\
+"b30a4c31-e597-4cbf-94f2-6251ee544356"],
 
 Cell[TextData[ButtonBox["dR",
  BaseStyle->"Link",
- ButtonData->"paclet:DoFun/ref/dR"]], "TOCSection",ExpressionUUID->"b89601c1-\
-6b5c-417a-84cb-935d97de3d6c"],
-
-Cell[TextData[ButtonBox["defineFields",
- BaseStyle->"Link",
- ButtonData->"paclet:DoFun/ref/defineFields"]], "TOCSection",ExpressionUUID->\
-"bcc4d70d-b2f7-46d7-ac48-65b207b05c01"],
+ ButtonData->"paclet:DoFun/ref/dR"]], "TOCSection",ExpressionUUID->"616d796e-\
+5deb-43ad-9d7a-bfdca386a827"],
 
 Cell[TextData[ButtonBox["defineFieldsSpecific",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/defineFieldsSpecific"]], "TOCSection",Expressio\
-nUUID->"45941464-b571-4b78-a660-ddc310972fae"],
+nUUID->"d9008591-ac33-4ec7-a636-f483b2dbe5b4"],
 
 Cell[TextData[ButtonBox["delta",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/delta"]], "TOCSection",ExpressionUUID->\
-"c044bf16-2d6c-442a-88b0-08390e09d149"],
+"44f3d8ce-c48f-406f-83dd-41dcd17818b5"],
 
 Cell[TextData[ButtonBox["deltam",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/deltam"]], "TOCSection",ExpressionUUID->\
-"d01ecc47-0cf2-493f-9399-5e2271cfae35"],
+"552753a1-b26f-473a-9694-a7029255be58"],
 
 Cell[TextData[ButtonBox["der",
  BaseStyle->"Link",
- ButtonData->"paclet:DoFun/ref/der"]], "TOCSection",ExpressionUUID->"821ba317-\
-be26-4bbe-b44d-17bc874ea5a2"],
+ ButtonData->"paclet:DoFun/ref/der"]], "TOCSection",ExpressionUUID->"5f10a2e8-\
+698e-4008-8ed1-87a89d14f1fe"],
 
 Cell[TextData[ButtonBox["deriv",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/deriv"]], "TOCSection",ExpressionUUID->\
-"870ce92b-2298-483c-adc0-dfb76cf26484"],
+"2da0359a-2235-4da4-a4a3-d1d605ae0505"],
 
 Cell[TextData[ButtonBox["derivRGE",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/derivRGE"]], "TOCSection",ExpressionUUID->\
-"31fda4ff-6f18-4de8-8738-735589b400c7"],
+"323fadfb-bd5c-4a2c-886a-0efbcbcbd7a3"],
+
+Cell[TextData[ButtonBox["diagramTypes",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/diagramTypes"]], "TOCSection",ExpressionUUID->\
+"c45cf27f-f918-4c85-aa97-7bf28b07541c"],
 
 Cell[TextData[ButtonBox["dim",
  BaseStyle->"Link",
- ButtonData->"paclet:DoFun/ref/dim"]], "TOCSection",ExpressionUUID->"d0ef9252-\
-34dc-44b5-ae75-9ee638c03f22"],
+ ButtonData->"paclet:DoFun/ref/dim"]], "TOCSection",ExpressionUUID->"5a2840b1-\
+87ad-4c8a-a18c-1a417403faff"],
+
+Cell[TextData[ButtonBox["disconnectedQ",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/disconnectedQ"]], "TOCSection",ExpressionUUID->\
+"1311ff80-c7fc-4932-8c48-32b86ea90784"],
+
+Cell[TextData[ButtonBox["diskOpenSymbol",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/diskOpenSymbol"]], "TOCSection",ExpressionUUID-\
+>"09d32654-b36a-46de-8631-761c10e303f8"],
+
+Cell[TextData[ButtonBox["diskSymbol",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/diskSymbol"]], "TOCSection",ExpressionUUID->\
+"8d8970b0-7d07-4296-b0ed-7025a4967ab2"],
+
+Cell[TextData[ButtonBox["diskTinySymbol",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/diskTinySymbol"]], "TOCSection",ExpressionUUID-\
+>"8e7c1b4d-7d08-4e1a-9cb5-ef42f6995ac8"],
+
+Cell[TextData[ButtonBox["doCO",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/doCO"]], "TOCSection",ExpressionUUID->\
+"f6abfa84-41d8-4a84-a065-7bca75c9f2fa"],
 
 Cell[TextData[ButtonBox["doDSE",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/doDSE"]], "TOCSection",ExpressionUUID->\
-"d267a598-16fb-4182-a2e9-212124cd98ed"],
+"31071e62-c6ea-4d73-a648-e7207771ed9a"],
 
 Cell[TextData[ButtonBox["doGrassmannTest",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/doGrassmannTest"]], "TOCSection",ExpressionUUID\
-->"3643758a-2665-4626-bf1e-6b26ce279c19"],
+->"20fe45a1-f7ff-49b8-9e3f-aad1c99a99f2"],
 
 Cell[TextData[ButtonBox["doRGE",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/doRGE"]], "TOCSection",ExpressionUUID->\
-"a1d9b280-e7d2-49ab-bee2-49c9c0aa4964"],
+"35a0c8d3-4854-46cb-91e0-e8031297d6fa"],
 
 Cell[TextData[ButtonBox["dummy",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/dummy"]], "TOCSection",ExpressionUUID->\
-"b46a47c9-f6af-44f6-88a7-e6fb7520143a"],
+"218a707d-49ff-49b8-bfb9-040aa1ea2e7d"],
+
+Cell[TextData[ButtonBox["dummyCounter",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/dummyCounter"]], "TOCSection",ExpressionUUID->\
+"7bad2bf4-6a20-4959-b1d6-2d619a7e0a80"],
+
+Cell[TextData[ButtonBox["dummyNames",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/dummyNames"]], "TOCSection",ExpressionUUID->\
+"15fb7dbc-bfa0-4cdb-8549-309343502808"],
 
 Cell[TextData[ButtonBox["even",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/even"]], "TOCSection",ExpressionUUID->\
-"d7cf98d3-bc52-4871-9e23-b112810897c3"],
+"6ee3cc25-9102-453c-b221-7daa38869d70"],
 
 Cell[TextData[ButtonBox["explicit",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/explicit"]], "TOCSection",ExpressionUUID->\
-"f9653acd-2850-491c-885d-f7cc4205b87b"],
+"4597981c-5599-4dbf-a20a-19ec76176a3b"],
+
+Cell[TextData[ButtonBox["extractDiagramType",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/extractDiagramType"]], "TOCSection",ExpressionU\
+UID->"35559b90-8dc9-454e-8b3a-d75c4ef3cc95"],
 
 Cell[TextData[ButtonBox["factorStyle",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/factorStyle"]], "TOCSection",ExpressionUUID->\
-"aff665e6-751d-43a0-87fd-a6aa3cf3ae0d"],
+"b1315590-915f-4857-a7c9-3a8bcbf0f8ec"],
 
 Cell[TextData[ButtonBox["fermion",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/fermion"]], "TOCSection",ExpressionUUID->\
-"a1412f2a-e5d4-4b78-b088-6b0ac2e8eb86"],
+"5d747ca6-0a32-4a16-9f55-d6dc6326e853"],
 
 Cell[TextData[ButtonBox["fermionQ",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/fermionQ"]], "TOCSection",ExpressionUUID->\
-"4fe2a6e0-ea9a-43ba-9bb2-7b8686a36820"],
+"38b65801-f7fe-4f3b-8ae1-72d6cd775191"],
 
 Cell[TextData[ButtonBox["fieldQ",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/fieldQ"]], "TOCSection",ExpressionUUID->\
-"b33a329e-a897-4758-85d7-303ee31a364b"],
+"8bdb3ef6-c2d1-4cd3-80a7-bda885e09190"],
+
+Cell[TextData[ButtonBox["fieldType",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/fieldType"]], "TOCSection",ExpressionUUID->\
+"ee2ea1f3-a09d-4acc-889c-28ba5feb2193"],
 
 Cell[TextData[ButtonBox["forceEquation",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/forceEquation"]], "TOCSection",ExpressionUUID->\
-"e5725132-29ae-4fae-b5a7-921de96eea0f"],
+"00565031-5938-4ec0-be29-8b9057e21b46"],
 
 Cell[TextData[ButtonBox["generateAction",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/generateAction"]], "TOCSection",ExpressionUUID-\
->"a1d7ae64-5130-4841-a1e2-90b047b9b103"],
+>"61614c96-ea29-4e43-9c0f-d97773db8d0e"],
+
+Cell[TextData[ButtonBox["get1PI",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/get1PI"]], "TOCSection",ExpressionUUID->\
+"06914e5a-aaa9-464b-9e27-58524fe7538d"],
 
 Cell[TextData[ButtonBox["getAE",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/getAE"]], "TOCSection",ExpressionUUID->\
-"0d7e2823-82c8-4baa-a05c-6f55678098ae"],
+"11ae3c7a-3fd5-4745-b1f6-145ce4b93535"],
+
+Cell[TextData[ButtonBox["getConnected",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/getConnected"]], "TOCSection",ExpressionUUID->\
+"55fa8ba1-2cf6-4aa2-bc4c-5bfe4529677b"],
+
+Cell[TextData[ButtonBox["getDiagramType",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/getDiagramType"]], "TOCSection",ExpressionUUID-\
+>"a5f433a3-7a49-4055-8379-4d63eec507f2"],
+
+Cell[TextData[ButtonBox["getDisconnected",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/getDisconnected"]], "TOCSection",ExpressionUUID\
+->"aec106d9-4c92-4eab-b316-d53ae3d0836a"],
 
 Cell[TextData[ButtonBox["getFR",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/getFR"]], "TOCSection",ExpressionUUID->\
-"4c597c2b-d6ea-4fc8-b3ec-1b04a444334a"],
+"4a2be54a-f5da-44be-bcb4-db53beee0dfa"],
 
 Cell[TextData[ButtonBox["getInteractionList",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/getInteractionList"]], "TOCSection",ExpressionU\
-UID->"23b5aee6-b90c-444f-943a-67d294719eb4"],
+UID->"41e08090-a264-4266-87d0-53f9f4e594e3"],
 
 Cell[TextData[ButtonBox["getLoopNumber",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/getLoopNumber"]], "TOCSection",ExpressionUUID->\
-"639f3f9b-1db1-4a13-88fd-6d304db8ef60"],
+"f9256501-a68b-4a80-a911-bb20df6699e8"],
+
+Cell[TextData[ButtonBox["getNon1PI",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/getNon1PI"]], "TOCSection",ExpressionUUID->\
+"34d1f32e-7ae8-47cd-826c-be74bbf0589a"],
+
+Cell[TextData[ButtonBox["getSigns",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/getSigns"]], "TOCSection",ExpressionUUID->\
+"0a9a3a24-ebe8-40c2-a1e9-a5169e7c1882"],
+
+Cell[TextData[ButtonBox["getVertexNumbers",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/getVertexNumbers"]], "TOCSection",ExpressionUUI\
+D->"40a09111-d552-456c-bde7-3a6026b8a88c"],
 
 Cell[TextData[ButtonBox["grassmannQ",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/grassmannQ"]], "TOCSection",ExpressionUUID->\
-"6af5d855-a94a-497e-95bc-a2488c192ade"],
+"72f5a8df-1dca-4251-b192-fb082416a57d"],
+
+Cell[TextData[ButtonBox["groupDiagrams",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/groupDiagrams"]], "TOCSection",ExpressionUUID->\
+"85da1523-41c0-4619-85a5-7c6a7bd6a67c"],
+
+Cell[TextData[ButtonBox["identify",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/identify"]], "TOCSection",ExpressionUUID->\
+"7b5ea624-59ff-4c0c-841c-84fd1d650788"],
 
 Cell[TextData[ButtonBox["identifyGraphs",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/identifyGraphs"]], "TOCSection",ExpressionUUID-\
->"f34b2682-c183-410b-9a42-7a0405216b84"],
-
-Cell[TextData[ButtonBox["identifyGraphsRGE",
- BaseStyle->"Link",
- ButtonData->"paclet:DoFun/ref/identifyGraphsRGE"]], "TOCSection",ExpressionUU\
-ID->"bc03b19c-947b-460d-a41b-74134a375e85"],
+>"a20e9a6c-2d87-4868-99c6-c7da6c847cf7"],
 
 Cell[TextData[ButtonBox["indexStyle",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/indexStyle"]], "TOCSection",ExpressionUUID->\
-"51283ca3-32d4-4fe3-910f-977ccaaffb3e"],
+"29236d50-bd1e-43ac-b3b1-b32fe85f0137"],
 
 Cell[TextData[ButtonBox["indices",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/indices"]], "TOCSection",ExpressionUUID->\
-"c9c0fd66-ca86-46ac-bf85-7ea1e0df2589"],
+"e15f4be2-3330-42e9-932f-5888e678f1c9"],
 
 Cell[TextData[ButtonBox["insDummy",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/insDummy"]], "TOCSection",ExpressionUUID->\
-"983d5f0c-0103-4505-94d8-18a575348ad6"],
+"5249849f-061c-4417-a2a0-24346795f0b8"],
 
 Cell[TextData[ButtonBox["intact",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/intact"]], "TOCSection",ExpressionUUID->\
-"f1567d9d-131d-4774-85ef-2a2938516a8c"],
+"d6fac618-6bf2-453e-93c8-d591c0494c50"],
 
 Cell[TextData[ButtonBox["integrateDeltas",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/integrateDeltas"]], "TOCSection",ExpressionUUID\
-->"ff691681-065a-4db8-873c-7e019146e5f5"],
+->"07bcab50-451f-4b25-ba18-125c568fc41a"],
 
 Cell[TextData[ButtonBox["integrateMomenta",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/integrateMomenta"]], "TOCSection",ExpressionUUI\
-D->"6f681d89-c981-44a7-8201-b55501c71e3c"],
+D->"76676f48-0e80-4c89-b8d7-8d8fa3ad22f7"],
 
 Cell[TextData[ButtonBox["loadFeynCalc",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/loadFeynCalc"]], "TOCSection",ExpressionUUID->\
-"f97f69fc-9d74-4ad0-aec2-ea6074511656"],
+"6bb7b48c-e526-4e0b-a204-3d16a798dc58"],
 
 Cell[TextData[ButtonBox["odd",
  BaseStyle->"Link",
- ButtonData->"paclet:DoFun/ref/odd"]], "TOCSection",ExpressionUUID->"adedafe7-\
-c006-4e01-ab6e-1185bab00f6b"],
+ ButtonData->"paclet:DoFun/ref/odd"]], "TOCSection",ExpressionUUID->"a24fcb6c-\
+1f5a-4199-8c87-5a07271535d5"],
+
+Cell[TextData[ButtonBox["onePIQ",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/onePIQ"]], "TOCSection",ExpressionUUID->\
+"20c18976-bb34-4cd4-9751-5491645c4140"],
 
 Cell[TextData[ButtonBox["op",
  BaseStyle->"Link",
- ButtonData->"paclet:DoFun/ref/op"]], "TOCSection",ExpressionUUID->"8840d400-\
-c0dd-4e2a-a097-018372684277"],
+ ButtonData->"paclet:DoFun/ref/op"]], "TOCSection",ExpressionUUID->"0776552b-\
+eff2-4627-99c1-58fb68869ef6"],
 
 Cell[TextData[ButtonBox["orderFermions",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/orderFermions"]], "TOCSection",ExpressionUUID->\
-"4e39174b-90db-4cfe-ad95-0fc78e543192"],
+"23f59fd4-4ca7-43d3-976e-9e83de178653"],
 
 Cell[TextData[ButtonBox["output",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/output"]], "TOCSection",ExpressionUUID->\
-"d6e298f9-5257-49ee-9cfd-addfd2fece9d"],
+"84c228a1-3e5e-47b9-b230-0df337441845"],
+
+Cell[TextData[ButtonBox["propagatorCreationRules",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/propagatorCreationRules"]], "TOCSection",Expres\
+sionUUID->"1c687dba-e63a-4427-9329-94eae2c80ce1"],
 
 Cell[TextData[ButtonBox["regulatorBox",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/regulatorBox"]], "TOCSection",ExpressionUUID->\
-"6f62f16e-00d9-4493-a578-dd8b4b76f003"],
+"0a32c3eb-bb18-4e73-af9b-fe6b3aa24192"],
 
 Cell[TextData[ButtonBox["regulatorCross",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/regulatorCross"]], "TOCSection",ExpressionUUID-\
->"fa7251e1-414b-4952-a613-89c03036218a"],
+>"405d00fd-a42c-444d-b8ed-2d24293ace4f"],
 
 Cell[TextData[ButtonBox["regulatorSymbol",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/regulatorSymbol"]], "TOCSection",ExpressionUUID\
-->"d3b78d52-461f-4708-9c65-4004c4ef67f5"],
+->"aca853fd-dc60-41ca-9252-fe480b461bfc"],
 
 Cell[TextData[ButtonBox["removeIndices",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/removeIndices"]], "TOCSection",ExpressionUUID->\
-"9136b425-e47d-4860-9d29-de5e160d5103"],
+"4f7059a4-afaf-47a4-9c0d-79afbe3b3ac0"],
 
 Cell[TextData[ButtonBox["replaceFields",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/replaceFields"]], "TOCSection",ExpressionUUID->\
-"7c16b362-3840-4162-b462-71f3e8e6dc0e"],
+"7fcc57c0-aa1f-4d78-b840-26c02ce1968b"],
 
 Cell[TextData[ButtonBox["replacedField",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/replacedField"]], "TOCSection",ExpressionUUID->\
-"0745116c-4f92-4736-b061-75119b10ee9f"],
+"a035bee5-c856-4f3e-acf3-f41fef110a5e"],
 
 Cell[TextData[ButtonBox["resetDummy",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/resetDummy"]], "TOCSection",ExpressionUUID->\
-"3723b120-a94f-4f6b-b793-180aa96a406a"],
+"acdc64cf-386d-4269-b79a-c5080deaabf8"],
 
 Cell[TextData[ButtonBox["resetIndices",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/resetIndices"]], "TOCSection",ExpressionUUID->\
-"ef760c64-1422-4e58-b7ea-c8a71d31a5a2"],
+"42c57e59-fbab-4af9-8289-c0d37561afd3"],
 
 Cell[TextData[ButtonBox["sE",
  BaseStyle->"Link",
- ButtonData->"paclet:DoFun/ref/sE"]], "TOCSection",ExpressionUUID->"dfa353af-\
-6a33-4382-a714-f6ad729bd200"],
+ ButtonData->"paclet:DoFun/ref/sE"]], "TOCSection",ExpressionUUID->"ebf43e7d-\
+3db9-46b7-8ed6-a93942a71026"],
+
+Cell[TextData[ButtonBox["save",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/save"]], "TOCSection",ExpressionUUID->\
+"dc7b3096-881a-4076-a09d-196cb335ec58"],
+
+Cell[TextData[ButtonBox["setFields",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/setFields"]], "TOCSection",ExpressionUUID->\
+"c7cb66e3-d3f9-487e-a088-079399d85737"],
 
 Cell[TextData[ButtonBox["setSourcesZero",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/setSourcesZero"]], "TOCSection",ExpressionUUID-\
->"9808d278-90f4-47d0-9ffe-29c381ab6fbb"],
+>"f3b05a10-cc4e-4703-bdc5-4c3f89bccabd"],
 
 Cell[TextData[ButtonBox["setSourcesZeroRGE",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/setSourcesZeroRGE"]], "TOCSection",ExpressionUU\
-ID->"47d1a231-95cb-4289-8d6a-ffc0b1890ccf"],
+ID->"b3a16b82-62ed-4023-9897-e7cbd0bd22be"],
+
+Cell[TextData[ButtonBox["sf",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/sf"]], "TOCSection",ExpressionUUID->"821a6c95-\
+9a8a-4963-9708-a1f0ddd2b3b8"],
 
 Cell[TextData[ButtonBox["shortExpression",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/shortExpression"]], "TOCSection",ExpressionUUID\
-->"5c0507fe-cc40-4fe4-b590-9fec84ea4f82"],
+->"e8edc016-ec1e-4fa2-a5ff-4e28a027dc90"],
+
+Cell[TextData[ButtonBox["sortCanonical",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/sortCanonical"]], "TOCSection",ExpressionUUID->\
+"e5ab9b67-6005-4bb0-95bf-4cb9a705c1af"],
 
 Cell[TextData[ButtonBox["sortDummies",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/sortDummies"]], "TOCSection",ExpressionUUID->\
-"0c396d97-a020-4347-b60c-3211cd1419f8"],
+"dc7167f7-7fb7-49d9-b879-7e51c7ffb2da"],
+
+Cell[TextData[ButtonBox["sourcesZero",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/sourcesZero"]], "TOCSection",ExpressionUUID->\
+"68109234-f96b-4451-986b-fc6102cbb10a"],
 
 Cell[TextData[ButtonBox["specificFieldDefinitions",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/specificFieldDefinitions"]], "TOCSection",Expre\
-ssionUUID->"ea78a9a6-7d2f-4ffc-8128-a7ce0c644f9e"],
+ssionUUID->"28a7a589-568a-48e4-8356-c6d8fa17f024"],
+
+Cell[TextData[ButtonBox["superfield",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/superfield"]], "TOCSection",ExpressionUUID->\
+"05626116-c6de-4acf-922a-c44972d773cd"],
 
 Cell[TextData[ButtonBox["symmetry",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/symmetry"]], "TOCSection",ExpressionUUID->\
-"61b8c7f3-37ab-4800-8edf-794eaee3e113"],
+"bfe87cfc-6221-409c-b303-ef73b510b766"],
 
 Cell[TextData[ButtonBox["tDerivative",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/tDerivative"]], "TOCSection",ExpressionUUID->\
-"7afe8bf3-6fab-411e-840e-797814ba34c9"],
+"f77116c1-bd4b-49b1-939b-4cfd3dfb2372"],
 
 Cell[TextData[ButtonBox["traceIndex1",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/traceIndex1"]], "TOCSection",ExpressionUUID->\
-"296f7cba-a733-4549-b27e-fb1f5e023d86"],
+"1a3a76fe-d295-4a7f-b0c7-64c50f5ae215"],
 
 Cell[TextData[ButtonBox["traceIndex2",
  BaseStyle->"Link",
  ButtonData->"paclet:DoFun/ref/traceIndex2"]], "TOCSection",ExpressionUUID->\
-"c3d5980e-2cb8-4c89-8cce-31cdc2e96010"]
+"e2663f68-e5e9-4ea6-9c4b-6ff4f43f3656"],
+
+Cell[TextData[ButtonBox["traceIndices",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/traceIndices"]], "TOCSection",ExpressionUUID->\
+"970ad5da-91c5-4993-a7bd-7e06c03f4e18"],
+
+Cell[TextData[ButtonBox["triangleSymbol",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/triangleSymbol"]], "TOCSection",ExpressionUUID-\
+>"b9651253-a039-49eb-abe2-a97ff8a099f9"],
+
+Cell[TextData[ButtonBox["userEvenFields",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/userEvenFields"]], "TOCSection",ExpressionUUID-\
+>"958875d0-fb21-4e40-8d58-7a2ff40e814b"],
+
+Cell[TextData[ButtonBox["vertexSymbol",
+ BaseStyle->"Link",
+ ButtonData->"paclet:DoFun/ref/vertexSymbol"]], "TOCSection",ExpressionUUID->\
+"555c0e9f-969c-43f7-9816-ff1e95f0a0dc"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[TextData[ButtonBox["Guides",
  BaseStyle->"Link",
- ButtonData->"paclet:DoFun/guide/Test"]], "TOCChapter",ExpressionUUID->\
-"d1a943c8-6a5f-462d-a55c-d29cd6f5de3a"],
+ ButtonData->"paclet:DoFun/guide/Welcome to DoFun"]], "TOCChapter",ExpressionU\
+UID->"99b372fd-5e7e-4858-973e-42fd04df7ee6"],
 
-Cell[TextData[ButtonBox["WelcomeToDoFun",
+Cell[TextData[ButtonBox["Welcome to DoFun",
  BaseStyle->"Link",
- ButtonData->"paclet:DoFun/guide/WelcomeToDoFun"]], "TOCSection",ExpressionUUI\
-D->"c20cc7f9-9158-4578-a03c-63280d594738"]
+ ButtonData->"paclet:DoFun/guide/Welcome to DoFun"]], "TOCSection",ExpressionU\
+UID->"55bbb03a-a8dc-4ebb-8da1-36b5fe343481"]
 }, Open  ]]
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{6, Automatic}, {Automatic, 56}},
-FrontEndVersion->"11.2 for Linux x86 (64-bit) (September 10, 2017)",
+WindowMargins->{{4, Automatic}, {Automatic, 28}},
+FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "TutorialPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
@@ -703,174 +927,220 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 599, 14, 25, "History",ExpressionUUID->"da58c157-6038-4b90-9921-28518dc4d438",
+Cell[558, 20, 599, 14, 25, "History",ExpressionUUID->"8666aaaf-1cbd-4db3-b091-4deed2222550",
  CellID->1247902091],
 Cell[CellGroupData[{
-Cell[1182, 38, 123, 1, 30, "CategorizationSection",ExpressionUUID->"cd0041c7-61b6-4249-b0e8-312dfbdd2d4c",
+Cell[1182, 38, 123, 1, 30, "CategorizationSection",ExpressionUUID->"3a03aea8-3cf7-4c0a-a0a2-58fdbf762d4c",
  CellID->1122911449],
-Cell[1308, 41, 136, 2, 35, "Categorization",ExpressionUUID->"01747e29-ca90-42e4-a2dd-89d87f0b43b5",
+Cell[1308, 41, 136, 2, 35, "Categorization",ExpressionUUID->"77529343-9be7-467f-9e1f-4da406381594",
  CellID->686433507],
-Cell[1447, 45, 141, 2, 35, "Categorization",ExpressionUUID->"b62d2085-e90b-4d7e-9a7e-4055079fba04",
+Cell[1447, 45, 141, 2, 35, "Categorization",ExpressionUUID->"d1ace8d2-3aac-4136-9b95-4945b049b030",
  CellID->605800465],
-Cell[1591, 49, 130, 2, 35, "Categorization",ExpressionUUID->"901921e0-9bd4-4e34-b61f-a1cedb1a4bf5",
+Cell[1591, 49, 130, 2, 35, "Categorization",ExpressionUUID->"73d51753-17b5-47d1-a35f-5c83ec2a46e8",
  CellID->468444828],
-Cell[1724, 53, 128, 1, 35, "Categorization",ExpressionUUID->"c8ec5931-fb65-4909-95b0-e6b15cb70515"]
+Cell[1724, 53, 128, 1, 35, "Categorization",ExpressionUUID->"2e01b1ea-ec1e-4580-a8ba-026597d4fedb"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1889, 59, 111, 1, 30, "SynonymsSection",ExpressionUUID->"ba572f36-c8c7-42de-b50b-c2551cb5ef82",
+Cell[1889, 59, 111, 1, 30, "SynonymsSection",ExpressionUUID->"be92663c-f8cb-4e78-a340-9f46eb38eb78",
  CellID->1427418553],
-Cell[2003, 62, 100, 1, 70, "Synonyms",ExpressionUUID->"2f10cfe1-9f95-4733-a034-057d8260693e",
+Cell[2003, 62, 100, 1, 70, "Synonyms",ExpressionUUID->"49e53fe3-d042-4c39-8d45-ca6156ce14a2",
  CellID->1251652828]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[2140, 68, 111, 1, 20, "KeywordsSection",ExpressionUUID->"a983c32d-8e90-4a13-8c4d-b40e568f05a9",
+Cell[2140, 68, 111, 1, 20, "KeywordsSection",ExpressionUUID->"b3d25fff-d34c-4ac7-afef-feda4a44cd8a",
  CellID->1427428552],
-Cell[2254, 71, 100, 1, 70, "Keywords",ExpressionUUID->"dec0b8d5-6ff7-444a-b609-fc4ff2ee99fc",
+Cell[2254, 71, 100, 1, 70, "Keywords",ExpressionUUID->"2b4e84ca-45ef-4207-8c6b-4cac86f3d822",
  CellID->1251852827]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[2391, 77, 108, 1, 20, "DetailsSection",ExpressionUUID->"b2490e6b-0724-44b7-8a44-258226b8d174",
+Cell[2391, 77, 108, 1, 20, "DetailsSection",ExpressionUUID->"25cc9178-313d-4966-9883-eb8061637b96",
  CellID->307771771],
-Cell[2502, 80, 118, 2, 70, "Details",ExpressionUUID->"ae2d430a-0b08-4e14-8e24-a0de59a513a4",
+Cell[2502, 80, 118, 2, 70, "Details",ExpressionUUID->"c6a25b41-02c5-4316-8eb8-2363a73e1029",
  CellID->218895918],
-Cell[2623, 84, 124, 2, 70, "Details",ExpressionUUID->"817c2833-2fb8-48e7-bd7f-95df3996619f",
+Cell[2623, 84, 124, 2, 70, "Details",ExpressionUUID->"b2ef0373-23e7-4175-a999-05a0c47059a7",
  CellID->350963985],
-Cell[2750, 88, 121, 2, 70, "Details",ExpressionUUID->"fe6d2b08-f9c7-476b-af86-f115fe4f6bf2",
+Cell[2750, 88, 121, 2, 70, "Details",ExpressionUUID->"9651f588-9038-4e45-8d9a-d4d8c96ea211",
  CellID->795871300],
-Cell[2874, 92, 126, 2, 70, "Details",ExpressionUUID->"5d0fce03-3680-45f2-a786-151a551c1f61",
+Cell[2874, 92, 126, 2, 70, "Details",ExpressionUUID->"9acc1e02-0af5-49e3-a789-2cead05165c8",
  CellID->199739161],
-Cell[3003, 96, 115, 2, 70, "Details",ExpressionUUID->"51c15cc6-912a-4c2c-9244-7460c6c19d34",
+Cell[3003, 96, 115, 2, 70, "Details",ExpressionUUID->"98b1d523-6837-4a3d-a944-ba37d158dba4",
  CellID->40625308],
-Cell[3121, 100, 116, 2, 70, "Details",ExpressionUUID->"ff0e53ac-92ca-4127-a400-656237c8116d",
+Cell[3121, 100, 116, 2, 70, "Details",ExpressionUUID->"a0b2445c-cac1-4f05-8ff5-4cccbb6da54d",
  CellID->357121918],
-Cell[3240, 104, 117, 2, 70, "Details",ExpressionUUID->"737b0db6-0310-4200-a354-e82e043d964b",
+Cell[3240, 104, 117, 2, 70, "Details",ExpressionUUID->"95e63554-1f2f-4552-b00b-9464c6247a28",
  CellID->35949532],
-Cell[3360, 108, 133, 2, 70, "Details",ExpressionUUID->"c952bc1e-b8bc-4c04-9565-081b256916b8",
+Cell[3360, 108, 133, 2, 70, "Details",ExpressionUUID->"7a469210-8c12-483f-826b-448c354b6274",
  CellID->929432370],
-Cell[3496, 112, 122, 2, 70, "Details",ExpressionUUID->"f0ebe378-5059-4c3d-910f-d3a7506b940a",
+Cell[3496, 112, 122, 2, 70, "Details",ExpressionUUID->"f267de45-3cc7-4bad-8987-01c7ba4877bf",
  CellID->240026365]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[3655, 119, 97, 0, 171, "TOCDocumentTitle",ExpressionUUID->"0e05b1ba-3634-478a-8518-7546f321df1a"],
-Cell[3755, 121, 197, 3, 48, "TOCChapter",ExpressionUUID->"64dc0f5f-1149-4082-809c-c50f61f7bbf5"],
-Cell[3955, 126, 208, 4, 28, "TOCChapter",ExpressionUUID->"78f30404-9a71-4b74-a98c-913faa8668e8"],
-Cell[4166, 132, 244, 4, 28, "TOCChapter",ExpressionUUID->"538fac3f-ef6b-485d-876a-ea1906df9faf"],
+Cell[3655, 119, 97, 0, 171, "TOCDocumentTitle",ExpressionUUID->"d7e312a1-da89-4a83-8a91-78767acac92e"],
 Cell[CellGroupData[{
-Cell[4435, 140, 193, 3, 28, "TOCChapter",ExpressionUUID->"a8f9f1f6-10c3-4b1d-9358-acc9d0ac103d"],
-Cell[CellGroupData[{
-Cell[4653, 147, 189, 3, 29, "TOCSection",ExpressionUUID->"d1574d9b-2ff7-47dd-a6c5-57f07cbf0223"],
-Cell[4845, 152, 207, 4, 20, "TOCSubsection",ExpressionUUID->"43b70334-6731-4677-bcba-1c2aaf82724c"]
+Cell[3777, 123, 210, 4, 48, "TOCChapter",ExpressionUUID->"c50e8237-ad49-4ad1-bdb0-9a7aca0a4cf4"],
+Cell[3990, 129, 211, 4, 29, "TOCSection",ExpressionUUID->"7c6e9e21-ea9c-48be-bca1-c343d8d198d8"]
 }, Open  ]],
-Cell[5067, 159, 187, 3, 29, "TOCSection",ExpressionUUID->"b4c8c577-b6d0-46ca-84b2-782eff44c610"]
-}, Open  ]],
+Cell[4216, 136, 208, 4, 48, "TOCChapter",ExpressionUUID->"98f72c2e-b431-4972-8a6f-71bb08012c82"],
+Cell[4427, 142, 244, 4, 28, "TOCChapter",ExpressionUUID->"5bac129b-50ad-47d2-bad6-b8f852e6251e"],
 Cell[CellGroupData[{
-Cell[5291, 167, 228, 4, 48, "TOCChapter",ExpressionUUID->"13511632-e2f8-4793-95cd-995eb924e6e4"],
+Cell[4696, 150, 193, 3, 28, "TOCChapter",ExpressionUUID->"a0b2fe89-8edf-46cd-b70d-53533debdbad"],
 Cell[CellGroupData[{
-Cell[5544, 175, 215, 4, 29, "TOCSection",ExpressionUUID->"84c96060-4481-4f0c-8422-04e4970c67f0"],
-Cell[5762, 181, 222, 4, 20, "TOCSubsection",ExpressionUUID->"660823b1-5d4d-47fb-aadc-716476dffb21"],
-Cell[5987, 187, 224, 4, 20, "TOCSubsection",ExpressionUUID->"2dbdd534-a769-452b-8607-f516b2b4f1f0"]
+Cell[4914, 157, 189, 3, 29, "TOCSection",ExpressionUUID->"d5033d86-e999-4d8e-b2d0-3afba5735438"],
+Cell[5106, 162, 207, 4, 20, "TOCSubsection",ExpressionUUID->"9a805460-ad09-4c2c-93d4-e511d8e2eed7"]
 }, Open  ]],
-Cell[6226, 194, 221, 4, 29, "TOCSection",ExpressionUUID->"2d4135d9-9c22-40e2-aa37-124040a2926c"]
+Cell[5328, 169, 187, 3, 29, "TOCSection",ExpressionUUID->"c1c28d8b-5f50-4aea-a568-1490c63b8ee9"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6484, 203, 193, 3, 48, "TOCChapter",ExpressionUUID->"89ea69c5-8ef6-4266-b2fb-ff0c08ff2f0c"],
-Cell[6680, 208, 188, 3, 29, "TOCSection",ExpressionUUID->"6b81b8d6-5ee9-4365-b8e7-6427b81f6ab6"],
-Cell[6871, 213, 176, 3, 23, "TOCSection",ExpressionUUID->"d5bf89a2-3637-4cb5-bd05-309221c1c88e"],
-Cell[7050, 218, 180, 3, 23, "TOCSection",ExpressionUUID->"f0b0cb9e-fd11-471f-9128-9bf6ba13b8d2"],
-Cell[7233, 223, 178, 3, 23, "TOCSection",ExpressionUUID->"e3e80394-4219-46f9-bdcb-5dd41f34e006"],
-Cell[7414, 228, 178, 3, 23, "TOCSection",ExpressionUUID->"844f9218-e245-4721-b7bb-2d6e8df20e87"],
-Cell[7595, 233, 178, 3, 23, "TOCSection",ExpressionUUID->"cbfc3938-9d63-45c6-b032-a20fbdddb381"],
-Cell[7776, 238, 188, 3, 23, "TOCSection",ExpressionUUID->"b80812ab-4062-46c7-bcf8-10ca79d0389c"],
-Cell[7967, 243, 204, 3, 23, "TOCSection",ExpressionUUID->"1015333e-fa75-4a88-94a2-703effedf963"],
-Cell[8174, 248, 180, 3, 23, "TOCSection",ExpressionUUID->"bd13051f-c9b5-41d6-88b1-704a8ab44cec"],
-Cell[8357, 253, 168, 3, 23, "TOCSection",ExpressionUUID->"88d9ed6f-5592-4581-9560-f321854c9db4"],
-Cell[8528, 258, 156, 3, 23, "TOCSection",ExpressionUUID->"6b4c20d3-5c0d-40d1-bbab-ff4e1b87f550"],
-Cell[8687, 263, 168, 3, 23, "TOCSection",ExpressionUUID->"df554a8f-faeb-4b81-b22b-b825eca62237"],
-Cell[8858, 268, 156, 3, 23, "TOCSection",ExpressionUUID->"b5c0331d-2663-4c8b-8525-59b34465d88a"],
-Cell[9017, 273, 156, 3, 23, "TOCSection",ExpressionUUID->"76250f27-b651-41d3-8511-d720fc88b4a9"],
-Cell[9176, 278, 156, 3, 23, "TOCSection",ExpressionUUID->"2543f715-1af1-43cb-bfeb-93399a1e6b60"],
-Cell[9335, 283, 174, 3, 23, "TOCSection",ExpressionUUID->"5f8afea7-499e-48bf-9f4d-386b4da6587f"],
-Cell[9512, 288, 166, 3, 23, "TOCSection",ExpressionUUID->"96a9564a-3250-4695-a6c5-c1cbe1b7112b"],
-Cell[9681, 293, 188, 3, 23, "TOCSection",ExpressionUUID->"06277947-0336-4fe6-ab18-727b094aebb2"],
-Cell[9872, 298, 176, 3, 23, "TOCSection",ExpressionUUID->"5b997ed7-8565-425d-942b-7bb68ea327f6"],
-Cell[10051, 303, 178, 3, 23, "TOCSection",ExpressionUUID->"611607a5-302d-4246-8085-e9f993b3368a"],
-Cell[10232, 308, 172, 3, 23, "TOCSection",ExpressionUUID->"019399e0-a85b-40c6-84cf-5c139cb619b2"],
-Cell[10407, 313, 164, 3, 23, "TOCSection",ExpressionUUID->"71fd7c88-371a-42a8-bb20-374883f36d61"],
-Cell[10574, 318, 166, 3, 23, "TOCSection",ExpressionUUID->"b9bbc205-9cd5-4065-ad6b-714e78e03e04"],
-Cell[10743, 323, 166, 3, 23, "TOCSection",ExpressionUUID->"b1148b4f-ecdb-48c3-8f2a-0ac05d860135"],
-Cell[10912, 328, 176, 3, 23, "TOCSection",ExpressionUUID->"a8c11b6a-5fd7-4255-a485-a68b64914380"],
-Cell[11091, 333, 170, 3, 23, "TOCSection",ExpressionUUID->"04e37ab7-b873-4897-a055-b4f15b250b0f"],
-Cell[11264, 338, 176, 3, 23, "TOCSection",ExpressionUUID->"d7b789c1-0797-4009-af4f-553dc77ebeae"],
-Cell[11443, 343, 178, 3, 23, "TOCSection",ExpressionUUID->"d234c3a6-569a-4235-9d60-da1f01728f41"],
-Cell[11624, 348, 176, 3, 23, "TOCSection",ExpressionUUID->"64e2fd9b-02d2-4622-bbe4-3585a3d81a5e"],
-Cell[11803, 353, 180, 3, 23, "TOCSection",ExpressionUUID->"2534ed49-5e05-4ecb-8043-87d1c9159bac"],
-Cell[11986, 358, 182, 3, 23, "TOCSection",ExpressionUUID->"55f75045-2515-472b-8ac9-f0a1e326031f"],
-Cell[12171, 363, 170, 3, 23, "TOCSection",ExpressionUUID->"4339ec3d-38c4-40fd-97cb-506625dbdb19"],
-Cell[12344, 368, 180, 3, 23, "TOCSection",ExpressionUUID->"f815d3bb-d0a6-4ecd-b316-b539cc530dfe"],
-Cell[12527, 373, 180, 3, 23, "TOCSection",ExpressionUUID->"9fdd6dc3-e3c4-43f0-bba7-f86d1399a1cc"],
-Cell[12710, 378, 174, 3, 23, "TOCSection",ExpressionUUID->"2144bfd2-61b1-4bcd-a543-b34b2d51958c"],
-Cell[12887, 383, 196, 3, 23, "TOCSection",ExpressionUUID->"5fb8b063-7df8-4129-96e9-97ad5a9d26a9"],
-Cell[13086, 388, 158, 3, 23, "TOCSection",ExpressionUUID->"b89601c1-6b5c-417a-84cb-935d97de3d6c"],
-Cell[13247, 393, 178, 3, 23, "TOCSection",ExpressionUUID->"bcc4d70d-b2f7-46d7-ac48-65b207b05c01"],
-Cell[13428, 398, 194, 3, 23, "TOCSection",ExpressionUUID->"45941464-b571-4b78-a660-ddc310972fae"],
-Cell[13625, 403, 164, 3, 23, "TOCSection",ExpressionUUID->"c044bf16-2d6c-442a-88b0-08390e09d149"],
-Cell[13792, 408, 166, 3, 23, "TOCSection",ExpressionUUID->"d01ecc47-0cf2-493f-9399-5e2271cfae35"],
-Cell[13961, 413, 160, 3, 23, "TOCSection",ExpressionUUID->"821ba317-be26-4bbe-b44d-17bc874ea5a2"],
-Cell[14124, 418, 164, 3, 23, "TOCSection",ExpressionUUID->"870ce92b-2298-483c-adc0-dfb76cf26484"],
-Cell[14291, 423, 170, 3, 23, "TOCSection",ExpressionUUID->"31fda4ff-6f18-4de8-8738-735589b400c7"],
-Cell[14464, 428, 160, 3, 23, "TOCSection",ExpressionUUID->"d0ef9252-34dc-44b5-ae75-9ee638c03f22"],
-Cell[14627, 433, 164, 3, 23, "TOCSection",ExpressionUUID->"d267a598-16fb-4182-a2e9-212124cd98ed"],
-Cell[14794, 438, 184, 3, 23, "TOCSection",ExpressionUUID->"3643758a-2665-4626-bf1e-6b26ce279c19"],
-Cell[14981, 443, 164, 3, 23, "TOCSection",ExpressionUUID->"a1d9b280-e7d2-49ab-bee2-49c9c0aa4964"],
-Cell[15148, 448, 164, 3, 23, "TOCSection",ExpressionUUID->"b46a47c9-f6af-44f6-88a7-e6fb7520143a"],
-Cell[15315, 453, 162, 3, 23, "TOCSection",ExpressionUUID->"d7cf98d3-bc52-4871-9e23-b112810897c3"],
-Cell[15480, 458, 170, 3, 23, "TOCSection",ExpressionUUID->"f9653acd-2850-491c-885d-f7cc4205b87b"],
-Cell[15653, 463, 176, 3, 23, "TOCSection",ExpressionUUID->"aff665e6-751d-43a0-87fd-a6aa3cf3ae0d"],
-Cell[15832, 468, 168, 3, 23, "TOCSection",ExpressionUUID->"a1412f2a-e5d4-4b78-b088-6b0ac2e8eb86"],
-Cell[16003, 473, 170, 3, 23, "TOCSection",ExpressionUUID->"4fe2a6e0-ea9a-43ba-9bb2-7b8686a36820"],
-Cell[16176, 478, 166, 3, 23, "TOCSection",ExpressionUUID->"b33a329e-a897-4758-85d7-303ee31a364b"],
-Cell[16345, 483, 180, 3, 23, "TOCSection",ExpressionUUID->"e5725132-29ae-4fae-b5a7-921de96eea0f"],
-Cell[16528, 488, 182, 3, 23, "TOCSection",ExpressionUUID->"a1d7ae64-5130-4841-a1e2-90b047b9b103"],
-Cell[16713, 493, 164, 3, 23, "TOCSection",ExpressionUUID->"0d7e2823-82c8-4baa-a05c-6f55678098ae"],
-Cell[16880, 498, 164, 3, 23, "TOCSection",ExpressionUUID->"4c597c2b-d6ea-4fc8-b3ec-1b04a444334a"],
-Cell[17047, 503, 190, 3, 23, "TOCSection",ExpressionUUID->"23b5aee6-b90c-444f-943a-67d294719eb4"],
-Cell[17240, 508, 180, 3, 23, "TOCSection",ExpressionUUID->"639f3f9b-1db1-4a13-88fd-6d304db8ef60"],
-Cell[17423, 513, 174, 3, 23, "TOCSection",ExpressionUUID->"6af5d855-a94a-497e-95bc-a2488c192ade"],
-Cell[17600, 518, 182, 3, 23, "TOCSection",ExpressionUUID->"f34b2682-c183-410b-9a42-7a0405216b84"],
-Cell[17785, 523, 188, 3, 23, "TOCSection",ExpressionUUID->"bc03b19c-947b-460d-a41b-74134a375e85"],
-Cell[17976, 528, 174, 3, 23, "TOCSection",ExpressionUUID->"51283ca3-32d4-4fe3-910f-977ccaaffb3e"],
-Cell[18153, 533, 168, 3, 23, "TOCSection",ExpressionUUID->"c9c0fd66-ca86-46ac-bf85-7ea1e0df2589"],
-Cell[18324, 538, 170, 3, 23, "TOCSection",ExpressionUUID->"983d5f0c-0103-4505-94d8-18a575348ad6"],
-Cell[18497, 543, 166, 3, 23, "TOCSection",ExpressionUUID->"f1567d9d-131d-4774-85ef-2a2938516a8c"],
-Cell[18666, 548, 184, 3, 23, "TOCSection",ExpressionUUID->"ff691681-065a-4db8-873c-7e019146e5f5"],
-Cell[18853, 553, 186, 3, 23, "TOCSection",ExpressionUUID->"6f681d89-c981-44a7-8201-b55501c71e3c"],
-Cell[19042, 558, 178, 3, 23, "TOCSection",ExpressionUUID->"f97f69fc-9d74-4ad0-aec2-ea6074511656"],
-Cell[19223, 563, 160, 3, 23, "TOCSection",ExpressionUUID->"adedafe7-c006-4e01-ab6e-1185bab00f6b"],
-Cell[19386, 568, 158, 3, 23, "TOCSection",ExpressionUUID->"8840d400-c0dd-4e2a-a097-018372684277"],
-Cell[19547, 573, 180, 3, 23, "TOCSection",ExpressionUUID->"4e39174b-90db-4cfe-ad95-0fc78e543192"],
-Cell[19730, 578, 166, 3, 23, "TOCSection",ExpressionUUID->"d6e298f9-5257-49ee-9cfd-addfd2fece9d"],
-Cell[19899, 583, 178, 3, 23, "TOCSection",ExpressionUUID->"6f62f16e-00d9-4493-a578-dd8b4b76f003"],
-Cell[20080, 588, 182, 3, 23, "TOCSection",ExpressionUUID->"fa7251e1-414b-4952-a613-89c03036218a"],
-Cell[20265, 593, 184, 3, 23, "TOCSection",ExpressionUUID->"d3b78d52-461f-4708-9c65-4004c4ef67f5"],
-Cell[20452, 598, 180, 3, 23, "TOCSection",ExpressionUUID->"9136b425-e47d-4860-9d29-de5e160d5103"],
-Cell[20635, 603, 180, 3, 23, "TOCSection",ExpressionUUID->"7c16b362-3840-4162-b462-71f3e8e6dc0e"],
-Cell[20818, 608, 180, 3, 23, "TOCSection",ExpressionUUID->"0745116c-4f92-4736-b061-75119b10ee9f"],
-Cell[21001, 613, 174, 3, 23, "TOCSection",ExpressionUUID->"3723b120-a94f-4f6b-b793-180aa96a406a"],
-Cell[21178, 618, 178, 3, 23, "TOCSection",ExpressionUUID->"ef760c64-1422-4e58-b7ea-c8a71d31a5a2"],
-Cell[21359, 623, 158, 3, 23, "TOCSection",ExpressionUUID->"dfa353af-6a33-4382-a714-f6ad729bd200"],
-Cell[21520, 628, 182, 3, 23, "TOCSection",ExpressionUUID->"9808d278-90f4-47d0-9ffe-29c381ab6fbb"],
-Cell[21705, 633, 188, 3, 23, "TOCSection",ExpressionUUID->"47d1a231-95cb-4289-8d6a-ffc0b1890ccf"],
-Cell[21896, 638, 184, 3, 23, "TOCSection",ExpressionUUID->"5c0507fe-cc40-4fe4-b590-9fec84ea4f82"],
-Cell[22083, 643, 176, 3, 23, "TOCSection",ExpressionUUID->"0c396d97-a020-4347-b60c-3211cd1419f8"],
-Cell[22262, 648, 202, 3, 23, "TOCSection",ExpressionUUID->"ea78a9a6-7d2f-4ffc-8128-a7ce0c644f9e"],
-Cell[22467, 653, 170, 3, 23, "TOCSection",ExpressionUUID->"61b8c7f3-37ab-4800-8edf-794eaee3e113"],
-Cell[22640, 658, 176, 3, 23, "TOCSection",ExpressionUUID->"7afe8bf3-6fab-411e-840e-797814ba34c9"],
-Cell[22819, 663, 176, 3, 23, "TOCSection",ExpressionUUID->"296f7cba-a733-4549-b27e-fb1f5e023d86"],
-Cell[22998, 668, 176, 3, 23, "TOCSection",ExpressionUUID->"c3d5980e-2cb8-4c89-8cce-31cdc2e96010"]
+Cell[5552, 177, 228, 4, 48, "TOCChapter",ExpressionUUID->"2894d42b-2757-4cf8-807d-9a9ecf3dc7a6"],
+Cell[CellGroupData[{
+Cell[5805, 185, 215, 4, 29, "TOCSection",ExpressionUUID->"ff134596-97a4-42dc-b11d-e56f6dcd13e5"],
+Cell[6023, 191, 222, 4, 20, "TOCSubsection",ExpressionUUID->"9dc6e275-3986-4edb-b15e-b2831364aaa8"],
+Cell[6248, 197, 224, 4, 20, "TOCSubsection",ExpressionUUID->"29529b02-d22c-4d02-83bd-aafc37040f1a"]
+}, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[23211, 676, 166, 3, 48, "TOCChapter",ExpressionUUID->"d1a943c8-6a5f-462d-a55c-d29cd6f5de3a"],
-Cell[23380, 681, 184, 3, 29, "TOCSection",ExpressionUUID->"c20cc7f9-9158-4578-a03c-63280d594738"]
+Cell[6521, 207, 193, 3, 48, "TOCChapter",ExpressionUUID->"f88ac1d8-ffb8-4f88-944a-bf5d1456a365"],
+Cell[6717, 212, 188, 3, 29, "TOCSection",ExpressionUUID->"ee3c0090-b686-48af-ac43-99b1ea928409"],
+Cell[6908, 217, 180, 3, 23, "TOCSection",ExpressionUUID->"38c47288-360a-4203-a5ab-1189b92509b1"],
+Cell[7091, 222, 180, 3, 23, "TOCSection",ExpressionUUID->"3a3a7ef0-f47f-4052-95c2-f1a89fc21f88"],
+Cell[7274, 227, 176, 3, 23, "TOCSection",ExpressionUUID->"8dd2d808-de72-4cd8-a483-626890262933"],
+Cell[7453, 232, 180, 3, 23, "TOCSection",ExpressionUUID->"1d81cdca-0bed-4c0d-a0a6-f5132f933222"],
+Cell[7636, 237, 178, 3, 23, "TOCSection",ExpressionUUID->"97b5799a-1ee7-4ef5-ab06-a480bc3bcd8e"],
+Cell[7817, 242, 178, 3, 23, "TOCSection",ExpressionUUID->"19a99c60-3212-4223-a844-29df433a8717"],
+Cell[7998, 247, 186, 3, 23, "TOCSection",ExpressionUUID->"0bffb47b-f6ce-4214-94ba-880394dd1d7c"],
+Cell[8187, 252, 176, 3, 23, "TOCSection",ExpressionUUID->"6095c82b-0c19-49d8-b84c-af6c255ba1ac"],
+Cell[8366, 257, 178, 3, 23, "TOCSection",ExpressionUUID->"7f0a66a6-2b57-4f79-bc05-1a334f374db4"],
+Cell[8547, 262, 188, 3, 23, "TOCSection",ExpressionUUID->"e1b81b68-a194-4495-9bfb-ed033ccea7da"],
+Cell[8738, 267, 204, 3, 23, "TOCSection",ExpressionUUID->"1e2888e4-3002-4721-9ba1-579115c08409"],
+Cell[8945, 272, 184, 3, 23, "TOCSection",ExpressionUUID->"448e3d49-2b86-49a8-b8ff-3863ef2a8242"],
+Cell[9132, 277, 180, 3, 23, "TOCSection",ExpressionUUID->"de70d725-0c27-4aac-aff6-0a8db4eeb4d5"],
+Cell[9315, 282, 158, 3, 23, "TOCSection",ExpressionUUID->"30fded9a-db79-454e-80ad-f656104435f1"],
+Cell[9476, 287, 166, 3, 23, "TOCSection",ExpressionUUID->"ea693da8-755c-4915-8336-40d5889cd718"],
+Cell[9645, 292, 168, 3, 23, "TOCSection",ExpressionUUID->"4d769e5d-d722-4631-9fa6-f507b73c1b73"],
+Cell[9816, 297, 176, 3, 23, "TOCSection",ExpressionUUID->"e22b2dea-1e39-4f86-b8fc-1061d6e14351"],
+Cell[9995, 302, 156, 3, 23, "TOCSection",ExpressionUUID->"32750312-2029-4faa-95f4-473650421b52"],
+Cell[10154, 307, 168, 3, 23, "TOCSection",ExpressionUUID->"9e77b8db-71de-40c8-b2d2-41507ec584bd"],
+Cell[10325, 312, 156, 3, 23, "TOCSection",ExpressionUUID->"59d4b6a1-5a62-49f4-becb-2771fdc05bdb"],
+Cell[10484, 317, 156, 3, 23, "TOCSection",ExpressionUUID->"0a6f13a0-6e2d-4a04-8616-78361c930c28"],
+Cell[10643, 322, 156, 3, 23, "TOCSection",ExpressionUUID->"5c19ddf5-b325-401d-94d4-a696d2ac1d45"],
+Cell[10802, 327, 174, 3, 23, "TOCSection",ExpressionUUID->"486a88ae-a7ea-40df-a10a-8a7e8396d9cb"],
+Cell[10979, 332, 166, 3, 23, "TOCSection",ExpressionUUID->"e4c45511-2f77-4152-a840-311227effc36"],
+Cell[11148, 337, 176, 3, 23, "TOCSection",ExpressionUUID->"5bfe5f24-7f19-45f0-8628-caa82b45b356"],
+Cell[11327, 342, 188, 3, 23, "TOCSection",ExpressionUUID->"c3b63491-51b0-4cce-849c-b4afbb9463c0"],
+Cell[11518, 347, 176, 3, 23, "TOCSection",ExpressionUUID->"3e8a51f9-9093-4af6-9595-7e1d012c0729"],
+Cell[11697, 352, 178, 3, 23, "TOCSection",ExpressionUUID->"00691e11-aa87-40b4-b1a6-9582be0dba92"],
+Cell[11878, 357, 172, 3, 23, "TOCSection",ExpressionUUID->"8dcf8eac-ca04-4fe1-b256-c312ed114f4f"],
+Cell[12053, 362, 186, 3, 23, "TOCSection",ExpressionUUID->"d65e6476-9148-4a37-b894-9632a5678777"],
+Cell[12242, 367, 164, 3, 23, "TOCSection",ExpressionUUID->"3d49df7a-441d-43e6-8263-9780b0181901"],
+Cell[12409, 372, 166, 3, 23, "TOCSection",ExpressionUUID->"8f6f92a6-e058-448d-9e69-97ce465ffa5f"],
+Cell[12578, 377, 172, 3, 23, "TOCSection",ExpressionUUID->"7cc272fd-21f7-43fc-b79d-900859d11955"],
+Cell[12753, 382, 166, 3, 23, "TOCSection",ExpressionUUID->"3f0f147b-2bb7-4831-b373-7eac3bdb5f80"],
+Cell[12922, 387, 168, 3, 23, "TOCSection",ExpressionUUID->"eacc2ae3-bdbd-402b-9de8-ed95b1f68c7b"],
+Cell[13093, 392, 176, 3, 23, "TOCSection",ExpressionUUID->"d1518f49-0462-4ec9-bbd1-2ebe45fdc439"],
+Cell[13272, 397, 170, 3, 23, "TOCSection",ExpressionUUID->"97d6756f-69e6-4098-bbd9-b9f4b0eec028"],
+Cell[13445, 402, 176, 3, 23, "TOCSection",ExpressionUUID->"5e0f67f1-f7d4-41ae-885d-0f637ff01f1d"],
+Cell[13624, 407, 178, 3, 23, "TOCSection",ExpressionUUID->"d4c21dfa-b3ad-45b9-93e3-71c34ce963f9"],
+Cell[13805, 412, 176, 3, 23, "TOCSection",ExpressionUUID->"a0a52468-50dd-40d3-8594-743dee6ba7c0"],
+Cell[13984, 417, 170, 3, 23, "TOCSection",ExpressionUUID->"9bce1d99-e9ff-4b4a-9f98-0cef3ce72536"],
+Cell[14157, 422, 170, 3, 23, "TOCSection",ExpressionUUID->"3c01b1fb-ab4e-4085-b75d-b4e4128afe9e"],
+Cell[14330, 427, 168, 3, 23, "TOCSection",ExpressionUUID->"c65c493b-31b6-42c7-83e8-798eea95e61e"],
+Cell[14501, 432, 180, 3, 23, "TOCSection",ExpressionUUID->"5bfdaab3-e924-41bc-93b1-f4a8651fc119"],
+Cell[14684, 437, 174, 3, 23, "TOCSection",ExpressionUUID->"5af2fb38-18ea-473c-a3f6-7c439f9c6716"],
+Cell[14861, 442, 180, 3, 23, "TOCSection",ExpressionUUID->"30e22530-7073-4fc1-8b04-dc0f3a204f30"],
+Cell[15044, 447, 174, 3, 23, "TOCSection",ExpressionUUID->"c7e866a4-fe50-4fb8-9325-7e196a4f0c01"],
+Cell[15221, 452, 184, 3, 23, "TOCSection",ExpressionUUID->"1296cc3e-4565-45e4-9191-d736dcea232c"],
+Cell[15408, 457, 196, 3, 23, "TOCSection",ExpressionUUID->"bca39354-3171-4762-833d-3334d5074cd3"],
+Cell[15607, 462, 176, 3, 23, "TOCSection",ExpressionUUID->"b30a4c31-e597-4cbf-94f2-6251ee544356"],
+Cell[15786, 467, 158, 3, 23, "TOCSection",ExpressionUUID->"616d796e-5deb-43ad-9d7a-bfdca386a827"],
+Cell[15947, 472, 194, 3, 23, "TOCSection",ExpressionUUID->"d9008591-ac33-4ec7-a636-f483b2dbe5b4"],
+Cell[16144, 477, 164, 3, 23, "TOCSection",ExpressionUUID->"44f3d8ce-c48f-406f-83dd-41dcd17818b5"],
+Cell[16311, 482, 166, 3, 23, "TOCSection",ExpressionUUID->"552753a1-b26f-473a-9694-a7029255be58"],
+Cell[16480, 487, 160, 3, 23, "TOCSection",ExpressionUUID->"5f10a2e8-698e-4008-8ed1-87a89d14f1fe"],
+Cell[16643, 492, 164, 3, 23, "TOCSection",ExpressionUUID->"2da0359a-2235-4da4-a4a3-d1d605ae0505"],
+Cell[16810, 497, 170, 3, 23, "TOCSection",ExpressionUUID->"323fadfb-bd5c-4a2c-886a-0efbcbcbd7a3"],
+Cell[16983, 502, 178, 3, 23, "TOCSection",ExpressionUUID->"c45cf27f-f918-4c85-aa97-7bf28b07541c"],
+Cell[17164, 507, 160, 3, 23, "TOCSection",ExpressionUUID->"5a2840b1-87ad-4c8a-a18c-1a417403faff"],
+Cell[17327, 512, 180, 3, 23, "TOCSection",ExpressionUUID->"1311ff80-c7fc-4932-8c48-32b86ea90784"],
+Cell[17510, 517, 182, 3, 23, "TOCSection",ExpressionUUID->"09d32654-b36a-46de-8631-761c10e303f8"],
+Cell[17695, 522, 174, 3, 23, "TOCSection",ExpressionUUID->"8d8970b0-7d07-4296-b0ed-7025a4967ab2"],
+Cell[17872, 527, 182, 3, 23, "TOCSection",ExpressionUUID->"8e7c1b4d-7d08-4e1a-9cb5-ef42f6995ac8"],
+Cell[18057, 532, 162, 3, 23, "TOCSection",ExpressionUUID->"f6abfa84-41d8-4a84-a065-7bca75c9f2fa"],
+Cell[18222, 537, 164, 3, 23, "TOCSection",ExpressionUUID->"31071e62-c6ea-4d73-a648-e7207771ed9a"],
+Cell[18389, 542, 184, 3, 23, "TOCSection",ExpressionUUID->"20fe45a1-f7ff-49b8-9e3f-aad1c99a99f2"],
+Cell[18576, 547, 164, 3, 23, "TOCSection",ExpressionUUID->"35a0c8d3-4854-46cb-91e0-e8031297d6fa"],
+Cell[18743, 552, 164, 3, 23, "TOCSection",ExpressionUUID->"218a707d-49ff-49b8-bfb9-040aa1ea2e7d"],
+Cell[18910, 557, 178, 3, 23, "TOCSection",ExpressionUUID->"7bad2bf4-6a20-4959-b1d6-2d619a7e0a80"],
+Cell[19091, 562, 174, 3, 23, "TOCSection",ExpressionUUID->"15fb7dbc-bfa0-4cdb-8549-309343502808"],
+Cell[19268, 567, 162, 3, 23, "TOCSection",ExpressionUUID->"6ee3cc25-9102-453c-b221-7daa38869d70"],
+Cell[19433, 572, 170, 3, 23, "TOCSection",ExpressionUUID->"4597981c-5599-4dbf-a20a-19ec76176a3b"],
+Cell[19606, 577, 190, 3, 23, "TOCSection",ExpressionUUID->"35559b90-8dc9-454e-8b3a-d75c4ef3cc95"],
+Cell[19799, 582, 176, 3, 23, "TOCSection",ExpressionUUID->"b1315590-915f-4857-a7c9-3a8bcbf0f8ec"],
+Cell[19978, 587, 168, 3, 23, "TOCSection",ExpressionUUID->"5d747ca6-0a32-4a16-9f55-d6dc6326e853"],
+Cell[20149, 592, 170, 3, 23, "TOCSection",ExpressionUUID->"38b65801-f7fe-4f3b-8ae1-72d6cd775191"],
+Cell[20322, 597, 166, 3, 23, "TOCSection",ExpressionUUID->"8bdb3ef6-c2d1-4cd3-80a7-bda885e09190"],
+Cell[20491, 602, 172, 3, 23, "TOCSection",ExpressionUUID->"ee2ea1f3-a09d-4acc-889c-28ba5feb2193"],
+Cell[20666, 607, 180, 3, 23, "TOCSection",ExpressionUUID->"00565031-5938-4ec0-be29-8b9057e21b46"],
+Cell[20849, 612, 182, 3, 23, "TOCSection",ExpressionUUID->"61614c96-ea29-4e43-9c0f-d97773db8d0e"],
+Cell[21034, 617, 166, 3, 23, "TOCSection",ExpressionUUID->"06914e5a-aaa9-464b-9e27-58524fe7538d"],
+Cell[21203, 622, 164, 3, 23, "TOCSection",ExpressionUUID->"11ae3c7a-3fd5-4745-b1f6-145ce4b93535"],
+Cell[21370, 627, 178, 3, 23, "TOCSection",ExpressionUUID->"55fa8ba1-2cf6-4aa2-bc4c-5bfe4529677b"],
+Cell[21551, 632, 182, 3, 23, "TOCSection",ExpressionUUID->"a5f433a3-7a49-4055-8379-4d63eec507f2"],
+Cell[21736, 637, 184, 3, 23, "TOCSection",ExpressionUUID->"aec106d9-4c92-4eab-b316-d53ae3d0836a"],
+Cell[21923, 642, 164, 3, 23, "TOCSection",ExpressionUUID->"4a2be54a-f5da-44be-bcb4-db53beee0dfa"],
+Cell[22090, 647, 190, 3, 23, "TOCSection",ExpressionUUID->"41e08090-a264-4266-87d0-53f9f4e594e3"],
+Cell[22283, 652, 180, 3, 23, "TOCSection",ExpressionUUID->"f9256501-a68b-4a80-a911-bb20df6699e8"],
+Cell[22466, 657, 172, 3, 23, "TOCSection",ExpressionUUID->"34d1f32e-7ae8-47cd-826c-be74bbf0589a"],
+Cell[22641, 662, 170, 3, 23, "TOCSection",ExpressionUUID->"0a9a3a24-ebe8-40c2-a1e9-a5169e7c1882"],
+Cell[22814, 667, 186, 3, 23, "TOCSection",ExpressionUUID->"40a09111-d552-456c-bde7-3a6026b8a88c"],
+Cell[23003, 672, 174, 3, 23, "TOCSection",ExpressionUUID->"72f5a8df-1dca-4251-b192-fb082416a57d"],
+Cell[23180, 677, 180, 3, 23, "TOCSection",ExpressionUUID->"85da1523-41c0-4619-85a5-7c6a7bd6a67c"],
+Cell[23363, 682, 170, 3, 23, "TOCSection",ExpressionUUID->"7b5ea624-59ff-4c0c-841c-84fd1d650788"],
+Cell[23536, 687, 182, 3, 23, "TOCSection",ExpressionUUID->"a20e9a6c-2d87-4868-99c6-c7da6c847cf7"],
+Cell[23721, 692, 174, 3, 23, "TOCSection",ExpressionUUID->"29236d50-bd1e-43ac-b3b1-b32fe85f0137"],
+Cell[23898, 697, 168, 3, 23, "TOCSection",ExpressionUUID->"e15f4be2-3330-42e9-932f-5888e678f1c9"],
+Cell[24069, 702, 170, 3, 23, "TOCSection",ExpressionUUID->"5249849f-061c-4417-a2a0-24346795f0b8"],
+Cell[24242, 707, 166, 3, 23, "TOCSection",ExpressionUUID->"d6fac618-6bf2-453e-93c8-d591c0494c50"],
+Cell[24411, 712, 184, 3, 23, "TOCSection",ExpressionUUID->"07bcab50-451f-4b25-ba18-125c568fc41a"],
+Cell[24598, 717, 186, 3, 23, "TOCSection",ExpressionUUID->"76676f48-0e80-4c89-b8d7-8d8fa3ad22f7"],
+Cell[24787, 722, 178, 3, 23, "TOCSection",ExpressionUUID->"6bb7b48c-e526-4e0b-a204-3d16a798dc58"],
+Cell[24968, 727, 160, 3, 23, "TOCSection",ExpressionUUID->"a24fcb6c-1f5a-4199-8c87-5a07271535d5"],
+Cell[25131, 732, 166, 3, 23, "TOCSection",ExpressionUUID->"20c18976-bb34-4cd4-9751-5491645c4140"],
+Cell[25300, 737, 158, 3, 23, "TOCSection",ExpressionUUID->"0776552b-eff2-4627-99c1-58fb68869ef6"],
+Cell[25461, 742, 180, 3, 23, "TOCSection",ExpressionUUID->"23f59fd4-4ca7-43d3-976e-9e83de178653"],
+Cell[25644, 747, 166, 3, 23, "TOCSection",ExpressionUUID->"84c228a1-3e5e-47b9-b230-0df337441845"],
+Cell[25813, 752, 200, 3, 23, "TOCSection",ExpressionUUID->"1c687dba-e63a-4427-9329-94eae2c80ce1"],
+Cell[26016, 757, 178, 3, 23, "TOCSection",ExpressionUUID->"0a32c3eb-bb18-4e73-af9b-fe6b3aa24192"],
+Cell[26197, 762, 182, 3, 23, "TOCSection",ExpressionUUID->"405d00fd-a42c-444d-b8ed-2d24293ace4f"],
+Cell[26382, 767, 184, 3, 23, "TOCSection",ExpressionUUID->"aca853fd-dc60-41ca-9252-fe480b461bfc"],
+Cell[26569, 772, 180, 3, 23, "TOCSection",ExpressionUUID->"4f7059a4-afaf-47a4-9c0d-79afbe3b3ac0"],
+Cell[26752, 777, 180, 3, 23, "TOCSection",ExpressionUUID->"7fcc57c0-aa1f-4d78-b840-26c02ce1968b"],
+Cell[26935, 782, 180, 3, 23, "TOCSection",ExpressionUUID->"a035bee5-c856-4f3e-acf3-f41fef110a5e"],
+Cell[27118, 787, 174, 3, 23, "TOCSection",ExpressionUUID->"acdc64cf-386d-4269-b79a-c5080deaabf8"],
+Cell[27295, 792, 178, 3, 23, "TOCSection",ExpressionUUID->"42c57e59-fbab-4af9-8289-c0d37561afd3"],
+Cell[27476, 797, 158, 3, 23, "TOCSection",ExpressionUUID->"ebf43e7d-3db9-46b7-8ed6-a93942a71026"],
+Cell[27637, 802, 162, 3, 23, "TOCSection",ExpressionUUID->"dc7b3096-881a-4076-a09d-196cb335ec58"],
+Cell[27802, 807, 172, 3, 23, "TOCSection",ExpressionUUID->"c7cb66e3-d3f9-487e-a088-079399d85737"],
+Cell[27977, 812, 182, 3, 23, "TOCSection",ExpressionUUID->"f3b05a10-cc4e-4703-bdc5-4c3f89bccabd"],
+Cell[28162, 817, 188, 3, 23, "TOCSection",ExpressionUUID->"b3a16b82-62ed-4023-9897-e7cbd0bd22be"],
+Cell[28353, 822, 158, 3, 23, "TOCSection",ExpressionUUID->"821a6c95-9a8a-4963-9708-a1f0ddd2b3b8"],
+Cell[28514, 827, 184, 3, 23, "TOCSection",ExpressionUUID->"e8edc016-ec1e-4fa2-a5ff-4e28a027dc90"],
+Cell[28701, 832, 180, 3, 23, "TOCSection",ExpressionUUID->"e5ab9b67-6005-4bb0-95bf-4cb9a705c1af"],
+Cell[28884, 837, 176, 3, 23, "TOCSection",ExpressionUUID->"dc7167f7-7fb7-49d9-b879-7e51c7ffb2da"],
+Cell[29063, 842, 176, 3, 23, "TOCSection",ExpressionUUID->"68109234-f96b-4451-986b-fc6102cbb10a"],
+Cell[29242, 847, 202, 3, 23, "TOCSection",ExpressionUUID->"28a7a589-568a-48e4-8356-c6d8fa17f024"],
+Cell[29447, 852, 174, 3, 23, "TOCSection",ExpressionUUID->"05626116-c6de-4acf-922a-c44972d773cd"],
+Cell[29624, 857, 170, 3, 23, "TOCSection",ExpressionUUID->"bfe87cfc-6221-409c-b303-ef73b510b766"],
+Cell[29797, 862, 176, 3, 23, "TOCSection",ExpressionUUID->"f77116c1-bd4b-49b1-939b-4cfd3dfb2372"],
+Cell[29976, 867, 176, 3, 23, "TOCSection",ExpressionUUID->"1a3a76fe-d295-4a7f-b0c7-64c50f5ae215"],
+Cell[30155, 872, 176, 3, 23, "TOCSection",ExpressionUUID->"e2663f68-e5e9-4ea6-9c4b-6ff4f43f3656"],
+Cell[30334, 877, 178, 3, 23, "TOCSection",ExpressionUUID->"970ad5da-91c5-4993-a7bd-7e06c03f4e18"],
+Cell[30515, 882, 182, 3, 23, "TOCSection",ExpressionUUID->"b9651253-a039-49eb-abe2-a97ff8a099f9"],
+Cell[30700, 887, 182, 3, 23, "TOCSection",ExpressionUUID->"958875d0-fb21-4e40-8d58-7a2ff40e814b"],
+Cell[30885, 892, 178, 3, 23, "TOCSection",ExpressionUUID->"555c0e9f-969c-43f7-9816-ff1e95f0a0dc"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[31100, 900, 178, 3, 48, "TOCChapter",ExpressionUUID->"99b372fd-5e7e-4858-973e-42fd04df7ee6"],
+Cell[31281, 905, 188, 3, 29, "TOCSection",ExpressionUUID->"55bbb03a-a8dc-4ebb-8da1-36b5fe343481"]
 }, Open  ]]
 }, Open  ]]
 }
