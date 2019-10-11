@@ -101,6 +101,9 @@
         -) new symbols for plotting: diskSymbol, diskOpenSymbol, diskTinySymbol, triangleSymbol
         -) removed getExtGrassmannOrder and related functions
         -) removed specificFieldDefinitions
+	3.0.1:
+		-) introduced warning in sortCanonical when dummy fields are contained and the expression is not sorted
+		-) introduced error handler when user tries to use the dummy field as field in setFields 
 *)
 
 
@@ -114,7 +117,7 @@ BeginPackage["DoFun`DoDSERGE`"]
 (* Exported symbols added here with SymbolName::usage *)
 
 (* version of DoDSERGE *)
-$doDSERGEVersion="3.0.0";
+$doDSERGEVersion="3.0.1";
 
 If[Not@FreeQ[Contexts[],"DoFun`"],DoFun`DoDSERGE`$doDSERGEStartMessage=False];
 If[DoFun`DoDSERGE`$doDSERGEStartMessage=!=False,
@@ -885,7 +888,6 @@ sortCanonical[op[V[{c, a}, {cb, b}, {A, i}], P[{cb, b}, {c, f}],
   P[{c, a}, {cb, g}], V[{cb, g}, {c, f}, {A, j}]], {{A, i}, {A, j}}]
 ";
 
-
 S::usage="S[{field1, index1}, {field2, index2}, ...] represents a bare vertex, i.e., an expansion coefficient of the action, of the fields fieldi with their indices indexi in its symbolic form.
 S[field1[momentum1, index1a, index1b, ...], field2[momentum2, index2a, index2b, ...], ..., explicit->True] represents a bare vertex of the fields fieldi with their momenta momentumi and explicit indices indexij in algebraic form.
 The option explicit can have an arbitrary value.
@@ -1196,6 +1198,8 @@ Make sure the input has the form of countTerms[expr_]. For more details use ?cou
 The expression causing the error is `1`.";
 
 
+setFields::dummyField="Fields must not contain the dummy field "<>ToString@$dummyField<>". Rename your field.";
+
 setFields::syntax="There was a syntax error in setFields.\n
 Make sure the input has the form of setFields[bosons_List, [fermions_List, complexFields_List]]. For more details use ?setFields.\n
 The expression causing the error is `1`.";
@@ -1297,6 +1301,9 @@ Make sure the input has the form of shortExpression[expr_, opts___]. For more de
 The expression causing the error is `1`.";
 
 sE::syntax=shortExpression::syntax;
+
+sortCanonical::dummyFields="Warning: Expression was not sorted by sortCanonical, because it contains dummy fields. Make sure the sources are set to zero.
+The expression is `1`";
 
 DSEPlotList::multiPropagators="Note: More than two different propagators connecting the same vertices cannot be displayed properly. The plot might contain wrong styles for these propagators.\n";
 
@@ -1870,6 +1877,9 @@ getGraphCharacteristic[graph_op, extLegs_List] :=
 Includes effect of the deprecated function orderFermions.
 External fields are not fully included here.*)
 
+(* if there are dummy fields in the expression, sorting does not work *)
+sortCanonical[b_op, derivatives_List]/;Not[FreeQ[b,$dummyField]]:=(Message[sortCanonical::dummyFields, b];b)
+
 sortCanonical[b_op, derivatives_List] := 
  Module[{ordered, fieldValues, i, intIndices, extFieldIndices, props, const,
  	connectedLeg, intIndexAss, intVertsAss, orderV, orderP, orderR, intVerts, extVerts,
@@ -2379,9 +2389,6 @@ this does not work if allowedPropagators is used (i.e. not {}) because then we c
 complex anti-field is  *)
 complexFields={#,antiField@#}&/@Union@Cases[L, _?complexFieldQ,Infinity];
 
-(* get all fields *)
-(*zeroSources=Union@Cases[L,_?fieldQ,\[Infinity]];*)
-
 (* for 1PI vertex function add a minus sign due to its definition as the negative derivative of the effective action *)
 sign= Which[Length@derivs>2,$signConvention (-1),True,(+1)];
 
@@ -2396,9 +2403,7 @@ multiPoint=deriv[onePoint,Sequence@@Rest@derivs];
 
 (* get the correct sign due to fermions by ordering them; also order directed (complex) fields for identification*)
 finalExp=If[sourcesZero/.Join[{opts},Options@doDSE],sortDummies@setSourcesZero[multiPoint,L,derivs,allowedPropagators,vertexTest,opts],
-multiPoint,multiPoint](*/.(Function[dField, 
-   P[{dField[[2]], c_}, {dField[[1]], b_}] :> 
-    P[{dField[[1]], b}, {dField[[2]], c}]] /@ Cases[complexFields,{_?(Head@#===boson&),_?(Head@#===boson&)}])*);
+multiPoint,multiPoint];
 finalExp=sign identifyGraphs[getSigns[finalExp], derivs];
 
 finalExp
@@ -2500,10 +2505,13 @@ onePoint=1/2 op[sf[First@derivs,{{$dummyField,traceIndex1},{$dummyField,ind}}],P
 (* perform additional differentiations and set sources to zero *)
 multiDer=derivRGE[onePoint,Sequence@@Rest@derivs];
 
-multiPointSources0= sign setSourcesZeroRGE[multiDer,L,extFields,allowedPropagators,vertexTest,opts];
+(* if the sources are not set to 0, give back an intermediate results *)
+multiPointSources0=sign If[sourcesZero/.Join[{opts},Options@doRGE],setSourcesZeroRGE[multiDer,L,extFields,allowedPropagators,vertexTest,opts],
+multiDer,multiDer]/.traceIndex1:>traceIndex2;
 
 (* closing the trace adds a minus sign if fields are fermionic; get other signs from fermions *)
 multiPoint=getSigns[(multiPointSources0)/. P[Q1_, Q2_] :> -P[Q1, Q2] /; (Not@FreeQ[{Q1,Q2}, traceIndex1|traceIndex2,2] && (grassmannQ@Q1[[1]]||grassmannQ@Q2[[1]]))];
+
 multiPoint=sortCanonical[multiPoint, derivs];
 
 (* the first dummy sorting is required for the identification to work; the second one treats the dummies introduced by derivPropagatorsdt *)
@@ -3154,6 +3162,9 @@ The following types of fields are defined:
 Real bosons, fermions (or Grassmann fields in general), complex bosons.
 Fields must be defined before doing any calculations.
 No other function should interfer with the fields' definitions. *)
+
+(* error if the dummy field would be overwritten *)
+setFields[fields___] /; Not[FreeQ[{fields}, $dummyField]] := Message[setFields::dummyField]
 
 (* some defaults *)
 setFields[bosons_List] := setFields[bosons, {}, {}]
