@@ -1,11 +1,11 @@
 (* Paclet Info File *)
 
-(* created 2019/10/11*)
+(* created 2019/10/25*)
 
 Paclet[
     Name -> "DoFun",
     Version -> "3.0.1",
-    MathematicaVersion -> "11.3+",
+    MathematicaVersion -> "10+",
     Creator -> "Markus Q. Huber",
     Extensions -> 
         {
