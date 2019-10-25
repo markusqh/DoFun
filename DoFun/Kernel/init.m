@@ -68,7 +68,7 @@ Needs/@{"DoFun`DoDSERGE`","DoFun`DoAE`","DoFun`DoFR`"}
 
 If[DoFun`$doFunStartMessage=!=False,
 	Print["\nDoFun loaded.
-\nVersion "<> $DoAEVersion<>
+\nVersion "<> $doFunVersion<>
 "\nReinhard Alkofer, Jens Braun, Anton K. Cyrol, Markus Q. Huber, Jan M. Pawlowski, Kai Schwenzer, 2008-2019
 \nDetails at https://github.com/markusqh/DoFun/."];
 ];
