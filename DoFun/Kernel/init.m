@@ -11,55 +11,90 @@ $doFunBuiltVersion=1;
 $doFunVersion=ToString@$doFunMainVersion~~"."~~ToString@$doFunSubVersion~~"."~~ToString@$doFunBuiltVersion;
 
 (* check for new version *)
-onlineVersion=Quiet[Check[doFunVersion/.ToExpression@Import["http://physik.uni-graz.at/~mqh/DoFun/DoFun_version"],"0.0.0"]];
-onlineMainVersion=ToExpression@StringCases[onlineVersion, main__ ~~ "." ~~ sub__~~"."~~built__ :> main][[1]];
-onlineSubVersion=ToExpression@StringCases[onlineVersion, main__ ~~ "." ~~ sub__~~"."~~built__ :> sub][[1]];
-onlineBuiltVersion=ToExpression@StringCases[onlineVersion, main__ ~~ "." ~~ sub__~~"."~~built__ :> built][[1]];
+(* updated in 3.0.1 to use info from Github; based on FormTracer *)
 
-(* check if override is set *)
-override=Quiet[Check[
-  ToExpression@Import[FileNameJoin[{$UserBaseDirectory, "Applications", 
-      "DoFun_newVersionMessage_override"}]], 0]];
+getLatestVersionNumbers::usage = "Gets the version number of the latest version on GitHub.";
 
-(* messages if new version available in descending order *)
-If[override!=1,
-If[onlineMainVersion > $doFunMainVersion,
- 	overrideNew=ChoiceDialog[
- Hyperlink[
-  "There is a major new release (" <> onlineVersion <> 
-   ") of DoFun available. You have version " <> $doFunVersion <>". Please go to http://http://physik.uni-graz.at/~mqh/DoFun to download it.", 
-  "http://http://physik.uni-graz.at/~mqh/DoFun"], {"OK"->0, "Deactivate this message in the future" -> 
- 1}];,
+checkForDoFunUpdates::usage = "checkForDoFunUpdates[] searches online for DoFun updates.
+checkForDoFunUpdates[quiet] with quiet=True suppresses warnings if paclet info is not found.";
 
-If[onlineMainVersion == $doFunMainVersion && onlineSubVersion > $doFunSubVersion,
-overrideNew=ChoiceDialog[
- Hyperlink[
-  "There is a new release (" <> onlineVersion <> 
-   ") of DoFun available. You have version " <> $doFunVersion <> 
-   ". Please go to http://physik.uni-graz.at/~mqh/DoFun to download it.", 
-  "http://physik.uni-graz.at/~mqh/DoFun"], {"OK"->0, "Deactivate this message in the future" -> 
- 1}];,
- 
-If[onlineMainVersion == $doFunMainVersion && onlineSubVersion == $doFunSubVersion && onlineBuiltVersion > $doFunBuiltVersion,
-overrideNew=ChoiceDialog[
- Hyperlink[
-  "There is a minor new release (" <> onlineVersion <> 
-   ") of DoFun available. You have version " <> $doFunVersion <> 
-   ". Please go to http://physik.uni-graz.at/~mqh/DoFun to download it.", 
-  "http://physik.uni-graz.at/~mqh/DoFun"], {"OK"->0, "Deactivate this message in the future" -> 
- 1}];   
-   ]
-  ] 
- ]
-]
+updateDoFun::usage = "updateDoFun[] updates DoFun to the latest release from GitHub.";
+  
+getLatestVersionNumbers::pacletinfonotfound="Paclet info could not be found at `1`. Ensure that you have a working network connection.";
 
-If[overrideNew==1, Export[FileNameJoin[{$UserBaseDirectory, "Applications", 
-     "DoFun_newVersionMessage_override"}], 1, "Text"]]
+checkForDoFunUpdates::usage="checkForDoFunUpdates[] searches online for DoFun updates.
+checkForDoFunUpdates[quiet] with quiet=True suppresses warnings if paclet info is not found.";
 
-(* function for resetting the override option *)
-resetDoFunVersionCheckOverride[]:=Export[FileNameJoin[{$UserBaseDirectory, "Applications", 
-     "DoFun_newVersionMessage_override"}], 0, "Text"]
+General::allowinternetuse="You have forbidden Mathematica to access the internet. This function requires internet access.";
+
+Begin["`Private`"];
+
+
+(* location of GitHub repository *)
+doFunRepositoryAddress="https://raw.githubusercontent.com/markusqh/DoFun/master/";
+
+
+(* get the version number of the latest version on GitHub *)
+getLatestVersionNumbers[quiet_]:=Module[{newVersionString,pacletInfoLocation=doFunRepositoryAddress<>"DoFun/PacletInfo.m"},
+
+	If[quiet,
+		newVersionString=Quiet[Check[Version/.List@@Import[pacletInfoLocation],""]];,
+		newVersionString=Quiet[Check[Version/.List@@Import[pacletInfoLocation],Message[getLatestVersionNumbers::pacletinfonotfound,doFunRepositoryAddress];""],{Import::nffil,ReplaceAll::reps,FetchURL::httperr}];
+	];
+
+	Return[If[newVersionString==="",{0,0,0},
+		First@StringReplace[newVersionString,mainVersion__~~"."~~version__~~"."~~builtVersion__:>ToExpression/@{mainVersion,version,builtVersion}]
+		]
+	];
+];
+
+
+(* checks for updates on GitHub; checks version number of master branch, not the latest release *)
+checkForDoFunUpdates[quiet_:False]:=Module[{newVersionNumbers,newVersionString},
+	If[Not["AllowInternetUse" /. SystemInformation["Network"]],If[Not[quiet],Message[checkForDoFunUpdates::allowinternetuse]];Return[];];
+		newVersionNumbers=getLatestVersionNumbers[quiet];
+		newVersionString=StringJoin[Riffle[ToString/@newVersionNumbers,"."]
+	];
+
+	If[newVersionNumbers=!={0,0,0},
+		If[newVersionNumbers[[1]]+newVersionNumbers[[2]]/10>$doFunMainVersion+$doFunSubVersion/10,Print["
+DoFun version "<>newVersionString<>" is available. You are currently using version "<> $doFunVersion<>".
+You are strongly advised to update as the new version may contain bugfixes. You can do so by evaluating updateDoFun[].
+Please be aware that syntax changes may have occured. We recommend to read the changelog before updating.
+"];,
+			If[newVersionNumbers[[1]]+newVersionNumbers[[2]]/10+newVersionNumbers[[3]]/100>$doFunMainVersion+$doFunSubVersion/10+$doFunBuiltVersion/100,Print["
+DoFun version "<>newVersionString<>" is available. You are currently using version "<> $doFunVersion<>".
+You can update the DoFun by evaluating updateDoFun[].
+"];,
+				If[Not[quiet],Print["You are already using the latest version of the DoFun, version "<> $doFunVersion<>"."];
+				];
+			];
+		];
+	];
+];
+
+
+(* updates DoFun to latest release on GitHub *)
+updateDoFun[]:=Module[{newVersionNumbers},
+	If[Not["AllowInternetUse" /. SystemInformation["Network"]],Message[updateDoFun::allowinternetuse];Return[];];
 	
+	newVersionNumbers=getLatestVersionNumbers[False];
+	
+	If[newVersionNumbers=!={0,0,0},
+		If[newVersionNumbers[[1]]+newVersionNumbers[[2]]/10+newVersionNumbers[[3]]/100>$doFunMainVersion+$doFunSubVersion/10+$doFunBuiltVersion/100,
+			Import[doFunRepositoryAddress<>"DoFun/DoFunInstaller.m"];,
+			Print["You are already using the latest version of the DoFun, version "<> $doFunVersion<>"."];
+		];
+	];
+];
+
+
+(*check for updates at startup*)
+If["AllowInternetUse" /. SystemInformation["Network"], checkForDoFunUpdates[True];];
+
+
+End[];
+
 EndPackage[];
 
 
