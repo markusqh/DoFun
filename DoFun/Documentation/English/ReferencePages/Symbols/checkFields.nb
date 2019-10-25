@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 11.3' *)
+(* CreatedBy='Mathematica 10.0' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8063,        238]
-NotebookOptionsPosition[      5045,        164]
-NotebookOutlinePosition[      7083,        219]
-CellTagsIndexPosition[      6999,        214]
+NotebookDataLength[      8229,        254]
+NotebookOptionsPosition[      5727,        180]
+NotebookOutlinePosition[      7743,        235]
+CellTagsIndexPosition[      7659,        230]
 WindowTitle->checkFields
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$23032], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$12908], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/ref/checkFields", ".html"]], None}]}]},
@@ -78,8 +78,13 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
 Cell[TextData[{
  Cell["checkFields", "ObjectName"],
  Cell[BoxData[
-  TemplateBox[{8},
-   "Spacer1"]]],
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
  Cell[BoxData[""], "ObjectNameTranslation"]
 }], "ObjectNameGrid"],
 
@@ -87,24 +92,32 @@ Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{"checkFields", "[", 
-       StyleBox["expr", "TI"], "]"}]], "InlineFormula"],
+       StyleBox["expr", "TI"], "]"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "d1d64993-e16a-40b3-bc5a-4694dcf4d785"],
      "\[LineSeparator]checks if all fields in ",
      Cell[BoxData[
-      StyleBox["expr", "TI"]], "InlineFormula"],
+      StyleBox["expr", "TI"]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "77a53a80-f642-439a-99a5-24fdc4c17b47"],
      " are defined."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
-   "RowsIndexed" -> {}}}],
+   "RowsIndexed" -> {}}},
+ $CellContext`ExpressionUUID -> "dae48e7d-37d9-4d69-8a36-3cfcc2a0e7cc"],
 
 Cell[CellGroupData[{
 
 Cell[TextData[{
  Cell[BoxData[
-  TemplateBox[{6},
-   "Spacer1"]]],
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
  "Examples",
  "\[NonBreakingSpace]\[NonBreakingSpace]",
  Cell["(1)", "ExampleCount"]
@@ -126,7 +139,8 @@ Cell[TextData[{
 Cell[BoxData[
  RowBox[{"Needs", "[", "\"\<DoFun`\>\"", "]"}]], "Input",
  CellLabel->"In[1]:=",
- CellID->1414887963],
+ CellID->1414887963,
+ $CellContext`ExpressionUUID -> "bdbed3e6-1ea8-4735-a2c1-2abe57e081fe"],
 
 Cell[CellGroupData[{
 
@@ -145,7 +159,8 @@ Cell[BoxData[
     RowBox[{"{", 
      RowBox[{"B", ",", "j1"}], "}"}]}], "]"}], "]"}]], "Input",
  CellLabel->"In[2]:=",
- CellID->644943272],
+ CellID->644943272,
+ $CellContext`ExpressionUUID -> "88b220fb-1940-4322-a828-ff1d66010a62"],
 
 Cell[BoxData[
  TemplateBox[{
@@ -155,7 +170,8 @@ Cell[BoxData[
 \"",2,49,27,22808019000512774367,"Local","DoFun`DoDSERGE`checkFields"},
   "MessageTemplate2"]], "Message", "MSG",
  CellLabel->"During evaluation of In[2]:=",
- CellID->1968262310]
+ CellID->1968262310,
+ $CellContext`ExpressionUUID -> "063c4b2e-1964-4a7e-8157-57c569bd9a29"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
@@ -177,7 +193,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 8, 7, 9, 20, 32.476580}", 
+   "built" -> "{2019, 10, 25, 10, 12, 30.118580}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -186,9 +202,9 @@ TaggingRules->{
     "checkFields[expr] checks if all fields in expr are defined.", 
     "synonyms" -> {}, "tabletags" -> {}, "title" -> "checkFields", 
     "titlemodifier" -> "", "windowtitle" -> "checkFields", "type" -> "Symbol",
-     "uri" -> "DoFun/ref/checkFields"}},
+     "uri" -> "DoFun/ref/checkFields"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+FrontEndVersion->"10.0 for Linux x86 (64-bit) (June 27, 2014)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -197,7 +213,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  FrontEndVersion -> "10.0 for Linux x86 (64-bit) (June 27, 2014)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -206,40 +222,40 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3521, 103, 259, 10, 70, "PrimaryExamplesSection",ExpressionUUID->"02e6312a-3244-4b52-9263-3f6e52d6a174",
+  Cell[3867, 111, 379, 15, 70, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
    CellID->1]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 6809, 207}
+ {"PrimaryExamplesSection", 7524, 223}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[583, 21, 2282, 54, 70, "AnchorBarGrid",ExpressionUUID->"78517d20-63b1-479d-b57e-a057b71ee2ce",
+Cell[583, 21, 2282, 54, 70, "AnchorBarGrid",
  CellID->1],
-Cell[2868, 77, 168, 6, 70, "ObjectNameGrid",ExpressionUUID->"a193016a-887c-4d73-be55-ba6063756bff"],
-Cell[3039, 85, 457, 14, 70, "Usage",ExpressionUUID->"dae48e7d-37d9-4d69-8a36-3cfcc2a0e7cc"],
+Cell[2868, 77, 288, 11, 70, "ObjectNameGrid"],
+Cell[3159, 90, 683, 17, 70, "Usage"],
 Cell[CellGroupData[{
-Cell[3521, 103, 259, 10, 70, "PrimaryExamplesSection",ExpressionUUID->"02e6312a-3244-4b52-9263-3f6e52d6a174",
+Cell[3867, 111, 379, 15, 70, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
  CellID->1],
 Cell[CellGroupData[{
-Cell[3805, 117, 187, 6, 70, "ExampleSection",ExpressionUUID->"77a0a861-63fe-401b-b853-d5a03c7f0033",
+Cell[4271, 130, 187, 6, 70, "ExampleSection",
  CellID->1],
-Cell[3995, 125, 115, 3, 70, "Input",ExpressionUUID->"bdbed3e6-1ea8-4735-a2c1-2abe57e081fe",
+Cell[4461, 138, 187, 4, 70, "Input",
  CellID->1414887963],
 Cell[CellGroupData[{
-Cell[4135, 132, 442, 15, 70, "Input",ExpressionUUID->"88b220fb-1940-4322-a828-ff1d66010a62",
+Cell[4673, 146, 514, 16, 70, "Input",
  CellID->644943272],
-Cell[4580, 149, 399, 8, 70, "Message",ExpressionUUID->"063c4b2e-1964-4a7e-8157-57c569bd9a29",
+Cell[5190, 164, 471, 9, 70, "Message",
  CellID->1968262310]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[5018, 162, 23, 0, 70, "FooterCell",ExpressionUUID->"4ee7c482-cc77-48aa-833c-a61183b91067"]
+Cell[5700, 178, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

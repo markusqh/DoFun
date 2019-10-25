@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 11.3' *)
+(* CreatedBy='Mathematica 10.0' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10280,        291]
-NotebookOptionsPosition[      6835,        209]
-NotebookOutlinePosition[      9036,        266]
-CellTagsIndexPosition[      8952,        261]
+NotebookDataLength[     10558,        310]
+NotebookOptionsPosition[      7738,        228]
+NotebookOutlinePosition[      9917,        285]
+CellTagsIndexPosition[      9833,        280]
 WindowTitle->checkSyntax
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$23989], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$13827], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/ref/checkSyntax", ".html"]], None}]}]},
@@ -78,8 +78,13 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
 Cell[TextData[{
  Cell["checkSyntax", "ObjectName"],
  Cell[BoxData[
-  TemplateBox[{8},
-   "Spacer1"]]],
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
  Cell[BoxData[""], "ObjectNameTranslation"]
 }], "ObjectNameGrid"],
 
@@ -87,16 +92,19 @@ Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{"checkSyntax", "[", 
-       StyleBox["expr", "TI"], "]"}]], "InlineFormula"],
+       StyleBox["expr", "TI"], "]"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "ec09c25c-79f8-4c16-bcc2-299827675ef6"],
      "\[LineSeparator]checks if ",
      Cell[BoxData[
-      StyleBox["expr", "TI"]], "InlineFormula"],
+      StyleBox["expr", "TI"]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "152d1c68-17c3-442b-8965-f8e4ac367695"],
      " has the correct syntax, i.e., ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["op"]],"paclet:DoFun/ref/op"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "699a963a-f0f0-492e-a7b1-5e4a3da35d7f"],
      " functions only contain propagators, vertices, fields, composite \
 operators and regulator insertions and these quantities also have the correct \
 arguments."
@@ -105,14 +113,20 @@ arguments."
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
-   "RowsIndexed" -> {}}}],
+   "RowsIndexed" -> {}}},
+ $CellContext`ExpressionUUID -> "3956fbe1-6534-447c-9445-c610810566ef"],
 
 Cell[CellGroupData[{
 
 Cell[TextData[{
  Cell[BoxData[
-  TemplateBox[{6},
-   "Spacer1"]]],
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
  "Examples",
  "\[NonBreakingSpace]\[NonBreakingSpace]",
  Cell["(1)", "ExampleCount"]
@@ -134,7 +148,8 @@ Cell[TextData[{
 Cell[BoxData[
  RowBox[{"Needs", "[", "\"\<DoFun`\>\"", "]"}]], "Input",
  CellLabel->"In[1]:=",
- CellID->1414887963],
+ CellID->1414887963,
+ $CellContext`ExpressionUUID -> "1b4c15aa-ff6e-43ea-9c49-8625f939dd7b"],
 
 Cell[CellGroupData[{
 
@@ -154,7 +169,8 @@ Cell[BoxData[
      RowBox[{"{", 
       RowBox[{"B", ",", "j1"}], "}"}]}], "]"}], "]"}], " "}]], "Input",
  CellLabel->"In[2]:=",
- CellID->953883358],
+ CellID->953883358,
+ $CellContext`ExpressionUUID -> "89b5b91d-5a3d-4a2c-9539-ceea7c6d76bf"],
 
 Cell[BoxData[
  TemplateBox[{
@@ -170,7 +186,8 @@ RowBox[{\\\"{\\\", RowBox[{\\\"B\\\", \\\",\\\", \\\"j1\\\"}], \\\"}\\\"}]}], \
    "DoFun`DoDSERGE`checkSyntax"},
   "MessageTemplate2"]], "Message", "MSG",
  CellLabel->"During evaluation of In[2]:=",
- CellID->1433005905]
+ CellID->1433005905,
+ $CellContext`ExpressionUUID -> "fe6dd21a-d968-4a99-86c2-5c49af088d91"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -186,7 +203,8 @@ Cell[BoxData[
     RowBox[{"{", 
      RowBox[{"A", ",", "l"}], "}"}]}], "]"}], "]"}]], "Input",
  CellLabel->"In[3]:=",
- CellID->982972966],
+ CellID->982972966,
+ $CellContext`ExpressionUUID -> "8b740500-c8d4-4726-9740-f05e1357148f"],
 
 Cell[BoxData[
  TemplateBox[{
@@ -200,7 +218,8 @@ RowBox[{\\\"{\\\", RowBox[{\\\"A\\\", \\\",\\\", \\\"j\\\"}], \\\"}\\\"}], \\\
    "Local","DoFun`DoDSERGE`checkSyntax"},
   "MessageTemplate2"]], "Message", "MSG",
  CellLabel->"During evaluation of In[3]:=",
- CellID->793470640]
+ CellID->793470640,
+ $CellContext`ExpressionUUID -> "26a5f5d4-e483-4c24-8013-6c88adf50d5c"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
@@ -222,7 +241,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 8, 7, 9, 20, 33.890494}", 
+   "built" -> "{2019, 10, 25, 10, 12, 31.621769}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -233,9 +252,9 @@ functions only contain propagators, vertices, fields, composite operators and \
 regulator insertions and these quantities also have the correct arguments.", 
     "synonyms" -> {}, "tabletags" -> {}, "title" -> "checkSyntax", 
     "titlemodifier" -> "", "windowtitle" -> "checkSyntax", "type" -> "Symbol",
-     "uri" -> "DoFun/ref/checkSyntax"}},
+     "uri" -> "DoFun/ref/checkSyntax"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+FrontEndVersion->"10.0 for Linux x86 (64-bit) (June 27, 2014)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -244,7 +263,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  FrontEndVersion -> "10.0 for Linux x86 (64-bit) (June 27, 2014)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -253,46 +272,46 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3859, 111, 259, 10, 70, "PrimaryExamplesSection",ExpressionUUID->"5c646590-6f96-409c-b8d7-244806f17cf1",
+  Cell[4282, 120, 379, 15, 70, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
    CellID->1]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8762, 254}
+ {"PrimaryExamplesSection", 9698, 273}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[583, 21, 2282, 54, 70, "AnchorBarGrid",ExpressionUUID->"e03f58ac-cf90-4cd8-8ad6-db0d505ae380",
+Cell[583, 21, 2282, 54, 70, "AnchorBarGrid",
  CellID->1],
-Cell[2868, 77, 168, 6, 70, "ObjectNameGrid",ExpressionUUID->"86da1184-752d-4e25-8af7-c39ccd6cdb31"],
-Cell[3039, 85, 795, 22, 70, "Usage",ExpressionUUID->"3956fbe1-6534-447c-9445-c610810566ef"],
+Cell[2868, 77, 288, 11, 70, "ObjectNameGrid"],
+Cell[3159, 90, 1098, 26, 70, "Usage"],
 Cell[CellGroupData[{
-Cell[3859, 111, 259, 10, 70, "PrimaryExamplesSection",ExpressionUUID->"5c646590-6f96-409c-b8d7-244806f17cf1",
+Cell[4282, 120, 379, 15, 70, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
  CellID->1],
 Cell[CellGroupData[{
-Cell[4143, 125, 187, 6, 70, "ExampleSection",ExpressionUUID->"c64dc42f-719b-4b33-92b1-71e55a23559c",
+Cell[4686, 139, 187, 6, 70, "ExampleSection",
  CellID->1],
-Cell[4333, 133, 115, 3, 70, "Input",ExpressionUUID->"1b4c15aa-ff6e-43ea-9c49-8625f939dd7b",
+Cell[4876, 147, 187, 4, 70, "Input",
  CellID->1414887963],
 Cell[CellGroupData[{
-Cell[4473, 140, 482, 16, 70, "Input",ExpressionUUID->"89b5b91d-5a3d-4a2c-9539-ceea7c6d76bf",
+Cell[5088, 155, 554, 17, 70, "Input",
  CellID->953883358],
-Cell[4958, 158, 789, 14, 70, "Message",ExpressionUUID->"fe6dd21a-d968-4a99-86c2-5c49af088d91",
+Cell[5645, 174, 861, 15, 70, "Message",
  CellID->1433005905]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5784, 177, 323, 11, 70, "Input",ExpressionUUID->"8b740500-c8d4-4726-9740-f05e1357148f",
+Cell[6543, 194, 395, 12, 70, "Input",
  CellID->982972966],
-Cell[6110, 190, 659, 12, 70, "Message",ExpressionUUID->"26a5f5d4-e483-4c24-8013-6c88adf50d5c",
+Cell[6941, 208, 731, 13, 70, "Message",
  CellID->793470640]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[6808, 207, 23, 0, 70, "FooterCell",ExpressionUUID->"dc619a67-7b90-43d5-a078-d6d1d8be961e"]
+Cell[7711, 226, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

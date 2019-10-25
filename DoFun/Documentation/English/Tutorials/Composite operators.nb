@@ -3,32 +3,31 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 11.3' *)
+(* CreatedBy='Mathematica 10.0' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    261928,       5640]
-NotebookOptionsPosition[    255371,       5513]
-NotebookOutlinePosition[    257862,       5573]
-CellTagsIndexPosition[    257819,       5570]
+NotebookDataLength[    260138,       5661]
+NotebookOptionsPosition[    255691,       5535]
+NotebookOutlinePosition[    258158,       5594]
+CellTagsIndexPosition[    258115,       5591]
 WindowTitle->Composite operators
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["DO FUN TUTORIAL", "PacletNameCell",ExpressionUUID->
-     "2430d118-996e-4098-b05d-413a386dd0de"], Cell[TextData[Cell[BoxData[
+   {Cell["DO FUN TUTORIAL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
      ActionMenuBox[
       FrameBox[
        InterpretationBox[Cell[TextData[{
          "URL",
          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
           StripOnInput->False]
-        }],ExpressionUUID->"5cbf94b3-8981-4c9c-85d2-330f7755095b"],
+        }]],
         TextCell[
          Row[{"URL", 
            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
@@ -60,54 +59,58 @@ Composite operators.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$83590], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$71058], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/tutorial/Composite operators", ".html"]], None}]}]},
       Appearance->None,
       MenuAppearance->Automatic,
       MenuStyle->"URLMenu"]],
-     LineSpacing->{1.4, 0},ExpressionUUID->
-     "24394a1a-21de-4fd8-8aa0-1f3a91ffea47"]], "AnchorBar",ExpressionUUID->
-     "c0a93f79-9cbc-4804-ae44-6ea3eb0273a5"]}
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
       Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
    "RowsIndexed" -> {}}},
- CellID->1,ExpressionUUID->"ee7f9ea7-522e-4aaa-b0a8-2871ae447d2d"],
+ CellID->1],
 
 Cell[CellGroupData[{
 
 Cell["Composite operators", "Title",
- CellID->509267359,ExpressionUUID->"3ebb936a-314c-4c26-af91-0f4182e2e42e"],
+ CellID->509267359,
+ $CellContext`ExpressionUUID -> "3ebb936a-314c-4c26-af91-0f4182e2e42e"],
 
 Cell["\<\
 This tutorial describes the derivation of the correlation function of a \
 composite operator.\
 \>", "Text",
- CellID->1534169418,ExpressionUUID->"26f6dcbf-3cf6-412c-9371-a7deee5a8148"],
+ CellID->1534169418,
+ $CellContext`ExpressionUUID -> "26f6dcbf-3cf6-412c-9371-a7deee5a8148"],
 
 Cell[BoxData[
  RowBox[{"Needs", "[", "\"\<DoFun`\>\"", "]"}]], "Input",
  CellLabel->"In[1]:=",
- CellID->209391430,ExpressionUUID->"1ff1bd9a-0843-46ed-a064-1d50b3e92bbc"],
+ CellID->209391430,
+ $CellContext`ExpressionUUID -> "1ff1bd9a-0843-46ed-a064-1d50b3e92bbc"],
 
 Cell[CellGroupData[{
 
 Cell["Correlation function", "Section",
- CellID->352696352,ExpressionUUID->"e3fb4719-b3d9-4dde-a8f6-45b07a625c46"],
+ CellID->352696352,
+ $CellContext`ExpressionUUID -> "e3fb4719-b3d9-4dde-a8f6-45b07a625c46"],
 
 Cell["\<\
 We consider the traceless part of the energy-momentum tensor of Yang-Mills \
 theory as composite operator and calculate its two-point function.\
-\>", "Text",ExpressionUUID->"98396ad5-1738-4ee7-b277-34ede89b0c81"],
+\>", "Text",
+ $CellContext`ExpressionUUID -> "98396ad5-1738-4ee7-b277-34ede89b0c81"],
 
 Cell["\<\
 First we need to define the gluon and the composite field. Ghosts are \
 neglected as they do not contribute here.\
 \>", "Text",
- CellID->637537573,ExpressionUUID->"ac0f9890-4c33-478b-8c93-075a0febc4d8"],
+ CellID->637537573,
+ $CellContext`ExpressionUUID -> "ac0f9890-4c33-478b-8c93-075a0febc4d8"],
 
 Cell[BoxData[
  RowBox[{
@@ -115,10 +118,12 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"A", ",", "FF"}], "}"}], "]"}], ";"}]], "Input",
  CellLabel->"In[199]:=",
- CellID->1828523255,ExpressionUUID->"8052f436-6910-451e-a48d-74d7a62c3791"],
+ CellID->1828523255,
+ $CellContext`ExpressionUUID -> "8052f436-6910-451e-a48d-74d7a62c3791"],
 
 Cell["The action in symbolic form reads:", "Text",
- CellID->2044985598,ExpressionUUID->"3663640c-3d00-467d-847c-82370d90f230"],
+ CellID->2044985598,
+ $CellContext`ExpressionUUID -> "3663640c-3d00-467d-847c-82370d90f230"],
 
 Cell[BoxData[
  RowBox[{
@@ -132,27 +137,28 @@ Cell[BoxData[
      RowBox[{"{", 
       RowBox[{"A", ",", "A", ",", "A", ",", "A"}], "}"}]}], "}"}]}], 
   ";"}]], "Input",
- CellLabel->
-  "In[200]:=",ExpressionUUID->"df178519-8af2-4e20-a652-9bac1962038e"],
+ CellLabel->"In[200]:=",
+ $CellContext`ExpressionUUID -> "df178519-8af2-4e20-a652-9bac1962038e"],
 
 Cell[TextData[{
  "Schematically the composite operator has term of the form ",
  Cell[BoxData[
   FormBox[
-   SuperscriptBox["A", "2"], TraditionalForm]],ExpressionUUID->
-  "a56cac9b-db95-41d7-a077-414cd71c53c9"],
+   SuperscriptBox["A", "2"], TraditionalForm]],
+  $CellContext`ExpressionUUID -> "a56cac9b-db95-41d7-a077-414cd71c53c9"],
  ", ",
  Cell[BoxData[
   FormBox[
-   SuperscriptBox["A", "3"], TraditionalForm]],ExpressionUUID->
-  "c34756a1-c035-4e2f-b3fc-806325c0612c"],
+   SuperscriptBox["A", "3"], TraditionalForm]],
+  $CellContext`ExpressionUUID -> "c34756a1-c035-4e2f-b3fc-806325c0612c"],
  " and ",
  Cell[BoxData[
   FormBox[
-   SuperscriptBox["A", "4"], TraditionalForm]],ExpressionUUID->
-  "20d2f640-5563-4aeb-aa2d-986da263448e"],
+   SuperscriptBox["A", "4"], TraditionalForm]],
+  $CellContext`ExpressionUUID -> "20d2f640-5563-4aeb-aa2d-986da263448e"],
  ".\nWe define it as follows:"
-}], "Text",ExpressionUUID->"5efe8e91-4e84-4467-9f25-d1dc6ab50042"],
+}], "Text",
+ $CellContext`ExpressionUUID -> "5efe8e91-4e84-4467-9f25-d1dc6ab50042"],
 
 Cell[BoxData[{
  RowBox[{"Clear", "@", "F"}], "\[IndentingNewLine]", 
@@ -226,8 +232,8 @@ Cell[BoxData[{
          RowBox[{"{", 
           RowBox[{"A", ",", "j9"}], "}"}]}], "]"}], "/", 
        RowBox[{"4", "!"}]}]}], "}"}]}], "]"}]}]}], "Input",
- CellLabel->
-  "In[201]:=",ExpressionUUID->"31609bc0-0cd8-40f7-ba46-b138bd411567"],
+ CellLabel->"In[201]:=",
+ $CellContext`ExpressionUUID -> "31609bc0-0cd8-40f7-ba46-b138bd411567"],
 
 Cell[TextData[{
  "For the two-point function we consider individual components of the form ",
@@ -236,10 +242,11 @@ Cell[TextData[{
    RowBox[{"<", " ", 
     RowBox[{
      SuperscriptBox["A", "n"], " ", 
-     SuperscriptBox["A", "m"]}], ">"}], TraditionalForm]],ExpressionUUID->
-  "5f572db7-19fd-4677-b3bc-09a09adfd156"],
+     SuperscriptBox["A", "m"]}], ">"}], TraditionalForm]],
+  $CellContext`ExpressionUUID -> "5f572db7-19fd-4677-b3bc-09a09adfd156"],
  ":"
-}], "Text",ExpressionUUID->"a9d71118-5235-47a0-83cc-b8f19011c594"],
+}], "Text",
+ $CellContext`ExpressionUUID -> "a9d71118-5235-47a0-83cc-b8f19011c594"],
 
 Cell[BoxData[{
  RowBox[{"Clear", "[", "pi", "]"}], "\[IndentingNewLine]", 
@@ -256,13 +263,14 @@ Cell[BoxData[{
      RowBox[{"F", "[", "j", "]"}], "[", 
      RowBox[{"[", 
       RowBox[{"l", "-", "1"}], "]"}], "]"}]}], "]"}]}]}], "Input",
- CellLabel->
-  "In[203]:=",ExpressionUUID->"8d16e454-faa7-4e94-8d3d-a4808daba6dd"],
+ CellLabel->"In[203]:=",
+ $CellContext`ExpressionUUID -> "8d16e454-faa7-4e94-8d3d-a4808daba6dd"],
 
 Cell["\<\
 We will derive only contributions up to two-loop. The following terms \
 contribute:\
-\>", "Text",ExpressionUUID->"6f52b930-c610-4fed-a948-3bde5024f967"],
+\>", "Text",
+ $CellContext`ExpressionUUID -> "6f52b930-c610-4fed-a948-3bde5024f967"],
 
 Cell[BoxData[
  RowBox[{
@@ -280,8 +288,8 @@ Cell[BoxData[
      RowBox[{"i", ",", "j", ",", "2", ",", "4"}], "]"}], "+", 
     RowBox[{"pi", "[", 
      RowBox[{"i", ",", "j", ",", "4", ",", "2"}], "]"}]}]}], ";"}]], "Input",
- CellLabel->
-  "In[205]:=",ExpressionUUID->"644c4135-d43d-4a25-9c8d-83ef90fccc58"],
+ CellLabel->"In[205]:=",
+ $CellContext`ExpressionUUID -> "644c4135-d43d-4a25-9c8d-83ef90fccc58"],
 
 Cell[TextData[{
  "We can derive the correlation function with ",
@@ -289,10 +297,11 @@ Cell[TextData[{
   TemplateBox[{Cell[
      TextData["doCO"]],"paclet:DoFun/ref/doCO"},
    "RefLink",
-   BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
-  "df4dc4ef-25f0-4a41-b70c-3e209a1de92f"],
+   BaseStyle->{"InlineFormula"}]], "InlineFormula",
+  $CellContext`ExpressionUUID -> "df4dc4ef-25f0-4a41-b70c-3e209a1de92f"],
  ". The last argument restricts the results to one- and two-loop terms:"
-}], "Text",ExpressionUUID->"b7707d66-50b6-4d23-85b0-98cda8f50ed2"],
+}], "Text",
+ $CellContext`ExpressionUUID -> "b7707d66-50b6-4d23-85b0-98cda8f50ed2"],
 
 Cell[BoxData[
  RowBox[{
@@ -303,10 +312,11 @@ Cell[BoxData[
       RowBox[{
        RowBox[{"getLoopNumber", "[", "#", "]"}], "\[LessEqual]", "2"}], 
       "&"}]}], "]"}]}], ";"}]], "Input",
- CellLabel->
-  "In[206]:=",ExpressionUUID->"a2484ffb-d8ac-4235-9a93-173fe7a41d6b"],
+ CellLabel->"In[206]:=",
+ $CellContext`ExpressionUUID -> "a2484ffb-d8ac-4235-9a93-173fe7a41d6b"],
 
-Cell["We separate the connected and disconnected parts:", "Text",ExpressionUUID->"87c87dc6-835e-4624-9269-5e1849f8c886"],
+Cell["We separate the connected and disconnected parts:", "Text",
+ $CellContext`ExpressionUUID -> "87c87dc6-835e-4624-9269-5e1849f8c886"],
 
 Cell[BoxData[{
  RowBox[{
@@ -315,19 +325,20 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"GDisconn", "=", 
    RowBox[{"getDisconnected", "[", "G4", "]"}]}], ";"}]}], "Input",
- CellLabel->
-  "In[207]:=",ExpressionUUID->"f78f1bb8-807d-443b-94c9-7f80e8701db6"],
+ CellLabel->"In[207]:=",
+ $CellContext`ExpressionUUID -> "f78f1bb8-807d-443b-94c9-7f80e8701db6"],
 
 Cell["The disconnected part looks like this:", "Text",
- CellID->480690062,ExpressionUUID->"b3ac57b7-3c28-49aa-934c-09a5313bab9f"],
+ CellID->480690062,
+ $CellContext`ExpressionUUID -> "b3ac57b7-3c28-49aa-934c-09a5313bab9f"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DSEPlot", "[", 
   RowBox[{"GDisconn", ",", "fieldRules"}], "]"}]], "Input",
- CellLabel->
-  "In[209]:=",ExpressionUUID->"95f40231-681a-48c7-9869-498815ed9df0"],
+ CellLabel->"In[209]:=",
+ $CellContext`ExpressionUUID -> "95f40231-681a-48c7-9869-498815ed9df0"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -1746,17 +1757,19 @@ Cell[BoxData[
    AutoDelete->False,
    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
   "Grid"]], "Output",
- ImageSize->{786, 413},
+ ImageSize->{782, 406},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[209]=",
- CellID->517592518,ExpressionUUID->"e7e7626e-8b46-4f98-b41e-1eaf35648700"]
+ CellID->517592518,
+ $CellContext`ExpressionUUID -> "e7e7626e-8b46-4f98-b41e-1eaf35648700"]
 }, Open  ]],
 
 Cell["\<\
 The connected part contains some identical diagrams which we can sum up:\
 \>", "Text",
- CellID->1052497239,ExpressionUUID->"8e7774ef-689b-4c42-9056-047da2c6fef4"],
+ CellID->1052497239,
+ $CellContext`ExpressionUUID -> "8e7774ef-689b-4c42-9056-047da2c6fef4"],
 
 Cell[BoxData[
  RowBox[{
@@ -1769,19 +1782,20 @@ Cell[BoxData[
         RowBox[{"FF", ",", "i"}], "}"}], ",", 
        RowBox[{"{", 
         RowBox[{"FF", ",", "j"}], "}"}]}], "}"}]}], "]"}]}], ";"}]], "Input",
- CellLabel->
-  "In[210]:=",ExpressionUUID->"67bf13c2-78a5-42c3-89d8-861b351c43a6"],
+ CellLabel->"In[210]:=",
+ $CellContext`ExpressionUUID -> "67bf13c2-78a5-42c3-89d8-861b351c43a6"],
 
 Cell["The connected part looks like this:", "Text",
- CellID->444789562,ExpressionUUID->"e0beb3e1-a39f-459a-8d15-bfafe96b0faf"],
+ CellID->444789562,
+ $CellContext`ExpressionUUID -> "e0beb3e1-a39f-459a-8d15-bfafe96b0faf"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DSEPlot", "[", 
   RowBox[{"GConnId", ",", "fieldRules"}], "]"}]], "Input",
- CellLabel->
-  "In[211]:=",ExpressionUUID->"c0ac6c9d-31cb-4e0e-8561-25229ac66a7d"],
+ CellLabel->"In[211]:=",
+ $CellContext`ExpressionUUID -> "c0ac6c9d-31cb-4e0e-8561-25229ac66a7d"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -3593,17 +3607,19 @@ Cell[BoxData[
    AutoDelete->False,
    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
   "Grid"]], "Output",
- ImageSize->{754, 155},
+ ImageSize->{754, 147},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[211]=",
- CellID->896364580,ExpressionUUID->"f3f0dac4-b3c0-490b-a81e-289259e6fcaf"]
+ CellID->896364580,
+ $CellContext`ExpressionUUID -> "f3f0dac4-b3c0-490b-a81e-289259e6fcaf"]
 }, Open  ]],
 
 Cell["\<\
 Finally, we are only interested in the 1PI part, because the rest vanishes \
 due to color factors:\
-\>", "Text",ExpressionUUID->"ef679726-72bd-49bd-885e-d077a2146d6f"],
+\>", "Text",
+ $CellContext`ExpressionUUID -> "ef679726-72bd-49bd-885e-d077a2146d6f"],
 
 Cell[CellGroupData[{
 
@@ -3613,8 +3629,8 @@ Cell[BoxData[{
    RowBox[{"get1PI", "[", "GConnId", "]"}]}], ";"}], "\n", 
  RowBox[{"DSEPlot", "[", 
   RowBox[{"G", ",", "fieldRules"}], "]"}]}], "Input",
- CellLabel->
-  "In[212]:=",ExpressionUUID->"ba50b092-8dec-47e8-ab33-52874dc36ebb"],
+ CellLabel->"In[212]:=",
+ $CellContext`ExpressionUUID -> "ba50b092-8dec-47e8-ab33-52874dc36ebb"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -4815,17 +4831,19 @@ Cell[BoxData[
    AutoDelete->False,
    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
   "Grid"]], "Output",
- ImageSize->{754, 100},
+ ImageSize->{754, 93},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[213]=",
- CellID->414101407,ExpressionUUID->"5b2249f3-45f0-472f-bdf2-edf07ec8e513"]
+ CellID->414101407,
+ $CellContext`ExpressionUUID -> "5b2249f3-45f0-472f-bdf2-edf07ec8e513"]
 }, Open  ]],
 
 Cell["\<\
 To obtain the algebraic expression, we first define the indices of the fields:\
 \>", "Text",
- CellID->1000162823,ExpressionUUID->"e27086ae-fed9-4bfd-9cbc-507dd39bd937"],
+ CellID->1000162823,
+ $CellContext`ExpressionUUID -> "e27086ae-fed9-4bfd-9cbc-507dd39bd937"],
 
 Cell[CellGroupData[{
 
@@ -4838,8 +4856,8 @@ Cell[BoxData[
     RowBox[{"FF", "[", 
      RowBox[{"mom", ",", "lors", ",", "lors"}], "]"}]}], "}"}], 
   "]"}]], "Input",
- CellLabel->
-  "In[214]:=",ExpressionUUID->"00e37549-5489-4f44-ad30-bee5742421c4"],
+ CellLabel->"In[214]:=",
+ $CellContext`ExpressionUUID -> "00e37549-5489-4f44-ad30-bee5742421c4"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -4848,11 +4866,12 @@ Cell[BoxData[
     RowBox[{"mom", ",", "col", ",", "lor"}], "]"}], ",", 
    RowBox[{"FF", "[", 
     RowBox[{"mom", ",", "lors", ",", "lors"}], "]"}]}], "}"}]], "Output",
- ImageSize->{297, 17},
+ ImageSize->{310, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[214]=",
- CellID->2114113590,ExpressionUUID->"a7cade95-554e-4e37-9b24-27f55ee8264a"]
+ CellID->2114113590,
+ $CellContext`ExpressionUUID -> "a7cade95-554e-4e37-9b24-27f55ee8264a"]
 }, Open  ]],
 
 Cell[TextData[{
@@ -4861,12 +4880,13 @@ Cell[TextData[{
   TemplateBox[{Cell[
      TextData["getAE"]],"paclet:DoFun/ref/getAE"},
    "RefLink",
-   BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
-  "b898838f-d1f8-4c15-883e-08c556f5d782"],
+   BaseStyle->{"InlineFormula"}]], "InlineFormula",
+  $CellContext`ExpressionUUID -> "b898838f-d1f8-4c15-883e-08c556f5d782"],
  " we transform the symbolic to the algebraic expression. Since no \
 propagators and vertices were defined, we see their raw form:"
 }], "Text",
- CellID->1123835038,ExpressionUUID->"6299c326-ff29-4033-bfae-18be5369c04b"],
+ CellID->1123835038,
+ $CellContext`ExpressionUUID -> "6299c326-ff29-4033-bfae-18be5369c04b"],
 
 Cell[CellGroupData[{
 
@@ -4881,7 +4901,8 @@ Cell[BoxData[
       RowBox[{"FF", ",", "j", ",", 
        RowBox[{"-", "p"}], ",", "m", ",", "n"}], "}"}]}], "}"}]}], 
   "]"}]], "Input",
- CellLabel->"In[66]:=",ExpressionUUID->"971f714c-821f-40bd-b730-d653ca91bc82"],
+ CellLabel->"In[66]:=",
+ $CellContext`ExpressionUUID -> "971f714c-821f-40bd-b730-d653ca91bc82"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -5500,21 +5521,22 @@ Cell[BoxData[
          RowBox[{"-", "q1"}], "-", "q2"}], ",", "b$46801", ",", 
         "\[Sigma]$46808"}], "]"}], ",", 
       RowBox[{"explicit", "\[Rule]", "True"}]}], "]"}]}]}], "}"}]], "Output",
- ImageSize->{574, 1551},
+ ImageSize->{574, 1527},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[66]=",
- CellID->1539382008,ExpressionUUID->"7d2f498d-32c4-48f4-abde-2a6b5e1fcde6"]
+ CellID->1539382008,
+ $CellContext`ExpressionUUID -> "7d2f498d-32c4-48f4-abde-2a6b5e1fcde6"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
-Cell[" ", "FooterCell",ExpressionUUID->"cf845400-2337-4249-9940-330adfc357ea"]
+Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"Composite operators",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "TutorialColor", 
@@ -5525,7 +5547,7 @@ TaggingRules->{
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
     Left], "ExampleCounter" -> 1, "NeedPlatMsgIn" -> None, "RootCaptions" -> 
   "", "Metadata" -> {
-   "built" -> "{2019, 8, 7, 9, 22, 9.475223}", 
+   "built" -> "{2019, 10, 25, 10, 14, 15.469449}", 
     "history" -> {"0.0", "", "", ""}, "context" -> "DoFun`", "keywords" -> {},
      "specialkeywords" -> {}, "tutorialcollectionlinks" -> {}, "index" -> 
     True, "label" -> "Do Fun Tutorial", "language" -> "en", "paclet" -> 
@@ -5535,12 +5557,11 @@ composite operator. We consider the traceless part of the energy-momentum \
 tensor of Yang-Mills theory as composite operator and calculate its two-point \
 function. First we need to define the gluon and the composite field. Ghosts \
 are neglected as they do not contribute here.", "synonyms" -> {}, "tabletags" -> 
-    DocumentationBuild`Make`Private`tabletaggingrules$83488, "title" -> 
+    DocumentationBuild`Make`Private`tabletaggingrules$70956, "title" -> 
     "Composite operators", "titlemodifier" -> "", "windowtitle" -> 
     "Composite operators", "type" -> "Tutorial", "uri" -> 
-    "DoFun/tutorial/Composite operators", "WorkflowDockedCell" -> ""}, 
-  "SearchTextTranslated" -> ""},
-FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+    "DoFun/tutorial/Composite operators"}, "SearchTextTranslated" -> ""},
+FrontEndVersion->"10.0 for Linux x86 (64-bit) (June 27, 2014)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -5558,7 +5579,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["TutorialRelatedLinksSection"], 
     CellGroupingRules -> {"SectionGrouping", 30}]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  FrontEndVersion -> "10.0 for Linux x86 (64-bit) (June 27, 2014)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -5572,76 +5593,76 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[591, 21, 2617, 56, 56, "AnchorBarGrid",ExpressionUUID->"ee7f9ea7-522e-4aaa-b0a8-2871ae447d2d",
+Cell[591, 21, 2324, 53, 52, "AnchorBarGrid",
  CellID->1],
 Cell[CellGroupData[{
-Cell[3233, 81, 111, 1, 65, "Title",ExpressionUUID->"3ebb936a-314c-4c26-af91-0f4182e2e42e",
+Cell[2940, 78, 128, 2, 52, "Title",
  CellID->509267359],
-Cell[3347, 84, 193, 4, 36, "Text",ExpressionUUID->"26f6dcbf-3cf6-412c-9371-a7deee5a8148",
+Cell[3071, 82, 210, 5, 32, "Text",
  CellID->1534169418],
-Cell[3543, 90, 169, 3, 29, "Input",ExpressionUUID->"1ff1bd9a-0843-46ed-a064-1d50b3e92bbc",
+Cell[3284, 89, 186, 4, 27, "Input",
  CellID->209391430],
 Cell[CellGroupData[{
-Cell[3737, 97, 114, 1, 71, "Section",ExpressionUUID->"e3fb4719-b3d9-4dde-a8f6-45b07a625c46",
+Cell[3495, 97, 131, 2, 65, "Section",
  CellID->352696352],
-Cell[3854, 100, 222, 3, 60, "Text",ExpressionUUID->"98396ad5-1738-4ee7-b277-34ede89b0c81"],
-Cell[4079, 105, 212, 4, 60, "Text",ExpressionUUID->"ac0f9890-4c33-478b-8c93-075a0febc4d8",
+Cell[3629, 101, 239, 4, 52, "Text"],
+Cell[3871, 107, 229, 5, 52, "Text",
  CellID->637537573],
-Cell[4294, 111, 231, 6, 29, "Input",ExpressionUUID->"8052f436-6910-451e-a48d-74d7a62c3791",
+Cell[4103, 114, 248, 7, 27, "Input",
  CellID->1828523255],
-Cell[4528, 119, 126, 1, 36, "Text",ExpressionUUID->"3663640c-3d00-467d-847c-82370d90f230",
+Cell[4354, 123, 143, 2, 32, "Text",
  CellID->2044985598],
-Cell[4657, 122, 406, 13, 29, "Input",ExpressionUUID->"df178519-8af2-4e20-a652-9bac1962038e"],
-Cell[5066, 137, 592, 17, 72, "Text",ExpressionUUID->"5efe8e91-4e84-4467-9f25-d1dc6ab50042"],
-Cell[5661, 156, 2558, 73, 144, "Input",ExpressionUUID->"31609bc0-0cd8-40f7-ba46-b138bd411567"],
-Cell[8222, 231, 381, 10, 70, "Text",ExpressionUUID->"a9d71118-5235-47a0-83cc-b8f19011c594"],
-Cell[8606, 243, 553, 16, 70, "Input",ExpressionUUID->"8d16e454-faa7-4e94-8d3d-a4808daba6dd"],
-Cell[9162, 261, 162, 3, 70, "Text",ExpressionUUID->"6f52b930-c610-4fed-a948-3bde5024f967"],
-Cell[9327, 266, 677, 17, 70, "Input",ExpressionUUID->"644c4135-d43d-4a25-9c8d-83ef90fccc58"],
-Cell[10007, 285, 414, 9, 70, "Text",ExpressionUUID->"b7707d66-50b6-4d23-85b0-98cda8f50ed2"],
-Cell[10424, 296, 335, 10, 70, "Input",ExpressionUUID->"a2484ffb-d8ac-4235-9a93-173fe7a41d6b"],
-Cell[10762, 308, 120, 0, 70, "Text",ExpressionUUID->"87c87dc6-835e-4624-9269-5e1849f8c886"],
-Cell[10885, 310, 316, 8, 70, "Input",ExpressionUUID->"f78f1bb8-807d-443b-94c9-7f80e8701db6"],
-Cell[11204, 320, 129, 1, 70, "Text",ExpressionUUID->"b3ac57b7-3c28-49aa-934c-09a5313bab9f",
+Cell[4500, 127, 420, 13, 27, "Input"],
+Cell[4923, 142, 654, 18, 66, "Text"],
+Cell[5580, 162, 2572, 73, 130, "Input"],
+Cell[8155, 237, 413, 11, 32, "Text"],
+Cell[8571, 250, 567, 16, 45, "Input"],
+Cell[9141, 268, 179, 4, 32, "Text"],
+Cell[9323, 274, 691, 17, 45, "Input"],
+Cell[10017, 293, 446, 10, 53, "Text"],
+Cell[10466, 305, 349, 10, 27, "Input"],
+Cell[10818, 317, 137, 1, 32, "Text"],
+Cell[10958, 320, 330, 8, 45, "Input"],
+Cell[11291, 330, 146, 2, 32, "Text",
  CellID->480690062],
 Cell[CellGroupData[{
-Cell[11358, 325, 182, 4, 70, "Input",ExpressionUUID->"95f40231-681a-48c7-9869-498815ed9df0"],
-Cell[11543, 331, 69723, 1421, 70, "Output",ExpressionUUID->"e7e7626e-8b46-4f98-b41e-1eaf35648700",
+Cell[11462, 336, 196, 4, 27, "Input"],
+Cell[11661, 342, 69740, 1422, 427, "Output",
  CellID->517592518]
 }, Open  ]],
-Cell[81281, 1755, 172, 3, 70, "Text",ExpressionUUID->"8e7774ef-689b-4c42-9056-047da2c6fef4",
+Cell[81416, 1767, 189, 4, 32, "Text",
  CellID->1052497239],
-Cell[81456, 1760, 396, 12, 70, "Input",ExpressionUUID->"67bf13c2-78a5-42c3-89d8-861b351c43a6"],
-Cell[81855, 1774, 126, 1, 70, "Text",ExpressionUUID->"e0beb3e1-a39f-459a-8d15-bfafe96b0faf",
+Cell[81608, 1773, 410, 12, 27, "Input"],
+Cell[82021, 1787, 143, 2, 32, "Text",
  CellID->444789562],
 Cell[CellGroupData[{
-Cell[82006, 1779, 181, 4, 70, "Input",ExpressionUUID->"c0ac6c9d-31cb-4e0e-8561-25229ac66a7d"],
-Cell[82190, 1785, 89730, 1814, 70, "Output",ExpressionUUID->"f3f0dac4-b3c0-490b-a81e-289259e6fcaf",
+Cell[82189, 1793, 195, 4, 27, "Input"],
+Cell[82387, 1799, 89747, 1815, 168, "Output",
  CellID->896364580]
 }, Open  ]],
-Cell[171935, 3602, 177, 3, 70, "Text",ExpressionUUID->"ef679726-72bd-49bd-885e-d077a2146d6f"],
+Cell[172149, 3617, 194, 4, 32, "Text"],
 Cell[CellGroupData[{
-Cell[172137, 3609, 268, 7, 70, "Input",ExpressionUUID->"ba50b092-8dec-47e8-ab33-52874dc36ebb"],
-Cell[172408, 3618, 59223, 1203, 70, "Output",ExpressionUUID->"5b2249f3-45f0-472f-bdf2-edf07ec8e513",
+Cell[172368, 3625, 282, 7, 45, "Input"],
+Cell[172653, 3634, 59239, 1204, 114, "Output",
  CellID->414101407]
 }, Open  ]],
-Cell[231646, 4824, 178, 3, 70, "Text",ExpressionUUID->"e27086ae-fed9-4bfd-9cbc-507dd39bd937",
+Cell[231907, 4841, 195, 4, 32, "Text",
  CellID->1000162823],
 Cell[CellGroupData[{
-Cell[231849, 4831, 353, 10, 70, "Input",ExpressionUUID->"00e37549-5489-4f44-ad30-bee5742421c4"],
-Cell[232205, 4843, 405, 11, 38, "Output",ExpressionUUID->"a7cade95-554e-4e37-9b24-27f55ee8264a",
+Cell[232127, 4849, 367, 10, 27, "Input"],
+Cell[232497, 4861, 422, 12, 36, "Output",
  CellID->2114113590]
 }, Open  ]],
-Cell[232625, 4857, 457, 11, 70, "Text",ExpressionUUID->"6299c326-ff29-4033-bfae-18be5369c04b",
+Cell[232934, 4876, 489, 12, 53, "Text",
  CellID->1123835038],
 Cell[CellGroupData[{
-Cell[233107, 4872, 403, 11, 70, "Input",ExpressionUUID->"971f714c-821f-40bd-b730-d653ca91bc82"],
-Cell[233513, 4885, 21737, 621, 1572, "Output",ExpressionUUID->"7d2f498d-32c4-48f4-abde-2a6b5e1fcde6",
+Cell[233448, 4892, 420, 12, 27, "Input"],
+Cell[233871, 4906, 21754, 622, 1548, "Output",
  CellID->1539382008]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[255289, 5511, 78, 0, 70, "FooterCell",ExpressionUUID->"cf845400-2337-4249-9940-330adfc357ea"]
+Cell[255664, 5533, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

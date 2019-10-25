@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 11.3' *)
+(* CreatedBy='Mathematica 10.0' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5579,        153]
-NotebookOptionsPosition[      3519,        103]
-NotebookOutlinePosition[      5316,        151]
-CellTagsIndexPosition[      5273,        148]
+NotebookDataLength[      5739,        161]
+NotebookOptionsPosition[      3865,        111]
+NotebookOutlinePosition[      5695,        159]
+CellTagsIndexPosition[      5652,        156]
 WindowTitle->getNon1PI
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$50724], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$39513], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "DoFun/ref/getNon1PI",
              ".html"]], None}]}]},
@@ -78,8 +78,13 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
 Cell[TextData[{
  Cell["getNon1PI", "ObjectName"],
  Cell[BoxData[
-  TemplateBox[{8},
-   "Spacer1"]]],
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
  Cell[BoxData[""], "ObjectNameTranslation"]
 }], "ObjectNameGrid"],
 
@@ -87,17 +92,20 @@ Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{"getNon1PI", "[", 
-       StyleBox["expr", "TI"], "]"}]], "InlineFormula"],
+       StyleBox["expr", "TI"], "]"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "acf989a4-a4eb-4b01-ad52-f6ba3dd10c6d"],
      "\[LineSeparator]return the diagrams from ",
      Cell[BoxData[
-      StyleBox["expr", "TI"]], "InlineFormula"],
+      StyleBox["expr", "TI"]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "85a96861-6f1b-4655-a950-d95d7d9ff9ce"],
      " which are not 1PI."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
-   "RowsIndexed" -> {}}}],
+   "RowsIndexed" -> {}}},
+ $CellContext`ExpressionUUID -> "7074da62-82a1-4f7a-b78e-f3066eb96dd1"],
 
 Cell[" ", "FooterCell"]
 },
@@ -116,7 +124,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 8, 7, 9, 21, 15.673959}", 
+   "built" -> "{2019, 10, 25, 10, 13, 20.145700}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -125,9 +133,9 @@ TaggingRules->{
     "getNon1PI[expr] return the diagrams from expr which are not 1PI.", 
     "synonyms" -> {}, "tabletags" -> {}, "title" -> "getNon1PI", 
     "titlemodifier" -> "", "windowtitle" -> "getNon1PI", "type" -> "Symbol", 
-    "uri" -> "DoFun/ref/getNon1PI"}},
+    "uri" -> "DoFun/ref/getNon1PI"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+FrontEndVersion->"10.0 for Linux x86 (64-bit) (June 27, 2014)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -136,7 +144,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  FrontEndVersion -> "10.0 for Linux x86 (64-bit) (June 27, 2014)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -150,11 +158,11 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[581, 21, 2274, 54, 70, "AnchorBarGrid",ExpressionUUID->"672ce331-fa0a-4036-8a33-feea289363e8",
+Cell[581, 21, 2274, 54, 70, "AnchorBarGrid",
  CellID->1],
-Cell[2858, 77, 166, 6, 70, "ObjectNameGrid",ExpressionUUID->"8c309215-a5db-4ed6-aebe-1f52fd8b35c1"],
-Cell[3027, 85, 462, 14, 70, "Usage",ExpressionUUID->"7074da62-82a1-4f7a-b78e-f3066eb96dd1"],
-Cell[3492, 101, 23, 0, 70, "FooterCell",ExpressionUUID->"52b6a4cd-2913-4c2e-80f7-17d2213b5054"]
+Cell[2858, 77, 286, 11, 70, "ObjectNameGrid"],
+Cell[3147, 90, 688, 17, 70, "Usage"],
+Cell[3838, 109, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

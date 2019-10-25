@@ -3,32 +3,31 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 11.3' *)
+(* CreatedBy='Mathematica 10.0' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    189822,       4314]
-NotebookOptionsPosition[    178195,       4072]
-NotebookOutlinePosition[    180791,       4133]
-CellTagsIndexPosition[    180748,       4130]
+NotebookDataLength[    186611,       4383]
+NotebookOptionsPosition[    179071,       4141]
+NotebookOutlinePosition[    181643,       4202]
+CellTagsIndexPosition[    181600,       4199]
 WindowTitle->Scalar O(N) symmetric theory
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["DO FUN TUTORIAL", "PacletNameCell",ExpressionUUID->
-     "62663b6a-5442-4025-939d-786e99d6424c"], Cell[TextData[Cell[BoxData[
+   {Cell["DO FUN TUTORIAL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
      ActionMenuBox[
       FrameBox[
        InterpretationBox[Cell[TextData[{
          "URL",
          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
           StripOnInput->False]
-        }],ExpressionUUID->"f4c826e2-c9b7-47b2-b9c4-1c61f310e543"],
+        }]],
         TextCell[
          Row[{"URL", 
            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
@@ -62,7 +61,7 @@ O(N) symmetric theory.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$85966], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$73445], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/tutorial/Scalar O(N) symmetric theory", ".html"]], 
@@ -70,51 +69,56 @@ O(N) symmetric theory.html"], StandardForm]], "Input", TextClipboardType ->
       Appearance->None,
       MenuAppearance->Automatic,
       MenuStyle->"URLMenu"]],
-     LineSpacing->{1.4, 0},ExpressionUUID->
-     "236ff06a-c686-4e02-9889-500952eac97a"]], "AnchorBar",ExpressionUUID->
-     "b50fe675-a917-43be-8068-977691b3a5d7"]}
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
       Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
    "RowsIndexed" -> {}}},
- CellID->1,ExpressionUUID->"45f330a4-09a7-408b-b6e9-ce6e7d5a0d04"],
+ CellID->1],
 
 Cell[CellGroupData[{
 
 Cell["Scalar O(N) symmetric theory", "Title",
- CellID->509267359,ExpressionUUID->"3ebb936a-314c-4c26-af91-0f4182e2e42e"],
+ CellID->509267359,
+ $CellContext`ExpressionUUID -> "3ebb936a-314c-4c26-af91-0f4182e2e42e"],
 
 Cell["\<\
 This tutorial describes the derivations of the FRGEs of a scalar O(N) \
 symmetric theory.\
 \>", "Text",
- CellID->1534169418,ExpressionUUID->"26f6dcbf-3cf6-412c-9371-a7deee5a8148"],
+ CellID->1534169418,
+ $CellContext`ExpressionUUID -> "26f6dcbf-3cf6-412c-9371-a7deee5a8148"],
 
 Cell[BoxData[
  RowBox[{"Needs", "[", "\"\<DoFun`\>\"", "]"}]], "Input",
  CellLabel->"In[1]:=",
- CellID->209391430,ExpressionUUID->"1ff1bd9a-0843-46ed-a064-1d50b3e92bbc"],
+ CellID->209391430,
+ $CellContext`ExpressionUUID -> "1ff1bd9a-0843-46ed-a064-1d50b3e92bbc"],
 
 Cell[CellGroupData[{
 
 Cell["Symmetric phase", "Section",
- CellID->352696352,ExpressionUUID->"e3fb4719-b3d9-4dde-a8f6-45b07a625c46"],
+ CellID->352696352,
+ $CellContext`ExpressionUUID -> "e3fb4719-b3d9-4dde-a8f6-45b07a625c46"],
 
 Cell[CellGroupData[{
 
 Cell["Symbolic derivation", "Subsection",
- CellID->447702864,ExpressionUUID->"f7f4f93f-e629-4e0e-8564-a2b7201ebb48"],
+ CellID->447702864,
+ $CellContext`ExpressionUUID -> "f7f4f93f-e629-4e0e-8564-a2b7201ebb48"],
 
 Cell["First we need to define the field phi as a bosonic field.", "Text",
- CellID->637537573,ExpressionUUID->"ac0f9890-4c33-478b-8c93-075a0febc4d8"],
+ CellID->637537573,
+ $CellContext`ExpressionUUID -> "ac0f9890-4c33-478b-8c93-075a0febc4d8"],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"setFields", "[", 
    RowBox[{"{", "phi", "}"}], "]"}], ";"}]], "Input",
  CellLabel->"In[265]:=",
- CellID->1828523255,ExpressionUUID->"8052f436-6910-451e-a48d-74d7a62c3791"],
+ CellID->1828523255,
+ $CellContext`ExpressionUUID -> "8052f436-6910-451e-a48d-74d7a62c3791"],
 
 Cell["\<\
 Then we need the action in symbolic form. The following definition gives an \
@@ -122,7 +126,8 @@ action with a field phi which only possess interactions with an even number \
 of fields involved up to the ten-point functions. Including terms up to this \
 order guarantees we get all terms.\
 \>", "Text",
- CellID->2044985598,ExpressionUUID->"3663640c-3d00-467d-847c-82370d90f230"],
+ CellID->2044985598,
+ $CellContext`ExpressionUUID -> "3663640c-3d00-467d-847c-82370d90f230"],
 
 Cell[BoxData[
  RowBox[{
@@ -132,10 +137,12 @@ Cell[BoxData[
      RowBox[{"phi", ",", "10", ",", "even"}], "}"}], "}"}]}], ";"}]], "Input",\
 
  CellLabel->"In[266]:=",
- CellID->2006072305,ExpressionUUID->"5e8b1a68-0cb4-4379-ad63-898c308a53e3"],
+ CellID->2006072305,
+ $CellContext`ExpressionUUID -> "5e8b1a68-0cb4-4379-ad63-898c308a53e3"],
 
 Cell["The flow equations is obtained with the command doRGE:", "Text",
- CellID->869169588,ExpressionUUID->"799297e2-a324-4918-9ff4-c55c904c2c5c"],
+ CellID->869169588,
+ $CellContext`ExpressionUUID -> "799297e2-a324-4918-9ff4-c55c904c2c5c"],
 
 Cell[CellGroupData[{
 
@@ -145,7 +152,8 @@ Cell[BoxData[
    RowBox[{"actionONSymbolic", ",", " ", 
     RowBox[{"{", "}"}]}], "]"}]}]], "Input",
  CellLabel->"In[267]:=",
- CellID->787565891,ExpressionUUID->"d208bb8c-7781-432f-b160-480e0c875fb3"],
+ CellID->787565891,
+ $CellContext`ExpressionUUID -> "d208bb8c-7781-432f-b160-480e0c875fb3"],
 
 Cell[BoxData[
  RowBox[{
@@ -164,24 +172,27 @@ Cell[BoxData[
        RowBox[{"phi", ",", "s1"}], "}"}], ",", 
       RowBox[{"{", 
        RowBox[{"phi", ",", "r1"}], "}"}]}], "]"}]}], "]"}]}]], "Output",
- ImageSize->{419, 34},
+ ImageSize->{446, 39},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[267]=",
- CellID->279411756,ExpressionUUID->"0a906f1f-93c0-41d1-ba20-0c50af5003e1"]
+ CellID->279411756,
+ $CellContext`ExpressionUUID -> "0a906f1f-93c0-41d1-ba20-0c50af5003e1"]
 }, Open  ]],
 
 Cell["\<\
 The empty list {} tells doRGE that we want the flow equation of the effective \
 average action.\
 \>", "Text",
- CellID->326050506,ExpressionUUID->"d66fb5fd-b12c-4c0b-97e9-d5e37f31881b"],
+ CellID->326050506,
+ $CellContext`ExpressionUUID -> "d66fb5fd-b12c-4c0b-97e9-d5e37f31881b"],
 
 Cell["\<\
 Such symbolic output can be represented graphically with RGEPlot. It is \
 useful to choose a graphical style for the field.\
 \>", "Text",
- CellID->653825058,ExpressionUUID->"ff61d51d-35bb-4314-8793-e76ae6f33f0d"],
+ CellID->653825058,
+ $CellContext`ExpressionUUID -> "ff61d51d-35bb-4314-8793-e76ae6f33f0d"],
 
 Cell[BoxData[
  RowBox[{
@@ -190,13 +201,15 @@ Cell[BoxData[
     RowBox[{"{", 
      RowBox[{"phi", ",", " ", "Black"}], "}"}], "}"}]}], ";"}]], "Input",
  CellLabel->"In[268]:=",
- CellID->912677170,ExpressionUUID->"0969b60a-ce23-4def-b8c7-5b30cd9e503f"],
+ CellID->912677170,
+ $CellContext`ExpressionUUID -> "0969b60a-ce23-4def-b8c7-5b30cd9e503f"],
 
 Cell["\<\
 For RGEPlot we use the option output->forceEquation to show the result in \
 form of an equation.\
 \>", "Text",
- CellID->1412113648,ExpressionUUID->"8d9bb3c0-8988-42d1-8133-8fd3819636fc"],
+ CellID->1412113648,
+ $CellContext`ExpressionUUID -> "8d9bb3c0-8988-42d1-8133-8fd3819636fc"],
 
 Cell[CellGroupData[{
 
@@ -205,7 +218,8 @@ Cell[BoxData[
   RowBox[{"zeroPoint", ",", "fieldStyleON", ",", 
    RowBox[{"output", "\[Rule]", "forceEquation"}]}], "]"}]], "Input",
  CellLabel->"In[269]:=",
- CellID->498075315,ExpressionUUID->"80b46f75-0828-4e2b-b1cc-50ba8339993a"],
+ CellID->498075315,
+ $CellContext`ExpressionUUID -> "80b46f75-0828-4e2b-b1cc-50ba8339993a"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -340,18 +354,20 @@ Cell[BoxData[
    AutoDelete->False,
    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
   "Grid"]], "Output",
- ImageSize->{245, 102},
+ ImageSize->{250, 102},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[269]=",
- CellID->709913794,ExpressionUUID->"1e90421e-1d80-401d-abe6-61db9c3ea77e"]
+ CellID->709913794,
+ $CellContext`ExpressionUUID -> "1e90421e-1d80-401d-abe6-61db9c3ea77e"]
 }, Open  ]],
 
 Cell["\<\
 For the flow of the two-point function we replace the empty list by a list of \
 two-fields:\
 \>", "Text",
- CellID->382199045,ExpressionUUID->"0db88fb8-327e-42e4-90f9-97dcc1e65429"],
+ CellID->382199045,
+ $CellContext`ExpressionUUID -> "0db88fb8-327e-42e4-90f9-97dcc1e65429"],
 
 Cell[CellGroupData[{
 
@@ -362,7 +378,8 @@ Cell[BoxData[
     RowBox[{"{", 
      RowBox[{"phi", ",", "phi"}], "}"}]}], "]"}]}]], "Input",
  CellLabel->"In[270]:=",
- CellID->1816088097,ExpressionUUID->"548ff633-8679-4b95-8659-550b50a0c67a"],
+ CellID->1816088097,
+ $CellContext`ExpressionUUID -> "548ff633-8679-4b95-8659-550b50a0c67a"],
 
 Cell[BoxData[
  RowBox[{
@@ -398,15 +415,17 @@ Cell[BoxData[
        RowBox[{"phi", ",", "t1"}], "}"}], ",", 
       RowBox[{"{", 
        RowBox[{"phi", ",", "u1"}], "}"}]}], "]"}]}], "]"}]}]], "Output",
- ImageSize->{550, 54},
+ ImageSize->{413, 73},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[270]=",
- CellID->548679404,ExpressionUUID->"18d5d90e-e858-4f0b-a20d-8f676119c5f7"]
+ CellID->548679404,
+ $CellContext`ExpressionUUID -> "18d5d90e-e858-4f0b-a20d-8f676119c5f7"]
 }, Open  ]],
 
 Cell["The graphical representation is", "Text",
- CellID->618938046,ExpressionUUID->"34575b3f-c43d-4c3d-a9e1-b0e89a316ac4"],
+ CellID->618938046,
+ $CellContext`ExpressionUUID -> "34575b3f-c43d-4c3d-a9e1-b0e89a316ac4"],
 
 Cell[CellGroupData[{
 
@@ -415,7 +434,8 @@ Cell[BoxData[
   RowBox[{"twoPoint", ",", " ", "fieldStyleON", ",", " ", 
    RowBox[{"output", " ", "->", " ", "forceEquation"}]}], "]"}]], "Input",
  CellLabel->"In[271]:=",
- CellID->128292532,ExpressionUUID->"ae74168d-7d91-44c1-b3ac-1fe04e4d1dc6"],
+ CellID->128292532,
+ $CellContext`ExpressionUUID -> "ae74168d-7d91-44c1-b3ac-1fe04e4d1dc6"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -678,18 +698,20 @@ Cell[BoxData[
    AutoDelete->False,
    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
   "Grid"]], "Output",
- ImageSize->{343, 101},
+ ImageSize->{344, 100},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[271]=",
- CellID->1448055447,ExpressionUUID->"e9449050-7c62-4c30-944d-c4fdb6798499"]
+ CellID->1448055447,
+ $CellContext`ExpressionUUID -> "e9449050-7c62-4c30-944d-c4fdb6798499"]
 }, Open  ]],
 
 Cell["\<\
 For higher n-point functions the procedure is completely the same. E.g., for \
 the four-point function we get\
 \>", "Text",
- CellID->338675099,ExpressionUUID->"04e898f1-28f6-4639-837d-5f90d3bbe8fc"],
+ CellID->338675099,
+ $CellContext`ExpressionUUID -> "04e898f1-28f6-4639-837d-5f90d3bbe8fc"],
 
 Cell[CellGroupData[{
 
@@ -704,7 +726,8 @@ Cell[BoxData[{
  RowBox[{"RGEPlot", "[", 
   RowBox[{"fourPoint", ",", "fieldStyleON"}], "]"}]}], "Input",
  CellLabel->"In[272]:=",
- CellID->90469573,ExpressionUUID->"04ea92ca-f80c-46e1-94c5-80fb7cd1cc9d"],
+ CellID->90469573,
+ $CellContext`ExpressionUUID -> "04ea92ca-f80c-46e1-94c5-80fb7cd1cc9d"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -1626,18 +1649,20 @@ Cell[BoxData[
    AutoDelete->False,
    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
   "Grid"]], "Output",
- ImageSize->{701, 110},
+ ImageSize->{702, 109},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[273]=",
- CellID->761904332,ExpressionUUID->"26b904ce-6594-44ee-a973-23cd0d447506"]
+ CellID->761904332,
+ $CellContext`ExpressionUUID -> "26b904ce-6594-44ee-a973-23cd0d447506"]
 }, Open  ]],
 
 Cell["\<\
 We can use another ansatz for the effective average action that realizes a \
 truncation at four-point level. Then the first diagram vanishes.\
 \>", "Text",
- CellID->571244170,ExpressionUUID->"857e8e34-8890-4211-8cd7-a0d701497db7"],
+ CellID->571244170,
+ $CellContext`ExpressionUUID -> "857e8e34-8890-4211-8cd7-a0d701497db7"],
 
 Cell[CellGroupData[{
 
@@ -1658,7 +1683,8 @@ Cell[BoxData[{
  RowBox[{"RGEPlot", "[", 
   RowBox[{"fourPointTrunc", ",", "fieldStyleON"}], "]"}]}], "Input",
  CellLabel->"In[274]:=",
- CellID->1397944648,ExpressionUUID->"ff8e7e63-a365-4a6a-941b-0f0da28311a2"],
+ CellID->1397944648,
+ $CellContext`ExpressionUUID -> "ff8e7e63-a365-4a6a-941b-0f0da28311a2"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -2408,24 +2434,27 @@ Cell[BoxData[
    AutoDelete->False,
    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
   "Grid"]], "Output",
- ImageSize->{559, 110},
+ ImageSize->{560, 109},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[276]=",
- CellID->1880349902,ExpressionUUID->"e819b286-4302-46f5-8c18-6819bb494aea"]
+ CellID->1880349902,
+ $CellContext`ExpressionUUID -> "e819b286-4302-46f5-8c18-6819bb494aea"]
 }, Open  ]],
 
 Cell["\<\
 If we want to use our results later on again, we can export them with Put and \
 import them with Get. For instance:\
 \>", "Text",
- CellID->489546978,ExpressionUUID->"fc4cc456-e6a2-426f-a4b1-8f10e0b7df15"],
+ CellID->489546978,
+ $CellContext`ExpressionUUID -> "fc4cc456-e6a2-426f-a4b1-8f10e0b7df15"],
 
 Cell[BoxData[
  RowBox[{"Put", "[", 
   RowBox[{"fourPoint", ",", "\"\<4Point.rge\>\""}], "]"}]], "Input",
  CellLabel->"In[279]:=",
- CellID->351072728,ExpressionUUID->"08f344f5-3689-4edf-9fd0-b97f9dc82fc8"],
+ CellID->351072728,
+ $CellContext`ExpressionUUID -> "08f344f5-3689-4edf-9fd0-b97f9dc82fc8"],
 
 Cell[CellGroupData[{
 
@@ -2438,7 +2467,8 @@ Cell[BoxData[{
   RowBox[{"fourPointImport", ",", " ", "fieldStyleON", ",", " ", 
    RowBox[{"output", " ", "->", " ", "forceEquation"}]}], "]"}]}], "Input",
  CellLabel->"In[280]:=",
- CellID->874967857,ExpressionUUID->"dd0d2172-d5bb-446a-9090-8018fc5b88f8"],
+ CellID->874967857,
+ $CellContext`ExpressionUUID -> "dd0d2172-d5bb-446a-9090-8018fc5b88f8"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -3391,37 +3421,42 @@ Cell[BoxData[
    AutoDelete->False,
    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
   "Grid"]], "Output",
- ImageSize->{701, 110},
+ ImageSize->{702, 109},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[281]=",
- CellID->1845720238,ExpressionUUID->"e065199a-e56c-412e-bae1-b229ea7603f3"]
+ CellID->1845720238,
+ $CellContext`ExpressionUUID -> "e065199a-e56c-412e-bae1-b229ea7603f3"]
 }, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["Algebraic expressions", "Subsection",
- CellID->664575954,ExpressionUUID->"2d83666f-1868-4bb6-8d5d-7618161bb3e9"],
+ CellID->664575954,
+ $CellContext`ExpressionUUID -> "2d83666f-1868-4bb6-8d5d-7618161bb3e9"],
 
 Cell["\<\
 Next we derive the algebraic expressions from the symbolic one obtained with \
 doRGE.\
 \>", "Text",
- CellID->1970933685,ExpressionUUID->"3565a892-fa58-41dc-8e09-8262592ac66a"],
+ CellID->1970933685,
+ $CellContext`ExpressionUUID -> "3565a892-fa58-41dc-8e09-8262592ac66a"],
 
 Cell["\<\
 For this we require the Feynman rules of propagators and vertices. The \
 command getFR assists in this task.\
 \>", "Text",
- CellID->284952966,ExpressionUUID->"aaed3899-05c6-472d-8561-9926b00b0c08"],
+ CellID->284952966,
+ $CellContext`ExpressionUUID -> "aaed3899-05c6-472d-8561-9926b00b0c08"],
 
 Cell["\<\
 Before we define the details of the ansatz for the effective average action \
 we declare what indices the field phi has with defineFieldsSpecific. The \
 first entry is always the momentum, the second one here is the O(N) index:\
 \>", "Text",
- CellID->53199651,ExpressionUUID->"44c395ff-192f-44e4-92d0-68f85dc7bda6"],
+ CellID->53199651,
+ $CellContext`ExpressionUUID -> "44c395ff-192f-44e4-92d0-68f85dc7bda6"],
 
 Cell[BoxData[
  RowBox[{
@@ -3430,13 +3465,15 @@ Cell[BoxData[
     RowBox[{"phi", "[", 
      RowBox[{"momentum", ",", "type"}], "]"}], "}"}], "]"}], ";"}]], "Input",
  CellLabel->"In[282]:=",
- CellID->2069170442,ExpressionUUID->"9af3d280-829a-4e7f-a044-20abe6d3a2c7"],
+ CellID->2069170442,
+ $CellContext`ExpressionUUID -> "9af3d280-829a-4e7f-a044-20abe6d3a2c7"],
 
 Cell["\<\
 Then we can define the ansatz for the effective average action in momentum \
 space. We take a four-point truncation.\
 \>", "Text",
- CellID->900906485,ExpressionUUID->"f4406e62-cf65-4d61-96d3-8cc2f300b846"],
+ CellID->900906485,
+ $CellContext`ExpressionUUID -> "f4406e62-cf65-4d61-96d3-8cc2f300b846"],
 
 Cell[CellGroupData[{
 
@@ -3476,7 +3513,8 @@ Cell[BoxData[
           RowBox[{"-", "p"}], "-", "q", "-", "r"}], ",", "j"}], "]"}]}], 
       "]"}]}]}], "]"}]}]], "Input",
  CellLabel->"In[283]:=",
- CellID->1440932080,ExpressionUUID->"5034822f-2541-4edb-9b6f-5064a2ccdea4"],
+ CellID->1440932080,
+ $CellContext`ExpressionUUID -> "5034822f-2541-4edb-9b6f-5064a2ccdea4"],
 
 Cell[BoxData[
  RowBox[{
@@ -3524,21 +3562,24 @@ Cell[BoxData[
        RowBox[{"dummy", "[", "10793", "]"}]}], "]"}]}], "]"}], " ", 
    RowBox[{"Z", "[", 
     SuperscriptBox["q$205261", "2"], "]"}]}]}]], "Output",
- ImageSize->{548, 166},
+ ImageSize->{573, 169},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[283]=",
- CellID->390123310,ExpressionUUID->"9d50fb8b-e27f-4f7f-a628-85aa954fca86"]
+ CellID->390123310,
+ $CellContext`ExpressionUUID -> "9d50fb8b-e27f-4f7f-a628-85aa954fca86"]
 }, Open  ]],
 
 Cell["\<\
 The command convertAction is required to rewrite our input into DoFun \
 notation, where q$i represents a momentum integral.\
 \>", "Text",
- CellID->774395790,ExpressionUUID->"065060f7-de20-4999-9c47-5ca73e2e802a"],
+ CellID->774395790,
+ $CellContext`ExpressionUUID -> "065060f7-de20-4999-9c47-5ca73e2e802a"],
 
 Cell["This derives the two- and four-point functions:", "Text",
- CellID->708745838,ExpressionUUID->"f68f0847-4915-43b7-a0eb-aad98391a625"],
+ CellID->708745838,
+ $CellContext`ExpressionUUID -> "f68f0847-4915-43b7-a0eb-aad98391a625"],
 
 Cell[CellGroupData[{
 
@@ -3553,7 +3594,8 @@ Cell[BoxData[
       RowBox[{"phi", "[", 
        RowBox[{"p2", ",", "j"}], "]"}]}], "}"}]}], "]"}]}]], "Input",
  CellLabel->"In[284]:=",
- CellID->1705172705,ExpressionUUID->"e76d1aa3-7a90-4ce6-958e-be41abb932fb"],
+ CellID->1705172705,
+ $CellContext`ExpressionUUID -> "e76d1aa3-7a90-4ce6-958e-be41abb932fb"],
 
 Cell[BoxData[
  RowBox[{
@@ -3571,11 +3613,12 @@ Cell[BoxData[
     RowBox[{"p1", "+", "p2"}], "]"}], " ", 
    RowBox[{"Z", "[", 
     SuperscriptBox["p1", "2"], "]"}]}]}]], "Output",
- ImageSize->{329, 43},
+ ImageSize->{349, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[284]=",
- CellID->1489567723,ExpressionUUID->"f992414e-758e-41f3-8e14-ca0958c93c81"]
+ CellID->1489567723,
+ $CellContext`ExpressionUUID -> "f992414e-758e-41f3-8e14-ca0958c93c81"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3595,7 +3638,8 @@ Cell[BoxData[
       RowBox[{"phi", "[", 
        RowBox[{"p4", ",", "m"}], "]"}]}], "}"}]}], "]"}]}]], "Input",
  CellLabel->"In[285]:=",
- CellID->1028392787,ExpressionUUID->"eb454b7e-515e-4f45-99cc-927430418c0c"],
+ CellID->1028392787,
+ $CellContext`ExpressionUUID -> "eb454b7e-515e-4f45-99cc-927430418c0c"],
 
 Cell[BoxData[
  RowBox[{
@@ -3620,18 +3664,20 @@ Cell[BoxData[
     RowBox[{"type", ",", "l", ",", "m"}], "]"}], " ", 
    RowBox[{"deltam", "[", 
     RowBox[{"p1", "+", "p2", "+", "p3", "+", "p4"}], "]"}]}]}]], "Output",
- ImageSize->{513, 56},
+ ImageSize->{541, 50},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[285]=",
- CellID->141393968,ExpressionUUID->"24d401a7-973f-4935-a908-f73cc477f145"]
+ CellID->141393968,
+ $CellContext`ExpressionUUID -> "24d401a7-973f-4935-a908-f73cc477f145"]
 }, Open  ]],
 
 Cell["\<\
 The propagator we obtain by inverting the two-point function. This tells \
 DoFun what the propagator of a phi field looks like:\
 \>", "Text",
- CellID->1707789713,ExpressionUUID->"13806239-b57d-4bfa-a42d-6115712b46da"],
+ CellID->1707789713,
+ $CellContext`ExpressionUUID -> "13806239-b57d-4bfa-a42d-6115712b46da"],
 
 Cell[BoxData[
  RowBox[{
@@ -3656,13 +3702,16 @@ Cell[BoxData[
         RowBox[{"p1", "^", "2"}], ",", " ", "k"}], "]"}]}], ")"}]}]}], 
   ";"}]], "Input",
  CellLabel->"In[286]:=",
- CellID->1676231994,ExpressionUUID->"75562b88-72cc-4f3f-aa25-071c80c172c1"],
+ CellID->1676231994,
+ $CellContext`ExpressionUUID -> "75562b88-72cc-4f3f-aa25-071c80c172c1"],
 
 Cell["Note the option explicit->True.", "Text",
- CellID->1970478656,ExpressionUUID->"82d5db86-cbea-4a14-8b9a-1b6c8b7c97f2"],
+ CellID->1970478656,
+ $CellContext`ExpressionUUID -> "82d5db86-cbea-4a14-8b9a-1b6c8b7c97f2"],
 
 Cell["The regulator insertion needs also to be defined:", "Text",
- CellID->1950693251,ExpressionUUID->"bae11d36-cb09-45fe-9080-a58e428a3e0d"],
+ CellID->1950693251,
+ $CellContext`ExpressionUUID -> "bae11d36-cb09-45fe-9080-a58e428a3e0d"],
 
 Cell[BoxData[
  RowBox[{
@@ -3681,13 +3730,15 @@ Cell[BoxData[
      RowBox[{
       RowBox[{"p1", "^", "2"}], ",", "k"}], "]"}]}]}], ";"}]], "Input",
  CellLabel->"In[287]:=",
- CellID->267781651,ExpressionUUID->"0df5e703-a272-4900-9c6c-a5e1e1a19674"],
+ CellID->267781651,
+ $CellContext`ExpressionUUID -> "0df5e703-a272-4900-9c6c-a5e1e1a19674"],
 
 Cell["\<\
 For the four-point function we use the result we obtained with getFR, where \
 we discard the delta distribution:\
 \>", "Text",
- CellID->567889117,ExpressionUUID->"fce39f76-9538-4dbb-a900-521f659a54e1"],
+ CellID->567889117,
+ $CellContext`ExpressionUUID -> "fce39f76-9538-4dbb-a900-521f659a54e1"],
 
 Cell[BoxData[
  RowBox[{
@@ -3709,14 +3760,16 @@ Cell[BoxData[
       RowBox[{"p1", "+", "p2", "+", "p3", "+", "p4"}], "]"}]}], "//", 
     "Expand"}]}], ";"}]], "Input",
  CellLabel->"In[288]:=",
- CellID->286934524,ExpressionUUID->"a7762f9a-95b1-4de4-8e07-41dfa2bf8439"],
+ CellID->286934524,
+ $CellContext`ExpressionUUID -> "a7762f9a-95b1-4de4-8e07-41dfa2bf8439"],
 
 Cell["\<\
 Now we can derive the integrands of the right-hand side of the flow equations \
 for the effective average action, the two- and the four-point functions with \
 getAE:\
 \>", "Text",
- CellID->1290822309,ExpressionUUID->"eba1d147-f336-4aa7-aa58-5f7b8cf66118"],
+ CellID->1290822309,
+ $CellContext`ExpressionUUID -> "eba1d147-f336-4aa7-aa58-5f7b8cf66118"],
 
 Cell[CellGroupData[{
 
@@ -3728,7 +3781,8 @@ Cell[BoxData[
      RowBox[{"zeroPoint", ",", 
       RowBox[{"{", "}"}]}], "]"}]}], "//", "integrateDeltas"}]}]], "Input",
  CellLabel->"In[289]:=",
- CellID->1332519986,ExpressionUUID->"2f656b53-8c4e-46e3-8458-fcaeaab65581"],
+ CellID->1332519986,
+ $CellContext`ExpressionUUID -> "2f656b53-8c4e-46e3-8458-fcaeaab65581"],
 
 Cell[BoxData[
  FractionBox[
@@ -3745,18 +3799,20 @@ Cell[BoxData[
        SuperscriptBox["q1", "2"], ",", "k"}], "]"}], "+", 
      RowBox[{"Z", "[", 
       SuperscriptBox["q1", "2"], "]"}]}], ")"}]}]]], "Output",
- ImageSize->{165, 46},
+ ImageSize->{171, 45},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[289]=",
- CellID->1248422727,ExpressionUUID->"5ccfc520-e969-4095-a87a-b3201189ce68"]
+ CellID->1248422727,
+ $CellContext`ExpressionUUID -> "5ccfc520-e969-4095-a87a-b3201189ce68"]
 }, Open  ]],
 
 Cell["\<\
 dim[type] is the dimension of the index type, i.e., for O(N) it is N. \
 integrateDeltas was employed to contract Kronecker deltas.\
 \>", "Text",
- CellID->480664785,ExpressionUUID->"93122445-d696-45f4-9cc0-eecf0e00192e"],
+ CellID->480664785,
+ $CellContext`ExpressionUUID -> "93122445-d696-45f4-9cc0-eecf0e00192e"],
 
 Cell["\<\
 The conversion of the two-point function expression requires additional input \
@@ -3764,7 +3820,8 @@ in the second argument. The entry {phi, i1, p1, i} tells getAE that there the \
 leg of the field phi with symbolic index i1 corresponds to a leg with the \
 momentum p1 and the O(N) index i.\
 \>", "Text",
- CellID->612907291,ExpressionUUID->"e8dcf3ce-e82e-48cf-b7a0-f07cff30335d"],
+ CellID->612907291,
+ $CellContext`ExpressionUUID -> "e8dcf3ce-e82e-48cf-b7a0-f07cff30335d"],
 
 Cell[CellGroupData[{
 
@@ -3782,7 +3839,8 @@ Cell[BoxData[
          RowBox[{"phi", ",", "i2", ",", "p2", ",", "j"}], "}"}]}], "}"}]}], 
      "]"}]}], "//", "integrateDeltas"}]}]], "Input",
  CellLabel->"In[290]:=",
- CellID->1280808891,ExpressionUUID->"5ddc0e15-65df-461f-b1d5-79e51d4be1e2"],
+ CellID->1280808891,
+ $CellContext`ExpressionUUID -> "5ddc0e15-65df-461f-b1d5-79e51d4be1e2"],
 
 Cell[BoxData[
  RowBox[{
@@ -3844,15 +3902,17 @@ Cell[BoxData[
         RowBox[{"(", 
          RowBox[{"p1", "+", "p2", "+", "q1"}], ")"}], "2"], "]"}]}], 
      ")"}]}]]}]], "Output",
- ImageSize->{474, 94},
+ ImageSize->{498, 91},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[290]=",
- CellID->1405545488,ExpressionUUID->"4e72f5dc-f89f-4153-8dc5-76a1e3c6ba60"]
+ CellID->1405545488,
+ $CellContext`ExpressionUUID -> "4e72f5dc-f89f-4153-8dc5-76a1e3c6ba60"]
 }, Open  ]],
 
 Cell["In the zero-momentum limit this becomes", "Text",
- CellID->108964684,ExpressionUUID->"8cd6464c-bd3e-4078-80bd-653f3ecda69d"],
+ CellID->108964684,
+ $CellContext`ExpressionUUID -> "8cd6464c-bd3e-4078-80bd-653f3ecda69d"],
 
 Cell[CellGroupData[{
 
@@ -3865,7 +3925,8 @@ Cell[BoxData[
      RowBox[{"p2", "\[RuleDelayed]", "0"}]}], "}"}]}], "//", 
   "Simplify"}]], "Input",
  CellLabel->"In[30]:=",
- CellID->1346983652,ExpressionUUID->"4760d2e5-425b-455e-8c2d-2ed0fd8f947e"],
+ CellID->1346983652,
+ $CellContext`ExpressionUUID -> "4760d2e5-425b-455e-8c2d-2ed0fd8f947e"],
 
 Cell[BoxData[
  RowBox[{"-", 
@@ -3888,16 +3949,18 @@ Cell[BoxData[
          SuperscriptBox["q1", "2"], ",", "k"}], "]"}], "+", 
        RowBox[{"Z", "[", 
         SuperscriptBox["q1", "2"], "]"}]}], ")"}], "2"]}]]}]], "Output",
- ImageSize->{395, 46},
+ ImageSize->{412, 45},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellLabel->"Out[30]=",ExpressionUUID->"c20d4e27-87dc-4609-b917-4078e9cede50"]
+ CellLabel->"Out[30]=",
+ $CellContext`ExpressionUUID -> "c20d4e27-87dc-4609-b917-4078e9cede50"]
 }, Open  ]],
 
 Cell["\<\
 For the four-point function we directly derive the zero-momentum result:\
 \>", "Text",
- CellID->1559146582,ExpressionUUID->"fa4ab316-a4c6-4dd1-9cfc-24e909fa42ba"],
+ CellID->1559146582,
+ $CellContext`ExpressionUUID -> "fa4ab316-a4c6-4dd1-9cfc-24e909fa42ba"],
 
 Cell[CellGroupData[{
 
@@ -3920,7 +3983,8 @@ Cell[BoxData[
           RowBox[{"phi", ",", "i4", ",", "0", ",", "m"}], "}"}]}], "}"}]}], 
       "]"}]}], "//", "integrateDeltas"}], "//", "Simplify"}]}]], "Input",
  CellLabel->"In[291]:=",
- CellID->141280547,ExpressionUUID->"38423ccb-34bb-4268-ba9a-dd96095297d9"],
+ CellID->141280547,
+ $CellContext`ExpressionUUID -> "38423ccb-34bb-4268-ba9a-dd96095297d9"],
 
 Cell[BoxData[
  RowBox[{
@@ -3958,17 +4022,19 @@ Cell[BoxData[
        SuperscriptBox["q1", "2"], ",", "k"}], "]"}], "+", 
      RowBox[{"Z", "[", 
       SuperscriptBox["q1", "2"], "]"}]}], ")"}], "3"]}]], "Output",
- ImageSize->{489, 70},
+ ImageSize->{512, 57},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[291]=",
- CellID->131529722,ExpressionUUID->"fd9eb744-190c-441c-974e-846bfd88340d"]
+ CellID->131529722,
+ $CellContext`ExpressionUUID -> "fd9eb744-190c-441c-974e-846bfd88340d"]
 }, Open  ]],
 
 Cell["\<\
 This can be projected with the tensor from the left-hand side of the equation:\
 \>", "Text",
- CellID->1929453739,ExpressionUUID->"05999a0a-d910-4c93-ac43-b520b4b6ccff"],
+ CellID->1929453739,
+ $CellContext`ExpressionUUID -> "05999a0a-d910-4c93-ac43-b520b4b6ccff"],
 
 Cell[CellGroupData[{
 
@@ -4020,7 +4086,8 @@ Cell[BoxData[{
       "/", "lhs"}], " ", "fourPointAlg"}], "//", "integrateDeltas"}], "//", 
   "Simplify"}]}], "Input",
  CellLabel->"In[292]:=",
- CellID->1649464776,ExpressionUUID->"25fc0ef6-a52e-47e4-848c-9a096b6caa51"],
+ CellID->1649464776,
+ $CellContext`ExpressionUUID -> "25fc0ef6-a52e-47e4-848c-9a096b6caa51"],
 
 Cell[BoxData[
  RowBox[{
@@ -4035,11 +4102,12 @@ Cell[BoxData[
     SuperscriptBox[
      RowBox[{"dim", "[", "type", "]"}], "2"]}], 
    SuperscriptBox["\[Lambda]2", "2"]]}]], "Output",
- ImageSize->{329, 40},
+ ImageSize->{341, 43},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[292]=",
- CellID->614923346,ExpressionUUID->"c7f57380-27a9-4cf5-acfb-91287711faed"],
+ CellID->614923346,
+ $CellContext`ExpressionUUID -> "c7f57380-27a9-4cf5-acfb-91287711faed"],
 
 Cell[BoxData[
  FractionBox[
@@ -4058,22 +4126,23 @@ Cell[BoxData[
        SuperscriptBox["q1", "2"], ",", "k"}], "]"}], "+", 
      RowBox[{"Z", "[", 
       SuperscriptBox["q1", "2"], "]"}]}], ")"}], "3"]]], "Output",
- ImageSize->{274, 46},
+ ImageSize->{286, 45},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[293]=",
- CellID->2001303773,ExpressionUUID->"aff75a88-f144-4347-a59c-5867fb6172e3"]
+ CellID->2001303773,
+ $CellContext`ExpressionUUID -> "aff75a88-f144-4347-a59c-5867fb6172e3"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
-Cell[" ", "FooterCell",ExpressionUUID->"987bd2dc-8e35-4d1d-ba03-91cdc0491fcf"]
+Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"Scalar O(N) symmetric theory",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "TutorialColor", 
@@ -4084,7 +4153,7 @@ TaggingRules->{
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
     Left], "ExampleCounter" -> 1, "NeedPlatMsgIn" -> None, "RootCaptions" -> 
   "", "Metadata" -> {
-   "built" -> "{2019, 8, 7, 9, 22, 14.933584}", 
+   "built" -> "{2019, 10, 25, 10, 14, 22.391754}", 
     "history" -> {"0.0", "", "", ""}, "context" -> "DoFun`", "keywords" -> {},
      "specialkeywords" -> {}, "tutorialcollectionlinks" -> {}, "index" -> 
     True, "label" -> "Do Fun Tutorial", "language" -> "en", "paclet" -> 
@@ -4095,12 +4164,12 @@ Then we need the action in symbolic form. The following definition gives an \
 action with a field phi which only possess interactions with an even number \
 of fields involved up to the ten-point functions. Including terms up to this \
 order guarantees we get all terms.", "synonyms" -> {}, "tabletags" -> 
-    DocumentationBuild`Make`Private`tabletaggingrules$85840, "title" -> 
+    DocumentationBuild`Make`Private`tabletaggingrules$73319, "title" -> 
     "Scalar O(N) symmetric theory", "titlemodifier" -> "", "windowtitle" -> 
     "Scalar O(N) symmetric theory", "type" -> "Tutorial", "uri" -> 
-    "DoFun/tutorial/Scalar O(N) symmetric theory", "WorkflowDockedCell" -> 
-    ""}, "SearchTextTranslated" -> ""},
-FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+    "DoFun/tutorial/Scalar O(N) symmetric theory"}, "SearchTextTranslated" -> 
+  ""},
+FrontEndVersion->"10.0 for Linux x86 (64-bit) (June 27, 2014)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -4118,7 +4187,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["TutorialRelatedLinksSection"], 
     CellGroupingRules -> {"SectionGrouping", 30}]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  FrontEndVersion -> "10.0 for Linux x86 (64-bit) (June 27, 2014)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -4132,190 +4201,190 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[600, 21, 2686, 59, 56, "AnchorBarGrid",ExpressionUUID->"45f330a4-09a7-408b-b6e9-ce6e7d5a0d04",
+Cell[600, 21, 2393, 56, 52, "AnchorBarGrid",
  CellID->1],
 Cell[CellGroupData[{
-Cell[3311, 84, 120, 1, 65, "Title",ExpressionUUID->"3ebb936a-314c-4c26-af91-0f4182e2e42e",
+Cell[3018, 81, 137, 2, 52, "Title",
  CellID->509267359],
-Cell[3434, 87, 189, 4, 36, "Text",ExpressionUUID->"26f6dcbf-3cf6-412c-9371-a7deee5a8148",
+Cell[3158, 85, 206, 5, 32, "Text",
  CellID->1534169418],
-Cell[3626, 93, 169, 3, 29, "Input",ExpressionUUID->"1ff1bd9a-0843-46ed-a064-1d50b3e92bbc",
+Cell[3367, 92, 186, 4, 27, "Input",
  CellID->209391430],
 Cell[CellGroupData[{
-Cell[3820, 100, 109, 1, 71, "Section",ExpressionUUID->"e3fb4719-b3d9-4dde-a8f6-45b07a625c46",
+Cell[3578, 100, 126, 2, 65, "Section",
  CellID->352696352],
 Cell[CellGroupData[{
-Cell[3954, 105, 116, 1, 60, "Subsection",ExpressionUUID->"f7f4f93f-e629-4e0e-8564-a2b7201ebb48",
+Cell[3729, 106, 133, 2, 55, "Subsection",
  CellID->447702864],
-Cell[4073, 108, 148, 1, 36, "Text",ExpressionUUID->"ac0f9890-4c33-478b-8c93-075a0febc4d8",
+Cell[3865, 110, 165, 2, 32, "Text",
  CellID->637537573],
-Cell[4224, 111, 207, 5, 29, "Input",ExpressionUUID->"8052f436-6910-451e-a48d-74d7a62c3791",
+Cell[4033, 114, 224, 6, 27, "Input",
  CellID->1828523255],
-Cell[4434, 118, 369, 6, 84, "Text",ExpressionUUID->"3663640c-3d00-467d-847c-82370d90f230",
+Cell[4260, 122, 386, 7, 72, "Text",
  CellID->2044985598],
-Cell[4806, 126, 276, 8, 29, "Input",ExpressionUUID->"5e8b1a68-0cb4-4379-ad63-898c308a53e3",
+Cell[4649, 131, 293, 9, 27, "Input",
  CellID->2006072305],
-Cell[5085, 136, 145, 1, 36, "Text",ExpressionUUID->"799297e2-a324-4918-9ff4-c55c904c2c5c",
+Cell[4945, 142, 162, 2, 32, "Text",
  CellID->869169588],
 Cell[CellGroupData[{
-Cell[5255, 141, 263, 6, 29, "Input",ExpressionUUID->"d208bb8c-7781-432f-b160-480e0c875fb3",
+Cell[5132, 148, 280, 7, 27, "Input",
  CellID->787565891],
-Cell[5521, 149, 657, 21, 55, "Output",ExpressionUUID->"0a906f1f-93c0-41d1-ba20-0c50af5003e1",
+Cell[5415, 157, 674, 22, 60, "Output",
  CellID->279411756]
 }, Open  ]],
-Cell[6193, 173, 194, 4, 36, "Text",ExpressionUUID->"d66fb5fd-b12c-4c0b-97e9-d5e37f31881b",
+Cell[6104, 182, 211, 5, 32, "Text",
  CellID->326050506],
-Cell[6390, 179, 222, 4, 70, "Text",ExpressionUUID->"ff61d51d-35bb-4314-8793-e76ae6f33f0d",
+Cell[6318, 189, 239, 5, 52, "Text",
  CellID->653825058],
-Cell[6615, 185, 274, 7, 70, "Input",ExpressionUUID->"0969b60a-ce23-4def-b8c7-5b30cd9e503f",
+Cell[6560, 196, 291, 8, 27, "Input",
  CellID->912677170],
-Cell[6892, 194, 196, 4, 70, "Text",ExpressionUUID->"8d9bb3c0-8988-42d1-8133-8fd3819636fc",
+Cell[6854, 206, 213, 5, 32, "Text",
  CellID->1412113648],
 Cell[CellGroupData[{
-Cell[7113, 202, 259, 5, 70, "Input",ExpressionUUID->"80b46f75-0828-4e2b-b1cc-50ba8339993a",
+Cell[7092, 215, 276, 6, 27, "Input",
  CellID->498075315],
-Cell[7375, 209, 5928, 137, 70, "Output",ExpressionUUID->"1e90421e-1d80-401d-abe6-61db9c3ea77e",
+Cell[7371, 223, 5945, 138, 123, "Output",
  CellID->709913794]
 }, Open  ]],
-Cell[13318, 349, 190, 4, 70, "Text",ExpressionUUID->"0db88fb8-327e-42e4-90f9-97dcc1e65429",
+Cell[13331, 364, 207, 5, 32, "Text",
  CellID->382199045],
 Cell[CellGroupData[{
-Cell[13533, 357, 283, 7, 70, "Input",ExpressionUUID->"548ff633-8679-4b95-8659-550b50a0c67a",
+Cell[13563, 373, 300, 8, 27, "Input",
  CellID->1816088097],
-Cell[13819, 366, 1176, 38, 75, "Output",ExpressionUUID->"18d5d90e-e858-4f0b-a20d-8f676119c5f7",
+Cell[13866, 383, 1193, 39, 94, "Output",
  CellID->548679404]
 }, Open  ]],
-Cell[15010, 407, 122, 1, 70, "Text",ExpressionUUID->"34575b3f-c43d-4c3d-a9e1-b0e89a316ac4",
+Cell[15074, 425, 139, 2, 32, "Text",
  CellID->618938046],
 Cell[CellGroupData[{
-Cell[15157, 412, 273, 5, 70, "Input",ExpressionUUID->"ae74168d-7d91-44c1-b3ac-1fe04e4d1dc6",
+Cell[15238, 431, 290, 6, 27, "Input",
  CellID->128292532],
-Cell[15433, 419, 12247, 265, 70, "Output",ExpressionUUID->"e9449050-7c62-4c30-944d-c4fdb6798499",
+Cell[15531, 439, 12264, 266, 121, "Output",
  CellID->1448055447]
 }, Open  ]],
-Cell[27695, 687, 208, 4, 70, "Text",ExpressionUUID->"04e898f1-28f6-4639-837d-5f90d3bbe8fc",
+Cell[27810, 708, 225, 5, 52, "Text",
  CellID->338675099],
 Cell[CellGroupData[{
-Cell[27928, 695, 419, 11, 70, "Input",ExpressionUUID->"04ea92ca-f80c-46e1-94c5-80fb7cd1cc9d",
+Cell[28060, 717, 436, 12, 45, "Input",
  CellID->90469573],
-Cell[28350, 708, 44151, 924, 70, "Output",ExpressionUUID->"26b904ce-6594-44ee-a973-23cd0d447506",
+Cell[28499, 731, 44168, 925, 130, "Output",
  CellID->761904332]
 }, Open  ]],
-Cell[72516, 1635, 240, 4, 70, "Text",ExpressionUUID->"857e8e34-8890-4211-8cd7-a0d701497db7",
+Cell[72682, 1659, 257, 5, 52, "Text",
  CellID->571244170],
 Cell[CellGroupData[{
-Cell[72781, 1643, 605, 17, 70, "Input",ExpressionUUID->"ff8e7e63-a365-4a6a-941b-0f0da28311a2",
+Cell[72964, 1668, 622, 18, 62, "Input",
  CellID->1397944648],
-Cell[73389, 1662, 35923, 752, 70, "Output",ExpressionUUID->"e819b286-4302-46f5-8c18-6819bb494aea",
+Cell[73589, 1688, 35940, 753, 130, "Output",
  CellID->1880349902]
 }, Open  ]],
-Cell[109327, 2417, 214, 4, 70, "Text",ExpressionUUID->"fc4cc456-e6a2-426f-a4b1-8f10e0b7df15",
+Cell[109544, 2444, 231, 5, 52, "Text",
  CellID->489546978],
-Cell[109544, 2423, 204, 4, 70, "Input",ExpressionUUID->"08f344f5-3689-4edf-9fd0-b97f9dc82fc8",
+Cell[109778, 2451, 221, 5, 27, "Input",
  CellID->351072728],
 Cell[CellGroupData[{
-Cell[109773, 2431, 425, 9, 70, "Input",ExpressionUUID->"dd0d2172-d5bb-446a-9090-8018fc5b88f8",
+Cell[110024, 2460, 442, 10, 45, "Input",
  CellID->874967857],
-Cell[110201, 2442, 46556, 955, 70, "Output",ExpressionUUID->"e065199a-e56c-412e-bae1-b229ea7603f3",
+Cell[110469, 2472, 46573, 956, 130, "Output",
  CellID->1845720238]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[156806, 3403, 118, 1, 70, "Subsection",ExpressionUUID->"2d83666f-1868-4bb6-8d5d-7618161bb3e9",
+Cell[157091, 3434, 135, 2, 55, "Subsection",
  CellID->664575954],
-Cell[156927, 3406, 185, 4, 70, "Text",ExpressionUUID->"3565a892-fa58-41dc-8e09-8262592ac66a",
+Cell[157229, 3438, 202, 5, 32, "Text",
  CellID->1970933685],
-Cell[157115, 3412, 207, 4, 70, "Text",ExpressionUUID->"aaed3899-05c6-472d-8561-9926b00b0c08",
+Cell[157434, 3445, 224, 5, 52, "Text",
  CellID->284952966],
-Cell[157325, 3418, 325, 5, 70, "Text",ExpressionUUID->"44c395ff-192f-44e4-92d0-68f85dc7bda6",
+Cell[157661, 3452, 342, 6, 72, "Text",
  CellID->53199651],
-Cell[157653, 3425, 284, 7, 70, "Input",ExpressionUUID->"9af3d280-829a-4e7f-a044-20abe6d3a2c7",
+Cell[158006, 3460, 301, 8, 27, "Input",
  CellID->2069170442],
-Cell[157940, 3434, 215, 4, 70, "Text",ExpressionUUID->"f4406e62-cf65-4d61-96d3-8cc2f300b846",
+Cell[158310, 3470, 232, 5, 52, "Text",
  CellID->900906485],
 Cell[CellGroupData[{
-Cell[158180, 3442, 1157, 36, 70, "Input",ExpressionUUID->"5034822f-2541-4edb-9b6f-5064a2ccdea4",
+Cell[158567, 3479, 1174, 37, 62, "Input",
  CellID->1440932080],
-Cell[159340, 3480, 1724, 50, 187, "Output",ExpressionUUID->"9d50fb8b-e27f-4f7f-a628-85aa954fca86",
+Cell[159744, 3518, 1741, 51, 190, "Output",
  CellID->390123310]
 }, Open  ]],
-Cell[161079, 3533, 222, 4, 70, "Text",ExpressionUUID->"065060f7-de20-4999-9c47-5ca73e2e802a",
+Cell[161500, 3572, 239, 5, 52, "Text",
  CellID->774395790],
-Cell[161304, 3539, 138, 1, 70, "Text",ExpressionUUID->"f68f0847-4915-43b7-a0eb-aad98391a625",
+Cell[161742, 3579, 155, 2, 32, "Text",
  CellID->708745838],
 Cell[CellGroupData[{
-Cell[161467, 3544, 393, 11, 70, "Input",ExpressionUUID->"e76d1aa3-7a90-4ce6-958e-be41abb932fb",
+Cell[161922, 3585, 410, 12, 27, "Input",
  CellID->1705172705],
-Cell[161863, 3557, 690, 20, 64, "Output",ExpressionUUID->"f992414e-758e-41f3-8e14-ca0958c93c81",
+Cell[162335, 3599, 707, 21, 56, "Output",
  CellID->1489567723]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[162590, 3582, 539, 15, 70, "Input",ExpressionUUID->"eb454b7e-515e-4f45-99cc-927430418c0c",
+Cell[163079, 3625, 556, 16, 27, "Input",
  CellID->1028392787],
-Cell[163132, 3599, 1070, 27, 77, "Output",ExpressionUUID->"24d401a7-973f-4935-a908-f73cc477f145",
+Cell[163638, 3643, 1087, 28, 71, "Output",
  CellID->141393968]
 }, Open  ]],
-Cell[164217, 3629, 227, 4, 70, "Text",ExpressionUUID->"13806239-b57d-4bfa-a42d-6115712b46da",
+Cell[164740, 3674, 244, 5, 52, "Text",
  CellID->1707789713],
-Cell[164447, 3635, 790, 23, 70, "Input",ExpressionUUID->"75562b88-72cc-4f3f-aa25-071c80c172c1",
+Cell[164987, 3681, 807, 24, 45, "Input",
  CellID->1676231994],
-Cell[165240, 3660, 123, 1, 70, "Text",ExpressionUUID->"82d5db86-cbea-4a14-8b9a-1b6c8b7c97f2",
+Cell[165797, 3707, 140, 2, 32, "Text",
  CellID->1970478656],
-Cell[165366, 3663, 141, 1, 70, "Text",ExpressionUUID->"bae11d36-cb09-45fe-9080-a58e428a3e0d",
+Cell[165940, 3711, 158, 2, 32, "Text",
  CellID->1950693251],
-Cell[165510, 3666, 578, 17, 70, "Input",ExpressionUUID->"0df5e703-a272-4900-9c6c-a5e1e1a19674",
+Cell[166101, 3715, 595, 18, 45, "Input",
  CellID->267781651],
-Cell[166091, 3685, 211, 4, 70, "Text",ExpressionUUID->"fce39f76-9538-4dbb-a900-521f659a54e1",
+Cell[166699, 3735, 228, 5, 52, "Text",
  CellID->567889117],
-Cell[166305, 3691, 694, 20, 70, "Input",ExpressionUUID->"a7762f9a-95b1-4de4-8e07-41dfa2bf8439",
+Cell[166930, 3742, 711, 21, 45, "Input",
  CellID->286934524],
-Cell[167002, 3713, 265, 5, 70, "Text",ExpressionUUID->"eba1d147-f336-4aa7-aa58-5f7b8cf66118",
+Cell[167644, 3765, 282, 6, 52, "Text",
  CellID->1290822309],
 Cell[CellGroupData[{
-Cell[167292, 3722, 317, 8, 70, "Input",ExpressionUUID->"2f656b53-8c4e-46e3-8458-fcaeaab65581",
+Cell[167951, 3775, 334, 9, 27, "Input",
  CellID->1332519986],
-Cell[167612, 3732, 597, 19, 67, "Output",ExpressionUUID->"5ccfc520-e969-4095-a87a-b3201189ce68",
+Cell[168288, 3786, 614, 20, 66, "Output",
  CellID->1248422727]
 }, Open  ]],
-Cell[168224, 3754, 229, 4, 70, "Text",ExpressionUUID->"93122445-d696-45f4-9cc0-eecf0e00192e",
+Cell[168917, 3809, 246, 5, 52, "Text",
  CellID->480664785],
-Cell[168456, 3760, 368, 6, 70, "Text",ExpressionUUID->"e8dcf3ce-e82e-48cf-b7a0-f07cff30335d",
+Cell[169166, 3816, 385, 7, 72, "Text",
  CellID->612907291],
 Cell[CellGroupData[{
-Cell[168849, 3770, 520, 14, 70, "Input",ExpressionUUID->"5ddc0e15-65df-461f-b1d5-79e51d4be1e2",
+Cell[169576, 3827, 537, 15, 62, "Input",
  CellID->1280808891],
-Cell[169372, 3786, 1960, 64, 115, "Output",ExpressionUUID->"4e72f5dc-f89f-4153-8dc5-76a1e3c6ba60",
+Cell[170116, 3844, 1977, 65, 112, "Output",
  CellID->1405545488]
 }, Open  ]],
-Cell[171347, 3853, 130, 1, 70, "Text",ExpressionUUID->"8cd6464c-bd3e-4078-80bd-653f3ecda69d",
+Cell[172108, 3912, 147, 2, 32, "Text",
  CellID->108964684],
 Cell[CellGroupData[{
-Cell[171502, 3858, 323, 9, 70, "Input",ExpressionUUID->"4760d2e5-425b-455e-8c2d-2ed0fd8f947e",
+Cell[172280, 3918, 340, 10, 27, "Input",
  CellID->1346983652],
-Cell[171828, 3869, 791, 24, 67, "Output",ExpressionUUID->"c20d4e27-87dc-4609-b917-4078e9cede50"]
+Cell[172623, 3930, 808, 25, 66, "Output"]
 }, Open  ]],
-Cell[172634, 3896, 172, 3, 70, "Text",ExpressionUUID->"fa4ab316-a4c6-4dd1-9cfc-24e909fa42ba",
+Cell[173446, 3958, 189, 4, 32, "Text",
  CellID->1559146582],
 Cell[CellGroupData[{
-Cell[172831, 3903, 754, 19, 70, "Input",ExpressionUUID->"38423ccb-34bb-4268-ba9a-dd96095297d9",
+Cell[173660, 3966, 771, 20, 62, "Input",
  CellID->141280547],
-Cell[173588, 3924, 1348, 40, 91, "Output",ExpressionUUID->"fd9eb744-190c-441c-974e-846bfd88340d",
+Cell[174434, 3988, 1365, 41, 78, "Output",
  CellID->131529722]
 }, Open  ]],
-Cell[174951, 3967, 178, 3, 70, "Text",ExpressionUUID->"05999a0a-d910-4c93-ac43-b520b4b6ccff",
+Cell[175814, 4032, 195, 4, 32, "Text",
  CellID->1929453739],
 Cell[CellGroupData[{
-Cell[175154, 3974, 1641, 48, 70, "Input",ExpressionUUID->"25fc0ef6-a52e-47e4-848c-9a096b6caa51",
+Cell[176034, 4040, 1658, 49, 96, "Input",
  CellID->1649464776],
-Cell[176798, 4024, 577, 17, 61, "Output",ExpressionUUID->"c7f57380-27a9-4cf5-acfb-91287711faed",
+Cell[177695, 4091, 594, 18, 64, "Output",
  CellID->614923346],
-Cell[177378, 4043, 684, 21, 67, "Output",ExpressionUUID->"aff75a88-f144-4347-a59c-5867fb6172e3",
+Cell[178292, 4111, 701, 22, 66, "Output",
  CellID->2001303773]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[178113, 4070, 78, 0, 70, "FooterCell",ExpressionUUID->"987bd2dc-8e35-4d1d-ba03-91cdc0491fcf"]
+Cell[179044, 4139, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

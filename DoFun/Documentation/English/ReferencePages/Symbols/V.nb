@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 11.3' *)
+(* CreatedBy='Mathematica 10.0' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12633,        376]
-NotebookOptionsPosition[      8870,        292]
-NotebookOutlinePosition[     11235,        351]
-CellTagsIndexPosition[     11150,        346]
+NotebookDataLength[     13257,        402]
+NotebookOptionsPosition[     10225,        317]
+NotebookOutlinePosition[     12570,        377]
+CellTagsIndexPosition[     12485,        372]
 WindowTitle->V
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$76339], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$64096], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "DoFun/ref/V", 
             ".html"]], None}]}]},
@@ -78,8 +78,13 @@ Cell[BoxData[GridBox[{
 Cell[TextData[{
  Cell["V", "ObjectName"],
  Cell[BoxData[
-  TemplateBox[{8},
-   "Spacer1"]]],
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
  Cell[BoxData[""], "ObjectNameTranslation"]
 }], "ObjectNameGrid"],
 
@@ -104,14 +109,16 @@ Cell[BoxData[GridBox[{
           SubscriptBox[
            StyleBox["index", "TI"], 
            StyleBox["2", "TR"]]}], "}"}], ",", "  ", 
-        StyleBox["\[Ellipsis]", "TR"]}], "]"}]], "InlineFormula"],
+        StyleBox["\[Ellipsis]", "TR"]}], "]"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "0779cd85-d0b9-4302-9a78-90f6d879946f"],
      "\[LineSeparator]represents a dressed vertex of the fields fieldi with \
 their ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["indices"]],"paclet:DoFun/ref/indices"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "0a67e1c6-94df-4592-b2ef-9d2b5a9e8428"],
      " indexi  in its symbolic form. "
     }]]},
    {"", Cell[TextData[{
@@ -140,39 +147,50 @@ their ",
          TemplateBox[{Cell[
             TextData["True"]],"paclet:ref/True"},
           "RefLink",
-          BaseStyle->{"InlineFormula"}]}]}], "]"}]], "InlineFormula"],
+          BaseStyle->{"InlineFormula"}]}]}], "]"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "4aedbf72-0cd8-45bc-a3d2-41d3e4ce91af"],
      " represents a bare vertex of the fields ",
      Cell[BoxData[
       SubscriptBox[
-       StyleBox["field", "TI"], "i"]], "InlineFormula"],
+       StyleBox["field", "TI"], "i"]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "c24b15ac-60cf-4642-8deb-44b2b9862fef"],
      " with their momenta ",
      Cell[BoxData[
       SubscriptBox[
-       StyleBox["momentum", "TI"], "i"]], "InlineFormula"],
+       StyleBox["momentum", "TI"], "i"]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "b962e435-e9b2-4e2f-b8b0-5c0a4da56e6c"],
      " and explicit indices ",
      Cell[BoxData[
       SubscriptBox[
-       StyleBox["index", "TI"], "ij"]], "InlineFormula"],
+       StyleBox["index", "TI"], "ij"]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "07a14d92-0db1-4a49-b3f9-82ae8e5e6f15"],
      " in algebraic form. The option ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["explicit"]],"paclet:DoFun/ref/explicit"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "d7b1329d-a1c8-40d8-a5d8-15a1119aa684"],
      " can have an arbitrary value."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {None, {None}}, 
-   "RowsIndexed" -> {}}}],
+   "RowsIndexed" -> {}}},
+ $CellContext`ExpressionUUID -> "e9aaf3ab-f2fb-4790-b069-9c33915b05cf"],
 
 Cell[CellGroupData[{
 
 Cell[TextData[{
  Cell[BoxData[
-  TemplateBox[{6},
-   "Spacer1"]]],
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
  "Examples",
  "\[NonBreakingSpace]\[NonBreakingSpace]",
  Cell["(1)", "ExampleCount"]
@@ -194,10 +212,12 @@ Cell[TextData[{
 Cell[BoxData[
  RowBox[{"Needs", "[", "\"\<DoFun`\>\"", "]"}]], "Input",
  CellLabel->"In[1]:=",
- CellID->1414887963],
+ CellID->1414887963,
+ $CellContext`ExpressionUUID -> "2e41f291-7255-4bd7-85ed-a8c86c2ed66b"],
 
 Cell["Symbolic example: ", "Text",
- CellID->1052120035],
+ CellID->1052120035,
+ $CellContext`ExpressionUUID -> "d7ad0f83-53c0-4374-9874-f223d6b7ce0c"],
 
 Cell[BoxData[
  RowBox[{"V", "[", 
@@ -221,10 +241,12 @@ Cell[BoxData[
       ButtonData->"paclet:ref/A"], ",", 
      StyleBox["k", "TI"]}], "}"}]}], "]"}]], "Input",
  CellLabel->"In[2]:=",
- CellID->692469312],
+ CellID->692469312,
+ $CellContext`ExpressionUUID -> "54414653-5b16-4e3e-96e8-8283cdbd9816"],
 
 Cell[" Algebraic example: ", "Text",
- CellID->1921220723],
+ CellID->1921220723,
+ $CellContext`ExpressionUUID -> "70351f12-63b3-44ed-b23d-5695ecad6f15"],
 
 Cell[BoxData[
  RowBox[{"V", "[", 
@@ -239,12 +261,14 @@ Cell[BoxData[
      ButtonData->"paclet:DoFun/ref/explicit"], "->", "True"}]}], 
   "]"}]], "Input",
  CellLabel->"In[3]:=",
- CellID->93209946],
+ CellID->93209946,
+ $CellContext`ExpressionUUID -> "43604678-6adf-408f-9aae-efa1a0f35f70"],
 
 Cell["\<\
  Definition of a dressed vertex for a scalar field with an O(N) index :\
 \>", "Text",
- CellID->1802352069],
+ CellID->1802352069,
+ $CellContext`ExpressionUUID -> "7c0549a3-08c0-4443-881c-8bb054ae4f25"],
 
 Cell[BoxData[
  RowBox[{
@@ -284,7 +308,8 @@ Cell[BoxData[
    RowBox[{"D", "[", 
     RowBox[{"p1", ",", "p2", ",", "p3", ",", "p45"}], "]"}]}]}]], "Input",
  CellLabel->"In[4]:=",
- CellID->1881685540]
+ CellID->1881685540,
+ $CellContext`ExpressionUUID -> "2c07f49c-78e8-4443-810e-14e1c54e20d6"]
 }, Open  ]]
 }, Open  ]],
 
@@ -305,7 +330,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 8, 7, 9, 21, 57.565462}", 
+   "built" -> "{2019, 10, 25, 10, 14, 4.204040}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -318,9 +343,10 @@ index2b, ...], ..., explicit -> True] represents a bare vertex of the fields \
 fieldi with their momenta momentumi and explicit indices indexij in algebraic \
 form. The option explicit can have an arbitrary value.", "synonyms" -> {}, 
     "tabletags" -> {}, "title" -> "V", "titlemodifier" -> "", "windowtitle" -> 
-    "V", "type" -> "Symbol", "uri" -> "DoFun/ref/V"}},
+    "V", "type" -> "Symbol", "uri" -> "DoFun/ref/V"}, "SearchTextTranslated" -> 
+  ""},
 CellContext->"Global`",
-FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+FrontEndVersion->"10.0 for Linux x86 (64-bit) (June 27, 2014)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -329,7 +355,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  FrontEndVersion -> "10.0 for Linux x86 (64-bit) (June 27, 2014)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -338,46 +364,46 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[5814, 171, 259, 10, 70, "PrimaryExamplesSection",ExpressionUUID->"9f6d4d76-849d-41e7-b49b-07b173c1b781",
+  Cell[6545, 184, 379, 15, 70, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
    CellID->1]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 10960, 339}
+ {"PrimaryExamplesSection", 12350, 365}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[573, 21, 2255, 54, 70, "AnchorBarGrid",ExpressionUUID->"04e09b69-6fa9-4014-b19e-265d4fc33988",
+Cell[573, 21, 2255, 54, 70, "AnchorBarGrid",
  CellID->1],
-Cell[2831, 77, 158, 6, 70, "ObjectNameGrid",ExpressionUUID->"bba1bc6b-e99b-4bce-9883-8589a4492399"],
-Cell[2992, 85, 2797, 82, 70, "Usage",ExpressionUUID->"e9aaf3ab-f2fb-4790-b069-9c33915b05cf"],
+Cell[2831, 77, 278, 11, 70, "ObjectNameGrid"],
+Cell[3112, 90, 3408, 90, 70, "Usage"],
 Cell[CellGroupData[{
-Cell[5814, 171, 259, 10, 70, "PrimaryExamplesSection",ExpressionUUID->"9f6d4d76-849d-41e7-b49b-07b173c1b781",
+Cell[6545, 184, 379, 15, 70, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
  CellID->1],
 Cell[CellGroupData[{
-Cell[6098, 185, 187, 6, 70, "ExampleSection",ExpressionUUID->"69ceb68b-5eef-4c0e-adb4-d12999ff495c",
+Cell[6949, 203, 187, 6, 70, "ExampleSection",
  CellID->1],
-Cell[6288, 193, 115, 3, 70, "Input",ExpressionUUID->"2e41f291-7255-4bd7-85ed-a8c86c2ed66b",
+Cell[7139, 211, 187, 4, 70, "Input",
  CellID->1414887963],
-Cell[6406, 198, 55, 1, 70, "Text",ExpressionUUID->"d7ad0f83-53c0-4374-9874-f223d6b7ce0c",
+Cell[7329, 217, 127, 2, 70, "Text",
  CellID->1052120035],
-Cell[6464, 201, 571, 22, 70, "Input",ExpressionUUID->"54414653-5b16-4e3e-96e8-8283cdbd9816",
+Cell[7459, 221, 643, 23, 70, "Input",
  CellID->692469312],
-Cell[7038, 225, 57, 1, 70, "Text",ExpressionUUID->"70351f12-63b3-44ed-b23d-5695ecad6f15",
+Cell[8105, 246, 129, 2, 70, "Text",
  CellID->1921220723],
-Cell[7098, 228, 405, 13, 70, "Input",ExpressionUUID->"43604678-6adf-408f-9aae-efa1a0f35f70",
+Cell[8237, 250, 477, 14, 70, "Input",
  CellID->93209946],
-Cell[7506, 243, 116, 3, 70, "Text",ExpressionUUID->"7c0549a3-08c0-4443-881c-8bb054ae4f25",
+Cell[8717, 266, 188, 4, 70, "Text",
  CellID->1802352069],
-Cell[7625, 248, 1191, 38, 70, "Input",ExpressionUUID->"2c07f49c-78e8-4443-810e-14e1c54e20d6",
+Cell[8908, 272, 1263, 39, 70, "Input",
  CellID->1881685540]
 }, Open  ]]
 }, Open  ]],
-Cell[8843, 290, 23, 0, 70, "FooterCell",ExpressionUUID->"b648b2ed-f6a4-4c5e-920d-d5b6d9265192"]
+Cell[10198, 315, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 11.3' *)
+(* CreatedBy='Mathematica 10.0' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     21810,        633]
-NotebookOptionsPosition[     15061,        502]
-NotebookOutlinePosition[     16779,        543]
-CellTagsIndexPosition[     16736,        540]
+NotebookDataLength[     19464,        539]
+NotebookOptionsPosition[     16373,        455]
+NotebookOutlinePosition[     18126,        497]
+CellTagsIndexPosition[     18083,        494]
 WindowTitle->Welcome to DoFun
 WindowFrame->Normal*)
 
@@ -133,7 +133,7 @@ theory\"\>":>Documentation`HelpLookup[
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$14556], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$5312], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], "DoFun", ".html"]], 
            None}]}]},
@@ -145,10 +145,9 @@ theory\"\>":>Documentation`HelpLookup[
   }]], "AnchorBarGrid",
  CellID->1],
 
-Cell[CellGroupData[{
-
 Cell["Welcome to DoFun", "GuideTitle",
- CellID->942062912],
+ CellID->942062912,
+ $CellContext`ExpressionUUID -> "b9b35a3e-e491-49b1-9116-143bd1be10b5"],
 
 Cell[TextData[{
  "DoFun (Derivation of Functional Equations) is a ",
@@ -158,7 +157,8 @@ Cell[TextData[{
 renormalization group equations (RGEs) and equations for correlations \
 functions of composite operators."
 }], "GuideAbstract",
- CellID->2001916300],
+ CellID->2001916300,
+ $CellContext`ExpressionUUID -> "dc9e62d7-42cf-47d8-aa84-e8ec2464ed83"],
 
 Cell[TextData[{
  "More information can be found at the ",
@@ -167,16 +167,15 @@ Cell[TextData[{
      TextData["DoFun GitHub page"]],"https://github.com/markusqh/DoFun"},
    "WebLink",
    BaseStyle->{"GuideAbstract"}]]],
- ", ",
+ " and the following articles:\nMarkus Q. Huber, Anton K. Cyrol, Jan M. \
+Pawlowski, ",
  Cell[BoxData[
   TemplateBox[{Cell[
-     TextData["DoFun homepage"]],
-    "http://theorie.ikp.physik.tu-darmstadt.de/~mqh/DoFun/"},
+     TextData["DoFun 3.0: Functional equations in Mathematica"]],
+    "http://inspirehep.net/record/1748585"},
    "WebLink",
    BaseStyle->{"GuideAbstract"}]]],
- " and the following articles:\nMarkus Q. Huber, Anton K. Cyrol, Jan M. \
-Pawlowski, DoFun 3.0: Functional equations in Mathematica\nMarkus Q. Huber, \
-Jens Braun, ",
+ ", arXiv:1908.02760 [hep-ph]\nMarkus Q. Huber, Jens Braun, ",
  Cell[BoxData[
   TemplateBox[{Cell[
      TextData[
@@ -194,27 +193,17 @@ Huber, Kai Schwenzer,",
    BaseStyle->{"GuideAbstract"}]]],
  ", Comput.Phys.Commun. 180 (2009) 965-976"
 }], "GuideAbstract",
- CellID->1361643585],
+ CellID->1361643585,
+ $CellContext`ExpressionUUID -> "d74f23a5-371a-4a1e-ab79-5188688b15b6"],
 
 Cell["Load DoFun with", "Text",
- CellID->2009870778],
+ CellID->2009870778,
+ $CellContext`ExpressionUUID -> "00c21b37-3bb4-4769-ac2a-c89f3ec5a3ba"],
 
 Cell[BoxData[
  RowBox[{"Needs", "[", "\"\<DoFun`\>\"", "]"}]], "Input",
- CellID->1414887963]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[TextData[{
- Cell[BoxData[
-  TemplateBox[{6},
-   "Spacer1"]]],
- "Main functions"
-}], "GuideFunctionsSection",
- CellID->1866139230],
-
-Cell["", "SectionHeaderSpacer"],
+ CellID->1414887963,
+ $CellContext`ExpressionUUID -> "744d0436-5a1f-4127-bfcd-fd0206010cd7"],
 
 Cell[TextData[{
  Cell[BoxData[
@@ -222,137 +211,122 @@ Cell[TextData[{
      TextData["setFields"]],"paclet:DoFun/ref/setFields"},
    "RefLink",
    BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans",
-  FontWeight->"Bold"],
+  FontWeight->"Bold",
+  $CellContext`ExpressionUUID -> "bd6910fa-a6e2-437b-a261-664ba867e8f9"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
  " Defines fields appropriately."
 }], "GuideText",
- CellID->818281677],
-
-Cell[CellGroupData[{
-
-Cell["DSEs", "GuideFunctionsSubsection",
- CellID->173109221],
+ CellID->818281677,
+ $CellContext`ExpressionUUID -> "e95e324b-666d-4f64-95c7-b25904e1245d"],
 
 Cell[TextData[{
  Cell[BoxData[
   TemplateBox[{Cell[
      TextData["doDSE"]],"paclet:DoFun/ref/doDSE"},
    "RefLink",
-   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans",
+  $CellContext`ExpressionUUID -> "082ec0ef-0a68-4415-8040-767e41abead6"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
  " Derives a DSE."
 }], "GuideText",
- CellID->203374175],
+ CellID->203374175,
+ $CellContext`ExpressionUUID -> "30ecfcf0-dc80-4ce9-bf54-7b9de5e380d5"],
 
 Cell[TextData[{
  Cell[BoxData[
   TemplateBox[{Cell[
      TextData["DSEPlot"]],"paclet:DoFun/ref/DSEPlot"},
    "RefLink",
-   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans",
+  $CellContext`ExpressionUUID -> "b6710dcf-d5b1-455f-9746-6d5e903b2dde"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
  " plots a DSE."
 }], "GuideText",
- CellID->1463276848]
-}, Open  ]],
-
-Cell["\t", "GuideDelimiterSubsection",
- CellID->195981991],
-
-Cell[CellGroupData[{
-
-Cell["RGEs", "GuideFunctionsSubsection",
- CellID->137740830],
+ CellID->1463276848,
+ $CellContext`ExpressionUUID -> "82fb1771-af61-44e7-8ed6-523766e946b5"],
 
 Cell[TextData[{
  Cell[BoxData[
   TemplateBox[{Cell[
      TextData["doRGE"]],"paclet:DoFun/ref/doRGE"},
    "RefLink",
-   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans",
+  $CellContext`ExpressionUUID -> "51726126-77d8-4a7e-9ded-c2b80df9161a"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
  " Derives an RGE."
 }], "GuideText",
- CellID->1962419404],
+ CellID->1962419404,
+ $CellContext`ExpressionUUID -> "22bde5d6-2659-4b7b-afe5-0d07ec726ffc"],
 
 Cell[TextData[{
  Cell[BoxData[
   TemplateBox[{Cell[
      TextData["RGEPlot"]],"paclet:DoFun/ref/RGEPlot"},
    "RefLink",
-   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans",
+  $CellContext`ExpressionUUID -> "69aa8e53-04e5-4970-aac2-89d3d454c2e3"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
  " Plots an RGE."
 }], "GuideText",
- CellID->551434498]
-}, Open  ]],
-
-Cell["\t", "GuideDelimiterSubsection",
- CellID->195090415],
-
-Cell[CellGroupData[{
-
-Cell["Composite operators", "GuideFunctionsSubsection",
- CellID->172998644],
+ CellID->551434498,
+ $CellContext`ExpressionUUID -> "81722330-150c-49c8-92d1-e4dfea490b7b"],
 
 Cell[TextData[{
  Cell[BoxData[
   TemplateBox[{Cell[
      TextData["doCO"]],"paclet:DoFun/ref/doCO"},
    "RefLink",
-   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans",
+  $CellContext`ExpressionUUID -> "273070b4-0238-48ca-a444-612811b6e85d"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
  " Derives the equation for the given correlation function of composite \
 operators."
 }], "GuideText",
- CellID->532010816],
+ CellID->532010816,
+ $CellContext`ExpressionUUID -> "9f0f3196-b23f-420c-ac1e-0d2a181fce88"],
 
 Cell[TextData[{
  Cell[BoxData[
   TemplateBox[{Cell[
      TextData["COPlot"]],"paclet:DoFun/ref/COPlot"},
    "RefLink",
-   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans",
+  $CellContext`ExpressionUUID -> "914f6f5c-5669-46fc-8695-98cca5c9d89c"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
  " Plots the equation of motion for a correlation function of composite \
 operators."
 }], "GuideText",
- CellID->1384564685]
-}, Open  ]],
-
-Cell["\t", "GuideDelimiterSubsection",
- CellID->584114387],
-
-Cell[CellGroupData[{
-
-Cell["Representation of functional equations", "GuideFunctionsSubsection",
- CellID->1471764858],
+ CellID->1384564685,
+ $CellContext`ExpressionUUID -> "4f1b48b5-a42b-4347-bfe5-a721ea6d4be9"],
 
 Cell[TextData[{
  Cell[BoxData[
   TemplateBox[{Cell[
      TextData["shortExpression"]],"paclet:DoFun/ref/shortExpression"},
    "RefLink",
-   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans",
+  $CellContext`ExpressionUUID -> "46ce9ece-3163-47df-9780-3cbed88bb3f5"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
  " Displays functional equations in symbolic form."
 }], "GuideText",
- CellID->963596871],
+ CellID->963596871,
+ $CellContext`ExpressionUUID -> "49be026a-3561-4f69-b67f-17a55a72d6bc"],
 
 Cell[TextData[{
  Cell[BoxData[
   TemplateBox[{Cell[
      TextData["factorStyle"]],"paclet:DoFun/ref/factorStyle"},
    "RefLink",
-   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans",
+  $CellContext`ExpressionUUID -> "60638930-e3e4-490d-a2cb-a1185e89a4ae"],
  "\[NonBreakingSpace]",
  StyleBox["\[FilledVerySmallSquare]", "InlineSeparator"],
  " ",
@@ -360,82 +334,75 @@ Cell[TextData[{
   TemplateBox[{Cell[
      TextData["indexStyle"]],"paclet:DoFun/ref/indexStyle"},
    "RefLink",
-   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"]
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans",
+  $CellContext`ExpressionUUID -> "fcd9a292-afd1-4183-9f39-c2638c640b2b"]
 }], "InlineGuideFunctionListing",
- CellID->1971291398]
-}, Open  ]],
-
-Cell["\t", "GuideDelimiterSubsection",
- CellID->1398384814],
-
-Cell[CellGroupData[{
-
-Cell["Algebraic expressions", "GuideFunctionsSubsection",
- CellID->497624915],
+ CellID->1971291398,
+ $CellContext`ExpressionUUID -> "a0fa37b6-5a2c-46e4-b948-305e0f9b2e19"],
 
 Cell[TextData[{
  Cell[BoxData[
   TemplateBox[{Cell[
      TextData["getAE"]],"paclet:DoFun/ref/getAE"},
    "RefLink",
-   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans",
+  $CellContext`ExpressionUUID -> "577dadd9-676f-4c87-8e35-93688c1a694a"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
  " Derives the algebraic expression from a symbolic DSE or RGE."
 }], "GuideText",
- CellID->944737639]
-}, Open  ]],
-
-Cell["\t", "GuideDelimiterSubsection",
- CellID->2026612859],
-
-Cell[CellGroupData[{
-
-Cell["Feynman rules", "GuideFunctionsSubsection",
- CellID->1050075324],
+ CellID->944737639,
+ $CellContext`ExpressionUUID -> "592c379c-ef76-4d8d-9c6f-04a3a7feb659"],
 
 Cell[TextData[{
  Cell[BoxData[
   TemplateBox[{Cell[
      TextData["getFR"]],"paclet:DoFun/ref/getFR"},
    "RefLink",
-   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans",
+  $CellContext`ExpressionUUID -> "e595bfb8-e699-4f3f-af94-a0a78f5d44ea"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
  " Derives the Feynman rules from a given action."
 }], "GuideText",
- CellID->1806659248],
+ CellID->1806659248,
+ $CellContext`ExpressionUUID -> "937fd069-fe26-42e2-b5a0-c2a851e06289"],
 
 Cell[TextData[{
  Cell[BoxData[
   TemplateBox[{Cell[
      TextData["delta"]],"paclet:DoFun/ref/delta"},
    "RefLink",
-   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans",
+  $CellContext`ExpressionUUID -> "665460ba-03ab-45be-af84-e4d17da2f86a"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
  " Represents a Kronecker delta."
 }], "GuideText",
- CellID->113427678],
+ CellID->113427678,
+ $CellContext`ExpressionUUID -> "3f045a9e-703d-4c58-b488-546f20a207bf"],
 
 Cell[TextData[{
  Cell[BoxData[
   TemplateBox[{Cell[
      TextData["integrateDeltas"]],"paclet:DoFun/ref/integrateDeltas"},
    "RefLink",
-   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans",
+  $CellContext`ExpressionUUID -> "b3f6d398-603f-4b6c-90d2-359985487d66"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
  " Contracts indices of the functions delta."
 }], "GuideText",
- CellID->497638155],
+ CellID->497638155,
+ $CellContext`ExpressionUUID -> "eced66c4-9d26-40d8-924c-2c10c690b3d8"],
 
 Cell[TextData[{
  Cell[BoxData[
   TemplateBox[{Cell[
      TextData["deltam"]],"paclet:DoFun/ref/deltam"},
    "RefLink",
-   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans",
+  $CellContext`ExpressionUUID -> "49a919e9-6e2c-41be-9341-f1da41190bdb"],
  "\[NonBreakingSpace]",
  StyleBox["\[FilledVerySmallSquare]", "InlineSeparator"],
  " ",
@@ -443,7 +410,8 @@ Cell[TextData[{
   TemplateBox[{Cell[
      TextData["dim"]],"paclet:DoFun/ref/dim"},
    "RefLink",
-   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans",
+  $CellContext`ExpressionUUID -> "711981fa-73c2-4ad7-b34a-07c19db2a2f3"],
  "\[NonBreakingSpace]",
  StyleBox["\[FilledVerySmallSquare]", "InlineSeparator"],
  " ",
@@ -451,28 +419,11 @@ Cell[TextData[{
   TemplateBox[{Cell[
      TextData["integrateMomenta"]],"paclet:DoFun/ref/integrateMomenta"},
    "RefLink",
-   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"]
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans",
+  $CellContext`ExpressionUUID -> "d046060a-ee5f-47b3-9261-04b52311c485"]
 }], "InlineGuideFunctionListing",
- CellID->1220319662]
-}, Open  ]],
-
-Cell["", "SectionFooterSpacer"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell["", "SectionFooterSpacer"],
-
-Cell[TextData[{
- Cell[BoxData[
-  TemplateBox[{6},
-   "Spacer1"]]],
- "Related Guides"
-}], "GuideMoreAboutSection",
- WholeCellGroupOpener->True,
- CellID->23220180],
-
-Cell["", "SectionHeaderSpacer"],
+ CellID->1220319662,
+ $CellContext`ExpressionUUID -> "7627e5f5-20d8-434d-9bc5-0dc570171f75"],
 
 Cell[TextData[{
  StyleBox[ButtonBox["Overview",
@@ -483,20 +434,22 @@ Cell[TextData[{
  StyleBox["\[LongDash]", "GuideEmDash"],
  " Overview over all functions."
 }], "GuideText",
- CellID->197447342],
+ CellID->197447342,
+ $CellContext`ExpressionUUID -> "62125ee6-5394-4ec3-999f-0477fb20b868"],
 
 Cell[TextData[{
  Cell[BoxData[
   TemplateBox[{Cell[
      TextData["loadFeynCalc"]],"paclet:DoFun/ref/loadFeynCalc"},
    "RefLink",
-   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans",
+  $CellContext`ExpressionUUID -> "d803893e-492e-451e-8f4a-7089cd01e19a"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
  " Function to load FeynCalc (if installed)."
 }], "GuideText",
- CellID->851102666]
-}, Open  ]],
+ CellID->851102666,
+ $CellContext`ExpressionUUID -> "384571f4-79ec-401b-b7cb-95e22310a51f"],
 
 Cell[" ", "FooterCell"]
 },
@@ -514,7 +467,7 @@ TaggingRules->{
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
     Left], "ExampleCounter" -> 1, "NeedPlatMsgIn" -> None, "RootCaptions" -> 
   "", "Metadata" -> {
-   "built" -> "{2019, 8, 7, 9, 20, 20.851495}", 
+   "built" -> "{2019, 10, 25, 10, 12, 15.511047}", 
     "history" -> {"1", "", "", ""}, "context" -> "DoFun`", 
     "keywords" -> {"functional equations DSEs RGEs flow equations"}, 
     "specialkeywords" -> {}, "tutorialcollectionlinks" -> {}, "index" -> True,
@@ -524,10 +477,11 @@ TaggingRules->{
 for deriving Dyson-Schwinger (DSEs), functional renormalization group \
 equations (RGEs) and equations for correlations functions of composite \
 operators.", "synonyms" -> {}, "tabletags" -> 
-    DocumentationBuild`Make`Private`tabletaggingrules$14434, "title" -> 
+    DocumentationBuild`Make`Private`tabletaggingrules$5190, "title" -> 
     "Welcome to DoFun", "titlemodifier" -> "", "windowtitle" -> 
-    "Welcome to DoFun", "type" -> "Guide", "uri" -> "DoFun"}},
-FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+    "Welcome to DoFun", "type" -> "Guide", "uri" -> "DoFun"}, 
+  "SearchTextTranslated" -> ""},
+FrontEndVersion->"10.0 for Linux x86 (64-bit) (June 27, 2014)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "Reference.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
@@ -542,99 +496,51 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[588, 21, 5551, 124, 70, "AnchorBarGrid",ExpressionUUID->"fc20d186-b0ae-44e8-b9dc-8e09818c095f",
+Cell[588, 21, 5550, 124, 70, "AnchorBarGrid",
  CellID->1],
-Cell[CellGroupData[{
-Cell[6164, 149, 58, 1, 70, "GuideTitle",ExpressionUUID->"b9b35a3e-e491-49b1-9116-143bd1be10b5",
+Cell[6141, 147, 130, 2, 70, "GuideTitle",
  CellID->942062912],
-Cell[6225, 152, 331, 8, 70, "GuideAbstract",ExpressionUUID->"dc9e62d7-42cf-47d8-aa84-e8ec2464ed83",
+Cell[6274, 151, 403, 9, 70, "GuideAbstract",
  CellID->2001916300],
-Cell[6559, 162, 1212, 34, 70, "GuideAbstract",ExpressionUUID->"d74f23a5-371a-4a1e-ab79-5188688b15b6",
+Cell[6680, 162, 1276, 34, 70, "GuideAbstract",
  CellID->1361643585],
-Cell[7774, 198, 52, 1, 70, "Text",ExpressionUUID->"00c21b37-3bb4-4769-ac2a-c89f3ec5a3ba",
+Cell[7959, 198, 124, 2, 70, "Text",
  CellID->2009870778],
-Cell[7829, 201, 92, 2, 70, "Input",ExpressionUUID->"744d0436-5a1f-4127-bfcd-fd0206010cd7",
- CellID->1414887963]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[7958, 208, 134, 6, 70, "GuideFunctionsSection",ExpressionUUID->"7c9ae763-9521-40f9-ae21-e7475b2bc552",
- CellID->1866139230],
-Cell[8095, 216, 31, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"bb2e2fd1-d941-4ce8-8705-4863302452e8"],
-Cell[8129, 218, 325, 11, 70, "GuideText",ExpressionUUID->"e95e324b-666d-4f64-95c7-b25904e1245d",
+Cell[8086, 202, 164, 3, 70, "Input",
+ CellID->1414887963],
+Cell[8253, 207, 470, 13, 70, "GuideText",
  CellID->818281677],
-Cell[CellGroupData[{
-Cell[8479, 233, 60, 1, 70, "GuideFunctionsSubsection",ExpressionUUID->"52af43e6-3b91-42bb-b84a-b135253439c4",
- CellID->173109221],
-Cell[8542, 236, 280, 10, 70, "GuideText",ExpressionUUID->"30ecfcf0-dc80-4ce9-bf54-7b9de5e380d5",
+Cell[8726, 222, 425, 12, 70, "GuideText",
  CellID->203374175],
-Cell[8825, 248, 283, 10, 70, "GuideText",ExpressionUUID->"82fb1771-af61-44e7-8ed6-523766e946b5",
- CellID->1463276848]
-}, Open  ]],
-Cell[9123, 261, 58, 1, 70, "GuideDelimiterSubsection",ExpressionUUID->"254a8f74-5326-486b-ae27-c41d44cc89c4",
- CellID->195981991],
-Cell[CellGroupData[{
-Cell[9206, 266, 60, 1, 70, "GuideFunctionsSubsection",ExpressionUUID->"cb4f994e-e877-41d1-a249-4fe895589737",
- CellID->137740830],
-Cell[9269, 269, 282, 10, 70, "GuideText",ExpressionUUID->"22bde5d6-2659-4b7b-afe5-0d07ec726ffc",
+Cell[9154, 236, 428, 12, 70, "GuideText",
+ CellID->1463276848],
+Cell[9585, 250, 427, 12, 70, "GuideText",
  CellID->1962419404],
-Cell[9554, 281, 283, 10, 70, "GuideText",ExpressionUUID->"81722330-150c-49c8-92d1-e4dfea490b7b",
- CellID->551434498]
-}, Open  ]],
-Cell[9852, 294, 58, 1, 70, "GuideDelimiterSubsection",ExpressionUUID->"4fb589d4-4f0a-47bc-84e1-bd4796ea3035",
- CellID->195090415],
-Cell[CellGroupData[{
-Cell[9935, 299, 75, 1, 70, "GuideFunctionsSubsection",ExpressionUUID->"4e5e4e8f-68ee-41d9-b46f-c412c10ddb0b",
- CellID->172998644],
-Cell[10013, 302, 345, 11, 70, "GuideText",ExpressionUUID->"9f0f3196-b23f-420c-ac1e-0d2a181fce88",
+Cell[10015, 264, 428, 12, 70, "GuideText",
+ CellID->551434498],
+Cell[10446, 278, 490, 13, 70, "GuideText",
  CellID->532010816],
-Cell[10361, 315, 350, 11, 70, "GuideText",ExpressionUUID->"4f1b48b5-a42b-4347-bfe5-a721ea6d4be9",
- CellID->1384564685]
-}, Open  ]],
-Cell[10726, 329, 58, 1, 70, "GuideDelimiterSubsection",ExpressionUUID->"454a66be-cfcf-4d2c-85cc-9e8f67dbdf11",
- CellID->584114387],
-Cell[CellGroupData[{
-Cell[10809, 334, 95, 1, 70, "GuideFunctionsSubsection",ExpressionUUID->"aa08d486-6696-466b-a914-42d7cd113d60",
- CellID->1471764858],
-Cell[10907, 337, 333, 10, 70, "GuideText",ExpressionUUID->"49be026a-3561-4f69-b67f-17a55a72d6bc",
+Cell[10939, 293, 495, 13, 70, "GuideText",
+ CellID->1384564685],
+Cell[11437, 308, 478, 12, 70, "GuideText",
  CellID->963596871],
-Cell[11243, 349, 503, 15, 70, "InlineGuideFunctionListing",ExpressionUUID->"a0fa37b6-5a2c-46e4-b948-305e0f9b2e19",
- CellID->1971291398]
-}, Open  ]],
-Cell[11761, 367, 59, 1, 70, "GuideDelimiterSubsection",ExpressionUUID->"807820ea-c152-4936-8f6f-118a3e314cbf",
- CellID->1398384814],
-Cell[CellGroupData[{
-Cell[11845, 372, 77, 1, 70, "GuideFunctionsSubsection",ExpressionUUID->"0ad520a8-94ef-44aa-b02f-853a077cad15",
- CellID->497624915],
-Cell[11925, 375, 326, 10, 70, "GuideText",ExpressionUUID->"592c379c-ef76-4d8d-9c6f-04a3a7feb659",
- CellID->944737639]
-}, Open  ]],
-Cell[12266, 388, 59, 1, 70, "GuideDelimiterSubsection",ExpressionUUID->"5d07b425-5fdf-46ab-9932-c8696141c9fa",
- CellID->2026612859],
-Cell[CellGroupData[{
-Cell[12350, 393, 70, 1, 70, "GuideFunctionsSubsection",ExpressionUUID->"898c78f6-3872-4363-a7fb-5e5549486f8e",
- CellID->1050075324],
-Cell[12423, 396, 313, 10, 70, "GuideText",ExpressionUUID->"937fd069-fe26-42e2-b5a0-c2a851e06289",
+Cell[11918, 322, 721, 18, 70, "InlineGuideFunctionListing",
+ CellID->1971291398],
+Cell[12642, 342, 471, 12, 70, "GuideText",
+ CellID->944737639],
+Cell[13116, 356, 458, 12, 70, "GuideText",
  CellID->1806659248],
-Cell[12739, 408, 295, 10, 70, "GuideText",ExpressionUUID->"3f045a9e-703d-4c58-b488-546f20a207bf",
+Cell[13577, 370, 440, 12, 70, "GuideText",
  CellID->113427678],
-Cell[13037, 420, 327, 10, 70, "GuideText",ExpressionUUID->"eced66c4-9d26-40d8-924c-2c10c690b3d8",
+Cell[14020, 384, 472, 12, 70, "GuideText",
  CellID->497638155],
-Cell[13367, 432, 751, 23, 70, "InlineGuideFunctionListing",ExpressionUUID->"7627e5f5-20d8-434d-9bc5-0dc570171f75",
- CellID->1220319662]
-}, Open  ]],
-Cell[14133, 458, 31, 0, 70, "SectionFooterSpacer",ExpressionUUID->"3fa21284-9b30-42e0-9a90-ccbaa4eeb690"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[14201, 463, 31, 0, 70, "SectionFooterSpacer",ExpressionUUID->"5c4fcd30-4517-4698-99d6-8bf7f8838486"],
-Cell[14235, 465, 161, 7, 70, "GuideMoreAboutSection",ExpressionUUID->"e1fe571b-95dc-4ab2-916c-e5cd8e8179cb",
- CellID->23220180],
-Cell[14399, 474, 31, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"537f251e-a1cd-431d-84d1-df248d45a00e"],
-Cell[14433, 476, 262, 9, 70, "GuideText",ExpressionUUID->"62125ee6-5394-4ec3-999f-0477fb20b868",
+Cell[14495, 398, 1042, 27, 70, "InlineGuideFunctionListing",
+ CellID->1220319662],
+Cell[15540, 427, 334, 10, 70, "GuideText",
  CellID->197447342],
-Cell[14698, 487, 321, 10, 70, "GuideText",ExpressionUUID->"384571f4-79ec-401b-b7cb-95e22310a51f",
- CellID->851102666]
-}, Open  ]],
-Cell[15034, 500, 23, 0, 70, "FooterCell",ExpressionUUID->"86405b99-7cbb-495d-9925-c12d68b74766"]
+Cell[15877, 439, 466, 12, 70, "GuideText",
+ CellID->851102666],
+Cell[16346, 453, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

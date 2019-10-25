@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 11.3' *)
+(* CreatedBy='Mathematica 10.0' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     26422,        739]
-NotebookOptionsPosition[     23216,        672]
-NotebookOutlinePosition[     25640,        728]
-CellTagsIndexPosition[     25597,        725]
+NotebookDataLength[     33305,        841]
+NotebookOptionsPosition[     30505,        774]
+NotebookOutlinePosition[     32961,        830]
+CellTagsIndexPosition[     32918,        827]
 WindowTitle->DSEPlotList
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$39262], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$28500], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/ref/DSEPlotList", ".html"]], None}]}]},
@@ -78,8 +78,13 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
 Cell[TextData[{
  Cell["DSEPlotList", "ObjectName"],
  Cell[BoxData[
-  TemplateBox[{8},
-   "Spacer1"]]],
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
  Cell[BoxData[""], "ObjectNameTranslation"]
 }], "ObjectNameGrid"],
 
@@ -87,10 +92,12 @@ Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{"DSEPlotList", "[", 
-       StyleBox["expr", "TI"], "]"}]], "InlineFormula"],
+       StyleBox["expr", "TI"], "]"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "7a9a5160-9449-431f-be85-d8e5f1607f3a"],
      "\[LineSeparator]returns a list of plots of each term in ",
      Cell[BoxData[
-      StyleBox["expr", "TI"]], "InlineFormula"],
+      StyleBox["expr", "TI"]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "f9dd14bb-9278-4c8b-8b77-3236b1c97430"],
      "."
     }]]},
    {"", Cell[TextData[{
@@ -98,13 +105,16 @@ Cell[BoxData[GridBox[{
       RowBox[{"DSEPlotList", "[", 
        StyleBox[
         RowBox[{"expr", ",", " ", "fieldStyles"}], "TI"], "]"}]], 
-      "InlineFormula"],
+      "InlineFormula",
+      $CellContext`ExpressionUUID -> "40174ca1-adae-4829-ab10-b9a3facbf77a"],
      " returns a list of plots of each term in ",
      Cell[BoxData[
-      StyleBox["expr", "TI"]], "InlineFormula"],
+      StyleBox["expr", "TI"]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "264d77bb-ca4c-451c-82ea-eaf944397958"],
      " with the styles of the fields given by ",
      Cell[BoxData[
-      StyleBox["fieldStyles", "TI"]], "InlineFormula"],
+      StyleBox["fieldStyles", "TI"]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "a44b8814-9fc1-4253-91f7-ac2a4853a589"],
      ". The syntax is ",
      Cell[BoxData[
       RowBox[{
@@ -122,35 +132,41 @@ Cell[BoxData[GridBox[{
             StyleBox["field", "TI"], "2"], ",", " ", 
            SubscriptBox[
             StyleBox["style", "TI"], "2"]}], "}"}], ",", " ", "..."}], "}"}], 
-       "}"}]], "InlineFormula"],
+       "}"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "7256b23f-99e3-4e3a-ac3e-8682e3df6521"],
      " where ",
      Cell[BoxData[
       SubscriptBox[
-       StyleBox["style", "TI"], "i"]], "InlineFormula"],
+       StyleBox["style", "TI"], "i"]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "ca1ee025-2ee3-4aa6-b9c2-839fc510b2d4"],
      " are graphics primitives like colors suitable for Line. ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["DSEPlotList"]],"paclet:DoFun/ref/DSEPlotList"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "a7fddbe2-fa3a-47a6-8db8-b37851c68e0b"],
      " is the basic plotting function used by ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["COPlot"]],"paclet:DoFun/ref/COPlot"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "ccf24530-15d1-4e28-aa87-4fd9a9594f2b"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["DSEPlot"]],"paclet:DoFun/ref/DSEPlot"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "782cf245-9e43-4e46-aad2-bd6b4f72c9d5"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["RGEPlot"]],"paclet:DoFun/ref/RGEPlot"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "3d601002-039e-44fe-9d35-be1dd7e337e5"],
      ".\nBy default, blobs denote dressed quantities (with the exception of \
 internal propagators), dots bare n-point functions, boxes regulator \
 insertions, triangles composite operators and external fields are indicated \
@@ -164,18 +180,24 @@ by a circle.\nAdditional possible options are options of ",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {None, {None}}, 
-   "RowsIndexed" -> {}}}],
+   "RowsIndexed" -> {}}},
+ $CellContext`ExpressionUUID -> "d637eeeb-1d85-4e33-8a97-02c47f6065c6"],
 
 Cell[CellGroupData[{
 
 Cell[TextData[Cell[BoxData[
  ButtonBox[Cell[TextData[{
    Cell[BoxData[
-    TemplateBox[{6},
-     "Spacer1"]]],
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
    "Details"
   }], "NotesFrameText"],
-  Appearance->{Automatic, None, "Normal", Automatic},
+  Appearance->{Automatic, None},
   BaseStyle->None,
   ButtonFunction:>(FrontEndExecute[{
      FrontEnd`SelectionMove[
@@ -191,7 +213,8 @@ Cell[TextData[Cell[BoxData[
 
 Cell["", "SectionHeaderSpacer"],
 
-Cell["The following options can be given: ", "Notes"],
+Cell["The following options can be given: ", "Notes",
+ $CellContext`ExpressionUUID -> "0e1d5bdf-3e60-4533-929e-2ff2ae05ed4e"],
 
 Cell[BoxData[GridBox[{
    {Cell["      ", "TableRowIcon"], 
@@ -202,7 +225,8 @@ Cell[BoxData[GridBox[{
 Internal use to distinguish between DSEs, RGEs and equations for composite \
 operators.
 \
-\>", "TableText"]},
+\>", "TableText",
+     $CellContext`ExpressionUUID -> "3fa841c5-f5b1-4325-afdf-cc814fd02232"]},
    {Cell["      ", "TableRowIcon"], 
     ButtonBox["bareVertexSymbol",
      BaseStyle->"Link",
@@ -214,72 +238,85 @@ operators.
       TemplateBox[{Cell[
          TextData["bareVertexSymbol"]],"paclet:DoFun/ref/bareVertexSymbol"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "89ca0562-2a60-46dd-a85c-c8fd35c0780a"],
      " is an option of ",
-     Cell[BoxData["COPlot"], "InlineFormula"],
+     Cell[BoxData["COPlot"], "InlineFormula",
+      $CellContext`ExpressionUUID -> "5eb46fe2-bc94-45a9-b568-27afeb1f12e2"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["DSEPlot"]],"paclet:DoFun/ref/DSEPlot"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "bce1f0ec-572b-4cfb-aca8-fbe5decb5875"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["DSEPlotList"]],"paclet:DoFun/ref/DSEPlotList"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "f52173d1-e511-4e99-a7d8-f4279a02eafd"],
      " and ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["RGEPlot"]],"paclet:DoFun/ref/RGEPlot"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "1842294c-ebd0-4066-a562-276686e927b5"],
      ". It determines how to draw bare vertices.\n\nPossible values: ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["boxSymbol"]],"paclet:DoFun/ref/boxSymbol"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "6b65ddc0-e0dc-432b-88ed-2c3c662fbac8"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["diskSymbol"]],"paclet:DoFun/ref/diskSymbol"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "7a01f86d-6032-4e4e-89b1-f19e78deeacc"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["triangleSymbol"]],"paclet:DoFun/ref/triangleSymbol"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "16ff728a-07c4-4225-836c-404ee8ac14ea"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["diskTinySymbol"]],"paclet:DoFun/ref/diskTinySymbol"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "360f13c0-ed02-4fa6-9e09-e00d1ea5be99"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["diskOpenSymbol"]],"paclet:DoFun/ref/diskOpenSymbol"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "4e78a77a-fd16-4190-8350-8877f0334029"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["crossSymbol"]],"paclet:DoFun/ref/crossSymbol"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "10d671a6-18d8-4623-9542-7cf5afeccb3d"],
      " or a user-defined function which takes the coordinate of the regulator \
 insertion as input.\nDefault value: ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["diskTinySymbol"]],"paclet:DoFun/ref/diskTinySymbol"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "1b26210d-687d-4f7d-bb03-e8e05a194481"],
      "."
-    }], "TableText"]},
+    }], "TableText",
+     $CellContext`ExpressionUUID -> "381f9763-a277-426d-914f-b13455a2e621"]},
    {Cell["      ", "TableRowIcon"], 
     ButtonBox["coSymbol",
      BaseStyle->"Link",
@@ -291,72 +328,85 @@ insertion as input.\nDefault value: ",
       TemplateBox[{Cell[
          TextData["coSymbol"]],"paclet:DoFun/ref/coSymbol"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "4c3e3025-8d68-45b1-8c84-bb9eeac5e2a8"],
      " is an option of ",
-     Cell[BoxData["COPlot"], "InlineFormula"],
+     Cell[BoxData["COPlot"], "InlineFormula",
+      $CellContext`ExpressionUUID -> "5f05c2c0-e184-4c17-a67c-9c4179d03816"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["DSEPlot"]],"paclet:DoFun/ref/DSEPlot"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "64028681-b120-4904-9be9-fed5c4a7d5cd"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["DSEPlotList"]],"paclet:DoFun/ref/DSEPlotList"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "bece73d7-9a0f-456f-b311-c3f0afaafe70"],
      " and ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["RGEPlot"]],"paclet:DoFun/ref/RGEPlot"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "37a74dc0-9c77-4d75-a8a1-0a12a4344d97"],
      ". It determines how to draw composite operators.\n\nPossible values: ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["boxSymbol"]],"paclet:DoFun/ref/boxSymbol"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "ae6b4795-e6b4-496c-a88d-1a514602b841"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["diskSymbol"]],"paclet:DoFun/ref/diskSymbol"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "c6577708-ec8a-4b76-a831-7416f531b8a3"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["triangleSymbol"]],"paclet:DoFun/ref/triangleSymbol"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "a4e87f3b-c766-4d3e-ad2e-82bbb846c792"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["diskTinySymbol"]],"paclet:DoFun/ref/diskTinySymbol"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "9e88f9a5-43f5-4101-bc6e-a56c8b7c4f54"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["diskOpenSymbol"]],"paclet:DoFun/ref/diskOpenSymbol"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "1667a496-a91d-48cf-ab09-4f51a6f64883"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["crossSymbol"]],"paclet:DoFun/ref/crossSymbol"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "2623d4f4-04b6-4467-b568-ece5b42e38f5"],
      " or a user-defined function which takes the coordinate of the regulator \
 insertion as input.\nDefault value: ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["triangleSymbol"]],"paclet:DoFun/ref/triangleSymbol"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "09875650-a105-48d1-bdf8-744d980fa6ec"],
      "."
-    }], "TableText"]},
+    }], "TableText",
+     $CellContext`ExpressionUUID -> "fc5a31a9-ef68-4705-8492-e96f23fb1b2a"]},
    {Cell["      ", "TableRowIcon"], 
     ButtonBox["factorStyle",
      BaseStyle->"Link",
@@ -367,35 +417,42 @@ insertion as input.\nDefault value: ",
       TemplateBox[{Cell[
          TextData["factorStyle"]],"paclet:DoFun/ref/factorStyle"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "e57a56a2-0390-4cbf-834f-aca4b862a3a2"],
      " is an option of ",
-     Cell[BoxData["COPlot"], "InlineFormula"],
+     Cell[BoxData["COPlot"], "InlineFormula",
+      $CellContext`ExpressionUUID -> "e253a3bd-9bab-45eb-b8fa-83703e77c82b"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["DSEPlot"]],"paclet:DoFun/ref/DSEPlot"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "9b3caf35-ff9d-43c9-ba4d-cc8fe04ddee8"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["DSEPlotList"]],"paclet:DoFun/ref/DSEPlotList"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "d1634be8-daa3-462b-b590-9ee1ce352f25"],
      " and ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["RGEPlot"]],"paclet:DoFun/ref/RGEPlot"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "a348a22a-5481-4095-996c-b99ea80ef90d"],
      ". It determines the style of all text except ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["indices"]],"paclet:DoFun/ref/indices"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "e802ec20-e91d-49a0-a359-826ce7749a85"],
      " and field labels.\nStandard value: {FontSize:>16}."
-    }], "TableText"]},
+    }], "TableText",
+     $CellContext`ExpressionUUID -> "aa51bc6b-3a62-4565-925d-1f51f5e97156"]},
    {Cell["      ", "TableRowIcon"], 
     ButtonBox["indexStyle",
      BaseStyle->"Link",
@@ -406,35 +463,42 @@ insertion as input.\nDefault value: ",
       TemplateBox[{Cell[
          TextData["indexStyle"]],"paclet:DoFun/ref/indexStyle"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "f46362e4-ccac-49b3-84fe-e50f03b92941"],
      " is an option for ",
-     Cell[BoxData["COPlot"], "InlineFormula"],
+     Cell[BoxData["COPlot"], "InlineFormula",
+      $CellContext`ExpressionUUID -> "711f5cda-8e5a-412f-bd53-04aae8db8d20"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["DSEPlot"]],"paclet:DoFun/ref/DSEPlot"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "e07b6869-7e24-42f7-b003-c9ca68d5a894"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["DSEPlotList"]],"paclet:DoFun/ref/DSEPlotList"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "85db1a6e-2da0-4ca4-928e-bd733b9deba1"],
      " and ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["RGEPlot"]],"paclet:DoFun/ref/RGEPlot"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "0516e607-d568-4711-a53a-91c27198a541"],
      ". It determines the style of all ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["indices"]],"paclet:DoFun/ref/indices"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "a2a699c3-caf6-4c51-aab4-a6e3aa03536c"],
      ".\nStandard value: {FontSize:>14}."
-    }], "TableText"]},
+    }], "TableText",
+     $CellContext`ExpressionUUID -> "822a72c2-4eb2-4a9c-9bc1-d31886f0f553"]},
    {Cell["      ", "TableRowIcon"], 
     ButtonBox["output",
      BaseStyle->"Link",
@@ -446,55 +510,65 @@ insertion as input.\nDefault value: ",
       TemplateBox[{Cell[
          TextData["output"]],"paclet:DoFun/ref/output"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "f4e3fe83-d227-4243-b1cd-1cbe0a2d0f49"],
      "  is an option of ",
-     Cell[BoxData["COPlot"], "InlineFormula"],
+     Cell[BoxData["COPlot"], "InlineFormula",
+      $CellContext`ExpressionUUID -> "0e9c006d-7c7c-4ea4-a375-164f85c35921"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["DSEPlot"]],"paclet:DoFun/ref/DSEPlot"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "cdcc8e77-d28a-4686-b58f-e62819108a49"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["DSEPlotList"]],"paclet:DoFun/ref/DSEPlotList"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "9ead6634-157f-4b15-b8d5-6e4a80cc6e9e"],
      " and ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["RGEPlot"]],"paclet:DoFun/ref/RGEPlot"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "e0cd3acb-9475-4768-a75c-5cd8761191e0"],
      ". It determines in what the ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["output"]],"paclet:DoFun/ref/output"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "dd3540f0-7096-49cd-80f5-b80e0b81e4f7"],
      " is given.\n\nPossible values are:\n -) List: Gives a list of all \
 graphs.\n -) ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["forceEquation"]],"paclet:DoFun/ref/forceEquation"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "932f820e-4c6a-4e0d-90e9-aad42bd75f4d"],
      ": Output in form of an equation, ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["even"]],"paclet:DoFun/ref/even"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "9109a113-8ed6-47ea-ac0e-9c7411fc9bd8"],
      " if a single graph is plotted.\n -) ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["complete"]],"paclet:DoFun/ref/complete"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "3ba08421-0260-40fe-a5fc-e2ba74921a62"],
      " (default): Output for several graphs in form of an equation and for a \
 single graph as such.\n "
-    }], "TableText"]},
+    }], "TableText",
+     $CellContext`ExpressionUUID -> "eaf86df8-cb95-4c25-8dff-6f68add6c7d6"]},
    {Cell["      ", "TableRowIcon"], 
     ButtonBox["regulatorSymbol",
      BaseStyle->"Link",
@@ -506,73 +580,86 @@ single graph as such.\n "
       TemplateBox[{Cell[
          TextData["regulatorSymbol"]],"paclet:DoFun/ref/regulatorSymbol"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "d6cddcd7-b24f-45c2-946a-49c6e9145572"],
      "  is an option of ",
-     Cell[BoxData["COPlot"], "InlineFormula"],
+     Cell[BoxData["COPlot"], "InlineFormula",
+      $CellContext`ExpressionUUID -> "10f25d0e-70fc-4e61-b652-fb6586dbb616"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["DSEPlot"]],"paclet:DoFun/ref/DSEPlot"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "3b67b6b3-e257-456e-881a-2e24c57ca47e"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["DSEPlotList"]],"paclet:DoFun/ref/DSEPlotList"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "5d629c04-4da6-451b-9847-993fe9929e5d"],
      " and ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["RGEPlot"]],"paclet:DoFun/ref/RGEPlot"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "e9b189ec-1453-4674-82ec-b76813afa46e"],
      ". It determines how to draw regulator insertions.\n\nPossible values: ",
      
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["boxSymbol"]],"paclet:DoFun/ref/boxSymbol"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "d3ee71ba-60dd-4cbd-8258-3859812dd635"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["diskSymbol"]],"paclet:DoFun/ref/diskSymbol"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "cf07489e-bef4-45d4-851b-daf2d13e39e5"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["triangleSymbol"]],"paclet:DoFun/ref/triangleSymbol"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "8a93923d-dea4-4987-8784-f45e74cf91f3"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["diskTinySymbol"]],"paclet:DoFun/ref/diskTinySymbol"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "8d8a045f-d315-43f6-8584-4bae9a3bb89a"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["diskOpenSymbol"]],"paclet:DoFun/ref/diskOpenSymbol"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "04ffb1d1-de52-42fb-b73d-ca9dee5bc645"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["crossSymbol"]],"paclet:DoFun/ref/crossSymbol"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "ea09542b-2b49-4378-9729-b3bb410053b3"],
      " or a user-defined function which takes the coordinate of the regulator \
 insertion as input.\nDefault value: ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["boxSymbol"]],"paclet:DoFun/ref/boxSymbol"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "f43fb4a3-867c-411e-a9f6-5776801c1cc4"],
      "."
-    }], "TableText"]},
+    }], "TableText",
+     $CellContext`ExpressionUUID -> "252777e8-24a8-4605-ae5e-0589ff03f19a"]},
    {Cell["      ", "TableRowIcon"], 
     ButtonBox["vertexSymbol",
      BaseStyle->"Link",
@@ -584,79 +671,93 @@ insertion as input.\nDefault value: ",
       TemplateBox[{Cell[
          TextData["vertexSymbol"]],"paclet:DoFun/ref/vertexSymbol"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "bcd238da-732b-4bb9-a138-48606a984746"],
      " is an option of ",
-     Cell[BoxData["COPlot"], "InlineFormula"],
+     Cell[BoxData["COPlot"], "InlineFormula",
+      $CellContext`ExpressionUUID -> "26cb4803-23ce-4358-a1d3-99f999e18532"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["DSEPlot"]],"paclet:DoFun/ref/DSEPlot"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "6721bbd7-958f-4258-92f2-26a0c2ade301"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["DSEPlotList"]],"paclet:DoFun/ref/DSEPlotList"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "003f8c4a-7a5c-4aa9-8d03-1f739f13504a"],
      " and ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["RGEPlot"]],"paclet:DoFun/ref/RGEPlot"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "879aa915-ee29-4df5-a44f-c54b05bfba28"],
      ". It determines how to draw dressed vertices.\n\nPossible values: ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["boxSymbol"]],"paclet:DoFun/ref/boxSymbol"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "053ed20c-dcea-4ec2-87ac-ee349d7ec6d5"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["diskSymbol"]],"paclet:DoFun/ref/diskSymbol"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "74179189-3fc4-4748-8256-cad396b2e51c"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["triangleSymbol"]],"paclet:DoFun/ref/triangleSymbol"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "28fc9a7c-e712-416a-b8c8-fa84ef959704"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["diskTinySymbol"]],"paclet:DoFun/ref/diskTinySymbol"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "36907d42-4abe-47dc-b041-f10a6b2cefe9"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["diskOpenSymbol"]],"paclet:DoFun/ref/diskOpenSymbol"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "3156a758-95e7-46c8-bc02-f8db2d5d3a7a"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["crossSymbol"]],"paclet:DoFun/ref/crossSymbol"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "ba62bd39-78da-4127-859f-0c1f3790140a"],
      " or a user-defined function which takes the coordinate of the regulator \
 insertion as input.\nDefault value: ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["diskSymbol"]],"paclet:DoFun/ref/diskSymbol"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "42c96784-866b-4502-8a32-888618b1a392"],
      "."
-    }], "TableText"]},
+    }], "TableText",
+     $CellContext`ExpressionUUID -> "a003ee11-5fff-4449-ba55-dedcbb95f79a"]},
    {Cell["      ", "TableRowIcon"], 
     ButtonBox["ImageSize",
      BaseStyle->"Link",
      ButtonData->"paclet:ref/ImageSize"], "100", Cell["\<\
 ImageSize is an option that specifies the overall size of an image to display \
 for an object. \
-\>", "TableText"]}
+\>", "TableText",
+     $CellContext`ExpressionUUID -> "5501ba09-fb06-442c-bfa4-2426a83ac05d"]}
   }]], "3ColumnTableMod",
  GridBoxOptions->{
  GridBoxBackground->{
@@ -665,7 +766,8 @@ for an object. \
    "RowsIndexed" -> {}},
  GridBoxDividers->{
   "Rows" -> {{True, True, True, True, True, True, True, True, True, True}}}},
- CellID->1725773012]
+ CellID->1725773012,
+ $CellContext`ExpressionUUID -> "f354dd07-a1be-4c9f-a98d-e46bc563fb4b"]
 }, Closed]],
 
 Cell[" ", "FooterCell"]
@@ -685,7 +787,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 8, 7, 9, 20, 58.440594}", 
+   "built" -> "{2019, 10, 25, 10, 13, 0.536477}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -702,9 +804,9 @@ regulator insertions, triangles composite operators and external fields are \
 indicated by a circle. Additional possible options are options of Graph.", 
     "synonyms" -> {}, "tabletags" -> {}, "title" -> "DSEPlotList", 
     "titlemodifier" -> "", "windowtitle" -> "DSEPlotList", "type" -> "Symbol",
-     "uri" -> "DoFun/ref/DSEPlotList"}},
+     "uri" -> "DoFun/ref/DSEPlotList"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+FrontEndVersion->"10.0 for Linux x86 (64-bit) (June 27, 2014)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -713,7 +815,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  FrontEndVersion -> "10.0 for Linux x86 (64-bit) (June 27, 2014)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -727,20 +829,20 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[583, 21, 2282, 54, 70, "AnchorBarGrid",ExpressionUUID->"12fd113a-ddd2-47ff-ab75-e19c3f3b5bd2",
+Cell[583, 21, 2282, 54, 70, "AnchorBarGrid",
  CellID->1],
-Cell[2868, 77, 168, 6, 70, "ObjectNameGrid",ExpressionUUID->"313def63-db51-4d0b-bc0b-493e7a3f6de9"],
-Cell[3039, 85, 2818, 81, 70, "Usage",ExpressionUUID->"d637eeeb-1d85-4e33-8a97-02c47f6065c6"],
+Cell[2868, 77, 288, 11, 70, "ObjectNameGrid"],
+Cell[3159, 90, 3737, 93, 70, "Usage"],
 Cell[CellGroupData[{
-Cell[5882, 170, 621, 19, 70, "NotesSection",ExpressionUUID->"fed8a963-2631-4df5-b285-1c4c930c02f4",
+Cell[6921, 187, 730, 24, 70, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
  CellID->1],
-Cell[6506, 191, 31, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"f4d710e1-4601-48cc-b08c-4ad7f8de1092"],
-Cell[6540, 193, 53, 0, 70, "Notes",ExpressionUUID->"0e1d5bdf-3e60-4533-929e-2ff2ae05ed4e"],
-Cell[6596, 195, 16578, 472, 70, "3ColumnTableMod",ExpressionUUID->"f354dd07-a1be-4c9f-a98d-e46bc563fb4b",
+Cell[7654, 213, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[7688, 215, 125, 1, 70, "Notes"],
+Cell[7816, 218, 22647, 551, 70, "3ColumnTableMod",
  CellID->1725773012]
 }, Closed]],
-Cell[23189, 670, 23, 0, 70, "FooterCell",ExpressionUUID->"ed8584a8-942c-404e-8e91-4af2a9b75b24"]
+Cell[30478, 772, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 11.3' *)
+(* CreatedBy='Mathematica 10.0' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5536,        153]
-NotebookOptionsPosition[      3501,        103]
-NotebookOutlinePosition[      5273,        151]
-CellTagsIndexPosition[      5230,        148]
+NotebookDataLength[      5696,        161]
+NotebookOptionsPosition[      3847,        111]
+NotebookOutlinePosition[      5652,        159]
+CellTagsIndexPosition[      5609,        156]
 WindowTitle->onePIQ
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$57900], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$46392], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "DoFun/ref/onePIQ", 
             ".html"]], None}]}]},
@@ -78,8 +78,13 @@ Cell[BoxData[GridBox[{
 Cell[TextData[{
  Cell["onePIQ", "ObjectName"],
  Cell[BoxData[
-  TemplateBox[{8},
-   "Spacer1"]]],
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
  Cell[BoxData[""], "ObjectNameTranslation"]
 }], "ObjectNameGrid"],
 
@@ -87,17 +92,20 @@ Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{"onePIQ", "[", 
-       StyleBox["expr", "TI"], "]"}]], "InlineFormula"],
+       StyleBox["expr", "TI"], "]"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "1e9497e2-6a71-4d91-addd-f64cb32672f7"],
      "\[LineSeparator]returns True if ",
      Cell[BoxData[
-      StyleBox["expr", "TI"]], "InlineFormula"],
+      StyleBox["expr", "TI"]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "31a2a9ab-08be-4035-90d5-c110cce0acff"],
      " is a 1PI diagram."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
-   "RowsIndexed" -> {}}}],
+   "RowsIndexed" -> {}}},
+ $CellContext`ExpressionUUID -> "11118486-b00c-4d49-9d48-e1d3eddc0521"],
 
 Cell[" ", "FooterCell"]
 },
@@ -116,7 +124,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 8, 7, 9, 21, 26.822725}", 
+   "built" -> "{2019, 10, 25, 10, 13, 31.776178}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -125,9 +133,9 @@ TaggingRules->{
     "onePIQ[expr] returns True if expr is a 1PI diagram.", "synonyms" -> {}, 
     "tabletags" -> {}, "title" -> "onePIQ", "titlemodifier" -> "", 
     "windowtitle" -> "onePIQ", "type" -> "Symbol", "uri" -> 
-    "DoFun/ref/onePIQ"}},
+    "DoFun/ref/onePIQ"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+FrontEndVersion->"10.0 for Linux x86 (64-bit) (June 27, 2014)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -136,7 +144,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  FrontEndVersion -> "10.0 for Linux x86 (64-bit) (June 27, 2014)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -150,11 +158,11 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[578, 21, 2275, 54, 70, "AnchorBarGrid",ExpressionUUID->"266fe817-b006-4854-91c7-0964163911d8",
+Cell[578, 21, 2275, 54, 70, "AnchorBarGrid",
  CellID->1],
-Cell[2856, 77, 163, 6, 70, "ObjectNameGrid",ExpressionUUID->"73a87c18-2cca-40a7-8efe-e47341a4b71f"],
-Cell[3022, 85, 449, 14, 70, "Usage",ExpressionUUID->"11118486-b00c-4d49-9d48-e1d3eddc0521"],
-Cell[3474, 101, 23, 0, 70, "FooterCell",ExpressionUUID->"acc61ec1-c660-4035-b4c4-448e7ea8c378"]
+Cell[2856, 77, 283, 11, 70, "ObjectNameGrid"],
+Cell[3142, 90, 675, 17, 70, "Usage"],
+Cell[3820, 109, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

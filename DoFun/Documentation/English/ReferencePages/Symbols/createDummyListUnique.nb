@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 11.3' *)
+(* CreatedBy='Mathematica 10.0' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7633,        207]
-NotebookOptionsPosition[      4936,        147]
-NotebookOutlinePosition[      6878,        197]
-CellTagsIndexPosition[      6835,        194]
+NotebookDataLength[      7904,        223]
+NotebookOptionsPosition[      5611,        163]
+NotebookOutlinePosition[      7586,        213]
+CellTagsIndexPosition[      7543,        210]
 WindowTitle->createDummyListUnique
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ createDummyListUnique.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$29619], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$19238], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/ref/createDummyListUnique", ".html"]], None}]}]},
@@ -78,8 +78,13 @@ createDummyListUnique.html"], StandardForm]], "Input", TextClipboardType ->
 Cell[TextData[{
  Cell["createDummyListUnique", "ObjectName"],
  Cell[BoxData[
-  TemplateBox[{8},
-   "Spacer1"]]],
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
  Cell[BoxData[""], "ObjectNameTranslation"]
 }], "ObjectNameGrid"],
 
@@ -89,31 +94,39 @@ Cell[BoxData[GridBox[{
       RowBox[{"createDummyListUnique", "[", 
        RowBox[{
         StyleBox["n", "TI"], ",", " ", 
-        StyleBox["t", "TI"]}], "]"}]], "InlineFormula"],
+        StyleBox["t", "TI"]}], "]"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "367e33aa-203a-4714-95d6-cb7e61113e7e"],
      "\[LineSeparator]creates at least n unique variable names for the index \
 type t. The option ",
      Cell[BoxData[
       RowBox[{
        StyleBox["dummyNames", "TI"], "[", 
-       StyleBox["t", "TI"], "]"}]], "InlineFormula"],
+       StyleBox["t", "TI"], "]"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "dae2e1f4-948b-4307-97c8-f0fcdb854df4"],
      " sets the variable names for the index type t."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
-   "RowsIndexed" -> {}}}],
+   "RowsIndexed" -> {}}},
+ $CellContext`ExpressionUUID -> "bb441c59-1db5-4c0c-8eda-18fd200dece1"],
 
 Cell[CellGroupData[{
 
 Cell[TextData[Cell[BoxData[
  ButtonBox[Cell[TextData[{
    Cell[BoxData[
-    TemplateBox[{6},
-     "Spacer1"]]],
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
    "Details"
   }], "NotesFrameText"],
-  Appearance->{Automatic, None, "Normal", Automatic},
+  Appearance->{Automatic, None},
   BaseStyle->None,
   ButtonFunction:>(FrontEndExecute[{
      FrontEnd`SelectionMove[
@@ -129,18 +142,21 @@ Cell[TextData[Cell[BoxData[
 
 Cell["", "SectionHeaderSpacer"],
 
-Cell["The following options can be given: ", "Notes"],
+Cell["The following options can be given: ", "Notes",
+ $CellContext`ExpressionUUID -> "271b7a14-e9ab-45f6-878f-94f877dc888d"],
 
 Cell[BoxData[GridBox[{
    {Cell["      ", "TableRowIcon"], 
     RowBox[{"dummyNames", "[", "t", "]"}], "\[Placeholder]", Cell[
-    "t can be any type of index.", "TableText"]}
+    "t can be any type of index.", "TableText",
+     $CellContext`ExpressionUUID -> "714ea1a5-88ea-47e0-a789-0a59299f0578"]}
   }]], "3ColumnTableMod",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
    "RowsIndexed" -> {}},
- GridBoxDividers->{"Rows" -> {{True, True}}}}]
+ GridBoxDividers->{"Rows" -> {{True, True}}}},
+ $CellContext`ExpressionUUID -> "170f2a57-107e-47f7-9977-4d4eedbf5306"]
 }, Closed]],
 
 Cell[" ", "FooterCell"]
@@ -160,7 +176,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 8, 7, 9, 20, 42.990828}", 
+   "built" -> "{2019, 10, 25, 10, 12, 41.407065}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoAE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -171,9 +187,9 @@ the index type t. The option dummyNames[t] sets the variable names for the \
 index type t.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
     "createDummyListUnique", "titlemodifier" -> "", "windowtitle" -> 
     "createDummyListUnique", "type" -> "Symbol", "uri" -> 
-    "DoFun/ref/createDummyListUnique"}},
+    "DoFun/ref/createDummyListUnique"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+FrontEndVersion->"10.0 for Linux x86 (64-bit) (June 27, 2014)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -182,7 +198,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  FrontEndVersion -> "10.0 for Linux x86 (64-bit) (June 27, 2014)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -196,19 +212,19 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[593, 21, 2323, 54, 70, "AnchorBarGrid",ExpressionUUID->"30013bcc-d175-4779-9852-3b20dc6c0434",
+Cell[593, 21, 2323, 54, 70, "AnchorBarGrid",
  CellID->1],
-Cell[2919, 77, 178, 6, 70, "ObjectNameGrid",ExpressionUUID->"6c3de650-88ec-495d-a0ea-bd96cb1e34f4"],
-Cell[3100, 85, 671, 19, 70, "Usage",ExpressionUUID->"bb441c59-1db5-4c0c-8eda-18fd200dece1"],
+Cell[2919, 77, 298, 11, 70, "ObjectNameGrid"],
+Cell[3220, 90, 897, 22, 70, "Usage"],
 Cell[CellGroupData[{
-Cell[3796, 108, 621, 19, 70, "NotesSection",ExpressionUUID->"97ea79be-46b8-4f83-921b-3d4a1cf6eb63",
+Cell[4142, 116, 730, 24, 70, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
  CellID->1],
-Cell[4420, 129, 31, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"afc87954-3419-4354-b7a2-87976855459f"],
-Cell[4454, 131, 53, 0, 70, "Notes",ExpressionUUID->"271b7a14-e9ab-45f6-878f-94f877dc888d"],
-Cell[4510, 133, 384, 9, 70, "3ColumnTableMod",ExpressionUUID->"170f2a57-107e-47f7-9977-4d4eedbf5306"]
+Cell[4875, 142, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[4909, 144, 125, 1, 70, "Notes"],
+Cell[5037, 147, 532, 11, 70, "3ColumnTableMod"]
 }, Closed]],
-Cell[4909, 145, 23, 0, 70, "FooterCell",ExpressionUUID->"71a2e8bb-43f4-46a9-88ad-8d523b1f6629"]
+Cell[5584, 161, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

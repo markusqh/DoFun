@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 11.3' *)
+(* CreatedBy='Mathematica 10.0' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5730,        155]
-NotebookOptionsPosition[      3625,        105]
-NotebookOutlinePosition[      5467,        153]
-CellTagsIndexPosition[      5424,        150]
+NotebookDataLength[      5893,        164]
+NotebookOptionsPosition[      3971,        113]
+NotebookOutlinePosition[      5849,        162]
+CellTagsIndexPosition[      5806,        159]
 WindowTitle->tDerivative
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$72458], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$60369], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/ref/tDerivative", ".html"]], None}]}]},
@@ -78,20 +78,27 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
 Cell[TextData[{
  Cell["tDerivative", "ObjectName"],
  Cell[BoxData[
-  TemplateBox[{8},
-   "Spacer1"]]],
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
  Cell[BoxData[""], "ObjectNameTranslation"]
 }], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
-     Cell[BoxData["tDerivative"], "InlineFormula"],
+     Cell[BoxData["tDerivative"], "InlineFormula",
+      $CellContext`ExpressionUUID -> "bfe8113f-9fec-43db-ac9f-550946a2a706"],
      "\[LineSeparator]is an option of ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["doRGE"]],"paclet:DoFun/ref/doRGE"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "ef4e6131-df82-4c00-b1c8-b506a513c5c0"],
      ". It determines if the regulator insertion is performed. Default: \
 True."
     }]]}
@@ -99,7 +106,8 @@ True."
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
-   "RowsIndexed" -> {}}}],
+   "RowsIndexed" -> {}}},
+ $CellContext`ExpressionUUID -> "66fd9988-efd1-4050-8127-4f1d5e5ecb2a"],
 
 Cell[" ", "FooterCell"]
 },
@@ -118,7 +126,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 8, 7, 9, 21, 50.654435}", 
+   "built" -> "{2019, 10, 25, 10, 13, 57.746743}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -127,9 +135,10 @@ TaggingRules->{
     "tDerivative is an option of doRGE. It determines if the regulator \
 insertion is performed. Default: True.", "synonyms" -> {}, "tabletags" -> {}, 
     "title" -> "tDerivative", "titlemodifier" -> "", "windowtitle" -> 
-    "tDerivative", "type" -> "Symbol", "uri" -> "DoFun/ref/tDerivative"}},
+    "tDerivative", "type" -> "Symbol", "uri" -> "DoFun/ref/tDerivative"}, 
+  "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+FrontEndVersion->"10.0 for Linux x86 (64-bit) (June 27, 2014)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -138,7 +147,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  FrontEndVersion -> "10.0 for Linux x86 (64-bit) (June 27, 2014)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -152,11 +161,11 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[583, 21, 2282, 54, 70, "AnchorBarGrid",ExpressionUUID->"cacfaff7-249d-4c7c-9d1a-66a02eb87f37",
+Cell[583, 21, 2282, 54, 70, "AnchorBarGrid",
  CellID->1],
-Cell[2868, 77, 168, 6, 70, "ObjectNameGrid",ExpressionUUID->"f0545524-ca3e-4791-9663-9f36e9f4994d"],
-Cell[3039, 85, 556, 16, 70, "Usage",ExpressionUUID->"66fd9988-efd1-4050-8127-4f1d5e5ecb2a"],
-Cell[3598, 103, 23, 0, 70, "FooterCell",ExpressionUUID->"ff3dd140-b7ea-4f0a-a511-a62390380493"]
+Cell[2868, 77, 288, 11, 70, "ObjectNameGrid"],
+Cell[3159, 90, 782, 19, 70, "Usage"],
+Cell[3944, 111, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

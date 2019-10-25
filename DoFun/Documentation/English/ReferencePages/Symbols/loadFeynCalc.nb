@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 11.3' *)
+(* CreatedBy='Mathematica 10.0' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7745,        214]
-NotebookOptionsPosition[      5082,        154]
-NotebookOutlinePosition[      7110,        205]
-CellTagsIndexPosition[      7067,        202]
+NotebookDataLength[      8014,        230]
+NotebookOptionsPosition[      5697,        169]
+NotebookOutlinePosition[      7761,        221]
+CellTagsIndexPosition[      7718,        218]
 WindowTitle->loadFeynCalc
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$56941], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$45471], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "DoFun/ref/loadFeynCalc", ".html"]], None}]}]},
@@ -98,15 +98,21 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
 Cell[TextData[{
  Cell["loadFeynCalc", "ObjectName"],
  Cell[BoxData[
-  TemplateBox[{8},
-   "Spacer1"]]],
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
  Cell[BoxData[""], "ObjectNameTranslation"]
 }], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
-      RowBox[{"loadFeynCalc", "[", "]"}]], "InlineFormula"],
+      RowBox[{"loadFeynCalc", "[", "]"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "edb54216-37c7-419a-9362-bf1abde6d550"],
      "\[LineSeparator]fixes a problem when loading FeynCalc. Furthermore, the \
 output format is set to ",
      StyleBox["StandardForm", "Notes"],
@@ -115,10 +121,12 @@ output format is set to ",
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{"loadFeynCalc", "[", 
-       StyleBox["pack", "TI"], "]"}]], "InlineFormula"],
+       StyleBox["pack", "TI"], "]"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "fc55c5a1-95f0-4f3e-a61a-57e034df1bd2"],
      "\[LineSeparator]with ",
      Cell[BoxData[
-      StyleBox["pack", "TI"]], "InlineFormula"],
+      StyleBox["pack", "TI"]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "0c7d4cbf-4c7a-44b2-8e6a-c908c2bc63c9"],
      " the path of the FeynCalc package. If none is given, \
 HighEnergyPhysics`FeynCalc` is used. This should be used when problems with \
 FeynCalc occur."
@@ -127,18 +135,25 @@ FeynCalc occur."
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {None, {None}}, 
-   "RowsIndexed" -> {}}}],
+   "RowsIndexed" -> {}}},
+ $CellContext`ExpressionUUID -> "80a40cba-959f-4923-8fed-371311f9ad40"],
 
 Cell[CellGroupData[{
 
 Cell[TextData[{
  Cell[BoxData[
-  TemplateBox[{6},
-   "Spacer1"]]],
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
  "Related Guides"
 }], "MoreAboutSection",
  WholeCellGroupOpener->True,
- CellID->38303248],
+ CellID->38303248,
+ $CellContext`ExpressionUUID -> "5d4a4e3e-cd26-4630-a045-1642781ad79d"],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -167,7 +182,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 8, 7, 9, 21, 25.427309}", 
+   "built" -> "{2019, 10, 25, 10, 13, 30.381178}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoAE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -179,9 +194,10 @@ of the FeynCalc package. If none is given, HighEnergyPhysics`FeynCalc` is \
 used. This should be used when problems with FeynCalc occur.", 
     "synonyms" -> {}, "tabletags" -> {}, "title" -> "loadFeynCalc", 
     "titlemodifier" -> "", "windowtitle" -> "loadFeynCalc", "type" -> 
-    "Symbol", "uri" -> "DoFun/ref/loadFeynCalc"}},
+    "Symbol", "uri" -> "DoFun/ref/loadFeynCalc"}, "SearchTextTranslated" -> 
+  ""},
 CellContext->"Global`",
-FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+FrontEndVersion->"10.0 for Linux x86 (64-bit) (June 27, 2014)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -190,7 +206,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  FrontEndVersion -> "10.0 for Linux x86 (64-bit) (June 27, 2014)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -204,18 +220,18 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[584, 21, 3039, 74, 70, "AnchorBarGrid",ExpressionUUID->"79517eb0-173c-4b3c-abea-1759c3cc462d",
+Cell[584, 21, 3039, 74, 70, "AnchorBarGrid",
  CellID->1],
-Cell[3626, 97, 169, 6, 70, "ObjectNameGrid",ExpressionUUID->"01caeeb3-4dae-4b21-9573-9e5fb79a27fc"],
-Cell[3798, 105, 851, 24, 70, "Usage",ExpressionUUID->"80a40cba-959f-4923-8fed-371311f9ad40"],
+Cell[3626, 97, 289, 11, 70, "ObjectNameGrid"],
+Cell[3918, 110, 1154, 28, 70, "Usage"],
 Cell[CellGroupData[{
-Cell[4674, 133, 156, 7, 70, "MoreAboutSection",ExpressionUUID->"5d4a4e3e-cd26-4630-a045-1642781ad79d",
+Cell[5097, 142, 348, 13, 70, "MoreAboutSection",
  CellID->38303248],
-Cell[4833, 142, 31, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"5668657a-77e4-4b25-a5d9-5d03c28af992"],
-Cell[4867, 144, 173, 5, 70, "MoreAbout",ExpressionUUID->"f02d9ecf-9875-457b-97d9-c24cd5712da9",
+Cell[5448, 157, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[5482, 159, 173, 5, 70, "MoreAbout",
  CellID->1]
 }, Open  ]],
-Cell[5055, 152, 23, 0, 70, "FooterCell",ExpressionUUID->"4004ca8b-b291-4803-9a76-5f049247923a"]
+Cell[5670, 167, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

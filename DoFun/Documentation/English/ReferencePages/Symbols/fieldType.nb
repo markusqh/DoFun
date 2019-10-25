@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 11.3' *)
+(* CreatedBy='Mathematica 10.0' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5807,        159]
-NotebookOptionsPosition[      3727,        109]
-NotebookOutlinePosition[      5544,        157]
-CellTagsIndexPosition[      5501,        154]
+NotebookDataLength[      6045,        168]
+NotebookOptionsPosition[      4150,        118]
+NotebookOutlinePosition[      6001,        166]
+CellTagsIndexPosition[      5958,        163]
 WindowTitle->fieldType
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$45425], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$34431], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "DoFun/ref/fieldType",
              ".html"]], None}]}]},
@@ -78,8 +78,13 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
 Cell[TextData[{
  Cell["fieldType", "ObjectName"],
  Cell[BoxData[
-  TemplateBox[{8},
-   "Spacer1"]]],
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
  Cell[BoxData[""], "ObjectNameTranslation"]
 }], "ObjectNameGrid"],
 
@@ -87,23 +92,27 @@ Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{"fieldType", "[", 
-       StyleBox["expr", "TI"], "]"}]], "InlineFormula"],
+       StyleBox["expr", "TI"], "]"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "f92e113d-4387-4ebd-9d0b-ffe39ab66e51"],
      "\[LineSeparator]gives the field type of ",
      Cell[BoxData[
-      StyleBox["expr", "TI"]], "InlineFormula"],
+      StyleBox["expr", "TI"]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "ca58346e-b71d-4fe2-984a-004b43b7d899"],
      ". Possible values are stored in ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["$fieldTypes"]],"paclet:DoFun/ref/$fieldTypes"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "4e7c4e14-99fd-48c6-ac5e-513dc12ef37a"],
      "."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
-   "RowsIndexed" -> {}}}],
+   "RowsIndexed" -> {}}},
+ $CellContext`ExpressionUUID -> "7f02cea6-de6a-4925-9d75-65dd51f125f7"],
 
 Cell[" ", "FooterCell"]
 },
@@ -122,7 +131,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 8, 7, 9, 21, 7.438330}", 
+   "built" -> "{2019, 10, 25, 10, 13, 11.077683}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -131,9 +140,9 @@ TaggingRules->{
     "fieldType[expr] gives the field type of expr. Possible values are stored \
 in $fieldTypes.", "synonyms" -> {}, "tabletags" -> {}, "title" -> "fieldType",
      "titlemodifier" -> "", "windowtitle" -> "fieldType", "type" -> "Symbol", 
-    "uri" -> "DoFun/ref/fieldType"}},
+    "uri" -> "DoFun/ref/fieldType"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+FrontEndVersion->"10.0 for Linux x86 (64-bit) (June 27, 2014)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -142,7 +151,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  FrontEndVersion -> "10.0 for Linux x86 (64-bit) (June 27, 2014)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -156,11 +165,11 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[581, 21, 2274, 54, 70, "AnchorBarGrid",ExpressionUUID->"33396b19-318a-4450-abf4-082a07904535",
+Cell[581, 21, 2274, 54, 70, "AnchorBarGrid",
  CellID->1],
-Cell[2858, 77, 166, 6, 70, "ObjectNameGrid",ExpressionUUID->"06608e8b-4de3-42a3-9c3c-19192be08f08"],
-Cell[3027, 85, 670, 20, 70, "Usage",ExpressionUUID->"7f02cea6-de6a-4925-9d75-65dd51f125f7"],
-Cell[3700, 107, 23, 0, 70, "FooterCell",ExpressionUUID->"2dc7e2a3-a11e-4f4b-bcf2-d60d24ade985"]
+Cell[2858, 77, 286, 11, 70, "ObjectNameGrid"],
+Cell[3147, 90, 973, 24, 70, "Usage"],
+Cell[4123, 116, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

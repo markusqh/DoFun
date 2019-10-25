@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 11.3' *)
+(* CreatedBy='Mathematica 10.0' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6139,        167]
-NotebookOptionsPosition[      4009,        116]
-NotebookOutlinePosition[      5876,        165]
-CellTagsIndexPosition[      5833,        162]
+NotebookDataLength[      6455,        177]
+NotebookOptionsPosition[      4509,        126]
+NotebookOutlinePosition[      6410,        175]
+CellTagsIndexPosition[      6367,        172]
 WindowTitle->forceEquation
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$45905], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$34892], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/ref/forceEquation", ".html"]], None}]}]},
@@ -78,39 +78,49 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
 Cell[TextData[{
  Cell["forceEquation", "ObjectName"],
  Cell[BoxData[
-  TemplateBox[{8},
-   "Spacer1"]]],
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
  Cell[BoxData[""], "ObjectNameTranslation"]
 }], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
-     Cell[BoxData["forceEquation"], "InlineFormula"],
+     Cell[BoxData["forceEquation"], "InlineFormula",
+      $CellContext`ExpressionUUID -> "2f4390b8-ca6a-4239-ba0f-bba96ddb468a"],
      "\[LineSeparator]is an option of ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["COPlot"]],"paclet:DoFun/ref/COPlot"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "0dbb8835-f660-4446-8eb7-f0da3443b508"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["DSEPlot"]],"paclet:DoFun/ref/DSEPlot"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "a5a1afeb-e185-4863-b5f0-10a37900c899"],
      " and ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["RGEPlot"]],"paclet:DoFun/ref/RGEPlot"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "1c1e22a5-aa26-4051-9ed9-2e18575bd86f"],
      ". It makes sure an equation is plotted for a single diagram."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
-   "RowsIndexed" -> {}}}],
+   "RowsIndexed" -> {}}},
+ $CellContext`ExpressionUUID -> "84ecb810-1c1e-4af8-8b86-363c0c369bff"],
 
 Cell[" ", "FooterCell"]
 },
@@ -129,7 +139,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 8, 7, 9, 21, 8.176876}", 
+   "built" -> "{2019, 10, 25, 10, 13, 11.854056}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -139,9 +149,9 @@ TaggingRules->{
 an equation is plotted for a single diagram.", "synonyms" -> {}, 
     "tabletags" -> {}, "title" -> "forceEquation", "titlemodifier" -> "", 
     "windowtitle" -> "forceEquation", "type" -> "Symbol", "uri" -> 
-    "DoFun/ref/forceEquation"}},
+    "DoFun/ref/forceEquation"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+FrontEndVersion->"10.0 for Linux x86 (64-bit) (June 27, 2014)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -150,7 +160,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  FrontEndVersion -> "10.0 for Linux x86 (64-bit) (June 27, 2014)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -164,11 +174,11 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[585, 21, 2290, 54, 70, "AnchorBarGrid",ExpressionUUID->"6a3c6783-4446-4c03-b6c0-d0efdc1a7b6a",
+Cell[585, 21, 2290, 54, 70, "AnchorBarGrid",
  CellID->1],
-Cell[2878, 77, 170, 6, 70, "ObjectNameGrid",ExpressionUUID->"d10df1c0-4fc6-4d7e-9a9f-4a94f345790c"],
-Cell[3051, 85, 928, 27, 70, "Usage",ExpressionUUID->"84ecb810-1c1e-4af8-8b86-363c0c369bff"],
-Cell[3982, 114, 23, 0, 70, "FooterCell",ExpressionUUID->"ecf3ad42-e5be-4090-930c-6ddd275ba108"]
+Cell[2878, 77, 290, 11, 70, "ObjectNameGrid"],
+Cell[3171, 90, 1308, 32, 70, "Usage"],
+Cell[4482, 124, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

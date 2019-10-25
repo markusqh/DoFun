@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 11.3' *)
+(* CreatedBy='Mathematica 10.0' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6924,        191]
-NotebookOptionsPosition[      4752,        140]
-NotebookOutlinePosition[      6660,        189]
-CellTagsIndexPosition[      6617,        186]
+NotebookDataLength[      7549,        206]
+NotebookOptionsPosition[      5560,        154]
+NotebookOutlinePosition[      7504,        204]
+CellTagsIndexPosition[      7461,        201]
 WindowTitle->symmetry
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$71974], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$59904], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "DoFun/ref/symmetry", 
             ".html"]], None}]}]},
@@ -78,63 +78,77 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
 Cell[TextData[{
  Cell["symmetry", "ObjectName"],
  Cell[BoxData[
-  TemplateBox[{8},
-   "Spacer1"]]],
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
  Cell[BoxData[""], "ObjectNameTranslation"]
 }], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
-     Cell[BoxData["symmetry"], "InlineFormula"],
+     Cell[BoxData["symmetry"], "InlineFormula",
+      $CellContext`ExpressionUUID -> "edf203d1-338e-4fee-99a4-d4bf6355553e"],
      "\[LineSeparator]is an option of ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["doCO"]],"paclet:DoFun/ref/doCO"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "15f1d500-5e89-4f3e-b33d-e06d5cc79937"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["doDSE"]],"paclet:DoFun/ref/doDSE"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "a1706aba-67e2-4022-bf1b-602fbb7337b3"],
      " and ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["doRGE"]],"paclet:DoFun/ref/doRGE"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "49f45928-d04c-434e-97b0-78af4f0c013c"],
      ". It determines if there is a broken symmetry in the theory. Option of ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["doDSE"]],"paclet:DoFun/ref/doDSE"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "dfc7e24b-6f1b-404c-91da-bcca2f4aa3d9"],
      " and ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["doRGE"]],"paclet:DoFun/ref/doRGE"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "4b37a7eb-5a61-4ccf-9538-71590137202d"],
      ". Possible values:  -) ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["broken"]],"paclet:DoFun/ref/broken"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "fc1c3f4e-b046-4c65-bcc7-567b2f260c77"],
      "  -) ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["intact"]],"paclet:DoFun/ref/intact"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "1638c0e9-a4c0-4d7f-93df-1c55250a430c"],
      " (default)"
     }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
-   "RowsIndexed" -> {}}}],
+   "RowsIndexed" -> {}}},
+ $CellContext`ExpressionUUID -> "1897c10c-c235-40a0-8ef2-31efdca08377"],
 
 Cell[" ", "FooterCell"]
 },
@@ -153,7 +167,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 8, 7, 9, 21, 49.966716}", 
+   "built" -> "{2019, 10, 25, 10, 13, 56.865119}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -163,9 +177,10 @@ TaggingRules->{
 is a broken symmetry in the theory. Option of doDSE and doRGE. Possible \
 values: -) broken -) intact (default)", "synonyms" -> {}, "tabletags" -> {}, 
     "title" -> "symmetry", "titlemodifier" -> "", "windowtitle" -> "symmetry",
-     "type" -> "Symbol", "uri" -> "DoFun/ref/symmetry"}},
+     "type" -> "Symbol", "uri" -> "DoFun/ref/symmetry"}, 
+  "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+FrontEndVersion->"10.0 for Linux x86 (64-bit) (June 27, 2014)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -174,7 +189,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  FrontEndVersion -> "10.0 for Linux x86 (64-bit) (June 27, 2014)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -188,11 +203,11 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[580, 21, 2270, 54, 70, "AnchorBarGrid",ExpressionUUID->"bea7b003-23e4-4a26-94ae-b7a6aa2e2200",
+Cell[580, 21, 2270, 54, 70, "AnchorBarGrid",
  CellID->1],
-Cell[2853, 77, 165, 6, 70, "ObjectNameGrid",ExpressionUUID->"8e5a1138-b30e-48e3-9d6d-d907f92ebc44"],
-Cell[3021, 85, 1701, 51, 70, "Usage",ExpressionUUID->"1897c10c-c235-40a0-8ef2-31efdca08377"],
-Cell[4725, 138, 23, 0, 70, "FooterCell",ExpressionUUID->"3118deb7-13ee-4735-99a2-13cfc33e559a"]
+Cell[2853, 77, 285, 11, 70, "ObjectNameGrid"],
+Cell[3141, 90, 2389, 60, 70, "Usage"],
+Cell[5533, 152, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

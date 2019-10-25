@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 11.3' *)
+(* CreatedBy='Mathematica 10.0' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5601,        153]
-NotebookOptionsPosition[      3533,        103]
-NotebookOutlinePosition[      5338,        151]
-CellTagsIndexPosition[      5295,        148]
+NotebookDataLength[      5764,        162]
+NotebookOptionsPosition[      3879,        111]
+NotebookOutlinePosition[      5720,        160]
+CellTagsIndexPosition[      5677,        157]
 WindowTitle->getConnected
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$47873], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$36780], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/ref/getConnected", ".html"]], None}]}]},
@@ -78,8 +78,13 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
 Cell[TextData[{
  Cell["getConnected", "ObjectName"],
  Cell[BoxData[
-  TemplateBox[{8},
-   "Spacer1"]]],
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
  Cell[BoxData[""], "ObjectNameTranslation"]
 }], "ObjectNameGrid"],
 
@@ -87,17 +92,20 @@ Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{"getConnected", "[", 
-       StyleBox["expr", "TI"], "]"}]], "InlineFormula"],
+       StyleBox["expr", "TI"], "]"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "1d8922ad-3bdd-4a5c-8c4b-0f190588d0a2"],
      "\[LineSeparator]returns the connected diagrams from ",
      Cell[BoxData[
-      StyleBox["expr", "TI"]], "InlineFormula"],
+      StyleBox["expr", "TI"]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "e887e659-723d-4171-90b3-70e04978f109"],
      "."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
-   "RowsIndexed" -> {}}}],
+   "RowsIndexed" -> {}}},
+ $CellContext`ExpressionUUID -> "806d23a5-a7a6-4fba-8572-7a919e7ff814"],
 
 Cell[" ", "FooterCell"]
 },
@@ -116,7 +124,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 8, 7, 9, 21, 11.309835}", 
+   "built" -> "{2019, 10, 25, 10, 13, 15.528535}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -125,9 +133,10 @@ TaggingRules->{
     "getConnected[expr] returns the connected diagrams from expr.", 
     "synonyms" -> {}, "tabletags" -> {}, "title" -> "getConnected", 
     "titlemodifier" -> "", "windowtitle" -> "getConnected", "type" -> 
-    "Symbol", "uri" -> "DoFun/ref/getConnected"}},
+    "Symbol", "uri" -> "DoFun/ref/getConnected"}, "SearchTextTranslated" -> 
+  ""},
 CellContext->"Global`",
-FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+FrontEndVersion->"10.0 for Linux x86 (64-bit) (June 27, 2014)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -136,7 +145,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  FrontEndVersion -> "10.0 for Linux x86 (64-bit) (June 27, 2014)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -150,11 +159,11 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[584, 21, 2286, 54, 70, "AnchorBarGrid",ExpressionUUID->"d1827fd1-c430-4604-9f9b-2e542ba1938a",
+Cell[584, 21, 2286, 54, 70, "AnchorBarGrid",
  CellID->1],
-Cell[2873, 77, 169, 6, 70, "ObjectNameGrid",ExpressionUUID->"bc327702-a271-4c1e-b0e2-e121b03bc5ee"],
-Cell[3045, 85, 458, 14, 70, "Usage",ExpressionUUID->"806d23a5-a7a6-4fba-8572-7a919e7ff814"],
-Cell[3506, 101, 23, 0, 70, "FooterCell",ExpressionUUID->"60b8226e-920c-4226-962b-85d9893b71e0"]
+Cell[2873, 77, 289, 11, 70, "ObjectNameGrid"],
+Cell[3165, 90, 684, 17, 70, "Usage"],
+Cell[3852, 109, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

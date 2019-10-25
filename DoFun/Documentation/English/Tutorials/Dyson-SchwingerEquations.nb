@@ -3,32 +3,32 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 11.3' *)
+(* CreatedBy='Mathematica 10.0' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     65506,       1729]
-NotebookOptionsPosition[     55867,       1528]
-NotebookOutlinePosition[     58199,       1586]
-CellTagsIndexPosition[     58156,       1583]
+NotebookDataLength[     63015,       1793]
+NotebookOptionsPosition[     56748,       1592]
+NotebookOutlinePosition[     59058,       1650]
+CellTagsIndexPosition[     59015,       1647]
 WindowTitle->Dyson-Schwinger equations
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["DO FUN PACKAGE TUTORIAL", "PacletNameCell",ExpressionUUID->
-     "51defc35-ab08-47b9-abb3-ae8d8e82e35d"], Cell[TextData[Cell[BoxData[
+   {Cell["DO FUN PACKAGE TUTORIAL", "PacletNameCell"], Cell[TextData[Cell[
+    BoxData[
      ActionMenuBox[
       FrameBox[
        InterpretationBox[Cell[TextData[{
          "URL",
          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
           StripOnInput->False]
-        }],ExpressionUUID->"21b6e83b-17a2-47e2-9fe0-88cea048ec56"],
+        }]],
         TextCell[
          Row[{"URL", 
            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
@@ -62,43 +62,44 @@ SchwingerEquations.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$84610], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$72100], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/tutorial/Dyson-SchwingerEquations", ".html"]], None}]}]},
       Appearance->None,
       MenuAppearance->Automatic,
       MenuStyle->"URLMenu"]],
-     LineSpacing->{1.4, 0},ExpressionUUID->
-     "b15264e2-7876-46da-9a24-6e8cb8df3a61"]], "AnchorBar",ExpressionUUID->
-     "7e5bda2d-e873-47cc-a7e5-a8b3c53148b8"]}
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
       Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
    "RowsIndexed" -> {}}},
- CellID->1,ExpressionUUID->"26470e9f-30c6-45dd-8a1e-e8e5ebcc8e4c"],
+ CellID->1],
 
 Cell[CellGroupData[{
 
 Cell["Dyson-Schwinger equations", "Title",
- CellID->509267359,ExpressionUUID->"8bab9e32-edd7-418a-83b8-47292f5e57a8"],
+ CellID->509267359,
+ $CellContext`ExpressionUUID -> "8bab9e32-edd7-418a-83b8-47292f5e57a8"],
 
 Cell["\<\
 This tutorial describes how to derive a functional renormalization group \
 equation.\
 \>", "Text",
- CellID->1534169418,ExpressionUUID->"a6538a51-90d6-4818-a8bf-414d53759951"],
+ CellID->1534169418,
+ $CellContext`ExpressionUUID -> "a6538a51-90d6-4818-a8bf-414d53759951"],
 
 Cell["To derive a DSE the function doDSE is used:", "Text",
- CellID->1349004082,ExpressionUUID->"ea48f812-f240-4aab-a558-7138f8bab2f4"],
+ CellID->1349004082,
+ $CellContext`ExpressionUUID -> "ea48f812-f240-4aab-a558-7138f8bab2f4"],
 
 Cell[BoxData[GridBox[{
    {
     RowBox[{"doDSE", "[", 
      RowBox[{"action", ",", " ", "legs"}], "]"}], Cell[
-    "Derives a DSE for the correlation function defined by legs.", 
-     "TableText",ExpressionUUID->"904e68a6-306d-4819-9484-3d950eecf0fa"]},
+    "Derives a DSE for the correlation function defined by legs.", "TableText",
+     $CellContext`ExpressionUUID -> "904e68a6-306d-4819-9484-3d950eecf0fa"]},
    {
     RowBox[{"doDSE", "[", 
      RowBox[{"action", ",", " ", "legs", ",", " ", "props"}], "]"}], Cell[
@@ -107,7 +108,8 @@ Cell[BoxData[GridBox[{
      StyleBox["props",
       FontSlant->"Italic"],
      "."
-    }], "TableText",ExpressionUUID->"3ab2144d-791a-4a72-8e09-e40578e554d4"]},
+    }], "TableText",
+     $CellContext`ExpressionUUID -> "3ab2144d-791a-4a72-8e09-e40578e554d4"]},
    {
     RowBox[{"doDSE", "[", 
      RowBox[{"action", ",", " ", "legs", ",", " ", "vertexTest"}], "]"}], 
@@ -115,29 +117,34 @@ Cell[BoxData[GridBox[{
      "Derives a DSE using only the vertices passing the test defined by ",
      StyleBox["vertexTest", "TI"],
      "."
-    }], "TableText",ExpressionUUID->"b432a1d4-7d4e-4031-b239-25207b41edb2"]},
+    }], "TableText",
+     $CellContext`ExpressionUUID -> "b432a1d4-7d4e-4031-b239-25207b41edb2"]},
    {
     RowBox[{"doDSE", "[", 
      RowBox[{
      "action", ",", " ", "legs", ",", " ", "props", ",", " ", "vertexTest"}], 
      "]"}], Cell["\<\
 Derives a DSE with constraints on the propagators and vertices.\
-\>", "TableText",ExpressionUUID->"c66a2969-2095-4b92-b578-d8a59af110b0"]}
+\>", "TableText",
+     $CellContext`ExpressionUUID -> "c66a2969-2095-4b92-b578-d8a59af110b0"]}
   }]], "DefinitionBox",
- CellID->2096742444,ExpressionUUID->"61ffe7ea-c3be-4b1a-b50c-5483b1829abd"],
+ CellID->2096742444,
+ $CellContext`ExpressionUUID -> "61ffe7ea-c3be-4b1a-b50c-5483b1829abd"],
 
 Cell["Derivation functions.", "Caption",
- CellID->1891092685,ExpressionUUID->"6ef17d97-abad-41ac-88db-29c714187edd"],
+ CellID->1891092685,
+ $CellContext`ExpressionUUID -> "6ef17d97-abad-41ac-88db-29c714187edd"],
 
 Cell["We also need some auxiliary functions:", "Text",
- CellID->1475713941,ExpressionUUID->"d0050763-58a3-45aa-b61a-90b26bea4acf"],
+ CellID->1475713941,
+ $CellContext`ExpressionUUID -> "d0050763-58a3-45aa-b61a-90b26bea4acf"],
 
 Cell[BoxData[GridBox[{
    {
     RowBox[{"setFields", "[", 
      RowBox[{"bosons", ",", " ", "fermions", ",", " ", "complex"}], "]"}], 
-    Cell["Defines fields.", "TableText",ExpressionUUID->
-     "bbeeb99a-da28-4d3a-b1d8-8892af668bae"]},
+    Cell["Defines fields.", "TableText",
+     $CellContext`ExpressionUUID -> "bbeeb99a-da28-4d3a-b1d8-8892af668bae"]},
    {
     RowBox[{"getAE", "[", 
      RowBox[{"dse", ",", " ", "legs"}], "]"}], Cell[TextData[{
@@ -148,21 +155,25 @@ Cell[BoxData[GridBox[{
      StyleBox["legs",
       FontSlant->"Italic"],
      " contains the fields and indices of the legs."
-    }], "TableText",ExpressionUUID->"9e9a07de-6258-4f1c-a8cd-57b0860c90b2"]}
+    }], "TableText",
+     $CellContext`ExpressionUUID -> "9e9a07de-6258-4f1c-a8cd-57b0860c90b2"]}
   }]], "DefinitionBox",
- CellID->1225823622,ExpressionUUID->"d6a6c672-ca29-4fa6-9197-2d8f3ba43370"],
+ CellID->1225823622,
+ $CellContext`ExpressionUUID -> "d6a6c672-ca29-4fa6-9197-2d8f3ba43370"],
 
 Cell["Auxiliary functions.", "Caption",
- CellID->1724178967,ExpressionUUID->"76c6c9f3-04bc-4993-8038-f0cc008d7237"],
+ CellID->1724178967,
+ $CellContext`ExpressionUUID -> "76c6c9f3-04bc-4993-8038-f0cc008d7237"],
 
 Cell["For plotting DSEs the function DSEPlot is used:", "Text",
- CellID->1045476368,ExpressionUUID->"9e3b2d76-570e-454f-81e6-5d3f558760df"],
+ CellID->1045476368,
+ $CellContext`ExpressionUUID -> "9e3b2d76-570e-454f-81e6-5d3f558760df"],
 
 Cell[BoxData[GridBox[{
    {
     RowBox[{"DSEPlot", "[", "dse", "]"}], Cell[
     "Plots a DSE with labels for the propagators.", "TableText",
-     ExpressionUUID->"cf63e32b-691c-49b1-93e7-9606aea10392"]},
+     $CellContext`ExpressionUUID -> "cf63e32b-691c-49b1-93e7-9606aea10392"]},
    {
     RowBox[{"DSEPlot", "[", 
      RowBox[{"dse", ",", " ", "fieldStyles"}], "]"}], Cell[TextData[{
@@ -170,31 +181,37 @@ Cell[BoxData[GridBox[{
      StyleBox["fieldStyles",
       FontSlant->"Italic"],
      "."
-    }], "TableText",ExpressionUUID->"e8ea6ea8-dffd-462f-9fcc-51d3c8a5c41b"]}
+    }], "TableText",
+     $CellContext`ExpressionUUID -> "e8ea6ea8-dffd-462f-9fcc-51d3c8a5c41b"]}
   }]], "DefinitionBox",
- CellID->429162623,ExpressionUUID->"95318b72-ba1e-4a15-8867-0ca7c3db6465"],
+ CellID->429162623,
+ $CellContext`ExpressionUUID -> "95318b72-ba1e-4a15-8867-0ca7c3db6465"],
 
 Cell["Plotting functions.", "Caption",
- CellID->1119900583,ExpressionUUID->"02e880be-bf23-4e65-a9e5-4fd129c63eed"],
+ CellID->1119900583,
+ $CellContext`ExpressionUUID -> "02e880be-bf23-4e65-a9e5-4fd129c63eed"],
 
 Cell["\<\
 Before any derivations are done, the fields must be defined. Consider, for \
 example, Landau gauge QCD which has a gluon, a quark and two ghost fields:\
 \>", "Text",
- CellID->1841528772,ExpressionUUID->"2ebcba94-596b-4fa4-b794-74dd630ae0fb"],
+ CellID->1841528772,
+ $CellContext`ExpressionUUID -> "2ebcba94-596b-4fa4-b794-74dd630ae0fb"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"<<", "DoFun`"}]], "Input",
  CellLabel->"In[1]:=",
- CellID->1892492974,ExpressionUUID->"f14ae2d1-b64e-40b5-bd62-6cc23a5a9965"],
+ CellID->1892492974,
+ $CellContext`ExpressionUUID -> "f14ae2d1-b64e-40b5-bd62-6cc23a5a9965"],
 
 Cell[BoxData["\<\"\\nDoFun loaded.\\n\\nVersion 3.0.0\\nReinhard Alkofer, \
 Jens Braun, Anton K. Cyrol, Markus Q. Huber, Jan M. Pawlowski, Kai Schwenzer, \
 2008-2019\\n\\nDetails at https://github.com/markusqh/DoFun/.\"\>"], "Print",
  CellLabel->"During evaluation of In[1]:=",
- CellID->686099459,ExpressionUUID->"f6bf94ae-26a9-4486-87ae-0188cbbdec67"]
+ CellID->686099459,
+ $CellContext`ExpressionUUID -> "f6bf94ae-26a9-4486-87ae-0188cbbdec67"]
 }, Open  ]],
 
 Cell[BoxData[
@@ -207,13 +224,15 @@ Cell[BoxData[
       RowBox[{"q", ",", "qb"}], "}"}], ",", 
      RowBox[{"{", 
       RowBox[{"c", ",", "cb"}], "}"}]}], "}"}]}], "]"}]], "Input",
- CellLabel->"In[1]:=",ExpressionUUID->"64b23b31-f4af-4fed-ac85-69a001dce8a3"],
+ CellLabel->"In[1]:=",
+ $CellContext`ExpressionUUID -> "64b23b31-f4af-4fed-ac85-69a001dce8a3"],
 
 Cell["\<\
 DSEs are derived from an action. It can be given as a simple list of \
 propagators and interactions. In the example from above, we have\
 \>", "Text",
- CellID->1682869941,ExpressionUUID->"fdf5744a-6307-4253-a9fe-99dc213ef5ee"],
+ CellID->1682869941,
+ $CellContext`ExpressionUUID -> "fdf5744a-6307-4253-a9fe-99dc213ef5ee"],
 
 Cell[BoxData[
  RowBox[{
@@ -236,10 +255,12 @@ Cell[BoxData[
       RowBox[{"A", ",", "A", ",", "A", ",", "A"}], "}"}]}], "}"}]}], 
   ";"}]], "Input",
  CellLabel->"In[2]:=",
- CellID->1995051252,ExpressionUUID->"d0f0507c-fd9a-4045-8304-1f6449f18439"],
+ CellID->1995051252,
+ $CellContext`ExpressionUUID -> "d0f0507c-fd9a-4045-8304-1f6449f18439"],
 
 Cell["With this, we can already derive DSEs in symbolic form:", "Text",
- CellID->1161808145,ExpressionUUID->"4898efef-3db8-4ac6-8e21-2317288bd8c3"],
+ CellID->1161808145,
+ $CellContext`ExpressionUUID -> "4898efef-3db8-4ac6-8e21-2317288bd8c3"],
 
 Cell[CellGroupData[{
 
@@ -250,7 +271,8 @@ Cell[BoxData[
     RowBox[{"{", 
      RowBox[{"q", ",", "qb"}], "}"}]}], "]"}]}]], "Input",
  CellLabel->"In[3]:=",
- CellID->1038317495,ExpressionUUID->"37531ef0-4011-4b38-96fe-f3f68940ecae"],
+ CellID->1038317495,
+ $CellContext`ExpressionUUID -> "37531ef0-4011-4b38-96fe-f3f68940ecae"],
 
 Cell[BoxData[
  RowBox[{
@@ -291,18 +313,20 @@ Cell[BoxData[
        RowBox[{"A", ",", "u1"}], "}"}], ",", 
       RowBox[{"{", 
        RowBox[{"A", ",", "r1"}], "}"}]}], "]"}]}], "]"}]}]], "Output",
- ImageSize->{566, 37},
+ ImageSize->{439, 50},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[3]=",
- CellID->897947143,ExpressionUUID->"7d7e7199-d262-4e3b-a0d2-79768531c520"]
+ CellID->897947143,
+ $CellContext`ExpressionUUID -> "7d7e7199-d262-4e3b-a0d2-79768531c520"]
 }, Open  ]],
 
 Cell["\<\
 The output comes in terms of bare n-point functions (S) and dressed \
 propagators (P) and vertices (V). For plotting we define some styles:\
 \>", "Text",
- CellID->1720619175,ExpressionUUID->"28ba7fec-dd5d-4d30-8e3e-70c5473a383d"],
+ CellID->1720619175,
+ $CellContext`ExpressionUUID -> "28ba7fec-dd5d-4d30-8e3e-70c5473a383d"],
 
 Cell[BoxData[
  RowBox[{
@@ -319,7 +343,8 @@ Cell[BoxData[
         RowBox[{"Darker", "@", "Green"}]}], ",", "Dashed"}], "}"}]}], "}"}]}],
    ";"}]], "Input",
  CellLabel->"In[4]:=",
- CellID->2002455362,ExpressionUUID->"81a4225c-a120-4a7d-9dae-08fc120f5092"],
+ CellID->2002455362,
+ $CellContext`ExpressionUUID -> "81a4225c-a120-4a7d-9dae-08fc120f5092"],
 
 Cell[CellGroupData[{
 
@@ -327,7 +352,8 @@ Cell[BoxData[
  RowBox[{"DSEPlot", "[", 
   RowBox[{"qbq", ",", "fieldRules"}], "]"}]], "Input",
  CellLabel->"In[5]:=",
- CellID->1996689018,ExpressionUUID->"86545b44-6726-4c35-b7ce-19f7d7c2a40e"],
+ CellID->1996689018,
+ $CellContext`ExpressionUUID -> "86545b44-6726-4c35-b7ce-19f7d7c2a40e"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -670,11 +696,12 @@ Cell[BoxData[
    AutoDelete->False,
    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
   "Grid"]], "Output",
- ImageSize->{446, 45},
+ ImageSize->{446, 40},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[5]=",
- CellID->1607590168,ExpressionUUID->"634c9e45-57f7-4335-a8d4-1de962edf5f3"]
+ CellID->1607590168,
+ $CellContext`ExpressionUUID -> "634c9e45-57f7-4335-a8d4-1de962edf5f3"]
 }, Open  ]],
 
 Cell["\<\
@@ -682,7 +709,8 @@ To obtain we need to define which explicit indices the fields have. In the \
 example these are the adjoint and fundamental color indices, Dirac indices \
 and Lorentz indices.\
 \>", "Text",
- CellID->1946491,ExpressionUUID->"6b46736a-1090-40f6-9406-c40c10780b1a"],
+ CellID->1946491,
+ $CellContext`ExpressionUUID -> "6b46736a-1090-40f6-9406-c40c10780b1a"],
 
 Cell[CellGroupData[{
 
@@ -702,7 +730,8 @@ Cell[BoxData[
      RowBox[{"mom", ",", "fund", ",", "dirac"}], "]"}]}], "}"}], 
   "]"}]], "Input",
  CellLabel->"In[6]:=",
- CellID->651129965,ExpressionUUID->"b31cd2b0-e132-4906-93ae-d8636a8f7fe2"],
+ CellID->651129965,
+ $CellContext`ExpressionUUID -> "b31cd2b0-e132-4906-93ae-d8636a8f7fe2"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -717,15 +746,17 @@ Cell[BoxData[
     RowBox[{"mom", ",", "fund", ",", "dirac"}], "]"}], ",", 
    RowBox[{"qb", "[", 
     RowBox[{"mom", ",", "fund", ",", "dirac"}], "]"}]}], "}"}]], "Output",
- ImageSize->{342, 37},
+ ImageSize->{356, 33},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[6]=",
- CellID->1485404116,ExpressionUUID->"94c02984-ae7e-431a-9f01-c258658063e9"]
+ CellID->1485404116,
+ $CellContext`ExpressionUUID -> "94c02984-ae7e-431a-9f01-c258658063e9"]
 }, Open  ]],
 
 Cell["The algebraic expression can be obtained with getAE:", "Text",
- CellID->2054710982,ExpressionUUID->"1424829c-4350-41e6-91eb-6a4199ca75ae"],
+ CellID->2054710982,
+ $CellContext`ExpressionUUID -> "1424829c-4350-41e6-91eb-6a4199ca75ae"],
 
 Cell[CellGroupData[{
 
@@ -742,7 +773,8 @@ Cell[BoxData[
         RowBox[{"-", "p"}], ",", "a", ",", "i"}], "}"}]}], "}"}], ",", 
     RowBox[{"explicit", "\[Rule]", "False"}]}], "]"}]}]], "Input",
  CellLabel->"In[13]:=",
- CellID->1872897726,ExpressionUUID->"0f250dc0-e3a9-4431-9159-63df99d9c6d5"],
+ CellID->1872897726,
+ $CellContext`ExpressionUUID -> "0f250dc0-e3a9-4431-9159-63df99d9c6d5"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -804,11 +836,12 @@ Cell[BoxData[
       
       RowBox[{"explicit", "\[Rule]", "False"}]}], "]"}]}]}], "}"}]], "Output",\
 
- ImageSize->{574, 113},
+ ImageSize->{576, 101},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[13]=",
- CellID->758979017,ExpressionUUID->"527b7181-6689-4642-a818-9dce52591e14"]
+ CellID->758979017,
+ $CellContext`ExpressionUUID -> "527b7181-6689-4642-a818-9dce52591e14"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -826,7 +859,8 @@ Cell[BoxData[
         RowBox[{"-", "p"}], ",", "b", ",", "j"}], "}"}]}], "}"}], ",", 
     RowBox[{"explicit", "\[Rule]", "False"}]}], "]"}]}]], "Input",
  CellLabel->"In[55]:=",
- CellID->2095723166,ExpressionUUID->"95ce81fb-9bf6-427e-920c-5ecf29306ddc"],
+ CellID->2095723166,
+ $CellContext`ExpressionUUID -> "95ce81fb-9bf6-427e-920c-5ecf29306ddc"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -888,11 +922,12 @@ Cell[BoxData[
       
       RowBox[{"explicit", "\[Rule]", "False"}]}], "]"}]}]}], "}"}]], "Output",\
 
- ImageSize->{574, 113},
+ ImageSize->{575, 101},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[55]=",
- CellID->1381726204,ExpressionUUID->"5d93f65b-7357-4801-af39-ab7ae6a27022"]
+ CellID->1381726204,
+ $CellContext`ExpressionUUID -> "5d93f65b-7357-4801-af39-ab7ae6a27022"]
 }, Open  ]],
 
 Cell["\<\
@@ -902,7 +937,8 @@ approximation for the vertex. The dressing for the gluon propagator is \
 dressZ, for the dressings for the quark propagator dressA and dressB and the \
 dressings for the vertex dressGamma:\
 \>", "Text",
- CellID->552997836,ExpressionUUID->"d1828796-09e6-4333-be87-52b2a3174a1c"],
+ CellID->552997836,
+ $CellContext`ExpressionUUID -> "d1828796-09e6-4333-be87-52b2a3174a1c"],
 
 Cell[BoxData[{
  RowBox[{
@@ -1022,14 +1058,16 @@ Cell[BoxData[{
    RowBox[{"dressGamma", "[", 
     RowBox[{"p1", ",", "p2", ",", "p3"}], "]"}]}]}]}], "Input",
  CellLabel->"In[63]:=",
- CellID->268636086,ExpressionUUID->"a2b7b7bc-6e65-4e43-9a8a-fb2bee7610d3"],
+ CellID->268636086,
+ $CellContext`ExpressionUUID -> "a2b7b7bc-6e65-4e43-9a8a-fb2bee7610d3"],
 
 Cell["\<\
 A momentum transformation can be done at this point quite easily. To get the \
 explicit expressions, we set the option of the propagators and vertices \
 accordingly:\
 \>", "Text",
- CellID->191462938,ExpressionUUID->"4ba55f13-03d2-4d4b-8578-c5d63edef7e4"],
+ CellID->191462938,
+ $CellContext`ExpressionUUID -> "4ba55f13-03d2-4d4b-8578-c5d63edef7e4"],
 
 Cell[CellGroupData[{
 
@@ -1045,7 +1083,8 @@ Cell[BoxData[
     RowBox[{"(", 
      RowBox[{"explicit", "\[Rule]", "True"}], ")"}]}]}]}]], "Input",
  CellLabel->"In[68]:=",
- CellID->1644949164,ExpressionUUID->"1ca8a508-e798-49f9-b3ea-f00f98589d6a"],
+ CellID->1644949164,
+ $CellContext`ExpressionUUID -> "1ca8a508-e798-49f9-b3ea-f00f98589d6a"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -1120,17 +1159,19 @@ Cell[BoxData[
         SuperscriptBox["q1", "2"], "]"}]}], "+", 
       RowBox[{"dressB", "[", 
        SuperscriptBox["q1", "2"], "]"}]}], ")"}]}]}], "}"}]], "Output",
- ImageSize->{550, 212},
+ ImageSize->{577, 207},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[68]=",
- CellID->276088933,ExpressionUUID->"26396eca-97f8-4225-8feb-77e3405f88da"]
+ CellID->276088933,
+ $CellContext`ExpressionUUID -> "26396eca-97f8-4225-8feb-77e3405f88da"]
 }, Open  ]],
 
 Cell["\<\
 The left-hand side of the equation is the inverse quark propagator:\
 \>", "Text",
- CellID->555413753,ExpressionUUID->"a3acbfb2-0141-4898-adfe-d90c3d602fa2"],
+ CellID->555413753,
+ $CellContext`ExpressionUUID -> "a3acbfb2-0141-4898-adfe-d90c3d602fa2"],
 
 Cell[BoxData[
  RowBox[{
@@ -1151,13 +1192,15 @@ Cell[BoxData[
        RowBox[{"dressB", "[", 
         RowBox[{"p", "^", "2"}], "]"}]}]}], ")"}]}]}], ";"}]], "Input",
  CellLabel->"In[57]:=",
- CellID->1168034431,ExpressionUUID->"77a51329-1659-43e1-9d81-8145869b30bf"],
+ CellID->1168034431,
+ $CellContext`ExpressionUUID -> "77a51329-1659-43e1-9d81-8145869b30bf"],
 
 Cell["\<\
 For projecting out the equations for the two dressings, we define two \
 projectors:\
 \>", "Text",
- CellID->1690102901,ExpressionUUID->"3e966442-6cb9-4c56-a4c1-7d1cc8f94310"],
+ CellID->1690102901,
+ $CellContext`ExpressionUUID -> "3e966442-6cb9-4c56-a4c1-7d1cc8f94310"],
 
 Cell[BoxData[{
  RowBox[{
@@ -1187,10 +1230,12 @@ Cell[BoxData[{
     RowBox[{"delta", "[", 
      RowBox[{"dirac", ",", "j", ",", "i"}], "]"}]}]}], ";"}]}], "Input",
  CellLabel->"In[58]:=",
- CellID->2130758022,ExpressionUUID->"2760d85e-fb61-4143-b476-5837a11a3c94"],
+ CellID->2130758022,
+ $CellContext`ExpressionUUID -> "2760d85e-fb61-4143-b476-5837a11a3c94"],
 
 Cell["We define some rules to deal with Dirac and Lorentz indices:", "Text",
- CellID->2037322274,ExpressionUUID->"3d40a1cc-2f33-4cac-be62-7699ab62f550"],
+ CellID->2037322274,
+ $CellContext`ExpressionUUID -> "3d40a1cc-2f33-4cac-be62-7699ab62f550"],
 
 Cell[BoxData[
  RowBox[{
@@ -1292,10 +1337,12 @@ Cell[BoxData[
         RowBox[{"p_", ",", "mu_"}], "]"}], "^", "2"}], "\[RuleDelayed]", 
       RowBox[{"sp", "[", "p", "]"}]}]}], "}"}]}], ";"}]], "Input",
  CellLabel->"In[69]:=",
- CellID->2032259154,ExpressionUUID->"9483a255-5216-4251-9335-a8518408b40e"],
+ CellID->2032259154,
+ $CellContext`ExpressionUUID -> "9483a255-5216-4251-9335-a8518408b40e"],
 
 Cell["And for color indices:", "Text",
- CellID->791282679,ExpressionUUID->"c37ed879-7e77-4903-9150-1b6a5350f7a9"],
+ CellID->791282679,
+ $CellContext`ExpressionUUID -> "c37ed879-7e77-4903-9150-1b6a5350f7a9"],
 
 Cell[BoxData[
  RowBox[{"colorRules", ":=", 
@@ -1309,13 +1356,15 @@ Cell[BoxData[
     RowBox[{"CF", "  ", 
      RowBox[{"dim", "[", "fund", "]"}]}]}], "}"}]}]], "Input",
  CellLabel->"In[70]:=",
- CellID->1042520127,ExpressionUUID->"bb11e069-7b28-4bd7-8f13-9117d4e5c6d8"],
+ CellID->1042520127,
+ $CellContext`ExpressionUUID -> "bb11e069-7b28-4bd7-8f13-9117d4e5c6d8"],
 
 Cell["\<\
 Projecting the left-hand side yields the dressings dressA and dressB. We have \
 to apply integrateDeltas and the rules several times:\
 \>", "Text",
- CellID->454042,ExpressionUUID->"81b02daf-4a0b-4a37-b5d1-cabb1fa9dfe5"],
+ CellID->454042,
+ $CellContext`ExpressionUUID -> "81b02daf-4a0b-4a37-b5d1-cabb1fa9dfe5"],
 
 Cell[CellGroupData[{
 
@@ -1329,7 +1378,8 @@ Cell[BoxData[
        RowBox[{"projA", ",", "projB"}], "}"}]}], "]"}], "//.", "diracRules"}],
     "]"}], "//.", "diracRules"}]], "Input",
  CellLabel->"In[71]:=",
- CellID->1571807240,ExpressionUUID->"fbd003af-56e2-4d71-8bb2-48206416ee0f"],
+ CellID->1571807240,
+ $CellContext`ExpressionUUID -> "fbd003af-56e2-4d71-8bb2-48206416ee0f"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -1338,17 +1388,19 @@ Cell[BoxData[
     SuperscriptBox["p", "2"], "]"}], ",", 
    RowBox[{"dressB", "[", 
     SuperscriptBox["p", "2"], "]"}]}], "}"}]], "Output",
- ImageSize->{189, 26},
+ ImageSize->{196, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[71]=",
- CellID->772592562,ExpressionUUID->"0034ae60-44ec-4cd0-902a-f2da5ebd70d8"]
+ CellID->772592562,
+ $CellContext`ExpressionUUID -> "0034ae60-44ec-4cd0-902a-f2da5ebd70d8"]
 }, Open  ]],
 
 Cell["\<\
 Projecting the first term of the DSE yields the tree-level expressions:\
 \>", "Text",
- CellID->205281615,ExpressionUUID->"c98146a5-1357-4454-ac33-1ca935f1c974"],
+ CellID->205281615,
+ $CellContext`ExpressionUUID -> "c98146a5-1357-4454-ac33-1ca935f1c974"],
 
 Cell[CellGroupData[{
 
@@ -1364,23 +1416,26 @@ Cell[BoxData[
        RowBox[{"projA", ",", "projB"}], "}"}]}], "]"}], "//.", "diracRules"}],
     "]"}], "//.", "diracRules"}]], "Input",
  CellLabel->"In[72]:=",
- CellID->1406674871,ExpressionUUID->"a5058593-5a2d-4aeb-b4b1-d03aeb975668"],
+ CellID->1406674871,
+ $CellContext`ExpressionUUID -> "a5058593-5a2d-4aeb-b4b1-d03aeb975668"],
 
 Cell[BoxData[
  RowBox[{"{", 
   RowBox[{"1", ",", "m"}], "}"}]], "Output",
- ImageSize->{49, 17},
+ ImageSize->{52, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[72]=",
- CellID->1635872138,ExpressionUUID->"459eeffd-be45-4c88-ac29-44d26b43b7a2"]
+ CellID->1635872138,
+ $CellContext`ExpressionUUID -> "459eeffd-be45-4c88-ac29-44d26b43b7a2"]
 }, Open  ]],
 
 Cell["\<\
 The second term, the self-energy leads to the following expressions for the \
 integrands:\
 \>", "Text",
- CellID->1910471858,ExpressionUUID->"ca4b30fe-547f-4c4d-927f-f5a56a5f475e"],
+ CellID->1910471858,
+ $CellContext`ExpressionUUID -> "ca4b30fe-547f-4c4d-927f-f5a56a5f475e"],
 
 Cell[CellGroupData[{
 
@@ -1398,7 +1453,8 @@ Cell[BoxData[
        "diracRules"}], "/.", "colorRules"}], "]"}], "//.", "diracRules"}], "//",
     "Simplify"}]}]], "Input",
  CellLabel->"In[74]:=",
- CellID->94459536,ExpressionUUID->"b7bd6a39-6928-4a38-8921-cfe380747e46"],
+ CellID->94459536,
+ $CellContext`ExpressionUUID -> "b7bd6a39-6928-4a38-8921-cfe380747e46"],
 
 Cell[BoxData[
  RowBox[{
@@ -1447,11 +1503,12 @@ Cell[BoxData[
     RowBox[{"sp", "[", "p", "]"}], " ", 
     RowBox[{"sp", "[", 
      RowBox[{"p", "-", "q1"}], "]"}]}], ")"}]}]], "Output",
- ImageSize->{540, 78},
+ ImageSize->{561, 59},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[74]=",
- CellID->844298445,ExpressionUUID->"90c9b56f-997a-4a1d-8ae1-47c7c3b3482a"]
+ CellID->844298445,
+ $CellContext`ExpressionUUID -> "90c9b56f-997a-4a1d-8ae1-47c7c3b3482a"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1470,66 +1527,73 @@ Cell[BoxData[
        "diracRules"}], "/.", "colorRules"}], "]"}], "//.", "diracRules"}], "//",
     "Simplify"}]}]], "Input",
  CellLabel->"In[76]:=",
- CellID->1322507612,ExpressionUUID->"28e16e30-0926-46ad-9e3a-fcf5f6d1c780"],
+ CellID->1322507612,
+ $CellContext`ExpressionUUID -> "28e16e30-0926-46ad-9e3a-fcf5f6d1c780"],
 
 Cell[BoxData[
- FractionBox[
-  RowBox[{"CF", " ", 
-   SuperscriptBox["g", "2"], " ", 
-   RowBox[{"(", 
-    RowBox[{
-     RowBox[{"-", "1"}], "+", 
-     RowBox[{"dim", "[", "lor", "]"}]}], ")"}], " ", 
-   RowBox[{"dressB", "[", 
-    SuperscriptBox["q1", "2"], "]"}], " ", 
-   RowBox[{"dressGamma", "[", 
-    RowBox[{
-     RowBox[{"p", "-", "q1"}], ",", 
-     RowBox[{"-", "p"}], ",", "q1"}], "]"}], " ", 
-   RowBox[{"dressZ", "[", 
-    SuperscriptBox[
-     RowBox[{"(", 
-      RowBox[{"p", "-", "q1"}], ")"}], "2"], "]"}]}], 
-  RowBox[{
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"CF", " ", 
+    SuperscriptBox["g", "2"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", "1"}], "+", 
+      RowBox[{"dim", "[", "lor", "]"}]}], ")"}], " ", 
+    RowBox[{"dressB", "[", 
+     SuperscriptBox["q1", "2"], "]"}], " ", 
+    RowBox[{"dressGamma", "[", 
+     RowBox[{
+      RowBox[{"p", "-", "q1"}], ",", 
+      RowBox[{"-", "p"}], ",", "q1"}], "]"}], " ", 
+    RowBox[{"dressZ", "[", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{"p", "-", "q1"}], ")"}], "2"], "]"}]}], ")"}], "/", 
+  RowBox[{"(", 
    RowBox[{
-    SuperscriptBox["q1", "2"], " ", 
-    RowBox[{"dressA", "[", 
-     SuperscriptBox["q1", "2"], "]"}]}], "+", 
-   RowBox[{"dressB", "[", 
-    SuperscriptBox["q1", "2"], "]"}]}]]], "Output",
- ImageSize->{566, 45},
+    RowBox[{
+     SuperscriptBox["q1", "2"], " ", 
+     RowBox[{"dressA", "[", 
+      SuperscriptBox["q1", "2"], "]"}]}], "+", 
+    RowBox[{"dressB", "[", 
+     SuperscriptBox["q1", "2"], "]"}]}], ")"}]}]], "Output",
+ ImageSize->{466, 39},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[76]=",
- CellID->546231862,ExpressionUUID->"1963298f-f2ac-4160-8473-7f68a07bbb6f"]
+ CellID->546231862,
+ $CellContext`ExpressionUUID -> "1963298f-f2ac-4160-8473-7f68a07bbb6f"]
 }, Open  ]],
 
 Cell["\<\
 These expressions are the integrands of the quark gap equation.\
 \>", "Text",
- CellID->1316407155,ExpressionUUID->"cc9012d1-e522-4709-9c89-f1ba8a4364d8"],
+ CellID->1316407155,
+ $CellContext`ExpressionUUID -> "cc9012d1-e522-4709-9c89-f1ba8a4364d8"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData["XXXX"], "Input",
  CellLabel->"In[1]:=",
- CellID->2058623809,ExpressionUUID->"3f507a42-48bf-4dce-a26d-9fccfa18bf01"],
+ CellID->2058623809,
+ $CellContext`ExpressionUUID -> "3f507a42-48bf-4dce-a26d-9fccfa18bf01"],
 
 Cell[BoxData["XXXX"], "Output",
- ImageSize->{35, 17},
+ ImageSize->{37, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[1]=",
- CellID->1181321046,ExpressionUUID->"68514b35-b542-43e2-9f11-e4ac8550a584"]
+ CellID->1181321046,
+ $CellContext`ExpressionUUID -> "68514b35-b542-43e2-9f11-e4ac8550a584"]
 }, Open  ]]
 }, Open  ]],
 
-Cell[" ", "FooterCell",ExpressionUUID->"07473b16-2c39-4c48-b2df-46cc36ee28d8"]
+Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"Dyson-Schwinger equations",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "TutorialColor", 
@@ -1540,7 +1604,7 @@ TaggingRules->{
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
     Left], "ExampleCounter" -> 1, "NeedPlatMsgIn" -> None, "RootCaptions" -> 
   "", "Metadata" -> {
-   "built" -> "{2019, 8, 7, 9, 22, 11.270547}", 
+   "built" -> "{2019, 10, 25, 10, 14, 17.367554}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`", "keywords" -> {}, 
     "specialkeywords" -> {}, "tutorialcollectionlinks" -> {}, "index" -> True,
      "label" -> "Do Fun Package Tutorial", "language" -> "en", "paclet" -> 
@@ -1548,12 +1612,12 @@ TaggingRules->{
     "This tutorial describes how to derive a functional renormalization group \
 equation. To derive a DSE the function doDSE is used: Derivation functions.", 
     "synonyms" -> {}, "tabletags" -> 
-    DocumentationBuild`Make`Private`tabletaggingrules$84507, "title" -> 
+    DocumentationBuild`Make`Private`tabletaggingrules$71997, "title" -> 
     "Dyson-Schwinger equations", "titlemodifier" -> "", "windowtitle" -> 
     "Dyson-Schwinger equations", "type" -> "Tutorial", "uri" -> 
-    "DoFun/tutorial/Dyson-SchwingerEquations", "WorkflowDockedCell" -> ""}, 
-  "SearchTextTranslated" -> ""},
-FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+    "DoFun/tutorial/Dyson-SchwingerEquations"}, "SearchTextTranslated" -> 
+  ""},
+FrontEndVersion->"10.0 for Linux x86 (64-bit) (June 27, 2014)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -1571,7 +1635,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["TutorialRelatedLinksSection"], 
     CellGroupingRules -> {"SectionGrouping", 30}]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  FrontEndVersion -> "10.0 for Linux x86 (64-bit) (June 27, 2014)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -1585,152 +1649,152 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[597, 21, 2667, 58, 56, "AnchorBarGrid",ExpressionUUID->"26470e9f-30c6-45dd-8a1e-e8e5ebcc8e4c",
+Cell[597, 21, 2379, 56, 52, "AnchorBarGrid",
  CellID->1],
 Cell[CellGroupData[{
-Cell[3289, 83, 117, 1, 65, "Title",ExpressionUUID->"8bab9e32-edd7-418a-83b8-47292f5e57a8",
+Cell[3001, 81, 134, 2, 52, "Title",
  CellID->509267359],
-Cell[3409, 86, 184, 4, 36, "Text",ExpressionUUID->"a6538a51-90d6-4818-a8bf-414d53759951",
+Cell[3138, 85, 201, 5, 32, "Text",
  CellID->1534169418],
-Cell[3596, 92, 135, 1, 36, "Text",ExpressionUUID->"ea48f812-f240-4aab-a558-7138f8bab2f4",
+Cell[3342, 92, 152, 2, 32, "Text",
  CellID->1349004082],
-Cell[3734, 95, 1287, 31, 237, "DefinitionBox",ExpressionUUID->"61ffe7ea-c3be-4b1a-b50c-5483b1829abd",
+Cell[3497, 96, 1382, 35, 183, "DefinitionBox",
  CellID->2096742444],
-Cell[5024, 128, 116, 1, 37, "Caption",ExpressionUUID->"6ef17d97-abad-41ac-88db-29c714187edd",
+Cell[4882, 133, 133, 2, 33, "Caption",
  CellID->1891092685],
-Cell[5143, 131, 130, 1, 36, "Text",ExpressionUUID->"d0050763-58a3-45aa-b61a-90b26bea4acf",
+Cell[5018, 137, 147, 2, 32, "Text",
  CellID->1475713941],
-Cell[5276, 134, 746, 18, 156, "DefinitionBox",ExpressionUUID->"d6a6c672-ca29-4fa6-9197-2d8f3ba43370",
+Cell[5168, 141, 799, 20, 118, "DefinitionBox",
  CellID->1225823622],
-Cell[6025, 154, 115, 1, 70, "Caption",ExpressionUUID->"76c6c9f3-04bc-4993-8038-f0cc008d7237",
+Cell[5970, 163, 132, 2, 33, "Caption",
  CellID->1724178967],
-Cell[6143, 157, 139, 1, 70, "Text",ExpressionUUID->"9e3b2d76-570e-454f-81e6-5d3f558760df",
+Cell[6105, 167, 156, 2, 32, "Text",
  CellID->1045476368],
-Cell[6285, 160, 615, 14, 70, "DefinitionBox",ExpressionUUID->"95318b72-ba1e-4a15-8867-0ca7c3db6465",
+Cell[6264, 171, 668, 16, 101, "DefinitionBox",
  CellID->429162623],
-Cell[6903, 176, 114, 1, 70, "Caption",ExpressionUUID->"02e880be-bf23-4e65-a9e5-4fd129c63eed",
+Cell[6935, 189, 131, 2, 33, "Caption",
  CellID->1119900583],
-Cell[7020, 179, 251, 4, 70, "Text",ExpressionUUID->"2ebcba94-596b-4fa4-b794-74dd630ae0fb",
+Cell[7069, 193, 268, 5, 52, "Text",
  CellID->1841528772],
 Cell[CellGroupData[{
-Cell[7296, 187, 149, 3, 70, "Input",ExpressionUUID->"f14ae2d1-b64e-40b5-bd62-6cc23a5a9965",
+Cell[7362, 202, 166, 4, 27, "Input",
  CellID->1892492974],
-Cell[7448, 192, 352, 4, 70, "Print",ExpressionUUID->"f6bf94ae-26a9-4486-87ae-0188cbbdec67",
+Cell[7531, 208, 369, 5, 143, "Print",
  CellID->686099459]
 }, Open  ]],
-Cell[7815, 199, 344, 10, 70, "Input",ExpressionUUID->"64b23b31-f4af-4fed-ac85-69a001dce8a3"],
-Cell[8162, 211, 235, 4, 70, "Text",ExpressionUUID->"fdf5744a-6307-4253-a9fe-99dc213ef5ee",
+Cell[7915, 216, 361, 11, 27, "Input"],
+Cell[8279, 229, 252, 5, 52, "Text",
  CellID->1682869941],
-Cell[8400, 217, 701, 21, 70, "Input",ExpressionUUID->"d0f0507c-fd9a-4045-8304-1f6449f18439",
+Cell[8534, 236, 718, 22, 45, "Input",
  CellID->1995051252],
-Cell[9104, 240, 147, 1, 70, "Text",ExpressionUUID->"4898efef-3db8-4ac6-8e21-2317288bd8c3",
+Cell[9255, 260, 164, 2, 32, "Text",
  CellID->1161808145],
 Cell[CellGroupData[{
-Cell[9276, 245, 266, 7, 70, "Input",ExpressionUUID->"37531ef0-4011-4b38-96fe-f3f68940ecae",
+Cell[9444, 266, 283, 8, 27, "Input",
  CellID->1038317495],
-Cell[9545, 254, 1308, 43, 58, "Output",ExpressionUUID->"7d7e7199-d262-4e3b-a0d2-79768531c520",
+Cell[9730, 276, 1325, 44, 71, "Output",
  CellID->897947143]
 }, Open  ]],
-Cell[10868, 300, 239, 4, 70, "Text",ExpressionUUID->"28ba7fec-dd5d-4d30-8e3e-70c5473a383d",
+Cell[11070, 323, 256, 5, 52, "Text",
  CellID->1720619175],
-Cell[11110, 306, 487, 15, 70, "Input",ExpressionUUID->"81a4225c-a120-4a7d-9dae-08fc120f5092",
+Cell[11329, 330, 504, 16, 27, "Input",
  CellID->2002455362],
 Cell[CellGroupData[{
-Cell[11622, 325, 193, 4, 70, "Input",ExpressionUUID->"86545b44-6726-4c35-b7ce-19f7d7c2a40e",
+Cell[11858, 350, 210, 5, 27, "Input",
  CellID->1996689018],
-Cell[11818, 331, 16076, 345, 70, "Output",ExpressionUUID->"634c9e45-57f7-4335-a8d4-1de962edf5f3",
+Cell[12071, 357, 16093, 346, 61, "Output",
  CellID->1607590168]
 }, Open  ]],
-Cell[27909, 679, 271, 5, 70, "Text",ExpressionUUID->"6b46736a-1090-40f6-9406-c40c10780b1a",
+Cell[28179, 706, 288, 6, 52, "Text",
  CellID->1946491],
 Cell[CellGroupData[{
-Cell[28205, 688, 595, 16, 70, "Input",ExpressionUUID->"b31cd2b0-e132-4906-93ae-d8636a8f7fe2",
+Cell[28492, 716, 612, 17, 45, "Input",
  CellID->651129965],
-Cell[28803, 706, 624, 17, 58, "Output",ExpressionUUID->"94c02984-ae7e-431a-9f01-c258658063e9",
+Cell[29107, 735, 641, 18, 54, "Output",
  CellID->1485404116]
 }, Open  ]],
-Cell[29442, 726, 144, 1, 70, "Text",ExpressionUUID->"1424829c-4350-41e6-91eb-6a4199ca75ae",
+Cell[29763, 756, 161, 2, 32, "Text",
  CellID->2054710982],
 Cell[CellGroupData[{
-Cell[29611, 731, 515, 13, 70, "Input",ExpressionUUID->"0f250dc0-e3a9-4431-9159-63df99d9c6d5",
+Cell[29949, 762, 532, 14, 45, "Input",
  CellID->1872897726],
-Cell[30129, 746, 2145, 64, 134, "Output",ExpressionUUID->"527b7181-6689-4642-a818-9dce52591e14",
+Cell[30484, 778, 2162, 65, 122, "Output",
  CellID->758979017]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[32311, 815, 515, 13, 70, "Input",ExpressionUUID->"95ce81fb-9bf6-427e-920c-5ecf29306ddc",
+Cell[32683, 848, 532, 14, 45, "Input",
  CellID->2095723166],
-Cell[32829, 830, 2146, 64, 134, "Output",ExpressionUUID->"5d93f65b-7357-4801-af39-ab7ae6a27022",
+Cell[33218, 864, 2163, 65, 122, "Output",
  CellID->1381726204]
 }, Open  ]],
-Cell[34990, 897, 432, 7, 70, "Text",ExpressionUUID->"d1828796-09e6-4333-be87-52b2a3174a1c",
+Cell[35396, 932, 449, 8, 92, "Text",
  CellID->552997836],
-Cell[35425, 906, 4014, 118, 70, "Input",ExpressionUUID->"a2b7b7bc-6e65-4e43-9a8a-fb2bee7610d3",
+Cell[35848, 942, 4031, 119, 215, "Input",
  CellID->268636086],
-Cell[39442, 1026, 264, 5, 70, "Text",ExpressionUUID->"4ba55f13-03d2-4d4b-8578-c5d63edef7e4",
+Cell[39882, 1063, 281, 6, 52, "Text",
  CellID->191462938],
 Cell[CellGroupData[{
-Cell[39731, 1035, 449, 12, 70, "Input",ExpressionUUID->"1ca8a508-e798-49f9-b3ea-f00f98589d6a",
+Cell[40188, 1073, 466, 13, 27, "Input",
  CellID->1644949164],
-Cell[40183, 1049, 2819, 77, 233, "Output",ExpressionUUID->"26396eca-97f8-4225-8feb-77e3405f88da",
+Cell[40657, 1088, 2836, 78, 228, "Output",
  CellID->276088933]
 }, Open  ]],
-Cell[43017, 1129, 166, 3, 70, "Text",ExpressionUUID->"a3acbfb2-0141-4898-adfe-d90c3d602fa2",
+Cell[43508, 1169, 183, 4, 32, "Text",
  CellID->555413753],
-Cell[43186, 1134, 671, 19, 70, "Input",ExpressionUUID->"77a51329-1659-43e1-9d81-8145869b30bf",
+Cell[43694, 1175, 688, 20, 45, "Input",
  CellID->1168034431],
-Cell[43860, 1155, 183, 4, 70, "Text",ExpressionUUID->"3e966442-6cb9-4c56-a4c1-7d1cc8f94310",
+Cell[44385, 1197, 200, 5, 32, "Text",
  CellID->1690102901],
-Cell[44046, 1161, 942, 28, 70, "Input",ExpressionUUID->"2760d85e-fb61-4143-b476-5837a11a3c94",
+Cell[44588, 1204, 959, 29, 62, "Input",
  CellID->2130758022],
-Cell[44991, 1191, 152, 1, 70, "Text",ExpressionUUID->"3d40a1cc-2f33-4cac-be62-7699ab62f550",
+Cell[45550, 1235, 169, 2, 32, "Text",
  CellID->2037322274],
-Cell[45146, 1194, 3751, 100, 70, "Input",ExpressionUUID->"9483a255-5216-4251-9335-a8518408b40e",
+Cell[45722, 1239, 3768, 101, 249, "Input",
  CellID->2032259154],
-Cell[48900, 1296, 113, 1, 70, "Text",ExpressionUUID->"c37ed879-7e77-4903-9150-1b6a5350f7a9",
+Cell[49493, 1342, 130, 2, 32, "Text",
  CellID->791282679],
-Cell[49016, 1299, 444, 12, 70, "Input",ExpressionUUID->"bb11e069-7b28-4bd7-8f13-9117d4e5c6d8",
+Cell[49626, 1346, 461, 13, 27, "Input",
  CellID->1042520127],
-Cell[49463, 1313, 229, 4, 70, "Text",ExpressionUUID->"81b02daf-4a0b-4a37-b5d1-cabb1fa9dfe5",
+Cell[50090, 1361, 246, 5, 52, "Text",
  CellID->454042],
 Cell[CellGroupData[{
-Cell[49717, 1321, 376, 10, 70, "Input",ExpressionUUID->"fbd003af-56e2-4d71-8bb2-48206416ee0f",
+Cell[50361, 1370, 393, 11, 45, "Input",
  CellID->1571807240],
-Cell[50096, 1333, 380, 11, 47, "Output",ExpressionUUID->"0034ae60-44ec-4cd0-902a-f2da5ebd70d8",
+Cell[50757, 1383, 397, 12, 40, "Output",
  CellID->772592562]
 }, Open  ]],
-Cell[50491, 1347, 170, 3, 70, "Text",ExpressionUUID->"c98146a5-1357-4454-ac33-1ca935f1c974",
+Cell[51169, 1398, 187, 4, 32, "Text",
  CellID->205281615],
 Cell[CellGroupData[{
-Cell[50686, 1354, 439, 12, 70, "Input",ExpressionUUID->"a5058593-5a2d-4aeb-b4b1-d03aeb975668",
+Cell[51381, 1406, 456, 13, 45, "Input",
  CellID->1406674871],
-Cell[51128, 1368, 260, 7, 38, "Output",ExpressionUUID->"459eeffd-be45-4c88-ac29-44d26b43b7a2",
+Cell[51840, 1421, 277, 8, 36, "Output",
  CellID->1635872138]
 }, Open  ]],
-Cell[51403, 1378, 189, 4, 70, "Text",ExpressionUUID->"ca4b30fe-547f-4c4d-927f-f5a56a5f475e",
+Cell[52132, 1432, 206, 5, 32, "Text",
  CellID->1910471858],
 Cell[CellGroupData[{
-Cell[51617, 1386, 503, 14, 70, "Input",ExpressionUUID->"b7bd6a39-6928-4a38-8921-cfe380747e46",
+Cell[52363, 1441, 520, 15, 62, "Input",
  CellID->94459536],
-Cell[52123, 1402, 1614, 51, 99, "Output",ExpressionUUID->"90c9b56f-997a-4a1d-8ae1-47c7c3b3482a",
+Cell[52886, 1458, 1631, 52, 80, "Output",
  CellID->844298445]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[53774, 1458, 505, 14, 70, "Input",ExpressionUUID->"28e16e30-0926-46ad-9e3a-fcf5f6d1c780",
+Cell[54554, 1515, 522, 15, 62, "Input",
  CellID->1322507612],
-Cell[54282, 1474, 924, 29, 66, "Output",ExpressionUUID->"1963298f-f2ac-4160-8473-7f68a07bbb6f",
+Cell[55079, 1532, 1012, 32, 60, "Output",
  CellID->546231862]
 }, Open  ]],
-Cell[55221, 1506, 163, 3, 70, "Text",ExpressionUUID->"cc9012d1-e522-4709-9c89-f1ba8a4364d8",
+Cell[56106, 1567, 180, 4, 32, "Text",
  CellID->1316407155],
 Cell[CellGroupData[{
-Cell[55409, 1513, 129, 2, 70, "Input",ExpressionUUID->"3f507a42-48bf-4dce-a26d-9fccfa18bf01",
+Cell[56311, 1575, 146, 3, 27, "Input",
  CellID->2058623809],
-Cell[55541, 1517, 217, 5, 38, "Output",ExpressionUUID->"68514b35-b542-43e2-9f11-e4ac8550a584",
+Cell[56460, 1580, 234, 6, 36, "Output",
  CellID->1181321046]
 }, Open  ]]
 }, Open  ]],
-Cell[55785, 1526, 78, 0, 70, "FooterCell",ExpressionUUID->"07473b16-2c39-4c48-b2df-46cc36ee28d8"]
+Cell[56721, 1590, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

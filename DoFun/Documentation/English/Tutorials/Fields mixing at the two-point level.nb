@@ -3,32 +3,31 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 11.3' *)
+(* CreatedBy='Mathematica 10.0' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    163487,       3563]
-NotebookOptionsPosition[    157732,       3439]
-NotebookOutlinePosition[    160330,       3501]
-CellTagsIndexPosition[    160287,       3498]
+NotebookDataLength[    162055,       3585]
+NotebookOptionsPosition[    157809,       3461]
+NotebookOutlinePosition[    160383,       3523]
+CellTagsIndexPosition[    160340,       3520]
 WindowTitle->Fields mixing at the two-point level
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["DO FUN TUTORIAL", "PacletNameCell",ExpressionUUID->
-     "32d31cc1-4c4b-4cb3-92e9-d0ae34595191"], Cell[TextData[Cell[BoxData[
+   {Cell["DO FUN TUTORIAL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
      ActionMenuBox[
       FrameBox[
        InterpretationBox[Cell[TextData[{
          "URL",
          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
           StripOnInput->False]
-        }],ExpressionUUID->"03bc4f4d-8796-47fa-bbd3-8f195e10e169"],
+        }]],
         TextCell[
          Row[{"URL", 
            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
@@ -62,7 +61,7 @@ mixing at the two-point level.html"], StandardForm]], "Input",
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$85180], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$72690], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/tutorial/Fields mixing at the two-point level", ".html"]], 
@@ -70,49 +69,53 @@ mixing at the two-point level.html"], StandardForm]], "Input",
       Appearance->None,
       MenuAppearance->Automatic,
       MenuStyle->"URLMenu"]],
-     LineSpacing->{1.4, 0},ExpressionUUID->
-     "5d187cee-da89-4ad7-b838-be72f2e3435f"]], "AnchorBar",ExpressionUUID->
-     "49aef2f4-74c6-40ee-b20f-24295c01ed8a"]}
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
       Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
    "RowsIndexed" -> {}}},
- CellID->1,ExpressionUUID->"5213ce07-896a-492a-b0ce-f63cb8af0695"],
+ CellID->1],
 
 Cell[CellGroupData[{
 
 Cell["Fields mixing at the two-point level", "Title",
- CellID->509267359,ExpressionUUID->"691f9006-c8e2-4768-8067-4d9c10591175"],
+ CellID->509267359,
+ $CellContext`ExpressionUUID -> "691f9006-c8e2-4768-8067-4d9c10591175"],
 
 Cell["\<\
 In some theories we have two-point functions of different fields, i.e., the \
 two-point matrix is not diagonal in the bosonic part and not off-diagonal for \
 the Grassmann fields.\
 \>", "Text",
- CellID->1534169418,ExpressionUUID->"7fb71f96-8507-40ce-b4bf-b9be7388053e"],
+ CellID->1534169418,
+ $CellContext`ExpressionUUID -> "7fb71f96-8507-40ce-b4bf-b9be7388053e"],
 
 Cell["\<\
 In this case one has to be careful how to specify the allowed propagators and \
 vertices.\
 \>", "Text",
- CellID->1483531542,ExpressionUUID->"dbbf31d8-84db-416e-b791-18b3e64e33f7"],
+ CellID->1483531542,
+ $CellContext`ExpressionUUID -> "dbbf31d8-84db-416e-b791-18b3e64e33f7"],
 
 Cell["\<\
 The allowed propagators are taken from the action. Alternatively, one can \
 also specify them by an argument.\
 \>", "Text",
- CellID->145397379,ExpressionUUID->"83f6a17e-eca1-4c3c-9d60-75d8c8fa6282"],
+ CellID->145397379,
+ $CellContext`ExpressionUUID -> "83f6a17e-eca1-4c3c-9d60-75d8c8fa6282"],
 
 Cell["\<\
 Consider a theory with three fields which mix at the two-point level: A, \
 \[CurlyPhi] and \[CurlyPhi]b.\
 \>", "Text",
- CellID->290159068,ExpressionUUID->"563f0469-ac43-45bc-9f6c-b22d252e48aa"],
+ CellID->290159068,
+ $CellContext`ExpressionUUID -> "563f0469-ac43-45bc-9f6c-b22d252e48aa"],
 
 Cell[BoxData[
  RowBox[{"Needs", "[", "\"\<DoFun`\>\"", "]"}]], "Input",
- CellID->1414887963,ExpressionUUID->"db79b84c-edfe-42dc-9c38-96adfc610012"],
+ CellID->1414887963,
+ $CellContext`ExpressionUUID -> "db79b84c-edfe-42dc-9c38-96adfc610012"],
 
 Cell[BoxData[
  RowBox[{
@@ -125,10 +128,12 @@ Cell[BoxData[
       RowBox[{"\[CurlyPhi]", ",", "\[CurlyPhi]b"}], "}"}], "}"}]}], "]"}], 
   ";"}]], "Input",
  CellLabel->"In[306]:=",
- CellID->209293230,ExpressionUUID->"1a5523ec-42c0-49df-896e-252264e9c99d"],
+ CellID->209293230,
+ $CellContext`ExpressionUUID -> "1a5523ec-42c0-49df-896e-252264e9c99d"],
 
 Cell["For now we include only one interaction:", "Text",
- CellID->129573610,ExpressionUUID->"28047ac3-c47b-4a32-b9aa-1ee1aec4c021"],
+ CellID->129573610,
+ $CellContext`ExpressionUUID -> "28047ac3-c47b-4a32-b9aa-1ee1aec4c021"],
 
 Cell[BoxData[
  RowBox[{
@@ -147,10 +152,12 @@ Cell[BoxData[
       RowBox[{"A", ",", "\[CurlyPhi]b", ",", "\[CurlyPhi]"}], "}"}]}], 
     "}"}]}], ";"}]], "Input",
  CellLabel->"In[307]:=",
- CellID->1229295853,ExpressionUUID->"e989c8d8-4378-4580-a24a-f4fc0a63ae7f"],
+ CellID->1229295853,
+ $CellContext`ExpressionUUID -> "e989c8d8-4378-4580-a24a-f4fc0a63ae7f"],
 
 Cell["The propagator DSE for the A fields is", "Text",
- CellID->939430616,ExpressionUUID->"cbbd9239-c6af-44c0-95de-e6f3a216e9ed"],
+ CellID->939430616,
+ $CellContext`ExpressionUUID -> "cbbd9239-c6af-44c0-95de-e6f3a216e9ed"],
 
 Cell[CellGroupData[{
 
@@ -161,7 +168,8 @@ Cell[BoxData[
     RowBox[{"{", 
      RowBox[{"A", ",", "A"}], "}"}]}], "]"}]}]], "Input",
  CellLabel->"In[322]:=",
- CellID->1896051102,ExpressionUUID->"8307c2b6-4366-43fd-ab84-b82c7e30bae4"],
+ CellID->1896051102,
+ $CellContext`ExpressionUUID -> "8307c2b6-4366-43fd-ab84-b82c7e30bae4"],
 
 Cell[BoxData[
  RowBox[{
@@ -293,25 +301,28 @@ Cell[BoxData[
       RowBox[{"{", 
        RowBox[{"\[CurlyPhi]b", ",", "r1"}], "}"}]}], "]"}]}], 
    "]"}]}]], "Output",
- ImageSize->{569, 151},
+ ImageSize->{441, 152},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[322]=",
- CellID->346148426,ExpressionUUID->"86abed63-cde3-4109-95e4-905dba15d221"]
+ CellID->346148426,
+ $CellContext`ExpressionUUID -> "86abed63-cde3-4109-95e4-905dba15d221"]
 }, Open  ]],
 
 Cell["\<\
 When plotting the result, it is better not to use any specific styles for the \
 fields, because then the fields of the propagators are indicated explicitly.\
 \>", "Text",
- CellID->1494203748,ExpressionUUID->"a0ddb493-80f0-484e-a24b-ba83b684398c"],
+ CellID->1494203748,
+ $CellContext`ExpressionUUID -> "a0ddb493-80f0-484e-a24b-ba83b684398c"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DSEPlot", "[", "AA1", "]"}]], "Input",
  CellLabel->"In[319]:=",
- CellID->1429754827,ExpressionUUID->"34e76f27-912a-4256-9489-6f65122653bd"],
+ CellID->1429754827,
+ $CellContext`ExpressionUUID -> "34e76f27-912a-4256-9489-6f65122653bd"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -1158,17 +1169,19 @@ Cell[BoxData[
    AutoDelete->False,
    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
   "Grid"]], "Output",
- ImageSize->{698, 87},
+ ImageSize->{698, 77},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[319]=",
- CellID->1165463427,ExpressionUUID->"4d23b757-c9a8-48a3-90b6-16b820aab77d"]
+ CellID->1165463427,
+ $CellContext`ExpressionUUID -> "4d23b757-c9a8-48a3-90b6-16b820aab77d"]
 }, Open  ]],
 
 Cell["\<\
 We can restrict the allowed propagators with another argument to doDSE:\
 \>", "Text",
- CellID->1432597172,ExpressionUUID->"96dffdfa-df33-4243-a94e-ddcf8e975ba6"],
+ CellID->1432597172,
+ $CellContext`ExpressionUUID -> "96dffdfa-df33-4243-a94e-ddcf8e975ba6"],
 
 Cell[CellGroupData[{
 
@@ -1190,7 +1203,8 @@ Cell[BoxData[{
   ";"}], "\[IndentingNewLine]", 
  RowBox[{"DSEPlot", "[", "AA2", "]"}]}], "Input",
  CellLabel->"In[320]:=",
- CellID->13425665,ExpressionUUID->"e5240d74-78ce-4a33-8510-2d0070a6068c"],
+ CellID->13425665,
+ $CellContext`ExpressionUUID -> "e5240d74-78ce-4a33-8510-2d0070a6068c"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -1573,11 +1587,12 @@ Cell[BoxData[
    AutoDelete->False,
    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
   "Grid"]], "Output",
- ImageSize->{446, 44},
+ ImageSize->{446, 39},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[321]=",
- CellID->59070858,ExpressionUUID->"2d4f3262-5421-4995-bb05-fe527bb7b396"]
+ CellID->59070858,
+ $CellContext`ExpressionUUID -> "2d4f3262-5421-4995-bb05-fe527bb7b396"]
 }, Open  ]],
 
 Cell["\<\
@@ -1587,7 +1602,8 @@ also by the option userEvenFields which defines the fields that can only \
 appear in an even number in any vertex. For complex fields this applies to \
 pairs of fields.\
 \>", "Text",
- CellID->1747705970,ExpressionUUID->"c2cb7277-89f4-4eb1-8f19-c992f7f84edc"],
+ CellID->1747705970,
+ $CellContext`ExpressionUUID -> "c2cb7277-89f4-4eb1-8f19-c992f7f84edc"],
 
 Cell[CellGroupData[{
 
@@ -1605,7 +1621,8 @@ Cell[BoxData[{
     "]"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{"DSEPlot", "[", "AA2", "]"}]}], "Input",
  CellLabel->"In[325]:=",
- CellID->1367381962,ExpressionUUID->"d37ce319-4699-4194-b658-84da46dfcbce"],
+ CellID->1367381962,
+ $CellContext`ExpressionUUID -> "d37ce319-4699-4194-b658-84da46dfcbce"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -2138,11 +2155,12 @@ Cell[BoxData[
    AutoDelete->False,
    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
   "Grid"]], "Output",
- ImageSize->{572, 44},
+ ImageSize->{572, 39},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[326]=",
- CellID->1445942560,ExpressionUUID->"cc3ddbc1-a169-4da3-82e2-5c81d680b3ee"]
+ CellID->1445942560,
+ $CellContext`ExpressionUUID -> "cc3ddbc1-a169-4da3-82e2-5c81d680b3ee"]
 }, Open  ]],
 
 Cell["\<\
@@ -2150,7 +2168,8 @@ Note that in some cases graphs are not added up properly. However, the result \
 is correct and can be added up manually. Here is an example RGE of such a \
 case:\
 \>", "Text",
- CellID->66377177,ExpressionUUID->"c9921b7b-a54e-4a2a-8b9c-6fffad565ad2"],
+ CellID->66377177,
+ $CellContext`ExpressionUUID -> "c9921b7b-a54e-4a2a-8b9c-6fffad565ad2"],
 
 Cell[CellGroupData[{
 
@@ -2185,7 +2204,8 @@ Cell[BoxData[{
     RowBox[{"tDerivative", "->", "False"}]}], "]"}]}], "\n", 
  RowBox[{"RGEPlot", "[", "rge", "]"}]}], "Input",
  CellLabel->"In[330]:=",
- CellID->1803359817,ExpressionUUID->"f4df65a6-42e5-4f2c-8708-35bd615e140e"],
+ CellID->1803359817,
+ $CellContext`ExpressionUUID -> "f4df65a6-42e5-4f2c-8708-35bd615e140e"],
 
 Cell[BoxData[
  RowBox[{
@@ -2380,11 +2400,12 @@ Cell[BoxData[
         RowBox[{"phi", ",", "u1"}], "}"}], ",", 
        RowBox[{"{", 
         RowBox[{"phib", ",", "r1"}], "}"}]}], "]"}]}], "]"}]}]}]], "Output",
- ImageSize->{486, 304},
+ ImageSize->{511, 314},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[331]=",
- CellID->1005910230,ExpressionUUID->"9a0c74d2-9a5a-4647-ab82-bc30b3dbcd65"],
+ CellID->1005910230,
+ $CellContext`ExpressionUUID -> "9a0c74d2-9a5a-4647-ab82-bc30b3dbcd65"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -3427,20 +3448,21 @@ Cell[BoxData[
    AutoDelete->False,
    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
   "Grid"]], "Output",
- ImageSize->{769, 87},
+ ImageSize->{770, 79},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[332]=",
- CellID->1587336529,ExpressionUUID->"56ac40ff-afa3-4288-bcb5-26fe2af0637a"]
+ CellID->1587336529,
+ $CellContext`ExpressionUUID -> "56ac40ff-afa3-4288-bcb5-26fe2af0637a"]
 }, Open  ]]
 }, Open  ]],
 
-Cell[" ", "FooterCell",ExpressionUUID->"f724c00e-f626-4f09-a891-4447bfdde1c7"]
+Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"Fields mixing at the two-point level",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "TutorialColor", 
@@ -3451,7 +3473,7 @@ TaggingRules->{
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
     Left], "ExampleCounter" -> 1, "NeedPlatMsgIn" -> None, "RootCaptions" -> 
   "", "Metadata" -> {
-   "built" -> "{2019, 8, 7, 9, 22, 13.093854}", 
+   "built" -> "{2019, 10, 25, 10, 14, 19.992870}", 
     "history" -> {"0.0", "", "", ""}, "context" -> "DoFun`", "keywords" -> {},
      "specialkeywords" -> {}, "tutorialcollectionlinks" -> {}, "index" -> 
     True, "label" -> "Do Fun Tutorial", "language" -> "en", "paclet" -> 
@@ -3462,13 +3484,13 @@ for the Grassmann fields. In this case one has to be careful how to specify \
 the allowed propagators and vertices. The allowed propagators are taken from \
 the action. Alternatively, one can also specify them by an argument.", 
     "synonyms" -> {}, "tabletags" -> 
-    DocumentationBuild`Make`Private`tabletaggingrules$85097, "title" -> 
+    DocumentationBuild`Make`Private`tabletaggingrules$72607, "title" -> 
     "Fields mixing at the two-point level", "titlemodifier" -> "", 
     "windowtitle" -> "Fields mixing at the two-point level", "type" -> 
     "Tutorial", "uri" -> 
-    "DoFun/tutorial/Fields mixing at the two-point level", 
-    "WorkflowDockedCell" -> ""}, "SearchTextTranslated" -> ""},
-FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+    "DoFun/tutorial/Fields mixing at the two-point level"}, 
+  "SearchTextTranslated" -> ""},
+FrontEndVersion->"10.0 for Linux x86 (64-bit) (June 27, 2014)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -3486,7 +3508,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["TutorialRelatedLinksSection"], 
     CellGroupingRules -> {"SectionGrouping", 30}]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  FrontEndVersion -> "10.0 for Linux x86 (64-bit) (June 27, 2014)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -3500,71 +3522,71 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[608, 21, 2712, 59, 56, "AnchorBarGrid",ExpressionUUID->"5213ce07-896a-492a-b0ce-f63cb8af0695",
+Cell[608, 21, 2419, 56, 52, "AnchorBarGrid",
  CellID->1],
 Cell[CellGroupData[{
-Cell[3345, 84, 128, 1, 114, "Title",ExpressionUUID->"691f9006-c8e2-4768-8067-4d9c10591175",
+Cell[3052, 81, 145, 2, 52, "Title",
  CellID->509267359],
-Cell[3476, 87, 279, 5, 60, "Text",ExpressionUUID->"7fb71f96-8507-40ce-b4bf-b9be7388053e",
+Cell[3200, 85, 296, 6, 52, "Text",
  CellID->1534169418],
-Cell[3758, 94, 189, 4, 36, "Text",ExpressionUUID->"dbbf31d8-84db-416e-b791-18b3e64e33f7",
+Cell[3499, 93, 206, 5, 32, "Text",
  CellID->1483531542],
-Cell[3950, 100, 208, 4, 60, "Text",ExpressionUUID->"83f6a17e-eca1-4c3c-9d60-75d8c8fa6282",
+Cell[3708, 100, 225, 5, 52, "Text",
  CellID->145397379],
-Cell[4161, 106, 203, 4, 36, "Text",ExpressionUUID->"563f0469-ac43-45bc-9f6c-b22d252e48aa",
+Cell[3936, 107, 220, 5, 32, "Text",
  CellID->290159068],
-Cell[4367, 112, 147, 2, 29, "Input",ExpressionUUID->"db79b84c-edfe-42dc-9c38-96adfc610012",
+Cell[4159, 114, 164, 3, 27, "Input",
  CellID->1414887963],
-Cell[4517, 116, 361, 11, 29, "Input",ExpressionUUID->"1a5523ec-42c0-49df-896e-252264e9c99d",
+Cell[4326, 119, 378, 12, 27, "Input",
  CellID->209293230],
-Cell[4881, 129, 131, 1, 36, "Text",ExpressionUUID->"28047ac3-c47b-4a32-b9aa-1ee1aec4c021",
+Cell[4707, 133, 148, 2, 32, "Text",
  CellID->129573610],
-Cell[5015, 132, 595, 17, 29, "Input",ExpressionUUID->"e989c8d8-4378-4580-a24a-f4fc0a63ae7f",
+Cell[4858, 137, 612, 18, 27, "Input",
  CellID->1229295853],
-Cell[5613, 151, 129, 1, 36, "Text",ExpressionUUID->"cbbd9239-c6af-44c0-95de-e6f3a216e9ed",
+Cell[5473, 157, 146, 2, 32, "Text",
  CellID->939430616],
 Cell[CellGroupData[{
-Cell[5767, 156, 264, 7, 29, "Input",ExpressionUUID->"8307c2b6-4366-43fd-ab84-b82c7e30bae4",
+Cell[5644, 163, 281, 8, 27, "Input",
  CellID->1896051102],
-Cell[6034, 165, 4224, 134, 172, "Output",ExpressionUUID->"86abed63-cde3-4109-95e4-905dba15d221",
+Cell[5928, 173, 4241, 135, 173, "Output",
  CellID->346148426]
 }, Open  ]],
-Cell[10273, 302, 256, 4, 70, "Text",ExpressionUUID->"a0ddb493-80f0-484e-a24b-ba83b684398c",
+Cell[10184, 311, 273, 5, 52, "Text",
  CellID->1494203748],
 Cell[CellGroupData[{
-Cell[10554, 310, 163, 3, 70, "Input",ExpressionUUID->"34e76f27-912a-4256-9489-6f65122653bd",
+Cell[10482, 320, 180, 4, 27, "Input",
  CellID->1429754827],
-Cell[10720, 315, 41575, 849, 70, "Output",ExpressionUUID->"4d23b757-c9a8-48a3-90b6-16b820aab77d",
+Cell[10665, 326, 41592, 850, 98, "Output",
  CellID->1165463427]
 }, Open  ]],
-Cell[52310, 1167, 171, 3, 70, "Text",ExpressionUUID->"96dffdfa-df33-4243-a94e-ddcf8e975ba6",
+Cell[52272, 1179, 188, 4, 32, "Text",
  CellID->1432597172],
 Cell[CellGroupData[{
-Cell[52506, 1174, 617, 18, 70, "Input",ExpressionUUID->"e5240d74-78ce-4a33-8510-2d0070a6068c",
+Cell[52485, 1187, 634, 19, 45, "Input",
  CellID->13425665],
-Cell[53126, 1194, 18520, 385, 70, "Output",ExpressionUUID->"2d4f3262-5421-4995-bb05-fe527bb7b396",
+Cell[53122, 1208, 18537, 386, 60, "Output",
  CellID->59070858]
 }, Open  ]],
-Cell[71661, 1582, 419, 7, 70, "Text",ExpressionUUID->"c2cb7277-89f4-4eb1-8f19-c992f7f84edc",
+Cell[71674, 1597, 436, 8, 72, "Text",
  CellID->1747705970],
 Cell[CellGroupData[{
-Cell[72105, 1593, 516, 14, 70, "Input",ExpressionUUID->"d37ce319-4699-4194-b658-84da46dfcbce",
+Cell[72135, 1609, 533, 15, 45, "Input",
  CellID->1367381962],
-Cell[72624, 1609, 26095, 535, 70, "Output",ExpressionUUID->"cc3ddbc1-a169-4da3-82e2-5c81d680b3ee",
+Cell[72671, 1626, 26112, 536, 60, "Output",
  CellID->1445942560]
 }, Open  ]],
-Cell[98734, 2147, 259, 5, 70, "Text",ExpressionUUID->"c9921b7b-a54e-4a2a-8b9c-6fffad565ad2",
+Cell[98798, 2165, 276, 6, 52, "Text",
  CellID->66377177],
 Cell[CellGroupData[{
-Cell[99018, 2156, 1039, 31, 70, "Input",ExpressionUUID->"f4df65a6-42e5-4f2c-8708-35bd615e140e",
+Cell[99099, 2175, 1056, 32, 96, "Input",
  CellID->1803359817],
-Cell[100060, 2189, 5997, 197, 325, "Output",ExpressionUUID->"9a0c74d2-9a5a-4647-ab82-bc30b3dbcd65",
+Cell[100158, 2209, 6014, 198, 335, "Output",
  CellID->1005910230],
-Cell[106060, 2388, 51563, 1045, 70, "Output",ExpressionUUID->"56ac40ff-afa3-4288-bcb5-26fe2af0637a",
+Cell[106175, 2409, 51580, 1046, 100, "Output",
  CellID->1587336529]
 }, Open  ]]
 }, Open  ]],
-Cell[157650, 3437, 78, 0, 70, "FooterCell",ExpressionUUID->"f724c00e-f626-4f09-a891-4447bfdde1c7"]
+Cell[157782, 3459, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

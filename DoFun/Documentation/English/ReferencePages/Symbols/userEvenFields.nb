@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 11.3' *)
+(* CreatedBy='Mathematica 10.0' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5986,        162]
-NotebookOptionsPosition[      3843,        111]
-NotebookOutlinePosition[      5723,        160]
-CellTagsIndexPosition[      5680,        157]
+NotebookDataLength[      6223,        171]
+NotebookOptionsPosition[      4266,        120]
+NotebookOutlinePosition[      6178,        169]
+CellTagsIndexPosition[      6135,        166]
 WindowTitle->userEvenFields
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ userEvenFields.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$75337], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$63134], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/ref/userEvenFields", ".html"]], None}]}]},
@@ -78,26 +78,34 @@ userEvenFields.html"], StandardForm]], "Input", TextClipboardType ->
 Cell[TextData[{
  Cell["userEvenFields", "ObjectName"],
  Cell[BoxData[
-  TemplateBox[{8},
-   "Spacer1"]]],
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
  Cell[BoxData[""], "ObjectNameTranslation"]
 }], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
-     Cell[BoxData["userEvenFields"], "InlineFormula"],
+     Cell[BoxData["userEvenFields"], "InlineFormula",
+      $CellContext`ExpressionUUID -> "89c6280e-a5ce-4d2f-8351-a74a5f8fa8db"],
      "\[LineSeparator]is an option of ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["doDSE"]],"paclet:DoFun/ref/doDSE"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "fa15dd75-b9cf-420c-9bc0-1523718d6443"],
      " and ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["doRGE"]],"paclet:DoFun/ref/doRGE"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "69837158-e9b1-4fb2-9de8-78018cb2d133"],
      ". It allows providing fields which can only appear in even numbers in \
 vertices."
     }]]}
@@ -105,7 +113,8 @@ vertices."
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
-   "RowsIndexed" -> {}}}],
+   "RowsIndexed" -> {}}},
+ $CellContext`ExpressionUUID -> "56418381-9ec7-487b-b92c-57bc1e52f2e2"],
 
 Cell[" ", "FooterCell"]
 },
@@ -124,7 +133,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 8, 7, 9, 21, 55.824775}", 
+   "built" -> "{2019, 10, 25, 10, 14, 2.373130}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -134,9 +143,9 @@ TaggingRules->{
 fields which can only appear in even numbers in vertices.", "synonyms" -> {}, 
     "tabletags" -> {}, "title" -> "userEvenFields", "titlemodifier" -> "", 
     "windowtitle" -> "userEvenFields", "type" -> "Symbol", "uri" -> 
-    "DoFun/ref/userEvenFields"}},
+    "DoFun/ref/userEvenFields"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+FrontEndVersion->"10.0 for Linux x86 (64-bit) (June 27, 2014)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -145,7 +154,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  FrontEndVersion -> "10.0 for Linux x86 (64-bit) (June 27, 2014)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -159,11 +168,11 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[586, 21, 2295, 54, 70, "AnchorBarGrid",ExpressionUUID->"da5a6b5c-302d-4631-9456-142a430672df",
+Cell[586, 21, 2295, 54, 70, "AnchorBarGrid",
  CellID->1],
-Cell[2884, 77, 171, 6, 70, "ObjectNameGrid",ExpressionUUID->"59c75b05-475e-411f-8fb1-80585df97bf5"],
-Cell[3058, 85, 755, 22, 70, "Usage",ExpressionUUID->"56418381-9ec7-487b-b92c-57bc1e52f2e2"],
-Cell[3816, 109, 23, 0, 70, "FooterCell",ExpressionUUID->"387452e3-3045-4ea9-a0d6-7328c710d2cb"]
+Cell[2884, 77, 291, 11, 70, "ObjectNameGrid"],
+Cell[3178, 90, 1058, 26, 70, "Usage"],
+Cell[4239, 118, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

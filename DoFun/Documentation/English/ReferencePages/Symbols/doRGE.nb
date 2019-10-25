@@ -3,25 +3,24 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 11.3' *)
+(* CreatedBy='Mathematica 10.0' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    239879,       5259]
-NotebookOptionsPosition[    232600,       5108]
-NotebookOutlinePosition[    235090,       5169]
-CellTagsIndexPosition[    235003,       5164]
+NotebookDataLength[    237063,       5284]
+NotebookOptionsPosition[    232064,       5135]
+NotebookOutlinePosition[    234409,       5194]
+CellTagsIndexPosition[    234322,       5189]
 WindowTitle->doRGE
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell",ExpressionUUID->
-     "af3d8a37-5136-45da-85cd-501bb253d25d"], Cell[TextData[{
+   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell"], Cell[TextData[{
      Cell[BoxData[
       ActionMenuBox[
        FrameBox[
@@ -29,7 +28,7 @@ Cell[BoxData[GridBox[{
           "Related Guides",
           StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
            StripOnInput->False]
-         }],ExpressionUUID->"6909253b-52c3-4a6d-851b-e40f88bacdcc"],
+         }]],
          TextCell[
           Row[{"Related Guides", 
             Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
@@ -38,8 +37,7 @@ Cell[BoxData[GridBox[{
        Appearance->None,
        MenuAppearance->Automatic,
        MenuStyle->"MoreAbout"]],
-      LineSpacing->{1.4, 0},ExpressionUUID->
-      "c31bcc2b-8ec3-4f38-87ca-e79c9c477114"],
+      LineSpacing->{1.4, 0}],
      "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
 \[ThickSpace]",
      Cell[BoxData[
@@ -49,7 +47,7 @@ Cell[BoxData[GridBox[{
           "URL",
           StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
            StripOnInput->False]
-         }],ExpressionUUID->"ae1334e0-02dd-44c6-a603-d37e28f84c9d"],
+         }]],
          TextCell[
           Row[{"URL", 
             Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
@@ -81,35 +79,36 @@ Cell[BoxData[GridBox[{
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$38070], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$27348], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], "DoFun/ref/doRGE", 
              ".html"]], None}]}]},
        Appearance->None,
        MenuAppearance->Automatic,
        MenuStyle->"URLMenu"]],
-      LineSpacing->{1.4, 0},ExpressionUUID->
-      "8a9fa951-50ac-4a76-af70-7728183e2c44"]
-    }], "AnchorBar",ExpressionUUID->"3b1713a7-2a39-4867-8770-def37710ae56"]}
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
       Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
    "RowsIndexed" -> {}}},
- CellID->1,ExpressionUUID->"763b7aa1-e7ca-48d7-b4fb-2a8541bd73b3"],
-
-Cell[CellGroupData[{
+ CellID->1],
 
 Cell[TextData[{
- Cell["doRGE", "ObjectName",ExpressionUUID->
-  "e1aea84f-57f7-4fd3-b9a3-0c89ccdc39e9"],
+ Cell["doRGE", "ObjectName"],
  Cell[BoxData[
-  TemplateBox[{8},
-   "Spacer1"]],ExpressionUUID->"8514d757-0013-4b2b-9fba-12ce5705bc0a"],
- Cell[BoxData[
- ""], "ObjectNameTranslation",ExpressionUUID->
-  "d36ec1f9-fad9-453e-bec2-386dec1fec15"]
-}], "ObjectNameGrid",ExpressionUUID->"5d0acc5d-c08e-47c8-9ab4-fca624e76738"],
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -121,17 +120,17 @@ Cell[BoxData[GridBox[{
         StyleBox["flis", "TI"], ",", " ", 
         RowBox[{"[", 
          StyleBox["opts", "TI"], "]"}]}], "]"}]], "InlineFormula",
-      ExpressionUUID->"49c6335d-3176-4491-953f-312ddc1fa493"],
+      $CellContext`ExpressionUUID -> "49c6335d-3176-4491-953f-312ddc1fa493"],
      " derives the RGE from the action ",
      Cell[BoxData[
-      StyleBox["ac", "TI"]], "InlineFormula",ExpressionUUID->
-      "69dd2c27-3e17-4d2c-b491-7391dcefafd0"],
+      StyleBox["ac", "TI"]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "69dd2c27-3e17-4d2c-b491-7391dcefafd0"],
      " for the fields contained in ",
      Cell[BoxData[
-      StyleBox["flis", "TI"]], "InlineFormula",ExpressionUUID->
-      "987d5c0f-0307-4144-bf37-e172c493d5ce"],
+      StyleBox["flis", "TI"]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "987d5c0f-0307-4144-bf37-e172c493d5ce"],
      ". "
-    }],ExpressionUUID->"3401a7ae-8dab-4f49-a2ff-d44b83d45c40"]},
+    }]]},
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{
@@ -142,7 +141,7 @@ Cell[BoxData[GridBox[{
         StyleBox["props", "TI"], ",", " ", 
         RowBox[{"[", 
          StyleBox["opts", "TI"], "]"}]}], "]"}]], "InlineFormula",
-      ExpressionUUID->"4fae35ef-bd8d-49b4-b9ce-476af2eb2b13"],
+      $CellContext`ExpressionUUID -> "4fae35ef-bd8d-49b4-b9ce-476af2eb2b13"],
      " derives the RGE only with propagators contained in props given as ",
      Cell[BoxData[
       RowBox[{"{", 
@@ -155,9 +154,9 @@ Cell[BoxData[GridBox[{
          RowBox[{
           StyleBox["field2a", "TI"], ",", " ", 
           StyleBox["field2b", "TI"]}], "}"}]}]}]], "InlineFormula",
-      ExpressionUUID->"0bb51da8-8da0-4692-b8fa-b73b6dd24dba"],
+      $CellContext`ExpressionUUID -> "0bb51da8-8da0-4692-b8fa-b73b6dd24dba"],
      "."
-    }],ExpressionUUID->"12bc7246-2b78-4c8a-96d4-64eec4bd1bdb"]},
+    }]]},
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{
@@ -167,40 +166,43 @@ Cell[BoxData[GridBox[{
         StyleBox["flis", "TI"], ",", " ", "vtest", ",", " ", 
         RowBox[{"[", 
          StyleBox["opts", "TI"], "]"}]}], "]"}]], "InlineFormula",
-      ExpressionUUID->"bce53ac1-b1fe-45fa-9d6c-c91d394da51b"],
+      $CellContext`ExpressionUUID -> "bce53ac1-b1fe-45fa-9d6c-c91d394da51b"],
      " derives the RGE only with vertices allowed by ",
      Cell[BoxData[
-      StyleBox["vtest", "TI"]], "InlineFormula",ExpressionUUID->
-      "b653a5ce-316e-49f6-942d-273ca3e38631"],
+      StyleBox["vtest", "TI"]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "b653a5ce-316e-49f6-942d-273ca3e38631"],
      ".\nAllowed propagators will be taken from ",
      Cell[BoxData[
-      StyleBox["ac", "TI"]], "InlineFormula",ExpressionUUID->
-      "9bc1106f-f829-4397-ab6e-a3f14bea7c09"],
+      StyleBox["ac", "TI"]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "9bc1106f-f829-4397-ab6e-a3f14bea7c09"],
      " if the ",
      Cell[BoxData[
-      StyleBox["props", "TI"]], "InlineFormula",ExpressionUUID->
-      "8e854549-c626-4a35-8234-43ceece3c748"],
+      StyleBox["props", "TI"]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "8e854549-c626-4a35-8234-43ceece3c748"],
      " argument is not given."
-    }],ExpressionUUID->"e6a7a7d9-c4e2-4c5c-971c-2cdb04638b89"]}
+    }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, 
-   "Rows" -> {None, None, {None}}, 
-   "RowsIndexed" -> \
-{}}},ExpressionUUID->"3b599c8b-c46e-40fb-9061-ab0f266db211"]
-}, Open  ]],
+   "Rows" -> {None, None, {None}}, "RowsIndexed" -> {}}},
+ $CellContext`ExpressionUUID -> "3b599c8b-c46e-40fb-9061-ab0f266db211"],
 
 Cell[CellGroupData[{
 
 Cell[TextData[Cell[BoxData[
  ButtonBox[Cell[TextData[{
    Cell[BoxData[
-    TemplateBox[{6},
-     "Spacer1"]],ExpressionUUID->"1d15be3c-7db6-4781-bdf0-02b68e098589"],
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
    "Details"
-  }], "NotesFrameText",ExpressionUUID->"cbafde47-2a26-419d-a57d-0e7bed078425"],
-  Appearance->{Automatic, None, "Normal", Automatic},
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
   BaseStyle->None,
   ButtonFunction:>(FrontEndExecute[{
      FrontEnd`SelectionMove[
@@ -209,20 +211,18 @@ Cell[TextData[Cell[BoxData[
      FrontEnd`SelectionMove[
       FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
   Evaluator->None,
-  Method->
-   "Preemptive"]],ExpressionUUID->"5ac82d08-8ace-4254-82b2-d61203834322"]], \
-"NotesSection",
+  Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->963729514,ExpressionUUID->"153af9df-85c2-452a-b7a9-1d7569c4f519"],
+ CellID->665912056],
 
-Cell["", "SectionHeaderSpacer",ExpressionUUID->"74f7192c-fddf-494b-b4e7-1abfc9095524"],
+Cell["", "SectionHeaderSpacer"],
 
-Cell["The following options can be given: ", "Notes",ExpressionUUID->"692a1a7a-4935-4d84-be03-3ce63ee7e5d3"],
+Cell["The following options can be given: ", "Notes",
+ $CellContext`ExpressionUUID -> "692a1a7a-4935-4d84-be03-3ce63ee7e5d3"],
 
 Cell[BoxData[GridBox[{
-   {Cell["      ", "TableRowIcon",ExpressionUUID->
-     "251e4aad-77c7-4503-8997-277b5d4bf8c8"], 
+   {Cell["      ", "TableRowIcon"], 
     ButtonBox["sourcesZero",
      BaseStyle->"Link",
      ButtonData->"paclet:DoFun/ref/sourcesZero"], 
@@ -233,30 +233,29 @@ Cell[BoxData[GridBox[{
       TemplateBox[{Cell[
          TextData["sourcesZero"]],"paclet:DoFun/ref/sourcesZero"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
-      "814ecfcd-c40f-49a3-9d40-a47857b014c3"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "814ecfcd-c40f-49a3-9d40-a47857b014c3"],
      " is an option of ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["doCO"]],"paclet:DoFun/ref/doCO"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
-      "8cb114f1-ad66-4211-b749-69c089890b37"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "8cb114f1-ad66-4211-b749-69c089890b37"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["doDSE"]],"paclet:DoFun/ref/doDSE"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
-      "517c29ab-737e-4963-acb5-4697d7a8465e"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "517c29ab-737e-4963-acb5-4697d7a8465e"],
      " and ",
-     Cell[BoxData[
-     "doRGE"], "InlineFormula",ExpressionUUID->
-      "3f1a8afc-d50a-4df6-ae72-93d911239f30"],
+     Cell[BoxData["doRGE"], "InlineFormula",
+      $CellContext`ExpressionUUID -> "3f1a8afc-d50a-4df6-ae72-93d911239f30"],
      ". It allows avoiding setting the sources to zero. \n"
-    }], "TableText",ExpressionUUID->"b06673a2-c6f7-48a1-8873-340ff8337e8a"]},
-   {Cell["      ", "TableRowIcon",ExpressionUUID->
-     "7a71267b-9989-494d-a96e-1211ee355cb7"], 
+    }], "TableText",
+     $CellContext`ExpressionUUID -> "b06673a2-c6f7-48a1-8873-340ff8337e8a"]},
+   {Cell["      ", "TableRowIcon"], 
     ButtonBox["identify",
      BaseStyle->"Link",
      ButtonData->"paclet:DoFun/ref/identify"], 
@@ -267,23 +266,22 @@ Cell[BoxData[GridBox[{
       TemplateBox[{Cell[
          TextData["identify"]],"paclet:DoFun/ref/identify"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
-      "1248e652-fb97-4067-826e-0060111f7cab"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "1248e652-fb97-4067-826e-0060111f7cab"],
      " is an option of ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["doDSE"]],"paclet:DoFun/ref/doDSE"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
-      "f890221b-3963-4ecb-a869-de7aa764dd68"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "f890221b-3963-4ecb-a869-de7aa764dd68"],
      " and ",
-     Cell[BoxData[
-     "doRGE"], "InlineFormula",ExpressionUUID->
-      "1734f13d-5f77-4ad3-8c89-f130ab456f9e"],
+     Cell[BoxData["doRGE"], "InlineFormula",
+      $CellContext`ExpressionUUID -> "1734f13d-5f77-4ad3-8c89-f130ab456f9e"],
      ". It allows switching off the identification of diagrams.\n"
-    }], "TableText",ExpressionUUID->"6b4b1468-17e7-4526-b8e3-bb83aeb18d4b"]},
-   {Cell["      ", "TableRowIcon",ExpressionUUID->
-     "73ecdc4b-35a4-4420-8444-0ffd0136b4c2"], 
+    }], "TableText",
+     $CellContext`ExpressionUUID -> "6b4b1468-17e7-4526-b8e3-bb83aeb18d4b"]},
+   {Cell["      ", "TableRowIcon"], 
     ButtonBox["tDerivative",
      BaseStyle->"Link",
      ButtonData->"paclet:DoFun/ref/tDerivative"], 
@@ -294,18 +292,17 @@ Cell[BoxData[GridBox[{
       TemplateBox[{Cell[
          TextData["tDerivative"]],"paclet:DoFun/ref/tDerivative"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
-      "1472f4f7-f026-4e08-99a1-8d3e59aa5395"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "1472f4f7-f026-4e08-99a1-8d3e59aa5395"],
      " is an option of ",
-     Cell[BoxData[
-     "doRGE"], "InlineFormula",ExpressionUUID->
-      "324711f5-1e76-4964-99b2-6cf1c1dad11d"],
+     Cell[BoxData["doRGE"], "InlineFormula",
+      $CellContext`ExpressionUUID -> "324711f5-1e76-4964-99b2-6cf1c1dad11d"],
      ". It determines if the regulator insertion is performed.\nDefault: ",
      "True",
      ".\n"
-    }], "TableText",ExpressionUUID->"2d202b6d-3042-40eb-8e11-eb98ab59ab70"]},
-   {Cell["      ", "TableRowIcon",ExpressionUUID->
-     "c7346a55-97bc-46f7-b75a-94d1a357e5ae"], 
+    }], "TableText",
+     $CellContext`ExpressionUUID -> "2d202b6d-3042-40eb-8e11-eb98ab59ab70"]},
+   {Cell["      ", "TableRowIcon"], 
     ButtonBox["symmetry",
      BaseStyle->"Link",
      ButtonData->"paclet:DoFun/ref/symmetry"], 
@@ -316,62 +313,60 @@ Cell[BoxData[GridBox[{
       TemplateBox[{Cell[
          TextData["symmetry"]],"paclet:DoFun/ref/symmetry"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
-      "183d9e30-122d-49ac-a881-c5acc52ca9a6"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "183d9e30-122d-49ac-a881-c5acc52ca9a6"],
      " is an option of ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["doCO"]],"paclet:DoFun/ref/doCO"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
-      "f8bf0668-35e2-49bd-8369-a54bfe78198b"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "f8bf0668-35e2-49bd-8369-a54bfe78198b"],
      ", ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["doDSE"]],"paclet:DoFun/ref/doDSE"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
-      "e36b6f1b-5ce3-402e-9deb-619efd3c3df4"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "e36b6f1b-5ce3-402e-9deb-619efd3c3df4"],
      " and ",
-     Cell[BoxData[
-     "doRGE"], "InlineFormula",ExpressionUUID->
-      "0eaede28-6174-4515-a34b-6d0ecf41b3c5"],
+     Cell[BoxData["doRGE"], "InlineFormula",
+      $CellContext`ExpressionUUID -> "0eaede28-6174-4515-a34b-6d0ecf41b3c5"],
      ". It determines if there is ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["broken"]],"paclet:DoFun/ref/broken"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
-      "ff931397-8ec8-44d7-9142-ae3bb53f83f4"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "ff931397-8ec8-44d7-9142-ae3bb53f83f4"],
      " ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["symmetry"]],"paclet:DoFun/ref/symmetry"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
-      "df89bdc3-658a-4dc8-8023-0a8d06d84412"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "df89bdc3-658a-4dc8-8023-0a8d06d84412"],
      " in the theory.\nOption of ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["doDSE"]],"paclet:DoFun/ref/doDSE"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
-      "5ff5109f-ce34-436e-9b28-6187c348d816"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "5ff5109f-ce34-436e-9b28-6187c348d816"],
      " and ",
-     Cell[BoxData[
-     "doRGE"], "InlineFormula",ExpressionUUID->
-      "089921df-d39f-471a-923b-421a2eab144d"],
+     Cell[BoxData["doRGE"], "InlineFormula",
+      $CellContext`ExpressionUUID -> "089921df-d39f-471a-923b-421a2eab144d"],
      ".\n\nPossible values:\n -) broken\n -) ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["intact"]],"paclet:DoFun/ref/intact"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
-      "a28684ec-47ea-4a01-bc67-d854a8e1b223"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "a28684ec-47ea-4a01-bc67-d854a8e1b223"],
      " (default)\n"
-    }], "TableText",ExpressionUUID->"e490f874-774e-4bb4-b0e4-0e644e8fa7f7"]},
-   {Cell["      ", "TableRowIcon",ExpressionUUID->
-     "b8b7d2cd-4748-4383-b7b8-6ba2ff7e495a"], 
+    }], "TableText",
+     $CellContext`ExpressionUUID -> "e490f874-774e-4bb4-b0e4-0e644e8fa7f7"]},
+   {Cell["      ", "TableRowIcon"], 
     ButtonBox["userEvenFields",
      BaseStyle->"Link",
      ButtonData->"paclet:DoFun/ref/userEvenFields"], 
@@ -380,69 +375,73 @@ Cell[BoxData[GridBox[{
       TemplateBox[{Cell[
          TextData["userEvenFields"]],"paclet:DoFun/ref/userEvenFields"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
-      "ea8c98c3-eb3d-4f7c-9fde-a124c39231de"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "ea8c98c3-eb3d-4f7c-9fde-a124c39231de"],
      " is an option of ",
-     Cell[BoxData[
-     "doRGE"], "InlineFormula",ExpressionUUID->
-      "a274f22f-8e55-4ca1-8782-d9cc100fd2e4"],
+     Cell[BoxData["doRGE"], "InlineFormula",
+      $CellContext`ExpressionUUID -> "a274f22f-8e55-4ca1-8782-d9cc100fd2e4"],
      ". It allows providing fields which can only appear in ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["even"]],"paclet:DoFun/ref/even"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula",ExpressionUUID->
-      "74b284a7-d2d1-466e-8273-a3181ec435f0"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "74b284a7-d2d1-466e-8273-a3181ec435f0"],
      " numbers in vertices.\n"
-    }], "TableText",ExpressionUUID->"0ade2af6-cfb9-49f6-8470-554bdd6d2cf2"]}
+    }], "TableText",
+     $CellContext`ExpressionUUID -> "0ade2af6-cfb9-49f6-8470-554bdd6d2cf2"]}
   }]], "3ColumnTableMod",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, 
    "Rows" -> {None, None, None, None, {None}}, "RowsIndexed" -> {}},
- GridBoxDividers->{
-  "Rows" -> {{
-     True, True, True, True, True, 
-      True}}}},ExpressionUUID->"5a3205f0-9f29-43d3-890c-2c49e1b198b3"],
+ GridBoxDividers->{"Rows" -> {{True, True, True, True, True, True}}}},
+ $CellContext`ExpressionUUID -> "5a3205f0-9f29-43d3-890c-2c49e1b198b3"],
 
-Cell["", "SectionFooterSpacer",ExpressionUUID->"1c45d5c7-9a5c-47ff-95c7-dd99c685ed6c"]
-}, Closed]],
+Cell["", "SectionFooterSpacer"]
+}, Closed]]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[TextData[{
  Cell[BoxData[
-  TemplateBox[{6},
-   "Spacer1"]],ExpressionUUID->"2f93d718-c992-4f2b-b6a9-3c8fe3510e5a"],
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
  "Examples",
  "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount",ExpressionUUID->
-  "4d8de2ec-06bf-4d32-938d-e5ef9e82d021"]
+ Cell["(1)", "ExampleCount"]
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->920598427,ExpressionUUID->"9587f061-3ac1-496d-b0c0-ff4cd15dbfb6"],
+ CellID->543612860],
 
 Cell[CellGroupData[{
 
 Cell[TextData[{
  "Basic Examples",
  "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount",ExpressionUUID->
-  "0b9db85e-f4b8-40bd-ae88-b79248ab0ffa"]
+ Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->298651537,ExpressionUUID->"bcaf8527-11a4-49bb-a1ff-f106c1259d2d"],
+ CellID->1390801157],
 
 Cell[BoxData[
  RowBox[{"Needs", "[", "\"\<DoFun`\>\"", "]"}]], "Input",
  CellLabel->"In[1]:=",
- CellID->1414887963,ExpressionUUID->"3ec1b778-f9df-432e-854c-1721e7b62400"],
+ CellID->1414887963,
+ $CellContext`ExpressionUUID -> "3ec1b778-f9df-432e-854c-1721e7b62400"],
 
 Cell["\<\
 Two-point RGE of an O(N) symmetric scalar theory in the symmetric phase:\
 \>", "Text",
- CellID->474949187,ExpressionUUID->"1feaf271-ba25-4fdd-8d54-646f994f8314"],
+ CellID->474949187,
+ $CellContext`ExpressionUUID -> "1feaf271-ba25-4fdd-8d54-646f994f8314"],
 
 Cell[CellGroupData[{
 
@@ -473,7 +472,8 @@ Cell[BoxData[{
     RowBox[{"output", "\[Rule]", "forceEquation"}]}], "]"}], " "}]}], "Input",\
 
  CellLabel->"In[2]:=",
- CellID->393638921,ExpressionUUID->"96813fbc-f13a-4d4e-82e4-2b6649eceaa1"],
+ CellID->393638921,
+ $CellContext`ExpressionUUID -> "96813fbc-f13a-4d4e-82e4-2b6649eceaa1"],
 
 Cell[BoxData[
  RowBox[{
@@ -509,11 +509,12 @@ Cell[BoxData[
        RowBox[{"phi", ",", "t1"}], "}"}], ",", 
       RowBox[{"{", 
        RowBox[{"phi", ",", "u1"}], "}"}]}], "]"}]}], "]"}]}]], "Output",
- ImageSize->{550, 54},
+ ImageSize->{413, 73},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[2]=",
- CellID->483835466,ExpressionUUID->"f6c5093a-d6cd-4312-8100-d3c10bbf579a"],
+ CellID->483835466,
+ $CellContext`ExpressionUUID -> "f6c5093a-d6cd-4312-8100-d3c10bbf579a"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -775,18 +776,20 @@ Cell[BoxData[
    AutoDelete->False,
    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
   "Grid"]], "Output",
- ImageSize->{343, 101},
+ ImageSize->{344, 100},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[2]=",
- CellID->2051264136,ExpressionUUID->"b33445b3-bc1b-4596-a6f7-429029e46c34"]
+ CellID->2051264136,
+ $CellContext`ExpressionUUID -> "b33445b3-bc1b-4596-a6f7-429029e46c34"]
 }, Open  ]],
 
 Cell["\<\
 Two-point RGE of an O(N) symmetric scalar theory in the phase with broken \
 symmetry:\
 \>", "Text",
- CellID->1651829549,ExpressionUUID->"5111d3c7-cf0e-4bfc-ad85-7de510b7a8f2"],
+ CellID->1651829549,
+ $CellContext`ExpressionUUID -> "5111d3c7-cf0e-4bfc-ad85-7de510b7a8f2"],
 
 Cell[CellGroupData[{
 
@@ -815,7 +818,8 @@ Cell[BoxData[{
     RowBox[{"{", 
      RowBox[{"phi", ",", "Black"}], "}"}], "}"}]}], "]"}]}], "Input",
  CellLabel->"In[3]:=",
- CellID->1673796809,ExpressionUUID->"0d5e9b0c-c00c-4e87-ba31-088f0f367caf"],
+ CellID->1673796809,
+ $CellContext`ExpressionUUID -> "0d5e9b0c-c00c-4e87-ba31-088f0f367caf"],
 
 Cell[BoxData[
  RowBox[{
@@ -902,11 +906,12 @@ Cell[BoxData[
        RowBox[{"phi", ",", "x1"}], "}"}], ",", 
       RowBox[{"{", 
        RowBox[{"phi", ",", "y1"}], "}"}]}], "]"}]}], "]"}]}]], "Output",
- ImageSize->{569, 130},
+ ImageSize->{437, 158},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[3]=",
- CellID->1081135604,ExpressionUUID->"2a3e62d8-cce4-4c2d-8268-81cf85092a3e"],
+ CellID->1081135604,
+ $CellContext`ExpressionUUID -> "2a3e62d8-cce4-4c2d-8268-81cf85092a3e"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -1343,18 +1348,20 @@ Cell[BoxData[
    AutoDelete->False,
    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
   "Grid"]], "Output",
- ImageSize->{469, 101},
+ ImageSize->{470, 100},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[3]=",
- CellID->1777660415,ExpressionUUID->"ad5a92d2-7af7-4b54-a4fe-3b7abebb3981"]
+ CellID->1777660415,
+ $CellContext`ExpressionUUID -> "ad5a92d2-7af7-4b54-a4fe-3b7abebb3981"]
 }, Open  ]],
 
 Cell["\<\
  Three-gluon RGE of Landau gauge Yang-Mills theory with the four-point \
 vertices discarded:\
 \>", "Text",
- CellID->454878216,ExpressionUUID->"3c8894ec-5779-4528-a645-d18fa79604ef"],
+ CellID->454878216,
+ $CellContext`ExpressionUUID -> "3c8894ec-5779-4528-a645-d18fa79604ef"],
 
 Cell[CellGroupData[{
 
@@ -1410,7 +1417,8 @@ Cell[BoxData[{
       RowBox[{"c", ",", "Green", ",", "Dashed"}], "}"}]}], "}"}]}], 
   "]"}]}], "Input",
  CellLabel->"In[4]:=",
- CellID->324031665,ExpressionUUID->"fe5ab752-d74d-4b58-86b3-0f5ab93b3777"],
+ CellID->324031665,
+ $CellContext`ExpressionUUID -> "fe5ab752-d74d-4b58-86b3-0f5ab93b3777"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -3319,21 +3327,23 @@ Cell[BoxData[
    AutoDelete->False,
    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
   "Grid"]], "Output",
- ImageSize->{685, 241},
+ ImageSize->{686, 236},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[4]=",
- CellID->122512033,ExpressionUUID->"be495c1b-cf4f-4660-8e70-46482a6ffa05"]
+ CellID->122512033,
+ $CellContext`ExpressionUUID -> "be495c1b-cf4f-4660-8e70-46482a6ffa05"]
 }, Open  ]],
 
 Cell[TextData[{
  " Three-point RGE of ",
  Cell[BoxData[
-  SuperscriptBox["phi", "3"]], "InlineFormula",ExpressionUUID->
-  "783d4b72-df7c-42e6-b1e4-10427eb2f9b0"],
+  SuperscriptBox["phi", "3"]], "InlineFormula",
+  $CellContext`ExpressionUUID -> "783d4b72-df7c-42e6-b1e4-10427eb2f9b0"],
  " theory with no regulator insertions:"
 }], "Text",
- CellID->1068610208,ExpressionUUID->"1c081dc4-8ed9-48c3-ae74-9df1f1c2adce"],
+ CellID->1068610208,
+ $CellContext`ExpressionUUID -> "1c081dc4-8ed9-48c3-ae74-9df1f1c2adce"],
 
 Cell[CellGroupData[{
 
@@ -3364,7 +3374,8 @@ Cell[BoxData[{
     RowBox[{"output", "\[Rule]", "forceEquation"}]}], "]"}], " "}]}], "Input",\
 
  CellLabel->"In[5]:=",
- CellID->1855001627,ExpressionUUID->"63870e59-c47d-4c7d-a476-45eeb91d1f64"],
+ CellID->1855001627,
+ $CellContext`ExpressionUUID -> "63870e59-c47d-4c7d-a476-45eeb91d1f64"],
 
 Cell[BoxData[
  RowBox[{"op", "[", 
@@ -3411,11 +3422,12 @@ Cell[BoxData[
       RowBox[{"phi", ",", "r1"}], "}"}], ",", 
      RowBox[{"{", 
       RowBox[{"phi", ",", "w1"}], "}"}]}], "]"}]}], "]"}]], "Output",
- ImageSize->{476, 56},
+ ImageSize->{504, 50},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[5]=",
- CellID->1424258189,ExpressionUUID->"3393bc23-e433-4b01-a2f7-3843c6f28059"],
+ CellID->1424258189,
+ $CellContext`ExpressionUUID -> "3393bc23-e433-4b01-a2f7-3843c6f28059"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -3741,11 +3753,12 @@ Cell[BoxData[
    AutoDelete->False,
    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
   "Grid"]], "Output",
- ImageSize->{307, 97},
+ ImageSize->{308, 95},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[5]=",
- CellID->1024538810,ExpressionUUID->"f261af3a-8675-443a-a6c6-31c9754d29c1"]
+ CellID->1024538810,
+ $CellContext`ExpressionUUID -> "f261af3a-8675-443a-a6c6-31c9754d29c1"]
 }, Open  ]],
 
 Cell["\<\
@@ -3753,13 +3766,15 @@ Cell["\<\
 at the two-point level, i.e., additional propagators have to be given in an \
 extra argument. No regulator insertions performed.\
 \>", "Text",
- CellID->907315182,ExpressionUUID->"b6fb5e56-50a6-4462-b1cb-5440cff49391"],
+ CellID->907315182,
+ $CellContext`ExpressionUUID -> "b6fb5e56-50a6-4462-b1cb-5440cff49391"],
 
 Cell["\<\
 Three-point RGE of a theory with bosonic fields A, phi, and phib which mix at \
 the two-point level. No regulator insertions performed.\
 \>", "Text",
- CellID->1854078254,ExpressionUUID->"eff4007f-344c-4297-8a30-38ff36240210"],
+ CellID->1854078254,
+ $CellContext`ExpressionUUID -> "eff4007f-344c-4297-8a30-38ff36240210"],
 
 Cell[CellGroupData[{
 
@@ -3792,7 +3807,8 @@ Cell[BoxData[{
     RowBox[{"tDerivative", "->", "False"}]}], "]"}]}], "\n", 
  RowBox[{"RGEPlot", "[", "rge", "]"}]}], "Input",
  CellLabel->"In[6]:=",
- CellID->2133891525,ExpressionUUID->"634e5485-ba44-4136-8fcd-0d1b885b13da"],
+ CellID->2133891525,
+ $CellContext`ExpressionUUID -> "634e5485-ba44-4136-8fcd-0d1b885b13da"],
 
 Cell[BoxData[
  RowBox[{"-", 
@@ -3826,11 +3842,12 @@ Cell[BoxData[
        RowBox[{"phib", ",", "u1"}], "}"}], ",", 
       RowBox[{"{", 
        RowBox[{"phi", ",", "r1"}], "}"}]}], "]"}]}], "]"}]}]], "Output",
- ImageSize->{486, 37},
+ ImageSize->{510, 33},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[6]=",
- CellID->299094725,ExpressionUUID->"1d0d593a-b8ea-456e-bdc8-ef8eb7a2ad1f"],
+ CellID->299094725,
+ $CellContext`ExpressionUUID -> "1d0d593a-b8ea-456e-bdc8-ef8eb7a2ad1f"],
 
 Cell[BoxData[
  TemplateBox[{GraphicsBox[
@@ -3982,18 +3999,20 @@ Cell[BoxData[
          RowBox[{#2, ",", #3}], "}"}], ",", 
        RowBox[{"{", 
          RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )]], "Output",
- ImageSize->{130, 40},
+ ImageSize->{130, 34},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[6]=",
- CellID->380423077,ExpressionUUID->"d28b44d0-c740-4b81-b800-dd061d36773b"]
+ CellID->380423077,
+ $CellContext`ExpressionUUID -> "d28b44d0-c740-4b81-b800-dd061d36773b"]
 }, Open  ]],
 
 Cell["\<\
 Add another vertex to the ansatz for the average effective action. Note that \
 some diagrams are not summed up.\
 \>", "Text",
- CellID->509680647,ExpressionUUID->"1f7efcc3-8eba-4cd5-892b-8c39713815a5"],
+ CellID->509680647,
+ $CellContext`ExpressionUUID -> "1f7efcc3-8eba-4cd5-892b-8c39713815a5"],
 
 Cell[CellGroupData[{
 
@@ -4029,7 +4048,8 @@ Cell[BoxData[{
      RowBox[{"tDerivative", "->", "False"}]}], "]"}]}], ";"}], "\n", 
  RowBox[{"RGEPlot", "[", "rge", "]"}]}], "Input",
  CellLabel->"In[7]:=",
- CellID->1803359817,ExpressionUUID->"4b34c307-f89c-4a75-b1ce-c36c568c00d2"],
+ CellID->1803359817,
+ $CellContext`ExpressionUUID -> "4b34c307-f89c-4a75-b1ce-c36c568c00d2"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -5072,44 +5092,51 @@ Cell[BoxData[
    AutoDelete->False,
    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
   "Grid"]], "Output",
- ImageSize->{769, 87},
+ ImageSize->{770, 79},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[7]=",
- CellID->1645541112,ExpressionUUID->"7e929541-f143-4aff-8287-5c44191dfb88"]
+ CellID->1645541112,
+ $CellContext`ExpressionUUID -> "7e929541-f143-4aff-8287-5c44191dfb88"]
 }, Open  ]]
 }, Open  ]],
 
-Cell["", "SectionFooterSpacer",ExpressionUUID->"e59398de-268f-40af-95a2-0e70737c7104"]
+Cell["", "SectionFooterSpacer"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[TextData[{
  Cell[BoxData[
-  TemplateBox[{6},
-   "Spacer1"]],ExpressionUUID->"b4463c4b-fe67-43a1-b635-72d5b3c1ba5c"],
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
  "Related Guides"
 }], "MoreAboutSection",
  WholeCellGroupOpener->True,
- CellID->38303248,ExpressionUUID->"1bc0b1b1-8ca4-40b2-a69b-4356cca68d80"],
+ CellID->38303248,
+ $CellContext`ExpressionUUID -> "1bc0b1b1-8ca4-40b2-a69b-4356cca68d80"],
 
-Cell["", "SectionHeaderSpacer",ExpressionUUID->"85c1c0f1-17f5-4ded-a80b-58c85372baeb"],
+Cell["", "SectionHeaderSpacer"],
 
 Cell[BoxData[
  TemplateBox[{Cell[
     TextData["Welcome to DoFun"]],"paclet:DoFun/guide/Welcome to DoFun"},
   "RefLink",
   BaseStyle->"MoreAbout"]], "MoreAbout",
- CellID->729606778,ExpressionUUID->"e38ab112-0f58-4ca1-b706-594455ddca31"]
+ CellID->1440894760]
 }, Open  ]],
 
-Cell[" ", "FooterCell",ExpressionUUID->"0cf82e4c-9530-4423-8de1-e2389703b233"]
+Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"doRGE",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -5121,7 +5148,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 8, 7, 9, 20, 56.638045}", 
+   "built" -> "{2019, 10, 25, 10, 12, 58.439984}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -5134,10 +5161,9 @@ field2b}. doRGE[ac, flis, vtest, [opts]] derives the RGE only with vertices \
 allowed by vtest. Allowed propagators will be taken from ac if the props \
 argument is not given.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
     "doRGE", "titlemodifier" -> "", "windowtitle" -> "doRGE", "type" -> 
-    "Symbol", "uri" -> "DoFun/ref/doRGE", "WorkflowDockedCell" -> ""}, 
-  "SearchTextTranslated" -> "", "NewStyles" -> False},
+    "Symbol", "uri" -> "DoFun/ref/doRGE"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+FrontEndVersion->"10.0 for Linux x86 (64-bit) (June 27, 2014)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -5146,9 +5172,8 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  TaggingRules -> {"NewStyles" -> False}, FrontEndVersion -> 
-  "11.3 for Linux x86 (64-bit) (March 6, 2018)", StyleDefinitions -> 
-  "Default.nb"]
+  FrontEndVersion -> "10.0 for Linux x86 (64-bit) (June 27, 2014)", 
+  StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
 
@@ -5156,111 +5181,111 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[15743, 412, 435, 11, 36, "PrimaryExamplesSection",ExpressionUUID->"9587f061-3ac1-496d-b0c0-ff4cd15dbfb6",
+  Cell[15081, 406, 387, 15, 33, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->920598427]}
+   CellID->543612860]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 234804, 5157}
+ {"PrimaryExamplesSection", 234178, 5182}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[577, 21, 3430, 77, 56, "AnchorBarGrid",ExpressionUUID->"763b7aa1-e7ca-48d7-b4fb-2a8541bd73b3",
+Cell[577, 21, 3025, 74, 52, "AnchorBarGrid",
  CellID->1],
+Cell[3605, 97, 282, 11, 48, "ObjectNameGrid"],
 Cell[CellGroupData[{
-Cell[4032, 102, 390, 9, 53, "ObjectNameGrid",ExpressionUUID->"5d0acc5d-c08e-47c8-9ab4-fca624e76738"],
-Cell[4425, 113, 2946, 77, 249, "Usage",ExpressionUUID->"3b599c8b-c46e-40fb-9061-ab0f266db211"]
+Cell[3912, 112, 2927, 76, 207, "Usage"],
+Cell[CellGroupData[{
+Cell[6864, 192, 738, 24, 34, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->665912056],
+Cell[7605, 218, 31, 0, 14, "SectionHeaderSpacer"],
+Cell[7639, 220, 125, 1, 31, "Notes"],
+Cell[7767, 223, 7231, 175, 483, "3ColumnTableMod"],
+Cell[15001, 400, 31, 0, 70, "SectionFooterSpacer"]
+}, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7408, 195, 855, 21, 38, "NotesSection",ExpressionUUID->"153af9df-85c2-452a-b7a9-1d7569c4f519",
- CellGroupingRules->{"SectionGrouping", 50},
- CellID->963729514],
-Cell[8266, 218, 86, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"74f7192c-fddf-494b-b4e7-1abfc9095524"],
-Cell[8355, 220, 108, 0, 70, "Notes",ExpressionUUID->"692a1a7a-4935-4d84-be03-3ce63ee7e5d3"],
-Cell[8466, 222, 7151, 183, 70, "3ColumnTableMod",ExpressionUUID->"5a3205f0-9f29-43d3-890c-2c49e1b198b3"],
-Cell[15620, 407, 86, 0, 70, "SectionFooterSpacer",ExpressionUUID->"1c45d5c7-9a5c-47ff-95c7-dd99c685ed6c"]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[15743, 412, 435, 11, 36, "PrimaryExamplesSection",ExpressionUUID->"9587f061-3ac1-496d-b0c0-ff4cd15dbfb6",
+Cell[15081, 406, 387, 15, 33, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->920598427],
+ CellID->543612860],
 Cell[CellGroupData[{
-Cell[16203, 427, 308, 7, 30, "ExampleSection",ExpressionUUID->"bcaf8527-11a4-49bb-a1ff-f106c1259d2d",
- CellID->298651537],
-Cell[16514, 436, 170, 3, 29, "Input",ExpressionUUID->"3ec1b778-f9df-432e-854c-1721e7b62400",
+Cell[15493, 425, 196, 6, 28, "ExampleSection",
+ CellID->1390801157],
+Cell[15692, 433, 187, 4, 27, "Input",
  CellID->1414887963],
-Cell[16687, 441, 171, 3, 36, "Text",ExpressionUUID->"1feaf271-ba25-4fdd-8d54-646f994f8314",
+Cell[15882, 439, 188, 4, 32, "Text",
  CellID->474949187],
 Cell[CellGroupData[{
-Cell[16883, 448, 848, 27, 68, "Input",ExpressionUUID->"96813fbc-f13a-4d4e-82e4-2b6649eceaa1",
+Cell[16095, 447, 865, 28, 62, "Input",
  CellID->393638921],
-Cell[17734, 477, 1174, 38, 75, "Output",ExpressionUUID->"f6c5093a-d6cd-4312-8100-d3c10bbf579a",
+Cell[16963, 477, 1191, 39, 94, "Output",
  CellID->483835466],
-Cell[18911, 517, 12259, 264, 70, "Output",ExpressionUUID->"b33445b3-bc1b-4596-a6f7-429029e46c34",
+Cell[18157, 518, 12276, 265, 121, "Output",
  CellID->2051264136]
 }, Open  ]],
-Cell[31185, 784, 185, 4, 70, "Text",ExpressionUUID->"5111d3c7-cf0e-4bfc-ad85-7de510b7a8f2",
+Cell[30448, 786, 202, 5, 32, "Text",
  CellID->1651829549],
 Cell[CellGroupData[{
-Cell[31395, 792, 821, 25, 70, "Input",ExpressionUUID->"0d5e9b0c-c00c-4e87-ba31-088f0f367caf",
+Cell[30675, 795, 838, 26, 79, "Input",
  CellID->1673796809],
-Cell[32219, 819, 2757, 89, 151, "Output",ExpressionUUID->"2a3e62d8-cce4-4c2d-8268-81cf85092a3e",
+Cell[31516, 823, 2774, 90, 179, "Output",
  CellID->1081135604],
-Cell[34979, 910, 21030, 439, 70, "Output",ExpressionUUID->"ad5a92d2-7af7-4b54-a4fe-3b7abebb3981",
+Cell[34293, 915, 21047, 440, 121, "Output",
  CellID->1777660415]
 }, Open  ]],
-Cell[56024, 1352, 191, 4, 70, "Text",ExpressionUUID->"3c8894ec-5779-4528-a645-d18fa79604ef",
+Cell[55355, 1358, 208, 5, 32, "Text",
  CellID->454878216],
 Cell[CellGroupData[{
-Cell[56240, 1360, 1609, 52, 70, "Input",ExpressionUUID->"fe5ab752-d74d-4b58-86b3-0f5ab93b3777",
+Cell[55588, 1367, 1626, 53, 113, "Input",
  CellID->324031665],
-Cell[57852, 1414, 92663, 1911, 70, "Output",ExpressionUUID->"be495c1b-cf4f-4660-8e70-46482a6ffa05",
+Cell[57217, 1422, 92680, 1912, 257, "Output",
  CellID->122512033]
 }, Open  ]],
-Cell[150530, 3328, 291, 7, 70, "Text",ExpressionUUID->"1c081dc4-8ed9-48c3-ae74-9df1f1c2adce",
+Cell[149912, 3337, 323, 8, 33, "Text",
  CellID->1068610208],
 Cell[CellGroupData[{
-Cell[150846, 3339, 899, 27, 70, "Input",ExpressionUUID->"63870e59-c47d-4c7d-a476-45eeb91d1f64",
+Cell[150260, 3349, 916, 28, 79, "Input",
  CellID->1855001627],
-Cell[151748, 3368, 1500, 49, 77, "Output",ExpressionUUID->"3393bc23-e433-4b01-a2f7-3843c6f28059",
+Cell[151179, 3379, 1517, 50, 71, "Output",
  CellID->1424258189],
-Cell[153251, 3419, 15659, 328, 70, "Output",ExpressionUUID->"f261af3a-8675-443a-a6c6-31c9754d29c1",
+Cell[152699, 3431, 15676, 329, 116, "Output",
  CellID->1024538810]
 }, Open  ]],
-Cell[168925, 3750, 305, 5, 70, "Text",ExpressionUUID->"b6fb5e56-50a6-4462-b1cb-5440cff49391",
+Cell[168390, 3763, 322, 6, 52, "Text",
  CellID->907315182],
-Cell[169233, 3757, 235, 4, 70, "Text",ExpressionUUID->"eff4007f-344c-4297-8a30-38ff36240210",
+Cell[168715, 3771, 252, 5, 52, "Text",
  CellID->1854078254],
 Cell[CellGroupData[{
-Cell[169493, 3765, 962, 29, 70, "Input",ExpressionUUID->"634e5485-ba44-4136-8fcd-0d1b885b13da",
+Cell[168992, 3780, 979, 30, 96, "Input",
  CellID->2133891525],
-Cell[170458, 3796, 1128, 36, 58, "Output",ExpressionUUID->"1d0d593a-b8ea-456e-bdc8-ef8eb7a2ad1f",
+Cell[169974, 3812, 1145, 37, 54, "Output",
  CellID->299094725],
-Cell[171589, 3834, 7282, 154, 70, "Output",ExpressionUUID->"d28b44d0-c740-4b81-b800-dd061d36773b",
+Cell[171122, 3851, 7299, 155, 55, "Output",
  CellID->380423077]
 }, Open  ]],
-Cell[178886, 3991, 210, 4, 70, "Text",ExpressionUUID->"1f7efcc3-8eba-4cd5-892b-8c39713815a5",
+Cell[178436, 4009, 227, 5, 52, "Text",
  CellID->509680647],
 Cell[CellGroupData[{
-Cell[179121, 3999, 1074, 32, 70, "Input",ExpressionUUID->"4b34c307-f89c-4a75-b1ce-c36c568c00d2",
+Cell[178688, 4018, 1091, 33, 96, "Input",
  CellID->1803359817],
-Cell[180198, 4033, 51561, 1045, 70, "Output",ExpressionUUID->"7e929541-f143-4aff-8287-5c44191dfb88",
+Cell[179782, 4053, 51578, 1046, 100, "Output",
  CellID->1645541112]
 }, Open  ]]
 }, Open  ]],
-Cell[231786, 5082, 86, 0, 70, "SectionFooterSpacer",ExpressionUUID->"e59398de-268f-40af-95a2-0e70737c7104"]
+Cell[231387, 5103, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[231909, 5087, 266, 7, 70, "MoreAboutSection",ExpressionUUID->"1bc0b1b1-8ca4-40b2-a69b-4356cca68d80",
+Cell[231455, 5108, 348, 13, 33, "MoreAboutSection",
  CellID->38303248],
-Cell[232178, 5096, 86, 0, 70, "SectionHeaderSpacer",ExpressionUUID->"85c1c0f1-17f5-4ded-a80b-58c85372baeb"],
-Cell[232267, 5098, 236, 5, 70, "MoreAbout",ExpressionUUID->"e38ab112-0f58-4ca1-b706-594455ddca31",
- CellID->729606778]
+Cell[231806, 5123, 31, 0, 14, "SectionHeaderSpacer"],
+Cell[231840, 5125, 182, 5, 21, "MoreAbout",
+ CellID->1440894760]
 }, Open  ]],
-Cell[232518, 5106, 78, 0, 70, "FooterCell",ExpressionUUID->"0cf82e4c-9530-4423-8de1-e2389703b233"]
+Cell[232037, 5133, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

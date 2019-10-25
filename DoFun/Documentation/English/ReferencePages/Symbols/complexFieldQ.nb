@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 11.3' *)
+(* CreatedBy='Mathematica 10.0' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5623,        153]
-NotebookOptionsPosition[      3545,        103]
-NotebookOutlinePosition[      5360,        151]
-CellTagsIndexPosition[      5317,        148]
+NotebookDataLength[      5786,        162]
+NotebookOptionsPosition[      3891,        111]
+NotebookOutlinePosition[      5742,        160]
+CellTagsIndexPosition[      5699,        157]
 WindowTitle->complexFieldQ
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$24951], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$14751], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/ref/complexFieldQ", ".html"]], None}]}]},
@@ -78,8 +78,13 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
 Cell[TextData[{
  Cell["complexFieldQ", "ObjectName"],
  Cell[BoxData[
-  TemplateBox[{8},
-   "Spacer1"]]],
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
  Cell[BoxData[""], "ObjectNameTranslation"]
 }], "ObjectNameGrid"],
 
@@ -87,17 +92,20 @@ Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{"complexFieldQ", "[", 
-       StyleBox["expr", "TI"], "]"}]], "InlineFormula"],
+       StyleBox["expr", "TI"], "]"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "59836da8-cff5-4de8-be72-63968a8908cc"],
      "\[LineSeparator]gives True if ",
      Cell[BoxData[
-      StyleBox["expr", "TI"]], "InlineFormula"],
+      StyleBox["expr", "TI"]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "13d5a5c1-6dc6-4349-a37a-258731f1b953"],
      " is a complex bosonic field."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
-   "RowsIndexed" -> {}}}],
+   "RowsIndexed" -> {}}},
+ $CellContext`ExpressionUUID -> "5f064f3b-aa1d-424f-afb7-aaefb9490a07"],
 
 Cell[" ", "FooterCell"]
 },
@@ -116,7 +124,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 8, 7, 9, 20, 35.262714}", 
+   "built" -> "{2019, 10, 25, 10, 12, 33.088384}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -125,9 +133,10 @@ TaggingRules->{
     "complexFieldQ[expr] gives True if expr is a complex bosonic field.", 
     "synonyms" -> {}, "tabletags" -> {}, "title" -> "complexFieldQ", 
     "titlemodifier" -> "", "windowtitle" -> "complexFieldQ", "type" -> 
-    "Symbol", "uri" -> "DoFun/ref/complexFieldQ"}},
+    "Symbol", "uri" -> "DoFun/ref/complexFieldQ"}, "SearchTextTranslated" -> 
+  ""},
 CellContext->"Global`",
-FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+FrontEndVersion->"10.0 for Linux x86 (64-bit) (June 27, 2014)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -136,7 +145,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  FrontEndVersion -> "10.0 for Linux x86 (64-bit) (June 27, 2014)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -150,11 +159,11 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[585, 21, 2290, 54, 70, "AnchorBarGrid",ExpressionUUID->"bddfd5ff-820e-4553-8f29-2a4ada32df30",
+Cell[585, 21, 2290, 54, 70, "AnchorBarGrid",
  CellID->1],
-Cell[2878, 77, 170, 6, 70, "ObjectNameGrid",ExpressionUUID->"d87fb86a-98ba-4ace-a64d-7c1c2e7e46ed"],
-Cell[3051, 85, 464, 14, 70, "Usage",ExpressionUUID->"5f064f3b-aa1d-424f-afb7-aaefb9490a07"],
-Cell[3518, 101, 23, 0, 70, "FooterCell",ExpressionUUID->"6bd42485-9dcd-40bd-993f-c662cdb0d523"]
+Cell[2878, 77, 290, 11, 70, "ObjectNameGrid"],
+Cell[3171, 90, 690, 17, 70, "Usage"],
+Cell[3864, 109, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

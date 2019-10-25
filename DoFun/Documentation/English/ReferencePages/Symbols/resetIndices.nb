@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 11.3' *)
+(* CreatedBy='Mathematica 10.0' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5782,        157]
-NotebookOptionsPosition[      3648,        106]
-NotebookOutlinePosition[      5519,        155]
-CellTagsIndexPosition[      5476,        152]
+NotebookDataLength[      6019,        166]
+NotebookOptionsPosition[      4071,        115]
+NotebookOutlinePosition[      5975,        164]
+CellTagsIndexPosition[      5932,        161]
 WindowTitle->resetIndices
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$64194], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$52425], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/ref/resetIndices", ".html"]], None}]}]},
@@ -78,29 +78,38 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
 Cell[TextData[{
  Cell["resetIndices", "ObjectName"],
  Cell[BoxData[
-  TemplateBox[{8},
-   "Spacer1"]]],
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
  Cell[BoxData[""], "ObjectNameTranslation"]
 }], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
-      RowBox[{"resetIndices", "[", "]"}]], "InlineFormula"],
+      RowBox[{"resetIndices", "[", "]"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "24ccad50-2845-4dae-b5f2-a75cc453c3ba"],
      "\[LineSeparator]resets the known indices to the standard ones, i.e., \
 only Lorentz and adjoint indices, ",
      Cell[BoxData[
-      StyleBox["lor", "TI"]], "InlineFormula"],
+      StyleBox["lor", "TI"]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "3a2fdf82-62fb-4c35-9866-fe6ea6b2d1e5"],
      " and ",
      Cell[BoxData[
-      StyleBox["adj", "TI"]], "InlineFormula"],
+      StyleBox["adj", "TI"]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "4fbb3f4e-a879-4061-b7cf-e7fa4b9f2de0"],
      ", respectively."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
-   "RowsIndexed" -> {}}}],
+   "RowsIndexed" -> {}}},
+ $CellContext`ExpressionUUID -> "f7da2490-5233-41da-a12e-cac20c483364"],
 
 Cell[" ", "FooterCell"]
 },
@@ -119,7 +128,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 8, 7, 9, 21, 36.877596}", 
+   "built" -> "{2019, 10, 25, 10, 13, 43.295311}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoAE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -129,9 +138,9 @@ TaggingRules->{
 Lorentz and adjoint indices, lor and adj, respectively.", "synonyms" -> {}, 
     "tabletags" -> {}, "title" -> "resetIndices", "titlemodifier" -> "", 
     "windowtitle" -> "resetIndices", "type" -> "Symbol", "uri" -> 
-    "DoFun/ref/resetIndices"}},
+    "DoFun/ref/resetIndices"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+FrontEndVersion->"10.0 for Linux x86 (64-bit) (June 27, 2014)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -140,7 +149,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  FrontEndVersion -> "10.0 for Linux x86 (64-bit) (June 27, 2014)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -154,11 +163,11 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[584, 21, 2286, 54, 70, "AnchorBarGrid",ExpressionUUID->"48260af6-d65f-4719-8e22-b4c8e5ec6104",
+Cell[584, 21, 2286, 54, 70, "AnchorBarGrid",
  CellID->1],
-Cell[2873, 77, 169, 6, 70, "ObjectNameGrid",ExpressionUUID->"f6dddcdd-b071-4b1f-9e1e-72bcbb2a8c41"],
-Cell[3045, 85, 573, 17, 70, "Usage",ExpressionUUID->"f7da2490-5233-41da-a12e-cac20c483364"],
-Cell[3621, 104, 23, 0, 70, "FooterCell",ExpressionUUID->"99a78203-7d8f-4748-a776-c351a5a3f43f"]
+Cell[2873, 77, 289, 11, 70, "ObjectNameGrid"],
+Cell[3165, 90, 876, 21, 70, "Usage"],
+Cell[4044, 113, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

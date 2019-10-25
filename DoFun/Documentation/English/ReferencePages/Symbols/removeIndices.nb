@@ -3,32 +3,32 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 11.3' *)
+(* CreatedBy='Mathematica 10.0' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11151,        297]
-NotebookOptionsPosition[      7731,        216]
-NotebookOutlinePosition[     10004,        274]
-CellTagsIndexPosition[      9920,        269]
+NotebookDataLength[      9832,        298]
+NotebookOptionsPosition[      7134,        220]
+NotebookOutlinePosition[      9266,        277]
+CellTagsIndexPosition[      9182,        272]
 WindowTitle->removeIndices
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell",ExpressionUUID->
-     "7f7b7856-1a11-48c6-a68e-8e5dc5b8de0f"], Cell[TextData[Cell[BoxData[
+   {Cell["DO FUN PACKAGE SYMBOL", "PacletNameCell"], Cell[TextData[Cell[
+    BoxData[
      ActionMenuBox[
       FrameBox[
        InterpretationBox[Cell[TextData[{
          "URL",
          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
           StripOnInput->False]
-        }],ExpressionUUID->"8437a420-3209-416d-9296-cecff9428cf4"],
+        }]],
         TextCell[
          Row[{"URL", 
            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
@@ -60,48 +60,46 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$62310], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$50623], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/ref/removeIndices", ".html"]], None}]}]},
       Appearance->None,
       MenuAppearance->Automatic,
       MenuStyle->"URLMenu"]],
-     LineSpacing->{1.4, 0},ExpressionUUID->
-     "3e687881-b596-4272-bbb4-c1b5f77d7d09"]], "AnchorBar",ExpressionUUID->
-     "8ad5eace-97b6-424b-b705-3f78d8a02b8b"]}
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
       Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
    "RowsIndexed" -> {}}},
- CellID->1,ExpressionUUID->"cb6f8729-59ca-4924-8997-889a646155c6"],
-
-Cell[CellGroupData[{
+ CellID->1],
 
 Cell[TextData[{
- Cell["removeIndices", "ObjectName",ExpressionUUID->
-  "ad895b2a-dcfe-4854-abb2-9e32ce6d5560"],
+ Cell["removeIndices", "ObjectName"],
  Cell[BoxData[
-  TemplateBox[{8},
-   "Spacer1"]],ExpressionUUID->"70c74352-899e-48d6-9d6e-8d5c0945eb4e"],
- Cell[BoxData[
- ""], "ObjectNameTranslation",ExpressionUUID->
-  "4b1a5cb8-429a-4667-a9a2-e684e43b5853"]
-}], "ObjectNameGrid",ExpressionUUID->"2d1470d9-1e10-4a32-8c87-cd68cc3f24e2"],
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{"removeIndices", "[", 
-       StyleBox["iname", "TI"], "]"}]], "InlineFormula",ExpressionUUID->
-      "e1318e4c-6d79-4780-9e92-38423720f1ef"],
+       StyleBox["iname", "TI"], "]"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "e1318e4c-6d79-4780-9e92-38423720f1ef"],
      "\[LineSeparator]removes the index ",
      Cell[BoxData[
-      StyleBox["iname", "TI"]], "InlineFormula",ExpressionUUID->
-      "70cc7662-8803-4532-81d5-45a0c8033900"],
+      StyleBox["iname", "TI"]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "70cc7662-8803-4532-81d5-45a0c8033900"],
      " from the list of known indces. "
-    }],ExpressionUUID->"a9511f8a-a996-4261-b385-633117429d9f"]},
+    }]]},
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{"removeIndices", "[", 
@@ -113,56 +111,59 @@ Cell[BoxData[GridBox[{
          SubscriptBox[
           StyleBox["iname", "TI"], 
           StyleBox["2", "TR"]]}], "}"}], "]"}]], "InlineFormula",
-      ExpressionUUID->"f0e481ef-695f-4c1f-b667-694ea8e563d1"],
+      $CellContext`ExpressionUUID -> "f0e481ef-695f-4c1f-b667-694ea8e563d1"],
      "\[LineSeparator]removes the indices with names ",
      Cell[BoxData[
       SubscriptBox[
-       StyleBox["iname", "TI"], "1"]], "InlineFormula",ExpressionUUID->
-      "6c694614-c5ee-4289-9b5e-a7df4743d95c"],
+       StyleBox["iname", "TI"], "1"]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "6c694614-c5ee-4289-9b5e-a7df4743d95c"],
      " and ",
      Cell[BoxData[
-      SubscriptBox["iname", "2"]], "InlineFormula",ExpressionUUID->
-      "a068eb22-19ee-4410-860f-658d1f6a07af"],
+      SubscriptBox["iname", "2"]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "a068eb22-19ee-4410-860f-658d1f6a07af"],
      "."
-    }],ExpressionUUID->"3959e7f0-70c5-4743-9a4a-734206463a19"]}
+    }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {None, {None}}, 
-   "RowsIndexed" -> \
-{}}},ExpressionUUID->"1f8c0947-85cb-4ae4-adfb-223c8f1161e3"]
-}, Open  ]],
+   "RowsIndexed" -> {}}},
+ $CellContext`ExpressionUUID -> "1f8c0947-85cb-4ae4-adfb-223c8f1161e3"],
 
 Cell[CellGroupData[{
 
 Cell[TextData[{
  Cell[BoxData[
-  TemplateBox[{6},
-   "Spacer1"]],ExpressionUUID->"fc829324-c6f3-4285-8159-683f45444b44"],
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
  "Examples",
  "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount",ExpressionUUID->
-  "afcc72ce-27e3-4e90-9bfe-9e361bf722bc"]
+ Cell["(1)", "ExampleCount"]
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->293115414,ExpressionUUID->"a8229c89-e0ef-4594-8349-60a38bd2b78c"],
+ CellID->1686033386],
 
 Cell[CellGroupData[{
 
 Cell[TextData[{
  "Basic Examples",
  "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount",ExpressionUUID->
-  "c13413d6-7bfb-4be2-9349-4cf49beb425f"]
+ Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1820346568,ExpressionUUID->"fecd883e-b8ce-4bec-aad1-c2de24a88ca6"],
+ CellID->1974020034],
 
 Cell[BoxData[
  RowBox[{"Needs", "[", "\"\<DoFun`\>\"", "]"}]], "Input",
  CellLabel->"In[1]:=",
- CellID->1414887963,ExpressionUUID->"17cf85b8-c494-4c8a-b66c-5de5f9382a6f"],
+ CellID->1414887963,
+ $CellContext`ExpressionUUID -> "17cf85b8-c494-4c8a-b66c-5de5f9382a6f"],
 
 Cell[CellGroupData[{
 
@@ -171,7 +172,8 @@ Cell[BoxData[{
   RowBox[{"resetIndices", "[", "]"}], " "}], "\[IndentingNewLine]", 
  RowBox[{"removeIndices", "[", "lor", "]"}]}], "Input",
  CellLabel->"In[2]:=",
- CellID->932118586,ExpressionUUID->"c7c1b1be-e225-4380-b486-4bbd7c038f91"],
+ CellID->932118586,
+ $CellContext`ExpressionUUID -> "c7c1b1be-e225-4380-b486-4bbd7c038f91"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -189,11 +191,12 @@ Cell[BoxData[
      "\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]", ",", "\[Tau]", 
       ",", "\[Alpha]", ",", "\[Beta]", ",", "\[Gamma]", ",", "\[Delta]", ",", 
       "\[Epsilon]"}], "}"}]}]}], "}"}]], "Output",
- ImageSize->{369, 37},
+ ImageSize->{390, 33},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[2]=",
- CellID->1020702259,ExpressionUUID->"34ebe582-7dfd-4dab-84bf-34b3fbd0c505"],
+ CellID->1020702259,
+ $CellContext`ExpressionUUID -> "34ebe582-7dfd-4dab-84bf-34b3fbd0c505"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -203,21 +206,22 @@ Cell[BoxData[
     RowBox[{
     "a", ",", "b", ",", "c", ",", "d", ",", "e", ",", "f", ",", "g", ",", "h",
       ",", "i", ",", "j"}], "}"}]}], "}"}]], "Output",
- ImageSize->{367, 17},
+ ImageSize->{388, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[2]=",
- CellID->1271926102,ExpressionUUID->"3a528bed-33b2-45a0-b7a3-43f90dc274b1"]
+ CellID->1271926102,
+ $CellContext`ExpressionUUID -> "3a528bed-33b2-45a0-b7a3-43f90dc274b1"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
-Cell[" ", "FooterCell",ExpressionUUID->"4e1befaa-67b7-452a-92ad-f234ad3127fb"]
+Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"removeIndices",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -229,7 +233,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 8, 7, 9, 21, 33.906479}", 
+   "built" -> "{2019, 10, 25, 10, 13, 39.813906}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoAE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -239,10 +243,10 @@ TaggingRules->{
 indces. removeIndices[{iname1, iname2}] removes the indices with names iname1 \
 and iname2.", "synonyms" -> {}, "tabletags" -> {}, "title" -> "removeIndices",
      "titlemodifier" -> "", "windowtitle" -> "removeIndices", "type" -> 
-    "Symbol", "uri" -> "DoFun/ref/removeIndices", "WorkflowDockedCell" -> ""},
-   "SearchTextTranslated" -> "", "NewStyles" -> False},
+    "Symbol", "uri" -> "DoFun/ref/removeIndices"}, "SearchTextTranslated" -> 
+  ""},
 CellContext->"Global`",
-FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+FrontEndVersion->"10.0 for Linux x86 (64-bit) (June 27, 2014)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -251,9 +255,8 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  TaggingRules -> {"NewStyles" -> False}, FrontEndVersion -> 
-  "11.3 for Linux x86 (64-bit) (March 6, 2018)", StyleDefinitions -> 
-  "Default.nb"]
+  FrontEndVersion -> "10.0 for Linux x86 (64-bit) (June 27, 2014)", 
+  StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
 
@@ -261,44 +264,42 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[5186, 137, 435, 11, 36, "PrimaryExamplesSection",ExpressionUUID->"a8229c89-e0ef-4594-8349-60a38bd2b78c",
+  Cell[4736, 134, 388, 15, 33, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->293115414]}
+   CellID->1686033386]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9722, 262}
+ {"PrimaryExamplesSection", 9038, 265}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[585, 21, 2578, 56, 56, "AnchorBarGrid",ExpressionUUID->"cb6f8729-59ca-4924-8997-889a646155c6",
+Cell[585, 21, 2290, 54, 52, "AnchorBarGrid",
  CellID->1],
+Cell[2878, 77, 290, 11, 48, "ObjectNameGrid"],
+Cell[3171, 90, 1540, 40, 146, "Usage"],
 Cell[CellGroupData[{
-Cell[3188, 81, 398, 9, 53, "ObjectNameGrid",ExpressionUUID->"2d1470d9-1e10-4a32-8c87-cd68cc3f24e2"],
-Cell[3589, 92, 1560, 40, 188, "Usage",ExpressionUUID->"1f8c0947-85cb-4ae4-adfb-223c8f1161e3"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[5186, 137, 435, 11, 36, "PrimaryExamplesSection",ExpressionUUID->"a8229c89-e0ef-4594-8349-60a38bd2b78c",
+Cell[4736, 134, 388, 15, 33, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->293115414],
+ CellID->1686033386],
 Cell[CellGroupData[{
-Cell[5646, 152, 309, 7, 30, "ExampleSection",ExpressionUUID->"fecd883e-b8ce-4bec-aad1-c2de24a88ca6",
- CellID->1820346568],
-Cell[5958, 161, 170, 3, 29, "Input",ExpressionUUID->"17cf85b8-c494-4c8a-b66c-5de5f9382a6f",
+Cell[5149, 153, 196, 6, 28, "ExampleSection",
+ CellID->1974020034],
+Cell[5348, 161, 187, 4, 27, "Input",
  CellID->1414887963],
 Cell[CellGroupData[{
-Cell[6153, 168, 247, 5, 49, "Input",ExpressionUUID->"c7c1b1be-e225-4380-b486-4bbd7c038f91",
+Cell[5560, 169, 264, 6, 45, "Input",
  CellID->932118586],
-Cell[6403, 175, 758, 20, 58, "Output",ExpressionUUID->"34ebe582-7dfd-4dab-84bf-34b3fbd0c505",
+Cell[5827, 177, 775, 21, 54, "Output",
  CellID->1020702259],
-Cell[7164, 197, 446, 12, 38, "Output",ExpressionUUID->"3a528bed-33b2-45a0-b7a3-43f90dc274b1",
+Cell[6605, 200, 463, 13, 36, "Output",
  CellID->1271926102]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[7649, 214, 78, 0, 43, "FooterCell",ExpressionUUID->"4e1befaa-67b7-452a-92ad-f234ad3127fb"]
+Cell[7107, 218, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

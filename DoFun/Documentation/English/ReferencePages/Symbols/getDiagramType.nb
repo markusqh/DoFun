@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 11.3' *)
+(* CreatedBy='Mathematica 10.0' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5884,        160]
-NotebookOptionsPosition[      3769,        109]
-NotebookOutlinePosition[      5621,        158]
-CellTagsIndexPosition[      5578,        155]
+NotebookDataLength[      6121,        169]
+NotebookOptionsPosition[      4192,        118]
+NotebookOutlinePosition[      6077,        167]
+CellTagsIndexPosition[      6034,        164]
 WindowTitle->getDiagramType
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ getDiagramType.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$48350], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$37238], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/ref/getDiagramType", ".html"]], None}]}]},
@@ -78,8 +78,13 @@ getDiagramType.html"], StandardForm]], "Input", TextClipboardType ->
 Cell[TextData[{
  Cell["getDiagramType", "ObjectName"],
  Cell[BoxData[
-  TemplateBox[{8},
-   "Spacer1"]]],
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
  Cell[BoxData[""], "ObjectNameTranslation"]
 }], "ObjectNameGrid"],
 
@@ -87,23 +92,27 @@ Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{"getDiagramType", "[", 
-       StyleBox["expr", "TI"], "]"}]], "InlineFormula"],
+       StyleBox["expr", "TI"], "]"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "458598c1-78b8-493a-a372-b633630ac95c"],
      "\[LineSeparator]returns the type of the diagram ",
      Cell[BoxData[
-      StyleBox["expr", "TI"]], "InlineFormula"],
+      StyleBox["expr", "TI"]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "b2f5d0f2-593d-47c9-881a-59df4482acc8"],
      ". Known diagram types are ",
      Cell[BoxData[
       TemplateBox[{Cell[
          TextData["$diagramTypes"]],"paclet:DoFun/ref/$diagramTypes"},
        "RefLink",
-       BaseStyle->{"InlineFormula"}]], "InlineFormula"],
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "b99758f4-8765-4dcf-80ac-bc1ab61f7547"],
      "."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
-   "RowsIndexed" -> {}}}],
+   "RowsIndexed" -> {}}},
+ $CellContext`ExpressionUUID -> "6ef15bd8-3738-40ac-97a7-f4928faa96df"],
 
 Cell[" ", "FooterCell"]
 },
@@ -122,7 +131,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 8, 7, 9, 21, 11.966507}", 
+   "built" -> "{2019, 10, 25, 10, 13, 16.229254}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -132,9 +141,9 @@ TaggingRules->{
 types are $diagramTypes.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
     "getDiagramType", "titlemodifier" -> "", "windowtitle" -> 
     "getDiagramType", "type" -> "Symbol", "uri" -> 
-    "DoFun/ref/getDiagramType"}},
+    "DoFun/ref/getDiagramType"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+FrontEndVersion->"10.0 for Linux x86 (64-bit) (June 27, 2014)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -143,7 +152,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  FrontEndVersion -> "10.0 for Linux x86 (64-bit) (June 27, 2014)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -157,11 +166,11 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[586, 21, 2295, 54, 70, "AnchorBarGrid",ExpressionUUID->"2385af78-0f2b-4b65-8d99-5ab8ab2210e4",
+Cell[586, 21, 2295, 54, 70, "AnchorBarGrid",
  CellID->1],
-Cell[2884, 77, 171, 6, 70, "ObjectNameGrid",ExpressionUUID->"2458806b-9dba-42fd-a8ef-13230903c50e"],
-Cell[3058, 85, 681, 20, 70, "Usage",ExpressionUUID->"6ef15bd8-3738-40ac-97a7-f4928faa96df"],
-Cell[3742, 107, 23, 0, 70, "FooterCell",ExpressionUUID->"f50e6445-13aa-4ab0-9d1b-646888e768f9"]
+Cell[2884, 77, 291, 11, 70, "ObjectNameGrid"],
+Cell[3178, 90, 984, 24, 70, "Usage"],
+Cell[4165, 116, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

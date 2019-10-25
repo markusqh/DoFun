@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 11.3' *)
+(* CreatedBy='Mathematica 10.0' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5609,        153]
-NotebookOptionsPosition[      3537,        103]
-NotebookOutlinePosition[      5346,        151]
-CellTagsIndexPosition[      5303,        148]
+NotebookDataLength[      5771,        162]
+NotebookOptionsPosition[      3882,        111]
+NotebookOutlinePosition[      5727,        160]
+CellTagsIndexPosition[      5684,        157]
 WindowTitle->antiFermionQ
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$18230], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$8301], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/ref/antiFermionQ", ".html"]], None}]}]},
@@ -78,8 +78,13 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
 Cell[TextData[{
  Cell["antiFermionQ", "ObjectName"],
  Cell[BoxData[
-  TemplateBox[{8},
-   "Spacer1"]]],
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
  Cell[BoxData[""], "ObjectNameTranslation"]
 }], "ObjectNameGrid"],
 
@@ -87,17 +92,20 @@ Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{"antiFermionQ", "[", 
-       StyleBox["expr", "TI"], "]"}]], "InlineFormula"],
+       StyleBox["expr", "TI"], "]"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "7c70b8af-2992-4a7d-99ed-868bd1ce2fef"],
      "\[LineSeparator]gives True if ",
      Cell[BoxData[
-      StyleBox["expr", "TI"]], "InlineFormula"],
+      StyleBox["expr", "TI"]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "0a6229d2-5249-44df-b236-9dbbac36db59"],
      " is a Grassmann anti-field."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
-   "RowsIndexed" -> {}}}],
+   "RowsIndexed" -> {}}},
+ $CellContext`ExpressionUUID -> "3592ee1e-0b0b-4a29-af32-6650094c7a4c"],
 
 Cell[" ", "FooterCell"]
 },
@@ -116,7 +124,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 8, 7, 9, 20, 25.344325}", 
+   "built" -> "{2019, 10, 25, 10, 12, 21.481783}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -125,9 +133,10 @@ TaggingRules->{
     "antiFermionQ[expr] gives True if expr is a Grassmann anti-field.", 
     "synonyms" -> {}, "tabletags" -> {}, "title" -> "antiFermionQ", 
     "titlemodifier" -> "", "windowtitle" -> "antiFermionQ", "type" -> 
-    "Symbol", "uri" -> "DoFun/ref/antiFermionQ"}},
+    "Symbol", "uri" -> "DoFun/ref/antiFermionQ"}, "SearchTextTranslated" -> 
+  ""},
 CellContext->"Global`",
-FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+FrontEndVersion->"10.0 for Linux x86 (64-bit) (June 27, 2014)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -136,7 +145,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  FrontEndVersion -> "10.0 for Linux x86 (64-bit) (June 27, 2014)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -150,11 +159,11 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[584, 21, 2286, 54, 70, "AnchorBarGrid",ExpressionUUID->"6d2dfb91-6ee3-4885-8685-cd5b1dc479b5",
+Cell[584, 21, 2285, 54, 70, "AnchorBarGrid",
  CellID->1],
-Cell[2873, 77, 169, 6, 70, "ObjectNameGrid",ExpressionUUID->"646eb2e3-029d-459b-8473-8f06c0496f8b"],
-Cell[3045, 85, 462, 14, 70, "Usage",ExpressionUUID->"3592ee1e-0b0b-4a29-af32-6650094c7a4c"],
-Cell[3510, 101, 23, 0, 70, "FooterCell",ExpressionUUID->"feeccfa1-2a4c-4fca-ad78-fdb79e4cef4a"]
+Cell[2872, 77, 289, 11, 70, "ObjectNameGrid"],
+Cell[3164, 90, 688, 17, 70, "Usage"],
+Cell[3855, 109, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

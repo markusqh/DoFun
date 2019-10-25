@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 11.3' *)
+(* CreatedBy='Mathematica 10.0' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7692,        223]
-NotebookOptionsPosition[      4739,        152]
-NotebookOutlinePosition[      6861,        208]
-CellTagsIndexPosition[      6777,        203]
+NotebookDataLength[      7844,        239]
+NotebookOptionsPosition[      5349,        167]
+NotebookOutlinePosition[      7452,        224]
+CellTagsIndexPosition[      7368,        219]
 WindowTitle->getLoopNumber
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$50246], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$39054], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "DoFun/ref/getLoopNumber", ".html"]], None}]}]},
@@ -78,8 +78,13 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
 Cell[TextData[{
  Cell["getLoopNumber", "ObjectName"],
  Cell[BoxData[
-  TemplateBox[{8},
-   "Spacer1"]]],
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
  Cell[BoxData[""], "ObjectNameTranslation"]
 }], "ObjectNameGrid"],
 
@@ -87,24 +92,32 @@ Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{"getLoopNumber", "[", 
-       StyleBox["expr", "TI"], "]"}]], "InlineFormula"],
+       StyleBox["expr", "TI"], "]"}]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "79777d84-2578-4dd5-a19b-12a0c41afc18"],
      "\[LineSeparator]returns the number of loops of a diagram. If ",
      Cell[BoxData[
-      StyleBox["expr", "TI"]], "InlineFormula"],
+      StyleBox["expr", "TI"]], "InlineFormula",
+      $CellContext`ExpressionUUID -> "71270675-99e9-47e4-a8ad-311467913648"],
      " is a sum of diagrams, a list with the loop numbers is returned."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
-   "RowsIndexed" -> {}}}],
+   "RowsIndexed" -> {}}},
+ $CellContext`ExpressionUUID -> "1430c3b7-279b-4305-83e3-c1c29c187ee1"],
 
 Cell[CellGroupData[{
 
 Cell[TextData[{
  Cell[BoxData[
-  TemplateBox[{6},
-   "Spacer1"]]],
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
  "Examples",
  "\[NonBreakingSpace]\[NonBreakingSpace]",
  Cell["(1)", "ExampleCount"]
@@ -126,7 +139,8 @@ Cell[TextData[{
 Cell[BoxData[
  RowBox[{"Needs", "[", "\"\<DoFun`\>\"", "]"}]], "Input",
  CellLabel->"In[1]:=",
- CellID->1414887963],
+ CellID->1414887963,
+ $CellContext`ExpressionUUID -> "7621315d-2821-4927-acda-b1dc2e06373d"],
 
 Cell[BoxData[{
  RowBox[{
@@ -144,7 +158,8 @@ Cell[BoxData[{
   ";"}], "\[IndentingNewLine]", 
  RowBox[{"getLoopNumber", "@", "dse"}]}], "Input",
  CellLabel->"In[2]:=",
- CellID->648953051]
+ CellID->648953051,
+ $CellContext`ExpressionUUID -> "31f9c174-9d8e-4496-8a16-1f4f237564c4"]
 }, Open  ]]
 }, Open  ]],
 
@@ -165,7 +180,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2019, 8, 7, 9, 21, 14.981890}", 
+   "built" -> "{2019, 10, 25, 10, 13, 19.412796}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DoFun`DoDSERGE`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -175,9 +190,10 @@ TaggingRules->{
 a sum of diagrams, a list with the loop numbers is returned.", 
     "synonyms" -> {}, "tabletags" -> {}, "title" -> "getLoopNumber", 
     "titlemodifier" -> "", "windowtitle" -> "getLoopNumber", "type" -> 
-    "Symbol", "uri" -> "DoFun/ref/getLoopNumber"}},
+    "Symbol", "uri" -> "DoFun/ref/getLoopNumber"}, "SearchTextTranslated" -> 
+  ""},
 CellContext->"Global`",
-FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+FrontEndVersion->"10.0 for Linux x86 (64-bit) (June 27, 2014)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -186,7 +202,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "11.3 for Linux x86 (64-bit) (March 6, 2018)", 
+  FrontEndVersion -> "10.0 for Linux x86 (64-bit) (June 27, 2014)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -195,36 +211,36 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3607, 103, 259, 10, 70, "PrimaryExamplesSection",ExpressionUUID->"c6d54bf9-39ac-44b8-8b2f-0375b89ecaf1",
+  Cell[3953, 111, 379, 15, 70, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
    CellID->1]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 6587, 196}
+ {"PrimaryExamplesSection", 7233, 212}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[585, 21, 2290, 54, 70, "AnchorBarGrid",ExpressionUUID->"ef131304-0732-4ba4-b925-f316b93d2034",
+Cell[585, 21, 2290, 54, 70, "AnchorBarGrid",
  CellID->1],
-Cell[2878, 77, 170, 6, 70, "ObjectNameGrid",ExpressionUUID->"ee81d430-fd86-44d6-8290-ae50133cb601"],
-Cell[3051, 85, 531, 14, 70, "Usage",ExpressionUUID->"1430c3b7-279b-4305-83e3-c1c29c187ee1"],
+Cell[2878, 77, 290, 11, 70, "ObjectNameGrid"],
+Cell[3171, 90, 757, 17, 70, "Usage"],
 Cell[CellGroupData[{
-Cell[3607, 103, 259, 10, 70, "PrimaryExamplesSection",ExpressionUUID->"c6d54bf9-39ac-44b8-8b2f-0375b89ecaf1",
+Cell[3953, 111, 379, 15, 70, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
  CellID->1],
 Cell[CellGroupData[{
-Cell[3891, 117, 187, 6, 70, "ExampleSection",ExpressionUUID->"5d9afa35-2067-4948-b674-d4692a9d9c74",
+Cell[4357, 130, 187, 6, 70, "ExampleSection",
  CellID->1],
-Cell[4081, 125, 115, 3, 70, "Input",ExpressionUUID->"7621315d-2821-4927-acda-b1dc2e06373d",
+Cell[4547, 138, 187, 4, 70, "Input",
  CellID->1414887963],
-Cell[4199, 130, 486, 16, 70, "Input",ExpressionUUID->"31f9c174-9d8e-4496-8a16-1f4f237564c4",
+Cell[4737, 144, 558, 17, 70, "Input",
  CellID->648953051]
 }, Open  ]]
 }, Open  ]],
-Cell[4712, 150, 23, 0, 70, "FooterCell",ExpressionUUID->"7987ecdc-c4b3-4644-a70f-7844565911de"]
+Cell[5322, 165, 23, 0, 70, "FooterCell"]
 }
 ]
 *)
