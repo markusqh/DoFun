@@ -13,14 +13,14 @@ $doFunVersion=ToString@$doFunMainVersion~~"."~~ToString@$doFunSubVersion~~"."~~T
 (* check for new version *)
 (* updated in 3.0.1 to use info from Github; based on FormTracer *)
 
-getLatestVersionNumbers::usage = "Gets the version number of the latest version on GitHub.";
+getLatestGitHubVersionNumbers::usage = "Gets the version number of the latest version on GitHub.";
 
 checkForDoFunUpdates::usage = "checkForDoFunUpdates[] searches online for DoFun updates.
 checkForDoFunUpdates[quiet] with quiet=True suppresses warnings if paclet info is not found.";
 
 updateDoFun::usage = "updateDoFun[] updates DoFun to the latest release from GitHub.";
   
-getLatestVersionNumbers::pacletinfonotfound="Paclet info could not be found at `1`. Ensure that you have a working network connection.";
+getLatestGitHubVersionNumbers::pacletinfonotfound="Paclet info could not be found at `1`. Ensure that you have a working network connection.";
 
 checkForDoFunUpdates::usage="checkForDoFunUpdates[] searches online for DoFun updates.
 checkForDoFunUpdates[quiet] with quiet=True suppresses warnings if paclet info is not found.";
@@ -35,11 +35,11 @@ doFunRepositoryAddress="https://raw.githubusercontent.com/markusqh/DoFun/master/
 
 
 (* get the version number of the latest version on GitHub *)
-getLatestVersionNumbers[quiet_]:=Module[{newVersionString,pacletInfoLocation=doFunRepositoryAddress<>"DoFun/PacletInfo.m"},
+getLatestGitHubVersionNumbers[quiet_]:=Module[{newVersionString,pacletInfoLocation=doFunRepositoryAddress<>"DoFun/PacletInfo.m"},
 
 	If[quiet,
 		newVersionString=Quiet[Check[Version/.List@@Import[pacletInfoLocation],""]];,
-		newVersionString=Quiet[Check[Version/.List@@Import[pacletInfoLocation],Message[getLatestVersionNumbers::pacletinfonotfound,doFunRepositoryAddress];""],{Import::nffil,ReplaceAll::reps,FetchURL::httperr}];
+		newVersionString=Quiet[Check[Version/.List@@Import[pacletInfoLocation],Message[getLatestGitHubVersionNumbers::pacletinfonotfound,doFunRepositoryAddress];""],{Import::nffil,ReplaceAll::reps,FetchURL::httperr}];
 	];
 
 	Return[If[newVersionString==="",{0,0,0},
@@ -52,7 +52,7 @@ getLatestVersionNumbers[quiet_]:=Module[{newVersionString,pacletInfoLocation=doF
 (* checks for updates on GitHub; checks version number of master branch, not the latest release *)
 checkForDoFunUpdates[quiet_:False]:=Module[{newVersionNumbers,newVersionString},
 	If[Not["AllowInternetUse" /. SystemInformation["Network"]],If[Not[quiet],Message[checkForDoFunUpdates::allowinternetuse]];Return[];];
-		newVersionNumbers=getLatestVersionNumbers[quiet];
+		newVersionNumbers=getLatestGitHubVersionNumbers[quiet];
 		newVersionString=StringJoin[Riffle[ToString/@newVersionNumbers,"."]
 	];
 
@@ -78,7 +78,7 @@ You can update the DoFun by evaluating updateDoFun[].
 updateDoFun[]:=Module[{newVersionNumbers},
 	If[Not["AllowInternetUse" /. SystemInformation["Network"]],Message[updateDoFun::allowinternetuse];Return[];];
 	
-	newVersionNumbers=getLatestVersionNumbers[False];
+	newVersionNumbers=getLatestGitHubVersionNumbers[False];
 	
 	If[newVersionNumbers=!={0,0,0},
 		If[newVersionNumbers[[1]]+newVersionNumbers[[2]]/10+newVersionNumbers[[3]]/100>$doFunMainVersion+$doFunSubVersion/10+$doFunBuiltVersion/100,

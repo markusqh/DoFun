@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14916,        370]
-NotebookOptionsPosition[     13981,        345]
-NotebookOutlinePosition[     14315,        360]
-CellTagsIndexPosition[     14272,        357]
+NotebookDataLength[     14983,        374]
+NotebookOptionsPosition[     14047,        349]
+NotebookOutlinePosition[     14382,        364]
+CellTagsIndexPosition[     14339,        361]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -25,8 +25,8 @@ Cell["Checking for Updates", "Subsection",ExpressionUUID->"a078bdc7-9851-457b-91
 Cell[BoxData[{
  RowBox[{
   RowBox[{
-   RowBox[{"getLatestVersionNumbers", "::", "releaseInfoNotFound"}], "=", 
-   "\"\<Release info could not be found at `1`. Ensure that you have a \
+   RowBox[{"getLatestGitHubVersionNumbers", "::", "releaseInfoNotFound"}], 
+   "=", "\"\<Release info could not be found at `1`. Ensure that you have a \
 working network connection.\>\""}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
@@ -123,13 +123,14 @@ DoFunInstaller.m\>\""}], ";"}]}], "Input",
    3.742987124231444*^9, {3.742987172019548*^9, 3.742987175330358*^9}, {
    3.742987339605988*^9, 3.7429874149841537`*^9}, {3.742987628806542*^9, 
    3.7429876694519577`*^9}, 3.742988127576947*^9, 3.742988161850363*^9, 
-   3.743146750134549*^9},
- CellLabel->"In[22]:=",ExpressionUUID->"2824f486-b931-4417-9dff-0f00ea0938aa"],
+   3.743146750134549*^9, 
+   3.787459791699841*^9},ExpressionUUID->"2824f486-b931-4417-9dff-\
+0f00ea0938aa"],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{
-   RowBox[{"getLatestVersionNumbers", "[", "]"}], ":=", 
+   RowBox[{"getLatestGitHubVersionNumbers", "[", "]"}], ":=", 
    RowBox[{"Module", "[", 
     RowBox[{
      RowBox[{"{", "versionString", "}"}], ",", "\[IndentingNewLine]", 
@@ -168,8 +169,9 @@ Cell[BoxData[
    3.742986604515024*^9}, {3.742986639739235*^9, 3.742986682576264*^9}, {
    3.742986827742305*^9, 3.742986854933666*^9}, {3.74298689723181*^9, 
    3.742986908972693*^9}, {3.742986945709071*^9, 3.742986977882265*^9}, {
-   3.7429870115167847`*^9, 3.7429871091665573`*^9}, 3.742987670485436*^9},
- CellLabel->"In[29]:=",ExpressionUUID->"8e17fd71-93bf-4e71-bebc-3e54f22a5264"],
+   3.7429870115167847`*^9, 3.7429871091665573`*^9}, 3.742987670485436*^9, 
+   3.7874597918900833`*^9},ExpressionUUID->"8e17fd71-93bf-4e71-bebc-\
+3e54f22a5264"],
 
 Cell[BoxData[
  RowBox[{
@@ -183,7 +185,7 @@ Cell[BoxData[
      "\[IndentingNewLine]", 
      RowBox[{
       RowBox[{"newVersionNumbers", "=", 
-       RowBox[{"getLatestVersionNumbers", "[", "]"}]}], ";", 
+       RowBox[{"getLatestGitHubVersionNumbers", "[", "]"}]}], ";", 
       "\[IndentingNewLine]", 
       RowBox[{"newVersionString", "=", 
        RowBox[{"StringJoin", "[", 
@@ -257,9 +259,10 @@ version \>\"", "<>", " ", "$DoFunVersionNumber", "<>", "\"\<.\>\""}], "]"}],
     "\[IndentingNewLine]", "]"}]}], ";"}]], "Input",
  InitializationCell->True,
  CellChangeTimes->{{3.742986161039547*^9, 3.74298620142166*^9}, {
-  3.7429871995673227`*^9, 3.742987237646288*^9}, {3.742987490922653*^9, 
-  3.7429875436604853`*^9}, {3.743146592741557*^9, 3.743146592867402*^9}},
- CellLabel->"In[30]:=",ExpressionUUID->"64dff6fe-0d85-43a4-9928-77e3d42a0090"],
+   3.7429871995673227`*^9, 3.742987237646288*^9}, {3.742987490922653*^9, 
+   3.7429875436604853`*^9}, {3.743146592741557*^9, 3.743146592867402*^9}, 
+   3.7874597911533203`*^9},ExpressionUUID->"64dff6fe-0d85-43a4-9928-\
+77e3d42a0090"],
 
 Cell[BoxData[
  RowBox[{
@@ -281,7 +284,7 @@ Cell[BoxData[
          RowBox[{"Return", "[", "]"}], ";"}]}], "]"}], ";", 
       "\[IndentingNewLine]", 
       RowBox[{"newVersionNumbers", "=", 
-       RowBox[{"getLatestVersionNumbers", "[", "]"}]}], ";", 
+       RowBox[{"getLatestGitHubVersionNumbers", "[", "]"}]}], ";", 
       "\[IndentingNewLine]", 
       RowBox[{"If", "[", 
        RowBox[{
@@ -320,8 +323,9 @@ Cell[BoxData[
  CellChangeTimes->{{3.7429861759593353`*^9, 3.742986204808317*^9}, {
    3.742987671332999*^9, 3.7429877013093643`*^9}, {3.7431466478609467`*^9, 
    3.7431466480349283`*^9}, {3.743146704820176*^9, 3.743146717847619*^9}, {
-   3.7431469119917192`*^9, 3.7431469121968727`*^9}, 
-   3.7431480066125*^9},ExpressionUUID->"685c50a7-7b90-48f9-824a-3759f098b814"],
+   3.7431469119917192`*^9, 3.7431469121968727`*^9}, 3.7431480066125*^9, 
+   3.787459791345345*^9},ExpressionUUID->"685c50a7-7b90-48f9-824a-\
+3759f098b814"],
 
 Cell[BoxData[
  RowBox[{
@@ -343,9 +347,9 @@ Cell[BoxData[
  CellLabel->"In[36]:=",ExpressionUUID->"81f5abbd-ae80-4509-84bf-b23c34d93937"]
 }, Open  ]]
 },
-WindowSize->{1920, 1029},
-WindowMargins->{{0, Automatic}, {0, Automatic}},
-FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+WindowSize->{1920, 1005},
+WindowMargins->{{0, Automatic}, {25, Automatic}},
+FrontEndVersion->"12.0 for Linux x86 (64-bit) (April 8, 2019)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -361,15 +365,15 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 97, 0, 55, "Subsection",ExpressionUUID->"a078bdc7-9851-457b-91ee-6ae80ddafe24"],
-Cell[680, 24, 4049, 102, 439, "Input",ExpressionUUID->"2824f486-b931-4417-9dff-0f00ea0938aa",
+Cell[680, 24, 4059, 103, 439, "Input",ExpressionUUID->"2824f486-b931-4417-9dff-0f00ea0938aa",
  InitializationCell->True],
-Cell[4732, 128, 1993, 43, 163, "Input",ExpressionUUID->"8e17fd71-93bf-4e71-bebc-3e54f22a5264",
+Cell[4742, 129, 2005, 44, 163, "Input",ExpressionUUID->"8e17fd71-93bf-4e71-bebc-3e54f22a5264",
  InitializationCell->True],
-Cell[6728, 173, 3944, 88, 439, "Input",ExpressionUUID->"64dff6fe-0d85-43a4-9928-77e3d42a0090",
+Cell[6750, 175, 3958, 89, 439, "Input",ExpressionUUID->"64dff6fe-0d85-43a4-9928-77e3d42a0090",
  InitializationCell->True],
-Cell[10675, 263, 2569, 60, 255, "Input",ExpressionUUID->"685c50a7-7b90-48f9-824a-3759f098b814",
+Cell[10711, 266, 2599, 61, 255, "Input",ExpressionUUID->"685c50a7-7b90-48f9-824a-3759f098b814",
  InitializationCell->True],
-Cell[13247, 325, 718, 17, 71, "Input",ExpressionUUID->"81f5abbd-ae80-4509-84bf-b23c34d93937",
+Cell[13313, 329, 718, 17, 71, "Input",ExpressionUUID->"81f5abbd-ae80-4509-84bf-b23c34d93937",
  InitializationCell->True]
 }, Open  ]]
 }
