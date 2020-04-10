@@ -419,10 +419,9 @@ setFields[{A},{{c,cb}}];
 dse = doDSE[{{A, A}, {c, cb}, {A, A, A}, {A, cb, c}, {A, A, A, A}}, {A, A, A}, {{A, A}, {c, cb}}, ansatz -> {{A, A, A}, {A, cb, c}}];
 DSEPlot[dse, {{A, Red}, {c, Green, Dashed}}]
 
-(* TODO Rewrite this example without specificFieldDefinitions *)
-Three-point DSE of a theory with bosonic fields A, phi, and phib which mix at the two-point level, i.e., additional propagators have to be given in an extra argument.
+Three-point DSE of a theory with bosonic fields A, phi, and phib which mix at the two-point level.
 setFields[{A},{},{{phi,phib}}];
-dse = doDSE[{{A, A}, {phi, phib}, {A, phi}, {A, phib}, {A, phib, phi}}, {A, A}, {{phi, phi}, {phib, phib}}, specificFieldDefinitions -> {A, phi, phib}]
+dse = doDSE[{{A, A}, {phi, phib}, {A, phi}, {A, phib}, {A, phib, phi}}, {A, A}, {{phi, phi}, {phib, phib}}]
 DSEPlot[dse]
 ";
 

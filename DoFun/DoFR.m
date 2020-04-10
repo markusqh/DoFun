@@ -495,17 +495,13 @@ getFR[action_,fields_List,opts___?OptionQ]:=Module[
        left before right fermions, and anti-fermions act from the left, i.e., right before left anti-fermions *)
     (*orderedFields=fields//.{{a___,b_?(fermionQ@Head@#&), c_?(antiFermionQ@Head@#&),d___}:>(counter++;{a,c,b,d}),
     	{a___,b_?(fermionQ@Head@#&), c_?(bosonQ@Head@#&),d___}:>{a,c,b,d},{a___,b_?(bosonQ@Head@#&), c_?(antiFermionQ@Head@#&),d___}:>{a,c,b,d}};*)
-	orderedFields=fields//.{{a___,b_?(fermionQ@Head@#&), c_?(antiFermionQ@Head@#&),d___}:>({a,c,b,d}),
-    	{a___,b_?(fermionQ@Head@#&), c_?(bosonQ@Head@#&),d___}:>{a,c,b,d},{a___,b_?(bosonQ@Head@#&), c_?(antiFermionQ@Head@#&),d___}:>{a,c,b,d}};
+    (* DoFun 3.0: no order changed here, only left derivatives --> put Grassmann fields of derivatives in inverse order than in vertex,
+    e.g., ghost-gluon vertex A cb c: fields=A, c, cb *)
+    orderedFields=fields;
     
-    (* reverse order of anti-fermions due to conventions in the definition of the vertex V;
-       this will yield the n-point function with the order of fields as in the argument fields in V or S
-       TODO: Modified in 3.0 *)
-    orderedFields=orderedFields;(*Flatten@Replace[GatherBy[orderedFields,antiFermionQ@#[[0]]&],{a_List,b_List}:>{Reverse@a,b}];*)
+    nPoint=diffFields[filtered, orderedFields];
 
-	nPoint=diffFields[filtered, orderedFields];
-
- (* set fields to physical value, i.e.,to zero in the symmetric phase and take the remaining fields as vacuum fields in the broken phase *)
+ 	(* set fields to physical value, i.e.,to zero in the symmetric phase and take the remaining fields as vacuum fields in the broken phase *)
  	sign (-1)^counter If[(symmetry/.Join[{opts},Options@doRGE])==="broken",
  			integrateMomenta@integrateDeltas[nPoint]/.op[a__]:>Times@@{a},
  			integrateMomenta@integrateDeltas[nPoint]/.op[___]:>0,
