@@ -103,7 +103,10 @@
         -) removed specificFieldDefinitions
 	3.0.1:
 		-) introduced warning in sortCanonical when dummy fields are contained and the expression is not sorted
-		-) introduced error handler when user tries to use the dummy field as field in setFields 
+		-) introduced error handler when user tries to use the dummy field as field in setFields
+	develp:
+		-) grassmannTest is no longer done for RGEs, since ansatz for action fully determines the allowed vertices.
+			Changing this behavior avoids problems with mixed fermionic propagators for RGEs. 
 *)
 
 
@@ -426,6 +429,7 @@ DSEPlot[dse]
 ";
 
 doGrassmannTest::usage="doGrassmannTest is an option of setSourcesZero. It ensures that the Grassmann number of each vertex is zero for each Grassmann field.
+Only used for DSEs, as the ansatz for the action fully determines the allowed vertices for RGEs.
 ";
 
 doRGE::usage="doRGE[ac, flis, [opts]] derives the RGE from the action ac for the fields contained in flis.
@@ -2110,10 +2114,14 @@ standardTest[b_]:=evenBosonTest[b,evenBosons,evenComplexBosons];
 
 (* test function for vertices *)
 test[b_]:=And[
-	If[doGrassmannTest/.Join[{opts},Options@setSourcesZero],grassmannTest[b,allowedPropagators],True,True], (* conserve Grassmann number *)
+	(* grassmannTest is only required for DSEs, since the ansatz for the action fully determines the allowed vertices for RGEs;
+	thus switched off for RGEs to avoid problems with mixed fermions *)
+	If[(doGrassmannTest/.Join[{opts},Options@setSourcesZero]) &&
+		(propagatorCreationRules/.Join[{opts},Options@setSourcesZero])===DSERules,
+		grassmannTest[b,allowedPropagators],True,True], (* conserve Grassmann number *)
 	(* truncationTest now used always *)(*If[(propagatorCreationRules/.Join[{opts},Options@doDSE])=!=RGERules&&(symmetry/.Join[{opts},Options@doDSE])===broken,truncationTest[b,truncation],True,True], (* DSEs, broken phase, compare against truncation ansatz *)*)
 	truncationTest[b,truncation],
-	If[(propagatorCreationRules/.Join[{opts},Options@doDSE])===RGERules,truncationTest[b,interactions],True,True], (* RGEs, always compare against interactions in the action *)
+	If[(propagatorCreationRules/.Join[{opts},Options@setSourcesZero])===RGERules,truncationTest[b,interactions],True,True], (* RGEs, always compare against interactions in the action *)
 	standardTest[b], (* conserve boson number if they only have even interactions *)
 	vertexTest[b](* user-defined test *)
 ];
