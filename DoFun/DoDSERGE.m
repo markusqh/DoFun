@@ -153,18 +153,6 @@ $dummyField::usage="$dummyField is the super field representing all possible fie
 Default value: \[Phi].
 ";
 
-$dummyFieldAF::usage="$dummyFieldAF is a super field representing all possible anti-fermionic fields.
-Default value: \[Phi].
-";
-
-$dummyFieldB::usage="$dummyFieldB is a super field representing all possible bosonic fields.
-Default value: \[Phi].
-";
-
-$dummyFieldF::usage="$dummyFieldF is a super field representing all possible fermionic fields.
-Default value: \[Phi].
-";
-
 $externalIndices::usage="$externalIndices contains the default names of external indices when none are supplied to doCO, doDSE or doRGE.
 ";
 
@@ -1056,11 +1044,7 @@ Evaluate@$dummyField /: grassmannQ[$dummyField] = False;
 
 
 (* fermionic dummy fields *)
-$dummyFieldF /: fieldType[$dummyFieldF] = fermion;
-$dummyFieldAF /: fieldType[$dummyFieldAF] = antiFermion;
-antiField[$dummyFieldF] = $dummyFieldAF;
-antiField[$dummyFieldAF] = $dummyFieldF;
-(# /: grassmannQ[#] = True) & /@ {$dummyFieldF, $dummyFieldAF};
+(* removed after version 3.0.1 *)
 
 
 
@@ -2168,9 +2152,7 @@ propIndsF=Cases[propagatorsF,{_?fieldQ,_},Infinity];
 propIndsB=Cases[propagatorsB,{_?fieldQ,_},Infinity];
 
 (* replace the indices of the vertices, delete the vertices that do not exist *)
-vertsReplaced=c/.Plus:>List/.{{$dummyField,ind_}:> (Flatten@Cases[propInds,{_,ind}]),
-	{$dummyFieldF|$dummyFieldAF,ind_}:> (Flatten@Cases[propIndsF,{_,ind}]),
-	{$dummyFieldB,ind_}:> (Flatten@Cases[propIndsB,{_,ind}])}
+vertsReplaced=c/.Plus:>List/.{{$dummyField,ind_}:> (Flatten@Cases[propInds,{_,ind}])}
 	/.V[___,{},___]:>0/.V[b__]:> 0/;(Not@vertexTest[V[b]])
 	
 ];
