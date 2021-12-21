@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       145,          7]
-NotebookDataLength[    179990,       3841]
-NotebookOptionsPosition[    173986,       3711]
-NotebookOutlinePosition[    174397,       3727]
-CellTagsIndexPosition[    174354,       3724]
+NotebookDataLength[    180064,       3851]
+NotebookOptionsPosition[    174256,       3736]
+NotebookOutlinePosition[    174736,       3753]
+CellTagsIndexPosition[    174693,       3750]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -34,8 +34,6 @@ Cell[TextData[{
 }], "History",
  CellID->1247902091,ExpressionUUID->"d8f706de-2164-4cb4-8bcc-6b9d938af505"],
 
-Cell[CellGroupData[{
-
 Cell["Categorization", "CategorizationSection",
  CellID->1122911449,ExpressionUUID->"ffefc485-2717-4ca6-b6be-4ff1a91254f4"],
 
@@ -52,19 +50,13 @@ Cell["DoFun`", "Categorization",
  CellID->468444828,ExpressionUUID->"74608ed8-1e9c-4d2b-9131-45a735dc7a5a"],
 
 Cell["DoFun/tutorial/Known issues", "Categorization",
- CellLabel->"URI",ExpressionUUID->"f2026683-6291-403f-a246-1313746dabf2"]
-}, Closed]],
-
-Cell[CellGroupData[{
+ CellLabel->"URI",ExpressionUUID->"f2026683-6291-403f-a246-1313746dabf2"],
 
 Cell["Keywords", "KeywordsSection",
  CellID->1427428552,ExpressionUUID->"935c3890-1dde-4296-8565-f7625fec25bc"],
 
 Cell["XXXX", "Keywords",
- CellID->1251852827,ExpressionUUID->"25cc43d7-f8ee-4771-b39f-2135a650265a"]
-}, Closed]],
-
-Cell[CellGroupData[{
+ CellID->1251852827,ExpressionUUID->"25cc43d7-f8ee-4771-b39f-2135a650265a"],
 
 Cell["Details", "DetailsSection",
  CellID->307771771,ExpressionUUID->"e2f1a484-624a-4fbe-b669-a4245e483fff"],
@@ -103,8 +95,7 @@ Cell["XXXX", "Details",
 
 Cell["XXXX", "Details",
  CellLabel->"Comments",
- CellID->240026365,ExpressionUUID->"79d84147-9d3a-4856-9317-45c989ce1237"]
-}, Closed]],
+ CellID->240026365,ExpressionUUID->"79d84147-9d3a-4856-9317-45c989ce1237"],
 
 Cell[CellGroupData[{
 
@@ -140,8 +131,6 @@ Cell["Non-planar diagrams", "Subsection",
  CellChangeTimes->{3.506672753308671*^9},
  CellID->1975056533,ExpressionUUID->"64e2b92e-60bd-4d23-89f0-9f214124f04a"],
 
-Cell[CellGroupData[{
-
 Cell["\<\
 Non-planar diagrams pose a problem for the used plot program GraphPlot as the \
 following example illustrates:\
@@ -158,6 +147,9 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[{
+ RowBox[{
+  RowBox[{"setFields", "[", 
+   RowBox[{"{", "phi", "}"}], "]"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"dse", "=", 
    RowBox[{"doDSE", "[", 
@@ -184,14 +176,15 @@ Cell[BoxData[{
     RowBox[{"{", 
      RowBox[{"phi", ",", "Black"}], "}"}], "}"}]}], "]"}]}], "Input",
  CellChangeTimes->{{3.506672776469256*^9, 3.5066727820388823`*^9}, {
-  3.506672813487011*^9, 3.506672938384761*^9}},
- CellLabel->"In[242]:=",
+  3.506672813487011*^9, 3.506672938384761*^9}, {3.849067438582795*^9, 
+  3.849067441901247*^9}},
  CellID->2058623809,ExpressionUUID->"9a48e930-0f66-481e-a3be-d367e2ac00a6"],
 
 Cell[BoxData[
  TagBox[GridBox[{
     {
-     TemplateBox[{GraphicsBox[
+     TemplateBox[{
+       GraphicsBox[
         NamespaceBox["NetworkGraphics", 
          DynamicModuleBox[{Typeset`graph = HoldComplete[
              
@@ -304,7 +297,8 @@ Cell[BoxData[
         FormatType -> TraditionalForm, FrameTicks -> None, ImageSize -> 100, 
          DefaultBaseStyle -> {
           "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
-           Hue[0.8, 1., 0.6]}}],StyleBox[
+           Hue[0.8, 1., 0.6]}}], 
+       StyleBox[
         TemplateBox[{
           OverscriptBox[
            StyleBox["\"\"", FontSize :> 50, StripOnInput -> False], 
@@ -327,7 +321,8 @@ Cell[BoxData[
         BaselinePosition -> {1, 1}]& ),
       InterpretationFunction->(RowBox[{"Labeled", "[", 
          RowBox[{#, ",", #2, ",", "Right"}], "]"}]& )], 
-     TemplateBox[{GraphicsBox[
+     TemplateBox[{
+       GraphicsBox[
         NamespaceBox["NetworkGraphics", 
          DynamicModuleBox[{Typeset`graph = HoldComplete[
              
@@ -525,10 +520,12 @@ Cell[BoxData[
         FormatType -> TraditionalForm, FrameTicks -> None, ImageSize -> 100, 
          DefaultBaseStyle -> {
           "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
-           Hue[0.8, 1., 0.6]}}],StyleBox[
+           Hue[0.8, 1., 0.6]}}], 
+       StyleBox[
         StyleBox[
         "\"+\"", ShowStringCharacters -> False, StripOnInput -> False], {
-        FontSize :> 16}, StripOnInput -> False],OverscriptBox[
+        FontSize :> 16}, StripOnInput -> False], 
+       OverscriptBox[
         StyleBox[
         "\"\"", FontSize :> 50, ShowStringCharacters -> False, StripOnInput -> 
          False], 
@@ -556,7 +553,8 @@ Cell[BoxData[
              RowBox[{#2, ",", #3}], "}"}], ",", 
            RowBox[{"{", 
              RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
-     TemplateBox[{GraphicsBox[
+     TemplateBox[{
+       GraphicsBox[
         NamespaceBox["NetworkGraphics", 
          DynamicModuleBox[{Typeset`graph = HoldComplete[
              
@@ -753,10 +751,12 @@ Cell[BoxData[
         FormatType -> TraditionalForm, FrameTicks -> None, ImageSize -> 100, 
          DefaultBaseStyle -> {
           "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
-           Hue[0.8, 1., 0.6]}}],StyleBox[
+           Hue[0.8, 1., 0.6]}}], 
+       StyleBox[
         StyleBox[
         "\"+\"", ShowStringCharacters -> False, StripOnInput -> False], {
-        FontSize :> 16}, StripOnInput -> False],OverscriptBox[
+        FontSize :> 16}, StripOnInput -> False], 
+       OverscriptBox[
         StyleBox[
         "\"\"", FontSize :> 50, ShowStringCharacters -> False, StripOnInput -> 
          False], 
@@ -784,7 +784,8 @@ Cell[BoxData[
              RowBox[{#2, ",", #3}], "}"}], ",", 
            RowBox[{"{", 
              RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
-     TemplateBox[{GraphicsBox[
+     TemplateBox[{
+       GraphicsBox[
         NamespaceBox["NetworkGraphics", 
          DynamicModuleBox[{Typeset`graph = HoldComplete[
              
@@ -980,10 +981,12 @@ Cell[BoxData[
         FormatType -> TraditionalForm, FrameTicks -> None, ImageSize -> 100, 
          DefaultBaseStyle -> {
           "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
-           Hue[0.8, 1., 0.6]}}],StyleBox[
+           Hue[0.8, 1., 0.6]}}], 
+       StyleBox[
         StyleBox[
         "\"+\"", ShowStringCharacters -> False, StripOnInput -> False], {
-        FontSize :> 16}, StripOnInput -> False],OverscriptBox[
+        FontSize :> 16}, StripOnInput -> False], 
+       OverscriptBox[
         StyleBox[
         "\"\"", FontSize :> 50, ShowStringCharacters -> False, StripOnInput -> 
          False], 
@@ -1011,7 +1014,8 @@ Cell[BoxData[
              RowBox[{#2, ",", #3}], "}"}], ",", 
            RowBox[{"{", 
              RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
-     TemplateBox[{GraphicsBox[
+     TemplateBox[{
+       GraphicsBox[
         NamespaceBox["NetworkGraphics", 
          DynamicModuleBox[{Typeset`graph = HoldComplete[
              
@@ -1208,10 +1212,12 @@ Cell[BoxData[
         FormatType -> TraditionalForm, FrameTicks -> None, ImageSize -> 100, 
          DefaultBaseStyle -> {
           "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
-           Hue[0.8, 1., 0.6]}}],StyleBox[
+           Hue[0.8, 1., 0.6]}}], 
+       StyleBox[
         StyleBox[
         "\"+\"", ShowStringCharacters -> False, StripOnInput -> False], {
-        FontSize :> 16}, StripOnInput -> False],OverscriptBox[
+        FontSize :> 16}, StripOnInput -> False], 
+       OverscriptBox[
         StyleBox[
         "\"\"", FontSize :> 50, ShowStringCharacters -> False, StripOnInput -> 
          False], 
@@ -1243,7 +1249,8 @@ Cell[BoxData[
      StyleBox["\<\"\"\>",
       StripOnInput->False,
       ShowStringCharacters->False], 
-     TemplateBox[{GraphicsBox[
+     TemplateBox[{
+       GraphicsBox[
         NamespaceBox["NetworkGraphics", 
          DynamicModuleBox[{Typeset`graph = HoldComplete[
              
@@ -1440,10 +1447,12 @@ Cell[BoxData[
         FormatType -> TraditionalForm, FrameTicks -> None, ImageSize -> 100, 
          DefaultBaseStyle -> {
           "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
-           Hue[0.8, 1., 0.6]}}],StyleBox[
+           Hue[0.8, 1., 0.6]}}], 
+       StyleBox[
         StyleBox[
         "\"+\"", ShowStringCharacters -> False, StripOnInput -> False], {
-        FontSize :> 16}, StripOnInput -> False],OverscriptBox[
+        FontSize :> 16}, StripOnInput -> False], 
+       OverscriptBox[
         StyleBox[
         "\"\"", FontSize :> 50, ShowStringCharacters -> False, StripOnInput -> 
          False], 
@@ -1471,7 +1480,8 @@ Cell[BoxData[
              RowBox[{#2, ",", #3}], "}"}], ",", 
            RowBox[{"{", 
              RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
-     TemplateBox[{GraphicsBox[
+     TemplateBox[{
+       GraphicsBox[
         NamespaceBox["NetworkGraphics", 
          DynamicModuleBox[{Typeset`graph = HoldComplete[
              
@@ -1668,10 +1678,12 @@ Cell[BoxData[
         FormatType -> TraditionalForm, FrameTicks -> None, ImageSize -> 100, 
          DefaultBaseStyle -> {
           "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
-           Hue[0.8, 1., 0.6]}}],StyleBox[
+           Hue[0.8, 1., 0.6]}}], 
+       StyleBox[
         StyleBox[
         "\"+\"", ShowStringCharacters -> False, StripOnInput -> False], {
-        FontSize :> 16}, StripOnInput -> False],OverscriptBox[
+        FontSize :> 16}, StripOnInput -> False], 
+       OverscriptBox[
         StyleBox[
         "\"\"", FontSize :> 50, ShowStringCharacters -> False, StripOnInput -> 
          False], 
@@ -1699,7 +1711,8 @@ Cell[BoxData[
              RowBox[{#2, ",", #3}], "}"}], ",", 
            RowBox[{"{", 
              RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
-     TemplateBox[{GraphicsBox[
+     TemplateBox[{
+       GraphicsBox[
         NamespaceBox["NetworkGraphics", 
          DynamicModuleBox[{Typeset`graph = HoldComplete[
              
@@ -1811,6 +1824,7 @@ Cell[BoxData[
                 LineBox[{{0.8143493245610228, 1.7361472627818073`}, {
                  1.173080180182565, 0.7383458803932693}}]}}, {
                GrayLevel[0], {
+                
                 BezierCurveBox[{{0.8143493245610228, 1.7361472627818073`}, {
                  1.2152378777056594`, 2.055601662696763}, {1.727484263236663, 
                  2.0747428794216156`}}]}}, {
@@ -1891,13 +1905,15 @@ Cell[BoxData[
         FormatType -> TraditionalForm, FrameTicks -> None, ImageSize -> 100, 
          DefaultBaseStyle -> {
           "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
-           Hue[0.8, 1., 0.6]}}],StyleBox[
+           Hue[0.8, 1., 0.6]}}], 
+       StyleBox[
         TagBox[
          RowBox[{
            StyleBox[
            "\"+\"", ShowStringCharacters -> False, StripOnInput -> False], 
            FractionBox["1", "2"]}], DisplayForm], {FontSize :> 16}, 
-        StripOnInput -> False],OverscriptBox[
+        StripOnInput -> False], 
+       OverscriptBox[
         StyleBox[
         "\"\"", FontSize :> 50, ShowStringCharacters -> False, StripOnInput -> 
          False], 
@@ -1925,7 +1941,8 @@ Cell[BoxData[
              RowBox[{#2, ",", #3}], "}"}], ",", 
            RowBox[{"{", 
              RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
-     TemplateBox[{GraphicsBox[
+     TemplateBox[{
+       GraphicsBox[
         NamespaceBox["NetworkGraphics", 
          DynamicModuleBox[{Typeset`graph = HoldComplete[
              
@@ -2101,6 +2118,7 @@ Cell[BoxData[
                  StyleBox[
                  "\"  i3\"", FontSize :> 14, FontSize :> 14, StripOnInput -> 
                   False], TraditionalForm], {0.5772184243678751, 0.3}]}, {
+               
                DiskBox[{2.2861956620183688`, 0.7378797159896239}, 
                 0.10074128178217613`]}, {
                InsetBox[
@@ -2117,13 +2135,15 @@ Cell[BoxData[
         FormatType -> TraditionalForm, FrameTicks -> None, ImageSize -> 100, 
          DefaultBaseStyle -> {
           "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
-           Hue[0.8, 1., 0.6]}}],StyleBox[
+           Hue[0.8, 1., 0.6]}}], 
+       StyleBox[
         TagBox[
          RowBox[{
            StyleBox[
            "\"+\"", ShowStringCharacters -> False, StripOnInput -> False], 
            FractionBox["1", "2"]}], DisplayForm], {FontSize :> 16}, 
-        StripOnInput -> False],OverscriptBox[
+        StripOnInput -> False], 
+       OverscriptBox[
         StyleBox[
         "\"\"", FontSize :> 50, ShowStringCharacters -> False, StripOnInput -> 
          False], 
@@ -2155,7 +2175,8 @@ Cell[BoxData[
      StyleBox["\<\"\"\>",
       StripOnInput->False,
       ShowStringCharacters->False], 
-     TemplateBox[{GraphicsBox[
+     TemplateBox[{
+       GraphicsBox[
         NamespaceBox["NetworkGraphics", 
          DynamicModuleBox[{Typeset`graph = HoldComplete[
              
@@ -2281,6 +2302,7 @@ Cell[BoxData[
                 LineBox[{{1.1678667111209724`, 0.7418728598973028}, {
                  0.5666265048461037, 0.006449269475753416}}]}}, {
                GrayLevel[0], {
+                
                 LineBox[{{1.1678667111209724`, 0.7418728598973028}, {
                  0.8134124422558424, 1.7413559684004154`}}]}}, {
                GrayLevel[0], {
@@ -2347,13 +2369,15 @@ Cell[BoxData[
         FormatType -> TraditionalForm, FrameTicks -> None, ImageSize -> 100, 
          DefaultBaseStyle -> {
           "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
-           Hue[0.8, 1., 0.6]}}],StyleBox[
+           Hue[0.8, 1., 0.6]}}], 
+       StyleBox[
         TagBox[
          RowBox[{
            StyleBox[
            "\"+\"", ShowStringCharacters -> False, StripOnInput -> False], 
            FractionBox["1", "2"]}], DisplayForm], {FontSize :> 16}, 
-        StripOnInput -> False],OverscriptBox[
+        StripOnInput -> False], 
+       OverscriptBox[
         StyleBox[
         "\"\"", FontSize :> 50, ShowStringCharacters -> False, StripOnInput -> 
          False], 
@@ -2381,7 +2405,8 @@ Cell[BoxData[
              RowBox[{#2, ",", #3}], "}"}], ",", 
            RowBox[{"{", 
              RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
-     TemplateBox[{GraphicsBox[
+     TemplateBox[{
+       GraphicsBox[
         NamespaceBox["NetworkGraphics", 
          DynamicModuleBox[{Typeset`graph = HoldComplete[
              
@@ -2515,6 +2540,7 @@ Cell[BoxData[
                 LineBox[{{0.8152411084175177, 0.4942603408227288}, {0., 
                  0.0026727989251887907`}}]}}, {
                GrayLevel[0], {
+                
                 LineBox[{{0.8152411084175177, 0.4942603408227288}, {
                  1.1738391214083974`, 1.49255292201554}}]}}, {
                GrayLevel[0], {
@@ -2573,13 +2599,15 @@ Cell[BoxData[
         FormatType -> TraditionalForm, FrameTicks -> None, ImageSize -> 100, 
          DefaultBaseStyle -> {
           "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
-           Hue[0.8, 1., 0.6]}}],StyleBox[
+           Hue[0.8, 1., 0.6]}}], 
+       StyleBox[
         TagBox[
          RowBox[{
            StyleBox[
            "\"+\"", ShowStringCharacters -> False, StripOnInput -> False], 
            FractionBox["1", "2"]}], DisplayForm], {FontSize :> 16}, 
-        StripOnInput -> False],OverscriptBox[
+        StripOnInput -> False], 
+       OverscriptBox[
         StyleBox[
         "\"\"", FontSize :> 50, ShowStringCharacters -> False, StripOnInput -> 
          False], 
@@ -2607,7 +2635,8 @@ Cell[BoxData[
              RowBox[{#2, ",", #3}], "}"}], ",", 
            RowBox[{"{", 
              RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
-     TemplateBox[{GraphicsBox[
+     TemplateBox[{
+       GraphicsBox[
         NamespaceBox["NetworkGraphics", 
          DynamicModuleBox[{Typeset`graph = HoldComplete[
              
@@ -2792,7 +2821,6 @@ Cell[BoxData[
                  StyleBox[
                  "\"  i4\"", FontSize :> 14, FontSize :> 14, StripOnInput -> 
                   False], TraditionalForm], {3.455087306183974, 0.3}]}, {
-               
                DiskBox[{1.7271646607068138`, 0.15516751517823513`}, 
                 0.10077283051051915`]}}}], 
            MouseAppearanceTag["NetworkGraphics"]], AllowKernelInitialization -> 
@@ -2800,13 +2828,15 @@ Cell[BoxData[
         FormatType -> TraditionalForm, FrameTicks -> None, ImageSize -> 100, 
          DefaultBaseStyle -> {
           "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
-           Hue[0.8, 1., 0.6]}}],StyleBox[
+           Hue[0.8, 1., 0.6]}}], 
+       StyleBox[
         TagBox[
          RowBox[{
            StyleBox[
            "\"+\"", ShowStringCharacters -> False, StripOnInput -> False], 
            FractionBox["1", "2"]}], DisplayForm], {FontSize :> 16}, 
-        StripOnInput -> False],OverscriptBox[
+        StripOnInput -> False], 
+       OverscriptBox[
         StyleBox[
         "\"\"", FontSize :> 50, ShowStringCharacters -> False, StripOnInput -> 
          False], 
@@ -2834,7 +2864,8 @@ Cell[BoxData[
              RowBox[{#2, ",", #3}], "}"}], ",", 
            RowBox[{"{", 
              RowBox[{"Left", ",", "Right"}], "}"}]}], "]"}]& )], 
-     TemplateBox[{GraphicsBox[
+     TemplateBox[{
+       GraphicsBox[
         NamespaceBox["NetworkGraphics", 
          DynamicModuleBox[{Typeset`graph = HoldComplete[
              
@@ -2972,7 +3003,6 @@ Cell[BoxData[
                 LineBox[{{2.2850579485913256`, 0.7382858042779784}, {
                  2.642559984565022, 1.7368005121799721`}}]}}, {
                GrayLevel[0], {
-                
                 LineBox[{{2.642559984565022, 1.7368005121799721`}, {
                  3.4572749492548045`, 2.2299322790270617`}}]}}, {
                GrayLevel[0], {
@@ -3027,13 +3057,15 @@ Cell[BoxData[
         FormatType -> TraditionalForm, FrameTicks -> None, ImageSize -> 100, 
          DefaultBaseStyle -> {
           "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
-           Hue[0.8, 1., 0.6]}}],StyleBox[
+           Hue[0.8, 1., 0.6]}}], 
+       StyleBox[
         TagBox[
          RowBox[{
            StyleBox[
            "\"+\"", ShowStringCharacters -> False, StripOnInput -> False], 
            FractionBox["1", "2"]}], DisplayForm], {FontSize :> 16}, 
-        StripOnInput -> False],OverscriptBox[
+        StripOnInput -> False], 
+       OverscriptBox[
         StyleBox[
         "\"\"", FontSize :> 50, ShowStringCharacters -> False, StripOnInput -> 
          False], 
@@ -3065,7 +3097,8 @@ Cell[BoxData[
      StyleBox["\<\"\"\>",
       StripOnInput->False,
       ShowStringCharacters->False], 
-     TemplateBox[{GraphicsBox[
+     TemplateBox[{
+       GraphicsBox[
         NamespaceBox["NetworkGraphics", 
          DynamicModuleBox[{Typeset`graph = HoldComplete[
              
@@ -3262,10 +3295,12 @@ Cell[BoxData[
         FormatType -> TraditionalForm, FrameTicks -> None, ImageSize -> 100, 
          DefaultBaseStyle -> {
           "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
-           Hue[0.8, 1., 0.6]}}],StyleBox[
+           Hue[0.8, 1., 0.6]}}], 
+       StyleBox[
         StyleBox[
         "\"+\"", ShowStringCharacters -> False, StripOnInput -> False], {
-        FontSize :> 16}, StripOnInput -> False],OverscriptBox[
+        FontSize :> 16}, StripOnInput -> False], 
+       OverscriptBox[
         StyleBox[
         "\"\"", FontSize :> 50, ShowStringCharacters -> False, StripOnInput -> 
          False], 
@@ -3309,7 +3344,6 @@ Cell[BoxData[
  CellChangeTimes->{3.77408373836928*^9},
  CellLabel->"Out[244]=",
  CellID->858299417,ExpressionUUID->"fad2f566-2fd7-4c4b-ae66-621e5abf035e"]
-}, Open  ]]
 }, Open  ]],
 
 Cell["\<\
@@ -3368,8 +3402,6 @@ connecting the same vertices.\
 \>", "Text",
  CellChangeTimes->{{3.774083969388925*^9, 3.7740839862373867`*^9}},
  CellID->1024205024,ExpressionUUID->"3dce7d95-ef62-4be5-b963-f14c7707558a"],
-
-Cell[CellGroupData[{
 
 Cell["\<\
 An example where propagators of three different fields connect two vertices, \
@@ -3486,10 +3518,10 @@ Cell[BoxData[{
 
 Cell[BoxData[
  TemplateBox[{
-  "DSEPlotList","multiPropagators",
+  "DSEPlotList", "multiPropagators", 
    "\"Note: More than two different propagators connecting the same vertices \
 cannot be displayed properly. The plot might contain wrong styles for these \
-propagators.\\n\"",2,264,49,22808542217558151797,"Local",
+propagators.\\n\"", 2, 264, 49, 22808542217558151797, "Local", 
    "DoFun`DoDSERGE`DSEPlotList"},
   "MessageTemplate2"]], "Message", "MSG",
  CellChangeTimes->{{3.7735557075812597`*^9, 3.77355572073239*^9}, 
@@ -3501,7 +3533,8 @@ propagators.\\n\"",2,264,49,22808542217558151797,"Local",
  CellID->564516415,ExpressionUUID->"c4ef8c0b-17a0-43c4-aa56-c5a99e6458e1"],
 
 Cell[BoxData[
- TemplateBox[{GraphicsBox[
+ TemplateBox[{
+   GraphicsBox[
     NamespaceBox["NetworkGraphics", 
      DynamicModuleBox[{Typeset`graph = HoldComplete[
          Graph[{{$CellContext`A, $CellContext`r1, 
@@ -3645,9 +3678,11 @@ Cell[BoxData[
     FormatType -> TraditionalForm, FrameTicks -> None, ImageSize -> 400, 
      DefaultBaseStyle -> {
       "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
-       Hue[0.8, 1., 0.6]}}],StyleBox[
+       Hue[0.8, 1., 0.6]}}], 
+   StyleBox[
     StyleBox["\"+\"", ShowStringCharacters -> False, StripOnInput -> False], {
-    FontSize :> 16}, StripOnInput -> False],OverscriptBox[
+    FontSize :> 16}, StripOnInput -> False], 
+   OverscriptBox[
     StyleBox[
     "\"\"", FontSize :> 50, ShowStringCharacters -> False, StripOnInput -> 
      False], 
@@ -3677,29 +3712,19 @@ Cell[BoxData[
  CellChangeTimes->{3.774084063014401*^9, 3.774084096813836*^9},
  CellLabel->"Out[264]=",
  CellID->1537197668,ExpressionUUID->"ee13e5ab-8d80-40f7-a95e-e12a35d9beee"]
-}, Open  ]]
-}, Open  ]]
 }, Open  ]],
-
-Cell[CellGroupData[{
 
 Cell["More About", "TutorialMoreAboutSection",
  CellID->23220180,ExpressionUUID->"fada738f-636a-4b2d-bc5d-35f6346a164a"],
 
 Cell["XXXX", "TutorialMoreAbout",
- CellID->1567025153,ExpressionUUID->"ddd63f51-3c8a-4564-98b5-fd1e396d5dcf"]
-}, Open  ]],
-
-Cell[CellGroupData[{
+ CellID->1567025153,ExpressionUUID->"ddd63f51-3c8a-4564-98b5-fd1e396d5dcf"],
 
 Cell["Related Tutorials", "RelatedTutorialsSection",
  CellID->415694126,ExpressionUUID->"bb13cb78-005b-4f6a-9557-35c4eff7dc83"],
 
 Cell["XXXX", "RelatedTutorials",
- CellID->806871991,ExpressionUUID->"b3b658d5-780f-4c95-9f53-26c4a6592aae"]
-}, Open  ]],
-
-Cell[CellGroupData[{
+ CellID->806871991,ExpressionUUID->"b3b658d5-780f-4c95-9f53-26c4a6592aae"],
 
 Cell["Related Wolfram Education Group Courses", "TutorialRelatedLinksSection",
  CellID->415694148,ExpressionUUID->"d7133744-0749-4657-932f-8922231aa25c"],
@@ -3709,11 +3734,12 @@ Cell["XXXX", "TutorialRelatedLinks",
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{700, 770},
-WindowMargins->{{444, Automatic}, {96, Automatic}},
-FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+WindowSize->{700.5, 755.25},
+WindowMargins->{{Automatic, 294.75}, {0.75, Automatic}},
+FrontEndVersion->"13.0 for Linux x86 (64-bit) (December 2, 2021)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "TutorialPageStyles.nb", 
-  CharacterEncoding -> "UTF-8"]
+  CharacterEncoding -> "UTF-8"],
+ExpressionUUID->"0c946a1e-ee06-4415-a73a-2dc1468e3f2e"
 ]
 (* End of Notebook Content *)
 
@@ -3726,120 +3752,104 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[545, 20, 600, 14, 25, "History",ExpressionUUID->"d8f706de-2164-4cb4-8bcc-6b9d938af505",
+Cell[545, 20, 600, 14, 22, "History",ExpressionUUID->"d8f706de-2164-4cb4-8bcc-6b9d938af505",
  CellID->1247902091],
-Cell[CellGroupData[{
-Cell[1170, 38, 123, 1, 30, "CategorizationSection",ExpressionUUID->"ffefc485-2717-4ca6-b6be-4ff1a91254f4",
+Cell[1148, 36, 123, 1, 22, "CategorizationSection",ExpressionUUID->"ffefc485-2717-4ca6-b6be-4ff1a91254f4",
  CellID->1122911449],
-Cell[1296, 41, 136, 2, 70, "Categorization",ExpressionUUID->"d561b800-4758-4adc-92f0-0e7e3fa2fdb5",
+Cell[1274, 39, 136, 2, 37, "Categorization",ExpressionUUID->"d561b800-4758-4adc-92f0-0e7e3fa2fdb5",
  CellID->686433507],
-Cell[1435, 45, 133, 2, 70, "Categorization",ExpressionUUID->"d68c63be-6e9e-42cc-be4a-1533110e4e91",
+Cell[1413, 43, 133, 2, 37, "Categorization",ExpressionUUID->"d68c63be-6e9e-42cc-be4a-1533110e4e91",
  CellID->605800465],
-Cell[1571, 49, 130, 2, 70, "Categorization",ExpressionUUID->"74608ed8-1e9c-4d2b-9131-45a735dc7a5a",
+Cell[1549, 47, 130, 2, 37, "Categorization",ExpressionUUID->"74608ed8-1e9c-4d2b-9131-45a735dc7a5a",
  CellID->468444828],
-Cell[1704, 53, 127, 1, 70, "Categorization",ExpressionUUID->"f2026683-6291-403f-a246-1313746dabf2"]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[1868, 59, 111, 1, 20, "KeywordsSection",ExpressionUUID->"935c3890-1dde-4296-8565-f7625fec25bc",
+Cell[1682, 51, 127, 1, 37, "Categorization",ExpressionUUID->"f2026683-6291-403f-a246-1313746dabf2"],
+Cell[1812, 54, 111, 1, 22, "KeywordsSection",ExpressionUUID->"935c3890-1dde-4296-8565-f7625fec25bc",
  CellID->1427428552],
-Cell[1982, 62, 100, 1, 70, "Keywords",ExpressionUUID->"25cc43d7-f8ee-4771-b39f-2135a650265a",
- CellID->1251852827]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[2119, 68, 108, 1, 20, "DetailsSection",ExpressionUUID->"e2f1a484-624a-4fbe-b669-a4245e483fff",
+Cell[1926, 57, 100, 1, 22, "Keywords",ExpressionUUID->"25cc43d7-f8ee-4771-b39f-2135a650265a",
+ CellID->1251852827],
+Cell[2029, 60, 108, 1, 22, "DetailsSection",ExpressionUUID->"e2f1a484-624a-4fbe-b669-a4245e483fff",
  CellID->307771771],
-Cell[2230, 71, 118, 2, 70, "Details",ExpressionUUID->"21c04aeb-bee4-440b-a0b9-27131424d495",
+Cell[2140, 63, 118, 2, 37, "Details",ExpressionUUID->"21c04aeb-bee4-440b-a0b9-27131424d495",
  CellID->218895918],
-Cell[2351, 75, 124, 2, 70, "Details",ExpressionUUID->"6c460821-ac9b-41c9-987c-17953ea423bb",
+Cell[2261, 67, 124, 2, 37, "Details",ExpressionUUID->"6c460821-ac9b-41c9-987c-17953ea423bb",
  CellID->350963985],
-Cell[2478, 79, 121, 2, 70, "Details",ExpressionUUID->"8bab53dc-89d8-4873-ae0e-592cdeef9e98",
+Cell[2388, 71, 121, 2, 37, "Details",ExpressionUUID->"8bab53dc-89d8-4873-ae0e-592cdeef9e98",
  CellID->795871300],
-Cell[2602, 83, 126, 2, 70, "Details",ExpressionUUID->"b2c4693b-bca8-4ac4-8e89-be0b07de277b",
+Cell[2512, 75, 126, 2, 37, "Details",ExpressionUUID->"b2c4693b-bca8-4ac4-8e89-be0b07de277b",
  CellID->199739161],
-Cell[2731, 87, 115, 2, 70, "Details",ExpressionUUID->"4407d2fe-89a4-47cc-a10d-196032cd8ec9",
+Cell[2641, 79, 115, 2, 36, "Details",ExpressionUUID->"4407d2fe-89a4-47cc-a10d-196032cd8ec9",
  CellID->40625308],
-Cell[2849, 91, 116, 2, 70, "Details",ExpressionUUID->"649cd1b5-ce9c-4ea2-9d63-020fdf1934c2",
+Cell[2759, 83, 116, 2, 36, "Details",ExpressionUUID->"649cd1b5-ce9c-4ea2-9d63-020fdf1934c2",
  CellID->357121918],
-Cell[2968, 95, 117, 2, 70, "Details",ExpressionUUID->"5cb7ac29-e00d-4dac-b1d9-9239d21c99c9",
+Cell[2878, 87, 117, 2, 36, "Details",ExpressionUUID->"5cb7ac29-e00d-4dac-b1d9-9239d21c99c9",
  CellID->35949532],
-Cell[3088, 99, 133, 2, 70, "Details",ExpressionUUID->"cdf3d223-10fa-4ea9-96ae-a4a2adcf7ebe",
+Cell[2998, 91, 133, 2, 36, "Details",ExpressionUUID->"cdf3d223-10fa-4ea9-96ae-a4a2adcf7ebe",
  CellID->929432370],
-Cell[3224, 103, 122, 2, 70, "Details",ExpressionUUID->"79d84147-9d3a-4856-9317-45c989ce1237",
- CellID->240026365]
-}, Closed]],
+Cell[3134, 95, 122, 2, 36, "Details",ExpressionUUID->"79d84147-9d3a-4856-9317-45c989ce1237",
+ CellID->240026365],
 Cell[CellGroupData[{
-Cell[3383, 110, 104, 1, 108, "Title",ExpressionUUID->"8a60a454-e089-40a3-bd93-17f1b42b63f9",
+Cell[3281, 101, 104, 1, 98, "Title",ExpressionUUID->"8a60a454-e089-40a3-bd93-17f1b42b63f9",
  CellID->509267359],
-Cell[3490, 113, 180, 2, 24, "Text",ExpressionUUID->"f8f85171-eeef-493e-974b-ee8c47f0831f",
+Cell[3388, 104, 180, 2, 35, "Text",ExpressionUUID->"f8f85171-eeef-493e-974b-ee8c47f0831f",
  CellID->1534169418],
-Cell[3673, 117, 439, 11, 92, "DefinitionBox",ExpressionUUID->"01da0969-cd33-454b-8ef0-feddc164ca9c",
+Cell[3571, 108, 439, 11, 67, "DefinitionBox",ExpressionUUID->"01da0969-cd33-454b-8ef0-feddc164ca9c",
  CellID->2096742444],
 Cell[CellGroupData[{
-Cell[4137, 132, 146, 2, 45, "Section",ExpressionUUID->"f4b1e609-3da2-4a05-b731-69172bbe9792",
+Cell[4035, 123, 146, 2, 68, "Section",ExpressionUUID->"f4b1e609-3da2-4a05-b731-69172bbe9792",
  CellID->1536219457],
 Cell[CellGroupData[{
-Cell[4308, 138, 159, 2, 41, "Subsection",ExpressionUUID->"64e2b92e-60bd-4d23-89f0-9f214124f04a",
+Cell[4206, 129, 159, 2, 54, "Subsection",ExpressionUUID->"64e2b92e-60bd-4d23-89f0-9f214124f04a",
  CellID->1975056533],
-Cell[CellGroupData[{
-Cell[4492, 144, 275, 5, 24, "Text",ExpressionUUID->"0297eb15-b31a-43b8-9f21-4172d321a49c",
+Cell[4368, 133, 275, 5, 58, "Text",ExpressionUUID->"0297eb15-b31a-43b8-9f21-4172d321a49c",
  CellID->836781195],
-Cell[4770, 151, 238, 4, 28, "Input",ExpressionUUID->"28a91a48-e1e0-4ddd-acd3-0281313c188c",
+Cell[4646, 140, 238, 4, 29, "Input",ExpressionUUID->"28a91a48-e1e0-4ddd-acd3-0281313c188c",
  CellID->1403200543],
 Cell[CellGroupData[{
-Cell[5033, 159, 997, 29, 73, "Input",ExpressionUUID->"9a48e930-0f66-481e-a3be-d367e2ac00a6",
+Cell[4909, 148, 1128, 32, 92, "Input",ExpressionUUID->"9a48e930-0f66-481e-a3be-d367e2ac00a6",
  CellID->2058623809],
-Cell[6033, 190, 152353, 3120, 373, "Output",ExpressionUUID->"fad2f566-2fd7-4c4b-ae66-621e5abf035e",
+Cell[6040, 182, 152742, 3163, 381, "Output",ExpressionUUID->"fad2f566-2fd7-4c4b-ae66-621e5abf035e",
  CellID->858299417]
-}, Open  ]]
 }, Open  ]],
-Cell[158413, 3314, 442, 8, 24, "Text",ExpressionUUID->"a301ee16-0c76-466c-8c67-c50d4d028132",
+Cell[158797, 3348, 442, 8, 58, "Text",ExpressionUUID->"a301ee16-0c76-466c-8c67-c50d4d028132",
  CellID->1365391372],
-Cell[158858, 3324, 204, 2, 24, "Text",ExpressionUUID->"6bf96cee-adad-45fb-b217-b2710a2bbb1b",
+Cell[159242, 3358, 204, 2, 35, "Text",ExpressionUUID->"6bf96cee-adad-45fb-b217-b2710a2bbb1b",
  CellID->1676382636]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[159111, 3332, 229, 3, 45, "Section",ExpressionUUID->"8dbe85f6-fc9a-4ecf-ad18-907457f67baf",
+Cell[159495, 3366, 229, 3, 68, "Section",ExpressionUUID->"8dbe85f6-fc9a-4ecf-ad18-907457f67baf",
  CellID->1131011768],
-Cell[159343, 3337, 401, 7, 42, "Text",ExpressionUUID->"3f7bc386-df25-49fa-9854-957c906218a0",
+Cell[159727, 3371, 401, 7, 81, "Text",ExpressionUUID->"3f7bc386-df25-49fa-9854-957c906218a0",
  CellID->1670170421],
-Cell[159747, 3346, 278, 5, 24, "Text",ExpressionUUID->"b37ab582-b889-409c-8d9e-a7d75d2d2238",
+Cell[160131, 3380, 278, 5, 35, "Text",ExpressionUUID->"b37ab582-b889-409c-8d9e-a7d75d2d2238",
  CellID->1264151520]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[160062, 3356, 303, 4, 45, "Section",ExpressionUUID->"76ea4476-7d1c-4206-b790-fe5246482162",
+Cell[160446, 3390, 303, 4, 68, "Section",ExpressionUUID->"76ea4476-7d1c-4206-b790-fe5246482162",
  CellID->954768787],
-Cell[160368, 3362, 422, 7, 60, "Text",ExpressionUUID->"3dce7d95-ef62-4be5-b963-f14c7707558a",
+Cell[160752, 3396, 422, 7, 81, "Text",ExpressionUUID->"3dce7d95-ef62-4be5-b963-f14c7707558a",
  CellID->1024205024],
-Cell[CellGroupData[{
-Cell[160815, 3373, 335, 6, 42, "Text",ExpressionUUID->"31180913-14d5-4421-80da-32926fc2dd06",
+Cell[161177, 3405, 335, 6, 58, "Text",ExpressionUUID->"31180913-14d5-4421-80da-32926fc2dd06",
  CellID->489779243],
 Cell[CellGroupData[{
-Cell[161175, 3383, 3252, 101, 205, "Input",ExpressionUUID->"917f70da-1a65-4d4d-9d85-f4955517d502",
+Cell[161537, 3415, 3252, 101, 174, "Input",ExpressionUUID->"917f70da-1a65-4d4d-9d85-f4955517d502",
  CellID->1869774051],
-Cell[164430, 3486, 787, 14, 75, "Message",ExpressionUUID->"c4ef8c0b-17a0-43c4-aa56-c5a99e6458e1",
+Cell[164792, 3518, 795, 14, 60, "Message",ExpressionUUID->"c4ef8c0b-17a0-43c4-aa56-c5a99e6458e1",
  CellID->564516415],
-Cell[165220, 3502, 7867, 176, 91, "Output",ExpressionUUID->"ee13e5ab-8d80-40f7-a95e-e12a35d9beee",
+Cell[165590, 3534, 7881, 179, 96, "Output",ExpressionUUID->"ee13e5ab-8d80-40f7-a95e-e12a35d9beee",
  CellID->1537197668]
-}, Open  ]]
-}, Open  ]]
 }, Open  ]],
-Cell[CellGroupData[{
-Cell[173148, 3685, 120, 1, 73, "TutorialMoreAboutSection",ExpressionUUID->"fada738f-636a-4b2d-bc5d-35f6346a164a",
+Cell[173486, 3716, 120, 1, 22, "TutorialMoreAboutSection",ExpressionUUID->"fada738f-636a-4b2d-bc5d-35f6346a164a",
  CellID->23220180],
-Cell[173271, 3688, 109, 1, 23, "TutorialMoreAbout",ExpressionUUID->"ddd63f51-3c8a-4564-98b5-fd1e396d5dcf",
- CellID->1567025153]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[173417, 3694, 127, 1, 73, "RelatedTutorialsSection",ExpressionUUID->"bb13cb78-005b-4f6a-9557-35c4eff7dc83",
+Cell[173609, 3719, 109, 1, 22, "TutorialMoreAbout",ExpressionUUID->"ddd63f51-3c8a-4564-98b5-fd1e396d5dcf",
+ CellID->1567025153],
+Cell[173721, 3722, 127, 1, 22, "RelatedTutorialsSection",ExpressionUUID->"bb13cb78-005b-4f6a-9557-35c4eff7dc83",
  CellID->415694126],
-Cell[173547, 3697, 107, 1, 23, "RelatedTutorials",ExpressionUUID->"b3b658d5-780f-4c95-9f53-26c4a6592aae",
- CellID->806871991]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[173691, 3703, 153, 1, 73, "TutorialRelatedLinksSection",ExpressionUUID->"d7133744-0749-4657-932f-8922231aa25c",
+Cell[173851, 3725, 107, 1, 22, "RelatedTutorials",ExpressionUUID->"b3b658d5-780f-4c95-9f53-26c4a6592aae",
+ CellID->806871991],
+Cell[173961, 3728, 153, 1, 22, "TutorialRelatedLinksSection",ExpressionUUID->"d7133744-0749-4657-932f-8922231aa25c",
  CellID->415694148],
-Cell[173847, 3706, 111, 1, 23, "TutorialRelatedLinks",ExpressionUUID->"7bf382f7-d775-46a2-92cb-a28e2621bbbb",
+Cell[174117, 3731, 111, 1, 22, "TutorialRelatedLinks",ExpressionUUID->"7bf382f7-d775-46a2-92cb-a28e2621bbbb",
  CellID->415694149]
 }, Open  ]]
 }, Open  ]]
