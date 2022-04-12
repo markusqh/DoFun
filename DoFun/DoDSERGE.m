@@ -104,9 +104,11 @@
 	3.0.1:
 		-) introduced warning in sortCanonical when dummy fields are contained and the expression is not sorted
 		-) introduced error handler when user tries to use the dummy field as field in setFields
-	develp:
+	develop:
 		-) grassmannTest is no longer done for RGEs, since ansatz for action fully determines the allowed vertices.
 			Changing this behavior avoids problems with mixed fermionic propagators for RGEs. 
+		-) replacedField for DSEs now handles sf expressions.
+		-) $dummyField is no longer grassmann false but undefined to avoid wrong signs from sf.
 *)
 
 
@@ -1040,7 +1042,6 @@ $fieldTypes={boson, fermion, antiFermion, complex, antiComplex, superField};
 (* the standard super field *)
 $dummyField = \[Phi]; 
 Evaluate@$dummyField /: fieldType[$dummyField] := superField;
-Evaluate@$dummyField /: grassmannQ[$dummyField] = False;
 
 
 (* fermionic dummy fields *)
@@ -1465,7 +1466,7 @@ sf[a_, b___List] /;
   sf[a, DeleteCases[b, _?bosonQ | _?complexFieldQ | _?antiComplexFieldQ]]
   
 (* if elements of op are sorted, do not touch sf expressions *)
-Sort[sf[a_, b_]] ^= sf[a, b]
+Sort[sf[a_, b_]] ^:= sf[a, b];
 
 (* make signs explicit *)
 getSigns[exp_] := 
@@ -1491,9 +1492,10 @@ firstDerivReplacement[a_?NumericQ]:=a;
 firstDerivReplacement[op[b___,c_List]]:=op[Sequence@@(replacedField/@{b}),c];
 
 
-(* no action on S and CO *)
+(* no action on S, sf and CO *)
 replacedField[a_S]:=a;
 replacedField[a_CO]:=a;
+replacedField[a_sf]:=a;
 replacedField[a_?NumericQ]:=a;
 
 
