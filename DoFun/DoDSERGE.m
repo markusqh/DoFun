@@ -109,6 +109,7 @@
 			Changing this behavior avoids problems with mixed fermionic propagators for RGEs. 
 		-) replacedField for DSEs now handles sf expressions.
 		-) $dummyField is no longer grassmann false but undefined to avoid wrong signs from sf.
+		-) updated arrowLine for use in >M13.1 (context of GraphElementData changed)
 *)
 
 
@@ -1301,6 +1302,7 @@ DSEPlotList::multiPropagators="Note: More than two different propagators connect
 (* ::Section:: *)
 (* General Functions *)
 
+
 (* op cleared for DoFun3 *)
 (* the op functions hold together vertices and propagators; it stands for summations/integration over indices *)
 op[a___,b_ ?NumericQ c_,d___]:=b op[a,c,d];
@@ -1746,7 +1748,7 @@ equalOps=Flatten[#//.{b___,c_List,d___,e_List,f___}:> {b,{c[[1]]+e[[1]],c[[2]]},
 	/;getGraphCharacteristic[c[[2]],extFields]===getGraphCharacteristic[e[[2]],extFields]&/@classes,1];
 
 (* multiply with numerical factors *)
-equalOps[[All,1]].equalOps[[All,2]]
+equalOps[[All,1]] . equalOps[[All,2]]
 
 ];
 
@@ -1989,6 +1991,7 @@ getSignature[a_op] := Module[{verts},
 
 (* ::Section:: *)
 (* Set Sources to Zero *)
+
 
 (* standard test checking for conservation of Grassmann numbers
 here we assume that only Grassmann numbers of fields are conserved that have a propagator *)
@@ -2796,10 +2799,10 @@ vertexDummies[a_op,sort_:(#&),opts___?OptionQ] /;Not@OptionQ@sort:=(*vertexDummi
 (* auxiliary function for DSEPlotList for plotting arrows/lines for fermions/bosons instead of lines *)
 
 arrowLine[field_, coords___, opts___?OptionQ]:=Module[{},
-	
+(* GraphElementData was moved to another context in M13.1 *)
 	If[grassmannQ[field] || complexFieldQ[field] || antiComplexFieldQ[field],
-		GraphElementData["Arrow"][coords], 
-    	GraphElementData["Line"][coords]
+		If[$VersionNumber>=13.1,GraphComputation`GraphElementData["Arrow"][coords],GraphElementData["Arrow"][coords]],
+		If[$VersionNumber>=13.1,GraphComputation`GraphElementData["Line"][coords],GraphElementData["Line"][coords]]
     ]
 ];
 
