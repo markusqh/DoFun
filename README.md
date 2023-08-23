@@ -1,10 +1,11 @@
 # DoFun
 A Mathematica package for the derivation of functional equations
 
-You can install the latest release of DoFun by copying and evaluating
+You can install the latest **release** of DoFun by copying and evaluating
 
 Import["https://raw.githubusercontent.com/markusqh/DoFun/master/DoFun/DoFunInstaller.m"]
 
 in a Mathematica input cell.
 
-To use the current development version, you need to download the files manually and copy them to Mathematica's application directory.
+The **current development version** might contain additional updates.
+To use it, you can clone the repository and link the subdirectory *DoFun* to the *Applications* directory in the *$UserBaseDirectory* (on Linux this is normally *$HOME/.Mathematica*) or manually download the *DoFun* subdirectory to this location.
