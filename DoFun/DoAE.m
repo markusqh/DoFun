@@ -26,13 +26,15 @@
     3.0.0 (31.7.2019):
     	-) added composite operator CO tofunctionality
     	-) momentum routing for more general diagrams than DSEs and RGEs
+    3.1.0 (4.9.2023):
+		-) no functional changes, updated documentation
 *)
 
 
 BeginPackage["DoFun`DoAE`", { "DoFun`DoDSERGE`", "DoFun`DoFR`"}]
 
 (* variable that gives the version of DoDSE *)
-$DoAEVersion="3.0.0";
+$DoAEVersion="3.1.0";
 
 If[Not@FreeQ[Contexts[],"DoFun`"],DoFun`DoAE`$doAEStartMessage=False];
 If[(DoFun`DoAE`$doAEStartMessage=!=False),
@@ -434,6 +436,7 @@ insertMomenta[a_op, extMomenta_List] :=
   selfPropsAdded = addMomentum[extFieldsAdded, Flatten[List@@@selfProps,1], Flatten[Transpose[{momentaSelfProps,-momentaSelfProps}],1]];
   
   (* remove the self-loops from the internal legs *)
+  (* Note: Complement sorts the list. Thus determines which expressions get which momenta. *)
   startVertexIntLegs = Complement[startVertexIntLegs, Flatten[List@@@selfProps,1]];
   
   (* determine the loop momenta *)

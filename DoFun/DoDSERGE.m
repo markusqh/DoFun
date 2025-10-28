@@ -104,7 +104,7 @@
 	3.0.1:
 		-) introduced warning in sortCanonical when dummy fields are contained and the expression is not sorted
 		-) introduced error handler when user tries to use the dummy field as field in setFields
-	develop:
+	3.1.0 (4.9.2023):
 		-) grassmannTest is no longer done for RGEs, since ansatz for action fully determines the allowed vertices.
 			Changing this behavior avoids problems with mixed fermionic propagators for RGEs. 
 		-) replacedField for DSEs now handles sf expressions.
@@ -123,7 +123,7 @@ BeginPackage["DoFun`DoDSERGE`"]
 (* Exported symbols added here with SymbolName::usage *)
 
 (* version of DoDSERGE *)
-$doDSERGEVersion="3.0.1";
+$doDSERGEVersion="3.1.0";
 
 If[Not@FreeQ[Contexts[],"DoFun`"],DoFun`DoDSERGE`$doDSERGEStartMessage=False];
 If[DoFun`DoDSERGE`$doDSERGEStartMessage=!=False,
@@ -453,7 +453,8 @@ RGEPlot[rge, {{phi, Black}}, output -> forceEquation]
 
 Three-point RGE of a theory with bosonic fields A, phi, and phib which mix at the two-point level, i.e., additional propagators have to be given in an extra argument. No regulator insertions performed.
 setFields[{A},{},{{phi,phib}}];
-rge = doRGE[{{A, A}, {phi, phib}, {A, phi}, {A, phib}, {A, phib, phi}}, {A, A, A}, {{phi, phi}, {phib, phib}}, specificFieldDefinitions -> {A, phi, phib}, tDerivative -> False]
+rge = doRGE[{{A, A}, {phi, phib}, {A, phi}, {A, phib}, {A, phib, phi}}, {A, A, A}, {{phi, phi}, {phib, phib}, {phi, phib}}, tDerivative -> False]
+RGEPlot[rge]doRGE
 RGEPlot[rge]
 ";
 
@@ -1850,6 +1851,7 @@ getGraphCharacteristic[graph_op, extLegs_List] :=
   (* rotate extFields until the first derivative is on position 1; this is necessary so that equal graphs with opposite directions of the fields can be identified  *)
   (*extFieldsRotated=FixedPoint[RotateLeft[#]&, extFields, Length@extFields, SameTest->(Not[FreeQ[#2[[1]], extLegs[[1]]]] &)];*)
   extFieldsRotated=extLegs;
+  
   (* find neighbours from there *)
   firstNeighbours = getNeighbours[id, extFieldsRotated];
  
@@ -1874,7 +1876,7 @@ sortCanonical[b_op, derivatives_List]/;Not[FreeQ[b,$dummyField]]:=(Message[sortC
 sortCanonical[b_op, derivatives_List] := 
  Module[{ordered, fieldValues, i, intIndices, extFieldIndices, props, const,
  	connectedLeg, intIndexAss, intVertsAss, orderV, orderP, orderR, intVerts, extVerts,
- 	complexPropRules,extFields},
+ 	complexPropRules,extFields,vOrdered,orderVRules},
 
   (* constant to distinguish internal from external indices *)
   const = 10^10;
@@ -1892,7 +1894,7 @@ sortCanonical[b_op, derivatives_List] :=
   extVerts = Cases[b, V[a__]|S[a__]|CO[a__]/;Not@FreeQ[{a}, Alternatives@@derivatives[[All,2]]] && Length[{a}]>2];
   
   (* get vertices without external legs *)
-  intVerts = Cases[b, V[a__]/;FreeQ[{a}, Alternatives@@derivatives[[All,2]]]];
+  intVerts = Cases[b, V[a__]|S[a__]/;FreeQ[{a}, Alternatives@@derivatives[[All,2]]]];
   
   (* assign each index a number for sorting: 
   external ones by position in derivatives, 
@@ -1968,8 +1970,13 @@ sortCanonical[b_op, derivatives_List] :=
   ordered = b /. V[a__] :> orderV[V[a]] /. S[a__] :> orderV[S[a]] /. CO[a__] :> orderV[CO[a]] 
   	/. P[a__] :> orderP[P[a]] /. dR[a__] :> orderR[dR[a]];
   
+  (* also bring vertices with external legs in order of those indices, necessary for some graphs so that identifyGraphs works properly *)
+  orderVRules=Function[fieldInd,op[a___,c_V,d___]:>op[c,a,d]/;Not@FreeQ[c,fieldInd]]/@Reverse@derivatives;
+  (* now put one vertex with external leg after the other at the top, also put the internal dressed vertices directly after them *)
+  vOrdered = Fold[#1/.#2&,ordered,orderVRules]//.op[c___,d_P|d_S,f_V,g___]:>op[c,f,d,g];
+  
   (* get signature sign of original and ordered expression for the relative sign *)
-  getSignature@b getSignature@ordered ordered/.complexPropRules
+  getSignature@b getSignature@vOrdered vOrdered/.complexPropRules
 ]
 
 
@@ -2863,6 +2870,66 @@ getVertexShapeFunction[{x_,y_}, label_, {w_, h_}, opts___?OptionQ] := vertexSymb
 (* Plotting graphs using Graph; if a list of directed propagators/fermions is given, arrows will be used;
 the plotting is done in DSEPlotList, which creates a list of plots
 the user invokes DSEPlot and gets a complete DSE, but with the option output -> List one can also get a list *)
+
+
+(* temporary test function *)
+DSEPlotGraph[a_List,plotRules_List:{},opts___?OptionQ]:=Module[{verts,edgeLabels,graph,multiEdges,multiEdgeRules,multiEdgeReps},
+
+
+	(* sort real complex fields for easier identification below, take the field info from the label *)
+	graph = Replace[a, {c_Rule, d_}:>{Sort@c, d}/;bosonQ[ToExpression@StringCases[{d}, f__ ~~ " " ~~ __ /; fieldQ[ToExpression[f]] :> f][[1, 1]]], {1}];
+	
+	(* In Mathematica 12.0.0 EdgeRenderingFunction was superseded by EdgeShapeFunction at it was modified getting less arguments.
+	The label is no longer provided as argument and thus edges can no longer be distinguished properly.
+	To avoid problems in future versions, EdgeShapeFunction is used together with Graph (instead of GraphPlot).
+	The remaining problem is that edges connecting the same vertice cannot be distinguished. Possibly this is a bug/unforeseen problem in M12.
+	In case of two different edges a cheat is to use UndirectedEdge and DirectedEdge, which can be distinguished (the latter even twice because of two directions;
+	however, this is not used as different directions can appear by themselves).
+	If there are more different edges, no method is known. A warning is given then. *)
+	
+	(* get all adges that connect the same vertices *)
+	multiEdges = Select[graph, Count[graph, #[[1]], \[Infinity]] >= 2 &];
+	(* group them *)
+	multiEdges = Union/@GatherBy[multiEdges, #[[1]]&];
+	
+	(* make sure only one representative is there *)
+	multiEdgeReps = Function[d, DeleteDuplicatesBy[d, #[[2]]&]]/@multiEdges;
+	
+	(* give a warning if there are more than 2 different edges *)
+	If[Or@@(Length[#]>2 & /@ multiEdgeReps), Message[DSEPlotList::multiPropagators]];
+	
+	(* rules for replacing some of the edges: use undirected edges *)
+	multiEdgeRules = (#->{UndirectedEdge@@#[[1]], #[[2]]})&/@Select[multiEdgeReps, Length@#>1&][[All,2]];
+
+	(* replace the edges *)
+	graph = graph/.multiEdgeRules;
+	
+	(* add field style to propagators; if no style is given, add edge labels *)
+	If[plotRules==={},
+		edgeLabels = (#[[1]]->#[[2]])&/@graph,
+		edgeLabels = {}
+	];
+	
+	
+	(* set properties of edges *)
+	graph = Property[#[[1]], EdgeShapeFunction -> getEdgeShapeFunction[#, plotRules]] & /@ graph;
+	
+	(* add vertex style *)
+	verts = Union@@List@@@a[[All,1]];
+	graph = {Function[vert, Property[vert, VertexShapeFunction->(getVertexShapeFunction[##, opts]&)]] /@ verts, graph};
+	(*
+	(* extend plot Rules also to antifields *)
+	plotRulesAll=Union@Replace[plotRules, {c_?fieldQ, d__} :> Sequence[{c, d}, {antiField@c, d}], 1];
+	*)
+	(* get fields that are not necessarily fermions but directed, e.g., scalar complex fields *)
+	(*dirFields=(directedFields/.Join[{opts},Options@DSEPlot]);*)
+	
+	Graph[Sequence@@graph, 
+			(*FilterRules[Join[{opts},Options@DSEPlot],Options@Graph],*)
+			(*VertexSize->vsize,*)
+			GraphLayout -> "SpringElectricalEmbedding",
+			EdgeLabels -> edgeLabels]
+]
 
 
 (* with edges rendered specially *)

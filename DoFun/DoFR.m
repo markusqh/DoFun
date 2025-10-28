@@ -23,13 +23,15 @@
     3.0.0 (31.7.2019):
     	-) modified defineFieldsSpecific
     	-) modified derivF and getFR to left-derivatives
+	3.1.0 (4.9.2023):
+		-) no functional changes, updated documentation
 *)
 
 
 BeginPackage["DoFun`DoFR`", { "DoFun`DoDSERGE`", "DoFun`DoAE`"}]
 
 
-$DoFRVersion="3.0.0";
+$DoFRVersion="3.1.0";
 
 If[Not@FreeQ[Contexts[],"DoFun`"],DoFun`DoFR`$doFRStartMessage=False];
 If[DoFun`DoFR`$doFRStartMessage=!=False,
@@ -43,6 +45,7 @@ If[DoFun`DoFR`$doFRStartMessage=!=False,
 
 (* ::Section::Closed:: *)
 (* usages *)
+
 
 convertAction::usage="convertAction[ac] converts a given physical action ac into a form suitable for computation, i.e., with proper dummy indices and momenta.
 
@@ -125,7 +128,7 @@ U::usage="U[f] represents a potential depending on f.
 
 
 
-(* ::Section::Closed:: *)
+(* ::Section:: *)
 (* options *)
 (* define all functions which can contain indices *)
 
@@ -223,7 +226,7 @@ convertAction[ac_] :=
 
 
 
-(* ::Section::Closed:: *)
+(* ::Section:: *)
 (* differentiation functions *)
 
 
@@ -236,8 +239,10 @@ derivF[exp_op, field_] := Module[{fieldsInExp,orderedExps,moveField},
 
 	(* moveField moves Grassmann fields acted upon by a derivative to the utmost left;
 	it is always assumed that derivatives with respect to Grassmann fields act from the left *)	
-	moveField[lExp_,lField_]/;grassmannQ@Head@lField:={lExp//.{op[a___,lField,b_?(grassmannQ@Head@# &),c___]:>-op[a,b,lField,c],
-		op[a___,lField,b_?(cFieldQ@Head@# &),c___]:>op[a,b,lField,c]},lField};
+(*	moveField[lExp_,lField_]/;grassmannQ@Head@lField:={lExp//.{op[a___,lField,b_?(grassmannQ@Head@# &),c___]:>-op[a,b,lField,c],
+		op[a___,lField,b_?(cFieldQ@Head@# &),c___]:>op[a,b,lField,c]},lField};*)
+	moveField[lExp_,lField_]/;grassmannQ@Head@lField:={lExp//.{op[a___,b_?(grassmannQ@Head@# &),lField,c___]:>-op[a,lField,b,c],
+		op[a___,b_?(cFieldQ@Head@# &),lField,c___]:>op[a,lField,b,c]},lField};
 	moveField[lExp_,lField_]:={lExp,lField};		
 	
   fieldsInExp = List @@ Select[exp, Head@# == field[[0]] &];
@@ -471,7 +476,7 @@ integrateDeltas[exp_]:=exp
 
 
 
-(* ::Section::Closed:: *)
+(* ::Section:: *)
 (* function to derive the Feynman rules *)
 
 
@@ -486,7 +491,6 @@ getFR[action_,fields_List,opts___?OptionQ]:=Module[
 	
 	(* for vertices add a minus sign according to convention *)
 	sign=Which[Length@fields>2,DoFun`DoDSERGE`$signConvention (-1),True,(+1)];
-
 	
 	(* filter out the terms with the appropriate fields to avoid unnecessary computations; keep everything in the broken phase *)
 	filtered=If[(symmetry/.Join[{opts},Options@doRGE])==="broken"||Head@action==Plus (* in case there is only one term *),action,Plus@@Cases[action,(a___ op[b___]/;Sort[{b}[[All,0]]]==Sort[fields[[All,0]]])| U[__] | a__ U[__]],action];

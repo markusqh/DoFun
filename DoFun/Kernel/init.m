@@ -5,8 +5,8 @@
 BeginPackage["DoFun`"]
 
 $doFunMainVersion=3;
-$doFunSubVersion=0;
-$doFunBuiltVersion=1;
+$doFunSubVersion=1;
+$doFunBuiltVersion=0;
 
 $doFunVersion=ToString@$doFunMainVersion~~"."~~ToString@$doFunSubVersion~~"."~~ToString@$doFunBuiltVersion;
 
