@@ -1972,8 +1972,10 @@ sortCanonical[b_op, derivatives_List] :=
   
   (* also bring vertices with external legs in order of those indices, necessary for some graphs so that identifyGraphs works properly *)
   orderVRules=Function[fieldInd,op[a___,c_V,d___]:>op[c,a,d]/;Not@FreeQ[c,fieldInd]]/@Reverse@derivatives;
-  (* now put one vertex with external leg after the other at the top, also put the internal dressed vertices directly after them *)
-  vOrdered = Fold[#1/.#2&,ordered,orderVRules]//.op[c___,d_P|d_S,f_V,g___]:>op[c,f,d,g];
+  (* now put one vertex with external leg after the other at the top, also put the internal dressed vertices directly after them;
+  finally, move the bare vertex in DSEs to the front to avoid a different routing in getAE than before (which would require to adapt
+  the momentum shifts in existing calculations) *)
+  vOrdered = Fold[#1/.#2&,ordered,orderVRules]//.op[c___,d_P|d_S,f_V,g___]:>op[c,f,d,g]/.op[a___,c_S,d___]:>op[c,a,d]/;Not@FreeQ[c,derivatives[[1]]];
   
   (* get signature sign of original and ordered expression for the relative sign *)
   getSignature@b getSignature@vOrdered vOrdered/.complexPropRules
