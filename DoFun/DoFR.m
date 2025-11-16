@@ -24,7 +24,8 @@
     	-) modified defineFieldsSpecific
     	-) modified derivF and getFR to left-derivatives
 	3.1.0 (4.9.2023):
-		-) no functional changes, updated documentation
+		-) updated documentation
+		-) fixed bug in getDeltasForInt that affected integrateDeltas when other arguments had the same name as indices
 *)
 
 
@@ -380,9 +381,8 @@ getDeltasForInt[exp_] :=
   allInds = Flatten[List @@@ getIndices[exp/.delta[ind_,a_,b_]:>delta[a,b]]](*Join[Sequence @@@ allDeltas]*);
   (*allInds = Flatten[List @@@ getIndices[exp]](*Join[Sequence @@@ allDeltas]*);*)
 
-  intInds = 
-   Union@Select[allInds, Count[exp, #, \[Infinity]] == 2 &];
-  
+  intInds = Union@Select[allInds, Count[allInds, #] == 2 &];
+
   (* the {} at the end is to terminate the series of replacements; count from the end to avoid the index type *)
   intDeltas = 
    Append[Select[allDeltas, 
