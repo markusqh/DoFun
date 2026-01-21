@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    470866,      10465]
-NotebookOptionsPosition[    455742,      10232]
-NotebookOutlinePosition[    456209,      10249]
-CellTagsIndexPosition[    456166,      10246]
+NotebookDataLength[    486195,      10784]
+NotebookOptionsPosition[    470322,      10540]
+NotebookOutlinePosition[    470790,      10557]
+CellTagsIndexPosition[    470747,      10554]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -110,13 +110,15 @@ Cell[TextData[{
  "This document describes the conventions for fermions. Note that this ",
  StyleBox["supersedes previous documentation",
   FontSlant->"Italic"],
- "."
+ ".\nBelow also a cheat sheet for quick reference is provided."
 }], "Text",
  CellChangeTimes->{{3.784870848360153*^9, 3.784870869144309*^9}, {
   3.902285446902474*^9, 3.902285447028405*^9}, {3.902286348129747*^9, 
   3.902286426703032*^9}, {3.902824905235797*^9, 3.902824907905432*^9}, {
   3.902824955305677*^9, 3.902824955711185*^9}, {3.9310016607331867`*^9, 
-  3.9310016788758287`*^9}, {3.94811369796491*^9, 3.948113745567008*^9}},
+  3.9310016788758287`*^9}, {3.94811369796491*^9, 3.948113745567008*^9}, {
+  3.977971449235194*^9, 3.9779714635973797`*^9}, {3.977971626308372*^9, 
+  3.977971631829928*^9}},
  CellID->1534169418,ExpressionUUID->"2ea02407-09b3-4b62-8546-cb71abb20bfc"],
 
 Cell[CellGroupData[{
@@ -253,6 +255,14 @@ Cell[TextData[{
   3.977831554610918*^9, 3.9778315613464613`*^9}, {3.977837675240362*^9, 
   3.9778376772355127`*^9}},ExpressionUUID->"819763cd-83e0-4b65-9968-\
 4084aba38b51"],
+
+Cell["\<\
+Note: The coefficients of the fields are given with indices in the order \
+(left-)derivatives need to be done to obtain them from the action.\
+\>", "Text",
+ CellChangeTimes->{{3.977971479700247*^9, 
+  3.977971596406528*^9}},ExpressionUUID->"41a29868-c01b-47f6-8f0e-\
+2ff160a5b9fc"],
 
 Cell["The path integral is given by", "Text",
  CellChangeTimes->{{3.901870990423199*^9, 3.901871117336906*^9}, 
@@ -570,8 +580,10 @@ RURERETOkVPvERQREREREREREREREREREZl7/g8uA4ad
   DefaultBaseStyle->"ImageGraphics",
   ImageSize->{217.5, Automatic},
   ImageSizeRaw->{679., 225.},
-  PlotRange->{{0, 679.}, {0, 225.}}]], "Input",ExpressionUUID->"1cb4cd22-f55a-\
-4bf3-9b15-c3757a90d0f3"],
+  PlotRange->{{0, 679.}, {0, 225.}}]], "Input",
+ CellChangeTimes->{{3.977972256781475*^9, 
+  3.977972259201215*^9}},ExpressionUUID->"1cb4cd22-f55a-4bf3-9b15-\
+c3757a90d0f3"],
 
 Cell["\<\
 The propagator is the inverse of the two-point function (using symbolic \
@@ -686,63 +698,84 @@ square in the path integral,\n",
   FormBox[
    RowBox[{
     RowBox[{
-     RowBox[{
+     RowBox[{"-", 
+      FormBox[
+       RowBox[{
+        SuperscriptBox["S", 
+         RowBox[{
+          SubscriptBox["\[Psi]", "1"], 
+          SubscriptBox[
+           OverscriptBox["\[Psi]", "_"], "2"]}]], 
+        SubscriptBox[
+         OverscriptBox["\[Psi]", "_"], "2"], 
+        SubscriptBox["\[Psi]", "1"]}],
+       TraditionalForm]}], "+", 
+     FormBox[
       RowBox[{
        RowBox[{
-        RowBox[{"-", 
-         FormBox[
-          RowBox[{
-           SuperscriptBox["S", 
-            RowBox[{"\[Psi]", 
-             OverscriptBox["\[Psi]", "_"]}]], 
-           OverscriptBox["\[Psi]", "_"], "\[Psi]"}],
-          TraditionalForm]}], "+", 
-        FormBox[
-         RowBox[{
-          RowBox[{
-           OverscriptBox["\[Eta]", "_"], "\[Psi]"}], "+", 
-          RowBox[{"\[Eta]", 
-           OverscriptBox["\[Psi]", "_"]}]}],
-         TraditionalForm]}], " ", "=", 
+        SubscriptBox[
+         OverscriptBox["\[Eta]", "_"], "1"], 
+        SubscriptBox["\[Psi]", "1"]}], "+", 
+       RowBox[{
+        SubscriptBox["\[Eta]", "2"], 
+        SubscriptBox[
+         OverscriptBox["\[Psi]", "_"], "2"]}]}],
+      TraditionalForm]}], " ", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
        RowBox[{
         FormBox[
          RowBox[{"-", 
-          RowBox[{"(", 
-           OverscriptBox["\[Psi]", "_"]}]}],
+          SubscriptBox[
+           OverscriptBox["\[Psi]", "_"], "2"]}],
          TraditionalForm], "-", 
         SuperscriptBox[
          RowBox[{
-          FormBox[
-           OverscriptBox["\[Eta]", "_"],
-           TraditionalForm], "[", 
+          SubscriptBox[
+           FormBox[
+            OverscriptBox["\[Eta]", "_"],
+            TraditionalForm], "2"], "[", 
           FormBox[
            SuperscriptBox["S", 
-            RowBox[{"\[Psi]", 
-             OverscriptBox["\[Psi]", "_"]}]],
+            RowBox[{
+             SubscriptBox["\[Psi]", "1"], 
+             SubscriptBox[
+              OverscriptBox["\[Psi]", "_"], "2"]}]],
            TraditionalForm], "]"}], 
-         RowBox[{"-", "1"}]]}]}], ")"}], 
-     RowBox[{
-      FormBox[
-       SuperscriptBox["S", 
-        RowBox[{"\[Psi]", 
-         OverscriptBox["\[Psi]", "_"]}]],
-       TraditionalForm], "(", 
-      RowBox[{"\[Psi]", "+", 
-       RowBox[{
-        SuperscriptBox[
-         RowBox[{"[", 
-          SuperscriptBox["S", 
-           RowBox[{"\[Psi]", 
-            OverscriptBox["\[Psi]", "_"]}]], "]"}], 
-         RowBox[{"-", "1"}]], "\[Eta]"}]}], ")"}]}], "-", 
-    RowBox[{
-     SuperscriptBox[
+         RowBox[{"-", "1"}]]}], ")"}], 
       RowBox[{
-       OverscriptBox["\[Eta]", "_"], " ", "[", 
-       SuperscriptBox["S", 
-        RowBox[{"\[Psi]", 
-         OverscriptBox["\[Psi]", "_"]}]], "]"}], 
-      RowBox[{"-", "1"}]], "\[Eta]"}]}], TraditionalForm]],ExpressionUUID->
+       FormBox[
+        SuperscriptBox["S", 
+         RowBox[{
+          SubscriptBox["\[Psi]", "1"], 
+          SubscriptBox[
+           OverscriptBox["\[Psi]", "_"], "2"]}]],
+        TraditionalForm], "(", 
+       RowBox[{
+        SubscriptBox["\[Psi]", "1"], "+", 
+        RowBox[{
+         SuperscriptBox[
+          RowBox[{"[", 
+           SuperscriptBox["S", 
+            RowBox[{
+             SubscriptBox["\[Psi]", "1"], 
+             SubscriptBox[
+              OverscriptBox["\[Psi]", "_"], "2"]}]], "]"}], 
+          RowBox[{"-", "1"}]], 
+         SubscriptBox["\[Eta]", "1"]}]}], ")"}]}], "-", 
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{
+        SubscriptBox[
+         OverscriptBox["\[Eta]", "_"], "2"], " ", "[", 
+        SuperscriptBox["S", 
+         RowBox[{
+          SubscriptBox["\[Psi]", "1"], 
+          SubscriptBox[
+           OverscriptBox["\[Psi]", "_"], "2"]}]], "]"}], 
+       RowBox[{"-", "1"}]], 
+      SubscriptBox["\[Eta]", "1"]}]}]}], TraditionalForm]],ExpressionUUID->
   "65110dea-ca47-4ab2-8d1a-1ca517aa4fbb"],
  " ,\nand integrate out the fields. Then only\n",
  Cell[BoxData[
@@ -759,12 +792,16 @@ square in the path integral,\n",
         RowBox[{"-", 
          SuperscriptBox[
           RowBox[{
-           OverscriptBox["\[Eta]", "_"], " ", "[", 
+           SubscriptBox[
+            OverscriptBox["\[Eta]", "_"], "2"], " ", "[", 
            SuperscriptBox["S", 
-            RowBox[{"\[Psi]", 
-             OverscriptBox["\[Psi]", "_"]}]], "]"}], 
-          RowBox[{"-", "1"}]]}], "\[Eta]"}], ")"}]}], ")"}]}], 
-   TraditionalForm]],ExpressionUUID->"4ca247cf-af42-4fa6-88ce-a9480a11efb2"],
+            RowBox[{
+             SubscriptBox["\[Psi]", "1"], 
+             SubscriptBox[
+              OverscriptBox["\[Psi]", "_"], "2"]}]], "]"}], 
+          RowBox[{"-", "1"}]]}], 
+        SubscriptBox["\[Eta]", "1"]}], ")"}]}], ")"}]}], TraditionalForm]],
+  ExpressionUUID->"4ca247cf-af42-4fa6-88ce-a9480a11efb2"],
  "\nremains where the superscript 0 indicates that interactions were dropped. \
 The bare propagator ",
  Cell[BoxData[
@@ -785,9 +822,9 @@ The bare propagator ",
     RowBox[{"[", 
      SuperscriptBox["S", 
       RowBox[{
-       SubscriptBox["\[Psi]", "2"], 
+       SubscriptBox["\[Psi]", "1"], 
        SubscriptBox[
-        OverscriptBox["\[Psi]", "_"], "1"]}]], "]"}], 
+        OverscriptBox["\[Psi]", "_"], "2"]}]], "]"}], 
     RowBox[{"-", "1"}]], TraditionalForm]],ExpressionUUID->
   "ce64da9d-5c11-46f1-bc5d-c7a2f0da153d"],
  ", or explicitly for the example above:\n\n",
@@ -914,8 +951,10 @@ The bare propagator ",
    3.977543863572027*^9, 3.977543955071534*^9}, {3.977543989903014*^9, 
    3.9775441192064133`*^9}, {3.97754498464995*^9, 3.9775449856811533`*^9}, {
    3.977545702593629*^9, 3.977545705037938*^9}, {3.977545807191244*^9, 
-   3.977545916018653*^9}, {3.9777449176864347`*^9, 
-   3.977744922830277*^9}},ExpressionUUID->"20055634-2e35-4f63-9b80-\
+   3.977545916018653*^9}, {3.9777449176864347`*^9, 3.977744922830277*^9}, {
+   3.977972282506557*^9, 3.97797236157635*^9}, {3.977972669331541*^9, 
+   3.977972681017022*^9}, {3.977972720909505*^9, 
+   3.977972791892572*^9}},ExpressionUUID->"20055634-2e35-4f63-9b80-\
 438e0e008b77"]
 }, Open  ]],
 
@@ -956,7 +995,114 @@ Cell[TextData[{
          OverscriptBox["\[CapitalPsi]", "_"], "2"]}]], ")"}], 
      RowBox[{"-", "1"}]]}], TraditionalForm]],ExpressionUUID->
   "495f8878-cc95-44e8-9799-13be31049303"],
- ".\nThis describes the propagation from creation of a particle (",
+ ".\n",
+ Cell[BoxData[
+  GraphicsBox[
+   TagBox[RasterBox[CompressedData["
+1:eJzt3c2KZdUZBmBJMsgwuQJNeq5gEnCiGMjE0CIYMhIMSlTSiAENhMaRZFJ4
+Af5cgAoZqxOH9hW04wzaC5C6g5P6ml6y3Jyfvc/PWt/e+3ngjXZ1VZ1TwWK9
+a6291/7N6/98+c2fPfbYY+/98uZ/Xn7t3398993X7v7lVzd/+Os77/3jrXfe
++PsL7/zrjbfeePeZ139+88EHN/ni5vN/cfPPzWYjIiIiIiIiIiIiIiIiIiIi
+IiIiIiIyNQAA0MLVRjcFACAH3RQAgCzs6QMAkIVuCgBAFropAABZ6KYAAGSh
+mwIAkIVuCgBAFropAABZ6KYAAGShmwIAkIVuCgBAFropAABZ6KYAAGShmwIA
+kIVuCgBAFropAABZ6KYAAGShmwIAkIVuCgBAFropAABZ6KYAAGShmwIAkIVu
+CgBAFropAABZ6KYAAGShmwIAkIVuCgBAFropAABZ6KYAAGShmwIAkIVuCgBA
+FropAABZ6KYAAGShmwIAkIVuCgBAFropAABZ6KYAAGShmwIAkIVuCgBAFrop
+AABZ6KYAAGRx0W566/EnUufDq6tT//8DAOB8dFMAALKwpw8AQBa6KQAAWeim
+AABkoZsCACf75KOPN98/eND7bTB/uikAcJLopHGP8Xf37/d+K8zforqpORsA
+tPfFZ59vnn7yqd5vg2VYTDc1ZwOAPt6/e3fz9p07vd8Gy7CYbmrOBgB9PP/s
+cw/3LuEMFtNNzdkAoD37lpzZYrqpORsAtGffkjNbRDc1ZwOAPuxbcmaL6Kbm
+bADQh31LzmwR3dScDQDas2/JBSyim5qzAUB7sW8Z3RTOaPbd1JwNAPqIfctX
+X3ml99tgWWbfTc3ZAKCP2Lf88Oqq99tgWWbfTc3ZAKC9sm9579t7vd8KyzL7
+bmrOBgDt2bfkQmbdTc3ZAOB4MX5GjrlnY+y+5fX19cPXiDEbRph1NzVnA4Dp
+Yr8xzgWPxP5jjKXxzykddcy+ZXy/eI34/taSGKl7NzVnA4B2YuyMXln3xPhY
+dMfokWPGyrH7lqX3ljiLnBG6dVNzNgBoK8bMGDtjzaYWY2MZJ6OnHjJ237Lu
+pSVwQJduas4GAG2V/rltDejrL7/6cZwc8wzwsfuW0YV1UyZq3k3N2QCgvX17
+jcMOecr3Goo1IWMwEzTtpuZsANBeGWN37Uu+dPvF0WPw1DNyYi1qyvjO6jXt
+puZsANBejIO7rmkrXXPstW/HnJFTrtvzrBxGaNZNzdkAoL0yBkan3Ga4NhTj
+9T7HPI/xk48+Hn3NXrx+vKd4jejJ8e/xseG1gCxWs25qzgYA7ZW1oV3drr5n
+eMz6zTHPYyzX9EVH3fc+y/k9MVaXDly/t3hdHXXxmnTTuc3ZAGApYgzedT5j
+fR/ymDHy2Ocx7rvfJMTrRvfc1hPiNetr86aeN8nsNOmmc5mzAcCalD3FkkOd
+79jnMZYzzbeJcTn+7tBr1/00Pt/66WI1WzfNPmcDgLWpn00T6z6HHLNvGXZd
+1xdj+q710qHoEvX7tQ+6WN2fWZphzgYAa1Of3RgZsx95zL5l2NU/y9g8dt1o
+2Bk8i3yRunfT3nM2AFijqWtDx+5bljWlbXvw9b1OcV7PoX36YZ92nd4ide2m
+GeZsY8XvS3RbczQAlmDq2tCx+5blnvtths/GOTROD68DPKYPkF7XbpphzjZG
+OdfimNcGgGxivJ1yr0coZ45OUbrkrnWd+l7oMd10eOakcyEXqWs3zTBn2yY6
+bPw+xe9h/UwA3RSAJSjnKo7thCHGw6nrlIf2Osu4XnrmoTUk66ar0K2bZpmz
+bfvc+tqX+P2t+6luCsDcDc8VPzS2lXPKp4yB5T6nQ31z31k+Q8d0amanWzfN
+MmerlfXS4e9efa22bgrA3E3tpuX+kLHKWs+5x8z6jNNTrtUjtW7dNNOc7RDd
+FIAlmToGT9m3jDXQ8nzRcxpea2o/f7Fm0017ztl0UwCWZHhd3aG9y7H7lrEW
+FJ97iTMb6/unx5w3xWzNppv2nLPppgAsTX2P/L7xdey+ZYy90Rkv0RvrLj3l
+rH5mKc29UJnnbLopAEszPGN81/g2Zt+ynLV4qeeIlnuS9dJV6HqG1FzmbLop
+AEtUn+EUvW/bGLdv3zLG2rLXfqlnNJXvr5euRqrnQmWds+mmACxV/XyZcqZj
+fKzYtm8ZHTE+L74uxshLdcbSnfXSVenaTcMc5my6KQBLFmNpjMfD582U8S/G
+2Uj8ufTYuHbukmNi6Qfue1qd7t00ZJ6zBd0UgLUoZ33Hek/pojEGl8TfXbor
+lnua9dJVStFNQ8Y5W6GbArBGMe5e4jyofUovjdfe10vjvFP7/IuUppvWMszZ
+aropAGs05dmK5xBj+9h7R0onYHFSdtNajznbkG4KwNqU5zC1GvfKGZBj72mO
+bjDmeefMTvpu2nrOto1uCsDalHuRWpjaS8Ou+6eZvdTdtPWcbRfdFIC1Kfd4
+tHqt6KYxxo5JebYki5S6m7acs+2jmwKwNq32Lcs5kFMT749FSt1NW87Z9tFN
+AViTVvuWZf3zmGToB1xE6m6a4VrToJsCsCat9i2P7aWRDP2Ai0jbTbNcaxp0
+UwDWJMMZOaxW2m6a5VrToJsCsCaxb3mp54DDAWm7aaY5m24KwFrEeU4x3nnm
+Ep2k7aaZ5my6KQBrEtfVQScpu2m2OVuc76ubAgBcXMpuGnrN2eqzfeOa17iu
+YHieWtwbWH+e+SUAwFmk7aa97DtHLXqpcywAAC5GNwUAIAvdFACALHRTAACy
+0E0BAMhCNwUAIAvdFACALHRTAACy0E0BAMhCNwUAIAvdFACALHRTAACy0E0B
+AMhCNwUAIAvdFACALHRTAACy0E0BAMhCNwUAIAvdFACALHRTAACy0E0BAMhC
+NwV2+vDqavP2nTubr7/8qvdbAWAddFNgp+vr683TTz61ufX4E5vnn33uYVf9
+/sGD3m8LgOXSTYG9oo9GN61jLRWAC9FNgb3qtdNhrKUCcGa6KXDQtrVTa6kA
+XIBuChy0b+3UWioAZ6SbAqOMWTu1lgrAiXRTYJQpa6fWUgE4km4KjHbM2qm1
+VAAm0E2B0U5ZO7WWCsAIs+ym9769d5axUUREZK2JuSEkpJuKiIisMLopSemm
+IiIiK4xuSlK6qYiIyAqjm5LULLtp3DsRv1Mi0j63X/jzWcfHZ37/h81rr/5t
+858PPuj+s4msKbHOAwnNspsCfcS88Bx9NO71f//u3c139+/3/pEAyEU3BUaL
+PnlKJ33p9oubLz77/OFZVACwhW4KjHLsmqk1UgAm0E2BUaaumVojBeAIuilw
+0Ng1U2ukAJxINwUOOrRmao0UgDPRTYG9dq2ZWiMF4AJ0U2Cv4ZqpNVIALkg3
+BXYqa6bWSAFoRDcFdvrko4+tkQLQkm4KAEAWuikAAFnopgAAZKGbAgCQhW4K
+AEAWuikAAFnopgAAZKGbAgCQhW4KAEAWuikAAFnopgAAZKGbAgCQhW4KAEAW
+uikAAFnopgAAZKGbAgCQhW4KAAt16/EnuuXDq6vePz7zpJsCwELppsyQbgoA
+QBa6KQAAWeimAABkoZsCAJCFbgoAK/Pd/fube9/ee5jr6+vRX1e+5pivhZF0
+UwBYieiSb9+58/A++pduv/iTe+p39czooO/fvfvj58bXPf/scz/++dVXXnnY
+deFMdFMAWInopdEtv3/w4OGf459PP/nUjx2zFl01Omv8XXTTr7/86id/H19b
+99svPvu82c/BoummALAC0R2jQw7XOMs6at0vo5dG74zsWxONvytfGx3XHj9n
+oJsCwApEz4z1z6GyNlr26+teOqZr1vv7n3z08SXeOuuimwLAwpX1zW1roPW1
+pJGy7z92DTSuBaivPYUTdeum7hEEgDZibTTWN7epu2XZm59yb5Nuypk176bu
+EQSAtmLc3PV8+7qXHrMvr5tyZs27qXsEAaCdGCtjjIx1nqH4WN1LY0ydqozh
+uiln0rSbukcQANqKdZ0YI7eJNdK6mw7XgA6px+CyjgQnatpN3SMIAG3FOLpr
+jadeG4pMXd8Zdlv7l5xBs27qHkEAyKXejz9mP3/Ybcv1enCCZt3UPYIAkMdw
+P37XvVL71N121xgPEzXrpu4RBIA8el5rGq8VnSDG7Fh7jX+Pj7lnhE2jbpr1
+HsFynpU9CADWpse1ptE/Y8yOxHgdfbZeX4qP7ztTklVo0k0z3iNYfj92dWYA
+WLJT14WmXmsa43OMu9s6bHxt/f3i+gDnlq9Wk26a4R7B+L7RQWM+Vp+JqpsC
+sDbDPctLX2saY/WYe0nqTuBcyNXq9szS4tL3CG67ZiB+R+p+qpsCsCb12Y2X
+3rMsz9gZs+cfXbTuBc5LXaWu3bTFPYJlvXTYP+vrW3RTANak5bWmMbZPOX9n
+eK6ke0JWp2s37XmPoG4KwFq1PNe0Hm/HnF1e7lE59uweZq9rN+35PArdFIA1
+an2u6fCcyENj9TmuhWXWunbT1vcI1nRTANao9Z5l/VzxMd20nDtZ4tzy1enW
+TVvfIzikmwKwRq33LOPv65556PWsm65et27a8h7BbXRTANao5bWmxb6zJIdO
+uV6PRejWTXteaxp0UwDWpvW1psc4tR8we926aY95W003BWBtep6PM8bwWlP7
++avUpZtmmLfppgCsTd1Nj3nu0qX32+uzTcecN8UidemmGeZtuikAaxRjcKwJ
+HXOm/al7lvvUY/uUs/pZnC7dtPe1pkE3BYBpLnmtaXmWuF66el26ae9rTYNu
+CgDjXfJa07KXr5ey6dBNM1xrGnRTABjvUtealvNP9VIead5NM1xrGnRTABjv
+Eteall7qvicqXbtpz3sEdVMAGO/c15rGWlN8T72UgW736fe+R1A3BYBxzn2t
+aeml8X329dIY4+3zr063s/ePda55m24KAOMMnzN+yrWm0UVLLx3zus7fX51Z
+ddNzztt0UwAYpx4zT9mzjF4ae/hjx+/YKz33+f6kN6tuCgDAosVCuW4KAEAG
+Y7ppmtx6/Ikfqj2F/534vb6pvtefev9sIiIiGRNjZL2ff8yYefM1nw6+x9ic
+NNaLXDI3/33+bvDf66cnfr8fdFMREZH9uRkjf32T/z5a03nziK+/OrKXRr7p
+/fOL7MqW/7ZH/348mvOVvPnod+wn87JH37/+vN/2/plFRETmnhN6aWRW+7uy
+rgz24DdTuuO++dijXur3QURERERGx/UnIiIiIpIhW67DtqYpIiIiIl1yjnsE
+RURERETOkVPvERQREREREREREREREREREZl7/g8uA4ad
+     "], {{0, 225.}, {679., 0}}, {0, 255},
+     ColorFunction->RGBColor],
+    BoxForm`ImageTag[
+    "Byte", ColorSpace -> "RGB", Interleaving -> True, 
+     MetaInformation -> <|
+      "Comments" -> {
+        "ps:HiResBoundingBox" -> "163x54+216+667", "ps:Level" -> 
+         "PS-Adobe-2.0 EPSF-2.0"}|>],
+    Selectable->False],
+   DefaultBaseStyle->"ImageGraphics",
+   ImageSize->{217.5, Automatic},
+   ImageSizeRaw->{679., 225.},
+   PlotRange->{{0, 679.}, {0, 225.}}]], "Input",
+  CellChangeTimes->{{3.977972256781475*^9, 3.977972259201215*^9}},
+  ExpressionUUID->"87bf2768-57bd-449a-add3-ebb3206ded68"],
+ "\nThis describes the propagation from creation of a particle (",
  Cell[BoxData[
   FormBox[
    OverscriptBox["\[CapitalPsi]", "_"], TraditionalForm]],ExpressionUUID->
@@ -976,7 +1122,28 @@ and the propagators is then denoted schematically by ",
      SubscriptBox[
       OverscriptBox["\[CapitalPsi]", "_"], "1"]}], "]"}], TraditionalForm]],
   ExpressionUUID->"fcc6301f-cfec-4603-887e-19ad553337ff"],
- ".\n The canonical notation puts antifermions before fermions, e.g., V[A, ",
+ " so that the arguments agree with attached vertices, for example ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"P", "[", 
+     RowBox[{
+      SubscriptBox["\[CapitalPsi]", "3"], ",", " ", 
+      SubscriptBox[
+       OverscriptBox["\[CapitalPsi]", "_"], "1"]}], "]"}], " ", 
+    RowBox[{"V", "[", 
+     RowBox[{
+      SubscriptBox["A", "5"], ",", 
+      SubscriptBox[
+       OverscriptBox["\[CapitalPsi]", "_"], "1"], ",", 
+      SubscriptBox["\[CapitalPsi]", "2"]}], "]"}], 
+    RowBox[{"P", "[", 
+     RowBox[{
+      SubscriptBox["\[CapitalPsi]", "2"], ",", " ", 
+      SubscriptBox[
+       OverscriptBox["\[CapitalPsi]", "_"], "4"]}], "]"}]}], 
+   TraditionalForm]],ExpressionUUID->"961cc4cd-bf17-4c3f-8a57-d19a898ff599"],
+ ".\nThe canonical notation puts antifermions before fermions, e.g., V[A, ",
  Cell[BoxData[
   FormBox[
    OverscriptBox["\[CapitalPsi]", "_"], TraditionalForm]],ExpressionUUID->
@@ -987,8 +1154,10 @@ and the propagators is then denoted schematically by ",
    3.9722954966840487`*^9, 3.9722957381595793`*^9}, {3.97229959666411*^9, 
    3.9722996099119368`*^9}, 3.97360801322194*^9, {3.9736081133036833`*^9, 
    3.9736081724642344`*^9}, 3.9775441291824636`*^9, {3.977544209934176*^9, 
-   3.977544260539819*^9}, {3.977745184647257*^9, 
-   3.977745187141575*^9}},ExpressionUUID->"15bbeac9-9eaa-4d51-96ee-\
+   3.977544260539819*^9}, {3.977745184647257*^9, 3.977745187141575*^9}, {
+   3.977972910815791*^9, 3.977972914020269*^9}, {3.977995675333202*^9, 
+   3.977995769680449*^9}, 
+   3.977996019716083*^9},ExpressionUUID->"15bbeac9-9eaa-4d51-96ee-\
 25f4c8cc1a71"],
 
 Cell[TextData[{
@@ -1135,8 +1304,8 @@ Cell[TextData[{
       OverscriptBox["\[Psi]", "_"], "\[Psi]"}], "+", 
      RowBox[{
       SuperscriptBox["S", 
-       RowBox[{"A", 
-        OverscriptBox["\[Psi]", "_"], "\[Psi]"}]], 
+       RowBox[{"A\[Psi]", 
+        OverscriptBox["\[Psi]", "_"]}]], 
       OverscriptBox["\[Psi]", "_"], "\[Psi]", " ", "A"}]}]}], 
    TraditionalForm]],ExpressionUUID->"3ebeb37e-d771-455e-9ea6-c5438c07e671"],
  "\n\n",
@@ -1188,8 +1357,8 @@ Cell[TextData[{
   "2006cbdf-5665-4c2f-b58e-3801b8e35f3c"]
 }], "Text",
  CellChangeTimes->{{3.9777424556676073`*^9, 3.977742492777853*^9}, {
-  3.977742570439184*^9, 
-  3.9777425761726837`*^9}},ExpressionUUID->"fe171a29-89a9-48bd-800f-\
+  3.977742570439184*^9, 3.9777425761726837`*^9}, {3.9779961300595903`*^9, 
+  3.9779961316054792`*^9}},ExpressionUUID->"fe171a29-89a9-48bd-800f-\
 9e011df055d9"],
 
 Cell[TextData[{
@@ -1375,7 +1544,7 @@ Cell[TextData[{
            OverscriptBox["\[CapitalPsi]", "_"], "2"], ",", 
           SubscriptBox["\[CapitalPsi]", "1"]}], "}"}]}], "]"}]}]}]}], 
    TraditionalForm]],ExpressionUUID->"3b18d65c-dc3f-4018-8098-b9cadfe73bd6"],
- ".\n2. Invert it.\n4. Add dressings.\n5. Define propagator ",
+ ".\n2. Invert it.\n4. Add dressings.\n5. Define the propagator ",
  Cell[BoxData[
   FormBox[
    RowBox[{"P", "[", 
@@ -1393,7 +1562,7 @@ Cell[TextData[{
      SubscriptBox[
       OverscriptBox["\[CapitalPsi]", "_"], "2"]}]], TraditionalForm]],
   ExpressionUUID->"a21c81c9-97ba-4c11-a072-cfeb1f2f85db"],
- ". The different directions of momenta, outgoing for P, incoming for S, \
+ "! The different directions of momenta, outgoing for P, incoming for S, \
 needs to be taken into account.)\n6. Check ",
  Cell[BoxData[
   FormBox[
@@ -1409,8 +1578,7 @@ needs to be taken into account.)\n6. Check ",
        SubscriptBox["\[CapitalPsi]", "3"], ",", 
        SubscriptBox[
         OverscriptBox["\[CapitalPsi]", "_"], "2"]}], "]"}]}], "=", 
-    SubscriptBox["\[Delta]", "12"]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+    SubscriptBox["\[Delta]", "12"]}], TraditionalForm]],ExpressionUUID->
   "6c42d553-3852-4456-96a9-640f949b92f3"],
  " with all dressings set to 1."
 }], "Text",
@@ -1423,8 +1591,9 @@ needs to be taken into account.)\n6. Check ",
    3.9778310470181923`*^9}, {3.97783117294088*^9, 3.9778311771406507`*^9}, {
    3.977831243443515*^9, 3.9778313702065353`*^9}, {3.9778334929297543`*^9, 
    3.977833501997867*^9}, {3.9778335432046623`*^9, 3.977833629445982*^9}, {
-   3.9778343661265717`*^9, 
-   3.977834392639695*^9}},ExpressionUUID->"b526a58d-6685-4eb2-8e62-\
+   3.9778343661265717`*^9, 3.977834392639695*^9}, {3.977996155319572*^9, 
+   3.9779961557842827`*^9}, {3.9779962340135403`*^9, 
+   3.977996234246779*^9}},ExpressionUUID->"b526a58d-6685-4eb2-8e62-\
 8a828a1773a2"],
 
 Cell[TextData[{
@@ -1515,10 +1684,11 @@ Jens Braun, Anton K. Cyrol, Markus Q. Huber, Jan M. Pawlowski, Kai Schwenzer, \
 2008-2019\\n\\nDetails at https://github.com/markusqh/DoFun/.\"\>"], "Print",
  CellChangeTimes->{
   3.976971351744556*^9, 3.97697194080103*^9, {3.97754457641724*^9, 
-   3.977544590124338*^9}, 3.977743197966134*^9, 3.977807077794841*^9},
+   3.977544590124338*^9}, 3.977743197966134*^9, 3.977807077794841*^9, 
+   3.977996260981722*^9},
  CellLabel->
   "During evaluation of \
-In[1]:=",ExpressionUUID->"ccd6b561-f18a-4a0f-9a93-8a3d3fec295f"]
+In[1]:=",ExpressionUUID->"61aa792b-6103-4e24-b9db-c3c7e41a5d5e"]
 }, Open  ]],
 
 Cell["\<\
@@ -1534,7 +1704,7 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"$signConvention", "=", "1"}], ";"}]], "Input",
  CellChangeTimes->{{3.973609353095443*^9, 3.973609355047842*^9}},
- CellLabel->"In[2]:=",ExpressionUUID->"5b0ba589-778f-4387-8754-34310356bdce"],
+ CellLabel->"In[17]:=",ExpressionUUID->"5b0ba589-778f-4387-8754-34310356bdce"],
 
 Cell["\<\
 The gluon and quarks fields need to be defined as bosonic and fermionic, \
@@ -1555,7 +1725,7 @@ Cell[BoxData[
  CellChangeTimes->{{3.790072461505299*^9, 3.790072462779278*^9}, {
   3.790072509550136*^9, 3.790072516565037*^9}, {3.846929475586507*^9, 
   3.8469294870418158`*^9}, {3.948115231385675*^9, 3.948115231565981*^9}},
- CellLabel->"In[3]:=",ExpressionUUID->"f9046dc9-f6b1-4c84-aee5-0c57976164eb"],
+ CellLabel->"In[2]:=",ExpressionUUID->"f9046dc9-f6b1-4c84-aee5-0c57976164eb"],
 
 Cell["Arguments (momenta and indices) are defined as follows:", "Text",
  CellChangeTimes->{{3.948115289864249*^9, 
@@ -1584,7 +1754,7 @@ Cell[BoxData[
    3.585301547477206*^9}, {3.5853019258135653`*^9, 3.585301930556789*^9}, {
    3.79007262611957*^9, 3.790072626237226*^9}, {3.846929479540605*^9, 
    3.846929480107911*^9}, 3.948115325100706*^9},
- CellLabel->"In[4]:=",ExpressionUUID->"fd177cb3-42ef-4f4c-aa79-216034448a12"],
+ CellLabel->"In[3]:=",ExpressionUUID->"fd177cb3-42ef-4f4c-aa79-216034448a12"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -1639,8 +1809,8 @@ Cell[BoxData[
    3.972101607583981*^9, 3.973608680719681*^9, 3.973609127278488*^9, 
    3.97685686838936*^9, 3.976971351981106*^9, 3.9769719410974007`*^9, 
    3.976972542192428*^9, 3.977544599822526*^9, 3.977743203429686*^9, 
-   3.977807078911663*^9},
- CellLabel->"Out[4]=",ExpressionUUID->"b02c231d-2217-4c64-9de6-41e3deb80b2d"]
+   3.977807078911663*^9, 3.9779963025516*^9},
+ CellLabel->"Out[3]=",ExpressionUUID->"16893349-ee2d-4a5e-b0c7-d97e9ca15122"]
 }, Open  ]],
 
 Cell[TextData[{
@@ -1806,8 +1976,8 @@ Cell[TextData[{
       OverscriptBox["\[Psi]", "_"], "\[Psi]"}], "-", 
      RowBox[{
       SuperscriptBox["S", 
-       RowBox[{"A", 
-        OverscriptBox["\[Psi]", "_"], "\[Psi]"}]], 
+       RowBox[{"A\[Psi]", 
+        OverscriptBox["\[Psi]", "_"]}]], 
       OverscriptBox["\[Psi]", "_"], "\[Psi]", " ", "A"}], "+", 
      RowBox[{
       SuperscriptBox["S", "AA"], "AA"}], "-", 
@@ -1829,8 +1999,8 @@ Cell[TextData[{
   3.972100802437743*^9}, {3.973609693372517*^9, 3.973609701926663*^9}, {
   3.9736104736603394`*^9, 3.973610479928996*^9}, {3.9768557431038513`*^9, 
   3.976855743743988*^9}, {3.976857473369636*^9, 3.9768574735936413`*^9}, {
-  3.97754461839989*^9, 
-  3.977544667220172*^9}},ExpressionUUID->"20288694-c952-4626-984e-\
+  3.97754461839989*^9, 3.977544667220172*^9}, {3.977996307106338*^9, 
+  3.9779963103078623`*^9}},ExpressionUUID->"20288694-c952-4626-984e-\
 a1499187f32a"],
 
 Cell["\<\
@@ -2005,7 +2175,7 @@ Cell[BoxData[{
    3.948115396120737*^9, 3.948115404185055*^9}, {3.973608441807404*^9, 
    3.973608508781282*^9}, 3.973608776142002*^9, {3.976972324246256*^9, 
    3.9769723434701014`*^9}, {3.977544922342338*^9, 3.9775449274641323`*^9}},
- CellLabel->"In[5]:=",ExpressionUUID->"12ce29b0-eb2a-49ee-b4ac-4e9cc209b4ae"],
+ CellLabel->"In[4]:=",ExpressionUUID->"12ce29b0-eb2a-49ee-b4ac-4e9cc209b4ae"],
 
 Cell[TextData[{
  "From the action, the Feynman rules an be derived. The bare two-point \
@@ -2014,21 +2184,26 @@ function ",
   FormBox[
    RowBox[{
     SuperscriptBox["S", 
-     RowBox[{"\[Psi]", 
-      OverscriptBox["\[Psi]", "_"]}]], "=", 
+     RowBox[{
+      SubscriptBox["\[Psi]", "1"], 
+      SubscriptBox[
+       OverscriptBox["\[Psi]", "_"], "2"]}]], "=", 
     FractionBox[
      RowBox[{
       SuperscriptBox["\[Delta]", "2"], "S"}], 
-     RowBox[{"\[Delta]\[Psi]\[Delta]", 
-      OverscriptBox["\[Psi]", "_"]}]]}], TraditionalForm]],ExpressionUUID->
-  "a902597d-e9ef-47be-8464-d89bb66c009f"],
+     RowBox[{
+      SubscriptBox["\[Delta]\[Psi]", "1"], "\[Delta]", 
+      SubscriptBox[
+       OverscriptBox["\[Psi]", "_"], "2"]}]]}], TraditionalForm]],
+  ExpressionUUID->"a902597d-e9ef-47be-8464-d89bb66c009f"],
  " is obtained with"
 }], "Text",
  CellChangeTimes->{{3.948115416461734*^9, 3.9481154373329363`*^9}, {
   3.962606817420649*^9, 3.9626068179150257`*^9}, {3.971693010341638*^9, 
   3.971693068758318*^9}, {3.9721016219617777`*^9, 3.972101643806013*^9}, {
   3.973609657411018*^9, 3.973609657411085*^9}, {3.977837991774702*^9, 
-  3.97783799331959*^9}},ExpressionUUID->"eb96e3fe-f1be-4111-9257-\
+  3.97783799331959*^9}, {3.97799633145426*^9, 
+  3.9779963447165833`*^9}},ExpressionUUID->"eb96e3fe-f1be-4111-9257-\
 d371a0d4489b"],
 
 Cell[CellGroupData[{
@@ -2056,8 +2231,7 @@ Cell[BoxData[
    3.9768572010457087`*^9}, {3.977544716704876*^9, 3.97754473467528*^9}, {
    3.97754502894837*^9, 3.9775450466628103`*^9}, {3.9775459450941877`*^9, 
    3.977545952004418*^9}},
- CellLabel->
-  "In[1579]:=",ExpressionUUID->"b80d8ca3-de6d-463c-9d53-f65f2c9dddd4"],
+ CellLabel->"In[6]:=",ExpressionUUID->"b80d8ca3-de6d-463c-9d53-f65f2c9dddd4"],
 
 Cell[BoxData[
  RowBox[{"Z2", " ", 
@@ -2073,15 +2247,15 @@ Cell[BoxData[
     RowBox[{"\[ImaginaryI]", " ", 
      RowBox[{"diracGamma", "[", 
       RowBox[{
-       RowBox[{"dummy", "[", "194", "]"}], ",", "i2", ",", "i1"}], "]"}], " ", 
+       RowBox[{"dummy", "[", "2", "]"}], ",", "i2", ",", "i1"}], "]"}], " ", 
      RowBox[{"vec", "[", 
       RowBox[{
        RowBox[{"-", "p1"}], ",", 
-       RowBox[{"dummy", "[", "194", "]"}]}], "]"}]}]}], ")"}]}]], "Output",
+       RowBox[{"dummy", "[", "2", "]"}]}], "]"}]}]}], ")"}]}]], "Output",
  CellChangeTimes->{{3.9777457734675837`*^9, 3.977745788120143*^9}, 
-   3.977807088564996*^9, {3.97783312406462*^9, 3.977833132895425*^9}},
- CellLabel->
-  "Out[1579]=",ExpressionUUID->"8fb9b5a0-e6c9-4bea-b54e-8f467aca4c1b"]
+   3.977807088564996*^9, {3.97783312406462*^9, 3.977833132895425*^9}, 
+   3.977996347892107*^9},
+ CellLabel->"Out[6]=",ExpressionUUID->"d7278d29-4a9a-43b4-a203-457babcb1582"]
 }, Open  ]],
 
 Cell[TextData[{
@@ -2168,15 +2342,16 @@ Cell[BoxData[
    3.9769723996459084`*^9, {3.976972458738566*^9, 3.9769724700912313`*^9}, 
    3.976972542276765*^9, {3.977544829546715*^9, 3.9775448454356327`*^9}, 
    3.9775449305301733`*^9, 3.9775460263421583`*^9, 3.9777432109496803`*^9, 
-   3.977807081359803*^9},
- CellLabel->"Out[7]=",ExpressionUUID->"5be258de-e952-4eb5-9165-8a0ff4a98a18"]
+   3.977807081359803*^9, 3.97799635134494*^9},
+ CellLabel->"Out[7]=",ExpressionUUID->"ba968bd3-e6bf-42ba-8e7e-2489ac0ecb83"]
 }, Open  ]],
 
 Cell["\<\
-Thus we define the bare two-point function and the propagator as\
+Thus we define the bare two-point functions and the propagators as\
 \>", "Text",
- CellChangeTimes->{{3.971693139315435*^9, 
-  3.9716931493921556`*^9}},ExpressionUUID->"09335b30-80b0-4c1c-8aac-\
+ CellChangeTimes->{{3.971693139315435*^9, 3.9716931493921556`*^9}, {
+  3.977996357219345*^9, 
+  3.977996358111858*^9}},ExpressionUUID->"09335b30-80b0-4c1c-8aac-\
 b8f017ef33c2"],
 
 Cell[BoxData[{
@@ -2382,9 +2557,8 @@ Cell[BoxData[{
    3.977830883533475*^9}, {3.9778312168649187`*^9, 3.977831228962062*^9}, {
    3.977833147301384*^9, 3.9778331723880663`*^9}, {3.977833406103985*^9, 
    3.9778334077292957`*^9}, 3.977833471755115*^9, {3.977833682681477*^9, 
-   3.977833685043964*^9}, {3.9778380123133497`*^9, 
-   3.977838012642343*^9}},ExpressionUUID->"b75a7325-f535-4ded-86f3-\
-9397e6d25bf5"],
+   3.977833685043964*^9}, {3.9778380123133497`*^9, 3.977838012642343*^9}},
+ CellLabel->"In[8]:=",ExpressionUUID->"b75a7325-f535-4ded-86f3-9397e6d25bf5"],
 
 Cell["\<\
 We can check that the bare propagators are the inverses of the bare two-point \
@@ -2646,7 +2820,7 @@ Cell[BoxData[{
    3.977746176133463*^9, 3.977746231422636*^9, {3.977747736268548*^9, 
    3.977747736666727*^9}, {3.977747862356345*^9, 3.977747868843217*^9}, 
    3.9777510007355022`*^9},
- CellLabel->"In[24]:=",ExpressionUUID->"0089d47d-ef07-4ef4-8d69-d6b682de9241"],
+ CellLabel->"In[12]:=",ExpressionUUID->"0089d47d-ef07-4ef4-8d69-d6b682de9241"],
 
 Cell[TextData[{
  "For the quark propagator we check ",
@@ -2682,6 +2856,152 @@ Cell[TextData[{
   3.977547184633251*^9}, {3.977820496108692*^9, 
   3.9778205039873457`*^9}},ExpressionUUID->"6463e26d-d7ae-4419-b365-\
 1fe85a980517"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"P", "[", 
+  RowBox[{
+   RowBox[{"\[CapitalPsi]", "[", 
+    RowBox[{"p", ",", "c", ",", "k"}], "]"}], ",", 
+   RowBox[{"\[CapitalPsi]b", "[", 
+    RowBox[{
+     RowBox[{"-", "p"}], ",", "a", ",", "i"}], "]"}], ",", 
+   RowBox[{"explicit", "->", "True"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"S", "[", 
+  RowBox[{
+   RowBox[{"\[CapitalPsi]", "[", 
+    RowBox[{"p", ",", "c", ",", "k"}], "]"}], ",", 
+   RowBox[{"\[CapitalPsi]b", "[", 
+    RowBox[{
+     RowBox[{"-", "p"}], ",", "b", ",", "j"}], "]"}], ",", 
+   RowBox[{"explicit", "->", "True"}]}], "]"}]}], "Input",
+ CellChangeTimes->{3.977998484553095*^9},
+ CellLabel->
+  "In[128]:=",ExpressionUUID->"8471de71-2583-41d4-95f7-1264f9b750f1"],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   RowBox[{"delta", "[", 
+    RowBox[{"fund", ",", "a", ",", "c"}], "]"}], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"delta", "[", 
+       RowBox[{"dirac", ",", "k", ",", "i"}], "]"}], " ", 
+      RowBox[{"DquB", "[", 
+       RowBox[{"sp", "[", 
+        RowBox[{"-", "p"}], "]"}], "]"}]}], "-", 
+     RowBox[{"\[ImaginaryI]", " ", 
+      RowBox[{"diracGamma", "[", 
+       RowBox[{"mu$44983", ",", "k", ",", "i"}], "]"}], " ", 
+      RowBox[{"DquA", "[", 
+       RowBox[{"sp", "[", 
+        RowBox[{"-", "p"}], "]"}], "]"}], " ", 
+      RowBox[{"vec", "[", 
+       RowBox[{"p", ",", "mu$44983"}], "]"}]}]}], ")"}]}], 
+  RowBox[{
+   SuperscriptBox[
+    RowBox[{"DquB", "[", 
+     RowBox[{"sp", "[", 
+      RowBox[{"-", "p"}], "]"}], "]"}], "2"], "+", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"DquA", "[", 
+      RowBox[{"sp", "[", 
+       RowBox[{"-", "p"}], "]"}], "]"}], "2"], " ", 
+    RowBox[{"sp", "[", 
+     RowBox[{"-", "p"}], "]"}]}]}]]], "Output",
+ CellChangeTimes->{3.977998484894449*^9},
+ CellLabel->
+  "Out[128]=",ExpressionUUID->"25249675-c26a-498b-92d3-6b52405179a1"],
+
+Cell[BoxData[
+ RowBox[{"Z2", " ", 
+  RowBox[{"delta", "[", 
+   RowBox[{"fund", ",", "c", ",", "b"}], "]"}], " ", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"m", " ", "Zm", " ", 
+     RowBox[{"delta", "[", 
+      RowBox[{"dirac", ",", "j", ",", "k"}], "]"}]}], "+", 
+    RowBox[{"\[ImaginaryI]", " ", 
+     RowBox[{"diracGamma", "[", 
+      RowBox[{"mu$44984", ",", "j", ",", "k"}], "]"}], " ", 
+     RowBox[{"vec", "[", 
+      RowBox[{"p", ",", "mu$44984"}], "]"}]}]}], ")"}]}]], "Output",
+ CellChangeTimes->{3.977998484895714*^9},
+ CellLabel->
+  "Out[129]=",ExpressionUUID->"761e2c7c-5189-4ea3-982c-c6a1a25ff481"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"Expand", "[", 
+        RowBox[{
+         RowBox[{"-", "\[ImaginaryI]"}], " ", 
+         RowBox[{"diracGamma", "[", 
+          RowBox[{"mu$44983", ",", "k", ",", "i"}], "]"}], " ", 
+         RowBox[{"DquA", "[", 
+          RowBox[{"sp", "[", 
+           RowBox[{"-", "p"}], "]"}], "]"}], " ", 
+         RowBox[{"vec", "[", 
+          RowBox[{"p", ",", "mu$44983"}], "]"}], "\[ImaginaryI]", " ", 
+         RowBox[{"diracGamma", "[", 
+          RowBox[{"mu$44984", ",", "j", ",", "k"}], "]"}], " ", 
+         RowBox[{"vec", "[", 
+          RowBox[{"p", ",", "mu$44984"}], "]"}]}], "]"}], "//.", 
+       "contractRulesDirac"}], "//.", "contractRulesLorentz"}], "/.", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"vec", "[", 
+        RowBox[{"p_", ",", "mu_"}], "]"}], 
+       RowBox[{"diracGamma", "[", 
+        RowBox[{"mu_", ",", "i_", ",", "j_"}], "]"}]}], ":>", 
+      RowBox[{"slash", "[", 
+       RowBox[{"p", ",", "i", ",", "j"}], "]"}]}]}], "/.", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"DquA", "[", "_", "]"}], ":>", "Z2"}], ",", 
+      RowBox[{
+       RowBox[{"DquB", "[", "_", "]"}], ":>", 
+       RowBox[{"Zm", " ", "Z2", " ", "m"}]}]}], "}"}]}], "//", 
+   "integrateDeltas"}], "//", "Simplify"}]], "Input",
+ CellChangeTimes->{{3.97169317620043*^9, 3.971693228515025*^9}, {
+   3.971693301879567*^9, 3.9716933029166737`*^9}, {3.9716956921758957`*^9, 
+   3.97169569409664*^9}, {3.971701011022715*^9, 3.971701221081091*^9}, {
+   3.9717012554473867`*^9, 3.971701396769021*^9}, {3.971701850349018*^9, 
+   3.9717018606450033`*^9}, {3.971701919664774*^9, 3.97170192821382*^9}, {
+   3.971701980919711*^9, 3.971702033044292*^9}, {3.971702084817968*^9, 
+   3.971702117836627*^9}, {3.976971962120675*^9, 3.9769719951298656`*^9}, {
+   3.976975323855057*^9, 3.976975352833387*^9}, {3.9775465457166567`*^9, 
+   3.977546560911995*^9}, {3.977546904348508*^9, 3.977546934055726*^9}, {
+   3.977547039654168*^9, 3.977547043875514*^9}, {3.9777461080292253`*^9, 
+   3.977746130998406*^9}, {3.9777462013359756`*^9, 3.977746216225419*^9}, {
+   3.977747880878456*^9, 3.9777478828726892`*^9}, {3.9777479640259542`*^9, 
+   3.977747982357943*^9}, 3.977819825332274*^9, {3.977830688806593*^9, 
+   3.977830689697839*^9}, {3.9779985255844812`*^9, 3.977998532346931*^9}},
+ CellLabel->
+  "In[131]:=",ExpressionUUID->"38850776-c955-4e2d-a6e5-a7bf1dbe8eea"],
+
+Cell[BoxData[
+ RowBox[{"Z2", " ", 
+  RowBox[{"delta", "[", 
+   RowBox[{"dirac", ",", "j", ",", "i"}], "]"}], " ", 
+  RowBox[{"sp", "[", "p", "]"}]}]], "Output",
+ CellChangeTimes->{3.977998532719634*^9},
+ CellLabel->
+  "Out[131]=",ExpressionUUID->"b8e6b735-d220-4b6c-9056-f188b39523a8"]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -2742,7 +3062,7 @@ Cell[BoxData[
    3.977747982357943*^9}, 3.977819825332274*^9, {3.977830688806593*^9, 
    3.977830689697839*^9}},
  CellLabel->
-  "In[1601]:=",ExpressionUUID->"0377156d-74c7-4960-8839-192be2973bdc"],
+  "In[130]:=",ExpressionUUID->"0377156d-74c7-4960-8839-192be2973bdc"],
 
 Cell[BoxData[
  RowBox[{
@@ -2755,24 +3075,25 @@ Cell[BoxData[
    3.9778306243266287`*^9, {3.977830690164645*^9, 3.97783071830974*^9}, {
    3.97783088650413*^9, 3.9778308894391937`*^9}, {3.977833142070271*^9, 
    3.9778331691373777`*^9}, 3.977833656239994*^9, 3.977834208721909*^9, 
-   3.977838016149094*^9},
+   3.977838016149094*^9, 3.977996455357065*^9, 3.977998506655424*^9},
  CellLabel->
-  "Out[1601]=",ExpressionUUID->"980a9683-b6d3-4b9b-ba5b-444ae9100846"]
+  "Out[130]=",ExpressionUUID->"c7748d7a-2d61-4e1f-9e60-f57f6c05f634"]
 }, Open  ]],
 
 Cell["\<\
-Note the momenta: \[CapitalPsi][p, c, k] appears in both the bare two-point \
-function and the propagator. In the former, p corresponds to the incoming \
-momentum and in the former to the outgoing momentum. Thus, this expression \
-describes a the propagation of a quark via P from i to k with momentum p.\
+Note the momenta: \[CapitalPsi][p, c, k] appears in both the propagator and \
+the bare two-point function. In the former, p corresponds to the outgoing \
+momentum and in the latter to the incoming momentum.\
 \>", "Text",
- CellChangeTimes->{{3.977546987567437*^9, 
-  3.977547142317832*^9}},ExpressionUUID->"b64bd150-f840-4aa7-954a-\
+ CellChangeTimes->{{3.977546987567437*^9, 3.977547142317832*^9}, {
+  3.977996477375379*^9, 
+  3.9779965444730253`*^9}},ExpressionUUID->"b64bd150-f840-4aa7-954a-\
 3500255fb9c4"],
 
-Cell["For the gluon propagator we have:", "Text",
- CellChangeTimes->{{3.977547195463772*^9, 
-  3.977547203219173*^9}},ExpressionUUID->"018169d5-a9e2-48ba-bfd2-\
+Cell["For the gluon propagator we check", "Text",
+ CellChangeTimes->{{3.977547195463772*^9, 3.977547203219173*^9}, {
+  3.977996552521209*^9, 
+  3.977996553645817*^9}},ExpressionUUID->"018169d5-a9e2-48ba-bfd2-\
 b246106a8ca0"],
 
 Cell[CellGroupData[{
@@ -2815,7 +3136,7 @@ Cell[BoxData[
    3.971702117836627*^9}, {3.976971962120675*^9, 3.9769719951298656`*^9}, {
    3.976975323855057*^9, 3.976975352833387*^9}, {3.977546378031986*^9, 
    3.9775464996422453`*^9}, 3.97754656453937*^9},
- CellLabel->"In[55]:=",ExpressionUUID->"9a0f8132-9a7f-4c22-b0dc-4d2d6663f98a"],
+ CellLabel->"In[15]:=",ExpressionUUID->"9a0f8132-9a7f-4c22-b0dc-4d2d6663f98a"],
 
 Cell[BoxData[
  RowBox[{
@@ -2825,8 +3146,8 @@ Cell[BoxData[
    RowBox[{"mu", ",", "nu"}], "]"}]}]], "Output",
  CellChangeTimes->{{3.977546418703905*^9, 3.97754649986663*^9}, 
    3.977546565087438*^9, 3.977743945367215*^9, 3.977747990153393*^9, 
-   3.9777510126597958`*^9, 3.97783071962316*^9},
- CellLabel->"Out[55]=",ExpressionUUID->"4fd9b932-ed56-4e1d-bb71-62d645719d49"]
+   3.9777510126597958`*^9, 3.97783071962316*^9, 3.977996548820002*^9},
+ CellLabel->"Out[15]=",ExpressionUUID->"8dfd123f-1bcd-4c6a-a278-03c263d6fe24"]
 }, Open  ]],
 
 Cell["The bare and dressed vertices are given by", "Text",
@@ -2878,7 +3199,7 @@ Cell[BoxData[
    3.928806144326509*^9}, {3.97169276463426*^9, 3.9716927651730824`*^9}, {
    3.971702197602745*^9, 3.971702198060162*^9}, 3.976857361660714*^9, {
    3.977546576107163*^9, 3.977546594317981*^9}},
- CellLabel->"In[68]:=",ExpressionUUID->"d51d0692-31ee-4288-bbe5-6d621722b91f"],
+ CellLabel->"In[18]:=",ExpressionUUID->"d51d0692-31ee-4288-bbe5-6d621722b91f"],
 
 Cell[BoxData[
  RowBox[{
@@ -2891,8 +3212,8 @@ Cell[BoxData[
   3.9768573620960217`*^9, 3.976971358886959*^9, 3.976971952852162*^9, {
    3.976972515940054*^9, 3.976972542381349*^9}, 3.977546594604526*^9, 
    3.977546648256349*^9, 3.977743946178657*^9, 3.977747991271525*^9, 
-   3.9778307399896097`*^9},
- CellLabel->"Out[68]=",ExpressionUUID->"2547d6f7-a4a9-4ba0-9faf-5be79dc1df34"]
+   3.9778307399896097`*^9, {3.97799655575423*^9, 3.977996566419723*^9}},
+ CellLabel->"Out[18]=",ExpressionUUID->"bade1180-a9b4-4191-a4f0-57a5a85f9710"]
 }, Open  ]],
 
 Cell["A dressed vertex with one tensor can be defined as", "Text",
@@ -2940,7 +3261,7 @@ Cell[BoxData[
    3.971702182308029*^9, 3.9717021886534567`*^9}, {3.9717022579353247`*^9, 
    3.971702271007584*^9}, 3.976857368549638*^9, {3.976973346307131*^9, 
    3.9769733733794537`*^9}, {3.9775466025043697`*^9, 3.977546645033193*^9}},
- CellLabel->"In[69]:=",ExpressionUUID->"eb141482-dbba-44e3-b2e0-507999ef0740"],
+ CellLabel->"In[19]:=",ExpressionUUID->"eb141482-dbba-44e3-b2e0-507999ef0740"],
 
 Cell[BoxData[
  RowBox[{
@@ -2952,8 +3273,8 @@ Cell[BoxData[
   RowBox[{"SUNT", "[", 
    RowBox[{"a", ",", "b", ",", "d"}], "]"}]}]], "Output",
  CellChangeTimes->{3.977546645258972*^9, 3.977743947083733*^9, 
-  3.977747992428564*^9, 3.977830740052643*^9},
- CellLabel->"Out[69]=",ExpressionUUID->"ac48f0a7-0910-45eb-9174-80727c664426"]
+  3.977747992428564*^9, 3.977830740052643*^9, 3.9779965674591417`*^9},
+ CellLabel->"Out[19]=",ExpressionUUID->"16693b4d-8e69-4dc3-bdc7-fe57f209b370"]
 }, Open  ]]
 }, Open  ]],
 
@@ -2984,7 +3305,7 @@ Cell[BoxData[
   ";"}]], "Input",
  CellChangeTimes->{{3.506688125555957*^9, 3.506688141618196*^9}, {
   3.97360841080888*^9, 3.973608417008443*^9}},
- CellLabel->"In[17]:=",ExpressionUUID->"5ae49d6e-e9c2-4eef-b184-2092e3b6016e"],
+ CellLabel->"In[20]:=",ExpressionUUID->"5ae49d6e-e9c2-4eef-b184-2092e3b6016e"],
 
 Cell[CellGroupData[{
 
@@ -3003,8 +3324,7 @@ Cell[BoxData[
    3.97774374441234*^9, 3.977743750490334*^9}, {3.9777438718244047`*^9, 
    3.9777438740360107`*^9}, {3.97774437417113*^9, 3.977744375924293*^9}, {
    3.977744744687771*^9, 3.9777447508241796`*^9}, 3.977819693845278*^9},
- CellLabel->
-  "In[2095]:=",ExpressionUUID->"38ebbc39-64f1-4681-9d49-2d6451033bce"],
+ CellLabel->"In[21]:=",ExpressionUUID->"38ebbc39-64f1-4681-9d49-2d6451033bce"],
 
 Cell[BoxData[
  RowBox[{
@@ -3047,9 +3367,8 @@ Cell[BoxData[
        RowBox[{"\[CapitalPsi]b", ",", "r1"}], "}"}]}], "]"}]}], 
    "]"}]}]], "Output",
  CellChangeTimes->{3.977832180572274*^9, 3.9778380213178167`*^9, 
-  3.9778380670691338`*^9, 3.977838117653973*^9},
- CellLabel->
-  "Out[2095]=",ExpressionUUID->"b8ae15e9-b26b-42ca-b2ab-8a1ee00381c5"]
+  3.9778380670691338`*^9, 3.977838117653973*^9, 3.977996574653014*^9},
+ CellLabel->"Out[21]=",ExpressionUUID->"8883fb88-0246-4961-b20d-1536e095d9c1"]
 }, Open  ]],
 
 Cell["\<\
@@ -3079,8 +3398,7 @@ Cell[BoxData[
   3.9777438740360107`*^9}, {3.97774437417113*^9, 3.977744375924293*^9}, {
   3.977744744687771*^9, 3.9777447508241796`*^9}, {3.977744786525423*^9, 
   3.97774479046321*^9}},
- CellLabel->
-  "In[2096]:=",ExpressionUUID->"d35f6ca1-3584-4c7b-adf2-c8adf09764b1"],
+ CellLabel->"In[22]:=",ExpressionUUID->"d35f6ca1-3584-4c7b-adf2-c8adf09764b1"],
 
 Cell[BoxData[
  RowBox[{
@@ -3124,9 +3442,8 @@ Cell[BoxData[
    "]"}]}]], "Output",
  CellChangeTimes->{3.9777447907999783`*^9, 3.9777480046636667`*^9, 
   3.977748285305581*^9, 3.977751016300046*^9, 3.977830723036874*^9, 
-  3.977838120821617*^9},
- CellLabel->
-  "Out[2096]=",ExpressionUUID->"548d1eb1-d9b4-4706-a2af-17d9b47767b1"]
+  3.977838120821617*^9, 3.977996575695697*^9},
+ CellLabel->"Out[22]=",ExpressionUUID->"3c6b1783-9ddb-46c2-bfdb-5c15f85a44a1"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3135,7 +3452,7 @@ Cell[BoxData[
  RowBox[{"DSEPlot", "[", 
   RowBox[{"qupropDSE", ",", "fieldStyles"}], "]"}]], "Input",
  CellChangeTimes->{{3.97360936491175*^9, 3.9736093692218657`*^9}},
- CellLabel->"In[58]:=",ExpressionUUID->"40a24de9-28f7-49c1-8005-6793a6857a3b"],
+ CellLabel->"In[23]:=",ExpressionUUID->"40a24de9-28f7-49c1-8005-6793a6857a3b"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -3157,14 +3474,14 @@ Cell[BoxData[
                     " leg i2"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$17997, 
+                   DoFun`DoDSERGE`Private`field$14005, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i1, 
                     " leg i1"}, {$CellContext`\[CapitalPsi], $CellContext`i1, 
                     ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$17996, 
+                   DoFun`DoDSERGE`Private`field$14004, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`\[CapitalPsi], \
@@ -3258,14 +3575,14 @@ $CellContext`i2, " leg i2"} -> (DoFun`DoDSERGE`Private`getVertexShapeFunction[
                     "S"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$18003, 
+                   DoFun`DoDSERGE`Private`field$14011, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi], $CellContext`i1, 
                     "S"}, {$CellContext`\[CapitalPsi], $CellContext`i2, 
                     " leg i2"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$18004, 
+                   DoFun`DoDSERGE`Private`field$14012, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`\[CapitalPsi], \
@@ -3368,26 +3685,26 @@ $CellContext`i2, " leg i2"} -> (DoFun`DoDSERGE`Private`getVertexShapeFunction[
                     "S"}, {$CellContext`A, $CellContext`t1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$18007, 
+                   DoFun`DoDSERGE`Private`field$14015, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`t1, 
                     ""}, {$CellContext`\[CapitalPsi], $CellContext`i2, 
                     " leg i2"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$18009, 
+                   DoFun`DoDSERGE`Private`field$14017, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`s1, 
                     "S"}, {$CellContext`A, $CellContext`t1, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$18006, 
+                   DoFun`DoDSERGE`Private`field$14014, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i1, 
                     " leg i1"}, {$CellContext`A, $CellContext`s1, "S"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$18008, 
+                   DoFun`DoDSERGE`Private`field$14016, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`A, $CellContext`t1, 
@@ -3505,8 +3822,8 @@ $CellContext`i2, " leg i2"} -> (DoFun`DoDSERGE`Private`getVertexShapeFunction[
    3.9775473045951653`*^9, 3.977743813322372*^9, 3.9777438770532846`*^9, 
    3.97774437830402*^9, 3.9777447917224283`*^9, 3.9777480056590643`*^9, 
    3.977748240441534*^9, 3.9777482857856493`*^9, 3.977751017138345*^9, 
-   3.9778307236948557`*^9},
- CellLabel->"Out[58]=",ExpressionUUID->"de4d9b72-ccfb-48ef-b1af-4307cbf75bcb"]
+   3.9778307236948557`*^9, 3.9779965771982183`*^9},
+ CellLabel->"Out[23]=",ExpressionUUID->"7e4b75fb-bfe8-453d-b5bd-7f65b0839c8f"]
 }, Open  ]],
 
 Cell[BoxData[
@@ -3525,7 +3842,7 @@ Cell[BoxData[
     "]"}]}], ";"}]], "Input",
  CellChangeTimes->{{3.9736093306043386`*^9, 3.9736094042231827`*^9}, {
   3.9736094390765867`*^9, 3.973609443111129*^9}},
- CellLabel->"In[59]:=",ExpressionUUID->"a627dcb0-0160-4a66-a073-25ef13f63b98"],
+ CellLabel->"In[24]:=",ExpressionUUID->"a627dcb0-0160-4a66-a073-25ef13f63b98"],
 
 Cell[CellGroupData[{
 
@@ -3534,7 +3851,7 @@ Cell[BoxData[
   RowBox[{"qglvertDSE\[CapitalPsi]", ",", "fieldStyles"}], "]"}]], "Input",
  CellChangeTimes->{{3.97360936491175*^9, 3.9736093692218657`*^9}, {
   3.973609449127103*^9, 3.973609452199007*^9}},
- CellLabel->"In[60]:=",ExpressionUUID->"1e0a24fd-3773-4817-9fe2-f576fd444a1f"],
+ CellLabel->"In[25]:=",ExpressionUUID->"1e0a24fd-3773-4817-9fe2-f576fd444a1f"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -3556,20 +3873,20 @@ Cell[BoxData[
                     ""}, {$CellContext`A, $CellContext`i3, " leg i3"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20220, 
+                   DoFun`DoDSERGE`Private`field$16235, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i3, 
                     ""}, {$CellContext`\[CapitalPsi], $CellContext`i2, 
                     " leg i2"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20222, 
+                   DoFun`DoDSERGE`Private`field$16237, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i1, 
                     " leg i1"}, {$CellContext`A, $CellContext`i3, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20221, 
+                   DoFun`DoDSERGE`Private`field$16236, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`A, $CellContext`i3, 
@@ -3676,20 +3993,20 @@ Cell[BoxData[
                     " leg i1"}, {$CellContext`A, $CellContext`i3, "S"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20233, 
+                   DoFun`DoDSERGE`Private`field$16248, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i3, 
                     " leg i3"}, {$CellContext`A, $CellContext`i3, "S"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20232, 
+                   DoFun`DoDSERGE`Private`field$16247, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i3, 
                     "S"}, {$CellContext`\[CapitalPsi], $CellContext`i2, 
                     " leg i2"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20234, 
+                   DoFun`DoDSERGE`Private`field$16249, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`A, $CellContext`i3, 
@@ -3806,32 +4123,32 @@ Cell[BoxData[
                     ""}, {$CellContext`A, $CellContext`s1, "S"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20236, 
+                   DoFun`DoDSERGE`Private`field$16251, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`s1, 
                     "S"}, {$CellContext`A, $CellContext`i3, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20237, 
+                   DoFun`DoDSERGE`Private`field$16252, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i3, 
                     ""}, {$CellContext`A, $CellContext`i3, " leg i3"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20238, 
+                   DoFun`DoDSERGE`Private`field$16253, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i3, 
                     ""}, {$CellContext`\[CapitalPsi], $CellContext`i2, 
                     " leg i2"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20240, 
+                   DoFun`DoDSERGE`Private`field$16255, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i1, 
                     " leg i1"}, {$CellContext`A, $CellContext`s1, "S"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20239, 
+                   DoFun`DoDSERGE`Private`field$16254, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`A, $CellContext`i3, 
@@ -3966,38 +4283,38 @@ Cell[BoxData[
                     ""}, {$CellContext`A, $CellContext`i3, " leg i3"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20245, 
+                   DoFun`DoDSERGE`Private`field$16260, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i3, 
                     ""}, {$CellContext`A, $CellContext`t1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20244, 
+                   DoFun`DoDSERGE`Private`field$16259, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`s1, 
                     "S"}, {$CellContext`A, $CellContext`i3, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20243, 
+                   DoFun`DoDSERGE`Private`field$16258, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i1, 
                     " leg i1"}, {$CellContext`A, $CellContext`s1, "S"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20246, 
+                   DoFun`DoDSERGE`Private`field$16261, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`t1, 
                     ""}, {$CellContext`\[CapitalPsi], $CellContext`i2, 
                     " leg i2"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20247, 
+                   DoFun`DoDSERGE`Private`field$16262, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`s1, 
                     "S"}, {$CellContext`A, $CellContext`t1, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20242, 
+                   DoFun`DoDSERGE`Private`field$16257, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`A, $CellContext`s1, 
@@ -4139,38 +4456,38 @@ Cell[BoxData[
                     ""}, {$CellContext`A, $CellContext`v1, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20250, 
+                   DoFun`DoDSERGE`Private`field$16265, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i3, 
                     ""}, {$CellContext`A, $CellContext`s1, "S"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20249, 
+                   DoFun`DoDSERGE`Private`field$16264, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i3, 
                     ""}, {$CellContext`A, $CellContext`i3, " leg i3"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20252, 
+                   DoFun`DoDSERGE`Private`field$16267, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`v1, 
                     ""}, {$CellContext`\[CapitalPsi], $CellContext`i2, 
                     " leg i2"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20254, 
+                   DoFun`DoDSERGE`Private`field$16269, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i1, 
                     " leg i1"}, {$CellContext`A, $CellContext`s1, "S"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20253, 
+                   DoFun`DoDSERGE`Private`field$16268, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`s1, 
                     "S"}, {$CellContext`A, $CellContext`v1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20251, 
+                   DoFun`DoDSERGE`Private`field$16266, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`A, $CellContext`s1, 
@@ -4301,8 +4618,8 @@ Cell[BoxData[
    3.976857424762024*^9, 3.976971366436509*^9, 3.976972546608656*^9, {
    3.97754725738376*^9, 3.977547306396208*^9}, {3.977547340551114*^9, 
    3.977547368252987*^9}, 3.9777438825423927`*^9, 3.977748291801169*^9, 
-   3.9777510190684433`*^9, 3.977830727000663*^9},
- CellLabel->"Out[60]=",ExpressionUUID->"33a39f3c-c8fd-4dad-a90c-3cb62b62f63d"]
+   3.9777510190684433`*^9, 3.977830727000663*^9, 3.977996579223083*^9},
+ CellLabel->"Out[25]=",ExpressionUUID->"d19fc8b5-a3d3-4a73-ab7e-9002663b9754"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4313,7 +4630,7 @@ Cell[BoxData[
  CellChangeTimes->{{3.97360936491175*^9, 3.9736093692218657`*^9}, {
   3.973609449127103*^9, 3.973609456209268*^9}, {3.97754735300175*^9, 
   3.977547366366844*^9}},
- CellLabel->"In[61]:=",ExpressionUUID->"9dd0282a-56ec-412d-bc6d-63a70f6f817b"],
+ CellLabel->"In[26]:=",ExpressionUUID->"9dd0282a-56ec-412d-bc6d-63a70f6f817b"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -4335,20 +4652,20 @@ Cell[BoxData[
                     ""}, {$CellContext`A, $CellContext`i1, " leg i1"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20304, 
+                   DoFun`DoDSERGE`Private`field$16320, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     ""}, {$CellContext`\[CapitalPsi], $CellContext`i3, 
                     " leg i3"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20306, 
+                   DoFun`DoDSERGE`Private`field$16322, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i2, 
                     " leg i2"}, {$CellContext`A, $CellContext`i1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20305, 
+                   DoFun`DoDSERGE`Private`field$16321, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`A, $CellContext`i1, 
@@ -4455,20 +4772,20 @@ Cell[BoxData[
                     " leg i1"}, {$CellContext`A, $CellContext`i1, "S"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20332, 
+                   DoFun`DoDSERGE`Private`field$16348, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i2, 
                     " leg i2"}, {$CellContext`A, $CellContext`i1, "S"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20333, 
+                   DoFun`DoDSERGE`Private`field$16349, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     "S"}, {$CellContext`\[CapitalPsi], $CellContext`i3, 
                     " leg i3"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20334, 
+                   DoFun`DoDSERGE`Private`field$16350, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`A, $CellContext`i1, 
@@ -4585,26 +4902,26 @@ Cell[BoxData[
                     " leg i1"}, {$CellContext`A, $CellContext`i1, "S"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20338, 
+                   DoFun`DoDSERGE`Private`field$16354, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     "S"}, {$CellContext`A, $CellContext`t1, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20337, 
+                   DoFun`DoDSERGE`Private`field$16353, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`t1, 
                     ""}, {$CellContext`\[CapitalPsi], $CellContext`i3, 
                     " leg i3"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20340, 
+                   DoFun`DoDSERGE`Private`field$16356, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i2, 
                     " leg i2"}, {$CellContext`A, $CellContext`t1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20339, 
+                   DoFun`DoDSERGE`Private`field$16355, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`A, $CellContext`t1, 
@@ -4739,34 +5056,34 @@ Cell[BoxData[
                     " leg i1"}, {$CellContext`A, $CellContext`i1, "S"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20344, 
+                   DoFun`DoDSERGE`Private`field$16360, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     "S"}, {$CellContext`\[CapitalPsi]b, $CellContext`i3, 
                     ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20342, 
+                   DoFun`DoDSERGE`Private`field$16358, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i3, 
                     ""}, {$CellContext`\[CapitalPsi], $CellContext`i3, 
                     " leg i3"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20346, 
+                   DoFun`DoDSERGE`Private`field$16362, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i3, 
                     ""}, {$CellContext`A, $CellContext`i1, "S"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20343, 
+                   DoFun`DoDSERGE`Private`field$16359, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i2, 
                     " leg i2"}, {$CellContext`\[CapitalPsi]b, $CellContext`i3,
                      ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20345, 
+                   DoFun`DoDSERGE`Private`field$16361, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`A, $CellContext`i1, 
@@ -4904,26 +5221,26 @@ Cell[BoxData[
                     " leg i1"}, {$CellContext`A, $CellContext`i1, "S"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20351, 
+                   DoFun`DoDSERGE`Private`field$16367, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`u1, 
                     ""}, {$CellContext`\[CapitalPsi], $CellContext`i3, 
                     " leg i3"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20353, 
+                   DoFun`DoDSERGE`Private`field$16369, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i2, 
                     " leg i2"}, {$CellContext`A, $CellContext`u1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20352, 
+                   DoFun`DoDSERGE`Private`field$16368, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     "S"}, {$CellContext`A, $CellContext`u1, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20350, 
+                   DoFun`DoDSERGE`Private`field$16366, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`A, $CellContext`i1, 
@@ -5067,38 +5384,38 @@ Cell[BoxData[
                     "S"}, {$CellContext`A, $CellContext`w1, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20355, 
+                   DoFun`DoDSERGE`Private`field$16371, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`t1, 
                     ""}, {$CellContext`\[CapitalPsi], $CellContext`i3, 
                     " leg i3"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20360, 
+                   DoFun`DoDSERGE`Private`field$16376, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i2, 
                     " leg i2"}, {$CellContext`A, $CellContext`w1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20359, 
+                   DoFun`DoDSERGE`Private`field$16375, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     " leg i1"}, {$CellContext`A, $CellContext`i1, "S"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20358, 
+                   DoFun`DoDSERGE`Private`field$16374, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`w1, 
                     ""}, {$CellContext`A, $CellContext`t1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20357, 
+                   DoFun`DoDSERGE`Private`field$16373, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     "S"}, {$CellContext`A, $CellContext`t1, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20356, 
+                   DoFun`DoDSERGE`Private`field$16372, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`\[CapitalPsi], \
@@ -5238,38 +5555,38 @@ $CellContext`i3, " leg i3"} -> (DoFun`DoDSERGE`Private`getVertexShapeFunction[
                     " leg i2"}, {$CellContext`A, $CellContext`u1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20366, 
+                   DoFun`DoDSERGE`Private`field$16382, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`u1, 
                     ""}, {$CellContext`A, $CellContext`i1, "S"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20364, 
+                   DoFun`DoDSERGE`Private`field$16380, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     "S"}, {$CellContext`A, $CellContext`v1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20363, 
+                   DoFun`DoDSERGE`Private`field$16379, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     " leg i1"}, {$CellContext`A, $CellContext`i1, "S"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20365, 
+                   DoFun`DoDSERGE`Private`field$16381, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`v1, 
                     ""}, {$CellContext`\[CapitalPsi], $CellContext`i3, 
                     " leg i3"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20367, 
+                   DoFun`DoDSERGE`Private`field$16383, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`u1, 
                     ""}, {$CellContext`A, $CellContext`v1, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20362, 
+                   DoFun`DoDSERGE`Private`field$16378, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`A, $CellContext`v1, 
@@ -5411,38 +5728,38 @@ $CellContext`i3, " leg i3"} -> (DoFun`DoDSERGE`Private`getVertexShapeFunction[
                     "S"}, {$CellContext`A, $CellContext`y1, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20369, 
+                   DoFun`DoDSERGE`Private`field$16385, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     "S"}, {$CellContext`A, $CellContext`u1, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20371, 
+                   DoFun`DoDSERGE`Private`field$16387, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     " leg i1"}, {$CellContext`A, $CellContext`i1, "S"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20373, 
+                   DoFun`DoDSERGE`Private`field$16389, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`y1, 
                     ""}, {$CellContext`A, $CellContext`u1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20372, 
+                   DoFun`DoDSERGE`Private`field$16388, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i2, 
                     " leg i2"}, {$CellContext`A, $CellContext`y1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20374, 
+                   DoFun`DoDSERGE`Private`field$16390, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`u1, 
                     ""}, {$CellContext`\[CapitalPsi], $CellContext`i3, 
                     " leg i3"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20375, 
+                   DoFun`DoDSERGE`Private`field$16391, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`\[CapitalPsi], \
@@ -5590,38 +5907,38 @@ $CellContext`i3, " leg i3"} -> (DoFun`DoDSERGE`Private`getVertexShapeFunction[
                     ""}, {$CellContext`A, $CellContext`u1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20380, 
+                   DoFun`DoDSERGE`Private`field$16396, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i2, 
                     " leg i2"}, {$CellContext`A, $CellContext`x1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20382, 
+                   DoFun`DoDSERGE`Private`field$16398, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     "S"}, {$CellContext`A, $CellContext`u1, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20378, 
+                   DoFun`DoDSERGE`Private`field$16394, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     " leg i1"}, {$CellContext`A, $CellContext`i1, "S"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20381, 
+                   DoFun`DoDSERGE`Private`field$16397, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     "S"}, {$CellContext`A, $CellContext`x1, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20379, 
+                   DoFun`DoDSERGE`Private`field$16395, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`u1, 
                     ""}, {$CellContext`\[CapitalPsi], $CellContext`i3, 
                     " leg i3"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20383, 
+                   DoFun`DoDSERGE`Private`field$16399, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`A, $CellContext`x1, 
@@ -5775,38 +6092,38 @@ $CellContext`i3, " leg i3"} -> (DoFun`DoDSERGE`Private`getVertexShapeFunction[
                     "S"}, {$CellContext`A, $CellContext`y1, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20385, 
+                   DoFun`DoDSERGE`Private`field$16401, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`u1, 
                     ""}, {$CellContext`A, $CellContext`y1, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20388, 
+                   DoFun`DoDSERGE`Private`field$16404, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     "S"}, {$CellContext`A, $CellContext`u1, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20387, 
+                   DoFun`DoDSERGE`Private`field$16403, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     " leg i1"}, {$CellContext`A, $CellContext`i1, "S"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20389, 
+                   DoFun`DoDSERGE`Private`field$16405, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i2, 
                     " leg i2"}, {$CellContext`A, $CellContext`y1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20390, 
+                   DoFun`DoDSERGE`Private`field$16406, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`y1, 
                     ""}, {$CellContext`\[CapitalPsi], $CellContext`i3, 
                     " leg i3"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20391, 
+                   DoFun`DoDSERGE`Private`field$16407, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`\[CapitalPsi], \
@@ -5956,44 +6273,44 @@ $CellContext`i3, " leg i3"} -> (DoFun`DoDSERGE`Private`getVertexShapeFunction[
                     " leg i2"}, {$CellContext`A, $CellContext`u1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20399, 
+                   DoFun`DoDSERGE`Private`field$16415, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     "S"}, {$CellContext`A, $CellContext`s2, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20395, 
+                   DoFun`DoDSERGE`Private`field$16411, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`s2, 
                     ""}, {$CellContext`A, $CellContext`u1, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20396, 
+                   DoFun`DoDSERGE`Private`field$16412, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`u1, 
                     ""}, {$CellContext`A, $CellContext`v2, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20397, 
+                   DoFun`DoDSERGE`Private`field$16413, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`v2, 
                     ""}, {$CellContext`\[CapitalPsi], $CellContext`i3, 
                     " leg i3"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20400, 
+                   DoFun`DoDSERGE`Private`field$16416, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     " leg i1"}, {$CellContext`A, $CellContext`i1, "S"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20398, 
+                   DoFun`DoDSERGE`Private`field$16414, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     "S"}, {$CellContext`A, $CellContext`v2, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20393, 
+                   DoFun`DoDSERGE`Private`field$16409, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`\[CapitalPsi], \
@@ -6152,50 +6469,50 @@ $CellContext`i3, " leg i3"} -> (DoFun`DoDSERGE`Private`getVertexShapeFunction[
                     "S"}, {$CellContext`A, $CellContext`s2, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20403, 
+                   DoFun`DoDSERGE`Private`field$16419, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`s2, 
                     ""}, {$CellContext`A, $CellContext`t1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20405, 
+                   DoFun`DoDSERGE`Private`field$16421, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`t1, 
                     ""}, {$CellContext`\[CapitalPsi], $CellContext`i3, 
                     " leg i3"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20409, 
+                   DoFun`DoDSERGE`Private`field$16425, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     " leg i1"}, {$CellContext`A, $CellContext`i1, "S"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20407, 
+                   DoFun`DoDSERGE`Private`field$16423, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i2, 
                     " leg i2"}, {$CellContext`A, $CellContext`v2, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20408, 
+                   DoFun`DoDSERGE`Private`field$16424, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     "S"}, {$CellContext`A, $CellContext`v2, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20402, 
+                   DoFun`DoDSERGE`Private`field$16418, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     "S"}, {$CellContext`A, $CellContext`t1, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20404, 
+                   DoFun`DoDSERGE`Private`field$16420, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`v2, 
                     ""}, {$CellContext`A, $CellContext`s2, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20406, 
+                   DoFun`DoDSERGE`Private`field$16422, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`\[CapitalPsi], \
@@ -6351,44 +6668,44 @@ $CellContext`i3, " leg i3"} -> (DoFun`DoDSERGE`Private`getVertexShapeFunction[
                     ""}, {$CellContext`A, $CellContext`u1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20415, 
+                   DoFun`DoDSERGE`Private`field$16431, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     "S"}, {$CellContext`A, $CellContext`s2, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20413, 
+                   DoFun`DoDSERGE`Private`field$16429, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`s2, 
                     ""}, {$CellContext`A, $CellContext`u1, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20414, 
+                   DoFun`DoDSERGE`Private`field$16430, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     " leg i1"}, {$CellContext`A, $CellContext`i1, "S"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20416, 
+                   DoFun`DoDSERGE`Private`field$16432, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i2, 
                     " leg i2"}, {$CellContext`A, $CellContext`v2, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20417, 
+                   DoFun`DoDSERGE`Private`field$16433, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     "S"}, {$CellContext`A, $CellContext`v2, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20411, 
+                   DoFun`DoDSERGE`Private`field$16427, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`u1, 
                     ""}, {$CellContext`\[CapitalPsi], $CellContext`i3, 
                     " leg i3"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$20418, 
+                   DoFun`DoDSERGE`Private`field$16434, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`\[CapitalPsi], \
@@ -6535,8 +6852,8 @@ $CellContext`i3, " leg i3"} -> (DoFun`DoDSERGE`Private`getVertexShapeFunction[
   3.9736094567683067`*^9, 3.976857426003662*^9, 3.976971366967938*^9, 
    3.976972547887603*^9, {3.9775473424933567`*^9, 3.977547366742957*^9}, 
    3.977743884503941*^9, 3.9777482919066763`*^9, 3.977751019859877*^9, 
-   3.977830727134843*^9},
- CellLabel->"Out[61]=",ExpressionUUID->"e8f160e4-1003-453b-93ba-d149167f1c14"]
+   3.977830727134843*^9, 3.977996580650721*^9},
+ CellLabel->"Out[26]=",ExpressionUUID->"8b62a5a9-0b47-4698-a642-7327f92def93"]
 }, Open  ]],
 
 Cell["The algebraic expression for the quark propagator is", "Text",
@@ -6576,7 +6893,7 @@ Cell[BoxData[
   3.9769752871633673`*^9}, {3.976975373214251*^9, 3.976975382588129*^9}, {
   3.97774389164734*^9, 3.977743902980339*^9}, {3.977748296901691*^9, 
   3.977748314436041*^9}},
- CellLabel->"In[70]:=",ExpressionUUID->"f0448c8f-0be2-475c-a6aa-5070bef1a197"],
+ CellLabel->"In[27]:=",ExpressionUUID->"f0448c8f-0be2-475c-a6aa-5070bef1a197"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -6591,60 +6908,59 @@ Cell[BoxData[
         RowBox[{"dirac", ",", "j", ",", "i"}], "]"}]}], "+", 
       RowBox[{"\[ImaginaryI]", " ", 
        RowBox[{"diracGamma", "[", 
-        RowBox[{"mu$20793", ",", "j", ",", "i"}], "]"}], " ", 
+        RowBox[{"mu$16603", ",", "j", ",", "i"}], "]"}], " ", 
        RowBox[{"vec", "[", 
-        RowBox[{"p", ",", "mu$20793"}], "]"}]}]}], ")"}]}], ",", 
+        RowBox[{"p", ",", "mu$16603"}], "]"}]}]}], ")"}]}], ",", 
    RowBox[{
     RowBox[{"(", 
      RowBox[{
       SuperscriptBox["g", "2"], " ", "ZF1", " ", 
       RowBox[{"delta", "[", 
-       RowBox[{"adj", ",", "a$20783", ",", "b$20783"}], "]"}], " ", 
+       RowBox[{"adj", ",", "a$16593", ",", "b$16593"}], "]"}], " ", 
       RowBox[{"delta", "[", 
-       RowBox[{"fund", ",", "a$20789", ",", "b$20789"}], "]"}], " ", 
+       RowBox[{"fund", ",", "a$16599", ",", "b$16599"}], "]"}], " ", 
       RowBox[{"diracGamma", "[", 
-       RowBox[{"a$20792", ",", "a$20786", ",", "i"}], "]"}], " ", 
+       RowBox[{"a$16602", ",", "a$16596", ",", "i"}], "]"}], " ", 
       RowBox[{"diracGamma", "[", 
-       RowBox[{"b$20792", ",", "j", ",", "b$20786"}], "]"}], " ", 
+       RowBox[{"b$16602", ",", "j", ",", "b$16596"}], "]"}], " ", 
       RowBox[{"GammaA\[CapitalPsi]\[CapitalPsi]b", "[", 
        RowBox[{"1", ",", 
         RowBox[{"p", "-", "q1"}], ",", 
         RowBox[{"-", "p"}], ",", "q1"}], "]"}], " ", 
       RowBox[{"SUNT", "[", 
-       RowBox[{"a$20783", ",", "a$20789", ",", "c1"}], "]"}], " ", 
+       RowBox[{"a$16593", ",", "a$16599", ",", "c1"}], "]"}], " ", 
       RowBox[{"SUNT", "[", 
-       RowBox[{"b$20783", ",", "c2", ",", "b$20789"}], "]"}], " ", 
+       RowBox[{"b$16593", ",", "c2", ",", "b$16599"}], "]"}], " ", 
       RowBox[{"(", 
        RowBox[{
         RowBox[{
          RowBox[{"delta", "[", 
-          RowBox[{"dirac", ",", "b$20786", ",", "a$20786"}], "]"}], " ", 
+          RowBox[{"dirac", ",", "b$16596", ",", "a$16596"}], "]"}], " ", 
          RowBox[{"DquB", "[", 
           RowBox[{"sp", "[", 
-           RowBox[{"-", "q1"}], "]"}], "]"}]}], "+", 
+           RowBox[{"-", "q1"}], "]"}], "]"}]}], "-", 
         RowBox[{"\[ImaginaryI]", " ", 
          RowBox[{"diracGamma", "[", 
-          RowBox[{"mu$20794", ",", "b$20786", ",", "a$20786"}], "]"}], " ", 
+          RowBox[{"mu$16604", ",", "b$16596", ",", "a$16596"}], "]"}], " ", 
          RowBox[{"DquA", "[", 
           RowBox[{"sp", "[", 
            RowBox[{"-", "q1"}], "]"}], "]"}], " ", 
          RowBox[{"vec", "[", 
-          RowBox[{
-           RowBox[{"-", "q1"}], ",", "mu$20794"}], "]"}]}]}], ")"}], " ", 
+          RowBox[{"q1", ",", "mu$16604"}], "]"}]}]}], ")"}], " ", 
       RowBox[{"(", 
        RowBox[{
         RowBox[{"metr", "[", 
-         RowBox[{"a$20792", ",", "b$20792"}], "]"}], "-", 
+         RowBox[{"a$16602", ",", "b$16602"}], "]"}], "-", 
         FractionBox[
          RowBox[{
           RowBox[{"vec", "[", 
            RowBox[{
             RowBox[{
-             RowBox[{"-", "p"}], "+", "q1"}], ",", "a$20792"}], "]"}], " ", 
+             RowBox[{"-", "p"}], "+", "q1"}], ",", "a$16602"}], "]"}], " ", 
           RowBox[{"vec", "[", 
            RowBox[{
             RowBox[{
-             RowBox[{"-", "p"}], "+", "q1"}], ",", "b$20792"}], "]"}]}], 
+             RowBox[{"-", "p"}], "+", "q1"}], ",", "b$16602"}], "]"}]}], 
          RowBox[{"sp", "[", 
           RowBox[{
            RowBox[{"-", "p"}], "+", "q1"}], "]"}]]}], ")"}], " ", 
@@ -6674,8 +6990,9 @@ Cell[BoxData[
 
  CellChangeTimes->{
   3.977748315270896*^9, 3.977750870887949*^9, 3.9777509870818644`*^9, 
-   3.977751020998925*^9, {3.977830727178833*^9, 3.977830742314064*^9}},
- CellLabel->"Out[70]=",ExpressionUUID->"3653f722-5715-4ffa-9c57-95f14cdfb22b"]
+   3.977751020998925*^9, {3.977830727178833*^9, 3.977830742314064*^9}, 
+   3.9779965823037157`*^9},
+ CellLabel->"Out[27]=",ExpressionUUID->"f5236f5c-7784-4fa0-93cf-b466a38d3601"]
 }, Open  ]],
 
 Cell["\<\
@@ -6704,7 +7021,7 @@ Cell[BoxData[
   3.976973760191946*^9}, {3.9769752208118134`*^9, 3.9769752222278633`*^9}, {
   3.976975289461465*^9, 3.976975290433701*^9}, {3.977743963875009*^9, 
   3.977743964984639*^9}, {3.977748328348797*^9, 3.977748329863649*^9}},
- CellLabel->"In[63]:=",ExpressionUUID->"3fe643e7-73b1-4398-ba97-b128c983e62b"],
+ CellLabel->"In[28]:=",ExpressionUUID->"3fe643e7-73b1-4398-ba97-b128c983e62b"],
 
 Cell[BoxData[
  RowBox[{
@@ -6721,7 +7038,7 @@ Cell[BoxData[
    3.976971691017811*^9, 3.976971700221353*^9}, 3.9769737399781446`*^9, {
    3.977743967814107*^9, 3.977743969042272*^9}, {3.977748333157716*^9, 
    3.977748334221723*^9}},
- CellLabel->"In[64]:=",ExpressionUUID->"5e12de60-e13e-439b-aa1b-0394cc0ddc33"],
+ CellLabel->"In[29]:=",ExpressionUUID->"5e12de60-e13e-439b-aa1b-0394cc0ddc33"],
 
 Cell["\<\
 The left-hand side has the same structure as the bare two-point function on \
@@ -6759,8 +7076,7 @@ Cell[BoxData[
  CellChangeTimes->{{3.9769716602481947`*^9, 3.976971670743967*^9}, {
    3.9769728335736313`*^9, 3.976972884342401*^9}, {3.9769736986129713`*^9, 
    3.976973710500578*^9}, 3.977547419799704*^9},
- CellLabel->
-  "In[2106]:=",ExpressionUUID->"b592e8c9-46da-40f0-8e9b-a4e7cdd812c0"],
+ CellLabel->"In[30]:=",ExpressionUUID->"b592e8c9-46da-40f0-8e9b-a4e7cdd812c0"],
 
 Cell[CellGroupData[{
 
@@ -6795,8 +7111,7 @@ Cell[BoxData[
    3.976974730069715*^9, 3.976974748207274*^9}, {3.976974926793118*^9, 
    3.9769749846240892`*^9}, 3.976975233820077*^9, {3.9769752649392157`*^9, 
    3.97697527653885*^9}},
- CellLabel->
-  "In[2107]:=",ExpressionUUID->"70de971c-e591-4657-8d1f-24e4198c717b"],
+ CellLabel->"In[31]:=",ExpressionUUID->"70de971c-e591-4657-8d1f-24e4198c717b"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -6838,9 +7153,8 @@ Cell[BoxData[
           RowBox[{"sp", "[", "q", "]"}], "]"}], "2"], " ", 
         RowBox[{"sp", "[", "q", "]"}]}]}], ")"}]}]]}], "}"}]], "Output",
  CellChangeTimes->{{3.97783072880935*^9, 3.977830743863098*^9}, 
-   3.977838479240262*^9},
- CellLabel->
-  "Out[2107]=",ExpressionUUID->"63d81d54-2d56-4356-96b5-d2405842f1a2"]
+   3.977838479240262*^9, 3.977996596901286*^9},
+ CellLabel->"Out[31]=",ExpressionUUID->"2797527a-740b-40fb-84cf-af7c7ece9a59"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -6865,8 +7179,7 @@ Cell[BoxData[
    3.9769728888243837`*^9, 3.976972919408442*^9}, {3.976973659412307*^9, 
    3.9769736694856853`*^9}, 3.9769737375829687`*^9, {3.977547436057332*^9, 
    3.977547436875301*^9}},
- CellLabel->
-  "In[2108]:=",ExpressionUUID->"351392db-3702-4ccb-8a4e-c9d83c7c46b5"],
+ CellLabel->"In[32]:=",ExpressionUUID->"351392db-3702-4ccb-8a4e-c9d83c7c46b5"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -6900,10 +7213,14 @@ Cell[BoxData[
       RowBox[{
        RowBox[{"-", "p"}], "+", "q1"}], "]"}]}]]}], "}"}]], "Output",
  CellChangeTimes->{{3.977830731412513*^9, 3.977830745711893*^9}, 
-   3.977838487277734*^9},
- CellLabel->
-  "Out[2108]=",ExpressionUUID->"470b5b4a-7be3-487f-a348-e5f867fcd2eb"]
-}, Open  ]]
+   3.977838487277734*^9, 3.977996598340437*^9},
+ CellLabel->"Out[32]=",ExpressionUUID->"1096d6e0-d721-4468-9d45-67ecb5299145"]
+}, Open  ]],
+
+Cell["These are the usual expressions in the ladder approximation.", "Text",
+ CellChangeTimes->{{3.977996601758335*^9, 
+  3.977996615124607*^9}},ExpressionUUID->"a95c9b77-8365-44ee-a736-\
+78882dc93cc0"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -6934,8 +7251,7 @@ Cell[BoxData[
   ";"}]], "Input",
  CellChangeTimes->{{3.506688125555957*^9, 3.506688141618196*^9}, {
   3.97360841080888*^9, 3.973608417008443*^9}},
- CellLabel->
-  "In[2109]:=",ExpressionUUID->"e346dfd2-165f-4dd5-9eb3-a3712d085e9c"],
+ CellLabel->"In[33]:=",ExpressionUUID->"e346dfd2-165f-4dd5-9eb3-a3712d085e9c"],
 
 Cell[CellGroupData[{
 
@@ -6952,8 +7268,7 @@ Cell[BoxData[
    "]"}]}]], "Input",
  CellChangeTimes->{{3.9736093306043386`*^9, 3.973609362736424*^9}, {
    3.973609487354476*^9, 3.973609490343346*^9}, 3.9777510469033012`*^9},
- CellLabel->
-  "In[259]:=",ExpressionUUID->"aeca2613-6729-4a1e-962b-62de5e9ec5ea"],
+ CellLabel->"In[34]:=",ExpressionUUID->"aeca2613-6729-4a1e-962b-62de5e9ec5ea"],
 
 Cell[BoxData[
  RowBox[{
@@ -7044,9 +7359,9 @@ Cell[BoxData[
    "]"}]}]], "Output",
  CellChangeTimes->{{3.973609349933288*^9, 3.973609363102647*^9}, 
    3.9736094912065773`*^9, 3.976857454555393*^9, 3.9769754075243053`*^9, 
-   3.9775474414608917`*^9, {3.977751032911294*^9, 3.977751048249331*^9}},
- CellLabel->
-  "Out[259]=",ExpressionUUID->"bdbe9ca6-9992-418a-b13b-7b7803f8e6b3"]
+   3.9775474414608917`*^9, {3.977751032911294*^9, 3.977751048249331*^9}, 
+   3.9779966509019012`*^9},
+ CellLabel->"Out[34]=",ExpressionUUID->"9f41689f-ce31-41f0-9bdb-698d2035f2f2"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -7056,8 +7371,7 @@ Cell[BoxData[
   RowBox[{"qupropRGE", ",", "fieldStyles"}], "]"}]], "Input",
  CellChangeTimes->{{3.97360936491175*^9, 3.9736093692218657`*^9}, {
   3.973609493623451*^9, 3.973609496485865*^9}},
- CellLabel->
-  "In[260]:=",ExpressionUUID->"a21c8b7b-f7d3-4aee-aab0-d85fbab45084"],
+ CellLabel->"In[35]:=",ExpressionUUID->"a21c8b7b-f7d3-4aee-aab0-d85fbab45084"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -7079,14 +7393,14 @@ Cell[BoxData[
                     " leg i2"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$39519, 
+                   DoFun`DoDSERGE`Private`field$17744, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i1, 
                     " leg i1"}, {$CellContext`\[CapitalPsi], $CellContext`i1, 
                     ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$39518, 
+                   DoFun`DoDSERGE`Private`field$17743, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`\[CapitalPsi], \
@@ -7191,32 +7505,32 @@ $CellContext`i2, " leg i2"} -> (DoFun`DoDSERGE`Private`getVertexShapeFunction[
                     ""}, {$CellContext`A, $CellContext`v1, "dt R"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$39525, 
+                   DoFun`DoDSERGE`Private`field$17750, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`t1, 
                     ""}, {$CellContext`\[CapitalPsi], $CellContext`i2, 
                     " leg i2"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$39529, 
+                   DoFun`DoDSERGE`Private`field$17754, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`r1, 
                     ""}, {$CellContext`A, $CellContext`t1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$39527, 
+                   DoFun`DoDSERGE`Private`field$17752, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`r1, 
                     ""}, {$CellContext`A, $CellContext`v1, "dt R"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$39526, 
+                   DoFun`DoDSERGE`Private`field$17751, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i1, 
                     " leg i1"}, {$CellContext`A, $CellContext`r1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$39528, 
+                   DoFun`DoDSERGE`Private`field$17753, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`A, $CellContext`t1, 
@@ -7348,33 +7662,33 @@ $CellContext`i2, " leg i2"} -> (DoFun`DoDSERGE`Private`getVertexShapeFunction[
                     "dt R"}, {$CellContext`A, $CellContext`t1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$39533, 
+                   DoFun`DoDSERGE`Private`field$17758, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`t1, 
                     ""}, {$CellContext`\[CapitalPsi], $CellContext`i2, 
                     " leg i2"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$39535, 
+                   DoFun`DoDSERGE`Private`field$17760, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`r1, 
                     ""}, {$CellContext`A, $CellContext`t1, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$39531, 
+                   DoFun`DoDSERGE`Private`field$17756, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i1, 
                     " leg i1"}, {$CellContext`A, $CellContext`r1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$39534, 
+                   DoFun`DoDSERGE`Private`field$17759, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`r1, 
                     ""}, {$CellContext`\[CapitalPsi]b, $CellContext`v1, 
                     "dt R"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$39532, 
+                   DoFun`DoDSERGE`Private`field$17757, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`A, $CellContext`t1, 
@@ -7502,9 +7816,8 @@ $CellContext`i2, " leg i2"} -> (DoFun`DoDSERGE`Private`getVertexShapeFunction[
  CellChangeTimes->{
   3.9736093698816433`*^9, 3.973609497192745*^9, 3.9768574564661217`*^9, 
    3.97697540878931*^9, 3.977547442794323*^9, {3.9777510345103407`*^9, 
-   3.977751049972177*^9}},
- CellLabel->
-  "Out[260]=",ExpressionUUID->"18498fe3-8ddc-4937-aa28-ffc57be73c0e"]
+   3.977751049972177*^9}, 3.977996652355853*^9},
+ CellLabel->"Out[35]=",ExpressionUUID->"cbb94be8-f999-4c17-bb3d-baafd251a40f"]
 }, Open  ]],
 
 Cell[BoxData[{
@@ -7525,8 +7838,7 @@ Cell[BoxData[{
  CellChangeTimes->{{3.9736093306043386`*^9, 3.9736094042231827`*^9}, {
    3.9736094390765867`*^9, 3.973609443111129*^9}, {3.973609501794117*^9, 
    3.9736095108476143`*^9}, 3.977751053178851*^9},
- CellLabel->
-  "In[261]:=",ExpressionUUID->"300d42b1-a6ce-41da-a4ed-8149dd202659"],
+ CellLabel->"In[36]:=",ExpressionUUID->"300d42b1-a6ce-41da-a4ed-8149dd202659"],
 
 Cell[CellGroupData[{
 
@@ -7536,8 +7848,7 @@ Cell[BoxData[
  CellChangeTimes->{{3.97360936491175*^9, 3.9736093692218657`*^9}, {
   3.973609449127103*^9, 3.973609452199007*^9}, {3.9736095134343653`*^9, 
   3.973609517748395*^9}},
- CellLabel->
-  "In[263]:=",ExpressionUUID->"c248abd8-a6d0-4b21-81dd-8b36b46efde9"],
+ CellLabel->"In[38]:=",ExpressionUUID->"c248abd8-a6d0-4b21-81dd-8b36b46efde9"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -7560,21 +7871,21 @@ Cell[BoxData[
                     ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40115, 
+                   DoFun`DoDSERGE`Private`field$18340, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi], $CellContext`i1, 
                     ""}, {$CellContext`\[CapitalPsi], $CellContext`i2, 
                     " leg i2"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40117, 
+                   DoFun`DoDSERGE`Private`field$18342, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i1, 
                     " leg i1"}, {$CellContext`\[CapitalPsi], $CellContext`i1, 
                     ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40116, 
+                   DoFun`DoDSERGE`Private`field$18341, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`A, $CellContext`i3, 
@@ -7695,44 +8006,44 @@ Cell[BoxData[
                     ""}, {$CellContext`A, $CellContext`x1, "dt R"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40132, 
+                   DoFun`DoDSERGE`Private`field$18357, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i3, 
                     ""}, {$CellContext`A, $CellContext`i3, " leg i3"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40135, 
+                   DoFun`DoDSERGE`Private`field$18360, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i3, 
                     ""}, {$CellContext`A, $CellContext`t1, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40131, 
+                   DoFun`DoDSERGE`Private`field$18356, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`r1, 
                     ""}, {$CellContext`A, $CellContext`x1, "dt R"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40133, 
+                   DoFun`DoDSERGE`Private`field$18358, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`r1, 
                     ""}, {$CellContext`A, $CellContext`t1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40134, 
+                   DoFun`DoDSERGE`Private`field$18359, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i1, 
                     " leg i1"}, {$CellContext`A, $CellContext`r1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40136, 
+                   DoFun`DoDSERGE`Private`field$18361, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`t1, 
                     ""}, {$CellContext`\[CapitalPsi], $CellContext`i2, 
                     " leg i2"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40137, 
+                   DoFun`DoDSERGE`Private`field$18362, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`A, $CellContext`r1, 
@@ -7889,44 +8200,44 @@ Cell[BoxData[
                     ""}, {$CellContext`A, $CellContext`x1, "dt R"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40141, 
+                   DoFun`DoDSERGE`Private`field$18366, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i3, 
                     ""}, {$CellContext`A, $CellContext`i3, " leg i3"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40143, 
+                   DoFun`DoDSERGE`Private`field$18368, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i3, 
                     ""}, {$CellContext`A, $CellContext`r1, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40140, 
+                   DoFun`DoDSERGE`Private`field$18365, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`r1, 
                     ""}, {$CellContext`A, $CellContext`t1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40142, 
+                   DoFun`DoDSERGE`Private`field$18367, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i1, 
                     " leg i1"}, {$CellContext`A, $CellContext`r1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40144, 
+                   DoFun`DoDSERGE`Private`field$18369, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`t1, 
                     ""}, {$CellContext`A, $CellContext`x1, "dt R"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40139, 
+                   DoFun`DoDSERGE`Private`field$18364, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`t1, 
                     ""}, {$CellContext`\[CapitalPsi], $CellContext`i2, 
                     " leg i2"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40145, 
+                   DoFun`DoDSERGE`Private`field$18370, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`A, $CellContext`r1, 
@@ -8085,44 +8396,44 @@ Cell[BoxData[
                     "dt R"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40149, 
+                   DoFun`DoDSERGE`Private`field$18374, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`x1, 
                     "dt R"}, {$CellContext`A, $CellContext`t1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40150, 
+                   DoFun`DoDSERGE`Private`field$18375, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i3, 
                     ""}, {$CellContext`A, $CellContext`i3, " leg i3"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40151, 
+                   DoFun`DoDSERGE`Private`field$18376, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i3, 
                     ""}, {$CellContext`A, $CellContext`t1, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40147, 
+                   DoFun`DoDSERGE`Private`field$18372, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i3, 
                     ""}, {$CellContext`A, $CellContext`r1, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40148, 
+                   DoFun`DoDSERGE`Private`field$18373, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i1, 
                     " leg i1"}, {$CellContext`A, $CellContext`r1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40152, 
+                   DoFun`DoDSERGE`Private`field$18377, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`t1, 
                     ""}, {$CellContext`\[CapitalPsi], $CellContext`i2, 
                     " leg i2"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40153, 
+                   DoFun`DoDSERGE`Private`field$18378, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`\[CapitalPsi]b, \
@@ -8279,44 +8590,44 @@ $CellContext`x1, "dt R"} -> (DoFun`DoDSERGE`Private`getVertexShapeFunction[
                     ""}, {$CellContext`A, $CellContext`i3, " leg i3"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40159, 
+                   DoFun`DoDSERGE`Private`field$18384, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i3, 
                     ""}, {$CellContext`A, $CellContext`t1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40158, 
+                   DoFun`DoDSERGE`Private`field$18383, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`r1, 
                     ""}, {$CellContext`A, $CellContext`x1, "dt R"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40156, 
+                   DoFun`DoDSERGE`Private`field$18381, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i1, 
                     " leg i1"}, {$CellContext`A, $CellContext`r1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40160, 
+                   DoFun`DoDSERGE`Private`field$18385, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`t1, 
                     ""}, {$CellContext`A, $CellContext`x1, "dt R"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40155, 
+                   DoFun`DoDSERGE`Private`field$18380, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`t1, 
                     ""}, {$CellContext`\[CapitalPsi], $CellContext`i2, 
                     " leg i2"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40161, 
+                   DoFun`DoDSERGE`Private`field$18386, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`r1, 
                     ""}, {$CellContext`A, $CellContext`i3, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40157, 
+                   DoFun`DoDSERGE`Private`field$18382, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`A, $CellContext`r1, 
@@ -8478,45 +8789,45 @@ $CellContext`x1, "dt R"} -> (DoFun`DoDSERGE`Private`getVertexShapeFunction[
                     "dt R"}, {$CellContext`A, $CellContext`t1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40166, 
+                   DoFun`DoDSERGE`Private`field$18391, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i3, 
                     ""}, {$CellContext`A, $CellContext`i3, " leg i3"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40167, 
+                   DoFun`DoDSERGE`Private`field$18392, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i3, 
                     ""}, {$CellContext`\[CapitalPsi]b, $CellContext`x1, 
                     "dt R"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40165, 
+                   DoFun`DoDSERGE`Private`field$18390, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`r1, 
                     ""}, {$CellContext`A, $CellContext`t1, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40163, 
+                   DoFun`DoDSERGE`Private`field$18388, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i1, 
                     " leg i1"}, {$CellContext`A, $CellContext`r1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40168, 
+                   DoFun`DoDSERGE`Private`field$18393, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`t1, 
                     ""}, {$CellContext`\[CapitalPsi], $CellContext`i2, 
                     " leg i2"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40169, 
+                   DoFun`DoDSERGE`Private`field$18394, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`r1, 
                     ""}, {$CellContext`A, $CellContext`i3, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40164, 
+                   DoFun`DoDSERGE`Private`field$18389, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`\[CapitalPsi]b, \
@@ -8676,44 +8987,44 @@ $CellContext`x1, "dt R"} -> (DoFun`DoDSERGE`Private`getVertexShapeFunction[
                     "dt R"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40172, 
+                   DoFun`DoDSERGE`Private`field$18397, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i3, 
                     ""}, {$CellContext`A, $CellContext`i3, " leg i3"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40175, 
+                   DoFun`DoDSERGE`Private`field$18400, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i3, 
                     ""}, {$CellContext`A, $CellContext`t1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40173, 
+                   DoFun`DoDSERGE`Private`field$18398, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`r1, 
                     ""}, {$CellContext`A, $CellContext`t1, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40171, 
+                   DoFun`DoDSERGE`Private`field$18396, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i1, 
                     " leg i1"}, {$CellContext`A, $CellContext`r1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40176, 
+                   DoFun`DoDSERGE`Private`field$18401, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`t1, 
                     ""}, {$CellContext`\[CapitalPsi], $CellContext`i2, 
                     " leg i2"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40177, 
+                   DoFun`DoDSERGE`Private`field$18402, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`x1, 
                     "dt R"}, {$CellContext`A, $CellContext`i3, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40174, 
+                   DoFun`DoDSERGE`Private`field$18399, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`\[CapitalPsi]b, \
@@ -8865,9 +9176,8 @@ $CellContext`x1, "dt R"} -> (DoFun`DoDSERGE`Private`getVertexShapeFunction[
  CellChangeTimes->{
   3.9736093698816433`*^9, {3.9736094452536592`*^9, 3.973609452959621*^9}, 
    3.9736095181612167`*^9, 3.976857461631133*^9, 3.9769754104503803`*^9, 
-   3.977547445300975*^9, 3.977751059092834*^9},
- CellLabel->
-  "Out[263]=",ExpressionUUID->"079fcfb2-04e7-462c-a75e-2abf26bcc54e"]
+   3.977547445300975*^9, 3.977751059092834*^9, 3.977996653514979*^9},
+ CellLabel->"Out[38]=",ExpressionUUID->"5e262e39-f378-48c5-801b-48ad7041d0ee"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -8878,8 +9188,7 @@ Cell[BoxData[
  CellChangeTimes->{{3.97360936491175*^9, 3.9736093692218657`*^9}, {
   3.973609449127103*^9, 3.973609456209268*^9}, {3.973609520809627*^9, 
   3.973609523503931*^9}},
- CellLabel->
-  "In[264]:=",ExpressionUUID->"1bc199b8-332f-46de-8087-a3c06077b072"],
+ CellLabel->"In[39]:=",ExpressionUUID->"1bc199b8-332f-46de-8087-a3c06077b072"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -8901,20 +9210,20 @@ Cell[BoxData[
                     ""}, {$CellContext`A, $CellContext`i1, " leg i1"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40258, 
+                   DoFun`DoDSERGE`Private`field$18483, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     ""}, {$CellContext`\[CapitalPsi], $CellContext`i3, 
                     " leg i3"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40260, 
+                   DoFun`DoDSERGE`Private`field$18485, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i2, 
                     " leg i2"}, {$CellContext`A, $CellContext`i1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40259, 
+                   DoFun`DoDSERGE`Private`field$18484, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`A, $CellContext`i1, 
@@ -9035,44 +9344,44 @@ Cell[BoxData[
                     ""}, {$CellContext`A, $CellContext`x1, "dt R"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40276, 
+                   DoFun`DoDSERGE`Private`field$18501, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     ""}, {$CellContext`A, $CellContext`i1, " leg i1"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40278, 
+                   DoFun`DoDSERGE`Private`field$18503, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`t1, 
                     ""}, {$CellContext`A, $CellContext`v1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40277, 
+                   DoFun`DoDSERGE`Private`field$18502, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`t1, 
                     ""}, {$CellContext`A, $CellContext`x1, "dt R"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40275, 
+                   DoFun`DoDSERGE`Private`field$18500, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     ""}, {$CellContext`A, $CellContext`v1, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40274, 
+                   DoFun`DoDSERGE`Private`field$18499, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i2, 
                     " leg i2"}, {$CellContext`A, $CellContext`t1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40279, 
+                   DoFun`DoDSERGE`Private`field$18504, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`v1, 
                     ""}, {$CellContext`\[CapitalPsi], $CellContext`i3, 
                     " leg i3"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40280, 
+                   DoFun`DoDSERGE`Private`field$18505, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`A, $CellContext`v1, 
@@ -9229,45 +9538,45 @@ Cell[BoxData[
                     "dt R"}, {$CellContext`A, $CellContext`v1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40285, 
+                   DoFun`DoDSERGE`Private`field$18510, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     ""}, {$CellContext`A, $CellContext`t1, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40283, 
+                   DoFun`DoDSERGE`Private`field$18508, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     ""}, {$CellContext`A, $CellContext`i1, " leg i1"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40286, 
+                   DoFun`DoDSERGE`Private`field$18511, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     ""}, {$CellContext`A, $CellContext`v1, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40282, 
+                   DoFun`DoDSERGE`Private`field$18507, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`t1, 
                     ""}, {$CellContext`\[CapitalPsi]b, $CellContext`x1, 
                     "dt R"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40284, 
+                   DoFun`DoDSERGE`Private`field$18509, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i2, 
                     " leg i2"}, {$CellContext`A, $CellContext`t1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40287, 
+                   DoFun`DoDSERGE`Private`field$18512, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`v1, 
                     ""}, {$CellContext`\[CapitalPsi], $CellContext`i3, 
                     " leg i3"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40288, 
+                   DoFun`DoDSERGE`Private`field$18513, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`A, $CellContext`v1, 
@@ -9425,44 +9734,44 @@ Cell[BoxData[
                     ""}, {$CellContext`A, $CellContext`x1, "dt R"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40290, 
+                   DoFun`DoDSERGE`Private`field$18515, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     ""}, {$CellContext`A, $CellContext`t1, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40291, 
+                   DoFun`DoDSERGE`Private`field$18516, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`v1, 
                     ""}, {$CellContext`A, $CellContext`x1, "dt R"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40292, 
+                   DoFun`DoDSERGE`Private`field$18517, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     ""}, {$CellContext`A, $CellContext`i1, " leg i1"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40294, 
+                   DoFun`DoDSERGE`Private`field$18519, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`t1, 
                     ""}, {$CellContext`A, $CellContext`v1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40293, 
+                   DoFun`DoDSERGE`Private`field$18518, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i2, 
                     " leg i2"}, {$CellContext`A, $CellContext`t1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40295, 
+                   DoFun`DoDSERGE`Private`field$18520, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`v1, 
                     ""}, {$CellContext`\[CapitalPsi], $CellContext`i3, 
                     " leg i3"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40296, 
+                   DoFun`DoDSERGE`Private`field$18521, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`A, $CellContext`v1, 
@@ -9620,45 +9929,45 @@ Cell[BoxData[
                     "dt R"}, {$CellContext`A, $CellContext`v1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40301, 
+                   DoFun`DoDSERGE`Private`field$18526, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     ""}, {$CellContext`\[CapitalPsi]b, $CellContext`x1, 
                     "dt R"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40299, 
+                   DoFun`DoDSERGE`Private`field$18524, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`t1, 
                     ""}, {$CellContext`A, $CellContext`i1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40300, 
+                   DoFun`DoDSERGE`Private`field$18525, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     ""}, {$CellContext`A, $CellContext`i1, " leg i1"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40302, 
+                   DoFun`DoDSERGE`Private`field$18527, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`t1, 
                     ""}, {$CellContext`A, $CellContext`v1, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40298, 
+                   DoFun`DoDSERGE`Private`field$18523, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i2, 
                     " leg i2"}, {$CellContext`A, $CellContext`t1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40303, 
+                   DoFun`DoDSERGE`Private`field$18528, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`v1, 
                     ""}, {$CellContext`\[CapitalPsi], $CellContext`i3, 
                     " leg i3"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40304, 
+                   DoFun`DoDSERGE`Private`field$18529, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`A, $CellContext`v1, 
@@ -9821,44 +10130,44 @@ Cell[BoxData[
                     ""}, {$CellContext`A, $CellContext`i1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40309, 
+                   DoFun`DoDSERGE`Private`field$18534, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`v1, 
                     ""}, {$CellContext`A, $CellContext`x1, "dt R"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40307, 
+                   DoFun`DoDSERGE`Private`field$18532, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     ""}, {$CellContext`A, $CellContext`i1, " leg i1"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40310, 
+                   DoFun`DoDSERGE`Private`field$18535, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`t1, 
                     ""}, {$CellContext`A, $CellContext`x1, "dt R"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40306, 
+                   DoFun`DoDSERGE`Private`field$18531, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     ""}, {$CellContext`A, $CellContext`v1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40308, 
+                   DoFun`DoDSERGE`Private`field$18533, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i2, 
                     " leg i2"}, {$CellContext`A, $CellContext`t1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40311, 
+                   DoFun`DoDSERGE`Private`field$18536, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`v1, 
                     ""}, {$CellContext`\[CapitalPsi], $CellContext`i3, 
                     " leg i3"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40312, 
+                   DoFun`DoDSERGE`Private`field$18537, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`A, $CellContext`v1, 
@@ -10016,45 +10325,45 @@ Cell[BoxData[
                     "dt R"}, {$CellContext`A, $CellContext`i1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40317, 
+                   DoFun`DoDSERGE`Private`field$18542, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     ""}, {$CellContext`A, $CellContext`i1, " leg i1"}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40318, 
+                   DoFun`DoDSERGE`Private`field$18543, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`t1, 
                     ""}, {$CellContext`A, $CellContext`v1, ""}] -> ({
                    RGBColor[1, 0, 0], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40314, 
+                   DoFun`DoDSERGE`Private`field$18539, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`i1, 
                     ""}, {$CellContext`A, $CellContext`v1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40315, 
+                   DoFun`DoDSERGE`Private`field$18540, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`t1, 
                     ""}, {$CellContext`\[CapitalPsi]b, $CellContext`x1, 
                     "dt R"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40316, 
+                   DoFun`DoDSERGE`Private`field$18541, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`\[CapitalPsi]b, $CellContext`i2, 
                     " leg i2"}, {$CellContext`A, $CellContext`t1, ""}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40319, 
+                   DoFun`DoDSERGE`Private`field$18544, 
                     SlotSequence[1]]}& ), 
                  DirectedEdge[{$CellContext`A, $CellContext`v1, 
                     ""}, {$CellContext`\[CapitalPsi], $CellContext`i3, 
                     " leg i3"}] -> ({
                    RGBColor[0, 0, 1], 
                    DoFun`DoDSERGE`Private`arrowLine[
-                   DoFun`DoDSERGE`Private`field$40320, 
+                   DoFun`DoDSERGE`Private`field$18545, 
                     SlotSequence[1]]}& )}, GraphLayout -> 
                "SpringElectricalEmbedding", ImageSize -> 100, 
                VertexShapeFunction -> {{$CellContext`A, $CellContext`v1, 
@@ -10204,9 +10513,8 @@ Cell[BoxData[
   "Grid"]], "Output",
  CellChangeTimes->{3.9736094567683067`*^9, 3.973609523892795*^9, 
   3.9768574634924583`*^9, 3.976975411671036*^9, 3.977547446824502*^9, 
-  3.977751060121949*^9},
- CellLabel->
-  "Out[264]=",ExpressionUUID->"0396bc60-97ac-464a-b8ea-8496896ee0a5"]
+  3.977751060121949*^9, 3.9779966549262466`*^9},
+ CellLabel->"Out[39]=",ExpressionUUID->"d15a1c3c-8348-447c-9b10-ebdf486610a9"]
 }, Open  ]],
 
 Cell["More About", "TutorialMoreAboutSection",
@@ -10231,7 +10539,7 @@ Cell["XXXX", "TutorialRelatedLinks",
 }, Open  ]]
 },
 WindowSize->{1152, 1222.5},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowMargins->{{0, Automatic}, {Automatic, 24}},
 FrontEndVersion->"14.3 for Linux x86 (64-bit) (July 8, 2025)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "TutorialPageStyles.nb", 
   CharacterEncoding -> "UTF-8"],
@@ -10286,183 +10594,194 @@ Cell[3289, 98, 122, 2, 37, "Details",ExpressionUUID->"b5707752-8126-4a36-83b0-d2
 Cell[CellGroupData[{
 Cell[3436, 104, 166, 2, 96, "Title",ExpressionUUID->"5ad4d6f9-a109-4747-99ad-abd4139bfd3d",
  CellID->509267359],
-Cell[3605, 108, 610, 11, 33, "Text",ExpressionUUID->"2ea02407-09b3-4b62-8546-cb71abb20bfc",
+Cell[3605, 108, 769, 13, 55, "Text",ExpressionUUID->"2ea02407-09b3-4b62-8546-cb71abb20bfc",
  CellID->1534169418],
 Cell[CellGroupData[{
-Cell[4240, 123, 362, 4, 65, "Section",ExpressionUUID->"550489a9-af9f-4519-ab18-3fc0aa55e0e4",
+Cell[4399, 125, 362, 4, 65, "Section",ExpressionUUID->"550489a9-af9f-4519-ab18-3fc0aa55e0e4",
  CellID->490632353],
-Cell[4605, 129, 458, 7, 33, "Text",ExpressionUUID->"c7fc16a9-73c1-426c-a798-f6eb316b035e"],
-Cell[5066, 138, 2564, 71, 39, "DisplayFormula",ExpressionUUID->"9b95f19e-fe62-4ec8-acd4-c4fc179e1ac0"],
-Cell[7633, 211, 503, 7, 33, "Text",ExpressionUUID->"d45f1ded-0c47-4577-877e-eb51254b447f"],
-Cell[8139, 220, 1571, 34, 27, "DisplayFormula",ExpressionUUID->"819763cd-83e0-4b65-9968-4084aba38b51"],
-Cell[9713, 256, 663, 10, 33, "Text",ExpressionUUID->"3e371d28-2823-4b78-86e2-0154fdea0220"],
-Cell[10379, 268, 1538, 40, 36, "DisplayFormula",ExpressionUUID->"9d18525e-7a05-4da6-aad3-08c4e9fd7f1e"],
-Cell[11920, 310, 305, 5, 33, "Text",ExpressionUUID->"cc2c2854-43ef-4a59-9b5a-8a0768b742fa"],
-Cell[12228, 317, 1217, 28, 29, "DisplayFormula",ExpressionUUID->"8e4e1748-2620-41d6-8ad6-75bfb5db5a17"],
-Cell[13448, 347, 205, 3, 33, "Text",ExpressionUUID->"f81417f4-43d5-41d8-8a61-8f49e201ea6f"],
-Cell[13656, 352, 1398, 36, 58, "DisplayFormula",ExpressionUUID->"48124502-fd37-4bfc-8505-aae79f778efe"],
-Cell[15057, 390, 594, 10, 55, "Text",ExpressionUUID->"45f11185-106e-4640-8c62-c21bdb90efb4"],
-Cell[15654, 402, 1449, 35, 35, "DisplayFormula",ExpressionUUID->"b521b1ed-af5d-4134-836c-cb4785d1ccaa"],
-Cell[17106, 439, 954, 28, 33, "Text",ExpressionUUID->"9422524c-3e42-44f2-9997-432c21874468"],
-Cell[18063, 469, 5942, 104, 85, "Input",ExpressionUUID->"1cb4cd22-f55a-4bf3-9b15-c3757a90d0f3"],
-Cell[24008, 575, 373, 7, 33, "Text",ExpressionUUID->"5e07eb44-510c-4f2f-a8df-f01baa1281f4"],
-Cell[24384, 584, 3604, 94, 35, "DisplayFormula",ExpressionUUID->"24655b45-61ca-4457-9692-1a3ea3825dc7"],
-Cell[27991, 680, 8069, 238, 219, "Text",ExpressionUUID->"20055634-2e35-4f63-9b80-438e0e008b77"]
+Cell[4764, 131, 458, 7, 33, "Text",ExpressionUUID->"c7fc16a9-73c1-426c-a798-f6eb316b035e"],
+Cell[5225, 140, 2564, 71, 39, "DisplayFormula",ExpressionUUID->"9b95f19e-fe62-4ec8-acd4-c4fc179e1ac0"],
+Cell[7792, 213, 503, 7, 33, "Text",ExpressionUUID->"d45f1ded-0c47-4577-877e-eb51254b447f"],
+Cell[8298, 222, 1571, 34, 27, "DisplayFormula",ExpressionUUID->"819763cd-83e0-4b65-9968-4084aba38b51"],
+Cell[9872, 258, 291, 6, 33, "Text",ExpressionUUID->"41a29868-c01b-47f6-8f0e-2ff160a5b9fc"],
+Cell[10166, 266, 663, 10, 33, "Text",ExpressionUUID->"3e371d28-2823-4b78-86e2-0154fdea0220"],
+Cell[10832, 278, 1538, 40, 36, "DisplayFormula",ExpressionUUID->"9d18525e-7a05-4da6-aad3-08c4e9fd7f1e"],
+Cell[12373, 320, 305, 5, 33, "Text",ExpressionUUID->"cc2c2854-43ef-4a59-9b5a-8a0768b742fa"],
+Cell[12681, 327, 1217, 28, 29, "DisplayFormula",ExpressionUUID->"8e4e1748-2620-41d6-8ad6-75bfb5db5a17"],
+Cell[13901, 357, 205, 3, 33, "Text",ExpressionUUID->"f81417f4-43d5-41d8-8a61-8f49e201ea6f"],
+Cell[14109, 362, 1398, 36, 58, "DisplayFormula",ExpressionUUID->"48124502-fd37-4bfc-8505-aae79f778efe"],
+Cell[15510, 400, 594, 10, 55, "Text",ExpressionUUID->"45f11185-106e-4640-8c62-c21bdb90efb4"],
+Cell[16107, 412, 1449, 35, 35, "DisplayFormula",ExpressionUUID->"b521b1ed-af5d-4134-836c-cb4785d1ccaa"],
+Cell[17559, 449, 954, 28, 33, "Text",ExpressionUUID->"9422524c-3e42-44f2-9997-432c21874468"],
+Cell[18516, 479, 6011, 106, 85, "Input",ExpressionUUID->"1cb4cd22-f55a-4bf3-9b15-c3757a90d0f3"],
+Cell[24530, 587, 373, 7, 33, "Text",ExpressionUUID->"5e07eb44-510c-4f2f-a8df-f01baa1281f4"],
+Cell[24906, 596, 3604, 94, 35, "DisplayFormula",ExpressionUUID->"24655b45-61ca-4457-9692-1a3ea3825dc7"],
+Cell[28513, 692, 8956, 265, 219, "Text",ExpressionUUID->"20055634-2e35-4f63-9b80-438e0e008b77"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[36097, 923, 175, 3, 65, "Section",ExpressionUUID->"bf7c38c7-9fae-42b5-9f1e-efcdfc7050f4"],
-Cell[36275, 928, 228, 5, 60, "Abstract",ExpressionUUID->"34c87532-97b8-4e71-9474-42780c50188c"],
-Cell[36506, 935, 2224, 56, 140, "Abstract",ExpressionUUID->"15bbeac9-9eaa-4d51-96ee-25f4c8cc1a71"],
-Cell[38733, 993, 1018, 23, 104, "Abstract",ExpressionUUID->"d400e0e5-b961-47dc-82f4-f177a525e098"],
-Cell[39754, 1018, 2330, 54, 100, "Text",ExpressionUUID->"818ec6c5-9003-4f7c-bece-572875d1d2cf"],
-Cell[42087, 1074, 1043, 25, 66, "Text",ExpressionUUID->"a1089f3d-83f0-45dc-ac23-4a3e8967fe70"],
-Cell[43133, 1101, 505, 9, 77, "Text",ExpressionUUID->"6dff884c-56c7-4d62-8d85-29da43c3fbac"],
+Cell[37506, 962, 175, 3, 65, "Section",ExpressionUUID->"bf7c38c7-9fae-42b5-9f1e-efcdfc7050f4"],
+Cell[37684, 967, 228, 5, 60, "Abstract",ExpressionUUID->"34c87532-97b8-4e71-9474-42780c50188c"],
+Cell[37915, 974, 9114, 186, 238, "Abstract",ExpressionUUID->"15bbeac9-9eaa-4d51-96ee-25f4c8cc1a71"],
+Cell[47032, 1162, 1018, 23, 104, "Abstract",ExpressionUUID->"d400e0e5-b961-47dc-82f4-f177a525e098"],
+Cell[48053, 1187, 2330, 54, 100, "Text",ExpressionUUID->"818ec6c5-9003-4f7c-bece-572875d1d2cf"],
+Cell[50386, 1243, 1043, 25, 66, "Text",ExpressionUUID->"a1089f3d-83f0-45dc-ac23-4a3e8967fe70"],
+Cell[51432, 1270, 505, 9, 77, "Text",ExpressionUUID->"6dff884c-56c7-4d62-8d85-29da43c3fbac"],
 Cell[CellGroupData[{
-Cell[43663, 1114, 161, 3, 53, "Subsection",ExpressionUUID->"85baf054-9bd6-4383-9358-6d485cd333ac"],
-Cell[43827, 1119, 2339, 73, 176, "Text",ExpressionUUID->"fe171a29-89a9-48bd-800f-9e011df055d9"],
-Cell[46169, 1194, 1500, 40, 66, "Text",ExpressionUUID->"a7ad5b41-09c7-4477-9661-f2008c2943ec"],
-Cell[47672, 1236, 5942, 104, 85, "Input",ExpressionUUID->"5e93d046-4386-4c2f-9923-2af56d0413f5"],
-Cell[53617, 1342, 3300, 85, 178, "Text",ExpressionUUID->"b526a58d-6685-4eb2-8e62-8a828a1773a2"],
-Cell[56920, 1429, 1750, 48, 63, "Text",ExpressionUUID->"8e3b8cdd-0de8-4c85-9d7f-8f138cf36032"],
-Cell[58673, 1479, 234, 7, 77, "Text",ExpressionUUID->"bcd23530-efe8-449a-84e8-626f4635f0a4"]
+Cell[51962, 1283, 161, 3, 53, "Subsection",ExpressionUUID->"85baf054-9bd6-4383-9358-6d485cd333ac"],
+Cell[52126, 1288, 2385, 73, 176, "Text",ExpressionUUID->"fe171a29-89a9-48bd-800f-9e011df055d9"],
+Cell[54514, 1363, 1500, 40, 66, "Text",ExpressionUUID->"a7ad5b41-09c7-4477-9661-f2008c2943ec"],
+Cell[56017, 1405, 5942, 104, 85, "Input",ExpressionUUID->"5e93d046-4386-4c2f-9923-2af56d0413f5"],
+Cell[61962, 1511, 3373, 85, 178, "Text",ExpressionUUID->"b526a58d-6685-4eb2-8e62-8a828a1773a2"],
+Cell[65338, 1598, 1750, 48, 63, "Text",ExpressionUUID->"8e3b8cdd-0de8-4c85-9d7f-8f138cf36032"],
+Cell[67091, 1648, 234, 7, 77, "Text",ExpressionUUID->"bcd23530-efe8-449a-84e8-626f4635f0a4"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[58956, 1492, 169, 3, 65, "Section",ExpressionUUID->"a8a90092-f698-43a6-9147-12730dd1c36f"],
+Cell[67374, 1661, 169, 3, 65, "Section",ExpressionUUID->"a8a90092-f698-43a6-9147-12730dd1c36f"],
 Cell[CellGroupData[{
-Cell[59150, 1499, 159, 3, 53, "Subsection",ExpressionUUID->"086e6880-2795-44c0-9d6c-4553409da9db"],
+Cell[67568, 1668, 159, 3, 53, "Subsection",ExpressionUUID->"086e6880-2795-44c0-9d6c-4553409da9db"],
 Cell[CellGroupData[{
-Cell[59334, 1506, 235, 4, 29, "Input",ExpressionUUID->"790530c5-41f4-43ba-8020-3ac832d23e00",
+Cell[67752, 1675, 235, 4, 29, "Input",ExpressionUUID->"790530c5-41f4-43ba-8020-3ac832d23e00",
  CellID->209391430],
-Cell[59572, 1512, 496, 8, 136, "Print",ExpressionUUID->"ccd6b561-f18a-4a0f-9a93-8a3d3fec295f"]
+Cell[67990, 1681, 522, 9, 136, "Print",ExpressionUUID->"61aa792b-6103-4e24-b9db-c3c7e41a5d5e"]
 }, Open  ]],
-Cell[60083, 1523, 367, 7, 55, "Text",ExpressionUUID->"a3c47ec2-b131-4cc2-ad27-622bcbac1cd6"],
-Cell[60453, 1532, 225, 4, 29, "Input",ExpressionUUID->"5b0ba589-778f-4387-8754-34310356bdce"],
-Cell[60681, 1538, 240, 6, 33, "Text",ExpressionUUID->"eb9af4be-6094-474d-9b0a-e8e50c303424"],
-Cell[60924, 1546, 502, 11, 29, "Input",ExpressionUUID->"f9046dc9-f6b1-4c84-aee5-0c57976164eb"],
-Cell[61429, 1559, 197, 3, 33, "Text",ExpressionUUID->"67c1462d-0cbc-4a62-a6dc-5808b9029e16"],
+Cell[68527, 1693, 367, 7, 55, "Text",ExpressionUUID->"a3c47ec2-b131-4cc2-ad27-622bcbac1cd6"],
+Cell[68897, 1702, 226, 4, 29, "Input",ExpressionUUID->"5b0ba589-778f-4387-8754-34310356bdce"],
+Cell[69126, 1708, 240, 6, 33, "Text",ExpressionUUID->"eb9af4be-6094-474d-9b0a-e8e50c303424"],
+Cell[69369, 1716, 502, 11, 29, "Input",ExpressionUUID->"f9046dc9-f6b1-4c84-aee5-0c57976164eb"],
+Cell[69874, 1729, 197, 3, 33, "Text",ExpressionUUID->"67c1462d-0cbc-4a62-a6dc-5808b9029e16"],
 Cell[CellGroupData[{
-Cell[61651, 1566, 1007, 20, 29, "Input",ExpressionUUID->"fd177cb3-42ef-4f4c-aa79-216034448a12"],
-Cell[62661, 1588, 3334, 54, 33, "Output",ExpressionUUID->"b02c231d-2217-4c64-9de6-41e3deb80b2d"]
+Cell[70096, 1736, 1007, 20, 29, "Input",ExpressionUUID->"fd177cb3-42ef-4f4c-aa79-216034448a12"],
+Cell[71106, 1758, 3354, 54, 33, "Output",ExpressionUUID->"16893349-ee2d-4a5e-b0c7-d97e9ca15122"]
 }, Open  ]],
-Cell[66010, 1645, 4724, 137, 107, "Text",ExpressionUUID->"86f8417a-3ebe-4282-b495-506a0b27c94d"],
-Cell[70737, 1784, 503, 7, 33, "Text",ExpressionUUID->"75f53849-c632-4df9-89a8-0e520523d184"],
-Cell[71243, 1793, 1712, 40, 27, "DisplayFormula",ExpressionUUID->"20288694-c952-4626-984e-a1499187f32a"],
-Cell[72958, 1835, 381, 8, 55, "Text",ExpressionUUID->"5d6dddb2-0eae-4105-b541-5cf4e7a5247f"],
-Cell[73342, 1845, 6631, 162, 178, "Input",ExpressionUUID->"12ce29b0-eb2a-49ee-b4ac-4e9cc209b4ae"],
-Cell[79976, 2009, 872, 22, 44, "Text",ExpressionUUID->"eb96e3fe-f1be-4111-9257-d371a0d4489b"],
+Cell[74475, 1815, 4724, 137, 107, "Text",ExpressionUUID->"86f8417a-3ebe-4282-b495-506a0b27c94d"],
+Cell[79202, 1954, 503, 7, 33, "Text",ExpressionUUID->"75f53849-c632-4df9-89a8-0e520523d184"],
+Cell[79708, 1963, 1756, 40, 27, "DisplayFormula",ExpressionUUID->"20288694-c952-4626-984e-a1499187f32a"],
+Cell[81467, 2005, 381, 8, 55, "Text",ExpressionUUID->"5d6dddb2-0eae-4105-b541-5cf4e7a5247f"],
+Cell[81851, 2015, 6631, 162, 178, "Input",ExpressionUUID->"12ce29b0-eb2a-49ee-b4ac-4e9cc209b4ae"],
+Cell[88485, 2179, 1032, 27, 44, "Text",ExpressionUUID->"eb96e3fe-f1be-4111-9257-d371a0d4489b"],
 Cell[CellGroupData[{
-Cell[80873, 2035, 986, 24, 29, "Input",ExpressionUUID->"b80d8ca3-de6d-463c-9d53-f65f2c9dddd4"],
-Cell[81862, 2061, 873, 22, 49, "Output",ExpressionUUID->"8fb9b5a0-e6c9-4bea-b54e-8f467aca4c1b"]
+Cell[89542, 2210, 980, 23, 29, "Input",ExpressionUUID->"b80d8ca3-de6d-463c-9d53-f65f2c9dddd4"],
+Cell[90525, 2235, 889, 22, 34, "Output",ExpressionUUID->"d7278d29-4a9a-43b4-a203-457babcb1582"]
 }, Open  ]],
-Cell[82750, 2086, 513, 16, 44, "Text",ExpressionUUID->"aa78f32b-2854-4e88-a961-5317054e2bd3"],
+Cell[91429, 2260, 513, 16, 44, "Text",ExpressionUUID->"aa78f32b-2854-4e88-a961-5317054e2bd3"],
 Cell[CellGroupData[{
-Cell[83288, 2106, 1378, 36, 29, "Input",ExpressionUUID->"478e067d-abf0-4d0d-90d4-7fa37ecd5a17"],
-Cell[84669, 2144, 1091, 27, 54, "Output",ExpressionUUID->"5be258de-e952-4eb5-9165-8a0ff4a98a18"]
+Cell[91967, 2280, 1378, 36, 29, "Input",ExpressionUUID->"478e067d-abf0-4d0d-90d4-7fa37ecd5a17"],
+Cell[93348, 2318, 1112, 27, 54, "Output",ExpressionUUID->"ba968bd3-e6bf-42ba-8e7e-2489ac0ecb83"]
 }, Open  ]],
-Cell[85775, 2174, 216, 5, 33, "Text",ExpressionUUID->"09335b30-80b0-4c1c-8aac-b8f017ef33c2"],
-Cell[85994, 2181, 9656, 205, 197, "Input",ExpressionUUID->"b75a7325-f535-4ded-86f3-9397e6d25bf5"],
-Cell[95653, 2388, 377, 7, 33, "Text",ExpressionUUID->"631de162-d45b-4db8-a325-cd6a7c41f342"],
-Cell[96033, 2397, 9610, 251, 474, "Input",ExpressionUUID->"0089d47d-ef07-4ef4-8d69-d6b682de9241"],
-Cell[105646, 2650, 1200, 33, 45, "Text",ExpressionUUID->"6463e26d-d7ae-4419-b365-1fe85a980517"],
+Cell[94475, 2348, 267, 6, 33, "Text",ExpressionUUID->"09335b30-80b0-4c1c-8aac-b8f017ef33c2"],
+Cell[94745, 2356, 9673, 204, 197, "Input",ExpressionUUID->"b75a7325-f535-4ded-86f3-9397e6d25bf5"],
+Cell[104421, 2562, 377, 7, 33, "Text",ExpressionUUID->"631de162-d45b-4db8-a325-cd6a7c41f342"],
+Cell[104801, 2571, 9610, 251, 474, "Input",ExpressionUUID->"0089d47d-ef07-4ef4-8d69-d6b682de9241"],
+Cell[114414, 2824, 1200, 33, 45, "Text",ExpressionUUID->"6463e26d-d7ae-4419-b365-1fe85a980517"],
 Cell[CellGroupData[{
-Cell[106871, 2687, 2543, 57, 71, "Input",ExpressionUUID->"0377156d-74c7-4960-8839-192be2973bdc"],
-Cell[109417, 2746, 657, 13, 47, "Output",ExpressionUUID->"980a9683-b6d3-4b9b-ba5b-444ae9100846"]
+Cell[115639, 2861, 720, 19, 49, "Input",ExpressionUUID->"8471de71-2583-41d4-95f7-1264f9b750f1"],
+Cell[116362, 2882, 1146, 35, 57, "Output",ExpressionUUID->"25249675-c26a-498b-92d3-6b52405179a1"],
+Cell[117511, 2919, 612, 16, 34, "Output",ExpressionUUID->"761e2c7c-5189-4ea3-982c-c6a1a25ff481"]
 }, Open  ]],
-Cell[110089, 2762, 454, 8, 55, "Text",ExpressionUUID->"b64bd150-f840-4aa7-954a-3500255fb9c4"],
-Cell[110546, 2772, 175, 3, 33, "Text",ExpressionUUID->"018169d5-a9e2-48ba-bfd2-b246106a8ca0"],
 Cell[CellGroupData[{
-Cell[110746, 2779, 1648, 38, 49, "Input",ExpressionUUID->"9a0f8132-9a7f-4c22-b0dc-4d2d6663f98a"],
-Cell[112397, 2819, 438, 9, 33, "Output",ExpressionUUID->"4fd9b932-ed56-4e1d-bb71-62d645719d49"]
+Cell[118160, 2940, 2459, 53, 73, "Input",ExpressionUUID->"38850776-c955-4e2d-a6e5-a7bf1dbe8eea"],
+Cell[120622, 2995, 285, 7, 33, "Output",ExpressionUUID->"b8e6b735-d220-4b6c-9056-f188b39523a8"]
 }, Open  ]],
-Cell[112850, 2831, 233, 4, 33, "Text",ExpressionUUID->"9a4d9345-4bf7-401d-b587-a2a76e2e2624"],
 Cell[CellGroupData[{
-Cell[113108, 2839, 2054, 41, 49, "Input",ExpressionUUID->"d51d0692-31ee-4288-bbe5-6d621722b91f"],
-Cell[115165, 2882, 589, 12, 33, "Output",ExpressionUUID->"2547d6f7-a4a9-4ba0-9faf-5be79dc1df34"]
+Cell[120944, 3007, 2542, 57, 71, "Input",ExpressionUUID->"0377156d-74c7-4960-8839-192be2973bdc"],
+Cell[123489, 3066, 700, 13, 33, "Output",ExpressionUUID->"c7748d7a-2d61-4e1f-9e60-f57f6c05f634"]
 }, Open  ]],
-Cell[115769, 2897, 193, 3, 33, "Text",ExpressionUUID->"a39911ed-3f54-4c14-8528-e232b1f7751d"],
+Cell[124204, 3082, 407, 8, 55, "Text",ExpressionUUID->"b64bd150-f840-4aa7-954a-3500255fb9c4"],
+Cell[124614, 3092, 224, 4, 33, "Text",ExpressionUUID->"018169d5-a9e2-48ba-bfd2-b246106a8ca0"],
 Cell[CellGroupData[{
-Cell[115987, 2904, 2189, 38, 29, "Input",ExpressionUUID->"eb141482-dbba-44e3-b2e0-507999ef0740"],
-Cell[118179, 2944, 541, 11, 33, "Output",ExpressionUUID->"ac48f0a7-0910-45eb-9174-80727c664426"]
+Cell[124863, 3100, 1648, 38, 49, "Input",ExpressionUUID->"9a0f8132-9a7f-4c22-b0dc-4d2d6663f98a"],
+Cell[126514, 3140, 460, 9, 33, "Output",ExpressionUUID->"8dfd123f-1bcd-4c6a-a278-03c263d6fe24"]
+}, Open  ]],
+Cell[126989, 3152, 233, 4, 33, "Text",ExpressionUUID->"9a4d9345-4bf7-401d-b587-a2a76e2e2624"],
+Cell[CellGroupData[{
+Cell[127247, 3160, 2054, 41, 49, "Input",ExpressionUUID->"d51d0692-31ee-4288-bbe5-6d621722b91f"],
+Cell[129304, 3203, 634, 12, 33, "Output",ExpressionUUID->"bade1180-a9b4-4191-a4f0-57a5a85f9710"]
+}, Open  ]],
+Cell[129953, 3218, 193, 3, 33, "Text",ExpressionUUID->"a39911ed-3f54-4c14-8528-e232b1f7751d"],
+Cell[CellGroupData[{
+Cell[130171, 3225, 2189, 38, 29, "Input",ExpressionUUID->"eb141482-dbba-44e3-b2e0-507999ef0740"],
+Cell[132363, 3265, 565, 11, 33, "Output",ExpressionUUID->"16693b4d-8e69-4dc3-bdc7-fe57f209b370"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[118769, 2961, 152, 3, 53, "Subsection",ExpressionUUID->"7a1ddd99-d5eb-4d4d-9cf6-6273aa9dc0ab"],
-Cell[118924, 2966, 257, 6, 33, "Text",ExpressionUUID->"a30b28b1-f3a4-4a3b-9d55-12ed71f32cc3"],
-Cell[119184, 2974, 445, 12, 29, "Input",ExpressionUUID->"5ae49d6e-e9c2-4eef-b184-2092e3b6016e"],
+Cell[132977, 3282, 152, 3, 53, "Subsection",ExpressionUUID->"7a1ddd99-d5eb-4d4d-9cf6-6273aa9dc0ab"],
+Cell[133132, 3287, 257, 6, 33, "Text",ExpressionUUID->"a30b28b1-f3a4-4a3b-9d55-12ed71f32cc3"],
+Cell[133392, 3295, 445, 12, 29, "Input",ExpressionUUID->"5ae49d6e-e9c2-4eef-b184-2092e3b6016e"],
 Cell[CellGroupData[{
-Cell[119654, 2990, 687, 16, 29, "Input",ExpressionUUID->"38ebbc39-64f1-4681-9d49-2d6451033bce"],
-Cell[120344, 3008, 1421, 43, 47, "Output",ExpressionUUID->"b8ae15e9-b26b-42ca-b2ab-8a1ee00381c5"]
+Cell[133862, 3311, 682, 15, 29, "Input",ExpressionUUID->"38ebbc39-64f1-4681-9d49-2d6451033bce"],
+Cell[134547, 3328, 1438, 42, 33, "Output",ExpressionUUID->"8883fb88-0246-4961-b20d-1536e095d9c1"]
 }, Open  ]],
-Cell[121780, 3054, 333, 7, 33, "Text",ExpressionUUID->"2159c0d9-fff5-4222-8ac1-b388cd3ec25a"],
+Cell[136000, 3373, 333, 7, 33, "Text",ExpressionUUID->"2159c0d9-fff5-4222-8ac1-b388cd3ec25a"],
 Cell[CellGroupData[{
-Cell[122138, 3065, 710, 17, 29, "Input",ExpressionUUID->"d35f6ca1-3584-4c7b-adf2-c8adf09764b1"],
-Cell[122851, 3084, 1468, 44, 47, "Output",ExpressionUUID->"548d1eb1-d9b4-4706-a2af-17d9b47767b1"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[124356, 3133, 247, 4, 29, "Input",ExpressionUUID->"40a24de9-28f7-49c1-8005-6793a6857a3b"],
-Cell[124606, 3139, 17110, 369, 55, "Output",ExpressionUUID->"de4d9b72-ccfb-48ef-b1af-4307cbf75bcb"]
-}, Open  ]],
-Cell[141731, 3511, 650, 16, 29, "Input",ExpressionUUID->"a627dcb0-0160-4a66-a073-25ef13f63b98"],
-Cell[CellGroupData[{
-Cell[142406, 3531, 310, 5, 29, "Input",ExpressionUUID->"1e0a24fd-3773-4817-9fe2-f576fd444a1f"],
-Cell[142719, 3538, 36404, 766, 108, "Output",ExpressionUUID->"33a39f3c-c8fd-4dad-a90c-3cb62b62f63d"]
+Cell[136358, 3384, 705, 16, 29, "Input",ExpressionUUID->"d35f6ca1-3584-4c7b-adf2-c8adf09764b1"],
+Cell[137066, 3402, 1485, 43, 33, "Output",ExpressionUUID->"3c6b1783-9ddb-46c2-bfdb-5c15f85a44a1"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[179160, 4309, 346, 6, 29, "Input",ExpressionUUID->"9dd0282a-56ec-412d-bc6d-63a70f6f817b"],
-Cell[179509, 4317, 105960, 2221, 265, "Output",ExpressionUUID->"e8f160e4-1003-453b-93ba-d149167f1c14"]
+Cell[138588, 3450, 247, 4, 29, "Input",ExpressionUUID->"40a24de9-28f7-49c1-8005-6793a6857a3b"],
+Cell[138838, 3456, 17134, 369, 55, "Output",ExpressionUUID->"7e4b75fb-bfe8-453d-b5bd-7f65b0839c8f"]
 }, Open  ]],
-Cell[285484, 6541, 194, 3, 33, "Text",ExpressionUUID->"96f5da8e-d504-4053-b7cc-7ddedf36e11f"],
+Cell[155987, 3828, 650, 16, 29, "Input",ExpressionUUID->"a627dcb0-0160-4a66-a073-25ef13f63b98"],
 Cell[CellGroupData[{
-Cell[285703, 6548, 1351, 30, 29, "Input",ExpressionUUID->"f0448c8f-0be2-475c-a6aa-5070bef1a197"],
-Cell[287057, 6580, 3626, 97, 184, "Output",ExpressionUUID->"3653f722-5715-4ffa-9c57-95f14cdfb22b"]
-}, Open  ]],
-Cell[290698, 6680, 219, 5, 33, "Text",ExpressionUUID->"8a317776-9af4-43e1-85bf-fee5251f8be3"],
-Cell[290920, 6687, 870, 19, 29, "Input",ExpressionUUID->"3fe643e7-73b1-4398-ba97-b128c983e62b"],
-Cell[291793, 6708, 655, 15, 29, "Input",ExpressionUUID->"5e12de60-e13e-439b-aa1b-0394cc0ddc33"],
-Cell[292451, 6725, 463, 8, 55, "Text",ExpressionUUID->"5fc20c29-efbc-487e-abb2-4bb3376f2204"],
-Cell[292917, 6735, 945, 27, 30, "Input",ExpressionUUID->"b592e8c9-46da-40f0-8e9b-a4e7cdd812c0"],
-Cell[CellGroupData[{
-Cell[293887, 6766, 1392, 32, 51, "Input",ExpressionUUID->"70de971c-e591-4657-8d1f-24e4198c717b"],
-Cell[295282, 6800, 1462, 42, 74, "Output",ExpressionUUID->"63d81d54-2d56-4356-96b5-d2405842f1a2"]
+Cell[156662, 3848, 310, 5, 29, "Input",ExpressionUUID->"1e0a24fd-3773-4817-9fe2-f576fd444a1f"],
+Cell[156975, 3855, 36426, 766, 108, "Output",ExpressionUUID->"d19fc8b5-a3d3-4a73-ab7e-9002663b9754"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[296781, 6847, 878, 21, 30, "Input",ExpressionUUID->"351392db-3702-4ccb-8a4e-c9d83c7c46b5"],
-Cell[297662, 6870, 1194, 34, 74, "Output",ExpressionUUID->"470b5b4a-7be3-487f-a348-e5f867fcd2eb"]
-}, Open  ]]
+Cell[193438, 4626, 346, 6, 29, "Input",ExpressionUUID->"9dd0282a-56ec-412d-bc6d-63a70f6f817b"],
+Cell[193787, 4634, 105982, 2221, 265, "Output",ExpressionUUID->"8b62a5a9-0b47-4698-a642-7327f92def93"]
+}, Open  ]],
+Cell[299784, 6858, 194, 3, 33, "Text",ExpressionUUID->"96f5da8e-d504-4053-b7cc-7ddedf36e11f"],
+Cell[CellGroupData[{
+Cell[300003, 6865, 1351, 30, 29, "Input",ExpressionUUID->"f0448c8f-0be2-475c-a6aa-5070bef1a197"],
+Cell[301357, 6897, 3627, 97, 184, "Output",ExpressionUUID->"f5236f5c-7784-4fa0-93cf-b466a38d3601"]
+}, Open  ]],
+Cell[304999, 6997, 219, 5, 33, "Text",ExpressionUUID->"8a317776-9af4-43e1-85bf-fee5251f8be3"],
+Cell[305221, 7004, 870, 19, 29, "Input",ExpressionUUID->"3fe643e7-73b1-4398-ba97-b128c983e62b"],
+Cell[306094, 7025, 655, 15, 29, "Input",ExpressionUUID->"5e12de60-e13e-439b-aa1b-0394cc0ddc33"],
+Cell[306752, 7042, 463, 8, 55, "Text",ExpressionUUID->"5fc20c29-efbc-487e-abb2-4bb3376f2204"],
+Cell[307218, 7052, 940, 26, 30, "Input",ExpressionUUID->"b592e8c9-46da-40f0-8e9b-a4e7cdd812c0"],
+Cell[CellGroupData[{
+Cell[308183, 7082, 1387, 31, 51, "Input",ExpressionUUID->"70de971c-e591-4657-8d1f-24e4198c717b"],
+Cell[309573, 7115, 1479, 41, 59, "Output",ExpressionUUID->"2797527a-740b-40fb-84cf-af7c7ece9a59"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[298905, 6910, 203, 4, 53, "Subsection",ExpressionUUID->"622a6eaa-25a9-44a5-8d1c-0eb74802e136"],
-Cell[299111, 6916, 265, 6, 33, "Text",ExpressionUUID->"2f760035-af53-4df7-9f9e-43134b887a8d"],
-Cell[299379, 6924, 450, 13, 29, "Input",ExpressionUUID->"e346dfd2-165f-4dd5-9eb3-a3712d085e9c"],
-Cell[CellGroupData[{
-Cell[299854, 6941, 538, 14, 29, "Input",ExpressionUUID->"aeca2613-6729-4a1e-962b-62de5e9ec5ea"],
-Cell[300395, 6957, 3019, 91, 73, "Output",ExpressionUUID->"bdbe9ca6-9992-418a-b13b-7b7803f8e6b3"]
+Cell[311089, 7161, 873, 20, 30, "Input",ExpressionUUID->"351392db-3702-4ccb-8a4e-c9d83c7c46b5"],
+Cell[311965, 7183, 1211, 33, 59, "Output",ExpressionUUID->"1096d6e0-d721-4468-9d45-67ecb5299145"]
+}, Open  ]],
+Cell[313191, 7219, 202, 3, 33, "Text",ExpressionUUID->"a95c9b77-8365-44ee-a736-78882dc93cc0"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[303451, 7053, 300, 6, 29, "Input",ExpressionUUID->"a21c8b7b-f7d3-4aee-aab0-d85fbab45084"],
-Cell[303754, 7061, 20979, 445, 60, "Output",ExpressionUUID->"18498fe3-8ddc-4937-aa28-ffc57be73c0e"]
-}, Open  ]],
-Cell[324748, 7509, 766, 19, 49, "Input",ExpressionUUID->"300d42b1-a6ce-41da-a4ed-8149dd202659"],
+Cell[313430, 7227, 203, 4, 53, "Subsection",ExpressionUUID->"622a6eaa-25a9-44a5-8d1c-0eb74802e136"],
+Cell[313636, 7233, 265, 6, 33, "Text",ExpressionUUID->"2f760035-af53-4df7-9f9e-43134b887a8d"],
+Cell[313904, 7241, 445, 12, 29, "Input",ExpressionUUID->"e346dfd2-165f-4dd5-9eb3-a3712d085e9c"],
 Cell[CellGroupData[{
-Cell[325539, 7532, 365, 7, 29, "Input",ExpressionUUID->"c248abd8-a6d0-4b21-81dd-8b36b46efde9"],
-Cell[325907, 7541, 64369, 1328, 173, "Output",ExpressionUUID->"079fcfb2-04e7-462c-a75e-2abf26bcc54e"]
+Cell[314374, 7257, 534, 13, 29, "Input",ExpressionUUID->"aeca2613-6729-4a1e-962b-62de5e9ec5ea"],
+Cell[314911, 7272, 3043, 91, 73, "Output",ExpressionUUID->"9f41689f-ce31-41f0-9bdb-698d2035f2f2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[390313, 8874, 351, 7, 29, "Input",ExpressionUUID->"1bc199b8-332f-46de-8087-a3c06077b072"],
-Cell[390667, 8883, 64277, 1325, 173, "Output",ExpressionUUID->"0396bc60-97ac-464a-b8ea-8496896ee0a5"]
+Cell[317991, 7368, 296, 5, 29, "Input",ExpressionUUID->"a21c8b7b-f7d3-4aee-aab0-d85fbab45084"],
+Cell[318290, 7375, 20997, 444, 60, "Output",ExpressionUUID->"cbb94be8-f999-4c17-bb3d-baafd251a40f"]
 }, Open  ]],
-Cell[454959, 10211, 121, 1, 22, "TutorialMoreAboutSection",ExpressionUUID->"b5b4c71e-ac9d-4610-81cd-3c7fb650fff8",
+Cell[339302, 7822, 762, 18, 49, "Input",ExpressionUUID->"300d42b1-a6ce-41da-a4ed-8149dd202659"],
+Cell[CellGroupData[{
+Cell[340089, 7844, 361, 6, 29, "Input",ExpressionUUID->"c248abd8-a6d0-4b21-81dd-8b36b46efde9"],
+Cell[340453, 7852, 64387, 1327, 173, "Output",ExpressionUUID->"5e262e39-f378-48c5-801b-48ad7041d0ee"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[404877, 9184, 347, 6, 29, "Input",ExpressionUUID->"1bc199b8-332f-46de-8087-a3c06077b072"],
+Cell[405227, 9192, 64297, 1324, 173, "Output",ExpressionUUID->"d15a1c3c-8348-447c-9b10-ebdf486610a9"]
+}, Open  ]],
+Cell[469539, 10519, 121, 1, 22, "TutorialMoreAboutSection",ExpressionUUID->"b5b4c71e-ac9d-4610-81cd-3c7fb650fff8",
  CellID->510166998],
-Cell[455083, 10214, 109, 1, 22, "TutorialMoreAbout",ExpressionUUID->"4533a2cc-3ea2-4007-b863-368105e8b04c",
+Cell[469663, 10522, 109, 1, 22, "TutorialMoreAbout",ExpressionUUID->"4533a2cc-3ea2-4007-b863-368105e8b04c",
  CellID->2010235797],
-Cell[455195, 10217, 127, 1, 22, "RelatedTutorialsSection",ExpressionUUID->"c58fb31e-6b65-4197-9f0b-9a9b58d20feb",
+Cell[469775, 10525, 127, 1, 22, "RelatedTutorialsSection",ExpressionUUID->"c58fb31e-6b65-4197-9f0b-9a9b58d20feb",
  CellID->813082223],
-Cell[455325, 10220, 107, 1, 22, "RelatedTutorials",ExpressionUUID->"e941d3af-f762-4e95-bb7e-f5ca50c9ca45",
+Cell[469905, 10528, 107, 1, 22, "RelatedTutorials",ExpressionUUID->"e941d3af-f762-4e95-bb7e-f5ca50c9ca45",
  CellID->454237087],
-Cell[455435, 10223, 153, 1, 22, "TutorialRelatedLinksSection",ExpressionUUID->"4dd7a7df-b4f1-400b-bac0-111014a20776",
+Cell[470015, 10531, 153, 1, 22, "TutorialRelatedLinksSection",ExpressionUUID->"4dd7a7df-b4f1-400b-bac0-111014a20776",
  CellID->750460322],
-Cell[455591, 10226, 111, 1, 22, "TutorialRelatedLinks",ExpressionUUID->"e4f0c74f-e2a5-49ed-86d7-8f424c7e047f",
+Cell[470171, 10534, 111, 1, 22, "TutorialRelatedLinks",ExpressionUUID->"e4f0c74f-e2a5-49ed-86d7-8f424c7e047f",
  CellID->643352237]
 }, Open  ]]
 }, Open  ]]
