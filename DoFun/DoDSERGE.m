@@ -557,6 +557,14 @@ fieldQ::usage="fieldQ[expr] yields True if expr is a field.
 fieldType::usage="fieldType[expr] gives the field type of expr. Possible values are stored in $fieldTypes.
 ";
 
+fixLegs::usage="Determines if external legs all have the same position.
+
+False (default): GraphLayout handles positioning of legs.
+True: External legs for all diagrams at the same positions. Put on a circle.
+list: Positions for external legs.
+
+True and list override GraphLayout (set internally) which may lead to overlapping lines.";
+
 forceEquation::usage="forceEquation makes sure an equation is plotted for a single diagram.
 ";
 
@@ -999,6 +1007,7 @@ Options[DSEPlot]={
 	type->"DSE",
 	regulatorSymbol->boxSymbol,
 	vertexSymbol->diskSymbol,
+	fixLegs->False,
 	(* options of Graph *)
 	ImageSize->100};
 
@@ -3085,7 +3094,7 @@ DSEPlotList[a_,plotRules_List,opts___?OptionQ]/;FreeQ[a,Rule,Infinity]:=
 	DSEPlotList[vertexDummies[a,opts],plotRules,opts];
 
 DSEPlotList[{a_List,b_?NumericQ},plotRules_List,opts___?OptionQ]:=Module[{graph, exponent, verts,
-	plotRulesAll, vsize, edgeLabels, multiEdges, multiEdgeRules, multiEdgeReps},
+	plotRulesAll, vsize, edgeLabels, multiEdges, multiEdgeRules, multiEdgeReps,extLegs,extCoords,fixLegsO},
 
 	(* sort real complex fields for easier identification below, take the field info from the label *)
 	graph = Replace[a, {c_Rule, d_}:>{Sort@c, d}/;bosonQ[ToExpression@StringCases[{d}, f__ ~~ " " ~~ __ /; fieldQ[ToExpression[f]] :> f][[1, 1]]], {1}];
@@ -3128,6 +3137,30 @@ DSEPlotList[{a_List,b_?NumericQ},plotRules_List,opts___?OptionQ]:=Module[{graph,
 	verts = Union@@List@@@a[[All,1]];
 	graph = {Function[vert, Property[vert, VertexShapeFunction->(getVertexShapeFunction[##, opts]&)]] /@ verts, graph};
 	
+	(* ordering of external vertices *)
+	extLegs=Cases[graph,{_?fieldQ,_,l_String/;StringMatchQ[l," leg "~~__]},\[Infinity]]//Union;
+
+	(* value of fixLegs: True (done automatically, list of positions, none *)
+	fixLegsO=fixLegs/.Join[{opts},Options@DSEPlot];
+
+	Which[
+	fixLegsO===True,(* automatic fixing *)
+		(extCoords=Which[
+		extLegs=={},{},
+		Length@extLegs==2,{{-1,0},{1,0}},
+		Length@extLegs==3,{{0,1},{-1,0},{1,0}},
+		Length@extLegs==4,{{-1,1},{-1,-1},{1,-1},{1,1}},
+		True,ReIm@Exp[I #]&/@Rest@Range[0,2\[Pi],2\[Pi]/Length[extLegs]]
+		];
+		extCoords=Thread[Rule[extLegs,extCoords]];),
+		
+	Head[fixLegsO]===List,(* manually given positions *)
+		extCoords=Thread[Rule[extLegs,fixLegsO]],
+		
+	True,(* do nothing -> GraphLayout *)
+		extCoords={};
+	];
+
 	(* extend plot Rules also to antifields *)
 	plotRulesAll=Union@Replace[plotRules, {c_?fieldQ, d__} :> Sequence[{c, d}, {antiField@c, d}], 1];
 	
@@ -3140,12 +3173,13 @@ DSEPlotList[{a_List,b_?NumericQ},plotRules_List,opts___?OptionQ]:=Module[{graph,
 	
 	(* exponent -1 for inverse propagators *)
 	exponent=If[Length@a===2 && FreeQ[a, "P"],"-1","",""];
-	
-	Labeled[
+		Labeled[
 	Graph[Sequence@@graph, 
 			FilterRules[Join[{opts},Options@DSEPlot],Options@Graph],
 			VertexSize->vsize,
-			GraphLayout -> "SpringElectricalEmbedding",
+			VertexCoordinates->If[extCoords=!={},extCoords,Automatic,Automatic],(* overrides GraphLayout if not Automatic *)
+			EdgeShapeFunction->(BezierCurve[{#,#+.5 RotationMatrix[.3] . (#2-#),#2}&@@#]&),
+			GraphLayout -> "SpringElectricalEmbedding",(* not in effect then VertexCoordinates is used *)
 			EdgeLabels -> edgeLabels],
 			(* for positive integers explicitly print the +, for positive Rationals also, but it has to be prevented that the + goes into the numerator;
 				RowBox necessary to prevent automatic ordering *)
