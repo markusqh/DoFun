@@ -382,7 +382,10 @@ getDeltasForInt[exp_] :=
   (*allInds = Flatten[List @@@ getIndices[exp]](*Join[Sequence @@@ allDeltas]*);*)
 
   intInds = Union@Select[allInds, Count[allInds, #] == 2 &];
-
+(* the 'bugfix' before had problems because it is allowed that there are other indices. Thus introduce an error handler for the original problematic cases when the index and something else had the same name. *)
+  intInds = 
+   Union@Select[allInds, Count[exp, #, \[Infinity]] == 2 &];
+  
   (* the {} at the end is to terminate the series of replacements; count from the end to avoid the index type *)
   intDeltas = 
    Append[Select[allDeltas, 

@@ -104,7 +104,7 @@
 	3.0.1:
 		-) introduced warning in sortCanonical when dummy fields are contained and the expression is not sorted
 		-) introduced error handler when user tries to use the dummy field as field in setFields
-	3.1.0 (4.9.2023):
+	3.1.0 (2.2026, no release):
 		-) grassmannTest is no longer done for RGEs, since ansatz for action fully determines the allowed vertices.
 			Changing this behavior avoids problems with mixed fermionic propagators for RGEs. 
 		-) replacedField for DSEs now handles sf expressions.
@@ -112,6 +112,8 @@
 		-) updated arrowLine for use in >M13.1 (context of GraphElementData changed)
 		-) fixed bug of option 'identify'
 		-) added argument 'modFunc' to identifyGraphs
+		-) new functions diffV, diffP, clipExtProps, NPIPlot
+	
 *)
 
 
@@ -205,7 +207,7 @@ setFields[{A}, {{c,cb}}, {{psi,psib}}];
 antiField/@{A, c, cb, psi, psib}
 ";
 
-bareVertexSymbol::usage="bareVertexSymbol is an option of COPlot, DSEPlot, DSEPlotList and RGEPlot. It determines how to draw bare vertices.
+bareVertexSymbol::usage="bareVertexSymbol is an option of COPlot, DSEPlot, DSEPlotList, NPIPlot and RGEPlot. It determines how to draw bare vertices.
 
 Possible values: boxSymbol, diskSymbol, triangleSymbol, diskTinySymbol, diskOpenSymbol, crossSymbol or a user-defined function which takes the coordinate of the regulator insertion as input.
 Default value: diskTinySymbol.
@@ -282,7 +284,7 @@ Example: Composite operator phi^a_i phi^a_j
 CO[G[p_, i_, j_], phi[p1_, is_, as_], phi[p2_, js_, bs_], explicit -> True]:=delta[as, bs] delta[i, is] delta[j, js]
 ";
 
-complete::usage="complete is the default value for the option output of DSEPlot and RGEPlot.
+complete::usage="complete is the default value for the option output of DSEPlot, NPIPlot and RGEPlot.
 ";
 
 complex::usage="complex is the field type of a complex bosonic field.
@@ -311,7 +313,7 @@ co = identifyGraphs[doCO[action, FF, onePIQ], {{pp, i}, {pp, j}}];
 COPlot[co, {{phi, Black}}]
 ";
 
-coSymbol::usage="coSymbol is an option of COPlot, DSEPlot, DSEPlotList and RGEPlot. It determines how to draw composite operators.
+coSymbol::usage="coSymbol is an option of COPlot, DSEPlot, DSEPlotList, NPIPlot and RGEPlot. It determines how to draw composite operators.
 
 Possible values: boxSymbol, diskSymbol, triangleSymbol, diskTinySymbol, diskOpenSymbol, crossSymbol or a user-defined function which takes the coordinate of the regulator insertion as input.
 Default value: triangleSymbol.
@@ -515,8 +517,7 @@ DSEPlot[op[S[{phi, i}, {phi, j}, {phi, l}, {phi, m}], P[{phi, l}, {phi, m}], {ph
 
 DSEPlotList::usage="DSEPlotList[expr] returns a list of plots of each term in expr.
 DSEPlot[expr, fieldStyles] returns a list of plots of each term in expr with the styles of the fields given by fieldStyles. The syntax is {{field1, style1}, {field2, style2}, ...}} where stylei are graphics primitives like colors suitable for Line.
-DSEPlotList is the basic plotting function used by COPlot, DSEPlot, RGEPlot.
-By default, blobs denote dressed quantities (with the exception of internal propagators), dots bare n-point functions, boxes regulator insertions, triangles composite operators and external fields are indicated by a circle.
+DSEPlotList is the basic plotting function used by COPlot, DSEPlot, RGEPlot, NPIPlot.
 By default, blobs denote dressed quantities (with the exception of internal propagators), dots bare n-point functions, boxes regulator insertions, triangles composite operators and external fields are indicated by a circle.
 ";
 
@@ -535,7 +536,7 @@ explicit::usage="explicit determines if the explicit form of a quantity is given
 extractDiagramType::usage="extractDiagramType[diags, t] extracts diagrams of type t from diags. Known diagram types are stored in $diagramTypes.
 ";
 
-factorStyle::usage="factorStyle is an option of COPlot, DSEPlot, DSEPlotList and RGEPlot. It determines the style of all text except indices and field labels.
+factorStyle::usage="factorStyle is an option of COPlot, DSEPlot, DSEPlotList, NPIPlot and RGEPlot. It determines the style of all text except indices and field labels.
 Standard value: {FontSize:>16}.\n
 
 Example:
@@ -638,7 +639,7 @@ setFields[{A}, {}, {}];
 identifyGraphs[op[V[{A, i}, {A, r}, {A, s}, {A, j}], P[{A, r}, {A, s}]] + op[V[{A, i}, {A, j}, {A, s}, {A, t}], P[{A, s}, {A, t}]], {{A, i}, {A, j}}]
 ";
 
-indexStyle::usage="indexStyle is an option for COPlot, DSEPlot, DSEPlotList and RGEPlot. It determines the style of all indices.
+indexStyle::usage="indexStyle is an option for COPlot, DSEPlot, DSEPlotList, NPIPlot and RGEPlot. It determines the style of all indices.
 Standard value: {FontSize:>14}.
 
 Example:
@@ -654,6 +655,40 @@ Module[{ind1=insDummy[],ind2=insDummy[]}, op[S[{phi,i},{phi,j},{phi,ind1},{phi,i
 
 intact::usage="intact is a value for the option symmetry.
 "
+
+NPIPlot::usage="NPIPlot[expr] plots an nPI expression expr.
+NPIPlot[expr, fieldStyle] plots an nPI expression expr with  the styles of the fields given by fieldStyles. The syntax is {{field1, style1}, {field2, style2}, ...}} where stylei are graphics primitives like colors suitable for Line.
+NPIPlot[expr, n] or NPIPlot[expr, fieldStyles, n] plots the nPI expression expr with n graphs per row.
+By default, blobs denote dressed quantities (with the exception of internal propagators), dots bare n-point functions, boxes regulator insertions and external fields are indicated by a circle.
+
+Possible options are:
+ -) Options of Graph.
+ 
+Examples:
+The 3PI effective action of a scalar theory truncated at three loops:
+setFields[{phi}];
+fieldStyles={{phi,Black}};
+action3PI=((* eight *)1/8op[S[{phi,i1},{phi,i2},{phi,i3},{phi,i4}],P[{phi,i1},{phi,i2}],P[{phi,i3},{phi,i4}]]
++(* sunset SV *)1/6op[S[{phi,i1},{phi,i2},{phi,i3}],P[{phi,i1},{phi,i1s}],P[{phi,i3},{phi,i3s}],P[{phi,i2},{phi,i2s}],V[{phi,i1s},{phi,i2s},{phi,i3s}]]
++(* eye *)1/48op[S[{phi,i1},{phi,i2},{phi,i3},{phi,i4}],P[{phi,i1},{phi,i1s}],P[{phi,i3},{phi,i3s}],P[{phi,i2},{phi,i2s}],P[{phi,i4},{phi,i4s}],S[{phi,i1s},{phi,i2s},{phi,i3s},{phi,i4s}]]
++(* double squint *)1/8op[S[{phi,i1},{phi,i2},{phi,i3},{phi,i4}],P[{phi,i1},{phi,i1s}],P[{phi,i3},{phi,i3s}],P[{phi,i2},{phi,i2s}],P[{phi,i4},{phi,i4s}],P[{phi,i5},{phi,i5s}],V[{phi,i1s},{phi,i2s},{phi,i5}],V[{phi,i3s},{phi,i4s},{phi,i5s}]]
+-(* sunset VV *)1/12op[V[{phi,i1},{phi,i2},{phi,i3}],P[{phi,i1},{phi,i1s}],P[{phi,i3},{phi,i3s}],P[{phi,i2},{phi,i2s}],V[{phi,i1s},{phi,i2s},{phi,i3s}]]
++(* star *)1/24op[V[{phi,i1},{phi,i2},{phi,i3}],P[{phi,i1},{phi,i1s}],P[{phi,i3},{phi,i3s}],P[{phi,i2},{phi,i2s}],V[{phi,i1s},{phi,i4},{phi,i5}],P[{phi,i4},{phi,i4s}],P[{phi,i5},{phi,i5s}],V[{phi,i2s},{phi,i4s},{phi,i6}],P[{phi,i6},{phi,i6s}],V[{phi,i3s},{phi,i5s},{phi,i6s}]]);
+NPIPlot[action3PI, fieldStyles]
+
+The equation of motion of a vertex from the 3PI effective action of a scalar theory truncated at three loops:
+setFields[{phi}];
+fieldStyles={{phi,Black}};
+action3PI=((* eight *)1/8op[S[{phi,i1},{phi,i2},{phi,i3},{phi,i4}],P[{phi,i1},{phi,i2}],P[{phi,i3},{phi,i4}]]
++(* sunset SV *)1/6op[S[{phi,i1},{phi,i2},{phi,i3}],P[{phi,i1},{phi,i1s}],P[{phi,i3},{phi,i3s}],P[{phi,i2},{phi,i2s}],V[{phi,i1s},{phi,i2s},{phi,i3s}]]
++(* eye *)1/48op[S[{phi,i1},{phi,i2},{phi,i3},{phi,i4}],P[{phi,i1},{phi,i1s}],P[{phi,i3},{phi,i3s}],P[{phi,i2},{phi,i2s}],P[{phi,i4},{phi,i4s}],S[{phi,i1s},{phi,i2s},{phi,i3s},{phi,i4s}]]
++(* double squint *)1/8op[S[{phi,i1},{phi,i2},{phi,i3},{phi,i4}],P[{phi,i1},{phi,i1s}],P[{phi,i3},{phi,i3s}],P[{phi,i2},{phi,i2s}],P[{phi,i4},{phi,i4s}],P[{phi,i5},{phi,i5s}],V[{phi,i1s},{phi,i2s},{phi,i5}],V[{phi,i3s},{phi,i4s},{phi,i5s}]]
+-(* sunset VV *)1/12op[V[{phi,i1},{phi,i2},{phi,i3}],P[{phi,i1},{phi,i1s}],P[{phi,i3},{phi,i3s}],P[{phi,i2},{phi,i2s}],V[{phi,i1s},{phi,i2s},{phi,i3s}]]
++(* star *)1/24op[V[{phi,i1},{phi,i2},{phi,i3}],P[{phi,i1},{phi,i1s}],P[{phi,i3},{phi,i3s}],P[{phi,i2},{phi,i2s}],V[{phi,i1s},{phi,i4},{phi,i5}],P[{phi,i4},{phi,i4s}],P[{phi,i5},{phi,i5s}],V[{phi,i2s},{phi,i4s},{phi,i6}],P[{phi,i6},{phi,i6s}],V[{phi,i3s},{phi,i5s},{phi,i6s}]]);
+eomPre = diffV[action3PI,V[{phi,i},{phi,j},{phi,k}]];
+eom=identifyGraphs[clipExtProps@eomPre,{{phi,i},{phi,j},{phi,k}}];
+NPIPlot[eom, fieldStyles]
+";
 
 odd::usage="odd specifies that a field can have interactions with an odd number of legs. Default value. See generateAction for details.
 ";
@@ -700,7 +735,7 @@ setFields[{A}, {{c, cb}}, {}];
 orderFermions[op[V[{c, i}, {cb, j}, {A, l}]]]
 ";
 
-output::usage="output  is an option of COPlot, DSEPlot, DSEPlotList and RGEPlot. It determines in what form the output is given.
+output::usage="output  is an option of COPlot, DSEPlot, DSEPlotList, NPIPlot and RGEPlot. It determines in what form the output is given.
 
 Possible values are:
  -) List: Gives a list of all graphs.
@@ -742,7 +777,7 @@ regulatorBox::usage="regulatorBox is superseded by boxSymbol.
 regulatorCross::usage="regulatorCross is superseded by crossSymbol.
 ";
 
-regulatorSymbol::usage="regulatorSymbol  is an option of COPlot, DSEPlot, DSEPlotList and RGEPlot. It determines how to draw regulator insertions.
+regulatorSymbol::usage="regulatorSymbol is an option of COPlot, DSEPlot, DSEPlotList, NPIPlot and RGEPlot. It determines how to draw regulator insertions.
 
 Possible values: boxSymbol, diskSymbol, triangleSymbol, diskTinySymbol, diskOpenSymbol, crossSymbol or a user-defined function which takes the coordinate of the regulator insertion as input.
 Default value: boxSymbol.
@@ -769,9 +804,9 @@ Example:
 {insDummy[], insDummy[], resetDummy[], insDummy[]}
 ";
 
-RGEPlot::usage="RGEPlot[expr] plots an RGE expr.
+RGEPlot::usage="RGEPlot[expr] plots an RGE expression expr.
 RGEPlot[expr, fieldStyle] plots an RGE expr with  the styles of the fields given by fieldStyles. The syntax is {{field1, style1}, {field2, style2}, ...}} where stylei are graphics primitives like colors suitable for Line.
-RGEPlot[expr, n] or RGEPlot[expr, fieldStyles, n] plots the RGE expr with n graphs per row.
+RGEPlot[expr, n] or RGEPlot[expr, fieldStyles, n] plots the RGE expression expr with n graphs per row.
 By default, blobs denote dressed quantities (with the exception of internal propagators), dots bare n-point functions, boxes regulator insertions and external fields are indicated by a circle.
 
 Possible options are:
@@ -952,7 +987,7 @@ traceIndices::usage="traceIndices are dummy indices used by doRGE.
 triangleSymbol::usage="triangleSymbol is a triangle graphic used for bareVertexSymbol, coSymbol, regulatorSymbol or vertexSymbol.
 ";
 
-type::usage="types is an option of COPlot, DSEPlot, DSEPlotList and RGEPlot. It serves to tell the underlying plot function DSEPlotList how to plot the left-hand side of the equation.
+type::usage="types is an option of COPlot, DSEPlot, DSEPlotList, NPIPlot and RGEPlot. It serves to tell the underlying plot function DSEPlotList how to plot the left-hand side of the equation.
 
 Possible values are:
 	-) \"CO\"
@@ -977,7 +1012,7 @@ Example: Definition of a dressed vertex for a scalar field with an O(N) index
 V[phi[p1_,i_], phi[p2_,j_], phi[p3_,l-], phi[p4_,m_], explicit -> True]:=g (delta[i,j]delta[l,m]+delta[i,l]delta[j,m]+delta[i,m]delta[j,l])
 ";
 
-vertexSymbol::usage="vertexSymbol is an option of COPlot, DSEPlot, DSEPlotList and RGEPlot. It determines how to draw dressed vertices.
+vertexSymbol::usage="vertexSymbol is an option of COPlot, DSEPlot, DSEPlotList, NPIPlot and RGEPlot. It determines how to draw dressed vertices.
 
 Possible values: boxSymbol, diskSymbol, triangleSymbol, diskTinySymbol, diskOpenSymbol, crossSymbol or a user-defined function which takes the coordinate of the regulator insertion as input.
 Default value: diskSymbol.
@@ -1017,6 +1052,8 @@ Options[DSEPlotList]:=Options[DSEPlot];
 Options[RGEPlot]:=Join[{type->"RGE"}, DeleteCases[Options[DSEPlot], type->_]];
 
 Options[COPlot]:=Join[{type->"CO"}, DeleteCases[Options[DSEPlot], type->_]];
+
+Options[NPIPlot]:=Join[{type->"nPI"}, DeleteCases[Options[DSEPlot], type->_]];
 
 Options[setSourcesZero]={doGrassmannTest->True, propagatorCreationRules->DSERules};
 
@@ -1229,6 +1266,8 @@ DSEPlot::fieldsUndefined="There appear to be undefined fields in the expression 
 Define the fields with the function setFields or rederive the expression with doRGE or doDSE, respectively.
 The definition is then done automatically.\n
 The expression causing the error is `1`";
+
+DSEPlot::noDerivs="The expression seems to be a vacuum graph (external fields are `1`). Use NPIPlot instead of DSEPlot.\n";
 
 DSEPlot::syntax="There was a syntax error in DSEPlot.\n
 Make sure the input has the form of DSEPlot[expr_,flis_List[,plotRules_],opts___]. For more details use ?DSEPlot.\n
@@ -2794,7 +2833,7 @@ checkFields[a_]:=Message[checkFields::ok];
 
 
 
-(* ::Section::Closed:: *)
+(* ::Section:: *)
 (* Functions for Output *)
 
 
@@ -3209,6 +3248,8 @@ COPlot[args___]:=DSEPlot[args, type->"CO"];
 
 RGEPlot[args___]:=DSEPlot[args, type->"RGE"];
 
+NPIPlot[args___]:=DSEPlot[args, type->"nPI"];
+
 
 (* plot the complete equation including the left-hand side; employ a grid;
 if no PlotRules are given, call DSEPlotList accordingly without it *)
@@ -3254,8 +3295,13 @@ DSEPlot[a_,plotRules_List:{},len_Integer:5,opts___?OptionQ]/;And@@(Not@FreeQ[#, 
 		V];
 	
 	(* plot the left-hand side; take only the graph without prefactor; if the diagram has no external legs, take just Gamma_k; not required for DSEs as there are no vacuum diagrams *)
-	lhs=Which[lhsFields=={},
+	lhs=Which[
+		lhsFields=={}&&eqType==="RGE",
 		DisplayForm@StyleBox[SuperscriptBox["\[CapitalGamma]", "k"],factorStyle/.Join[{opts},Options@RGEPlot],FontSize->20],
+		lhsFields=={}&&eqType==="nPI",
+		DisplayForm@StyleBox["\[CapitalGamma]",factorStyle/.Join[{opts},Options@RGEPlot],FontSize->20],
+		lhsFields=={}&&eqType==="DSE",(* should not happen *)
+		Message[DSEPlot::noDerivs,lhsFields]; Abort[],
 		True,
 		DSEPlotList[op@lhsSymbol[Sequence@@lhsFields], plotRules/.{}:>Sequence[],opts][[1]]
 	];
@@ -3271,6 +3317,8 @@ DSEPlot[a_,plotRules_List:{},len_Integer:5,opts___?OptionQ]/;And@@(Not@FreeQ[#, 
 		eqType == "RGE",
 		RGEPlotGrid[rhs,{lhs,exponent},len,opts],
 		eqType == "CO",
+		DSEPlotGrid[rhs,{lhs,exponent},len,opts],
+		eqType == "nPI",
 		DSEPlotGrid[rhs,{lhs,exponent},len,opts]
 		]
 ];
@@ -3283,7 +3331,10 @@ DSEPlot[a___]:=Message[DSEPlot::syntax,a];
 
 (* for DSEs and CO *)
 DSEPlotGrid[rhs_,  {lhs_,exponent_}, len_, opts___?OptionQ] := 
-  Module[{partitioned, lhsLabeled, i},
+  Module[{partitioned, lhsLabeled, i, equalSign},
+  
+   (* shift equal sign for better alignment *)
+   equalSign = DisplayForm@AdjustmentBox["=",BoxBaselineShift->-1.6];
 
    (* divide into the correct length; if rhs is only one graph convert it to a list *)  
     partitioned =  Insert[Partition[Flatten[{rhs}], len - 1, len - 1, 1, Style["",ShowStringCharacters->False]], Style["",ShowStringCharacters->False], 
@@ -3291,7 +3342,7 @@ DSEPlotGrid[rhs_,  {lhs_,exponent_}, len_, opts___?OptionQ] :=
 
    (* create the equal sign as label for lhs and add -1 exponent for propagator *)
    lhsLabeled = Labeled[lhs, Style[Row[{Overscript[Style["",FontSize:>50],Style[exponent,(factorStyle/.Join[{opts},Options@DSEPlot])
-   			/.(FontSize:>w_Integer):>(FontSize:>w)]],"="}],
+   			/.(FontSize:>w_Integer):>(FontSize:>w)]],equalSign}],
    		ShowStringCharacters->False,factorStyle/.Join[{opts},Options@DSEPlot]], Right];
 
    (* put in the lhs *)
@@ -3302,7 +3353,10 @@ DSEPlotGrid[rhs_,  {lhs_,exponent_}, len_, opts___?OptionQ] :=
 
 
 RGEPlotGrid[rhs_,  {lhs_,exponent_}, len_, opts___?OptionQ] := 
-  Module[{partitioned, lhsLabeled, i},
+  Module[{partitioned, lhsLabeled, i,equalSign},
+
+   (* shift equal sign for better alignment *)
+   equalSign = DisplayForm@AdjustmentBox["=",BoxBaselineShift->-1.6];
 
    (* divide into the correct length; if rhs is only one graph convert it to a list *)  
     partitioned =  Insert[Partition[Flatten[{rhs}], len - 1, len - 1, 1, Style["",ShowStringCharacters->False]], Style["",ShowStringCharacters->False], 
@@ -3312,7 +3366,7 @@ RGEPlotGrid[rhs_,  {lhs_,exponent_}, len_, opts___?OptionQ] :=
    lhsLabeled = Labeled[lhs,
    			Style[#,ShowStringCharacters->False,factorStyle/.Join[{opts},Options@DSEPlot]]&/@
    				{DisplayForm@SubscriptBox["\[PartialD]", "t"],Row[{Overscript[Style["",FontSize:>50],Style[exponent,(factorStyle/.Join[{opts},Options@DSEPlot])
-   			/.(FontSize:>w_Integer):>(FontSize:>w)]],"="}]}, {Left,Right}];
+   			/.(FontSize:>w_Integer):>(FontSize:>w)]],equalSign}]}, {Left,Right}];
 
    (* put in the lhs *)
    ReplacePart[Grid[Sequence @@@ List /@ partitioned,FilterRules[{opts},Options@Grid]], 
