@@ -1480,7 +1480,7 @@ autoList = Function[ia,
 (*  Print[(Plus @@ (#[[2]] op[S[Sequence @@ #[[1]]], Sequence @@ #[[1]]] & /@ allList // sortDummies))
   /.a_S?(Length@#f>2&):>-$signConvention a ];*)
   (Plus @@ (#[[2]] op[S[Sequence @@ #[[1]]], Sequence @@ #[[1]]] & /@ allList // sortDummies))
-  /.a_S?(Length@#>2&):>-$signConvention a /. op[b_S,c___List]:>op[b,Sequence@@Reverse[{c}]]/;Length[{c}]>2
+  /.a_S?(Length@#>2&):>-$signConvention a /. op[b_S,c___List]:>op[b,Sequence@@Reverse[{c}]]
 
 ];
 
@@ -1571,12 +1571,12 @@ replacementCalcStep[a_op]/;FreeQ[a,replacedField]:=a;
 
 (* the utmost right two terms, quite simple *)
 replacementCalcStep[op[a___,replacedField[{Q_,q_}],c_List]]:=(op[a,{Q,q},c]+
-	op[a,sf[{Q,q},{{Q,q}}],P[{Q,q},c/.{d_,e_}:>{d,e}]]);
+	op[a,P[{Q,q},c/.{d_,e_}:>{d,e}]]);
 
 (* all higher terms *)
 replacementCalcStep[op[a___,replacedField[{Q_,q_}],c__/;FreeQ[{c},replacedField]]]:=Module[{ind1,ind2},
 	op[a,{Q,q},c]+
-(* propagator and derivative w.r.t. field *)Plus@@((op[a,sf[{Q,q},{{Q,q}}], P[{Q,q},#],Sequence@@DeleteCases[{c},#1]])&)/@Cases[{c},{_?fieldQ,_}]+
+(* propagator and derivative w.r.t. field *)Plus@@((op[a, P[{Q,q},#],Sequence@@DeleteCases[{c},#1]])&)/@Cases[{c},{_?fieldQ,_}]+
 (* propagator and derivative w.r.t. vertex *) Plus@@(op[a,P[{Q,q},{$dummyField,ind1=insDummy[]}],Sequence@@DeleteCases[{c},#1],derivVertex[#1,{$dummyField,ind1}]]&)/@{c}+
 (* propagator and derivative w.r.t. propagator *) $signConvention Plus@@(op[a, P[{Q,q},{$dummyField,ind2=insDummy[]}],
 	 Sequence@@DeleteCases[{c},#1],derivPropagator[#1,{$dummyField,ind2}]]&)/@{c}
@@ -1703,8 +1703,8 @@ derivPropagator[S[__],{Q_,q_}]:=0;
 derivPropagator[sf[_,_],{Q_,q_}]:=0;
 
 derivPropagator[P[field1_List,field2_List],{Q_,q_}]:=ReleaseHold@Module[{dummy1,dummy2},
-	Hold@Sequence[sf[{Q,q},{field1,{$dummyField,dummy1=insDummy[]}}],P[field1,{$dummyField,dummy1}],V[{Q,q},{$dummyField,dummy1},{$dummyField,dummy2=insDummy[]}],
-		P[{$dummyField,dummy2},field2]]
+	Hold@Sequence[sf[{$dummyField,dummy2=insDummy[]},{{$dummyField,dummy2}}],sf[{Q,q},{field1,{$dummyField,dummy1=insDummy[]}}],P[field1,{$dummyField,dummy1}],V[{Q,q},{$dummyField,dummy1},{$dummyField,dummy2}],
+		P[{$dummyField,dummy2},field2]](* based on new derivation *)
 ];
 
 
@@ -2137,8 +2137,8 @@ sortCanonical[b_op, derivatives_List] :=
   
   orderV[V[a__]] := V[Sequence @@ Join[
   	SortBy[Select[{a}, cFieldQ[#[[1]]] &], fieldValues[#[[2]]] &],
-  	SortBy[Select[{a}, antiFermionQ[#[[1]]] &], fieldValues[#[[2]]] &], 
-    SortBy[Select[{a}, fermionQ[#[[1]]] &], (fieldValues[#[[2]]]) &]]];
+  	SortBy[Select[{a}, fermionQ[#[[1]]] &], fieldValues[#[[2]]] &], 
+    SortBy[Select[{a}, antiFermionQ[#[[1]]] &], (fieldValues[#[[2]]]) &]]];
   orderV[S[a__]] /; Length[{a}]>2 := orderV[V[a]]/.V:>S;
   orderV[CO[a__]] /; Length[{a}]>2 := orderV[V[a]]/.V:>CO;
   orderV[S[a__]] := S[a];
@@ -2543,7 +2543,7 @@ doDSE[a___,symmetry->broken,b___]/;FreeQ[{a,b},ansatz]:=(Message[doDSE::noAnsatz
 (* if a real action is given transform it into a list *)
 doDSE[action_,derivs_List,rest___,opts___?OptionQ]/;Cases[action,op[a__?(fieldQ@#[[0]](*check if arguments of op are fields*) &)],Infinity]=!={}:=
   doDSE[Replace[Union[Cases[{action},op[b___] :> Head /@ {b}, Infinity]],
-  	{antiFermion_, fermion_} :> {fermion, antiFermion}(*order of fermions different in real and in symbolic action*),
+  	{antiFermion_, fermion_} :> {fermion, antiFermion}(*order of fermions different in real and in symbolic action for convenience*),
   	 2],derivs,rest,opts];
 
 (* if list of interactions given, create action first *)
@@ -3412,7 +3412,7 @@ regulatorCross[x___]:=crossSymbol[x];
 
 
 
-(* ::Section::Closed:: *)
+(* ::Section:: *)
 (* Tools *)
 
 
